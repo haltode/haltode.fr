@@ -1,0 +1,30 @@
+body {
+   max-width:1000px;
+   margin: 0 auto;
+}
+
+footer {
+   margin-top: 20px;
+   border-top: solid 1px black;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+   color: #2E64FE;
+}
+#main_menu li a {
+   color: #2E64FE;
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+   text-decoration: none;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
