@@ -1,29 +1,34 @@
 body {
-   max-width:1000px;
+   font-family: 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
    margin: 0 auto;
+   position: relative;
+   width: 95%;
 }
 
-footer {
-   margin-top: 20px;
-   border-top: solid 1px black;
+h1, h2, h3, h4, h5, h6 {
+   color: #DE4834;
+}
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
 }
 
 #main_menu {
    list-style: none;
    margin: 0;
    padding: 0;
+   text-align: center;
 }
 #main_menu li {
    display: inline;
    margin-right: 1px;
-   color: #2E64FE;
 }
 #main_menu li a {
-   color: #2E64FE;
    line-height: 1em;
    padding: 4px 20px;
    text-align: center;
-   text-decoration: none;
 }
 #main_menu li a:hover, #main_menu li a:active {
    text-decoration: underline;
