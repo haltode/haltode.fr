@@ -1,4 +1,5 @@
-# Articles
+Articles
+========
 
 La liste des articles publiés :
 

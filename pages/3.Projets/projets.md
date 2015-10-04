@@ -1,4 +1,5 @@
-# Projets
+Projets
+=======
 
 Liste de mes différents projets personnels :
 
