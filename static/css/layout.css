@@ -6,7 +6,15 @@ body {
    width: 95%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
    color: #DE4834;
 }
 
