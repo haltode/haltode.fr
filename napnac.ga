@@ -18,6 +18,7 @@ server {
 
    root /home/pi/NapNac/napnac.ga/src/;
    index accueil.html;
+   charset utf-8;
 
    location / {
       # First attempt to serve request as file, then

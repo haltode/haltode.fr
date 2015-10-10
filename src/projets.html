@@ -1,16 +1,61 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <link rel="stylesheet" href="/static/css/layout.css" />
       <link rel="stylesheed" href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" type="text/css" />
-      <meta charset="utf-8" />
+      <!-- CSS -->
+<style>
+body {
+   font-family: 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+}
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+</style>
+      <!---- ---->
       <title>Projets - NapNac</title>
    </head>
 
    <body>
       <header>
          <a href="accueil.html">
-            <img src="/static/img/logo.png" alt="Logo du site">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
          </a>
 
       </header>
@@ -39,8 +84,8 @@
       <footer>
          </br>
          <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
-         src="https://wiki.laquadrature.net/images/5/54/Pjl_rens_banner.png" alt="Non à la loi renseignement" 
-         title="Non à la loi renseignement" /></a></p>
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
       </footer>
    </body>
 </html>
