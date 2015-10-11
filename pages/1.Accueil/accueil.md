@@ -16,17 +16,13 @@ Vous retrouverez des articles divers concernant :
 - **Des livres** : Je vous décris et je vous donne mon avis sur des livres à propos d'informatique concernant la programmation, les algorithmes et d'autres concepts.
 - **Mes projets** : Bien sûr je vous montre mes projets personnels !
 
-## Comment me contacter ?
-
-Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à itechwordpress@gmail.com.
-
 ## Sites des copains
 
-- Le_BuG63 : http://lebug63.github.io/
-- Piticroissant : http://piticroissant.github.io/
-- DevSk0re : http://fr.devsk0re.com/
-- @che : http://ache.nyan.at/
-- Quentin : http://www.quent1.fr/
+- Le_BuG63 : <http://lebug63.github.io/>
+- Piticroissant : <http://piticroissant.github.io/>
+- DevSk0re : <http://fr.devsk0re.com/>
+- @che : <http://ache.nyan.at/>
+- Quentin : <http://www.quent1.fr/>
 
 Bonne visite !  
 NapNac
