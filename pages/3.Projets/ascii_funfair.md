@@ -7,7 +7,7 @@ Date du projet : juin 2013 à septembre 2013
 
 ## Introduction
 
-ASCII Funfair est l’un de mes premiers projets en C, et c’était la première fois que j’utilisais Github, donc ne vous étonnez pas de la qualité assez basse de ce projet. ASCII Funfair était plus un projet d’entraînement et de test. En effet, j’ai codé plusieurs IA de différents niveaux ainsi que les jeux allant avec, et j’ai voulu commencer à utiliser les couleurs et d’autres éléments de la console (pour le pacman notamment).
+ASCII Funfair est l’un de mes premiers projets en C, et c’était la première fois que j’utilisais Github (vous noterez aussi que je ne savais pas encore utiliser plusieurs fichiers sources, comme quoi on apprend tous un jour n'est-ce pas ?), donc ne vous étonnez pas de la qualité assez basse de ce projet. ASCII Funfair était plus un projet d’entraînement (je me mettais à la programmation en C) et de test. En effet, j’ai codé plusieurs IA de différents niveaux ainsi que les jeux allant avec, et j’ai voulu commencer à utiliser les couleurs et d’autres éléments de la console (pour le pacman notamment).
 
 ## Qu'est-ce que ASCII Funfair ?
 

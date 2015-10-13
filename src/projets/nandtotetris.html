@@ -50,7 +50,7 @@ a {
 }
 </style>
       <!---- ---->
-      <title>Hack - NapNac</title>
+      <title>NandToTetris - NapNac</title>
    </head>
 
    <body>
@@ -72,28 +72,32 @@ a {
 
       <!-- Page/Article -->
 
-<h1 id="hack">Hack</h1>
-<p>Date du projet : f&#233;vrier 2014 &#224; avril 2014 <em>Modifi&#233; le 11/10/2015</em></p>
+<h1 id="nandtotetris">NandToTetris</h1>
+<p>Date du projet : f&#233;vrier 2014 &#224; avril 2014<br />
+<em>Modifi&#233; le 11/10/2015</em></p>
 <h2 id="introduction">Introduction</h2>
 <p>Ce projet est celui que je consid&#232;re comme &#233;tant mon premier gros projet puisqu'il m&#8217;aura fallu plusieurs mois pour le finir.</p>
-<h2 id="quest-ce-que-hack">Qu'est-ce que Hack ?</h2>
-<p>Hack est le nom du projet qui consiste &#224; :</p>
+<h2 id="quest-ce-que-nandtotetris">Qu'est-ce que NandToTetris ?</h2>
+<p>NandToTetris signifie litt&#233;ralement <em>&quot;De la porte NAND (NON ET) &#224; Tetris&quot;</em>, on va donc partir d'une <a href="https://fr.wikipedia.org/wiki/Fonction_logique">porte logique</a> pour construire un ordinateur fonctionnel et complet afin de pouvoir programmer dessus et &#233;ventuellement r&#233;aliser des jeux comme Tetris.</p>
+<p>Le projet consiste donc &#224; cr&#233;er :</p>
 <ul>
-<li>La cr&#233;ation d&#8217;un <strong>ordinateur</strong> 16 bits bas&#233; sur une architecture <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">von Neumann</a>, pouvant accueillir un clavier et un &#233;cran de 256&#215;512 en noir et blanc.</li>
-<li>La cr&#233;ation d&#8217;un <strong>compilateur</strong> complet pour le langage Jack (le langage de base de l&#8217;ordinateur).</li>
-<li>La cr&#233;ation d&#8217;un <strong>mini-OS</strong> pour l&#8217;ordinateur.</li>
+<li>un <strong>ordinateur</strong> capable d'&#234;tre &#233;mul&#233;.</li>
+<li>un <strong>compilateur</strong> complet pour le langage Jack (le langage de base de l&#8217;ordinateur).</li>
+<li>un <strong>mini-OS</strong> nous permettant d'avoir des appels syst&#232;mes basiques.</li>
 </ul>
-<p>J&#8217;ai donc r&#233;alis&#233; ce projet &#224; l&#8217;aide du livre <em>The Elements of Computing Systems : Building a Modern Computer from First Principles</em>, vous pouvez retrouver une description et mon avis sur ce livre <a href="napnac.ga/livres/the_elements_of_computing_systems.html">ici</a>.</p>
+<p>J&#8217;ai r&#233;alis&#233; ce projet &#224; l&#8217;aide du livre <em>The Elements of Computing Systems : Building a Modern Computer from First Principles</em>, vous pouvez retrouver une description et mon avis sur ce livre <a href="napnac.ga/livres/the_elements_of_computing_systems.html">ici</a>.</p>
 <p>Ce livre fournit des &#233;mulateurs, et des fichiers de tests pour la cr&#233;ation de ce projet, ainsi que les explications n&#233;cessaires.</p>
 <h3 id="lordinateur">L'ordinateur</h3>
-<p>Le principe de ce livre est de partir d&#8217;une porte logique <a href="https://fr.wikipedia.org/wiki/Fonction_NON-ET">NAND</a>, de construire d&#8217;autres portes logiques (<a href="https://fr.wikipedia.org/wiki/Fonction_ET">AND</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_OU">OR</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_NON">NOT</a> etc.) &#224; partir de ces portes de construire l&#8217;<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a>, construire une <a href="https://fr.wikipedia.org/wiki/Bascule_%28circuit_logique%29">flip-flop</a> pour cr&#233;er un <a href="https://fr.wikipedia.org/wiki/Bit">bit</a>, puis un registre puis la <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">RAM</a>, cr&#233;er ensuite le <a href="https://fr.wikipedia.org/wiki/Processeur">CPU</a> et ainsi finir la cr&#233;ation de l&#8217;ordinateur. Toutes les parties de l&#8217;ordinateur sont cr&#233;&#233;es &#224; partir de fichiers .hdl qui peuvent &#234;tre simul&#233;s &#224; l&#8217;aide du CPU Emulator fournit par le livre.</p>
+<p>L'ordinateur est bas&#233; sur une architecture 16 bits de <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">von Neumann</a>, et peut accueillir un clavier et un &#233;cran de 256&#215;512 en noir et blanc.</p>
+<p>Pour la cr&#233;ation de l'ordinateur, on va donc partir de la porte logique <a href="https://fr.wikipedia.org/wiki/Fonction_NON-ET">NAND</a> qui est notre &#233;l&#233;ment de base (elle est int&#233;gr&#233;e directement dans l'&#233;mulateur ce qui nous permet de l'utiliser avec les autres &#233;l&#233;ments sans probl&#232;me). Gr&#226;ce &#224; cette porte logique, on peut en cr&#233;er d'autres comme <a href="https://fr.wikipedia.org/wiki/Fonction_ET">AND</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_OU">OR</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_NON">NOT</a>, etc. et &#224; partir de ces portes on peut construire l&#8217;<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a>. Pour la <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">RAM</a> de l'ordinateur, il faut la construire &#233;tape par &#233;tape et augmenter progressivement en capacit&#233; de stockage. On commence par la construction d'un <a href="https://fr.wikipedia.org/wiki/Bascule_%28circuit_logique%29">flip-flop</a> qui nous permet de r&#233;aliser un <a href="https://fr.wikipedia.org/wiki/Bit">bit</a>, puis un registre et enfin la RAM compl&#232;te. Le <a href="https://fr.wikipedia.org/wiki/Processeur">CPU</a> vient en dernier et ach&#232;ve la cr&#233;ation de notre ordinateur.</p>
+<p>Toutes les parties de l&#8217;ordinateur sont cr&#233;&#233;es &#224; partir de fichiers .hdl qui peuvent &#234;tre simul&#233;s &#224; l&#8217;aide du CPU Emulator fournit par le livre.</p>
 <h3 id="le-compilateur">Le compilateur</h3>
 <p>Ensuite on cr&#233;e le compilateur (&#224; partir de n&#8217;importe quel langage, j&#8217;ai choisi le C) qui est constitu&#233; d&#8217;une <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle">machine virtuelle</a>.</p>
 <div class="figure">
-<img src="/static/img/projets/hack/schema_compilateur.png" alt="Fonctionnement du compilateur" />
+<img src="/static/img/projets/nandtotetris/schema_compilateur.png" alt="Fonctionnement du compilateur" />
 <p class="caption">Fonctionnement du compilateur</p>
 </div>
-<p>Il est donc d&#233;compos&#233; en 3 programmes :</p>
+<p>Il est d&#233;compos&#233; en 3 programmes :</p>
 <ul>
 <li><strong>Jack Analyzer</strong> : Ce programme nettoie les fichiers .jack (enl&#232;ve les commentaires, les espaces blancs inutiles etc.), puis il traduit pour chaque fichier .jack son &#233;quivalent en .vm (langage de la machine virtuelle).</li>
 <li><strong>VM Translator</strong> : Ce programme traduit tous les .vm en un seul fichier .asm (assembleur, langage de l&#8217;ordinateur).</li>
@@ -126,7 +130,7 @@ a {
    }
 }</code></pre></div>
 <h2 id="lien">Lien</h2>
-<p>Le lien vers la page Github du projet : <a href="https://github.com/iTech-/Hack" class="uri">https://github.com/iTech-/Hack</a><br />
+<p>Le lien vers la page Github du projet : <a href="https://github.com/iTech-/NandToTetris" class="uri">https://github.com/iTech-/NandToTetris</a><br />
 Le site du livre : <a href="http://www.nand2tetris.org/" class="uri">http://www.nand2tetris.org/</a></p>
 <p>D'autres liens utiles &#224; propos du projet :</p>
 <ul>
