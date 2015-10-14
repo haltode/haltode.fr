@@ -3,14 +3,18 @@
    <head>
       <link rel="stylesheed" href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" type="text/css" />
       <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
       <!-- CSS -->
 <style>
 body {
-   font-family: 'Lato', Helvetica, sans-serif;
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
    max-width: 1000px;
    margin: 0 auto;
    position: relative;
    width: 95%;
+   line-height: 1.5;
 }
 
 h1 {
@@ -48,6 +52,39 @@ a {
 #main_menu li a:hover, #main_menu li a:active {
    text-decoration: underline;
 }
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
 </style>
       <!---- ---->
       <title>Bienvenue ! - NapNac</title>
@@ -60,7 +97,7 @@ a {
          </a>
 
       </header>
-      
+
       <nav>
          <ul id="main_menu">
             <li><a href="/">Accueil</a></li>
@@ -86,14 +123,13 @@ a {
 </ul>
 <h2 id="sites-des-copains">Sites des copains</h2>
 <ul>
-<li>Le_BuG63 : <a href="http://lebug63.github.io/" class="uri">http://lebug63.github.io/</a></li>
-<li>Piticroissant : <a href="http://piticroissant.github.io/" class="uri">http://piticroissant.github.io/</a></li>
-<li>DevSk0re : <a href="http://fr.devsk0re.com/" class="uri">http://fr.devsk0re.com/</a></li>
-<li><span class="citation">@che</span> : <a href="http://ache.nyan.at/" class="uri">http://ache.nyan.at/</a></li>
-<li>Quentin : <a href="http://www.quent1.fr/" class="uri">http://www.quent1.fr/</a></li>
+<li>Le_BuG63 : <a href="http://lebug63.github.io/">http://lebug63.github.io/</a></li>
+<li>Piticroissant : <a href="http://piticroissant.github.io/">http://piticroissant.github.io/</a></li>
+<li>DevSk0re : <a href="http://fr.devsk0re.com/">http://fr.devsk0re.com/</a></li>
+<li><span class="citation">@che</span> : <a href="http://ache.nyan.at/">http://ache.nyan.at/</a></li>
+<li>Quentin : <a href="http://www.quent1.fr/">http://www.quent1.fr/</a></li>
 </ul>
-<p>Bonne visite !<br />
-NapNac</p>
+<p>Bonne visite !<br />NapNac</p>
  
       <!-- ------------ -->
 

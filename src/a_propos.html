@@ -3,14 +3,18 @@
    <head>
       <link rel="stylesheed" href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" type="text/css" />
       <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
       <!-- CSS -->
 <style>
 body {
-   font-family: 'Lato', Helvetica, sans-serif;
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
    max-width: 1000px;
    margin: 0 auto;
    position: relative;
    width: 95%;
+   line-height: 1.5;
 }
 
 h1 {
@@ -48,6 +52,39 @@ a {
 #main_menu li a:hover, #main_menu li a:active {
    text-decoration: underline;
 }
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
 </style>
       <!---- ---->
       <title>A propos - NapNac</title>
@@ -60,7 +97,7 @@ a {
          </a>
 
       </header>
-      
+
       <nav>
          <ul id="main_menu">
             <li><a href="/">Accueil</a></li>
@@ -79,7 +116,7 @@ a {
 <p>Si vous souhaitez me contacter, vous pouvez m'envoyer un mail &#224; <script type="text/javascript">
 <!--
 h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#110;&#x61;&#112;&#110;&#x61;&#x63;&#46;&#x67;&#x61;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 // -->
 </script><noscript>&#110;&#x61;&#112;&#110;&#x61;&#x63;&#46;&#x67;&#x61;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript>.</p>
 <h2 id="outils">Outils</h2>
@@ -89,16 +126,17 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\
 <li><strong>Editeur</strong> : <a href="http://www.vim.org/">Vim</a></li>
 <li><strong>Logiciel de gestion de versions</strong> : <a href="https://git-scm.com/">Git</a></li>
 </ul>
-<p>Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste de mes outils plus d&#233;taill&#233;e sur mon github : <a href="https://github.com/iTech-/Dotfiles" class="uri">https://github.com/iTech-/Dotfiles</a></p>
+<p>Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste de mes outils plus d&#233;taill&#233;e sur mon github : <a href="https://github.com/iTech-/Dotfiles">https://github.com/iTech-/Dotfiles</a></p>
 <h2 id="site">Site</h2>
-<p>Ce site a &#233;t&#233; con&#231;u en <a href="https://fr.wikipedia.org/wiki/Hypertext_Markup_Language">HTML</a>/<a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">CSS</a>, les pages sont &#233;crites en <a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a> et converties via un script <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">Bash</a> en page HTML. Toutes les sources du site sont sur github : <a href="https://github.com/iTech-/NapNac" class="uri">https://github.com/iTech-/NapNac</a></p>
+<p>Ce site a &#233;t&#233; con&#231;u en <a href="https://fr.wikipedia.org/wiki/Hypertext_Markup_Language">HTML</a>/<a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">CSS</a>, les pages sont &#233;crites en <a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a> et converties via un script <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">Bash</a> en page HTML. Toutes les sources du site sont sur github : <a href="https://github.com/iTech-/NapNac">https://github.com/iTech-/NapNac</a></p>
 <style>
 body {
-   font-family: 'Lato', Helvetica, sans-serif;
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
    max-width: 1000px;
    margin: 0 auto;
    position: relative;
    width: 95%;
+   line-height: 1.5;
 }
 
 h1 {
@@ -135,6 +173,39 @@ a {
 }
 #main_menu li a:hover, #main_menu li a:active {
    text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
 }
 </style>
 <p>Le site est sous licence <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons</a>.</p>

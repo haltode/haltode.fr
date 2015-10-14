@@ -3,14 +3,18 @@
    <head>
       <link rel="stylesheed" href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" type="text/css" />
       <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
       <!-- CSS -->
 <style>
 body {
-   font-family: 'Lato', Helvetica, sans-serif;
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
    max-width: 1000px;
    margin: 0 auto;
    position: relative;
    width: 95%;
+   line-height: 1.5;
 }
 
 h1 {
@@ -48,6 +52,39 @@ a {
 #main_menu li a:hover, #main_menu li a:active {
    text-decoration: underline;
 }
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
 </style>
       <!---- ---->
       <title>ASCII Funfair - NapNac</title>
@@ -60,7 +97,7 @@ a {
          </a>
 
       </header>
-      
+
       <nav>
          <ul id="main_menu">
             <li><a href="/">Accueil</a></li>
@@ -73,8 +110,7 @@ a {
       <!-- Page/Article -->
 
 <h1 id="ascii-funfair">ASCII Funfair</h1>
-<p>Date du projet : juin 2013 &#224; septembre 2013<br />
-<em>Modifi&#233; le 11/10/2015</em></p>
+<p>Date du projet : juin 2013 &#224; septembre 2013<br /><em>Modifi&#233; le 11/10/2015</em></p>
 <h2 id="introduction">Introduction</h2>
 <p>ASCII Funfair est l&#8217;un de mes premiers projets en C, et c&#8217;&#233;tait la premi&#232;re fois que j&#8217;utilisais Github (vous noterez aussi que je ne savais pas encore utiliser plusieurs fichiers sources, comme quoi on apprend tous un jour n'est-ce pas ?), donc ne vous &#233;tonnez pas de la qualit&#233; assez basse de ce projet. ASCII Funfair &#233;tait plus un projet d&#8217;entra&#238;nement (je me mettais &#224; la programmation en C) et de test. En effet, j&#8217;ai cod&#233; plusieurs IA de diff&#233;rents niveaux ainsi que les jeux allant avec, et j&#8217;ai voulu commencer &#224; utiliser les couleurs et d&#8217;autres &#233;l&#233;ments de la console (pour le pacman notamment).</p>
 <h2 id="quest-ce-que-ascii-funfair">Qu'est-ce que ASCII Funfair ?</h2>
@@ -101,7 +137,7 @@ a {
 <p>Dans le <strong>multijoueur</strong>, vous pouvez acc&#233;der &#224; tous les jeux (compatibles en multijoueur) pour y jouer &#224; deux. Dans ce mode de jeux, il n&#8217;y a pas de points &#224; gagner ou autre, vous avez simplement &#224; choisir le jeu auquel vous souhaitez jouer.</p>
 <p>ASCII Funfair est un programme r&#233;alis&#233; en <strong>console</strong>, <strong>libre de droit</strong>, et n&#8217;utilise <strong>aucune librairie externe</strong> !</p>
 <h2 id="lien">Lien</h2>
-<p>Le lien vers la page Github du projet : <a href="https://github.com/iTech-/ASCII-Funfair" class="uri">https://github.com/iTech-/ASCII-Funfair</a></p>
+<p>Le lien vers la page Github du projet : <a href="https://github.com/iTech-/ASCII-Funfair">https://github.com/iTech-/ASCII-Funfair</a></p>
  
       <!-- ------------ -->
 
