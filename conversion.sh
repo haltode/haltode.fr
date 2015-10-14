@@ -16,4 +16,4 @@ find pages -iname "*.md" -type f -exec sh -c \
    rm $(basename ${0%.md}.tmp.html) && \
    mv -v src/$(basename ${0%.md}.html) src/$location' {} \;
 
-mv -v src/{projets,accueil,articles,a_propos}.html src/
+
