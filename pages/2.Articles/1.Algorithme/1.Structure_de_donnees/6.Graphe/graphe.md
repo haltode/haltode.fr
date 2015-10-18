@@ -2,7 +2,7 @@ Graphe
 ======
 algo/structure/
 
-Publié le :
+Publié le : 20/06/2015  
 *Modifié le :*
 
 ## Introduction
@@ -14,7 +14,7 @@ Un graphe est une structure de données incontournable en algorithmie. On utilis
 On peut définir un graphe comme étant un ensemble de *nœuds* (ou de sommets) étant reliés par des 
 *arcs* (ou des arêtes).
 
-![Exemple de graphe](static/img/algo/structure/graphe/graphe_exemple.png)
+![Exemple de graphe](/static/img/algo/structure/graphe/graphe_exemple.png)
 
 ## Vocabulaire
 
@@ -28,11 +28,11 @@ Un graphe peut avoir de nombreuses caractéristiques différentes, en voici une 
 
 Un graphe est dit *orienté* si ses arcs ont un sens (représenté par une flèche), comme par exemple ce graphe :
 
-![Graphe orienté](static/img/algo/structure/graphe/graphe_oriente.png)
+![Graphe orienté](/static/img/algo/structure/graphe/graphe_oriente.png)
 
 En revanche on dit d'un graphe qu'il est *non orienté* si aucun sens n'est attribué à ses arcs :
 
-![Graphe non orienté](static/img/algo/structure/graphe/graphe_non_oriente.png)
+![Graphe non orienté](/static/img/algo/structure/graphe/graphe_non_oriente.png)
 
 Dans ce cas précis, on peut donc parcourir les arcs dans les deux sens.
 
@@ -40,7 +40,7 @@ Dans ce cas précis, on peut donc parcourir les arcs dans les deux sens.
 
 Un graphe est *pondéré* si ses arcs ont un *poids* :
 
-![Graphe pondéré](static/img/algo/structure/graphe/graphe_pondere.png)
+![Graphe pondéré](/static/img/algo/structure/graphe/graphe_pondere.png)
 
 Dans cet exemple on utilise le graphe pour représenter une carte routière avec comme pondération la distance séparant deux villes.
 
@@ -48,21 +48,21 @@ Dans cet exemple on utilise le graphe pour représenter une carte routière avec
 
 Un graphe est *cyclique* s'il contient des cycles (un chemin finissant là où il a commencé) :
 
-![Graphe cyclique](static/img/algo/structure/graphe/graphe_cyclique.png)
+![Graphe cyclique](/static/img/algo/structure/graphe/graphe_cyclique.png)
 
 Un graphe qui ne contient aucun cycle est donc caractérisé d'*acyclique* :
 
-![Graphe acyclique](static/img/algo/structure/graphe/graphe_acyclique.png)
+![Graphe acyclique](/static/img/algo/structure/graphe/graphe_acyclique.png)
 
 ### Dense/creux
 
 On peut dire d'un graphe qu'il est *dense* si le nombre d'arcs est proche du nombre maximum possible de ce graphe :
 
-![Graphe dense](static/img/algo/structure/graphe/graphe_dense.png)
+![Graphe dense](/static/img/algo/structure/graphe/graphe_dense.png)
 
 Lorsque le nombre d'arcs est faible, on parle d'un graphe *creux* :
 
-![Graphe creux](static/img/algo/structure/graphe/graphe_creux.png)
+![Graphe creux](/static/img/algo/structure/graphe/graphe_creux.png)
 
 ## Implémentation
 
@@ -74,7 +74,7 @@ Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de 
 
 Voici un exemple de matrice d'adjacence (j'ai utilisé le tout premier graphe de l'article pour construire la matrice) :
 
-![Exemple de matrice d'adjacence](static/img/algo/structure/graphe/exemple_matrice_adjacence.png)
+![Exemple de matrice d'adjacence](/static/img/algo/structure/graphe/exemple_matrice_adjacence.png)
 
 Rien de bien compliqué pour l'implémenter :
 
@@ -97,7 +97,7 @@ On peut utiliser une variante de la matrice d'adjacence afin d'économiser de la
 
 Voici par exemple la liste d'adjacence qui représente le premier graphe de l'article :
 
-![Exemple de liste d'adjacence](hstatic/img/algo/structure/graphe/exemple_liste_adjacence.png)
+![Exemple de liste d'adjacence](/static/img/algo/structure/graphe/exemple_liste_adjacence.png)
 
 Pour l'implémentation, j'utilise les `vector` du C++ au lieu de recoder à la main la liste chaînée en C (même si on peut tout à fait le faire, recoder des structures de données basiques en concours notamment est tout simplement une perte de temps) :
 
@@ -118,7 +118,7 @@ Enfin on peut utiliser une dernière solution, en représentant tous les arcs du
 
 Voici l'exemple d'une liste d'arcs (toujours sur le même graphe) :
 
-![Exemple de liste d'arcs](hstatic/img/algo/structure/graphe/exemple_liste_arcs.png)
+![Exemple de liste d'arcs](/static/img/algo/structure/graphe/exemple_liste_arcs.png)
 
 Pareil que pour la liste d'adjacence, j'utilise les `vector` :
 

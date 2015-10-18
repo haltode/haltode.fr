@@ -2,8 +2,8 @@ Liste chaînée
 =============
 algo/structure/
 
-Publié le : 08/06/2014
-*Modifié le *
+Publié le : 08/06/2014  
+*Modifié le*
 
 ## Introduction
 
