@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheed" href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+</style>
+      <!---- ---->
+      <title>Liste chaînée - NapNac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<h1 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h1>
+<p>Publi&#233; le : 08/06/2014 <em>Modifi&#233; le </em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Une liste cha&#238;n&#233;e (<em>linked list</em> en anglais) est une structure de donn&#233;es tr&#232;s utilis&#233;e en programmation et est fondamentale pour impl&#233;menter d'autres structure de donn&#233;es. On utilise une liste cha&#238;n&#233;e principalement pour permettre l'insertion et la suppression d'&#233;l&#233;ments bien plus facilement qu'avec un tableau par exemple.</p>
+<h2 id="principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</h2>
+<p>Une liste cha&#238;n&#233;e est une structure de donn&#233;es auto-r&#233;f&#233;rentielle, c'est-&#224;-dire que chacun de ses &#233;l&#233;ments pointe vers l'&#233;l&#233;ment suivant que l'on appelle alors des <strong>noeuds</strong>. A partir de cette d&#233;finition on peut donc d&#233;j&#224; d&#233;finir le contenu d'un &#233;l&#233;ment d'une liste cha&#238;n&#233;e :</p>
+<ul>
+<li><strong>Des donn&#233;es</strong> : ces donn&#233;es peuvent &#234;tre de n'importe quels types (entier, flottant, cha&#238;ne de caract&#232;re etc.), et il peut en y avoir autant que possible par &#233;l&#233;ment.</li>
+<li><strong>Un pointeur</strong> : ce pointeur pointe vers l'&#233;l&#233;ment suivant de la liste.</li>
+</ul>
+<p>Voici une repr&#233;sentation d'une liste cha&#238;n&#233;e que l'on pourrait faire :</p>
+<p>+---------------+ +---------------+ +---------------+ |Pointeur |+------&gt;|Pointeur |+------&gt;|Pointeur (NULL)| |---------------| |---------------| |---------------| |Donn&#233;es | |Donn&#233;es | |Donn&#233;es | | | | | | | | | | | | | | | | | | | +---------------+ +---------------+ +---------------+</p>
+<p>Le dernier pointeur de la liste cha&#238;n&#233;e pointe sur la valeur <em>NULL</em>, pour indiquer la fin de la liste.</p>
+<p>Les listes cha&#238;n&#233;es vous font sans doute penser &#224; un tableau, mais elles sont tr&#232;s diff&#233;rentes :</p>
+<ul>
+<li>Imaginez qu'un tableau est comme un cahier de cours : vous commencez au d&#233;but du cahier, et vous &#233;crivez votre cours au fur et &#224; mesure jusqu'&#224; la fin du cahier. Si vous avez &#233;t&#233; absent, et que vous souhaitez rattraper le cours vous avez deux choix : soit vous laisser de l'espace pour vous permettre de recopier le cours, mais dans ce cas l'espace sera soit trop petit (plus de place), soit trop grand (gaspillage d'espace). Soit vous recopier tout votre cahier en incluant la partie ou vous &#233;tiez absent, cependant cette m&#233;thode est longue et co&#251;teuse.</li>
+<li>Imaginez qu'une liste cha&#238;n&#233;e est comme un classeur : vous commencez o&#249; vous souhaitez dans votre classeur, vous &#233;crivez votre cours sur des feuilles toutes ind&#233;pendantes les unes des autres et vous pouvez les ins&#233;rer ou les supprimer dans votre classeur tr&#232;s simplement. Si vous &#234;tes malade, il vous suffit donc d'ouvrir les anneaux du classeur, de placer les feuilles du cours que vous avez manqu&#233;es, et de refermer les anneaux.</li>
+</ul>
+<p>Voici comment se d&#233;roule l'ajout d'un &#233;l&#233;ment dans une liste cha&#238;n&#233;e :</p>
+<p>Nouvel &#233;l&#233;ment v +---------------+ +---&gt;|Pointeur +----+ | |---------------| | | |Donn&#233;es | | | | | | | | | | | | | | | +---------------+ | | | | v +------+--------+ +---------------+ +---------------+ |Pointeur | |Pointeur |+------&gt;|Pointeur (NULL)| |---------------| |---------------| |---------------| |Donn&#233;es | |Donn&#233;es | |Donn&#233;es | | | | | | | | | | | | | | | | | | | +---------------+ +---------------+ +---------------+</p>
+<p>Et voici comment se passe la suppression d'un &#233;l&#233;ment :</p>
+<p>+-------------------------------------------------+ | | | | | &#201;l&#233;ment supprim&#233; | | v v +-------+-------+ +---------------+ +---------------+ |Pointeur | |Pointeur | |Pointeur (NULL)| |---------------| |---------------| |---------------| |Donn&#233;es | |Donn&#233;es | |Donn&#233;es | | | | | | | | | | | | | | | | | | | +---------------+ +---------------+ +---------------+</p>
+<h2 id="quelques-fonctions-pour-manipuler-les-listes-cha&#238;n&#233;es">Quelques fonctions pour manipuler les listes cha&#238;n&#233;es</h2>
+<p>Dans cette partie je vais vous pr&#233;senter des fonctions de bases vous permettant de manipuler facilement les listes cha&#238;n&#233;es comme ajouter un &#233;l&#233;ment, supprimer un &#233;l&#233;ment, rechercher un &#233;l&#233;ment etc.</p>
+<h3 id="cr&#233;er-une-liste">Cr&#233;er une liste</h3>
+<p>Cr&#233;er une nouvelle structure de donn&#233;e de type liste cha&#238;n&#233;e Initialiser le premier &#233;l&#233;ment de la liste Retourner la nouvelle structure</p>
+<h3 id="supprimer-la-liste">Supprimer la liste</h3>
+<p>Parcourir la liste jusqu'&#224; la fin Supprimer l'&#233;l&#233;ment actuel</p>
+<h3 id="ajouter-un-&#233;l&#233;ment-en-t&#234;te-de-liste">Ajouter un &#233;l&#233;ment en t&#234;te de liste</h3>
+<p>Cr&#233;er le nouvel &#233;l&#233;ment Affecter les donn&#233;es souhait&#233;es &#224; l'&#233;l&#233;ment Faire pointer le nouvel &#233;l&#233;ment vers le d&#233;but de la liste</p>
+<h3 id="ajouter-un-&#233;l&#233;ment-en-fin-de-liste">Ajouter un &#233;l&#233;ment en fin de liste</h3>
+<p>Cr&#233;er le nouvel &#233;l&#233;ment Affecter les donn&#233;es souhait&#233;es &#224; l'&#233;l&#233;ment Parcourir la liste jusqu'&#224; la fin Faire pointer l'&#233;l&#233;ment actuel (l'&#233;l&#233;ment de fin de liste) au nouvel &#233;l&#233;ment Faire pointer le nouvel &#233;l&#233;ment &#224; la valeur NULL (pour indiquer la fin de la liste)</p>
+<h3 id="ajouter-un-&#233;l&#233;ment-&#224;-un-endroit-pr&#233;cis-de-la-liste">Ajouter un &#233;l&#233;ment &#224; un endroit pr&#233;cis de la liste</h3>
+<p>Cr&#233;er le nouvel &#233;l&#233;ment Affecter les donn&#233;es souhait&#233;es &#224; l'&#233;l&#233;ment Parcourir la liste jusqu'&#224; arriver &#224; l'&#233;l&#233;ment situ&#233; avant l'index indiqu&#233; en param&#232;tre Faire pointer l'&#233;l&#233;ment actuel vers le nouvel &#233;l&#233;ment Faire pointer le nouvel &#233;l&#233;ment vers l'&#233;l&#233;ment suivant</p>
+<h3 id="supprimer-un-&#233;l&#233;ment-en-t&#234;te-de-liste">Supprimer un &#233;l&#233;ment en t&#234;te de liste</h3>
+<p>Faire pointer l'&#233;l&#233;ment de t&#234;te de liste vers le pointeur de l'&#233;l&#233;ment suivant Supprimer l'&#233;l&#233;ment en t&#234;te de liste</p>
+<h3 id="supprimer-un-&#233;l&#233;ment-en-fin-de-liste">Supprimer un &#233;l&#233;ment en fin de liste</h3>
+<p>Parcourir la liste jusqu'&#224; arriver &#224; l'avant dernier &#233;l&#233;ment Faire pointer l'&#233;l&#233;ment actuel &#224; la valeur NULL (pour indiquer la fin de la liste) Supprimer l'&#233;l&#233;ment suivant (le dernier &#233;l&#233;ment)</p>
+<h3 id="supprimer-un-&#233;l&#233;ment-&#224;-un-endroit-pr&#233;cis-de-la-liste">Supprimer un &#233;l&#233;ment &#224; un endroit pr&#233;cis de la liste</h3>
+<p>Parcourir la liste jusqu'&#224; arriver &#224; l'&#233;l&#233;ment situ&#233; avant l'index indiqu&#233; en param&#232;tre Faire pointer l'&#233;l&#233;ment actuel vers le pointeur de l'&#233;l&#233;ment suivant Supprimer l'&#233;l&#233;ment suivant (celui indiqu&#233; par l'index en param&#232;tre)</p>
+<h3 id="afficher-la-liste">Afficher la liste</h3>
+<p>Parcourir la liste jusqu'&#224; la fin Afficher les donn&#233;es de l'&#233;l&#233;ment actuel</p>
+<h3 id="est-vide">Est vide ?</h3>
+<p>Si l'&#233;l&#233;ment en d&#233;but de liste pointe vers NULL (indique la fin de liste) Retourner 1 Sinon Retourner 0</p>
+<h3 id="nombre-d&#233;l&#233;ment-dans-la-liste">Nombre d'&#233;l&#233;ment dans la liste</h3>
+<p>Parcourir la liste jusqu'&#224; la fin Incr&#233;menter un compteur (initialiser &#224; 0) Retourner le compteur</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Voici une impl&#233;mentation en C des fonctions que je vous ai pr&#233;sent&#233;es :</p>
+<p>main.c : <a href="http://git.io/vtzfd" class="uri">http://git.io/vtzfd</a> main.h : <a href="http://git.io/vtzJW" class="uri">http://git.io/vtzJW</a></p>
+<p>Le code est relativement simple &#224; comprendre et &#224; utiliser, une connaissance des pointeurs est n&#233;cessaire.</p>
+<h2 id="variantes-de-la-liste-cha&#238;n&#233;e">Variantes de la liste cha&#238;n&#233;e</h2>
+<p>Il existe plusieurs variantes de la liste cha&#238;n&#233;e qui sont pratiques dans certains probl&#232;mes.</p>
+<h3 id="liste-doublement-cha&#238;n&#233;e">Liste doublement cha&#238;n&#233;e</h3>
+<p>Cette variante consiste &#224; ce que chaque &#233;l&#233;ment de la liste poss&#232;de deux pointeurs :</p>
+<ul>
+<li>Un pointeur vers le prochain &#233;l&#233;ment.</li>
+<li>Un pointeur vers le pr&#233;c&#233;dent &#233;l&#233;ment.</li>
+</ul>
+<p>Cette structure est plus co&#251;teuse en m&#233;moire et en op&#233;ration, cependant elle permet d'ins&#233;rer un &#233;l&#233;ment avant un autre bien plus facilement &#224; l'aide du nouveau pointeur.</p>
+<p>+---------------+ +---------------+ +---------------+ |Pointeur |+------&gt;|Pointeur |+------&gt;|Pointeur (NULL)| |---------------| |---------------| |---------------| |Donn&#233;es | |Donn&#233;es | |Donn&#233;es | | | | | | | |---------------| |---------------| |---------------| |Pointeur (NULL)|&lt;------+|Pointeur |&lt;------+|Pointeur | +---------------+ +---------------+ +---------------+</p>
+<h3 id="liste-cha&#238;n&#233;e-circulaire">Liste cha&#238;n&#233;e circulaire</h3>
+<p>La liste cha&#238;n&#233;e circulaire est une liste cha&#238;n&#233;e ne poss&#233;dant pas de &quot;fin&quot;. En effet, le pointeur de fin de liste pointe vers le d&#233;but de la liste formant ainsi un cycle.</p>
+<p>+-------------------------------------------------+ | | | | v + +---------------+ +---------------+ +---------------+ |Pointeur |+------&gt;|Pointeur |+------&gt;|Pointeur | |---------------| |---------------| |---------------| |Donn&#233;es | |Donn&#233;es | |Donn&#233;es | | | | | | | | | | | | | | | | | | | +---------------+ +---------------+ +---------------+</p>
+<p>Lorsque vous utilisez des listes cha&#238;n&#233;es circulaires, il faut faire attention &#224; ne pas tomber dans une boucle infinie.</p>
+<h3 id="liste-doublement-cha&#238;n&#233;e-circulaire">Liste doublement cha&#238;n&#233;e circulaire</h3>
+<p>Cette variante combine tout simplement les deux derni&#232;res.</p>
+<p>+-------------------------------------------------+ | | | | v + +---------------+ +---------------+ +---------------+ |Pointeur |+------&gt;|Pointeur |+------&gt;|Pointeur | |---------------| |---------------| |---------------| |Donn&#233;es | |Donn&#233;es | |Donn&#233;es | | | | | | | |---------------| |---------------| |---------------| |Pointeur |&lt;------+|Pointeur |&lt;------+|Pointeur | +---------------+ +---------------+ +---------------+ + ^ | | | | +-------------------------------------------------+</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>La liste cha&#238;n&#233;e est donc une structure de donn&#233;es tr&#232;s modulable, et efficace pour ins&#233;rer et supprimer des &#233;l&#233;ments. De plus, la liste cha&#238;n&#233;e est la base de nombreuses autres structures de donn&#233;es.</p>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         </br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

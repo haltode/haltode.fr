@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheed" href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+</style>
+      <!---- ---->
+      <title>Pile - NapNac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<h1 id="pile">Pile</h1>
+<p>Publi&#233; le : 08/06/2014 <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Une pile (<em>stack</em> en anglais) est une structure de donn&#233;es de type <strong>LIFO</strong> (<strong>L</strong>ast <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>dernier arriv&#233; premier sorti</em>).</p>
+<h2 id="principe-de-la-pile">Principe de la pile</h2>
+<p>Une pile fonctionne exactement comme une pile d&#8217;assiettes :</p>
+<ul>
+<li>Quand on ajoute une assiette sur la pile on l&#8217;ajoute en haut.</li>
+<li>Quand on enl&#232;ve une assiette de la pile on enl&#232;ve celle du haut pour ne pas faire tomber le reste.</li>
+</ul>
+<p>C&#8217;est le principe LIFO, lorsqu&#8217;on ajoute un &#233;l&#233;ment sur une pile il est en haut, et lorsqu&#8217;on retire un &#233;l&#233;ment de la pile, on retire l&#8217;&#233;l&#233;ment tout en haut.</p>
+<p>Voici comment on pourrait repr&#233;senter une pile :</p>
+<p>+----------------------+ | | | | 3 | Donn&#233;es | | | +----------------------+ | | | | 2 | Donn&#233;es | | | +----------------------+ | | | | 1 | Donn&#233;es | | | +----------------------+ | | | | 0 | Donn&#233;es | | | +----------------------+</p>
+<p>L&#8217;action d&#8217;ajouter un &#233;l&#233;ment dans la pile est appel&#233;e : <strong>empiler</strong> (ou <em>push</em> en anglais) :</p>
+<p>+------------------------------+ | | v | +----------------------+ | | | | | | | 2 | 16 | | | | + +----------------------+ +----------------------+ | | | | | | | | 1 | 7 | | 9 | | | | | +----------------------+ +----------------------+ | | | | Nouvel &#233;l&#233;ment 0 | 42 | | | +----------------------+</p>
+<p>Pile</p>
+<p>L&#8217;action d&#8217;enlever un &#233;l&#233;ment de la pile est appel&#233;e : <strong>d&#233;piler</strong> (ou <em>pop</em> en anglais) :</p>
+<p>+----------------------+ | | | | 3 | 9 |+-----------+ | | | +----------------------+ | | | | | | | 2 | 16 | | | | | +----------------------+ | | | | | | | 1 | 7 | | | | | +----------------------+ v | | | | L'&#233;l&#233;ment est enlev&#233; de la pile et supprim&#233; 0 | 42 | | | +----------------------+</p>
+<p>Pile</p>
+<p>Pour repr&#233;senter une pile, je vais vous pr&#233;senter deux moyens :</p>
+<ul>
+<li>Avec une liste cha&#238;n&#233;e.</li>
+<li>Avec un tableau ainsi qu&#8217;un index nous indiquant le prochain &#233;l&#233;ment libre dans la pile. Cet index est appel&#233; pointeur de pile (ou <em>stack pointer</em> en anglais, abr&#233;g&#233; <em>SP</em>).</li>
+</ul>
+<h2 id="quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</h2>
+<h3 id="cr&#233;er-une-pile-liste-cha&#238;n&#233;e">Cr&#233;er une pile (liste cha&#238;n&#233;e)</h3>
+<p>Cr&#233;er une nouvelle structure de donn&#233;es de type Pile Initialiser la structure Retourner la nouvelle structure</p>
+<h3 id="cr&#233;er-une-pile-tableau">Cr&#233;er une pile (tableau)</h3>
+<p>Cr&#233;er un tableau d'une taille suffisamment grande pour la pile Initialiser PP &#224; 0</p>
+<h3 id="supprimer-une-pile-liste-cha&#238;n&#233;e">Supprimer une pile (liste cha&#238;n&#233;e)</h3>
+<p>Parcourir la pile jusqu'&#224; la fin Supprimer l'&#233;l&#233;ment actuel de la pile</p>
+<h3 id="supprimer-une-pile-tableau">Supprimer une pile (tableau)</h3>
+<p>Supprimer le tableau</p>
+<h3 id="empiler-liste-cha&#238;n&#233;e">Empiler (liste cha&#238;n&#233;e)</h3>
+<p>Cr&#233;er le nouvel &#233;l&#233;ment Affecter les donn&#233;es souhait&#233;es au nouvel &#233;l&#233;ment Faire pointer le haut de la pile vers l'&#233;l&#233;ment</p>
+<h3 id="empiler-tableau">Empiler (tableau)</h3>
+<p>Affecter les donn&#233;es souhait&#233;es &#224; l'index PP du tableau Incr&#233;menter PP</p>
+<h3 id="d&#233;piler-liste-cha&#238;n&#233;e">D&#233;piler (liste cha&#238;n&#233;e)</h3>
+<p>Sauvegarder les donn&#233;es de l'&#233;l&#233;ment situ&#233; en haut de la pile Faire pointer le haut de la pile vers l'&#233;l&#233;ment suivant Supprimer l'&#233;l&#233;ment en haut de la pile Retourner les donn&#233;es sauvegard&#233;es</p>
+<h3 id="d&#233;piler-tableau">D&#233;piler (tableau)</h3>
+<p>D&#233;cr&#233;menter PP Retourner l'&#233;l&#233;ment d'index PP du tableau</p>
+<h3 id="afficher">Afficher</h3>
+<p>Parcourir la pile Afficher les donn&#233;es de l'&#233;l&#233;ment actuel</p>
+<h3 id="est-vide-liste-cha&#238;n&#233;e">Est vide ? (liste cha&#238;n&#233;e)</h3>
+<p>Si le premier &#233;l&#233;ment de la pile pointe vers NULL Retourner 1 Sinon Retourner 0</p>
+<h3 id="est-vide-tableau">Est vide ? (tableau)</h3>
+<p>Si PP est &#233;gal &#224; 0 Retourner 1 Sinon Retourner 0</p>
+<h3 id="nombre-d&#233;l&#233;ment-dans-la-pile-liste-cha&#238;n&#233;e">Nombre d&#8217;&#233;l&#233;ment dans la pile (liste cha&#238;n&#233;e)</h3>
+<p>Parcourir la pile jusqu'&#224; la fin Incr&#233;menter un compteur (initialis&#233; &#224; 0) Retourner le compteur</p>
+<h3 id="nombre-d&#233;l&#233;ment-dans-la-pile-tableau">Nombre d&#8217;&#233;l&#233;ment dans la pile (tableau)</h3>
+<p>Retourner PP</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<h3 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h3>
+<p>Le lien vers une impl&#233;mentation en C d&#8217;une pile &#224; l&#8217;aide d&#8217;une liste cha&#238;n&#233;e :</p>
+<p>main.c : http://git.io/vtzJj main.h : http://git.io/vtzUk</p>
+<p>Le code est simple et ne n&#233;cessite pas d&#8217;explication.</p>
+<h3 id="tableau">Tableau</h3>
+<p>Le lien vers une impl&#233;mentation en C d&#8217;une pile &#224; l&#8217;aide d&#8217;un tableau :</p>
+<p>main.c : http://git.io/vtzUG main.h : http://git.io/vtzUn</p>
+<p>Cette impl&#233;mentation a pour but d&#8217;&#234;tre extr&#234;mement simple &#224; utiliser, comprendre et &#224; impl&#233;menter.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>La pile est donc une structure de donn&#233;es tr&#232;s pratique, et facile &#224; impl&#233;menter.</p>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         </br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

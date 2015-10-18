@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheed" href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+</style>
+      <!---- ---->
+      <title>Graphe - NapNac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<h1 id="graphe">Graphe</h1>
+<p>Publi&#233; le : <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Un graphe est une structure de donn&#233;es incontournable en algorithmie. On utilise les graphes dans de nombreux probl&#232;mes de la vie de tous les jours, comme par exemple dans le m&#233;tro, en utilisant le GPS, ou bien en naviguant sur Internet.</p>
+<h2 id="principe-dun-graphe">Principe d'un graphe</h2>
+<p>On peut d&#233;finir un graphe comme &#233;tant un ensemble de <em>n&#339;uds</em> (ou de sommets) &#233;tant reli&#233;s par des <em>arcs</em> (ou des ar&#234;tes).</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_exemple.png" alt="Exemple de graphe" />
+<p class="caption">Exemple de graphe</p>
+</div>
+<h2 id="vocabulaire">Vocabulaire</h2>
+<p>Si deux n&#339;uds sont reli&#233;s par un arc, on dit qu'ils sont <em>voisins</em>.</p>
+<p>Le <em>degr&#233; entrant</em> d'un n&#339;ud correspond au nombre d'arcs arrivant sur ce n&#339;ud, il en est de m&#234;me pour le <em>degr&#233; sortant</em> correspondant alors au nombre d'arcs sortant du n&#339;ud.</p>
+<p>Un graphe peut avoir de nombreuses caract&#233;ristiques diff&#233;rentes, en voici une liste non exhaustive.</p>
+<h3 id="orient&#233;non-orient&#233;">Orient&#233;/non orient&#233;</h3>
+<p>Un graphe est dit <em>orient&#233;</em> si ses arcs ont un sens (repr&#233;sent&#233; par une fl&#232;che), comme par exemple ce graphe :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_oriente.png" alt="Graphe orient&#233;" />
+<p class="caption">Graphe orient&#233;</p>
+</div>
+<p>En revanche on dit d'un graphe qu'il est <em>non orient&#233;</em> si aucun sens n'est attribu&#233; &#224; ses arcs :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_non_oriente.png" alt="Graphe non orient&#233;" />
+<p class="caption">Graphe non orient&#233;</p>
+</div>
+<p>Dans ce cas pr&#233;cis, on peut donc parcourir les arcs dans les deux sens.</p>
+<h3 id="pond&#233;r&#233;non-pond&#233;r&#233;">Pond&#233;r&#233;/non pond&#233;r&#233;</h3>
+<p>Un graphe est <em>pond&#233;r&#233;</em> si ses arcs ont un <em>poids</em> :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_pondere.png" alt="Graphe pond&#233;r&#233;" />
+<p class="caption">Graphe pond&#233;r&#233;</p>
+</div>
+<p>Dans cet exemple on utilise le graphe pour repr&#233;senter une carte routi&#232;re avec comme pond&#233;ration la distance s&#233;parant deux villes.</p>
+<h3 id="cycliqueacyclique">Cyclique/acyclique</h3>
+<p>Un graphe est <em>cyclique</em> s'il contient des cycles (un chemin finissant l&#224; o&#249; il a commenc&#233;) :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_cyclique.png" alt="Graphe cyclique" />
+<p class="caption">Graphe cyclique</p>
+</div>
+<p>Un graphe qui ne contient aucun cycle est donc caract&#233;ris&#233; d'<em>acyclique</em> :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_acyclique.png" alt="Graphe acyclique" />
+<p class="caption">Graphe acyclique</p>
+</div>
+<h3 id="densecreux">Dense/creux</h3>
+<p>On peut dire d'un graphe qu'il est <em>dense</em> si le nombre d'arcs est proche du nombre maximum possible de ce graphe :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_dense.png" alt="Graphe dense" />
+<p class="caption">Graphe dense</p>
+</div>
+<p>Lorsque le nombre d'arcs est faible, on parle d'un graphe <em>creux</em> :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/graphe_creux.png" alt="Graphe creux" />
+<p class="caption">Graphe creux</p>
+</div>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>On peut impl&#233;menter un graphe de diff&#233;rentes fa&#231;ons.</p>
+<h3 id="matrice-dadjacence">Matrice d'adjacence</h3>
+<p>Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de repr&#233;senter des arcs entre deux n&#339;uds. On peut utiliser un tableau 2D de bool&#233;en (<code>true</code> = arc, <code>false</code> = pas d'arc), ou bien un tableau 2D d'entier (ou de flottant) qui permet alors de stocker les pond&#233;rations des arcs (<em>X</em> = pond&#233;ration de l'arc, 0 = par d'arc).</p>
+<p>Voici un exemple de matrice d'adjacence (j'ai utilis&#233; le tout premier graphe de l'article pour construire la matrice) :</p>
+<div class="figure">
+<img src="static/img/algo/structure/graphe/exemple_matrice_adjacence.png" alt="Exemple de matrice d&#39;adjacence" />
+<p class="caption">Exemple de matrice d'adjacence</p>
+</div>
+<p>Rien de bien compliqu&#233; pour l'impl&#233;menter :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> graphe[NB_NOEUD_MAX][NB_NOEUD_MAX];</code></pre></div>
+<p>Encore une fois, on peut changer le type de la matrice en fonction de nos besoins (<code>bool</code>, <code>float</code>, <code>double</code>...).</p>
+<p>On utilise ce type de repr&#233;sentation lorsqu'on a tout d'abord assez de m&#233;moire, puis lorsqu'on a besoin d'acc&#233;der souvent et rapidement &#224; des informations du type :</p>
+<ul>
+<li>Est-ce que le n&#339;ud <em>A</em> et le n&#339;ud <em>B</em> sont voisins ?</li>
+<li>Quel est le poids de l'arc entre le n&#339;ud <em>C</em> et <em>D</em> ?</li>
+</ul>
+<p>La complexit&#233; en m&#233;moire est en <em>O(N&#178;)</em> (avec <em>N</em> le nombre de n&#339;uds du graphe) et la complexit&#233; pour acc&#233;der aux deux informations cit&#233;es au dessus est en <em>O(1)</em> (puisqu'il s'agit d'un tableau).</p>
+<h3 id="liste-dadjacence">Liste d'adjacence</h3>
+<p>On peut utiliser une variante de la matrice d'adjacence afin d'&#233;conomiser de la m&#233;moire (mais cette repr&#233;sentation requiert un temps en <em>O(N)</em> pour savoir si deux n&#339;uds sont voisins ou pour conna&#238;tre la pond&#233;ration de tel arc). Cette solution consiste &#224; utiliser un tableau de <a href="http://napnac.ga/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a>, chaque n&#339;ud du graphe a sa propre liste cha&#238;n&#233;e contenant tous ses voisins (et &#233;ventuellement toutes les pond&#233;rations).</p>
+<p>Voici par exemple la liste d'adjacence qui repr&#233;sente le premier graphe de l'article :</p>
+<div class="figure">
+<img src="hstatic/img/algo/structure/graphe/exemple_liste_adjacence.png" alt="Exemple de liste d&#39;adjacence" />
+<p class="caption">Exemple de liste d'adjacence</p>
+</div>
+<p>Pour l'impl&#233;mentation, j'utilise les <code>vector</code> du C++ au lieu de recoder &#224; la main la liste cha&#238;n&#233;e en C (m&#234;me si on peut tout &#224; fait le faire, recoder des structures de donn&#233;es basiques en concours notamment est tout simplement une perte de temps) :</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector &lt;Voisin&gt; graphe[NB_NOEUD_MAX];</code></pre></div>
+<p>La structure <code>Voisin</code> contient l'index du voisin, mais elle peut aussi contenir la pond&#233;ration de l'arc liant les deux n&#339;uds et d'autres informations sp&#233;cifiques au graphe.</p>
+<p>La liste d'adjacence est le plus souvent utilis&#233;e lorsque :</p>
+<ul>
+<li>On a pas assez de m&#233;moire pour stocker une matrice d'adjacence : la complexit&#233; en m&#233;moire d'une liste d'adjacence est de <em>O(N + M)</em> (avec <em>M</em> le nombre d'arcs du graphe)</li>
+<li>On ne cherche pas &#224; r&#233;pondre aux questions du types tel n&#339;ud est-il voisin &#224; tel autre n&#339;ud ? Ou encore quel est le poids de tel arc entre ces deux n&#339;uds ? Mais plut&#244;t lorsqu'on cherche &#224; parcourir le graphe plus rapidement qu'en utilisant une matrice d'adjacence. En effet, dans une liste d'adjacence il n'y a que les voisins du n&#339;ud en question, alors que dans la matrice tous les n&#339;uds sont repr&#233;sent&#233;s.</li>
+</ul>
+<h3 id="liste-darcs">Liste d'arcs</h3>
+<p>Enfin on peut utiliser une derni&#232;re solution, en repr&#233;sentant tous les arcs du graphe dans une liste cha&#238;n&#233;e.</p>
+<p>Voici l'exemple d'une liste d'arcs (toujours sur le m&#234;me graphe) :</p>
+<div class="figure">
+<img src="hstatic/img/algo/structure/graphe/exemple_liste_arcs.png" alt="Exemple de liste d&#39;arcs" />
+<p class="caption">Exemple de liste d'arcs</p>
+</div>
+<p>Pareil que pour la liste d'adjacence, j'utilise les <code>vector</code> :</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector &lt;Arc&gt; graphe;</code></pre></div>
+<p>La structure <code>Arc</code> contient l'index des deux n&#339;uds ainsi que la pond&#233;ration de l'arc (si c'est un graphe pond&#233;r&#233;).</p>
+<p>Une liste d'arcs est plus rarement utilis&#233;e pour repr&#233;senter un graphe, mais peut s'av&#233;rer tr&#232;s utile lorsqu'on a pas assez de m&#233;moire (&#224; cause du nombre trop &#233;lev&#233; de n&#339;uds) pour repr&#233;senter le graphe avec une matrice d'adjacence ou m&#234;me une liste d'adjacence. On utilise donc une liste d'arcs avec une complexit&#233; en m&#233;moire de <em>O(M)</em>.</p>
+<h2 id="parcourir-un-graphe">Parcourir un graphe</h2>
+<p>Afin de parcourir notre graphe, on peut utiliser deux algorithmes diff&#233;rents :</p>
+<ul>
+<li><a href="">Parcours en profondeur</a> : DFS (<em>Depth First Search</em>)</li>
+<li><a href="">Parcours en largeur</a> : BFS (<em>Breadth First Search</em>)</li>
+</ul>
+<h2 id="op&#233;rations-utiles-sur-un-graphe">Op&#233;rations utiles sur un graphe</h2>
+<p>Voici une liste non exhaustive d'op&#233;rations utiles lorsqu'on manipule un graphe :</p>
+<ul>
+<li>D&#233;tection de cycle</li>
+<li>Tri topologique</li>
+<li>Arc essentiel</li>
+<li>Circuit eul&#233;rien</li>
+<li>Recherche du plus court chemin</li>
+<li>Arbre couvrant minimal</li>
+<li>Composante fortement connexe</li>
+</ul>
+<p><em>Plusieurs articles sur chacunes des op&#233;rations sont pr&#233;vus.</em></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Un graphe est une structure de donn&#233;es incontournable, utilis&#233;e dans de tr&#232;s nombreux probl&#232;mes (plus ou moins complexes) dans la vie de tous les jours dans beaucoup de domaines diff&#233;rents comme :</p>
+<ul>
+<li>La planification de t&#226;ches</li>
+<li>L'utilisation d'internet</li>
+<li>Les cartes routi&#232;res</li>
+<li>La cr&#233;ation d'itin&#233;raire</li>
+<li>Les composants d'un circuit &#233;lectronique</li>
+<li>La repr&#233;sentation de mol&#233;cule chimique</li>
+<li>...</li>
+</ul>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         </br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>
