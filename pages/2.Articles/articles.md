@@ -45,7 +45,7 @@ La liste des articles publiés :
 
          - [Apprendre et s'entraîner](http://napnac.ga/prog/c/apprendre_entrainer.html)
          - [Utiliser des makefiles](http://napnac.ga/prog/c/makefiles.html)
-         - [Débugger ses programmes](http://napnac.ga/prog/debugger.html)
+         - [Débugger ses programmes](http://napnac.ga/prog/c/debugger.html)
  
 - Livre :
  
