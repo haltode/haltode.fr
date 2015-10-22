@@ -7,6 +7,8 @@ body {
    line-height: 1.5;
 }
 
+/* ---- Titles ---- */
+
 h1 {
    padding-top: 2%;
    padding-bottom: 2%;
@@ -19,10 +21,14 @@ h2, h3, h4, h5, h6 {
    color: #DE4834;
 }
 
+/* ---- Link ---- */
+
 a {
    text-decoration: none;
    color: #2E64FE;
 }
+
+/* ---- List (+ main menu list) ---- */
 
 ul {
    padding-left: 30px;
@@ -78,4 +84,17 @@ table tr {
 
 table tr:nth-child(2n) {
    background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
 }
