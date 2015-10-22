@@ -3,7 +3,7 @@ Liste chaînée
 algo/structure/
 
 Publié le : 08/06/2014  
-*Modifié le : 21/10/2015*
+*Modifié le : 22/10/2015*
 
 ## Introduction
 
@@ -22,7 +22,7 @@ Le dernier pointeur de la liste chaînée pointe sur la valeur `NULL`, pour indi
 
 ## Différence avec les tableaux
 
-Les listes chaînées vous font sans doute penser à un tableau, mais elles sont très différentes, les deux ont leurs avantages et leurs inconvénients, aucune n'est meilleure que l'autre mais il faut savoir quand utiliser la bonne structure de données au bon moment. 
+Les listes chaînées vous font sans doute penser à un tableau, mais elles sont très différentes. Les deux ont leurs avantages et leurs inconvénients, aucune n'est meilleure que l'autre mais il faut savoir quand utiliser la bonne structure de données au bon moment :
 
 - **Tableau** : les éléments sont contigus en mémoire, la taille du tableau ne change pas et est connu à l'avance, l'ajout et la suppression d'un élément du tableau sont des opérations couteuses en temps et en mémoire, en revanche on peut aisément accéder à un élément du tableau en temps constant (par exemple en C : `tableau[2]`).
 - **Liste chaînée** : les éléments ne sont pas contigus en mémoire, la taille peut varier, on peut facilement insérer/supprimer des éléments de la liste en temps constant, mais on ne peut pas accéder à un élément précis de la liste instantanément (il faut parcourir la liste jusqu'à cet élément).
@@ -90,6 +90,8 @@ taille :
 
 ## Complexité
 
+Soit *N* le nombre d'éléments de la liste chaînée.
+
 - `creerListe` : *O(1)*
 - `supprimerListe` : *O(N)*
 - `ajoutEnTete` : *O(1)*
@@ -154,4 +156,4 @@ En plus de ces variantes assez "courantes", on peut retrouver d'autres variantes
 
 La liste chaînée est donc une structure de données très souple, et efficace pour insérer et supprimer des éléments simplement. De plus, on peut la modifier afin de créer de nouvelles structures de données différentes comme la liste doublement chaînée, la liste chaînée circulaire, mais aussi pour créer une [pile](http://napnac.ga/algo/structure/pile.html) ou encore une [file](http://napnac.ga/algo/structure/file.html).
 
-Les listes chaînées sont aussi la base de structures de données plus complexes comme les tables de hachage, les tas, les arbres binaires, et de nombreuses variantes de listes chaînées existent.
+Les listes chaînées sont aussi la base de structures de données plus complexes comme les [tables de hachage](http://napnac.ga/algo/structure/table_hachage.html), les [arbres](http://napnac.ga/algo/structure/arbre.html), les [graphes](http://napnac.ga/algo/structure/graphe.html), et de nombreuses variantes de listes chaînées existent.

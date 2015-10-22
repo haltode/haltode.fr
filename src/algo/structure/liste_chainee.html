@@ -34,6 +34,10 @@ a {
    color: #2E64FE;
 }
 
+ul {
+   padding-left: 30px;
+}
+
 #main_menu {
    list-style: none;
    margin: 0;
@@ -111,7 +115,7 @@ table tr:nth-child(2n) {
 
 <h1 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h1>
 <p>Publi&#233; le : 08/06/2014<br />
-<em>Modifi&#233; le : 21/10/2015</em></p>
+<em>Modifi&#233; le : 22/10/2015</em></p>
 <h2 id="introduction">Introduction</h2>
 <p>Une liste cha&#238;n&#233;e (<em>linked list</em> en anglais) est une structure de donn&#233;es tr&#232;s utilis&#233;e en programmation et permet d'impl&#233;menter d'autres structures plus complexes. On utilise une liste cha&#238;n&#233;e principalement pour stocker des donn&#233;es de mani&#232;re souple et dynamique, c'est-&#224;-dire pour nous permettre l'insertion et la suppression d'&#233;l&#233;ments facilement (contrairement &#224; un tableau).</p>
 <h2 id="principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</h2>
@@ -126,7 +130,7 @@ table tr:nth-child(2n) {
 </div>
 <p>Le dernier pointeur de la liste cha&#238;n&#233;e pointe sur la valeur <code>NULL</code>, pour indiquer la fin de la liste.</p>
 <h2 id="diff&#233;rence-avec-les-tableaux">Diff&#233;rence avec les tableaux</h2>
-<p>Les listes cha&#238;n&#233;es vous font sans doute penser &#224; un tableau, mais elles sont tr&#232;s diff&#233;rentes, les deux ont leurs avantages et leurs inconv&#233;nients, aucune n'est meilleure que l'autre mais il faut savoir quand utiliser la bonne structure de donn&#233;es au bon moment.</p>
+<p>Les listes cha&#238;n&#233;es vous font sans doute penser &#224; un tableau, mais elles sont tr&#232;s diff&#233;rentes. Les deux ont leurs avantages et leurs inconv&#233;nients, aucune n'est meilleure que l'autre mais il faut savoir quand utiliser la bonne structure de donn&#233;es au bon moment :</p>
 <ul>
 <li><strong>Tableau</strong> : les &#233;l&#233;ments sont contigus en m&#233;moire, la taille du tableau ne change pas et est connu &#224; l'avance, l'ajout et la suppression d'un &#233;l&#233;ment du tableau sont des op&#233;rations couteuses en temps et en m&#233;moire, en revanche on peut ais&#233;ment acc&#233;der &#224; un &#233;l&#233;ment du tableau en temps constant (par exemple en C : <code>tableau[2]</code>).</li>
 <li><strong>Liste cha&#238;n&#233;e</strong> : les &#233;l&#233;ments ne sont pas contigus en m&#233;moire, la taille peut varier, on peut facilement ins&#233;rer/supprimer des &#233;l&#233;ments de la liste en temps constant, mais on ne peut pas acc&#233;der &#224; un &#233;l&#233;ment pr&#233;cis de la liste instantan&#233;ment (il faut parcourir la liste jusqu'&#224; cet &#233;l&#233;ment).</li>
@@ -192,6 +196,7 @@ taille :
       Incr&#233;menter nbElement
    Retourner nbElement</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>Soit <em>N</em> le nombre d'&#233;l&#233;ments de la liste cha&#238;n&#233;e.</p>
 <ul>
 <li><code>creerListe</code> : <em>O(1)</em></li>
 <li><code>supprimerListe</code> : <em>O(N)</em></li>
@@ -246,7 +251,7 @@ taille :
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>La liste cha&#238;n&#233;e est donc une structure de donn&#233;es tr&#232;s souple, et efficace pour ins&#233;rer et supprimer des &#233;l&#233;ments simplement. De plus, on peut la modifier afin de cr&#233;er de nouvelles structures de donn&#233;es diff&#233;rentes comme la liste doublement cha&#238;n&#233;e, la liste cha&#238;n&#233;e circulaire, mais aussi pour cr&#233;er une <a href="http://napnac.ga/algo/structure/pile.html">pile</a> ou encore une <a href="http://napnac.ga/algo/structure/file.html">file</a>.</p>
-<p>Les listes cha&#238;n&#233;es sont aussi la base de structures de donn&#233;es plus complexes comme les tables de hachage, les tas, les arbres binaires, et de nombreuses variantes de listes cha&#238;n&#233;es existent.</p>
+<p>Les listes cha&#238;n&#233;es sont aussi la base de structures de donn&#233;es plus complexes comme les <a href="http://napnac.ga/algo/structure/table_hachage.html">tables de hachage</a>, les <a href="http://napnac.ga/algo/structure/arbre.html">arbres</a>, les <a href="http://napnac.ga/algo/structure/graphe.html">graphes</a>, et de nombreuses variantes de listes cha&#238;n&#233;es existent.</p>
  
       <!-- ------------ -->
 
