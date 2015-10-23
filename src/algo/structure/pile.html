@@ -142,57 +142,104 @@ table tr:nth-child(2n) {
 <li>Quand on enl&#232;ve une assiette de la pile on enl&#232;ve celle du haut pour ne pas faire tomber le reste.</li>
 </ul>
 <p>C&#8217;est le principe LIFO, lorsqu&#8217;on ajoute un &#233;l&#233;ment sur une pile il est en haut, et lorsqu&#8217;on retire un &#233;l&#233;ment de la pile, on retire l&#8217;&#233;l&#233;ment tout en haut.</p>
-<p>Voici comment on pourrait repr&#233;senter une pile :</p>
-<p>+----------------------+ | | | | 3 | Donn&#233;es | | | +----------------------+ | | | | 2 | Donn&#233;es | | | +----------------------+ | | | | 1 | Donn&#233;es | | | +----------------------+ | | | | 0 | Donn&#233;es | | | +----------------------+</p>
+<div class="figure">
+<img src="/static/img/algo/structure/pile/exemple_pile.png" alt="Exemple de repr&#233;sentation d&#39;une pile" />
+<p class="caption">Exemple de repr&#233;sentation d'une pile</p>
+</div>
 <p>L&#8217;action d&#8217;ajouter un &#233;l&#233;ment dans la pile est appel&#233;e : <strong>empiler</strong> (ou <em>push</em> en anglais) :</p>
-<p>+------------------------------+ | | v | +----------------------+ | | | | | | | 2 | 16 | | | | + +----------------------+ +----------------------+ | | | | | | | | 1 | 7 | | 9 | | | | | +----------------------+ +----------------------+ | | | | Nouvel &#233;l&#233;ment 0 | 42 | | | +----------------------+</p>
-<p>Pile</p>
+<div class="figure">
+<img src="/static/img/algo/structure/pile/exemple_ajout.png" alt="Un nouvel &#233;l&#233;ment est empil&#233;" />
+<p class="caption">Un nouvel &#233;l&#233;ment est empil&#233;</p>
+</div>
 <p>L&#8217;action d&#8217;enlever un &#233;l&#233;ment de la pile est appel&#233;e : <strong>d&#233;piler</strong> (ou <em>pop</em> en anglais) :</p>
-<p>+----------------------+ | | | | 3 | 9 |+-----------+ | | | +----------------------+ | | | | | | | 2 | 16 | | | | | +----------------------+ | | | | | | | 1 | 7 | | | | | +----------------------+ v | | | | L'&#233;l&#233;ment est enlev&#233; de la pile et supprim&#233; 0 | 42 | | | +----------------------+</p>
-<p>Pile</p>
+<div class="figure">
+<img src="/static/img/algo/structure/pile/exemple_suppression.png" alt="Un &#233;l&#233;ment est d&#233;pil&#233;" />
+<p class="caption">Un &#233;l&#233;ment est d&#233;pil&#233;</p>
+</div>
 <p>Pour repr&#233;senter une pile, je vais vous pr&#233;senter deux moyens :</p>
 <ul>
-<li>Avec une liste cha&#238;n&#233;e.</li>
-<li>Avec un tableau ainsi qu&#8217;un index nous indiquant le prochain &#233;l&#233;ment libre dans la pile. Cet index est appel&#233; pointeur de pile (ou <em>stack pointer</em> en anglais, abr&#233;g&#233; <em>SP</em>).</li>
+<li>Avec une <a href="http://napnac.ga/algo/structure/liste_chainee.html">liste cha&#238;n&#233;e</a>.</li>
+<li>Avec un tableau ainsi qu&#8217;un index nous indiquant le prochain &#233;l&#233;ment libre dans la pile. Cet index est appel&#233; pointeur de pile (ou <em>stack pointer</em> en anglais, souvent abr&#233;g&#233; <em>SP</em>).</li>
 </ul>
 <h2 id="quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</h2>
-<h3 id="cr&#233;er-une-pile-liste-cha&#238;n&#233;e">Cr&#233;er une pile (liste cha&#238;n&#233;e)</h3>
-<p>Cr&#233;er une nouvelle structure de donn&#233;es de type Pile Initialiser la structure Retourner la nouvelle structure</p>
-<h3 id="cr&#233;er-une-pile-tableau">Cr&#233;er une pile (tableau)</h3>
-<p>Cr&#233;er un tableau d'une taille suffisamment grande pour la pile Initialiser PP &#224; 0</p>
-<h3 id="supprimer-une-pile-liste-cha&#238;n&#233;e">Supprimer une pile (liste cha&#238;n&#233;e)</h3>
-<p>Parcourir la pile jusqu'&#224; la fin Supprimer l'&#233;l&#233;ment actuel de la pile</p>
-<h3 id="supprimer-une-pile-tableau">Supprimer une pile (tableau)</h3>
-<p>Supprimer le tableau</p>
-<h3 id="empiler-liste-cha&#238;n&#233;e">Empiler (liste cha&#238;n&#233;e)</h3>
-<p>Cr&#233;er le nouvel &#233;l&#233;ment Affecter les donn&#233;es souhait&#233;es au nouvel &#233;l&#233;ment Faire pointer le haut de la pile vers l'&#233;l&#233;ment</p>
-<h3 id="empiler-tableau">Empiler (tableau)</h3>
-<p>Affecter les donn&#233;es souhait&#233;es &#224; l'index PP du tableau Incr&#233;menter PP</p>
-<h3 id="d&#233;piler-liste-cha&#238;n&#233;e">D&#233;piler (liste cha&#238;n&#233;e)</h3>
-<p>Sauvegarder les donn&#233;es de l'&#233;l&#233;ment situ&#233; en haut de la pile Faire pointer le haut de la pile vers l'&#233;l&#233;ment suivant Supprimer l'&#233;l&#233;ment en haut de la pile Retourner les donn&#233;es sauvegard&#233;es</p>
-<h3 id="d&#233;piler-tableau">D&#233;piler (tableau)</h3>
-<p>D&#233;cr&#233;menter PP Retourner l'&#233;l&#233;ment d'index PP du tableau</p>
-<h3 id="afficher">Afficher</h3>
-<p>Parcourir la pile Afficher les donn&#233;es de l'&#233;l&#233;ment actuel</p>
-<h3 id="est-vide-liste-cha&#238;n&#233;e">Est vide ? (liste cha&#238;n&#233;e)</h3>
-<p>Si le premier &#233;l&#233;ment de la pile pointe vers NULL Retourner 1 Sinon Retourner 0</p>
-<h3 id="est-vide-tableau">Est vide ? (tableau)</h3>
-<p>Si PP est &#233;gal &#224; 0 Retourner 1 Sinon Retourner 0</p>
-<h3 id="nombre-d&#233;l&#233;ment-dans-la-pile-liste-cha&#238;n&#233;e">Nombre d&#8217;&#233;l&#233;ment dans la pile (liste cha&#238;n&#233;e)</h3>
-<p>Parcourir la pile jusqu'&#224; la fin Incr&#233;menter un compteur (initialis&#233; &#224; 0) Retourner le compteur</p>
-<h3 id="nombre-d&#233;l&#233;ment-dans-la-pile-tableau">Nombre d&#8217;&#233;l&#233;ment dans la pile (tableau)</h3>
-<p>Retourner PP</p>
+<p>Comme pour une liste cha&#238;n&#233;e, il existe diff&#233;rentes fonctions de bases permettant de manipuler une pile.</p>
+<h3 id="avec-une-liste-cha&#238;n&#233;e">Avec une liste cha&#238;n&#233;e</h3>
+<pre><code>creerPile :
+   Cr&#233;er un premier &#233;l&#233;ment
+   Initialiser les donn&#233;es de l&#39;&#233;l&#233;ment
+   Le faire pointer sur NULL (pour indiquer la fin de la pile)
+   Retourner l&#39;&#233;l&#233;ment
+supprimerPile :
+   Pour chaque &#233;l&#233;ment de la pile
+      Supprimer l&#39;&#233;l&#233;ment actuel
+
+empiler (&#233;l&#233;ment) :
+   Faire pointer le haut de la pile vers le nouvel &#233;l&#233;ment
+d&#233;piler :
+   Sauvegarder les donn&#233;es de l&#39;&#233;l&#233;ment en haut de la pile
+   Supprimer l&#39;&#233;l&#233;ment en haut
+   Faire pointer le haut de la pile vers NULL
+   Retourner les donn&#233;es sauvegard&#233;es
+
+afficher :
+   Pour chaque &#233;l&#233;ment de la pile
+      Afficher les donn&#233;es de l&#39;&#233;l&#233;ment actuel
+
+estVide :
+   Si le premier &#233;l&#233;ment de la pile est NULL
+      Retourner vrai
+   Sinon
+      Retourner faux
+
+taille :
+   Pour chaque &#233;l&#233;ment de la pile
+      Incr&#233;menter nbElement
+   Retourner nbElement </code></pre>
+<h3 id="avec-un-tableau">Avec un tableau</h3>
+<pre><code>creerPile :
+   Cr&#233;er un tableau d&#39;une taille fixe et suffisamment grand pour la pile
+   Initialiser le pointeur de pile (PP) &#224; 0
+supprimerPile :
+   Supprimer le tableau
+
+empiler (&#233;l&#233;ment) :
+   Affecter les donn&#233;es du nouvel &#233;l&#233;ment &#224; la case d&#39;index PP du tableau
+   Incr&#233;menter le PP
+d&#233;piler :
+   D&#233;cr&#233;menter le PP
+   Retourner les donn&#233;es de l&#39;&#233;l&#233;ment d&#39;index PP du tableau
+
+afficher :
+   Pour chaque &#233;l&#233;ment de la pile
+      Afficher les donn&#233;es de l&#39;&#233;l&#233;ment actuel
+
+estVide :
+   Si PP = 0
+      Retourner vrai
+   Sinon 
+      Retourner faux
+
+taille :
+   Retourner PP</code></pre>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <h3 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h3>
 <p>Le lien vers une impl&#233;mentation en C d&#8217;une pile &#224; l&#8217;aide d&#8217;une liste cha&#238;n&#233;e :</p>
-<p>main.c : http://git.io/vtzJj main.h : http://git.io/vtzUk</p>
-<p>Le code est simple et ne n&#233;cessite pas d&#8217;explication.</p>
+<p>main.c :</p>
+<p>Le code est simple et ne n&#233;cessite pas d&#8217;explication, si besoin je vous invite &#224; relire l'article sur les listes cha&#238;n&#233;es pour bien comprendre le code : <a href="http://napnac.ga/algo/structure/liste_chainee.html" class="uri">http://napnac.ga/algo/structure/liste_chainee.html</a></p>
 <h3 id="tableau">Tableau</h3>
 <p>Le lien vers une impl&#233;mentation en C d&#8217;une pile &#224; l&#8217;aide d&#8217;un tableau :</p>
-<p>main.c : http://git.io/vtzUG main.h : http://git.io/vtzUn</p>
+<p>main.c :</p>
 <p>Cette impl&#233;mentation a pour but d&#8217;&#234;tre extr&#234;mement simple &#224; utiliser, comprendre et &#224; impl&#233;menter.</p>
+<h3 id="stl">STL</h3>
+<p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation et des fonctions permettant de manipuler une pile : <a href="http://www.cplusplus.com/reference/stack/stack/" class="uri">http://www.cplusplus.com/reference/stack/stack/</a></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>La pile est donc une structure de donn&#233;es tr&#232;s pratique, et facile &#224; impl&#233;menter.</p>
+<p>La pile est donc une structure de donn&#233;es facile &#224; impl&#233;menter et peut &#234;tre pratique dans de nombreux domaines :</p>
+<ul>
+<li>Dans un &#233;diteur : quand vous &#233;crivez votre prochain article sur votre &#233;diteur pr&#233;f&#233;r&#233;, et que vous ne cessez de faire des ctrl-z et ctrl-y pour revenir en arri&#232;re/avant, et bien vous utilisez une pile. Chaque op&#233;ration va &#234;tre empil&#233; pour garder l'ordre dans lequel vous les avez r&#233;alis&#233;es, et vous pouvez ainsi facilement parcourir la pile des op&#233;rations pour vous retrouver &#224; tel moment pr&#233;cis de votre &#233;dition.</li>
+<li>Lors d'un appel de fonction : &#224; chaque fois que vous appelez une fonction dans votre programme, la pile d'ex&#233;cution (ou <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appel</a>) empile les informations &#224; propos de l'endroit o&#249; vous r&#233;alisez l'appel pour se souvenir o&#249; revenir &#224; la fin de la fonction appel&#233;e.</li>
+<li>Pour &#233;valuer des expressions : dans certains cas, une pile peut &#234;tre utilis&#233; pour &#233;valuer des expressions (math&#233;matiques ou syntaxiques). Par exemple, si vous devez &#233;valuer une expression en notation polonaise inverse (<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">NPI</a>), une pile est indispensable pour calculer l'expression au fur et &#224; mesure des op&#233;rations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un op&#233;rateur vous d&#233;pilez les deux derniers &#233;l&#233;ments et vous empilez le r&#233;sultat).</li>
+<li>Dans une machine virtuelle : plusieurs <a href="https://en.wikipedia.org/wiki/Virtual_machine">machines virtuelles</a> sont impl&#233;ment&#233;es sur le principe d'une pile, par exemple celle de Java. Si vous voulez en savoir plus &#224; ce sujet, cet article explique tr&#232;s bien le principe de machine virtuelle et les diff&#233;rentes impl&#233;mentations possible : <a href="https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/" class="uri">https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/</a></li>
+</ul>
  
       <!-- ------------ -->
 

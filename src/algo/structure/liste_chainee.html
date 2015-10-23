@@ -142,7 +142,7 @@ table tr:nth-child(2n) {
 <li><strong>Un pointeur</strong> : ce pointeur pointe vers l'&#233;l&#233;ment suivant de la liste, et permet de lier les n&#339;uds entre eux.</li>
 </ul>
 <div class="figure">
-<img src="/static/img/algo/structure/exemple_liste_chainee.png" alt="Exemple de repr&#233;sentation d&#39;une liste cha&#238;n&#233;e" />
+<img src="/static/img/algo/structure/liste_chainee/exemple_liste_chainee.png" alt="Exemple de repr&#233;sentation d&#39;une liste cha&#238;n&#233;e" />
 <p class="caption">Exemple de repr&#233;sentation d'une liste cha&#238;n&#233;e</p>
 </div>
 <p>Le dernier pointeur de la liste cha&#238;n&#233;e pointe sur la valeur <code>NULL</code>, pour indiquer la fin de la liste.</p>
@@ -203,7 +203,7 @@ afficher :
       Afficher les donn&#233;es de l&#39;&#233;l&#233;ment actuel
 
 estVide :
-   Si l&#39;&#233;l&#233;ment en d&#233;but de liste pointe vers NULL
+   Si le premier &#233;l&#233;ment de la liste est NULL
       Retourner vrai
    Sinon
       Retourner faux
@@ -231,7 +231,7 @@ taille :
 <p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>
 <p>main.c :</p>
 <p>Le code est relativement simple &#224; comprendre et &#224; utiliser, une connaissance des pointeurs est cependant n&#233;cessaire.</p>
-<p>Si vous programmez en C++, la <a href="https://fr.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation de liste cha&#238;n&#233;e ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/" class="uri">http://www.cplusplus.com/reference/list/list/</a>.</p>
+<p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation de liste cha&#238;n&#233;e ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/" class="uri">http://www.cplusplus.com/reference/list/list/</a>.</p>
 <h2 id="variantes-de-la-liste-cha&#238;n&#233;e">Variantes de la liste cha&#238;n&#233;e</h2>
 <p>Il existe plusieurs variantes de la liste cha&#238;n&#233;e qui sont pratiques dans certains probl&#232;mes pr&#233;cis.</p>
 <h3 id="liste-doublement-cha&#238;n&#233;e">Liste doublement cha&#238;n&#233;e</h3>
