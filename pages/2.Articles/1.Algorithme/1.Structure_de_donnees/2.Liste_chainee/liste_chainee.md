@@ -77,7 +77,7 @@ afficher :
       Afficher les données de l'élément actuel
 
 estVide :
-   Si l'élément en début de liste pointe vers NULL
+   Si le premier élément de la liste est NULL
       Retourner vrai
    Sinon
       Retourner faux
@@ -112,7 +112,7 @@ main.c :
 
 Le code est relativement simple à comprendre et à utiliser, une connaissance des pointeurs est cependant nécessaire.
 
-Si vous programmez en C++, la [STL](https://fr.wikipedia.org/wiki/Standard_Template_Library) (*Standard Template Library*) fournit une implémentation de liste chaînée ainsi que des fonctions de base pour les manipuler : <http://www.cplusplus.com/reference/list/list/>.
+Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Template_Library) (*Standard Template Library*) fournit une implémentation de liste chaînée ainsi que des fonctions de base pour les manipuler : <http://www.cplusplus.com/reference/list/list/>.
 
 ## Variantes de la liste chaînée
 
