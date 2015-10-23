@@ -39,7 +39,7 @@ Comme pour une liste chaînée, il existe différentes fonctions de bases permet
 
 ### Avec une liste chaînée
 
-```
+```nohighlight
 creerPile :
    Créer un premier élément
    Initialiser les données de l'élément
@@ -75,7 +75,7 @@ taille :
 
 ### Avec un tableau
 
-```
+```nohighlight
 creerPile :
    Créer un tableau d'une taille fixe et suffisamment grand pour la pile
    Initialiser le pointeur de pile (PP) à 0

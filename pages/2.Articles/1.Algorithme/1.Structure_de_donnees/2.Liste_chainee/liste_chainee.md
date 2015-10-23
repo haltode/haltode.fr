@@ -40,7 +40,7 @@ Pour illustrer les différences entre liste chaînée et tableau, prenons l'exem
 
 Pour manipuler correctement les listes chaînées, il faut connaître quelques fonctions basiques pour ajouter un élément, le supprimer, rechercher un élément précis dans la liste, etc.
 
-```
+```nohighlight
 creerListe :
    Créer un premier élément
    Initialiser les données de l'élément
