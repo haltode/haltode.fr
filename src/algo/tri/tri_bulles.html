@@ -133,6 +133,84 @@ table tr:nth-child(2n) {
 <h1 id="tri-&#224;-bulles">Tri &#224; bulles</h1>
 <p>Publi&#233; le : 29/04/2014<br />
 <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Le tri &#224; bulles (<em>bubble sort</em> en anglais) est un algorithme de tri par comparaison tr&#232;s simple &#224; comprendre et &#224; impl&#233;menter, cependant c&#8217;est l&#8217;un des algorithmes de tri les plus inefficaces. En effet, il a une complexit&#233; quadratique : <em>O(N&#178;)</em>. Cet algorithme est tr&#232;s peu utilis&#233; &#224; cause de sa complexit&#233; en temps trop lente, mais c&#8217;est un bon exemple pour commencer &#224; travailler sur des algorithmes de tri. Il faut noter que le tri &#224; bulles est un algorithme stable et sur place.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>Le tri &#224; bulles consiste &#224; &quot;remonter&quot; les &#233;l&#233;ments du tableau &#224; trier, jusqu&#8217;&#224; leurs places d&#233;finitives dans le tableau, comme des bulles qui remontent d&#8217;un liquide (d&#8217;o&#249; son nom de tri &#224; bulles). L&#8217;algorithme compare chaque paire d&#8217;&#233;l&#233;ment d&#8217;un tableau, et les &#233;change si besoin et en fonction du tri (croissant ou d&#233;croissant).</p>
+<h2 id="exemple">Exemple</h2>
+<p>Si l&#8217;on prend 8, 7, 1, 4, 6 comme suite de nombres, et que l&#8217;on utilise l&#8217;algorithme du tri &#224; bulles pour trier cette suite dans l&#8217;ordre croissant, voici comment l&#8217;algorithme fonctionne : 1er tour : 8, 7, 1, 4, 6 8 &gt; 7 donc on &#233;change. 7, 8, 1, 4, 6 8 &gt; 1 donc on &#233;change. 7, 1, 8, 4, 6 8 &gt; 4 donc on &#233;change. 7, 1, 4, 8, 6 8 &gt; 6 donc on &#233;change. 7, 1, 4, 6, 8 2&#232;me tour : 7, 1, 4, 6, 8 7 &gt; 1 donc on &#233;change. 1, 7, 4, 6, 8 7 &gt; 4 donc on &#233;change. 1, 4, 7, 6, 8 7 &gt; 6 donc on &#233;change. 1, 4, 6, 7, 8 7 &lt; 8 donc on laisse. 1, 4, 6, 7, 8</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Voici le pseudo-code tr&#232;s simple de l&#8217;algorithme du tri &#224; bulles :</p>
+<pre class="nohighlight"><code>Soit N la taille du tableau &#224; trier
+
+triAbulles(Tableau, N) :
+
+   Pour i = 0, allant jusqu&#39;&#224; N &#224; pas de 1
+      Pour j = 0, allant jusqu&#39;&#224; N - 1 &#224; pas de 1
+         Si l&#39;&#233;l&#233;ment j est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment j + 1
+            &#201;changer les &#233;l&#233;ments j et j + 1 du tableau</code></pre>
+<p>Voici une image r&#233;sumant le principe du tri &#224; bulles (la partie en bleue est la partie non tri&#233;e, en blanc la partie tri&#233;e, et en jaune le tableau enti&#232;rement tri&#233;e) :</p>
+<p>tri_bulle source : http://csud.educanet2.ch/3oc-info/1_Programmation/6_Algorithmique/page5.html</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>Comme dit dans l&#8217;introduction, la complexit&#233; algorithmique de l&#8217;algorithme du tri &#224; bulles est de <em>O(N&#178;)</em>, et on peut le d&#233;montrer simplement par le fait qu&#8217;il y est deux boucles imbriqu&#233;s dans le pseudo-code :</p>
+<ul>
+<li>La premi&#232;re boucle parcourt <em>N</em> tours.</li>
+<li>La deuxi&#232;me boucle parcourt <em>N</em> tours aussi.</li>
+</ul>
+<p>On se retrouve donc avec <em>N*N</em> tours, et donc une complexit&#233; en <em>O(N&#178;)</em>.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>L&#8217;impl&#233;mentation est aussi simple que le pseudo-code :</p>
+<p>main.c : http://git.io/vtzUH</p>
+<p>Cette impl&#233;mentation en C est tr&#232;s simple, et &#224; pour seul but de vous proposer un code facile &#224; comprendre et &#224; r&#233;crire, qui vous permet de tester par vous m&#234;me l&#8217;algorithme du tri &#224; bulles. Vous pouvez l&#8217;am&#233;liorer &#224; l&#8217;aide des id&#233;es propos&#233;es ci-dessous.</p>
+<h2 id="am&#233;lioration-1">Am&#233;lioration 1</h2>
+<p>On peut am&#233;liorer le tri &#224; bulles en faisant en sorte qu&#8217;il s&#8217;arr&#234;te lorsque le tableau est tri&#233;, et qu&#8217;il ne parcourt pas d&#8217;autres tours inutiles. Pour cela il suffit de v&#233;rifier si l&#8217;on effectue un &#233;change ou pas dans le tour de boucle actuelle, si ce n&#8217;est pas le cas le tableau est tri&#233;, on peut donc sortir de la boucle.</p>
+<pre class="nohighlight"><code>Faire
+   tableauPasTri&#233; -&gt; faux
+
+   Pour i = 0, allant jusqu&#39;&#224; N - 1 &#224; pas de 1
+      Si l&#39;&#233;l&#233;ment i est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment i + 1
+         &#201;changer les &#233;l&#233;ments i et i + 1 du tableau
+         tableauPasTri&#233; -&gt; vrai
+
+Tant que tableauPasTri&#233; est vrai</code></pre>
+<p>La complexit&#233; reste de <em>O(N&#178;)</em> m&#234;me si l&#8217;on a gagn&#233; quelques tours de boucle sur certains cas.</p>
+<h2 id="am&#233;lioration-2">Am&#233;lioration 2</h2>
+<p>Une variante du tri &#224; bulles qui s&#8217;appelle le tri &#224; bulles bidirectionnel, consiste contrairement au tri &#224; bulles, &#224; trier dans les deux directions (d&#8217;o&#249; son nom). L&#224; o&#249; le tri &#224; bulles tri seulement de gauche &#224; droite (ou de droite &#224; gauche, &#231;a n&#8217;importe pas), le tri &#224; bulles bidirectionnel tri de gauche &#224; droite et de droite &#224; gauche. Cela permet d&#8217;optimiser le tri de certains &#233;l&#233;ments comme les petits &#233;l&#233;ments situ&#233;s en fin de tableau, le tri &#224; bulles les ram&#232;ne d&#8217;un seul emplacement &#224; chaque tour de boucle, alors que le tri &#224; bulles bidirectionnel les ram&#232;ne en un seul tour. Par exemple avec la suite de nombres suivante : 2, 3, 4, 5, 1</p>
+<p><em>Tri &#224; bulles</em> (de gauche &#224; droite) 2, 3, 4, 5, 1 (de gauche &#224; droite) 2, 3, 4, 1, 5 (de gauche &#224; droite) 2, 3, 1, 4, 5 (de gauche &#224; droite) 2, 1, 3, 4, 5 1, 2, 3, 4, 5 <em>Tri &#224; bulles bidirectionnel</em> (de gauche &#224; droite) 2, 3, 4, 5, 1 (de droite &#224; gauche) 2, 3, 4, 1, 5 2, 3, 1, 4, 5 2, 1, 3, 4, 5 1, 2, 3, 4, 5 Dans cet exemple le tri &#224; bulles bidirectionnel n&#8217;a besoin que de deux tours de boucle alors que le tri &#224; bulles en a besoin de quatre. Vous voyez donc l&#8217;int&#233;r&#234;t de l&#8217;algorithme du tri &#224; bulles bidirectionnel.</p>
+<p>Le pseudo-code du tri &#224; bulles bidirectionnel :</p>
+<pre class="nohighlight"><code>Faire
+   tableauPasTri&#233; -&gt; faux
+
+   Pour i = 0, allant jusqu&#39;&#224; N - 1 &#224; pas de 1
+      Si l&#39;&#233;l&#233;ment i est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment i + 1
+         &#201;changer les &#233;l&#233;ments i et i + 1 du tableau
+         tableauPasTri&#233; -&gt; vrai
+
+   Pour i = N, allant jusqu&#39;&#224; 1 &#224; pas de 1
+      Si l&#39;&#233;l&#233;ment i est inf&#233;rieur &#224; l&#39;&#233;l&#233;ment i - 1
+         &#201;changer les &#233;l&#233;ments i et i - 1 du tableau
+         tableauPasTri&#233; -&gt; vrai
+
+Tant que tableauPasTri&#233; est vrai</code></pre>
+<p>Cette variante peut &#234;tre encore optimis&#233;, en retenant l&#8217;endroit o&#249; le dernier &#233;change s&#8217;est effectu&#233; pour ne pas aller plus loin (car c&#8217;est inutile), cependant cet algorithme a toujours pour complexit&#233; <em>O(N&#178;)</em>.</p>
+<h2 id="am&#233;lioration-3">Am&#233;lioration 3</h2>
+<p>Une autre variante du tri &#224; bulles appel&#233;e le tri CombSort, permet &#224; l&#8217;algorithme du tri &#224; bulles d&#8217;&#234;tre beaucoup plus efficace et ainsi rivaliser avec des algorithmes bien plus performants comme le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>, le <a href="http://napnac.ga/algo/tri/tri_fusion.html">tri fusion</a>, ou encore le <a href="http://napnac.ga/algo/tri/tri_shell.html">tri Shell</a>. Cet algorithme consiste donc &#224; comparer des &#233;l&#233;ments du tableau &#224; un certain intervalle au lieu de comparer les &#233;l&#233;ments voisins. En effet cette technique permet d&#8217;&#233;liminer le probl&#232;me du petit &#233;l&#233;ment situ&#233; &#224; la fin du tableau qui remonte lentement jusqu&#8217;&#224; sa place initiale. Cet intervalle est initialis&#233; par la longueur du tableau, puis est divis&#233; par 1,3 (calcul&#233; pour optimiser les &#233;changes entre les intervalles) &#224; chaque tour, on fait cela tant que l&#8217;intervalle est sup&#233;rieur &#224; 1.</p>
+<pre class="nohighlight"><code>Faire
+   tableauPasTri&#233; -&gt; faux
+   intervalle -&gt; intervalle / 1.3 (valeur enti&#232;re)
+
+   Si intervalle est inf&#233;rieur &#224; 1
+      intervalle -&gt; 1
+
+   Pour i = 0, allant jusqu&#39;&#224; N - intervalle &#224; pas de 1
+      Si l&#39;&#233;l&#233;ment i est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment i + intervalle
+         &#201;changer les &#233;l&#233;ments i et i + intervalle du tableau
+         tableauPasTri&#233; -&gt; vrai
+
+Tant que tableauPasTri&#233; est vrai OU intervalle est sup&#233;rieur &#224; 1</code></pre>
+<p>Sa complexit&#233; en moyenne est donc de <em>O(N*log(N))</em>, mais peut-&#234;tre dans le pire des cas en <em>O(N&#178;)</em> bien qu&#8217;en pratique c&#8217;est peu probable que l&#8217;algorithme de tri CombSort est une complexit&#233; de <em>O(N&#178;)</em>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tri &#224; bulles est donc un algorithme tr&#232;s basique, simple &#224; impl&#233;menter et plut&#244;t intuitif, cependant il n&#8217;est pas tr&#232;s efficace &#224; cause sa complexit&#233; en <em>O(N&#178;)</em> m&#234;me si certaines am&#233;liorations peuvent le rendre plus rapide.</p>
  
       <!-- ------------ -->
 

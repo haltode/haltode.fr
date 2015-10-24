@@ -2,16 +2,27 @@ Général :
    - Arbre de lien en haut de l'article pour revenir en arrière en terme de catégories d'articles
    - Pseudo-code : coloration syntaxique
    - Lien wiki anglais
+   - Ecrire README complet
 
 Algorithme :
    - Structure de données : 
       - Liste chaînée :
          - Refaire code source (vérifier avec debugger pour la mémoire) + ajouter code source (structure) variantes listes 
          - Relecture + clarification explications
-      - Graphe :
-         - Enlever phrase "futurs articles"
+      - Pile :
+         - Refaire code source
+         - Complexité
+      - File : 
+         - Refaire code source
+         - Complexité
+         - STL
+         - Conclusion (ouverture sur les différentes utilisations d'une file)
       - Tries + Ternary search tries
    - Tri :
+      - Tri fusion : lien logarithme wiki
+      - Tri rapide : lien cache wiki
+      - Tri base : lien cartes perforées wiki
+
       - Tri par insertion : complexité en N * (N + 1) / 2
       - Tri rapide : code hackerrank
       - Comparison-based Lower Bounds for Sorting
@@ -19,6 +30,8 @@ Algorithme :
       - Tri par tas : amélioration 2 : smoothsort
       - Refaire image pour chaque article sur un tri
    - Chiffrement :
+      - Chiffre de césar : lien modulo wiki 
+
       - Chiffre de Vigenère : programme pour trouver la longueur de la clé de chiffrement
       - RSA : rajouter descriptions attaques
    - IA :

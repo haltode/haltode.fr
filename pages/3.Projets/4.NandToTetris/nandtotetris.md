@@ -19,7 +19,7 @@ Le projet consiste donc à créer :
 - un **compilateur** complet pour le langage Jack (le langage de base de l’ordinateur).
 - un **mini-OS** nous permettant d'avoir des appels systèmes basiques.
 
-J’ai réalisé ce projet à l’aide du livre *The Elements of Computing Systems : Building a Modern Computer from First Principles*, vous pouvez retrouver une description et mon avis sur ce livre [ici](napnac.ga/livres/the_elements_of_computing_systems.html).
+J’ai réalisé ce projet à l’aide du livre *The Elements of Computing Systems : Building a Modern Computer from First Principles*, vous pouvez retrouver une description et mon avis sur ce livre [ici](napnac.ga/livres.html).
 
 Ce livre fournit des émulateurs, et des fichiers de tests pour la création de ce projet, ainsi que les explications nécessaires.
 

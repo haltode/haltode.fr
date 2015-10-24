@@ -40,7 +40,7 @@ Comme pour une liste chaînée, il existe différentes fonctions de bases permet
 ### Avec une liste chaînée
 
 ```nohighlight
-creerPile :
+créerPile :
    Créer un premier élément
    Initialiser les données de l'élément
    Le faire pointer sur NULL (pour indiquer la fin de la pile)
@@ -76,7 +76,7 @@ taille :
 ### Avec un tableau
 
 ```nohighlight
-creerPile :
+créerPile :
    Créer un tableau d'une taille fixe et suffisamment grand pour la pile
    Initialiser le pointeur de pile (PP) à 0
 supprimerPile :

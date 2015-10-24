@@ -133,6 +133,72 @@ table tr:nth-child(2n) {
 <h1 id="tri-par-insertion">Tri par insertion</h1>
 <p>Publi&#233; le : 01/05/2014<br />
 <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Le tri par insertion (<em>insertion sort</em> en anglais) est un algorithme de tri par comparaison simple, et intuitif mais toujours avec une complexit&#233; en <em>O(N&#178;)</em>. Vous l&#8217;avez d&#233;j&#224; sans doute utilis&#233; sans m&#234;me vous en rendre compte : lorsque vous trier des cartes par exemple. C&#8217;est un algorithme de tri stable et en place, et sans doute l&#8217;algorithme le plus rapide en pratique sur une entr&#233;e de petite taille.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>Le principe de l&#8217;algorithme du tri par insertion est de trier les &#233;l&#233;ments du tableau comme avec des cartes :</p>
+<ul>
+<li>On prend nos cartes dans notre main, m&#233;lang&#233;es.</li>
+<li>On cr&#233;&#233; deux ensembles de carte, l&#8217;un correspond &#224; l&#8217;ensemble de carte d&#233;j&#224; tri&#233;e, l&#8217;autre contient l&#8217;ensemble des cartes restantes (non tri&#233;es).</li>
+<li>On prend au fur et &#224; mesure, une carte dans l&#8217;ensemble de carte non tri&#233;e et on l&#8217;ins&#232;re &#224; sa bonne place dans l&#8217;ensemble de carte tri&#233;e.</li>
+<li>On r&#233;p&#232;te cette op&#233;ration tant qu&#8217;il y a une carte dans l&#8217;ensemble non tri&#233;.</li>
+</ul>
+<p>On voit donc que l&#8217;on va s&#233;parer le tableau &#224; trier en deux parties, l&#8217;une tri&#233;e et l&#8217;autre non.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons comme exemple la suite de nombre suivante : 9, 2, 7, 1 que l&#8217;on veut trier en ordre croissant avec l&#8217;algorithme du tri par insertion :</p>
+<p>1er tour :</p>
+<p>9 | 2, 7, 1 -&gt; j&#8217;ai s&#233;par&#233; le tableau en deux pour bien comprendre, la premi&#232;re partie est celle tri&#233;e (on commence donc par le premier &#233;l&#233;ment du tableau, que l&#8217;on consid&#232;re comme tri&#233;), la deuxi&#232;me partie est la partie non tri&#233;e. On prend le premier &#233;l&#233;ment de la deuxi&#232;me partie, ici 2, et on l&#8217;ins&#232;re &#224; sa place dans la premi&#232;re partie, avant 9.</p>
+<p>2&#232;me tour :</p>
+<p>2, 9 | 7, 1 -&gt; on recommence mais on prend cette fois 7, et on le place entre 2 et 9 de la premi&#232;re partie du tableau.</p>
+<p>3&#232;me tour :</p>
+<p>2, 7, 9 | 1 -&gt; on continue avec 1 que l&#8217;on place au d&#233;but de la premi&#232;re partie.</p>
+<p>1, 2, 7, 9</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du tri par insertion reste simple :</p>
+<pre class="nohighlight"><code>Soit N la taille du tableau &#224; trier
+
+triParInsertion(Tableau, N) :
+   Pour i = 1, allant jusqu&#39;&#224; N &#224; pas de 1
+      j -&gt; i
+      temporaire -&gt; valeur de l&#39;&#233;l&#233;ment i du tableau
+      Tant que j est sup&#233;rieur &#224; 0 ET l&#39;&#233;l&#233;ment j - 1 est sup&#233;rieur &#224; la valeur de temporaire
+         D&#233;caler l&#39;&#233;l&#233;ment j - 1 du tableau d&#39;une place vers la droite
+         j -&gt; j - 1
+      Ins&#233;rer la valeur de temporaire &#224; l&#39;emplacement j qui est libre apr&#232;s avoir d&#233;cal&#233; les autres &#233;l&#233;ments</code></pre>
+<p>Plusieurs choses &#224; noter sur ce pseudo-code :</p>
+<ul>
+<li>Tout d&#8217;abord la premi&#232;re boucle commence bien &#224; l&#8217;&#233;l&#233;ment 1 et non 0 du tableau car comme expliqu&#233; dans la partie <strong>Exemple</strong>, on commence la partie tri&#233;e du tableau &#224; partir du deuxi&#232;me &#233;l&#233;ment</li>
+<li>Ensuite on sauvegarde la valeur situ&#233;e &#224; l&#8217;&#233;l&#233;ment <em>i</em> pour pouvoir ensuite &#171; d&#233;caler &#187; les &#233;l&#233;ments du tableau en utilisant la case i comme case vide puisqu&#8217;on a sauvegard&#233; sa valeur. Il suffit donc de d&#233;caler chaque &#233;l&#233;ment vers la droite (jusqu&#8217;&#224; la case <em>i</em>), et d&#8217;ins&#233;rer notre valeur sauvegard&#233;e.</li>
+</ul>
+<p>Voici une image r&#233;sumant le principe du tri par insertion (en bleu la partie du tableau tri&#233;e, en rouge le prochain &#233;l&#233;ment &#224; trier dans la partie bleue, en jaune l&#8217;&#233;l&#233;ment qui vient d&#8217;&#234;tre plac&#233; dans la partie bleue) :</p>
+<p>source : http://csud.educanet2.ch/3oc-info/1_Programmation/6_Algorithmique/page4.html</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>L&#8217;algorithme du tri par insertion a une complexit&#233; de <em>O(N&#178;)</em>, on le remarque facilement &#224; cause des boucles imbriqu&#233;es dans le pseudo-code notamment :</p>
+<ul>
+<li>La premi&#232;re boucle parcourt <em>N &#8211; 1</em> tours, ici on notera plut&#244;t <em>N</em> tours car le &#8211; 1 n&#8217;est pas tr&#232;s important.</li>
+<li>La deuxi&#232;me boucle parcourt <em>i</em> tours (<em>i</em> variant de 0 &#224; <em>N</em>).</li>
+</ul>
+<p>Donc dans le pire des cas on parcourt <em>N*N</em> tours, le tri par insertion a donc une complexit&#233; en temps de <em>O(N&#178;)</em>.</p>
+<p>Cependant, le tri par insertion est tr&#232;s efficace sur des entr&#233;es de petites tailles, et encore plus sur des entr&#233;es &#233;tant d&#233;j&#224; presque tri&#233;es (il est m&#234;me plus performant que certains tris en <em>O(N * log(N))</em> comme le <a href="http://napnac.ga/algo/tri/tri_fusion.html">tri par fusion</a>, ou m&#234;me le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>), dans ce cas il s&#8217;ex&#233;cute en temps lin&#233;aire donc <em>O(N)</em>.</p>
+<p>C&#8217;est pour cela que le tri par insertion est tr&#232;s utilis&#233; sur de petites entr&#233;es.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>L&#8217;impl&#233;mentation en C fonctionne exactement comme le pseudo-code :</p>
+<p>main.c :</p>
+<p>Cette impl&#233;mentation est juste l&#224; pour vous proposer un code concret, vous pouvez donc l&#8217;am&#233;liorer !</p>
+<h2 id="am&#233;lioration-1">Am&#233;lioration 1</h2>
+<p>Une des premi&#232;res am&#233;liorations possibles, vous y avez peut-&#234;tre d&#233;j&#224; pens&#233;, et d&#8217;utiliser des <a href="http://napnac.ga/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a> &#224; la place d&#8217;un tableau. En effet, on aurait plus besoin de d&#233;placer les &#233;l&#233;ments du tableau mais juste &#224; ins&#233;rer l&#8217;&#233;l&#233;ment dans la liste, cependant il faut toujours calculer l&#8217;indice ou ins&#233;rer l&#8217;&#233;l&#233;ment ! Et pour cela il faut toujours ex&#233;cuter une boucle, mais plus besoin de d&#233;placer les &#233;l&#233;ments, c&#8217;est donc une am&#233;lioration.</p>
+<p>L&#8217;algorithme du tri par insertion impl&#233;ment&#233; avec une liste cha&#238;n&#233;e est donc toujours en <em>O(N&#178;)</em>.</p>
+<h2 id="am&#233;lioration-2">Am&#233;lioration 2</h2>
+<p>Une autre am&#233;lioration est possible et bien plus efficace que la pr&#233;c&#233;dente. En effet, le tri par insertion est bas&#233; sur le fait que le tableau est coup&#233; en deux parties, l&#8217;une tri&#233;e (celle qui nous int&#233;resse) et l&#8217;autre non tri&#233;e. On peut am&#233;liorer le temps d&#8217;ex&#233;cution pour trouver l&#8217;indice dans lequel placer l&#8217;&#233;l&#233;ment dans la premi&#232;re partie du tableau, en utilisant ce que on appelle la <a href="http://napnac.ga/algo/recherche/dichotomie.html">dichotomie</a> (c&#8217;est un algorithme de recherche efficace dans un ensemble d&#8217;objet d&#233;j&#224; tri&#233;).</p>
+<p>Cette recherche consiste &#224; utiliser la m&#233;thode du &quot;diviser pour r&#233;gner&quot;, on cherche donc l&#8217;emplacement pour notre &#233;l&#233;ment &#224; l&#8217;aide d&#8217;intervalles. Notre premier intervalle est : d&#233;but de la premi&#232;re partie du tableau -&gt; fin de la premi&#232;re partie du tableau :</p>
+<ul>
+<li>On teste si l&#8217;&#233;l&#233;ment situ&#233; au milieu de notre intervalle est sup&#233;rieur &#224; l&#8217;&#233;l&#233;ment que l&#8217;on veut ins&#233;rer.</li>
+<li>Si c&#8217;est le cas on recommence l&#8217;op&#233;ration mais cette fois ci avec cet intervalle : milieu de l&#8217;ancien intervalle -&gt; fin de la premi&#232;re partie du tableau.</li>
+<li>Sinon on recommence mais avec l&#8217;intervalle suivant : d&#233;but de la premi&#232;re partie du tableau -&gt; milieu de l&#8217;ancien intervalle.</li>
+</ul>
+<p>Une fois que l&#8217;intervalle ne contient plus qu&#8217;un &#233;l&#233;ment, on a donc trouv&#233; l&#8217;emplacement de notre &#233;l&#233;ment et on peut l&#8217;ins&#233;rer. Cette technique nous permet donc de diviser par deux le nombre de recherches. Gr&#226;ce &#224; cette am&#233;lioration, l&#8217;algorithme du tri par insertion a pour complexit&#233; <em>O(N * log(N))</em>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tri par insertion est donc intuitif et simple &#224; impl&#233;menter et m&#234;me si sa complexit&#233; algorithmique est en <em>O(N&#178;)</em>, c&#8217;est un tri extr&#234;mement efficace pour des petites entr&#233;es, ou des entr&#233;es quasi tri&#233;es. De plus on peut facilement l&#8217;am&#233;liorer pour avoir une complexit&#233; en <em>O(N * log(N))</em> &#224; l&#8217;aide de la dichotomie.</p>
  
       <!-- ------------ -->
 

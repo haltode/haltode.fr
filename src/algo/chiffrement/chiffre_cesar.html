@@ -133,6 +133,85 @@ table tr:nth-child(2n) {
 <h1 id="chiffre-de-c&#233;sar">Chiffre de C&#233;sar</h1>
 <p>Publi&#233; le : 21/05/2014<br />
 <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Le chiffre de C&#233;sar (aussi appel&#233; <em>chiffrement par d&#233;calage</em>) est un algorithme de chiffrement <strong>sym&#233;trique</strong> tr&#232;s simple utilis&#233; par Jules C&#233;sar pour communiquer des messages secrets. Cet algorithme n&#8217;est pas du tout s&#233;curis&#233; pour deux raisons que nous aborderons apr&#232;s avoir vu le chiffrement et le d&#233;chiffrement.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>Le chiffre de C&#233;sar utilise une <strong>substitution mono-alphab&#233;tique</strong> pour chiffrer et d&#233;chiffrer un message, c&#8217;est-&#224;-dire que l&#8217;on d&#233;cale de <em>x</em> rangs dans l&#8217;alphabet vers la droite la lettre du message lors du chiffrement, et l&#8217;on d&#233;cale de <em>x</em> rangs vers la gauche la lettre lors du d&#233;chiffrement (<em>x</em> est appel&#233; la <strong>cl&#233; de chiffrement</strong>, et doit bien entendu &#234;tre la m&#234;me lors du chiffrement et du d&#233;chiffrement puisque le chiffre de C&#233;sar est un chiffrement sym&#233;trique).</p>
+<p>Le fait que la substitution soit mono-alphab&#233;tique signifie que si l&#8217;on chiffre plusieurs fois la lettre A avec une cl&#233; de chiffrement <em>x</em>, alors la lettre chiffr&#233;e sera toujours la m&#234;me, ce type de syst&#232;me s&#8217;oppose donc &#224; la <strong>substitution poly-alphab&#233;tique</strong> utilis&#233;e par le <a href="http://napnac.ga/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigen&#232;re</a> par exemple.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons le mot Linux, que l&#8217;on va chiffrer puis d&#233;chiffrer &#224; l&#8217;aide du chiffre de C&#233;sar et avec une cl&#233; de chiffrement de 2 (on va donc d&#233;caler les lettres du message de deux rangs dans l&#8217;alphabet).</p>
+<p>Voici une image indiquant le rang de chaque lettre de l&#8217;alphabet (bien pratique pour ce genre d&#8217;algorithme) : rangs-alphabet</p>
+<h3 id="chiffrement">Chiffrement</h3>
+<p>Linux -&gt; Ninux : La lettre L est la 12&#232;me lettre dans l&#8217;alphabet, la cl&#233; est de 2, donc on d&#233;cale de deux rangs dans l&#8217;alphabet vers la droite ce qui nous donne le rang 14 qui est la lettre N. Ninux -&gt; Nknux : Pareil pour la lettre I, on d&#233;cale de deux rangs vers la droite et on obtient la lettre K. Nknux -&gt; Nkpux Nkpux -&gt; Nkpwx Nkpwx -&gt; Nkpwz</p>
+<p>Nkpwz</p>
+<p>Nous avons donc notre message chiffr&#233; : Nkpwz.</p>
+<h3 id="d&#233;chiffrement">D&#233;chiffrement</h3>
+<p>Pour le d&#233;chiffrement on d&#233;cale cette fois-ci de deux rangs vers la gauche :</p>
+<p>Nkpwz -&gt; Lkpwz : N est la 14&#232;me lettre de l&#8217;alphabet on d&#233;cale donc de deux rangs vers la gauche et on obtient la lettre L. Lkpwz -&gt; Lipwz : K est la 11&#232;me lettre de l&#8217;alphabet on d&#233;cale donc de deux rangs vers la gauche et on obtient la lettre I. Lipwz -&gt; Linwz Linwz -&gt; Linuz Linuz -&gt; Linux</p>
+<p>Linux</p>
+<p>On obtient bien notre message de d&#233;part : Linux.</p>
+<p>Quelques remarques sur cet algorithme :</p>
+<ul>
+<li>Il se peut que lors du chiffrement vous d&#233;passez la lettre Z apr&#232;s avoir d&#233;cal&#233; de <em>x</em> rangs vers la droite, dans ce cas il suffit juste de revenir au d&#233;but de l&#8217;alphabet et de continuer &#224; d&#233;caler &#224; partir de la lettre A.</li>
+<li>Pareil lors du d&#233;chiffrement, si vous d&#233;passez A apr&#232;s voir d&#233;cal&#233; vers la droite, alors continuer de d&#233;caler &#224; partir de la lettre Z.</li>
+</ul>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du chiffre de C&#233;sar est tr&#232;s simple :</p>
+<pre class="nohighlight"><code>chiffrer(Message, cl&#233;) :
+   Pour chaque caract&#232;re de Message
+      Si c&#39;est une lettre
+         D&#233;caler cette lettre de cl&#233; rangs dans l&#39;alphabet
+
+d&#233;chiffrer(Message, cl&#233;) :
+   Pour chaque caract&#232;re de Message
+      Si c&#39;est une lettre
+         D&#233;caler cette lettre de -cl&#233; rangs dans l&#39;alphabet</code></pre>
+<p>Je vous explique plus en d&#233;tail comment d&#233;caler une lettre dans l&#8217;alphabet dans l&#8217;impl&#233;mentation en C.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Le lien vers une impl&#233;mentation en C du chiffre de C&#233;sar :</p>
+<p>main.c :</p>
+<p>Ce code est simple, voici quelques remarques &#224; propos :</p>
+<ul>
+<li>Dans la fonction <code>chiffrement</code>, on teste premi&#232;rement si le caract&#232;re actuel est une lettre (soit une majuscule, soit une minuscule), puis on r&#233;cup&#232;re le rang de la lettre dans l&#8217;alphabet (pour cela on utilise la <a href="http://www.table-ascii.com/">table ASCII</a> d&#8217;o&#249; le <em>&#8211; &#8216;A&#8217;</em>, cela facilite les calculs apr&#232;s), on lui ajoute la valeur de notre cl&#233; et on lui applique un <a href="">modulo</a> 26 dans le cas o&#249; l&#8217;on d&#233;passe la lettre Z pour revenir &#224; la lettre A, de plus si la lettre est n&#233;gative (dans le cas d&#8217;une cl&#233; n&#233;gative par exemple car en C un modulo d&#8217;un nombre n&#233;gatif est n&#233;gatif) on lui ajoute 26 pour la rendre positive et on refait un modulo 26 dans le cas o&#249; elle d&#233;passe Z. Enfin on retourne &#224; la valeur ASCII de la lettre trouv&#233;e &#224; l&#8217;aide du <em>+ &#8216;A&#8217;</em>.</li>
+<li>Dans la fonction <code>dechiffrement</code>, le principe est le m&#234;me la seule diff&#233;rence avec la fonction <code>chiffrement</code> est le fait qu&#8217;au lieu d&#8217;ajouter la cl&#233; (d&#233;calage vers la droite) on la retire (d&#233;calage vers la gauche), tout le reste du code est pareil.</li>
+</ul>
+<h2 id="cassage">Cassage</h2>
+<p>Maintenant je vais vous pr&#233;senter deux mani&#232;res de casser le chiffre de C&#233;sar, c&#8217;est-&#224;-dire d&#8217;obtenir le message original sans la cl&#233; de chiffrement.</p>
+<h3 id="force-brute">Force brute</h3>
+<p>Premi&#232;re m&#233;thode extr&#234;mement simple et tr&#232;s facile &#224; impl&#233;menter, cette m&#233;thode consiste &#224; tester toutes les possibilit&#233;s possibles de cl&#233;s et de voir laquelle permet de transformer le message chiffr&#233; en une phrase &#233;crite en fran&#231;ais.</p>
+<p>Il existe en tout 26 possibilit&#233;s de cl&#233; de chiffrement pour le chiffre de C&#233;sar. En effet, si l&#8217;on utilise une cl&#233; sup&#233;rieure &#224; 26 cela revient &#224; utiliser une cl&#233; de <em>cle % 26</em>, par exemple si j&#8217;utilise une cl&#233; de 28 sur notre exemple (Linux), j&#8217;obtiens le m&#234;me message chiffr&#233; qu&#8217;avec une cl&#233; de 2 (<em>28 % 26 = 2</em>). Pareil pour les nombres inf&#233;rieurs &#224; 26, par exemple si j&#8217;utilise une cl&#233; de -1 cela revient &#224; utiliser une cl&#233; de 25 (vous pouvez faire le test avec le programme que je vous ai fourni).</p>
+<p>Pour utiliser la m&#233;thode de la force brute, il vous suffit de suivre ce pseudo-code :</p>
+<pre class="nohighlight"><code>forceBrute(Message) :
+   Pour cl&#233; = 1, allant jusqu&#39;&#224; 26 &#224; pas de 1
+      d&#233;chiffrer(Message, cl&#233;)
+      Afficher Message
+
+d&#233;chiffrer(Message, cl&#233;) :
+   Pour chaque caract&#232;re de Message
+      Si c&#39;est une lettre
+         D&#233;caler cette lettre de -cl&#233; rangs dans l&#39;alphabet</code></pre>
+<p>Le lien vers le code pour casser le chiffre de C&#233;sar &#224; l&#8217;aide de la m&#233;thode force brute :</p>
+<p>main.c :</p>
+<p>Cette m&#233;thode est assez &quot;bourrin&quot;, en effet tester toutes les possibilit&#233;s possibles est souvent une mauvaise id&#233;e. Cependant, dans ce cas o&#249; l&#8217;on sait qu&#8217;il n&#8217;y a que 26 possibilit&#233;s &#224; tester, cette m&#233;thode devient tout de suite le choix parfait pour casser le chiffre de C&#233;sar. En plus d&#8217;&#234;tre extr&#234;mement rapide, elle est aussi tr&#232;s simple &#224; mettre en place, une simple boucle suffit.</p>
+<h3 id="analyse-fr&#233;quentielle">Analyse fr&#233;quentielle</h3>
+<p>Une autre m&#233;thode pour casser le chiffre de C&#233;sar existe, elle consiste &#224; analyser la fr&#233;quence d&#8217;apparition des lettres dans le message pour deviner la cl&#233; de chiffrement.</p>
+<p>L&#8217;un des principaux points faibles du chiffre de C&#233;sar est que si je chiffre un message comportant dix fois la lettre A avec une cl&#233; de 1, alors j&#8217;aurais dix fois la lettre B dans le message. L&#8217;analyse fr&#233;quentielle repose sur le fait que dans chaque langue il existe des lettres plus utilis&#233;es que d&#8217;autres. En fran&#231;ais par exemple, la lettre E est plus utilis&#233; que la lettre D, la lettre H l&#8217;est moins que la lettre O.</p>
+<p>Voici l&#8217;ordre par ordre croissant des lettres les plus utilis&#233;es en fran&#231;ais : e, a, i, s, t, n, r, u, l, o, d, m, p,c, v, q, g, b, f, j, h, z, x, y, k, w.</p>
+<p>&#192; partir de cela on peut donc &#233;mettre des hypoth&#232;ses sur le message chiffr&#233;. En effet, si ce dernier contient une grande majorit&#233; de M, alors il y a de fortes chances que le M soit dans le message original la lettre E. On peut donc facilement trouver la cl&#233; de chiffrement dans cet exemple en trouvant le nombre de lettre situ&#233;e entre E et M.</p>
+<p>Le pseudo-code de l&#8217;analyse fr&#233;quentielle est plut&#244;t simple :</p>
+<pre class="nohighlight"><code>analyseFr&#233;quentielle(Message) :
+   D&#233;terminer le nombre d&#8217;occurrence de chaque lettre
+   D&#233;terminer pour chaque lettre la cl&#233; possible
+   Afficher les cl&#233;s de chiffrement dans l&#39;ordre des lettres suivant : e, a, i, s, t, n, r, u, l, o, d, m, p,c, v, q, g, b, f, j, h, z, x, y, k, w.</code></pre>
+<p>Ce pseudo-code est tr&#232;s simple, on peut reprendre notre exemple pour mieux comprendre : on cherche le nombre d&#8217;occurrences pour chaque lettre (on le fait une seule fois dans le programme), on voit que la lettre qui appara&#238;t le plus de fois est M, on &#233;met l&#8217;hypoth&#232;se que la lettre M est la lettre E dans le message d&#233;chiffr&#233; car M appara&#238;t le plus de fois dans le message et la lettre E est la lettre la plus utilis&#233;e en fran&#231;ais, pour d&#233;terminer la cl&#233; (selon notre hypoth&#232;se) il suffit de trouver le nombre de rangs dans l&#8217;alphabet entre la lettre E et M qui est de 8, on affiche donc comme premier choix de cl&#233; 8. On r&#233;p&#232;te cette &#233;tape d&#8217;hypoth&#232;se pour chacune des lettres, par exemple si la deuxi&#232;me lettre qui appara&#238;t le plus est I, alors on &#233;met comme hypoth&#232;se que I est la lettre A dans le message d&#233;chiffr&#233; (car A est la deuxi&#232;me lettre la plus utilis&#233;e en fran&#231;ais), on trouve ensuite comme cl&#233; 8 que l&#8217;on affiche comme second choix de cl&#233;. On continue jusqu&#8217;&#224; avoir les 26 cl&#233;s possibles, qui ne sont pas toutes pareilles mais je vous conseille de seulement regarder les trois premi&#232;res possibilit&#233;s.</p>
+<p>Cependant sur de petits textes, l&#8217;analyse fr&#233;quentielle ne fonctionne pas forc&#233;ment tr&#232;s bien, mais sur de longs textes il n&#8217;y a pas de soucis. Les trois premi&#232;res cl&#233;s qui sont affich&#233;s seront presque toujours les bonnes cl&#233;s de chiffrement.</p>
+<p>Un lien vers le code C d&#8217;une impl&#233;mentation d&#8217;une analyse fr&#233;quentielle :</p>
+<p>main.c :</p>
+<p>Ce programme affiche les cl&#233;s de chiffrement suppos&#233;s dans l&#8217;ordre ainsi que le message d&#233;chiffr&#233; avec la premi&#232;re cl&#233; d&#233;termin&#233;e, le message n&#8217;est pas toujours le bon (sur de petits textes), mais l&#8217;est tr&#232;s souvent sur de plus grands. Comme vous pouvez le voir j&#8217;ai chiffr&#233; un texte plus long que le mot Linux, vous pouvez voir que le programme n&#8217;a aucun mal &#224; trouver la bonne cl&#233; de chiffrement (affich&#233;e en premier) et m&#8217;affiche bien mon texte original que j&#8217;ai &#233;crit.</p>
+<p>Le programme en C est tr&#232;s simple, je ne pense pas que des explications soit n&#233;cessaires.</p>
+<p>L&#8217;analyse fr&#233;quentielle reste plus longue est plus co&#251;teuse que la force brute, cependant dans d&#8217;autres algorithmes de chiffrement o&#249; la m&#233;thode de force brute n&#8217;est pas possible l&#8217;analyse fr&#233;quentielle est fondamentale et tr&#232;s utile.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le chiffre de C&#233;sar est donc un algorithme de chiffrement sym&#233;trique ancien, et tr&#232;s simple. Cependant, il est vuln&#233;rable &#224; plusieurs attaques comme celle de la force brute ou celle de l&#8217;analyse fr&#233;quentielle ce qui le rend inutile de nos jours.</p>
  
       <!-- ------------ -->
 

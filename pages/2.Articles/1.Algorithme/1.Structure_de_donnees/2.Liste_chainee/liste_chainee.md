@@ -41,7 +41,7 @@ Pour illustrer les différences entre liste chaînée et tableau, prenons l'exem
 Pour manipuler correctement les listes chaînées, il faut connaître quelques fonctions basiques pour ajouter un élément, le supprimer, rechercher un élément précis dans la liste, etc.
 
 ```nohighlight
-creerListe :
+créerListe :
    Créer un premier élément
    Initialiser les données de l'élément
    Le faire pointer sur NULL (pour indiquer la fin de la liste)
@@ -50,24 +50,24 @@ supprimerListe :
    Pour chaque élément de la liste
       Supprimer l'élément actuel
 
-ajoutEnTete (élément) :
+ajoutEnTête (élément) :
    Faire pointer le nouvel élément vers le premier élément de la liste
 ajoutEnFin (élément) :
    Parcourir la liste jusqu'à la fin
    Faire pointer le dernier élément vers l'élément donné en paramètre
    Faire pointer l'élément donné en paramètre sur NULL
-ajoutElement (élément, index) :
+ajoutElément (élément, index) :
    Parcourir la liste jusqu'à arriver à l'élément situé avant l'index donné
    Faire pointer l'élément actuel sur le nouvel élément
    Faire pointer le nouvel élément sur le prochain élément
 
-supprimerEnTete :
+supprimerEnTête :
    Supprimer l'élément en tête de liste
 supprimerEnFin :
    Parcourir la liste jusqu'à l'avant-dernier élément
    Faire pointer l'élément sur NULL (pour indiquer la fin de la liste)
    Supprimer l'élément suivant
-supprimerElement (index) :
+supprimerElément (index) :
    Parcourir la liste jusqu'à arriver à l'élément situé avant l'index donné
    Faire pointer l'élément actuel sur le pointeur de l'élément à supprimer 
    Supprimer l'élément suivant
@@ -92,14 +92,14 @@ taille :
 
 Soit *N* le nombre d'éléments de la liste chaînée.
 
-- `creerListe` : *O(1)*
+- `créerListe` : *O(1)*
 - `supprimerListe` : *O(N)*
-- `ajoutEnTete` : *O(1)*
+- `ajoutEnTête` : *O(1)*
 - `ajoutEnFin` : *O(N)*
-- `ajoutElement` : *O(N)*
-- `supprimerEnTete` : *O(1)*
+- `ajoutElément` : *O(N)*
+- `supprimerEnTête` : *O(1)*
 - `supprimerEnFin` : *O(N)*
-- `supprimerElement` : *O(N)*
+- `supprimerElément` : *O(N)*
 - `afficher` : *O(N)*
 - `estVide` : *O(1)*
 - `taille` : *O(N)*

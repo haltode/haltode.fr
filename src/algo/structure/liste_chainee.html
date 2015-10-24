@@ -167,7 +167,7 @@ table tr:nth-child(2n) {
 </div>
 <h2 id="quelques-fonctions-pour-manipuler-les-listes-cha&#238;n&#233;es">Quelques fonctions pour manipuler les listes cha&#238;n&#233;es</h2>
 <p>Pour manipuler correctement les listes cha&#238;n&#233;es, il faut conna&#238;tre quelques fonctions basiques pour ajouter un &#233;l&#233;ment, le supprimer, rechercher un &#233;l&#233;ment pr&#233;cis dans la liste, etc.</p>
-<pre class="nohighlight"><code>creerListe :
+<pre class="nohighlight"><code>cr&#233;erListe :
    Cr&#233;er un premier &#233;l&#233;ment
    Initialiser les donn&#233;es de l&#39;&#233;l&#233;ment
    Le faire pointer sur NULL (pour indiquer la fin de la liste)
@@ -176,24 +176,24 @@ supprimerListe :
    Pour chaque &#233;l&#233;ment de la liste
       Supprimer l&#39;&#233;l&#233;ment actuel
 
-ajoutEnTete (&#233;l&#233;ment) :
+ajoutEnT&#234;te (&#233;l&#233;ment) :
    Faire pointer le nouvel &#233;l&#233;ment vers le premier &#233;l&#233;ment de la liste
 ajoutEnFin (&#233;l&#233;ment) :
    Parcourir la liste jusqu&#39;&#224; la fin
    Faire pointer le dernier &#233;l&#233;ment vers l&#39;&#233;l&#233;ment donn&#233; en param&#232;tre
    Faire pointer l&#39;&#233;l&#233;ment donn&#233; en param&#232;tre sur NULL
-ajoutElement (&#233;l&#233;ment, index) :
+ajoutEl&#233;ment (&#233;l&#233;ment, index) :
    Parcourir la liste jusqu&#39;&#224; arriver &#224; l&#39;&#233;l&#233;ment situ&#233; avant l&#39;index donn&#233;
    Faire pointer l&#39;&#233;l&#233;ment actuel sur le nouvel &#233;l&#233;ment
    Faire pointer le nouvel &#233;l&#233;ment sur le prochain &#233;l&#233;ment
 
-supprimerEnTete :
+supprimerEnT&#234;te :
    Supprimer l&#39;&#233;l&#233;ment en t&#234;te de liste
 supprimerEnFin :
    Parcourir la liste jusqu&#39;&#224; l&#39;avant-dernier &#233;l&#233;ment
    Faire pointer l&#39;&#233;l&#233;ment sur NULL (pour indiquer la fin de la liste)
    Supprimer l&#39;&#233;l&#233;ment suivant
-supprimerElement (index) :
+supprimerEl&#233;ment (index) :
    Parcourir la liste jusqu&#39;&#224; arriver &#224; l&#39;&#233;l&#233;ment situ&#233; avant l&#39;index donn&#233;
    Faire pointer l&#39;&#233;l&#233;ment actuel sur le pointeur de l&#39;&#233;l&#233;ment &#224; supprimer 
    Supprimer l&#39;&#233;l&#233;ment suivant
@@ -215,14 +215,14 @@ taille :
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>Soit <em>N</em> le nombre d'&#233;l&#233;ments de la liste cha&#238;n&#233;e.</p>
 <ul>
-<li><code>creerListe</code> : <em>O(1)</em></li>
+<li><code>cr&#233;erListe</code> : <em>O(1)</em></li>
 <li><code>supprimerListe</code> : <em>O(N)</em></li>
-<li><code>ajoutEnTete</code> : <em>O(1)</em></li>
+<li><code>ajoutEnT&#234;te</code> : <em>O(1)</em></li>
 <li><code>ajoutEnFin</code> : <em>O(N)</em></li>
-<li><code>ajoutElement</code> : <em>O(N)</em></li>
-<li><code>supprimerEnTete</code> : <em>O(1)</em></li>
+<li><code>ajoutEl&#233;ment</code> : <em>O(N)</em></li>
+<li><code>supprimerEnT&#234;te</code> : <em>O(1)</em></li>
 <li><code>supprimerEnFin</code> : <em>O(N)</em></li>
-<li><code>supprimerElement</code> : <em>O(N)</em></li>
+<li><code>supprimerEl&#233;ment</code> : <em>O(N)</em></li>
 <li><code>afficher</code> : <em>O(N)</em></li>
 <li><code>estVide</code> : <em>O(1)</em></li>
 <li><code>taille</code> : <em>O(N)</em></li>

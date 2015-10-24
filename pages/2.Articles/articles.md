@@ -20,7 +20,7 @@ La liste des articles publiés :
  
          - Tri en *O(N²)* : [tri à bulles](http://napnac.ga/algo/tri/tri_bulles.html), [tri par sélection](http://napnac.ga/algo/tri/tri_selection.html), [tri par insertion](http://napnac.ga/algo/tri/tri_insertion.html), [tri shell](http://napnac.ga/algo/tri/tri_shell.html)
          - Tri en *O(N \* log N)* : [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), [tri par tas](http://napnac.ga/algo/tri/tri_tas.html)
-         - Tri en *O(N)* : [tri par dénombrement](http://napnac.ga/algo/tri/tri_denombrement.html), [tri par base](http://napnac.ga/algo/tri/tri_base.html), [tri par paquet](http://napnac.ga/algo/tri/tri_paquet.html)
+         - Tri en *O(N)* : [tri par dénombrement](http://napnac.ga/algo/tri/tri_denombrement.html), [tri par base](http://napnac.ga/algo/tri/tri_base.html), [tri par paquets](http://napnac.ga/algo/tri/tri_paquets.html)
  
     - Recherche :
  
@@ -47,10 +47,6 @@ La liste des articles publiés :
          - [Utiliser des makefiles](http://napnac.ga/prog/c/makefiles.html)
          - [Débugger ses programmes](http://napnac.ga/prog/c/debugger.html)
  
-- Livre :
+- Autres :
  
-    - [*Algorithmique*](http://napnac.ga/livre/algorithmique.html) - Thomas Cormen
-    - [*Code*](http://napnac.ga/livre/code.html) - Charles Petzold
-    - [*The Elements of Computing Systems*](http://napnac.ga/livre/the_elements_of_computing_systems.html) - Nisan et Schocken
-
-
+    - [Livres](http://napnac.ga/livres.html)

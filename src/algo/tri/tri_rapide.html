@@ -133,6 +133,72 @@ table tr:nth-child(2n) {
 <h1 id="tri-rapide">Tri rapide</h1>
 <p>Publi&#233; le : 10/05/2014<br />
 <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Le tri rapide (<em>quick sort</em> en anglais) est un algorithme de tri par comparaison invent&#233; en 1962 par Hoare, son fonctionnement est plut&#244;t simple &#224; comprendre, il est tr&#232;s utilis&#233; sur de grandes entr&#233;es. En effet il a pour complexit&#233; moyenne de <em>O(N * log(N))</em> et de <em>O(N&#178;)</em> dans le pire des cas. Cependant m&#234;me si cet algorithme est lent dans le pire des cas, il est le plus utilis&#233; en pratique que d&#8217;autres tris comme le <a href="http://napnac.ga/algo/tri/tri_fusion.html">tri par fusion</a> qui a une complexit&#233; dans le pire des cas en <em>O(N * log(N))</em>. C&#8217;est un algorithme non stable mais en place.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>Le tri rapide utilise le principe de diviser pour r&#233;gner, c&#8217;est-&#224;-dire que l&#8217;on va choisir un &#233;l&#233;ment du tableau (que l&#8217;on appelle <strong>pivot</strong>), puis l&#8217;on <strong>r&#233;organise</strong> le tableau initial en deux sous tableaux :</p>
+<ul>
+<li>L&#8217;un contenant les &#233;l&#233;ments du tableau inf&#233;rieurs au pivot.</li>
+<li>L&#8217;autre contenant les &#233;l&#233;ments sup&#233;rieurs au pivot.</li>
+</ul>
+<p>On continue ce proc&#233;d&#233; jusqu&#8217;&#224; se retrouver avec un tableau d&#233;coup&#233; en <em>N</em> sous tableaux (<em>N</em> &#233;tant la taille du tableau), qui est donc tri&#233;.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Si l&#8217;on prend 5, 9, 7, 3, 8 comme suite de nombres, et que l&#8217;on utilise l&#8217;algorithme du tri rapide pour trier cette suite dans l&#8217;ordre croissant, voici comment faire :</p>
+<p>5, 9, 7, 3, 8 -&gt; on choisit le pivot, je choisirai tout le temps l&#8217;&#233;l&#233;ment du milieu pour le tableau actuel : ici 7.</p>
+<p>5, 3 | 7 | 9, 8 -&gt; j&#8217;ai repr&#233;sent&#233; les sous tableaux, et je les ai s&#233;par&#233;s, l&#8217;un est inf&#233;rieur au pivot et l&#8217;autre est sup&#233;rieur. Vous remarquez que les sous tableaux ne sont pas tri&#233;s (mais d&#233;j&#224; plus qu&#8217;au d&#233;part), cependant le pivot est bien &#224; sa place d&#233;finitive, en effet tous les &#233;l&#233;ments qui lui sont sup&#233;rieurs sont &#224; sa droite et les &#233;l&#233;ments inf&#233;rieurs &#224; sa gauche.</p>
+<p>3 | 5 | 7 | 9, 8 -&gt; je prends mon premier sous tableaux et je recommence l&#8217;op&#233;ration de partitionnement (c&#8217;est le terme exact qui d&#233;finit le fait de choisir un pivot et de placer les &#233;l&#233;ments du tableau inf&#233;rieurs au pivot &#224; sa gauche et les &#233;l&#233;ments sup&#233;rieurs &#224; sa droite). Je choisis 3 comme pivot, on se retrouve donc avec trois sous tableaux ne contenant qu&#8217;un seul &#233;l&#233;ment (et donc d&#233;j&#224; tri&#233;s), et encore un sous tableaux contenant deux &#233;l&#233;ments sur lequel on va appliquer le principe de partitionnement.</p>
+<p>3 | 5 | 7 | 8 | 9 -&gt; je prends comme pivot 9 et je place donc 8 &#224; sa gauche, mon tableau ne contient plus aucun sous tableau de plus d&#8217;un &#233;l&#233;ment, il est donc enti&#232;rement tri&#233;.</p>
+<p>3, 5, 7, 8, 9</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Voici le pseudo-code du tri rapide :</p>
+<pre class="nohighlight"><code>triRapide (Tableau, d&#233;but, fin) :
+   Si le tableau actuel a plus d&#39;un &#233;l&#233;ment
+      Choisir le pivot
+      &#201;changer le pivot avec le premier &#233;l&#233;ment du tableau
+      dernierEmplacement -&gt; d&#233;but (emplacement du pivot)
+
+      Pour i = d&#233;but + 1, allant jusqu&#39;&#224; fin &#224; pas de 1
+         Si Tableau[i] est inf&#233;rieur au pivot
+            Incr&#233;menter dernierEmplacement
+            &#201;changer l&#39;&#233;l&#233;ment i de Tableau et l&#39;&#233;l&#233;ment dernierEmplacement
+      Placer le pivot &#224; sa place d&#233;finitive
+
+   triRapide(Tableau, d&#233;but, dernierEmplacement - 1)
+   triRapide(Tableau, dernierEmplacement + 1, fin)</code></pre>
+<p>Quelques remarques sur ce pseudo-code :</p>
+<ul>
+<li>Le choix du pivot est important dans le tri rapide, je vais faire comme dans l&#8217;exemple et toujours choisir l&#8217;&#233;l&#233;ment du milieu.</li>
+<li>On place le pivot que l&#8217;on a choisi au d&#233;but du tableau pour pouvoir plus facilement parcourir le tableau sans passer par le pivot (on parcourt tout simplement le tableau entier en commen&#231;ant &#224; partir du deuxi&#232;me &#233;l&#233;ment). Cependant il nous faut garder l&#8217;emplacement de se pivot pour pouvoir bien le placer &#224; la fin du partitionnement (d&#8217;o&#249; la variable <code>dernierEmplacement</code>).</li>
+<li>On parcourt le tableau et on &#233;change les &#233;l&#233;ments inf&#233;rieurs au pivot, pour les mettre &#224; leurs places.</li>
+<li>On place le pivot &#224; sa place d&#233;finitive.</li>
+<li>Enfin on rappelle la fonction <code>triRapide</code> mais sur les sous tableaux <em>d&#233;but &#224; dernierEmplacement &#8211; 1</em> et <em>dernireEmplacement + 1 &#224; fin</em> qui sont les sous tableaux situ&#233;s aux extr&#233;mit&#233;s du pivot (l&#8217;&#233;l&#233;ment situ&#233; au milieu du tableau).</li>
+</ul>
+<p>Pour bien comprendre ce pseudo-code et le fonctionnement du tri rapide, je vous conseille vivement de suivre ce pseudo-code &#224; la lettre sur l&#8217;exemple donn&#233; au dessus.</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>Le tri rapide a une complexit&#233; moyenne de <em>O(N * log(N))</em> :</p>
+<ul>
+<li>Dans la fonction <code>triRapide</code>, on utilise une boucle qui parcourt le tableau de taille <em>N</em>, cette boucle a donc pour complexit&#233; <em>O(N)</em>.</li>
+<li>Ensuite &#224; la fin de la fonction <code>triRapide</code>, on appelle r&#233;cursivement la fonction deux fois. Si vous ne le savez pas, les algorithmes utilisant le principe du diviser pour r&#233;gner ont une complexit&#233; de <em>O(log(N))</em>.</li>
+</ul>
+<p>Donc si l&#8217;on fusionne nos deux complexit&#233;s on se retrouve avec comme complexit&#233; finale de <em>O(N * log(N))</em>.</p>
+<p>L&#8217;algorithme du tri rapide peut &#234;tre deux fois plus rapide que le <a href="http://napnac.ga/algo/tri/tri_tas.html">tri par tas</a> pour une raison de cache et de m&#233;moire. En effet, lorsque vous acc&#233;dez &#224; votre tableau, la m&#233;moire garde en cache le tableau (ou une partie s&#8217;il est trop grand), si vous demandez un &#233;l&#233;ment hors du cache, la m&#233;moire va aller chercher l&#8217;&#233;l&#233;ment et &#224; son tour charger dans la m&#233;moire cache la partie du tableau contenant cet &#233;l&#233;ment. Le tri par tas compare des &#233;l&#233;ments du tableau assez &#233;loign&#233;s ce qui signifie que sur de grandes entr&#233;es (dont la taille d&#233;passe celle du cache), la m&#233;moire sera amen&#233; &#224; charger bien plus d&#8217;&#233;l&#233;ments dans le cache et donc cela ralentie l&#8217;algorithme.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>L&#8217;impl&#233;mentation suit le pseudo-code :</p>
+<p>main.c :</p>
+<p>L&#8217;impl&#233;mentation en C est rudimentaire, et est l&#224; pour vous proposer un code facile &#224; comprendre et &#224; utiliser. Vous pouvez aussi l&#8217;am&#233;liorer avec les id&#233;es que je vous propose ci-dessous.</p>
+<p>Aucun commentaire &#224; propos du code, si vous avez compris le pseudo-code vous n&#8217;aurez aucun mal &#224; comprendre cette impl&#233;mentation.</p>
+<h2 id="am&#233;lioration-1">Am&#233;lioration 1</h2>
+<p>La premi&#232;re am&#233;lioration &#224; faire sur notre algorithme concerne le choix du pivot. En effet ce choix peut am&#233;liorer le temps d&#8217;ex&#233;cution du tri rapide, pour cela il faut choisir un pivot optimal comme la valeur <strong>m&#233;diane</strong> du tableau. La valeur m&#233;diane d&#8217;un tableau est l&#8217;&#233;l&#233;ment qui est situ&#233; au milieu du tableau et qui coupe ce dernier en deux sous tableaux de m&#234;me taille. De plus elle peut &#234;tre trouv&#233;e en temps lin&#233;aire dans un tableau.</p>
+<p>Par exemple avec ce tableau de nombres : 3, 9, 7, 5, 1. Si l&#8217;on suit notre algorithme on devrait prendre 7 comme pivot, on se retrouve donc avec les deux sous tableaux suivants : 1, 3, 5 et 9 qui ne sont pas de la m&#234;me taille. En revanche si l&#8217;on prend 5 (la valeur m&#233;diane du tableau) comme pivot on se retrouve avec les deux sous tableaux : 1, 3 et 7, 9 qui contiennent deux &#233;l&#233;ments chacun.</p>
+<p>Cette am&#233;lioration nous permet donc de raccourcir le nombre d&#8217;appels r&#233;cursifs de la fonction et ainsi d&#8217;am&#233;liorer sa complexit&#233; en temps. Techniquement, avec notre nouvel algorithme le tri rapide a pour complexit&#233; dans le pire des cas en <em>O(N * log(N))</em>.</p>
+<h2 id="am&#233;lioration-2">Am&#233;lioration 2</h2>
+<p>La deuxi&#232;me am&#233;lioration se base sur le fait que le tri rapide est moins rapide (paradoxalement) sur une petite entr&#233;e que d&#8217;autres algorithmes de tri comme le <a href="http://napnac.ga/algo/tri/tri_insertion.html">tri par insertion</a>, ou le <a href="http://napnac.ga/algo/tri/tri_selection.html">tri par s&#233;lection</a> (qui eux sont moins efficaces sur des entr&#233;es de grande taille).</p>
+<p>On peut donc combiner les deux tris, et faire en sorte d&#8217;utiliser le tri par insertion (ou par s&#233;lection) lorsque le tableau inf&#233;rieure &#224; une certaine limite, sinon on utilise le tri rapide. Cette taille limite tourne en g&#233;n&#233;ral au tour des 15 &#233;l&#233;ments en moyenne mais varie selon l&#8217;ordinateur.</p>
+<p>Cette am&#233;lioration est plus rapide, mais n&#8217;est pas optimale &#224; cause de la limite qu&#8217;il faut fixer, or cette derni&#232;re varie beaucoup.</p>
+<h2 id="am&#233;lioration-3">Am&#233;lioration 3</h2>
+<p>Enfin la derni&#232;re am&#233;lioration que je vous pr&#233;sente est l&#8217;Introsort. C&#8217;est une variante du tri rapide permettant d&#8217;am&#233;liorer sa complexit&#233; en temps dans le pire des cas en <em>O(N * log(N))</em>. Pour cela, l&#8217;Introsort arr&#234;te le tri rapide lorsque la r&#233;cursion d&#233;passe une certaine profondeur et utilise un algorithme de tri plus efficace dans ce genre de situation comme le <a href="http://napnac.ga/algo/tri/tri_tas.html">tri par tas</a> pour finir le travail. Ensuite le tri rapide reprend la main sur le tri par tas, et ainsi de suite.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tri rapide est donc un algorithme de tri efficace, qui a une complexit&#233; en <em>O(N * log(N))</em> et <em>O(N&#178;)</em> dans le pire des cas (ce qui est assez rare, en pratique le tri s&#8217;ex&#233;cute en <em>O(N * log(N))</em>). Cependant cet algorithme est tr&#232;s utilis&#233;, et peut &#234;tre largement am&#233;lior&#233;. Cet algorithme est m&#234;me impl&#233;ment&#233; dans certains langages de programmation comme le C avec la fonction <a href="http://www.cplusplus.com/reference/cstdlib/qsort/?kw=qsort">qsort</a> d&#233;finit dans <code>stdlib.h</code>.</p>
  
       <!-- ------------ -->
 

@@ -133,6 +133,38 @@ table tr:nth-child(2n) {
 <h1 id="tri-par-s&#233;lection">Tri par s&#233;lection</h1>
 <p>Publi&#233; le : 30/04/2014<br />
 <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Le tri par s&#233;lection (<em>selection sort</em> en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entr&#233;e trop importante, c&#8217;est un algorithme non stable mais qui tri en place. Il a pour complexit&#233; algorithmique <em>O(N&#178;)</em> comme le <a href="http://napnac.ga/algo/tri/tri_bulles.html">tri &#224; bulles</a>.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>Le tri par s&#233;lection consiste &#224; trouver le plus petit &#233;l&#233;ment du tableau (ou le plus grand), puis de le placer &#224; la premi&#232;re case du tableau (ou la derni&#232;re si vous avez choisis le plus grand &#233;l&#233;ment). Ensuite on fait pareil pour le deuxi&#232;me plus petit (ou plus grand) &#233;l&#233;ment et on le place &#224; la deuxi&#232;me case du tableau (ou avant derni&#232;re encore une fois si vous avez choisis le plus grand &#233;l&#233;ment). On continue ainsi jusqu&#8217;&#224; avoir tri&#233; tous les &#233;l&#233;ments du tableau, c&#8217;est-&#224;-dire lorsqu&#8217;on a plac&#233; le <em>Ni&#232;me</em> &#233;l&#233;ment le plus petit (ou plus grand) &#224; sa place, avec <em>N</em> &#233;tant la taille du tableau.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons d&#233;sormais comme exemple la suite de nombres suivante : 6, 1, 9, 3. Trions cette suite avec l&#8217;algorithme du tri par s&#233;lection dans l&#8217;ordre croissant : 1er tour : 6, 1, 9, 3 -&gt; le plus petit &#233;l&#233;ment du tableau est 1, le deuxi&#232;me &#233;l&#233;ment, on l&#8217;&#233;change avec le premier, qui est 6. 2&#232;me tour : 1, 6, 9, 3 -&gt; le deuxi&#232;me plus petit &#233;l&#233;ment du tableau est 3, le quatri&#232;me &#233;l&#233;ment, on l&#8217;&#233;change avec le deuxi&#232;me qui est 6. 3&#232;me tour : 1, 3, 9, 6 -&gt; le troisi&#232;me plus petit &#233;l&#233;ment du tableau est 6, le quatri&#232;me &#233;l&#233;ment, on l&#8217;&#233;change avec le troisi&#232;me qui est 9. 1, 3, 6, 9</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du tri par s&#233;lection est simple :</p>
+<pre class="nohighlight"><code>Soit N la taille du tableau &#224; trier
+
+triParSelection(Tableau, N) :
+   Pour i = 0, allant jusqu&#39;&#224; N &#224; pas de 1
+      Pour j = i + 1, allant jusqu&#39;&#224; N &#224; pas de 1
+         Si l&#39;&#233;l&#233;ment j est le minimum du tableau actuellement rencontr&#233; jusqu&#39;ici
+            min -&gt; j
+      Si l&#39;&#233;l&#233;ment i est diff&#233;rent de l&#39;&#233;l&#233;ment min
+         &#201;changer l&#39;&#233;l&#233;ment i et l&#39;&#233;l&#233;ment min</code></pre>
+<p>Vous remarquez que nous faisons un test avant d&#8217;&#233;changer le plus petit &#233;l&#233;ment, en effet si le plus petit &#233;l&#233;ment est l&#8217;&#233;l&#233;ment <em>i</em>, alors &#231;a ne sert &#224; rien de l&#8217;&#233;changer car il est d&#233;j&#224; &#224; la bonne place. Voici une image r&#233;sumant bien le fonctionnement de l&#8217;algorithme (en jaune c&#8217;est l&#8217;&#233;l&#233;ment actuel, en rouge c&#8217;est le minimum de la partie bleue, en bleue c&#8217;est le reste du tableau non tri&#233;) :</p>
+<p>source : http://csud.educanet2.ch/3oc-info/1_Programmation/6_Algorithmique/page3.html</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>Comme pour le tri &#224; bulles, le tri par s&#233;lection a une complexit&#233; en <em>O(N&#178;)</em> :</p>
+<ul>
+<li>La premi&#232;re boucle du pseudo-code parcourt <em>N</em> tours.</li>
+<li>La deuxi&#232;me boucle du pseudo-code parcourt <em>N &#8211; i</em> tours (<em>i</em> variant de 0 &#224; <em>N</em>).</li>
+</ul>
+<p>Sa complexit&#233; devrait donc &#234;tre l&#233;g&#232;rement inf&#233;rieure &#224; <em>N&#178;</em>, cependant cette diff&#233;rence est mineure et sa complexit&#233; est donc consid&#233;r&#233; comme &#233;tant en <em>O(N&#178;)</em>.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Le lien vers une impl&#233;mentation en C de l&#8217;algorithme du tri par s&#233;lection :</p>
+<p>main.c :</p>
+<p>Impl&#233;mentation tr&#232;s simple dans le but de vous offrir un code facile &#224; comprendre, &#224; utiliser et &#224; am&#233;liorer.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>L&#8217;algorithme du tri par s&#233;lection est donc un algorithme simple, mais peu efficace &#224; cause de sa complexit&#233; en <em>O(N&#178;)</em>. C&#8217;est un algorithme non stable mais qui trie sur place.</p>
  
       <!-- ------------ -->
 

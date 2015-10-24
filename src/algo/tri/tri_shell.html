@@ -133,6 +133,62 @@ table tr:nth-child(2n) {
 <h1 id="tri-shell">Tri Shell</h1>
 <p>Publi&#233; le : 03/05/2014<br />
 <em>Modifi&#233; le :</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Le tri Shell (<em>Shell sort</em> en anglais) est un algorithme de tri par comparaison invent&#233; en 1959 par Donald L. Shell, cet algorithme est bas&#233; sur le <a href="http://napnac.ga/algo/tri/tri_insertion.html">tri par insertion</a>. En effet le tri Shell utilise la propri&#233;t&#233; du tri par insertion d&#8217;&#234;tre tr&#232;s rapide sur des tableaux presque tri&#233;s, on va donc &#233;changer quelques &#233;l&#233;ments du tableau &#224; un &#233;cart bien pr&#233;cis (calcul&#233; &#224; l&#8217;aide d&#8217;une formule math&#233;matique), puis appliquer le tri par insertion sur le tableau qui est alors presque tri&#233;. Cet algorithme n&#8217;est pas stable contrairement au tri par insertion mais tri sur place.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>Le principe de l&#8217;algorithme est le m&#234;me que celui du tri par insertion, sauf qu&#8217;on va comparer les &#233;l&#233;ments du tableau &#224; un certain intervalle (si cet intervalle est de un, alors cela revient &#224; effectuer un tri par insertion). On peut calculer cet intervalle gr&#226;ce &#224; la formule math&#233;matique suivante :</p>
+<p><em>&#201;cart(N + 1) = 3 * &#201;cart(N) + 1</em>, avec <em>&#201;cart(0) = 0</em></p>
+<p>Cette formule permet de calculer un &#233;cart relativement optimis&#233; pour permettre au tri Shell d&#8217;&#234;tre plus rapide que le tri par insertion. L&#8217;&#233;cart est extr&#234;mement important, et ne doit pas &#234;tre choisi au hasard car c&#8217;est l&#8217;&#233;l&#233;ment cl&#233; de cet algorithme, et c&#8217;est lui qui va faire la diff&#233;rence au niveau du temps.</p>
+<p>Une fois que l&#8217;&#233;cart est calcul&#233; (on va l&#8217;appeler <em>E</em>), on &#233;change (si n&#233;cessaire et en fonction de l&#8217;ordre de tri voulu), les valeurs ayant pour &#233;cart <em>E</em>. On fait cela jusqu&#8217;&#224; ce que <em>E</em> soit &#233;gal &#224; 1, une fois que c&#8217;est le cas, on applique juste un tri par insertion sur le tableau qui est alors beaucoup moins en d&#233;sordre.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons comme exemple la suite de nombre suivante et appliquons lui l&#8217;algorithme du tri Shell dans un ordre croissant : 5, 8, 2, 9, 1, 3 :</p>
+<p>Tout d&#8217;abord, il faut calculer l&#8217;&#233;cart <em>E</em> en fonction de la taille de la suite (ici la suite comporte 6 &#233;l&#233;ments) :</p>
+<pre class="nohighlight"><code>&#201;cart(0) = 0
+&#201;cart(1) = 3 * &#201;cart(0) + 1 = 3 * 0 + 1 = 1
+&#201;cart(2) = 3 * &#201;cart(1) + 1 = 3 * 1 + 1 = 4
+&#201;cart(3) = 3 * &#201;cart(2) + 1 = 3 * 4 + 1 = 13</code></pre>
+<p>On s&#8217;arr&#234;te d&#232;s que la valeur calcul&#233;e d&#233;passe le nombre d&#8217;&#233;l&#233;ments &#224; trier, ici on s&#8217;arr&#234;te donc &#224; 13. On a donc nos diff&#233;rents &#233;carts :</p>
+<ul>
+<li>13 n&#8217;est pas pris en compte car il est sup&#233;rieur &#224; 6, il n&#8217;y a donc aucun &#233;l&#233;ment avec un &#233;cart de 13 cases dans ce tableau.</li>
+<li>4 est donc le premier &#233;cart.</li>
+<li>1 est le dernier, je vous rappelle que lorsque l&#8217;&#233;cart est &#233;gal &#224; un c&#8217;est comme si l&#8217;on utilisait le tri par insertion.</li>
+</ul>
+<p>Ici on a donc seulement un &#233;cart que l&#8217;on peut utiliser (sans compter le 1, car c&#8217;est le cas de base), mais sur de plus grands tableaux avec plusieurs centaines d&#8217;&#233;l&#233;ments on utilisera bien plus d&#8217;&#233;cart.</p>
+<p>Premi&#232;re &#233;tape, on utilise notre premier &#233;cart (4) pour comparer les &#233;l&#233;ments et les &#233;changer s&#8217;ils ne sont pas dans l&#8217;ordre croissant :</p>
+<p>5, 8, 2, 9, 1, 3 -&gt; on voit que 5 est sup&#233;rieur &#224; 1, on les &#233;change.</p>
+<p>1, 8, 2, 9, 5, 3 -&gt; on voit que 8 est sup&#233;rieur &#224; 3, on les &#233;change.</p>
+<p>1, 3, 2, 9, 5, 8 -&gt; plus d&#8217;&#233;change possible avec un &#233;cart de 4, on passe donc au prochain &#233;cart : 1.</p>
+<p>Deuxi&#232;me &#233;tape, appliquer le tri par insertion sur le tableau. Je ne vous montre pas cette &#233;tape car il vous suffit de lire l&#8217;article que j&#8217;ai r&#233;dig&#233; &#224; propos du tri par insertion pour comprendre le fonctionnement de cette &#233;tape. Cependant vous remarquez que le tableau est bien plus ordonn&#233; qu&#8217;au d&#233;part (m&#234;me s&#8217;il est petit, et on utilise rarement le tri Shell sur des tableaux aussi petits mais c&#8217;est plus simple pour vous en faire un exemple).</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du tri Shell :</p>
+<pre class="nohighlight"><code>Soit N la taille du tableau &#224; trier
+
+triShell(Tableau, N) :
+   Pour E = &#233;cart maximum du tableau (inf&#233;rieur &#224; N), allant jusqu&#39;&#224; 1 et divis&#233; par 3 &#224; chaque tour
+      Pour i = E, allant jusqu&#39;&#224; N &#224; pas de 1
+         temporaire -&gt; valeur de l&#39;&#233;l&#233;ment i du tableau
+         j -&gt; i, Tant que j est sup&#233;rieur &#224; E - 1 ET l&#39;&#233;l&#233;ment j - E est sup&#233;rieur &#224; temporaire
+            D&#233;caler les &#233;l&#233;ments j et j - E du tableau
+            j -&gt; j - E
+         Ins&#233;rer la valeur temporaire &#224; l&#39;&#233;l&#233;ment j du tableau</code></pre>
+<p>Quelques points sur le pseudo-code :</p>
+<ul>
+<li>Je passe la partie o&#249; l&#8217;on calcule l&#8217;&#233;cart maximum car je fais appelle &#224; une fonction qui le fait pour moi (dans notre exemple plus haut, la fonction aurait renvoy&#233; 4). Ensuite je divise &#224; chaque tour par 3, pour pouvoir retrouver toutes mes valeurs d&#8217;&#233;carts obtenues au fur et &#224; mesure de la formule. En effet, si j&#8217;effectue une division euclidienne de 13 par 3 j&#8217;obtiens bien 4, et si je fais pareil avec 4 et 3, j&#8217;obtiens 1, on retrouve donc : 13, 4 et 1 qui sont les bonnes valeurs.</li>
+<li>On d&#233;cale les &#233;l&#233;ments comme dans le tri par insertion, c&#8217;est-&#224;-dire que l&#8217;on sauvegarde la valeur situ&#233;e &#224; l&#8217;&#233;l&#233;ment <em>i</em> (initialis&#233; &#224; <em>E</em>), puis si on peut d&#233;caler l&#8217;&#233;l&#233;ment actuel d&#8217;une place vers la droite (sans &#234;tre en dehors du tableau) on le fait, et enfin on ins&#232;re notre donn&#233;e sauvegard&#233;e auparavant.</li>
+</ul>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>La complexit&#233; de l&#8217;algorithme de tri Shell dans le pire des cas est en <em>O(N&#178;)</em>, cependant cet algorithme est plus rapide que le tri par insertion.</p>
+<p>Le calcul exact de la complexit&#233; de cet algorithme est assez complexe, de plus il varie en fonction de l&#8217;&#233;cart choisi et du tableau &#224; proprement parl&#233;. Il faut donc retenir que cet algorithme &#224; une complexit&#233; dans le pire des cas en <em>O(N&#178;)</em>, mais qu&#8217;il est toujours plus efficace que le tri par insertion.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Le lien vers une impl&#233;mentation en C du tri Shell :</p>
+<p>main.c :</p>
+<p>Quelques explications &#224; propos du code C :</p>
+<ul>
+<li>Tout d&#8217;abord, je cr&#233;e une fonction <code>formule</code> me renvoyant l&#8217;&#233;cart maximum possible avec mon tableau. On renvoie &#224; la fin <code>ecart / 3</code> car je vous rappelle que l&#8217;on veut que cette fonction nous renvoie 4 et non 13 pour rester avec notre exemple.</li>
+<li>Ensuite, le reste du code est le m&#234;me que pour le pseudo-code.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>L&#8217;algorithme du tri Shell est donc une am&#233;lioration efficace du tri par insertion, m&#234;me s&#8217;il reste en <em>O(N&#178;)</em> dans le pire des cas.</p>
  
       <!-- ------------ -->
 

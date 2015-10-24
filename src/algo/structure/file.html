@@ -142,33 +142,54 @@ table tr:nth-child(2n) {
 <li>Le dernier client arriv&#233; dans la file sera le dernier servi.</li>
 </ul>
 <p>Voici comment on pourrait repr&#233;senter une file :</p>
-<p>+---------+ +---------+ +---------+ Entr&#233;e +-&gt; | Pointeur|+--&gt;| Pointeur|+--&gt;| Pointeur| +-&gt; Sortie |---------| |---------| |---------| | Donn&#233;es | | Donn&#233;es | | Donn&#233;es | | | | | | | +---------+ +---------+ +---------+</p>
-<p>L&#8217;action d&#8217;ajouter un &#233;l&#233;ment dans la file est appel&#233; : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
-<p>+---------+ +---------+ +---------+ Entr&#233;e +-&gt; | Pointeur|+--&gt;| Pointeur|+--&gt;| Pointeur| +-&gt; Sortie ^ |---------| |---------| |---------| | | Donn&#233;es | | Donn&#233;es | | Donn&#233;es | | | | | | | | | +---------+ +---------+ +---------+ | | + +---------+ | Pointeur| |---------| | Donn&#233;es | | | +---------+</p>
-<p>Nouvel &#233;l&#233;ment</p>
-<p>L&#8217;action d&#8217;enlever un &#233;l&#233;ment de la file est appel&#233; : <strong>d&#233;filer</strong> (ou <em>dequeue</em> en anglais) :</p>
-<p>+---------+ +---------+ +---------+ Entr&#233;e +-&gt; | Pointeur|+--&gt;| Pointeur|+--&gt;| Pointeur| +-&gt; Sortie |---------| |---------| |---------| ^ | Donn&#233;es | | Donn&#233;es | | Donn&#233;es | | | | | | | |+------+ +---------+ +---------+ +---------+</p>
-<p>&#201;l&#233;ment &#224; enlever</p>
-<p>Cette fois-ci je ne vous montrerai qu&#8217;un seul moyen d&#8217;impl&#233;menter la file : la <a href="http://napnac.ga/algo/structure/liste_chainee.html">liste cha&#238;n&#233;e</a>. Tout simplement car les tableaux ne sont pas du tout adapt&#233;s &#224; ce genre de structure de donn&#233;es car il faudrait d&#233;caler chaque &#233;l&#233;ment lorsqu&#8217;on enfilera un &#233;l&#233;ment ce qui est lourd et inutile en op&#233;rations.</p>
+<p><img src="/static/img/algo/structure/file/exexemple_file.png" alt="Exemple repr&#233;sentation d&#39;une file" /> L&#8217;action d&#8217;ajouter un &#233;l&#233;ment dans la file est appel&#233;e : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/file/exemple_ajout.png" alt="Un nouvel &#233;l&#233;ment est enfil&#233;" />
+<p class="caption">Un nouvel &#233;l&#233;ment est enfil&#233;</p>
+</div>
+<p>L&#8217;action d&#8217;enlever un &#233;l&#233;ment de la file est appel&#233;e : <strong>d&#233;filer</strong> (ou <em>dequeue</em> en anglais) :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/file/exemple_suppression.png" alt="Un &#233;l&#233;ment est d&#233;fil&#233;" />
+<p class="caption">Un &#233;l&#233;ment est d&#233;fil&#233;</p>
+</div>
+<p>Cette fois ci je ne vous montrerai qu&#8217;un seul moyen d&#8217;impl&#233;menter la file : la <a href="http://napnac.ga/algo/structure/liste_chainee.html">liste cha&#238;n&#233;e</a>. Tout simplement car les tableaux ne sont pas du tout adapt&#233;s &#224; ce genre de structure de donn&#233;es car il faudrait d&#233;caler chaque &#233;l&#233;ment lorsqu&#8217;on enfilera un &#233;l&#233;ment ce qui est lourd et inutile en op&#233;rations.</p>
 <h2 id="quelques-fonctions-pour-manipuler-une-file">Quelques fonctions pour manipuler une file</h2>
-<h3 id="cr&#233;er-une-file">Cr&#233;er une file</h3>
-<p>Cr&#233;er une nouvelle structure de donn&#233;es de type File Initialiser la structure Retourner la nouvelle structure</p>
-<h3 id="supprimer-une-file">Supprimer une file</h3>
-<p>Parcourir la file jusqu'&#224; la fin Supprimer l'&#233;l&#233;ment actuel</p>
-<h3 id="enfiler">Enfiler</h3>
-<p>Cr&#233;er le nouvel &#233;l&#233;ment Affecter les donn&#233;es souhait&#233;es au nouvel &#233;l&#233;ment Faire pointer le nouvel &#233;l&#233;ment vers le d&#233;but de la file</p>
-<h3 id="d&#233;filer">D&#233;filer</h3>
-<p>Parcourir la file jusqu'&#224; l'avant dernier &#233;l&#233;ment Sauvegarder les donn&#233;es du dernier &#233;l&#233;ment Faire pointer l'avant dernier &#233;l&#233;ment vers NULL Supprimer le dernier &#233;l&#233;ment Retourner les donn&#233;es sauvegard&#233;es</p>
-<h3 id="afficher">Afficher</h3>
-<p>Parcourir la file jusqu'&#224; la fin Afficher l'&#233;l&#233;ment actuel</p>
-<h3 id="est-vide">Est vide ?</h3>
-<p>Si le premier &#233;l&#233;ment de la file pointe vers NULL Retourner 1 Sinon Retourner 0</p>
-<h3 id="nombre-d&#233;l&#233;ment-dans-la-file">Nombre d&#8217;&#233;l&#233;ment dans la file</h3>
-<p>Parcourir la file Incr&#233;menter un compteur (initialis&#233; &#224; 0) Retourner le compteur</p>
+<p>Comme pour une liste cha&#238;n&#233;e et une pile, des fonctions de bases sont n&#233;cessaires pour bien manipuler une file.</p>
+<pre class="nohighlight"><code>cr&#233;erFile :
+   Cr&#233;er un premier &#233;l&#233;ment
+   Initialiser les donn&#233;es de l&#39;&#233;l&#233;ment
+   Le faire pointer sur NULL (pour indiquer la fin de la file)
+   Retourner l&#39;&#233;l&#233;ment
+supprimerFile :
+   Pour chaque &#233;l&#233;ment de la file
+      Supprimer l&#39;&#233;l&#233;ment actuel
+
+enfiler (&#233;l&#233;ment) :
+   Faire pointer le nouvel &#233;l&#233;ment vers le d&#233;but de la file
+d&#233;filer :
+   Parcourir la file jusqu&#39;&#224; l&#39;avant dernier &#233;l&#233;ment
+   Sauvegarder les donn&#233;es du dernier &#233;l&#233;ment
+   Faire pointer l&#39;avant dernier &#233;l&#233;ment sur NULL
+   Supprimer le dernier &#233;l&#233;ment
+   Retourner les donn&#233;es sauvegard&#233;es
+
+afficher :
+   Pour chaque &#233;l&#233;ment de la file
+      Afficher les donn&#233;es de l&#39;&#233;l&#233;ment actuel
+
+estVide :
+   Si le premier &#233;l&#233;ment de la file est NULL
+      Retourner vrai
+   Sinon
+      Retourner faux
+
+taille :
+   Pour chaque &#233;l&#233;ment de la file
+      Incr&#233;menter nbElement
+   Retourner nbElement</code></pre>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Le lien vers une impl&#233;mentation en C d&#8217;une file :</p>
-<p>main.c : http://git.io/vtzUE main.h : http://git.io/vtzUg</p>
-<p>Aucun commentaires &#224; faire sur cette impl&#233;mentation.</p>
+<p>main.c :</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>La file est donc une structure de donn&#233;es utile lorsqu&#8217;il s&#8217;agit d&#8217;impl&#233;menter une file d&#8217;attente.</p>
  

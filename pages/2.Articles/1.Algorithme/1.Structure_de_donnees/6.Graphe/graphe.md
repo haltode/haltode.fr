@@ -149,8 +149,6 @@ Voici une liste non exhaustive d'opérations utiles lorsqu'on manipule un graphe
 - Arbre couvrant minimal
 - Composante fortement connexe
 
-*Plusieurs articles sur chacunes des opérations sont prévus.*
-
 ## Conclusion
 
 Un graphe est une structure de données incontournable, utilisée dans de très nombreux problèmes (plus ou moins complexes) dans la vie de tous les jours dans beaucoup de domaines différents comme :

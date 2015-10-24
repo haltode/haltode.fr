@@ -1,5 +1,5 @@
-Tri par paquet
-==============
+Tri par paquets
+===============
 algo/tri
 
 Publié le :  
