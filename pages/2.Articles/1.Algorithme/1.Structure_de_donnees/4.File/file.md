@@ -18,8 +18,8 @@ Une file fonctionne exactement comme une file d’attente dans un magasin :
 
 Voici comment on pourrait représenter une file :
 
-![Exemple représentation d'une file](/static/img/algo/structure/file/exexemple_file.png
-)
+![Exemple représentation d'une file](/static/img/algo/structure/file/exemple_file.png)
+
 L’action d’ajouter un élément dans la file est appelée : **enfiler** (ou *enqueue* en anglais) :
 
 ![Un nouvel élément est enfilé](/static/img/algo/structure/file/exemple_ajout.png)
@@ -28,7 +28,7 @@ L’action d’enlever un élément de la file est appelée : **défiler** (ou *
 
 ![Un élément est défilé](/static/img/algo/structure/file/exemple_suppression.png)
 
-Cette fois ci je ne vous montrerai qu’un seul moyen d’implémenter la file : la [liste chaînée](http://napnac.ga/algo/structure/liste_chainee.html). Tout simplement car les tableaux ne sont pas du tout adaptés à ce genre de structure de données car il faudrait décaler chaque élément lorsqu’on enfilera un élément ce qui est lourd et inutile en opérations.
+Cette fois ci, j'implémenterai la file uniquement avec une [liste chaînée](http://napnac.ga/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise beaucoup d'opérations inutiles).
 
 ## Quelques fonctions pour manipuler une file
 
@@ -69,11 +69,28 @@ taille :
    Retourner nbElement
 ```
 
+## Complexité
+
+Soit *N* le nombre d'éléments de la file.
+
+- `créerFile` : *O(1)*
+- `supprimerFile` : *O(N)*
+- `enfiler` : *O(1)*
+- `défiler` : *O(N)*
+- `afficher` : *O(N)*
+- `estVide` : *O(1)*
+- `taille` : *O(N)*
+
+
 ## Implémentation
 
 Le lien vers une implémentation en C d’une file :
 
 main.c : 
+
+### STL
+
+Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Template_Library) (*Standard Template Library*) fournit une implémentation et des fonctions permettant de manipuler une file : <http://www.cplusplus.com/reference/queue/queue/> 
 
 ## Conclusion
 

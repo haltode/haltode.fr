@@ -11,12 +11,10 @@ Algorithme :
          - Relecture + clarification explications
       - Pile :
          - Refaire code source
-         - Complexité
       - File : 
          - Refaire code source
-         - Complexité
-         - STL
          - Conclusion (ouverture sur les différentes utilisations d'une file)
+         - Opti fonction défiler ? Un pointeur sur le dernier élément pour éviter de parcourir la file
       - Tries + Ternary search tries
    - Tri :
       - Tri fusion : lien logarithme wiki

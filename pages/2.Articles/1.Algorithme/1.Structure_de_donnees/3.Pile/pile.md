@@ -103,6 +103,18 @@ taille :
    Retourner PP
 ```
 
+## Complexité
+
+Soit *N* le nombre d'éléments de la pile.
+
+- `créerPile` : *O(1)*
+- `supprimerPile` : *O(N)*
+- `empiler` : *O(1)*
+- `dépiler` : *O(1)*
+- `afficher` : *O(N)*
+- `estVide` : *O(1)*
+- `taille` : *O(N)*
+
 ## Implémentation
 
 ### Liste chaînée

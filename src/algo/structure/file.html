@@ -142,7 +142,11 @@ table tr:nth-child(2n) {
 <li>Le dernier client arriv&#233; dans la file sera le dernier servi.</li>
 </ul>
 <p>Voici comment on pourrait repr&#233;senter une file :</p>
-<p><img src="/static/img/algo/structure/file/exexemple_file.png" alt="Exemple repr&#233;sentation d&#39;une file" /> L&#8217;action d&#8217;ajouter un &#233;l&#233;ment dans la file est appel&#233;e : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/file/exemple_file.png" alt="Exemple repr&#233;sentation d&#39;une file" />
+<p class="caption">Exemple repr&#233;sentation d'une file</p>
+</div>
+<p>L&#8217;action d&#8217;ajouter un &#233;l&#233;ment dans la file est appel&#233;e : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/file/exemple_ajout.png" alt="Un nouvel &#233;l&#233;ment est enfil&#233;" />
 <p class="caption">Un nouvel &#233;l&#233;ment est enfil&#233;</p>
@@ -152,7 +156,7 @@ table tr:nth-child(2n) {
 <img src="/static/img/algo/structure/file/exemple_suppression.png" alt="Un &#233;l&#233;ment est d&#233;fil&#233;" />
 <p class="caption">Un &#233;l&#233;ment est d&#233;fil&#233;</p>
 </div>
-<p>Cette fois ci je ne vous montrerai qu&#8217;un seul moyen d&#8217;impl&#233;menter la file : la <a href="http://napnac.ga/algo/structure/liste_chainee.html">liste cha&#238;n&#233;e</a>. Tout simplement car les tableaux ne sont pas du tout adapt&#233;s &#224; ce genre de structure de donn&#233;es car il faudrait d&#233;caler chaque &#233;l&#233;ment lorsqu&#8217;on enfilera un &#233;l&#233;ment ce qui est lourd et inutile en op&#233;rations.</p>
+<p>Cette fois ci, j'impl&#233;menterai la file uniquement avec une <a href="http://napnac.ga/algo/structure/liste_chainee.html">liste cha&#238;n&#233;e</a> car les tableaux ne sont pas du tout adapt&#233;s &#224; ce genre de structure de donn&#233;es (soit on gaspille de la m&#233;moire, soit on r&#233;alise beaucoup d'op&#233;rations inutiles).</p>
 <h2 id="quelques-fonctions-pour-manipuler-une-file">Quelques fonctions pour manipuler une file</h2>
 <p>Comme pour une liste cha&#238;n&#233;e et une pile, des fonctions de bases sont n&#233;cessaires pour bien manipuler une file.</p>
 <pre class="nohighlight"><code>cr&#233;erFile :
@@ -187,9 +191,22 @@ taille :
    Pour chaque &#233;l&#233;ment de la file
       Incr&#233;menter nbElement
    Retourner nbElement</code></pre>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>Soit <em>N</em> le nombre d'&#233;l&#233;ments de la file.</p>
+<ul>
+<li><code>cr&#233;erFile</code> : <em>O(1)</em></li>
+<li><code>supprimerFile</code> : <em>O(N)</em></li>
+<li><code>enfiler</code> : <em>O(1)</em></li>
+<li><code>d&#233;filer</code> : <em>O(N)</em></li>
+<li><code>afficher</code> : <em>O(N)</em></li>
+<li><code>estVide</code> : <em>O(1)</em></li>
+<li><code>taille</code> : <em>O(N)</em></li>
+</ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Le lien vers une impl&#233;mentation en C d&#8217;une file :</p>
 <p>main.c :</p>
+<h3 id="stl">STL</h3>
+<p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation et des fonctions permettant de manipuler une file : <a href="http://www.cplusplus.com/reference/queue/queue/" class="uri">http://www.cplusplus.com/reference/queue/queue/</a></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>La file est donc une structure de donn&#233;es utile lorsqu&#8217;il s&#8217;agit d&#8217;impl&#233;menter une file d&#8217;attente.</p>
  
