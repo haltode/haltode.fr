@@ -12,8 +12,8 @@
 
 \node [queue] (queue)  {$13$\nodepart{two}$-1$%
    \nodepart{three}$42$\nodepart{four}$80$\nodepart{five}$1$};
-\node [above right=-0.05cm and 1.3cm of queue,anchor=north,align=left] {Début de la file};
-\node [above left=-0.05cm and 1.3cm of queue,anchor=north,align=left] {Fin de la file};
+\node [right=0.5cm of queue,align=left] {Début de la file};
+\node [left=0.5cm of queue,align=left] {Fin de la file};
 
 \end{tikzpicture}
 
@@ -24,11 +24,7 @@
 
 \node [queue] (queue)  {$13$\nodepart{two}$-1$%
    \nodepart{three}$42$\nodepart{four}$80$\nodepart{five}$1$};
-\node [above right=-0.05cm and 1.3cm of queue,anchor=north,align=left] {Début de la file};
-\node [above left=-0.05cm and 2cm of queue,anchor=north,align=left] {Fin de la file};
-
-\node [new,above left=0.5cm and 2cm of queue] (n) {$64$};
-\node [above right=0cm and 1.3cm of n,anchor=north,align=left] {Nouvel élément};
+\node [new,above left=0.5cm and 1cm of queue] (n) {$64$};
 \draw [->] (n.south)--(queue.west);
 
 \end{tikzpicture}
@@ -41,11 +37,8 @@
 
 \node [queue] (queue)  {$13$\nodepart{two}$-1$%
    \nodepart{three}$42$\nodepart{four}$80$\nodepart{five}$1$};
-\node [above right=-0.05cm and 1.3cm of queue,anchor=north,align=left] {Début de la file};
-\node [above left=-0.05cm and 1.3cm of queue,anchor=north,align=left] {Fin de la file};
-\node [below left=0.5cm and -0.5cm of queue,anchor=north,align=left] {Elément à supprimer};
-\draw (-1.8,0.3) -- (-1.06,-0.3);
-\draw (-1.8,-0.3) -- (-1.06,0.3);
+\draw (1.8,0.3) -- (1.31,-0.3);
+\draw (1.8,-0.3) -- (1.31,0.3);
 
 \end{tikzpicture}
 

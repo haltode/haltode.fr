@@ -12,8 +12,8 @@
 
 \node [stack] (stack)  {$13$\nodepart{two}$-1$%
    \nodepart{three}$42$\nodepart{four}$80$\nodepart{five}$1$};
-\node [above=of stack,anchor=north,align=left] {Haut de la pile};
-\node [below=of stack,anchor=north,align=left] {Bas de la pile};
+\node [above=0.5cm of stack,align=left] {Haut de la pile};
+\node [below=0.5cm of stack,align=left] {Bas de la pile};
 
 \end{tikzpicture}
 
@@ -24,11 +24,8 @@
 
 \node [stack] (stack)  {$13$\nodepart{two}$-1$%
    \nodepart{three}$42$\nodepart{four}$80$\nodepart{five}$1$};
-\node [above=of stack,anchor=north,align=left] {Haut de la pile};
-\node [below=of stack,anchor=north,align=left] {Bas de la pile};
 
-\node [new,above right=0.5cm and 2cm of stack] (n) {$64$};
-\node [right=1.3cm of n,anchor=north,align=left] {Nouvel élément};
+\node [new,above right=0.5cm and 1cm of stack] (n) {$64$};
 \draw [->] (n.south)--(stack.north);
 
 \end{tikzpicture}
@@ -41,14 +38,10 @@
 
 \node [stack] (stack)  {$13$\nodepart{two}$-1$%
    \nodepart{three}$42$\nodepart{four}$80$\nodepart{five}$1$};
-\node [above=of stack,anchor=north,align=left] {Haut de la pile};
-\node [below=of stack,anchor=north,align=left] {Bas de la pile};
-\node [above right=0cm and 2cm of stack,anchor=north,align=left] {Elément à supprimer};
 \draw (0.43,1.45) -- (-0.43,0.89);
 \draw (0.43,0.89) -- (-0.43,1.45);
 
 \end{tikzpicture}
-
 
 
 \end{document}

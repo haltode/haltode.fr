@@ -13,6 +13,7 @@ Algorithme :
          - Refaire code source
       - File : 
          - Refaire code source
+         - File à priorité
          - Conclusion (ouverture sur les différentes utilisations d'une file)
          - Opti fonction défiler ? Un pointeur sur le dernier élément pour éviter de parcourir la file
       - Tries + Ternary search tries
