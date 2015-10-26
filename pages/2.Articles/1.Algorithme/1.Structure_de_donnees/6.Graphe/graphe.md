@@ -3,11 +3,11 @@ Graphe
 algo/structure/
 
 Publié le : 20/06/2015  
-*Modifié le :*
+*Modifié le : 26/10/2015*
 
 ## Introduction
 
-Un graphe est une structure de données incontournable en algorithmie. On utilise les graphes dans de nombreux problèmes de la vie de tous les jours, comme par exemple dans le métro, en utilisant le GPS, ou bien en naviguant sur Internet.
+Un graphe est une structure de données incontournable en algorithmie. On utilise les graphes dans de nombreux problèmes de la vie de tous les jours, comme dans le métro, en utilisant le GPS, ou bien en naviguant sur Internet.
 
 ## Principe d'un graphe
 
@@ -26,7 +26,7 @@ Un graphe peut avoir de nombreuses caractéristiques différentes, en voici une 
 
 ### Orienté/non orienté
 
-Un graphe est dit *orienté* si ses arcs ont un sens (représenté par une flèche), comme par exemple ce graphe :
+Un graphe est dit *orienté* si ses arcs ont un sens (représenté par une flèche), par exemple ce graphe :
 
 ![Graphe orienté](/static/img/algo/structure/graphe/graphe_oriente.png)
 
@@ -89,7 +89,7 @@ On utilise ce type de représentation lorsqu'on a tout d'abord assez de mémoire
    - Est-ce que le nœud *A* et le nœud *B* sont voisins ?
    - Quel est le poids de l'arc entre le nœud *C* et *D* ?
 
-La complexité en mémoire est en *O(N²)* (avec *N* le nombre de nœuds du graphe) et la complexité pour accéder aux deux informations citées au dessus est en *O(1)* (puisqu'il s'agit d'un tableau).
+La complexité en mémoire est en *O(N²)* (avec *N* le nombre de nœuds du graphe) et la complexité pour accéder aux deux informations citées au-dessus est en *O(1)* (puisqu'il s'agit d'un tableau).
 
 ### Liste d'adjacence
 
@@ -109,7 +109,7 @@ La structure `Voisin` contient l'index du voisin, mais elle peut aussi contenir 
 
 La liste d'adjacence est le plus souvent utilisée lorsque :
 
-- On a pas assez de mémoire pour stocker une matrice d'adjacence : la complexité en mémoire d'une liste d'adjacence est de  *O(N + M)* (avec *M* le nombre d'arcs du graphe)
+- On n'a pas assez de mémoire pour stocker une matrice d'adjacence : la complexité en mémoire d'une liste d'adjacence est de  *O(N + M)* (avec *M* le nombre d'arcs du graphe)
 - On ne cherche pas à répondre aux questions du types tel nœud est-il voisin à tel autre nœud ? Ou encore quel est le poids de tel arc entre ces deux nœuds ? Mais plutôt lorsqu'on cherche à parcourir le graphe plus rapidement qu'en utilisant une matrice d'adjacence. En effet, dans une liste d'adjacence il n'y a que les voisins du nœud en question, alors que dans la matrice tous les nœuds sont représentés.
 
 ### Liste d'arcs
@@ -120,7 +120,7 @@ Voici l'exemple d'une liste d'arcs (toujours sur le même graphe) :
 
 ![Exemple de liste d'arcs](/static/img/algo/structure/graphe/exemple_liste_arcs.png)
 
-Pareil que pour la liste d'adjacence, j'utilise les `vector` :
+De même que pour la liste d'adjacence, j'utilise les `vector` :
 
 ```cpp
 vector <Arc> graphe;
@@ -128,7 +128,7 @@ vector <Arc> graphe;
 
 La structure `Arc` contient l'index des deux nœuds ainsi que la pondération de l'arc (si c'est un graphe pondéré).
 
-Une liste d'arcs est plus rarement utilisée pour représenter un graphe, mais peut s'avérer très utile lorsqu'on a pas assez de mémoire (à cause du nombre trop élevé de nœuds) pour représenter le graphe avec une matrice d'adjacence ou même une liste d'adjacence. On utilise donc une liste d'arcs avec une complexité en mémoire de *O(M)*.
+Une liste d'arcs est plus rarement utilisée pour représenter un graphe, mais peut s'avérer très utile lorsqu'on n'a pas assez de mémoire (à cause du nombre trop élevé de nœuds) pour représenter le graphe avec une matrice d'adjacence ou même une liste d'adjacence. On utilise donc une liste d'arcs avec une complexité en mémoire de *O(M)*.
 
 ## Parcourir un graphe
 

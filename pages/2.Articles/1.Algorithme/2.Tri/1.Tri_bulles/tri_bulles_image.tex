@@ -1,0 +1,152 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}  
+\usepackage[T1]{fontenc}     
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,calc}
+\usetikzlibrary{decorations.pathreplacing}
+
+\begin{document}
+
+% tri : exemple
+
+% tour 1
+
+\begin{tikzpicture}
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$8$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$7$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$6$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$7$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$8$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$6$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$7$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$1$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$8$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$6$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$7$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$4$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$8$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$6$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$7$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+
+% tour 2
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$7$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$7$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$7$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$7$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+
+% tour 3
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$7$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$7$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$7$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+% tour 4
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [fill=blue!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$7$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$7$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+% tour 5
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$1$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$4$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$6$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$7$};
+\node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$8$};
+\end{tikzpicture}
+
+\end{document}

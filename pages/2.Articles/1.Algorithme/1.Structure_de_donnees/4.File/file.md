@@ -3,7 +3,7 @@ File
 algo/structure/
 
 Publié le : 08/06/2014  
-*Modifié le :*
+*Modifié le : 26/10/2015*
 
 ## Introduction
 

@@ -132,9 +132,9 @@ table tr:nth-child(2n) {
 
 <h1 id="graphe">Graphe</h1>
 <p>Publi&#233; le : 20/06/2015<br />
-<em>Modifi&#233; le :</em></p>
+<em>Modifi&#233; le : 26/10/2015</em></p>
 <h2 id="introduction">Introduction</h2>
-<p>Un graphe est une structure de donn&#233;es incontournable en algorithmie. On utilise les graphes dans de nombreux probl&#232;mes de la vie de tous les jours, comme par exemple dans le m&#233;tro, en utilisant le GPS, ou bien en naviguant sur Internet.</p>
+<p>Un graphe est une structure de donn&#233;es incontournable en algorithmie. On utilise les graphes dans de nombreux probl&#232;mes de la vie de tous les jours, comme dans le m&#233;tro, en utilisant le GPS, ou bien en naviguant sur Internet.</p>
 <h2 id="principe-dun-graphe">Principe d'un graphe</h2>
 <p>On peut d&#233;finir un graphe comme &#233;tant un ensemble de <em>n&#339;uds</em> (ou de sommets) &#233;tant reli&#233;s par des <em>arcs</em> (ou des ar&#234;tes).</p>
 <div class="figure">
@@ -146,7 +146,7 @@ table tr:nth-child(2n) {
 <p>Le <em>degr&#233; entrant</em> d'un n&#339;ud correspond au nombre d'arcs arrivant sur ce n&#339;ud, il en est de m&#234;me pour le <em>degr&#233; sortant</em> correspondant alors au nombre d'arcs sortant du n&#339;ud.</p>
 <p>Un graphe peut avoir de nombreuses caract&#233;ristiques diff&#233;rentes, en voici une liste non exhaustive.</p>
 <h3 id="orient&#233;non-orient&#233;">Orient&#233;/non orient&#233;</h3>
-<p>Un graphe est dit <em>orient&#233;</em> si ses arcs ont un sens (repr&#233;sent&#233; par une fl&#232;che), comme par exemple ce graphe :</p>
+<p>Un graphe est dit <em>orient&#233;</em> si ses arcs ont un sens (repr&#233;sent&#233; par une fl&#232;che), par exemple ce graphe :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/graphe/graphe_oriente.png" alt="Graphe orient&#233;" />
 <p class="caption">Graphe orient&#233;</p>
@@ -203,7 +203,7 @@ table tr:nth-child(2n) {
 <li>Est-ce que le n&#339;ud <em>A</em> et le n&#339;ud <em>B</em> sont voisins ?</li>
 <li>Quel est le poids de l'arc entre le n&#339;ud <em>C</em> et <em>D</em> ?</li>
 </ul>
-<p>La complexit&#233; en m&#233;moire est en <em>O(N&#178;)</em> (avec <em>N</em> le nombre de n&#339;uds du graphe) et la complexit&#233; pour acc&#233;der aux deux informations cit&#233;es au dessus est en <em>O(1)</em> (puisqu'il s'agit d'un tableau).</p>
+<p>La complexit&#233; en m&#233;moire est en <em>O(N&#178;)</em> (avec <em>N</em> le nombre de n&#339;uds du graphe) et la complexit&#233; pour acc&#233;der aux deux informations cit&#233;es au-dessus est en <em>O(1)</em> (puisqu'il s'agit d'un tableau).</p>
 <h3 id="liste-dadjacence">Liste d'adjacence</h3>
 <p>On peut utiliser une variante de la matrice d'adjacence afin d'&#233;conomiser de la m&#233;moire (mais cette repr&#233;sentation requiert un temps en <em>O(N)</em> pour savoir si deux n&#339;uds sont voisins ou pour conna&#238;tre la pond&#233;ration de tel arc). Cette solution consiste &#224; utiliser un tableau de <a href="http://napnac.ga/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a>, chaque n&#339;ud du graphe a sa propre liste cha&#238;n&#233;e contenant tous ses voisins (et &#233;ventuellement toutes les pond&#233;rations).</p>
 <p>Voici par exemple la liste d'adjacence qui repr&#233;sente le premier graphe de l'article :</p>
@@ -216,7 +216,7 @@ table tr:nth-child(2n) {
 <p>La structure <code>Voisin</code> contient l'index du voisin, mais elle peut aussi contenir la pond&#233;ration de l'arc liant les deux n&#339;uds et d'autres informations sp&#233;cifiques au graphe.</p>
 <p>La liste d'adjacence est le plus souvent utilis&#233;e lorsque :</p>
 <ul>
-<li>On a pas assez de m&#233;moire pour stocker une matrice d'adjacence : la complexit&#233; en m&#233;moire d'une liste d'adjacence est de <em>O(N + M)</em> (avec <em>M</em> le nombre d'arcs du graphe)</li>
+<li>On n'a pas assez de m&#233;moire pour stocker une matrice d'adjacence : la complexit&#233; en m&#233;moire d'une liste d'adjacence est de <em>O(N + M)</em> (avec <em>M</em> le nombre d'arcs du graphe)</li>
 <li>On ne cherche pas &#224; r&#233;pondre aux questions du types tel n&#339;ud est-il voisin &#224; tel autre n&#339;ud ? Ou encore quel est le poids de tel arc entre ces deux n&#339;uds ? Mais plut&#244;t lorsqu'on cherche &#224; parcourir le graphe plus rapidement qu'en utilisant une matrice d'adjacence. En effet, dans une liste d'adjacence il n'y a que les voisins du n&#339;ud en question, alors que dans la matrice tous les n&#339;uds sont repr&#233;sent&#233;s.</li>
 </ul>
 <h3 id="liste-darcs">Liste d'arcs</h3>
@@ -226,10 +226,10 @@ table tr:nth-child(2n) {
 <img src="/static/img/algo/structure/graphe/exemple_liste_arcs.png" alt="Exemple de liste d&#39;arcs" />
 <p class="caption">Exemple de liste d'arcs</p>
 </div>
-<p>Pareil que pour la liste d'adjacence, j'utilise les <code>vector</code> :</p>
+<p>De m&#234;me que pour la liste d'adjacence, j'utilise les <code>vector</code> :</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector &lt;Arc&gt; graphe;</code></pre></div>
 <p>La structure <code>Arc</code> contient l'index des deux n&#339;uds ainsi que la pond&#233;ration de l'arc (si c'est un graphe pond&#233;r&#233;).</p>
-<p>Une liste d'arcs est plus rarement utilis&#233;e pour repr&#233;senter un graphe, mais peut s'av&#233;rer tr&#232;s utile lorsqu'on a pas assez de m&#233;moire (&#224; cause du nombre trop &#233;lev&#233; de n&#339;uds) pour repr&#233;senter le graphe avec une matrice d'adjacence ou m&#234;me une liste d'adjacence. On utilise donc une liste d'arcs avec une complexit&#233; en m&#233;moire de <em>O(M)</em>.</p>
+<p>Une liste d'arcs est plus rarement utilis&#233;e pour repr&#233;senter un graphe, mais peut s'av&#233;rer tr&#232;s utile lorsqu'on n'a pas assez de m&#233;moire (&#224; cause du nombre trop &#233;lev&#233; de n&#339;uds) pour repr&#233;senter le graphe avec une matrice d'adjacence ou m&#234;me une liste d'adjacence. On utilise donc une liste d'arcs avec une complexit&#233; en m&#233;moire de <em>O(M)</em>.</p>
 <h2 id="parcourir-un-graphe">Parcourir un graphe</h2>
 <p>Afin de parcourir notre graphe, on peut utiliser deux algorithmes diff&#233;rents :</p>
 <ul>
