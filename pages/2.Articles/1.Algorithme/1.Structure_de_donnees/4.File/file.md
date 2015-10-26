@@ -18,7 +18,7 @@ Une file fonctionne exactement comme une file d’attente dans un magasin :
 
 Voici comment on pourrait représenter une file :
 
-![Exemple représentation d'une file](/static/img/algo/structure/file/exemple_file.png)
+![Exemple de représentation d'une file](/static/img/algo/structure/file/exemple_file.png)
 
 L’action d’ajouter un élément dans la file est appelée : **enfiler** (ou *enqueue* en anglais) :
 
@@ -92,6 +92,16 @@ main.c :
 
 Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Template_Library) (*Standard Template Library*) fournit une implémentation et des fonctions permettant de manipuler une file : <http://www.cplusplus.com/reference/queue/queue/> 
 
+## File à priorité
+
+Une file à priorité (*priority queue* en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'[algorithme de Dijkstra]() pour trouver le plus court chemin entre deux nœuds d'un [graphe](http://napnac.ga/algo/structure/graphe.html) pondéré positivement. Chaque élément se voit attribuer une **clé**, permettant d'organiser la file (d'où le nom de file à **priorité**). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.
+
+On implémente très souvent une file à priorité grâce à un [tas]() (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <http://www.cplusplus.com/reference/queue/priority_queue/>
+
 ## Conclusion
 
-La file est donc une structure de données utile lorsqu’il s’agit d’implémenter une file d’attente.
+La file permet donc d'implémenter un comportement de file d'attente, qui est pratique dans de nombreuses situations :
+
+- Quand votre ordinateur doit gérer plusieurs tâches à la fois, une file s'avère très utile pour stocker les opérations afin de les traiter par ordre d'arrivée ensuite. Il peut aussi implémenter une file à priorité afin d'exécuter les tâches importantes voir urgentes en premier.
+- Si un serveur est débordé par les requêtes, une file sera adaptée pour renvoyer l'information aux personnes dans l'ordre d'arrivée pour ne pas faire attendre trop longtemps le client.
+- De même si un centre d'appel est occupé, les clients seront pris en charge (par un opérateur qui vient de se libérer) grâce à une file en fonction de l'ordre d'arrivée (premier arrivé, premier servi).

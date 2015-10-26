@@ -143,8 +143,8 @@ table tr:nth-child(2n) {
 </ul>
 <p>Voici comment on pourrait repr&#233;senter une file :</p>
 <div class="figure">
-<img src="/static/img/algo/structure/file/exemple_file.png" alt="Exemple repr&#233;sentation d&#39;une file" />
-<p class="caption">Exemple repr&#233;sentation d'une file</p>
+<img src="/static/img/algo/structure/file/exemple_file.png" alt="Exemple de repr&#233;sentation d&#39;une file" />
+<p class="caption">Exemple de repr&#233;sentation d'une file</p>
 </div>
 <p>L&#8217;action d&#8217;ajouter un &#233;l&#233;ment dans la file est appel&#233;e : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
 <div class="figure">
@@ -207,8 +207,16 @@ taille :
 <p>main.c :</p>
 <h3 id="stl">STL</h3>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation et des fonctions permettant de manipuler une file : <a href="http://www.cplusplus.com/reference/queue/queue/" class="uri">http://www.cplusplus.com/reference/queue/queue/</a></p>
+<h2 id="file-&#224;-priorit&#233;">File &#224; priorit&#233;</h2>
+<p>Une file &#224; priorit&#233; (<em>priority queue</em> en anglais), est sans doute la variante de la file la plus utilis&#233;e. On la retrouve notamment dans l'<a href="">algorithme de Dijkstra</a> pour trouver le plus court chemin entre deux n&#339;uds d'un <a href="http://napnac.ga/algo/structure/graphe.html">graphe</a> pond&#233;r&#233; positivement. Chaque &#233;l&#233;ment se voit attribuer une <strong>cl&#233;</strong>, permettant d'organiser la file (d'o&#249; le nom de file &#224; <strong>priorit&#233;</strong>). On peut ensuite rapidement r&#233;cup&#233;rer l'&#233;l&#233;ment avec la priorit&#233; la plus &#233;lev&#233;e.</p>
+<p>On impl&#233;mente tr&#232;s souvent une file &#224; priorit&#233; gr&#226;ce &#224; un <a href="">tas</a> (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une impl&#233;mentation : <a href="http://www.cplusplus.com/reference/queue/priority_queue/" class="uri">http://www.cplusplus.com/reference/queue/priority_queue/</a></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>La file est donc une structure de donn&#233;es utile lorsqu&#8217;il s&#8217;agit d&#8217;impl&#233;menter une file d&#8217;attente.</p>
+<p>La file permet donc d'impl&#233;menter un comportement de file d'attente, qui est pratique dans de nombreuses situations :</p>
+<ul>
+<li>Quand votre ordinateur doit g&#233;rer plusieurs t&#226;ches &#224; la fois, une file s'av&#232;re tr&#232;s utile pour stocker les op&#233;rations afin de les traiter par ordre d'arriv&#233;e ensuite. Il peut aussi impl&#233;menter une file &#224; priorit&#233; afin d'ex&#233;cuter les t&#226;ches importantes voir urgentes en premier.</li>
+<li>Si un serveur est d&#233;bord&#233; par les requ&#234;tes, une file sera adapt&#233;e pour renvoyer l'information aux personnes dans l'ordre d'arriv&#233;e pour ne pas faire attendre trop longtemps le client.</li>
+<li>De m&#234;me si un centre d'appel est occup&#233;, les clients seront pris en charge (par un op&#233;rateur qui vient de se lib&#233;rer) gr&#226;ce &#224; une file en fonction de l'ordre d'arriv&#233;e (premier arriv&#233;, premier servi).</li>
+</ul>
  
       <!-- ------------ -->
 

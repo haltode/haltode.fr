@@ -3,19 +3,13 @@ Général :
    - Pseudo-code : coloration syntaxique
    - Lien wiki anglais
    - Ecrire README complet
+   - Table des matières en haut de l'article
 
 Algorithme :
    - Structure de données : 
-      - Liste chaînée :
-         - Refaire code source (vérifier avec debugger pour la mémoire) + ajouter code source (structure) variantes listes 
-         - Relecture + clarification explications
-      - Pile :
-         - Refaire code source
       - File : 
-         - Refaire code source
-         - File à priorité
-         - Conclusion (ouverture sur les différentes utilisations d'une file)
          - Opti fonction défiler ? Un pointeur sur le dernier élément pour éviter de parcourir la file
+         - Lien algo dijkstra plus court chemin + lien tas
       - Tries + Ternary search tries
    - Tri :
       - Tri fusion : lien logarithme wiki
