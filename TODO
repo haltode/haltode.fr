@@ -18,7 +18,6 @@ Algorithme :
       - Tri rapide : lien cache wiki
       - Tri base : lien cartes perforées wiki
 
-      - Tri par insertion : complexité en N * (N + 1) / 2
       - Tri rapide : code hackerrank
       - Comparison-based Lower Bounds for Sorting
       - Tri par tas : description tas (ou lien vers section tas dans article sur les arbres)

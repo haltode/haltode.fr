@@ -3,7 +3,7 @@ Tri par sélection
 algo/tri
 
 Publié le : 30/04/2014  
-*Modifié le :*
+*Modifié le : 27/10/2015*
 
 ## Introduction
 
