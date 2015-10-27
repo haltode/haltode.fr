@@ -80,7 +80,9 @@ L’implémentation est aussi simple que le pseudo-code :
 
 main.c : 
 
-## Amélioration 1
+## Améliorations et variantes
+
+### Arrêter le tri quand c'est possible
 
 On peut améliorer le tri à bulles en faisant en sorte qu’il s’arrête lorsque le tableau est trié, et qu’il ne parcourt pas d’autres tours inutilement. Pour cela il suffit de vérifier si l’on effectue un échange ou pas dans le tour de boucle actuel, si ce n’est pas le cas le tableau est donc trié, on peut alors sortir de la boucle.
 
@@ -98,7 +100,7 @@ Tant que tableauPasTrié est vrai
 
 La complexité reste de *O(N²)* même si l’on a gagné quelques tours de boucle sur certains cas.
 
-## Amélioration 2
+### Tri à bulles bidirectionnel
 
 Une variante du tri à bulles qui s’appelle le *tri à bulles bidirectionnel* (*bidirectional bubble sort*), consiste à trier dans les deux directions (d’où son nom). Là où le tri à bulles parcourt seulement de gauche à droite (ou de droite à gauche, ça n’importe pas), le tri à bulles bidirectionnel parcourt de gauche à droite et de droite à gauche. Cela permet d’optimiser le tri de certains éléments comme les petits éléments situés en fin de tableau, le tri à bulles les ramène d’un seul emplacement à chaque tour de boucle, alors que le tri à bulles bidirectionnel les ramène en un seul tour.
 
@@ -147,9 +149,9 @@ Tant que tableauPasTrié est vrai
 
 Cette variante peut être encore optimisée, en retenant l’endroit où le dernier échange s’est effectué pour ne pas aller plus loin (car c’est inutile), cependant cet algorithme a toujours pour complexité *O(N²)*.
 
-## Amélioration 3
+### Tri à peigne
 
-Une autre variante du tri à bulles appelée le *CombSort*, permet à l’algorithme du tri à bulles d’être beaucoup plus efficace et ainsi rivaliser avec des algorithmes bien plus performants comme le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), le [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), ou encore le [tri Shell](http://napnac.ga/algo/tri/tri_shell.html).
+Une autre variante du tri à bulles appelée le tri à peigne (*comb sort* en anglais), permet à l’algorithme du tri à bulles d’être beaucoup plus efficace et ainsi rivaliser avec des algorithmes bien plus performants comme le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), le [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), ou encore le [tri Shell](http://napnac.ga/algo/tri/tri_shell.html).
 Cet algorithme consiste donc à comparer des éléments du tableau à un certain intervalle au lieu de comparer les éléments voisins. En effet cette technique permet d’éliminer le problème du petit élément situé à la fin du tableau qui remonte lentement jusqu’à sa place initiale, et souvent rend les comparaisons entre éléments plus judicieuses. Un intervalle optimal est initialisé avec une valeur de *tailleTab / 1.3* (cette valeur est reconnue comme étant une des plus optimales pour ce tri), et à chaque tour on divise de nouveau par 1.3 l'intervalle tant qu'il est supérieur à 1.
 
 ```nohighlight

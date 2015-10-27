@@ -12,6 +12,8 @@ Algorithme :
          - Lien algo dijkstra plus court chemin + lien tas
       - Tries + Ternary search tries
    - Tri :
+      - Tri par sélection : lien tas
+      - Tri par sélection : pseudo-code améliorations
       - Tri fusion : lien logarithme wiki
       - Tri rapide : lien cache wiki
       - Tri base : lien cartes perforées wiki
