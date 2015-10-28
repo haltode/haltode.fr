@@ -174,7 +174,7 @@ table tr:nth-child(2n) {
 <li>La deuxi&#232;me boucle parcourt <em>i</em> tours (<em>i</em> variant de 0 &#224; <em>N</em>).</li>
 </ul>
 <p>Donc dans le pire des cas on parcourt <em>N * N</em> tours, le tri par insertion a donc une complexit&#233; en temps de <em>O(N&#178;)</em>.</p>
-<p>Cependant, le tri par insertion est tr&#232;s efficace sur des entr&#233;es de petites tailles, et encore plus sur des entr&#233;es &#233;tant d&#233;j&#224; presque tri&#233;es (il est m&#234;me plus performant que certains tris en <em>O(N * log(N))</em> comme le <a href="http://napnac.ga/algo/tri/tri_fusion.html">tri fusion</a>, ou m&#234;me le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>), dans ce cas il peut s&#8217;ex&#233;cuter en temps lin&#233;aire.</p>
+<p>Cependant, le tri par insertion est tr&#232;s efficace sur des entr&#233;es de petites tailles, et encore plus sur des entr&#233;es &#233;tant d&#233;j&#224; presque tri&#233;es (il est m&#234;me plus performant que certains tris en <em>O(N * log N)</em> comme le <a href="http://napnac.ga/algo/tri/tri_fusion.html">tri fusion</a>, ou m&#234;me le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>), dans ce cas il peut s&#8217;ex&#233;cuter en temps lin&#233;aire.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L&#8217;impl&#233;mentation en C fonctionne exactement comme le pseudo-code :</p>
 <p>main.c :</p>
@@ -207,10 +207,10 @@ avec <em>Ecart(0) = 0</em></p>
 <li>Si c&#8217;est le cas on recommence l&#8217;op&#233;ration mais cette fois ci avec cet intervalle : <em>milieu ancien inter</em> -&gt; <em>fin ancien inter</em>.</li>
 <li>Sinon on recommence mais avec l&#8217;intervalle suivant : <em>d&#233;but ancien inter</em> -&gt; <em>milieu ancien inter</em>.</li>
 </ul>
-<p>Une fois que l&#8217;intervalle ne contient plus qu&#8217;un &#233;l&#233;ment, on a trouv&#233; l&#8217;emplacement de notre &#233;l&#233;ment et on peut l&#8217;ins&#233;rer. Gr&#226;ce &#224; cette am&#233;lioration, l&#8217;algorithme du tri par insertion a pour complexit&#233; <em>O(N * log(N))</em>.</p>
+<p>Une fois que l&#8217;intervalle ne contient plus qu&#8217;un &#233;l&#233;ment, on a trouv&#233; l&#8217;emplacement de notre &#233;l&#233;ment et on peut l&#8217;ins&#233;rer. Gr&#226;ce &#224; cette am&#233;lioration, l&#8217;algorithme du tri par insertion a pour complexit&#233; <em>O(N * log N)</em>.</p>
 <p><em>J'ai expliqu&#233; ici tr&#232;s rapidement le principe de la dichotomie, j'en parle plus longuement dans mon article &#224; ce propos donc si vous n'avez pas tout suivi, je vous conseille d'aller le lire pour bien saisir ce concept tr&#232;s utile.</em></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri par insertion est donc intuitif et simple &#224; impl&#233;menter, et m&#234;me si sa complexit&#233; algorithmique est <em>O(N&#178;)</em>, c&#8217;est un tri extr&#234;mement efficace pour des petites entr&#233;es, ou des entr&#233;es quasi tri&#233;es. De plus on peut facilement l&#8217;am&#233;liorer pour avoir une complexit&#233; en <em>O(N * log(N))</em> &#224; l&#8217;aide de la dichotomie.</p>
+<p>Le tri par insertion est donc intuitif et simple &#224; impl&#233;menter, et m&#234;me si sa complexit&#233; algorithmique est <em>O(N&#178;)</em>, c&#8217;est un tri extr&#234;mement efficace pour des petites entr&#233;es, ou des entr&#233;es quasi tri&#233;es. De plus on peut facilement l&#8217;am&#233;liorer pour avoir une complexit&#233; en <em>O(N * log N)</em> &#224; l&#8217;aide de la dichotomie.</p>
  
       <!-- ------------ -->
 

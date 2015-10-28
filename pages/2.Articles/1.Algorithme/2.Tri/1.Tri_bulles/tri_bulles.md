@@ -170,7 +170,7 @@ Faire
 Tant que tableauPasTrié est vrai OU intervalle est supérieur à 1
 ```
 
-La complexité moyenne de ce tri est *O(N \* log(N))*, mais peut-être dans le pire des cas en *O(N²)* bien qu’en pratique c’est peu probable.
+La complexité moyenne de ce tri est *O(N \* log N)*, mais peut-être dans le pire des cas en *O(N²)* bien qu’en pratique c’est peu probable.
 
 ## Conclusion
 

@@ -66,7 +66,7 @@ L’algorithme du tri par insertion a une complexité de *O(N²)*, on le remarqu
 
 Donc dans le pire des cas on parcourt *N \* N* tours, le tri par insertion a donc une complexité en temps de *O(N²)*.
 
-Cependant, le tri par insertion est très efficace sur des entrées de petites tailles, et encore plus sur des entrées étant déjà presque triées (il est même plus performant que certains tris en *O(N \* log(N))* comme le [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), ou même le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html)), dans ce cas il peut s’exécuter en temps linéaire.
+Cependant, le tri par insertion est très efficace sur des entrées de petites tailles, et encore plus sur des entrées étant déjà presque triées (il est même plus performant que certains tris en *O(N \* log N)* comme le [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), ou même le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html)), dans ce cas il peut s’exécuter en temps linéaire.
 
 ## Implémentation
 
@@ -120,10 +120,10 @@ Cette recherche consiste à utiliser la méthode du "diviser pour régner", on c
 - Si c’est le cas on recommence l’opération mais cette fois ci avec cet intervalle : *milieu ancien inter* -> *fin ancien inter*.
 - Sinon on recommence mais avec l’intervalle suivant : *début ancien inter* -> *milieu ancien inter*.
 
-Une fois que l’intervalle ne contient plus qu’un élément, on a trouvé l’emplacement de notre élément et on peut l’insérer. Grâce à cette amélioration, l’algorithme du tri par insertion a pour complexité *O(N \* log(N))*.
+Une fois que l’intervalle ne contient plus qu’un élément, on a trouvé l’emplacement de notre élément et on peut l’insérer. Grâce à cette amélioration, l’algorithme du tri par insertion a pour complexité *O(N \* log N)*.
 
 *J'ai expliqué ici très rapidement le principe de la dichotomie, j'en parle plus longuement dans mon article à ce propos donc si vous n'avez pas tout suivi, je vous conseille d'aller le lire pour bien saisir ce concept très utile.*
 
 ## Conclusion
 
-Le tri par insertion est donc intuitif et simple à implémenter, et même si sa complexité algorithmique est *O(N²)*, c’est un tri extrêmement efficace pour des petites entrées, ou des entrées quasi triées. De plus on peut facilement l’améliorer pour avoir une complexité en *O(N \* log(N))* à l’aide de la dichotomie.
+Le tri par insertion est donc intuitif et simple à implémenter, et même si sa complexité algorithmique est *O(N²)*, c’est un tri extrêmement efficace pour des petites entrées, ou des entrées quasi triées. De plus on peut facilement l’améliorer pour avoir une complexité en *O(N \* log N)* à l’aide de la dichotomie.

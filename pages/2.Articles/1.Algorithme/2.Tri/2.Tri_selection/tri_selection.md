@@ -92,7 +92,7 @@ Dans le cas où notre tableau contient de nombreux doublons, l'algorithme de tri
 
 ### Tri par tas
 
-On peut voir le [tri par tas](http://napnac.ga/algo/tri/tri_tas.html) comme une amélioration directe au tri par sélection. En effet, si l'on utilise un tas pour permettre de trouver les éléments plus petits rapidement, on obtient une complexité en *O(N \* log(N))* et un tri qu'on appelle tri par tas.
+On peut voir le [tri par tas](http://napnac.ga/algo/tri/tri_tas.html) comme une amélioration directe au tri par sélection. En effet, si l'on utilise un tas pour permettre de trouver les éléments plus petits rapidement, on obtient une complexité en *O(N \* log N)* et un tri qu'on appelle tri par tas.
 
 ## Conclusion
 

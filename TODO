@@ -4,6 +4,7 @@ Général :
    - Lien wiki anglais
    - Ecrire README complet
    - Table des matières en haut de l'article
+   - O(log N) et pas O(log(N))
 
 Algorithme :
    - Structure de données : 
@@ -14,7 +15,6 @@ Algorithme :
    - Tri :
       - Tri par sélection : lien tas
       - Tri par sélection : pseudo-code améliorations
-      - Tri fusion : lien logarithme wiki
       - Tri rapide : lien cache wiki
       - Tri base : lien cartes perforées wiki
 
