@@ -181,8 +181,26 @@ table tr:nth-child(2n) {
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
 <h3 id="utiliser-des-listes-cha&#238;n&#233;es">Utiliser des listes cha&#238;n&#233;es</h3>
 <p>Le tri par insertion doit d&#233;caler de nombreuses fois le tableau pour ins&#233;rer un &#233;l&#233;ment, ce qui est une op&#233;ration lourde et inutile puisqu'on peut utiliser des <a href="http://napnac.ga/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a> afin de contrer ce probl&#232;me. Les listes cha&#238;n&#233;es permettent d'ins&#233;rer notre &#233;l&#233;ment de fa&#231;on simple et plus rapide, cependant comme il faut toujours calculer o&#249; placer cet &#233;l&#233;ment, la complexit&#233; reste quadratique.</p>
+<h3 id="tri-shell">Tri Shell</h3>
+<p>Il est possible d'utiliser la propri&#233;t&#233; du tri par insertion d'&#234;tre rapide sur des tableaux quasi tri&#233;s pour le rendre plus efficace. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va &#233;changer certaines valeurs du tableau &#224; un &#233;cart bien pr&#233;cis afin de le rendre dans la plupart des cas presque tri&#233;. Une fois qu'on a ce tableau &quot;r&#233;-arrang&#233;&quot;, on lui applique simplement notre tri par insertion classique, mais ce dernier sera plus rapide gr&#226;ce &#224; notre premi&#232;re &#233;tape.</p>
+<p>Pour calculer cet &#233;cart, on utilise cette formule :</p>
+<p><em>Ecart(N) = 3 </em> Ecart(N - 1) + 1*<br />
+avec <em>Ecart(0) = 0</em></p>
+<p>Voici un exemple d'utilisation du tri Shell pour mieux comprendre son application. On souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l'ordre croissant :</p>
+<p>On calcule les &#233;carts tant que le r&#233;sultat est inf&#233;rieur &#224; la taille du tableau.</p>
+<p><em>Ecart(0) = 0</em><br />
+<em>Ecart(1) = 3 </em> Ecart(0) + 1 = 3 * 0 + 1 = 1*<br />
+<em>Ecart(2) = 3 </em> Ecart(1) + 1 = 3 * 1 + 1 = 4*<br />
+<em>Ecart(3) = 3 </em> Ecart(2) + 1 = 3 * 4 + 1 = 13*</p>
+<p>On a donc deux &#233;carts qu'on peut utiliser : 1 et 4 (13 &#233;tant sup&#233;rieur au nombre d'&#233;l&#233;ments du tableau). Cependant appliquer un &#233;cart de 1 revient &#224; faire un tri par insertion normal, on utilisera donc uniquement l'&#233;cart de 4 dans cet exemple.</p>
+<p>On compare chaque &#233;l&#233;ment du tableau &#233;cart&#233; de quatre &#233;l&#233;ments :</p>
+<p><strong>5</strong>, 8, 2, 9, <strong>1</strong>, 3 -&gt; on voit que 5 est sup&#233;rieur &#224; 1, on les &#233;change.<br />
+1, <strong>8</strong>, 2, 9, 5, <strong>3</strong> -&gt; on voit que 8 est sup&#233;rieur &#224; 3, on les &#233;change.<br />
+1, 3, 2, 9, 5, 8 -&gt; plus d&#8217;&#233;change possible avec un &#233;cart de 4.</p>
+<p>On r&#233;p&#232;te cette op&#233;ration tant qu'il nous reste des &#233;carts, dans notre cas c'est la fin de la premi&#232;re &#233;tape du tri. Maintenant notre tableau est r&#233;organis&#233; et presque tri&#233;, on peut donc lui appliquer un tri par insertion.</p>
+<p>Malheureusement le tri Shell reste avec une complexit&#233; quadratique dans le pire des cas, mais est une bonne am&#233;lioration en g&#233;n&#233;ral.</p>
 <h3 id="dichotomie">Dichotomie</h3>
-<p>Une autre am&#233;lioration est possible et bien plus efficace que la pr&#233;c&#233;dente. En effet, le tri par insertion est bas&#233; sur le fait que le tableau est coup&#233; en deux parties, l&#8217;une tri&#233;e (celle qui nous int&#233;resse) et l&#8217;autre non tri&#233;e. On peut am&#233;liorer la recherche de l'emplacement o&#249; ins&#233;rer notre &#233;l&#233;ment gr&#226;ce &#224; la <a href="http://napnac.ga/algo/recherche/dichotomie.html">dichotomie</a> (c&#8217;est un algorithme de recherche efficace dans un ensemble d&#8217;objet d&#233;j&#224; tri&#233;, ce qui est parfait pour notre cas).</p>
+<p>Une autre am&#233;lioration est possible et tr&#232;s efficace. En effet, le tri par insertion est bas&#233; sur le fait que le tableau est coup&#233; en deux parties, l&#8217;une tri&#233;e (celle qui nous int&#233;resse) et l&#8217;autre non tri&#233;e. On peut am&#233;liorer la recherche de l'emplacement o&#249; ins&#233;rer notre &#233;l&#233;ment gr&#226;ce &#224; la <a href="http://napnac.ga/algo/recherche/dichotomie.html">dichotomie</a> (c&#8217;est un algorithme de recherche efficace dans un ensemble d&#8217;objet d&#233;j&#224; tri&#233;, ce qui est parfait pour notre cas).</p>
 <p>Cette recherche consiste &#224; utiliser la m&#233;thode du &quot;diviser pour r&#233;gner&quot;, on cherche l&#8217;emplacement pour notre &#233;l&#233;ment &#224; l&#8217;aide d&#8217;intervalles. Notre intervalle de d&#233;part est : <em>d&#233;but partie tri&#233;e</em> -&gt; <em>fin partie tri&#233;e</em> :</p>
 <ul>
 <li>On teste si l&#8217;&#233;l&#233;ment situ&#233; au milieu de notre intervalle est sup&#233;rieur &#224; l&#8217;&#233;l&#233;ment que l&#8217;on veut ins&#233;rer.</li>

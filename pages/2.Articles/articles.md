@@ -18,7 +18,7 @@ La liste des articles publiés :
  
     - Tri :
  
-         - Tri en *O(N²)* : [tri à bulles](http://napnac.ga/algo/tri/tri_bulles.html), [tri par sélection](http://napnac.ga/algo/tri/tri_selection.html), [tri par insertion](http://napnac.ga/algo/tri/tri_insertion.html), [tri shell](http://napnac.ga/algo/tri/tri_shell.html)
+         - Tri en *O(N²)* : [tri à bulles](http://napnac.ga/algo/tri/tri_bulles.html), [tri par sélection](http://napnac.ga/algo/tri/tri_selection.html), [tri par insertion](http://napnac.ga/algo/tri/tri_insertion.html)
          - Tri en *O(N \* log N)* : [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), [tri par tas](http://napnac.ga/algo/tri/tri_tas.html)
          - Tri en *O(N)* : [tri par dénombrement](http://napnac.ga/algo/tri/tri_denombrement.html), [tri par base](http://napnac.ga/algo/tri/tri_base.html), [tri par paquets](http://napnac.ga/algo/tri/tri_paquets.html)
  

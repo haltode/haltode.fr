@@ -151,7 +151,7 @@ Cette variante peut être encore optimisée, en retenant l’endroit où le dern
 
 ### Tri à peigne
 
-Une autre variante du tri à bulles appelée le tri à peigne (*comb sort* en anglais), permet à l’algorithme du tri à bulles d’être beaucoup plus efficace et ainsi rivaliser avec des algorithmes bien plus performants comme le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), le [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), ou encore le [tri Shell](http://napnac.ga/algo/tri/tri_shell.html).
+Une autre variante du tri à bulles appelée le tri à peigne (*comb sort* en anglais), permet à l’algorithme du tri à bulles d’être beaucoup plus efficace et ainsi rivaliser avec des algorithmes bien plus performants comme le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), le [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), ou encore le [tri par tas](http://napnac.ga/algo/tri/tri_tas.html).
 Cet algorithme consiste donc à comparer des éléments du tableau à un certain intervalle au lieu de comparer les éléments voisins. En effet cette technique permet d’éliminer le problème du petit élément situé à la fin du tableau qui remonte lentement jusqu’à sa place initiale, et souvent rend les comparaisons entre éléments plus judicieuses. Un intervalle optimal est initialisé avec une valeur de *tailleTab / 1.3* (cette valeur est reconnue comme étant une des plus optimales pour ce tri), et à chaque tour on divise de nouveau par 1.3 l'intervalle tant qu'il est supérieur à 1.
 
 ```nohighlight

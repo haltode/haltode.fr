@@ -80,9 +80,39 @@ main.c :
 
 Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu'on peut utiliser des [listes chaînées](http://napnac.ga/algo/structure/liste_chainee.html) afin de contrer ce problème. Les listes chaînées permettent d'insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.
 
+### Tri Shell
+
+Il est possible d'utiliser la propriété du tri par insertion d'être rapide sur des tableaux quasi triés pour le rendre plus efficace. En effet, le tri Shell (*Shell sort* en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu'on a ce tableau "ré-arrangé", on lui applique simplement notre tri par insertion classique, mais ce dernier sera plus rapide grâce à notre première étape.
+
+Pour calculer cet écart, on utilise cette formule :
+
+*Ecart(N) = 3 * Ecart(N - 1) + 1*  
+avec *Ecart(0) = 0*
+
+Voici un exemple d'utilisation du tri Shell pour mieux comprendre son application. On souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l'ordre croissant :
+
+On calcule les écarts tant que le résultat est inférieur à la taille du tableau.
+
+*Ecart(0) = 0*  
+*Ecart(1) = 3 * Ecart(0) + 1 = 3 * 0 + 1 = 1*  
+*Ecart(2) = 3 * Ecart(1) + 1 = 3 * 1 + 1 = 4*  
+*Ecart(3) = 3 * Ecart(2) + 1 = 3 * 4 + 1 = 13*
+
+On a donc deux écarts qu'on peut utiliser : 1 et 4 (13 étant supérieur au nombre d'éléments du tableau). Cependant appliquer un écart de 1 revient à faire un tri par insertion normal, on utilisera donc uniquement l'écart de 4 dans cet exemple.
+
+On compare chaque élément du tableau écarté de quatre éléments :
+
+**5**, 8, 2, 9, **1**, 3 -> on voit que 5 est supérieur à 1, on les échange.  
+1, **8**, 2, 9, 5, **3** -> on voit que 8 est supérieur à 3, on les échange.  
+1, 3, 2, 9, 5, 8 -> plus d’échange possible avec un écart de 4.
+
+On répète cette opération tant qu'il nous reste des écarts, dans notre cas c'est la fin de la première étape du tri. Maintenant notre tableau est réorganisé et presque trié, on peut donc lui appliquer un tri par insertion.
+
+Malheureusement le tri Shell reste avec une complexité quadratique dans le pire des cas, mais est une bonne amélioration en général.
+
 ### Dichotomie
 
-Une autre amélioration est possible et bien plus efficace que la précédente. En effet, le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la [dichotomie](http://napnac.ga/algo/recherche/dichotomie.html) (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).
+Une autre amélioration est possible et très efficace. En effet, le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la [dichotomie](http://napnac.ga/algo/recherche/dichotomie.html) (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).
 
 Cette recherche consiste à utiliser la méthode du "diviser pour régner", on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : *début partie triée* ->  *fin partie triée* :
 
