@@ -46,9 +46,8 @@ A chaque tour, on cherche le minimum dans l'espace non trié du tableau (le mini
 Le pseudo-code du tri par sélection est simple :
 
 ```nohighlight
-Soit N la taille du tableau à trier
+triSelection :
 
-triParSelection(Tableau, N) :
    Pour i = 0, allant jusqu'à N à pas de 1
       Pour j = i + 1, allant jusqu'à N à pas de 1
          Si l'élément j est le minimum du tableau rencontré jusqu'ici

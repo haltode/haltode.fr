@@ -168,13 +168,11 @@ table tr:nth-child(2n) {
 <p>Les &#233;l&#233;ments en bleu sont ceux qu'on compare &#224; chaque it&#233;ration, la partie verte repr&#233;sente la partie du tableau dont on est s&#251;r qu'elle est tri&#233;e. A chaque tour, on compare chaque paire dans la partie non tri&#233;e du tableau, si la paire ne respecte pas l'ordre de tri (dans notre cas croissant) on &#233;change les &#233;l&#233;ments et on continue.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Voici le pseudo-code tr&#232;s simple de l&#8217;algorithme du tri &#224; bulles :</p>
-<pre class="nohighlight"><code>Soit N la taille du tableau &#224; trier
+<pre class="nohighlight"><code>triBulles :
 
-triAbulles(Tableau, N) :
-   Pour i = 0, allant jusqu&#39;&#224; N &#224; pas de 1
-      Pour j = 0, allant jusqu&#39;&#224; N - 1 &#224; pas de 1
-         Si l&#39;&#233;l&#233;ment j est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment j + 1
-            &#201;changer les &#233;l&#233;ments j et j + 1 du tableau</code></pre>
+   Pour chaque &#233;l&#233;ment
+      Parcourir le tableau
+         Echanger les paires adjacentes si n&#233;cessaire</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>Comme dit dans l&#8217;introduction, la complexit&#233; de l&#8217;algorithme du tri &#224; bulles est de <em>O(N&#178;)</em>, et on peut le d&#233;montrer simplement par le fait qu&#8217;il y est deux boucles imbriqu&#233;es dans le pseudo-code :</p>
 <ul>
@@ -191,9 +189,9 @@ triAbulles(Tableau, N) :
 <pre class="nohighlight"><code>Faire
    tableauPasTri&#233; -&gt; faux
 
-   Pour i = 0, allant jusqu&#39;&#224; N - 1 &#224; pas de 1
+   Pour chaque &#233;l&#233;ment du tableau
       Si l&#39;&#233;l&#233;ment i est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment i + 1
-         &#201;changer les &#233;l&#233;ments i et i + 1 du tableau
+         &#201;changer les &#233;l&#233;ments
          tableauPasTri&#233; -&gt; vrai
 
 Tant que tableauPasTri&#233; est vrai</code></pre>
@@ -264,14 +262,14 @@ Tant que tableauPasTri&#233; est vrai</code></pre>
 <pre class="nohighlight"><code>Faire
    tableauPasTri&#233; -&gt; faux
 
-   Pour i = 0, allant jusqu&#39;&#224; N - 1 &#224; pas de 1
+   Pour chaque &#233;l&#233;ment du tableau (gauche &#224; droite)
       Si l&#39;&#233;l&#233;ment i est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment i + 1
-         &#201;changer les &#233;l&#233;ments i et i + 1 du tableau
+         &#201;changer les &#233;l&#233;ments
          tableauPasTri&#233; -&gt; vrai
 
-   Pour i = N, allant jusqu&#39;&#224; 1 &#224; pas de 1
+   Pour chaque &#233;l&#233;ment du tableau (droite &#224; gauche)
       Si l&#39;&#233;l&#233;ment i est inf&#233;rieur &#224; l&#39;&#233;l&#233;ment i - 1
-         &#201;changer les &#233;l&#233;ments i et i - 1 du tableau
+         &#201;changer les &#233;l&#233;ments
          tableauPasTri&#233; -&gt; vrai
 
 Tant que tableauPasTri&#233; est vrai</code></pre>
@@ -285,9 +283,9 @@ Tant que tableauPasTri&#233; est vrai</code></pre>
    Si intervalle est inf&#233;rieur &#224; 1
       intervalle -&gt; 1
 
-   Pour i = 0, allant jusqu&#39;&#224; N - intervalle &#224; pas de 1
+   Pour chaque &#233;l&#233;ment du tableau
       Si l&#39;&#233;l&#233;ment i est sup&#233;rieur &#224; l&#39;&#233;l&#233;ment i + intervalle
-         &#201;changer les &#233;l&#233;ments i et i + intervalle du tableau
+         &#201;changer les &#233;l&#233;ments
          tableauPasTri&#233; -&gt; vrai
 
 Tant que tableauPasTri&#233; est vrai OU intervalle est sup&#233;rieur &#224; 1</code></pre>

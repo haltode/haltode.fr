@@ -56,13 +56,11 @@ Les éléments en bleu sont ceux qu'on compare à chaque itération, la partie v
 Voici le pseudo-code très simple de l’algorithme du tri à bulles :
 
 ```nohighlight
-Soit N la taille du tableau à trier
+triBulles :
 
-triAbulles(Tableau, N) :
-   Pour i = 0, allant jusqu'à N à pas de 1
-      Pour j = 0, allant jusqu'à N - 1 à pas de 1
-         Si l'élément j est supérieur à l'élément j + 1
-            Échanger les éléments j et j + 1 du tableau
+   Pour chaque élément
+      Parcourir le tableau
+         Echanger les paires adjacentes si nécessaire
 ```
 
 ## Complexité
@@ -90,9 +88,9 @@ On peut améliorer le tri à bulles en faisant en sorte qu’il s’arrête lors
 Faire
    tableauPasTrié -> faux
 
-   Pour i = 0, allant jusqu'à N - 1 à pas de 1
+   Pour chaque élément du tableau
       Si l'élément i est supérieur à l'élément i + 1
-         Échanger les éléments i et i + 1 du tableau
+         Échanger les éléments
          tableauPasTrié -> vrai
 
 Tant que tableauPasTrié est vrai
@@ -134,14 +132,14 @@ Le pseudo-code du tri à bulles bidirectionnel :
 Faire
    tableauPasTrié -> faux
 
-   Pour i = 0, allant jusqu'à N - 1 à pas de 1
+   Pour chaque élément du tableau (gauche à droite)
       Si l'élément i est supérieur à l'élément i + 1
-         Échanger les éléments i et i + 1 du tableau
+         Échanger les éléments
          tableauPasTrié -> vrai
 
-   Pour i = N, allant jusqu'à 1 à pas de 1
+   Pour chaque élément du tableau (droite à gauche)
       Si l'élément i est inférieur à l'élément i - 1
-         Échanger les éléments i et i - 1 du tableau
+         Échanger les éléments
          tableauPasTrié -> vrai
 
 Tant que tableauPasTrié est vrai
@@ -162,9 +160,9 @@ Faire
    Si intervalle est inférieur à 1
       intervalle -> 1
 
-   Pour i = 0, allant jusqu'à N - intervalle à pas de 1
+   Pour chaque élément du tableau
       Si l'élément i est supérieur à l'élément i + intervalle
-         Échanger les éléments i et i + intervalle du tableau
+         Échanger les éléments
          tableauPasTrié -> vrai
 
 Tant que tableauPasTrié est vrai OU intervalle est supérieur à 1

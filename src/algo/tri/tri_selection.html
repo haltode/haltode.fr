@@ -156,9 +156,8 @@ table tr:nth-child(2n) {
 <p>A chaque tour, on cherche le minimum dans l'espace non tri&#233; du tableau (le minimum est repr&#233;sent&#233; en bleu, et la partie non tri&#233;e du tableau en blanc), ensuite on d&#233;place cet &#233;l&#233;ment &#224; sa place d&#233;finitive (repr&#233;sent&#233;e en vert). Si on fait cela &#224; chaque tour, le tableau final est bien tri&#233;.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code du tri par s&#233;lection est simple :</p>
-<pre class="nohighlight"><code>Soit N la taille du tableau &#224; trier
+<pre class="nohighlight"><code>triSelection :
 
-triParSelection(Tableau, N) :
    Pour i = 0, allant jusqu&#39;&#224; N &#224; pas de 1
       Pour j = i + 1, allant jusqu&#39;&#224; N &#224; pas de 1
          Si l&#39;&#233;l&#233;ment j est le minimum du tableau rencontr&#233; jusqu&#39;ici
