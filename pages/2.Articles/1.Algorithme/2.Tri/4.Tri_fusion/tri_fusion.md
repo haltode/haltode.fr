@@ -7,16 +7,16 @@ Publié le : 10/05/2014
 
 ## Introduction
 
-Le tri fusion (*merge sort* en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité *O(N \* log N)*, il se base sur le principe du diviser pour régner. Cet algorithme est [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais ne s’exécute pas [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
+Le tri fusion (*merge sort* en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité *O(N \* log N)*, il se base sur le principe du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms). Cet algorithme est [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais ne s’exécute pas [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
 
 ## Principe de l’algorithme
 
 L'algorithme se compose de deux parties distinctes :
 
-- **Diviser** : on divise récursivement le tableau, c'est-à-dire qu'on va couper le tableau en deux sous-tableaux et recommencer cette opération sur ces derniers jusqu'à ce que chaque sous-tableau ne contienne plus qu'un seul élément.
-- **Fusionner** : une fois notre tableau divisé en *N* sous-tableaux (*N* étant le nombre d'éléments), on fusionne deux à deux les tableaux dans l'ordre du tri (croissant ou décroissant).
+- **Diviser** : on divise récursivement le tableau, c'est-à-dire qu'on va couper le tableau en deux sous tableaux et recommencer cette opération sur ces derniers jusqu'à ce que chaque sous-tableau ne contienne plus qu'un seul élément.
+- **Fusionner** : une fois notre tableau divisé en *N* sous tableaux (*N* étant le nombre d'éléments), on fusionne deux à deux les tableaux dans l'ordre du tri (croissant ou décroissant).
 
-L'intérêt de diviser pour ensuite fusionner est que créer un tableau trié à partir de deux sous-tableaux peut s'effectuer en temps linéaire. C'est ce point en particulier qui fait la rapidité du tri fusion.
+L'intérêt de diviser pour ensuite fusionner est que créer un tableau trié à partir de deux sous tableaux peut s'effectuer en temps linéaire. C'est ce point en particulier qui fait la rapidité du tri fusion.
 
 ## Exemple
 
@@ -26,17 +26,17 @@ Prenons comme exemple la suite de nombre : 5, 1, 3, 8, 9, 6 que l’on veut trie
 
 5, 1, 3 | 8, 9, 6 -> on divise le tableau en deux.
 
-5, | 1, 3 | 8 | 9, 6 -> on divise en deux les sous-tableaux.
+5, | 1, 3 | 8 | 9, 6 -> on divise en deux les sous tableaux.
 
 5 | 1 | 3 | 8 | 9 | 6 -> chaque sous-tableau est de nouveau divisé pour n'avoir plus qu'un seul élément.
 
 *2ème étape* : fusionner
 
-1, 5 | 3, 8 | 6, 9  -> on prend deux sous-tableaux adjacents que l'on fusionne en les ordonnant.
+1, 5 | 3, 8 | 6, 9  -> on prend deux sous tableaux adjacents que l'on fusionne en les ordonnant.
 
-1, 3, 5, 8 | 6, 9 -> on continue la fusion des sous-tableaux.
+1, 3, 5, 8 | 6, 9 -> on continue la fusion des sous tableaux.
 
-1, 3, 5, 6, 8, 9 -> le tableau ne contient plus de sous-tableaux, il est donc trié.
+1, 3, 5, 6, 8, 9 -> le tableau ne contient plus de sous tableaux, il est donc trié.
 
 1, 3, 5, 6, 8, 9
 
@@ -76,7 +76,7 @@ fusionner (début, milieu, fin) :
 Ce pseudo-code est relativement simple :
 
 - Dans la fonction `triFusion`, on utilise la [récursivité](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29) pour découper puis fusionner notre tableau, et on arrête les appels récursifs lorsque le sous-tableau que l'on traite n'a plus qu'un seul élément.
-- La fonction `fusionner` est assez explicite, elle nous permet de créer à partir de deux sous-tableaux triés, un tableau lui aussi trié en temps linéaire.
+- La fonction `fusionner` est assez explicite, elle nous permet de créer à partir de deux sous tableaux triés, un tableau lui aussi trié en temps linéaire.
 
 ## Complexité
 

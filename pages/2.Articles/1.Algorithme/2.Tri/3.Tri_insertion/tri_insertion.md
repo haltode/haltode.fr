@@ -114,7 +114,7 @@ Malheureusement le tri Shell reste avec une complexité quadratique dans le pire
 
 Une autre amélioration est possible et très efficace. En effet, le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la [dichotomie](http://napnac.ga/algo/recherche/dichotomie.html) (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).
 
-Cette recherche consiste à utiliser la méthode du "diviser pour régner", on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : *début partie triée* ->  *fin partie triée* :
+Cette recherche consiste à utiliser la méthode du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : *début partie triée* ->  *fin partie triée* :
 
 - On teste si l’élément situé au milieu de notre intervalle est supérieur à l’élément que l’on veut insérer.
 - Si c’est le cas on recommence l’opération mais cette fois ci avec cet intervalle : *milieu ancien inter* -> *fin ancien inter*.

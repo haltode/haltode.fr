@@ -5,6 +5,7 @@ Général :
    - Ecrire README complet
    - Table des matières en haut de l'article
    - O(log N) et pas O(log(N))
+   - Ouverture dans les conclusions
 
 Algorithme :
    - Structure de données : 
@@ -15,7 +16,7 @@ Algorithme :
    - Tri :
       - Tri par sélection : lien tas
       - Tri par sélection : pseudo-code améliorations
-      - Tri rapide : lien cache wiki
+      - Tri rapide : à faire : exemple comparaison nb appels récursifs (amélioration 1)
       - Tri base : lien cartes perforées wiki
 
       - Tri rapide : code hackerrank

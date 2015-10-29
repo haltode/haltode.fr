@@ -134,24 +134,24 @@ table tr:nth-child(2n) {
 <p>Publi&#233; le : 10/05/2014<br />
 <em>Modifi&#233; le : 28/10/2015</em></p>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri fusion (<em>merge sort</em> en anglais) est un algorithme de tri par comparaison efficace qui a pour complexit&#233; <em>O(N * log N)</em>, il se base sur le principe du diviser pour r&#233;gner. Cet algorithme est <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais ne s&#8217;ex&#233;cute pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
+<p>Le tri fusion (<em>merge sort</em> en anglais) est un algorithme de tri par comparaison efficace qui a pour complexit&#233; <em>O(N * log N)</em>, il se base sur le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour r&#233;gner</a>. Cet algorithme est <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais ne s&#8217;ex&#233;cute pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
 <p>L'algorithme se compose de deux parties distinctes :</p>
 <ul>
-<li><strong>Diviser</strong> : on divise r&#233;cursivement le tableau, c'est-&#224;-dire qu'on va couper le tableau en deux sous-tableaux et recommencer cette op&#233;ration sur ces derniers jusqu'&#224; ce que chaque sous-tableau ne contienne plus qu'un seul &#233;l&#233;ment.</li>
-<li><strong>Fusionner</strong> : une fois notre tableau divis&#233; en <em>N</em> sous-tableaux (<em>N</em> &#233;tant le nombre d'&#233;l&#233;ments), on fusionne deux &#224; deux les tableaux dans l'ordre du tri (croissant ou d&#233;croissant).</li>
+<li><strong>Diviser</strong> : on divise r&#233;cursivement le tableau, c'est-&#224;-dire qu'on va couper le tableau en deux sous tableaux et recommencer cette op&#233;ration sur ces derniers jusqu'&#224; ce que chaque sous-tableau ne contienne plus qu'un seul &#233;l&#233;ment.</li>
+<li><strong>Fusionner</strong> : une fois notre tableau divis&#233; en <em>N</em> sous tableaux (<em>N</em> &#233;tant le nombre d'&#233;l&#233;ments), on fusionne deux &#224; deux les tableaux dans l'ordre du tri (croissant ou d&#233;croissant).</li>
 </ul>
-<p>L'int&#233;r&#234;t de diviser pour ensuite fusionner est que cr&#233;er un tableau tri&#233; &#224; partir de deux sous-tableaux peut s'effectuer en temps lin&#233;aire. C'est ce point en particulier qui fait la rapidit&#233; du tri fusion.</p>
+<p>L'int&#233;r&#234;t de diviser pour ensuite fusionner est que cr&#233;er un tableau tri&#233; &#224; partir de deux sous tableaux peut s'effectuer en temps lin&#233;aire. C'est ce point en particulier qui fait la rapidit&#233; du tri fusion.</p>
 <h2 id="exemple">Exemple</h2>
 <p>Prenons comme exemple la suite de nombre : 5, 1, 3, 8, 9, 6 que l&#8217;on veut trier avec le tri fusion dans l&#8217;ordre croissant :</p>
 <p><em>1&#232;re &#233;tape</em> : diviser</p>
 <p>5, 1, 3 | 8, 9, 6 -&gt; on divise le tableau en deux.</p>
-<p>5, | 1, 3 | 8 | 9, 6 -&gt; on divise en deux les sous-tableaux.</p>
+<p>5, | 1, 3 | 8 | 9, 6 -&gt; on divise en deux les sous tableaux.</p>
 <p>5 | 1 | 3 | 8 | 9 | 6 -&gt; chaque sous-tableau est de nouveau divis&#233; pour n'avoir plus qu'un seul &#233;l&#233;ment.</p>
 <p><em>2&#232;me &#233;tape</em> : fusionner</p>
-<p>1, 5 | 3, 8 | 6, 9 -&gt; on prend deux sous-tableaux adjacents que l'on fusionne en les ordonnant.</p>
-<p>1, 3, 5, 8 | 6, 9 -&gt; on continue la fusion des sous-tableaux.</p>
-<p>1, 3, 5, 6, 8, 9 -&gt; le tableau ne contient plus de sous-tableaux, il est donc tri&#233;.</p>
+<p>1, 5 | 3, 8 | 6, 9 -&gt; on prend deux sous tableaux adjacents que l'on fusionne en les ordonnant.</p>
+<p>1, 3, 5, 8 | 6, 9 -&gt; on continue la fusion des sous tableaux.</p>
+<p>1, 3, 5, 6, 8, 9 -&gt; le tableau ne contient plus de sous tableaux, il est donc tri&#233;.</p>
 <p>1, 3, 5, 6, 8, 9</p>
 <p>Pour r&#233;sumer les deux &#233;tapes du tri :</p>
 <div class="figure">
@@ -185,7 +185,7 @@ fusionner (d&#233;but, milieu, fin) :
 <p>Ce pseudo-code est relativement simple :</p>
 <ul>
 <li>Dans la fonction <code>triFusion</code>, on utilise la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursivit&#233;</a> pour d&#233;couper puis fusionner notre tableau, et on arr&#234;te les appels r&#233;cursifs lorsque le sous-tableau que l'on traite n'a plus qu'un seul &#233;l&#233;ment.</li>
-<li>La fonction <code>fusionner</code> est assez explicite, elle nous permet de cr&#233;er &#224; partir de deux sous-tableaux tri&#233;s, un tableau lui aussi tri&#233; en temps lin&#233;aire.</li>
+<li>La fonction <code>fusionner</code> est assez explicite, elle nous permet de cr&#233;er &#224; partir de deux sous tableaux tri&#233;s, un tableau lui aussi tri&#233; en temps lin&#233;aire.</li>
 </ul>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>La complexit&#233; du tri fusion est de <em>O(N * log N)</em>, puisque notre fonction <code>triFusion</code> contient deux appels r&#233;cursifs (complexit&#233; logarithmique en <em>O(log N)</em>) et la fonction <code>fusionner</code> s'&#233;x&#233;cute en temps lin&#233;aire, <em>O(N)</em>.</p>
