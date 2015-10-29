@@ -1,11 +1,10 @@
 Général :
    - Arbre de lien en haut de l'article pour revenir en arrière en terme de catégories d'articles
    - Pseudo-code : coloration syntaxique
-   - Lien wiki anglais
    - Ecrire README complet
    - Table des matières en haut de l'article
-   - O(log N) et pas O(log(N))
-   - Ouverture dans les conclusions
+   - Bosser intro/conclusion
+   - Afficher code sur les articles (balise secrète ?)
 
 Algorithme :
    - Structure de données : 
@@ -16,7 +15,6 @@ Algorithme :
    - Tri :
       - Tri par sélection : lien tas
       - Tri par sélection : pseudo-code améliorations
-      - Tri rapide : à faire : exemple comparaison nb appels récursifs (amélioration 1)
       - Tri base : lien cartes perforées wiki
 
       - Tri rapide : code hackerrank
