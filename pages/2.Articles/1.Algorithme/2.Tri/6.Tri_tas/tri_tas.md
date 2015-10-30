@@ -2,161 +2,76 @@ Tri par tas
 ===========
 algo/tri
 
-Publié le : 14/05/2014
-*Modifié le :*
+Publié le : 14/05/2014  
+*Modifié le : 30/10/2015*
 
 ## Introduction
 
-Le tri par tas (*heap sort* en anglais) est un algorithme de tri par comparaison inventé en 1964, plutôt efficace et qui a une complexité en *O(N \* log(N))*. C’est un algorithme de tri non stable mais en place.
+Le tri par tas (*heap sort* en anglais) est un algorithme de tri par comparaison, plutôt efficace et qui a une complexité en *O(N \* log N)*. C’est un algorithme de tri [non stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
 
 ## Principe de l’algorithme
 
-L’algorithme du tri par tas repose sur un principe fondamental : le tas max. L’algorithme créé un tas max (si l’on trie dans l’ordre croissant, sinon on utilise un tas min pour l’ordre décroissant) du tableau que l’on souhaite trier, puis il parcourt le tas ainsi crée en reconstituant les valeurs triées dans le tableau.
-
-Son fonctionnement est donc simple à comprendre.
+L'algorithme du tri par tas repose sur un élément fondamental : le [tas]() (d'où son nom). En effet, ce tri crée un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre décroissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs triées dans notre tableau.
 
 ## Exemple
 
-On prend la suite de nombre suivant que l’on va trier dans l’ordre croissant avec le tri par tas : 1, 9, 3, 7, 6, 1, 4.
+On prend la suite de nombres suivante que l’on va trier dans l’ordre croissant avec le tri par tas : 1, 9, 3, 7, 6, 1, 4.
 
-1ère étape : créer le tas max
+*1ère étape* : créer le tas (max dans notre cas)
 
-       9
-    /    \
-   7      4
- /  \    / \
-1   6   1   3
+![Tas max correspondant au tableau](/static/img/algo/tri/tri_tas/exemple_tas_max.png)
 
-Ceci est le tas max qui correspond au tableau 1, 9, 3, 7, 6, 1, 4, je ne détaillerais pas sa création vu que j’en parle dans mon article sur les [arbres](http://napnac.ga/algo/structure/arbre.html).
+*2ème étape* : parcourir le tas pour trier les éléments
 
-2ème étape : restaurer les éléments dans le tableau
+Pour trier les éléments grâce à notre tas, on retire la racine à chaque tour (l'élément le plus grand de notre tas, et de notre tableau), on le range à sa place définitive dans le tableau, et on entasse le dernier élément du tas pour combler le trou de la racine et respecter les règles d'un tas.
 
-Ce qu’on va faire maintenant c’est échanger la racine (l’élément maximum du tas), avec le dernier élément que l’on va entasser dans le tas, et recommencer cette opération jusqu’à avoir un tas d’un seul élément.
+![1er tour](/static/img/algo/tri/tri_tas/exemple_tour1.png)
 
-1er tour :
+La racine du tas (en vert) est placée dans le tableau et le dernier élément (en bleu) va remplacer la racine, mais il ne faut pas oublier de l'entasser pour respecter les règles du tas max.
 
-       7
-    /    \
-   6      4
- /  \    / 
-1   3   1   9
+On continue ces opérations tant que le tas n'est pas vide :
 
-On échange 9 (la racine) et 3 que l’on entasse dans le tas (pour conserver la propriété clé d’un tas max), 9 ne fait plus partie du tas.
-
-2ème tour :
-
-       6
-    /    \
-   3      4
- /  \     
-1   1   7   9
-
-On échange 7 (la racine) et 1 que l’on entasse dans le tas, 7 ne fais plus partie du tas.
-
-3ème tour :
-
-       4
-    /    \
-   3      1
- /       
-1   6   7   9
-
-On échange 6 (la racine) et 1 que l’on entasse dans le tas, 6 ne fais plus partie du tas.
-
-4ème tour :
-
-       3
-    /    \
-   1      1     
-4   6   7   9
-
-On échange 4 (la racine) et 1 que l’on entasse dans le tas, 4 ne fais plus partie du tas.
-
-5ème tour :
-
-       1
-    /    
-   1      3
-4   6   7   9
-
-On échange 3 (la racine) et 1 que l’on entasse dans le tas, 3 ne fais plus partie du tas.
-
-6ème tour :
-
-       1    
-   1      3
-4   6   7   9
-
-On se retrouve bien à la fin avec : 1, 1, 3, 4, 6, 7, 9.
+![Fin du tri par tas](/static/img/algo/tri/tri_tas/exemple_tour2.png)
 
 ## Pseudo-code
 
 Voici le pseudo-code du tri par tas :
 
 ```nohighlight
-triParTas(Tableau) :
-   construireTasMax(Tableau)
+triParTas :
 
-   Pour i = tailleTableau, allant jusqu'à 1 à pas de 1
-      Échanger l'élément de Tableau[1] et l'élément de Tableau[i]
-      Décrémenter la taille du tableau
-      entasser(Tableau, 1)
+   Contruire le tas max du tableau
 
-construireTasMax(Tableau) :
-   Pour i = tailleTableau / 2, allant jusqu'à 0 à pas de 1
-      entasser(Tableau, i)
-
-entasser(Tableau, index) :
-   enfantGauche -> gauche(index)
-   enfantDroite -> droite(index)
-
-   Si Tableau[enfantGauche] > Tableau[enfantDroite]
-      max -> enfantGauche
-   Sinon
-      max -> index
-   Si Tableau[enfantDroite] > Tableau[max]
-      max -> enfantDroite
-
-   Si max est différent de index
-      Échanger l'élément Tableau[index] et l'élément Tableau[max]
-      entasser(Tableau, max)
-gauche(index) :
-   Retourner 2 * index
-droite(index) : 
-   Retourner 2 * index + 1
+   Pour chaque élément du tableau (en partant de la fin)
+      Echanger l'élément avec la racine
+      Décrémenter la taille du tas
+      Entasser l'élément placé à la racine
 ```
 
-Les fonctions `construireTasMax`, `entasser`, `gauche` et `droite` sont expliquées dans mon article sur les arbres, je ne décrirais donc pas ces dernières. La fonction `triParTas`, commence donc pas créer le tas max correspondant au tableau donné en paramètre. Ensuite on échange la valeur maximale du tas (situé à l’index 1 de `Tableau`) avec l’élément *i* de `Tableau` (sa place définitive), on l’enlève donc du tas et pour être sûr de conserver un tas max on appelle la fonction entasser pour conserver les propriétés fondamentales d’un tas max.
+En réalité, nous ne créons pas de tas à part, on réarrange simplement les éléments du tableau pour qu'il fonctionne comme un tas max car c'est plus simple pour le manipuler. On parcourt donc notre tableau dans le sens inverse, pour toujours avoir comme élément actuel le dernier élément du tas, que l'on va échanger avec la racine qui désormais est bien placée, on n'oublie pas de diminuer la taille du tas pour ne plus prendre en compte notre élément que l'on vient de placer, et on finit par entasser la nouvelle racine pour continuer à respecter les règles d'un tas.
 
-Voici une image résumant très bien le tri par tas :
-
-source : http://commons.wikimedia.org/wiki/File:Heap_sort_example.gif
+*Toutes les fonctions relatives à un tas (`construire`, `entasser`, etc.) sont décrites dans mon article à ce propos je n'en reparlerai pas ici.*
 
 ## Complexité
 
-La complexité de l’algorithme du tri par tas est en *O(N \* log(N))* :
+La complexité de l’algorithme du tri par tas est en *O(N \* log N)*. En effet, la boucle principale parcourt *N* tours (*N* étant la taille du tableau), et appelle à chaque tour une fonction pour entasser qui a une complexité logarithmique.
 
-- Tout d’abord, il faut prendre en compte la boucle principale de la fonction `triParTas` qui parcourt *N* tours (*N* étant la taille du tableau) et s’exécute donc en un temps linéaire de *O(N)*.
-- Ensuite il faut calculer la complexité de la fonction `entasser`, qui est de *O(log(N))* puisqu’elle utilise un tas.
-
-On se retrouve donc bien avec une complexité en *O(N \* log(N))*.
-
-Si vous n’avez pas lu mon article sur le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), je vous conseille au moins de lire la partie complexité dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.
+*Si vous n’avez pas lu mon article sur le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), je vous conseille au moins de lire la partie complexité dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.*
 
 ## Implémentation
 
-Voici le lien vers l’implémentation en C de l’algorithme du tri pas tas :
+Voici le lien vers une implémentation en C de l’algorithme du tri pas tas :
 
 main.c : 
 
-Cette implémentation est simple, je vous conseille de l’améliorer avec les suggestions que je vous propose juste en dessous.
+## Améliorations et variantes
 
-Une seule remarque sur le code, faites attention aux indices des tableaux car en C (et dans beaucoup de langages de programmation) les tableaux ont pour premier index 0 et non 1.
+### Mélange d'algorithme
 
-## Amélioration 1
+Comme pour le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), le tri par tas peut être mélangé avec un autre algorithme de tri lorsque le tableau possède peu d’éléments afin de le rendre plus efficace. Pour en savoir plus, je vous invite à lire la partie **Mélange d'algorithme** dans les **Améliorations et variantes** de mon article sur le tri rapide.
 
-Comme pour le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), le tri par tas peut aussi être mélangé avec un autre algorithme de tri lorsque le tableau possède peu d’élément. Pour en savoir plus, je vous invite à lire la partie **Amélioration 2** de mon article sur le tri rapide.
+### Smoothsort
 
 ## Conclusion
 
-Le tri par tas est donc un algorithme de tri efficace en *O(N \* log(N))* non stable mais en place, et plutôt facile à implémenter.
+Le tri par tas est donc un algorithme de tri efficace en *O(N \* log N)* non stable mais en place, et plutôt facile à implémenter.

@@ -131,106 +131,55 @@ table tr:nth-child(2n) {
       <!-- Page/Article -->
 
 <h1 id="tri-par-tas">Tri par tas</h1>
-<p>Publi&#233; le : 14/05/2014 <em>Modifi&#233; le :</em></p>
+<p>Publi&#233; le : 14/05/2014<br />
+<em>Modifi&#233; le : 30/10/2015</em></p>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri par tas (<em>heap sort</em> en anglais) est un algorithme de tri par comparaison invent&#233; en 1964, plut&#244;t efficace et qui a une complexit&#233; en <em>O(N * log(N))</em>. C&#8217;est un algorithme de tri non stable mais en place.</p>
+<p>Le tri par tas (<em>heap sort</em> en anglais) est un algorithme de tri par comparaison, plut&#244;t efficace et qui a une complexit&#233; en <em>O(N * log N)</em>. C&#8217;est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non stable</a> mais <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
-<p>L&#8217;algorithme du tri par tas repose sur un principe fondamental : le tas max. L&#8217;algorithme cr&#233;&#233; un tas max (si l&#8217;on trie dans l&#8217;ordre croissant, sinon on utilise un tas min pour l&#8217;ordre d&#233;croissant) du tableau que l&#8217;on souhaite trier, puis il parcourt le tas ainsi cr&#233;e en reconstituant les valeurs tri&#233;es dans le tableau.</p>
-<p>Son fonctionnement est donc simple &#224; comprendre.</p>
+<p>L'algorithme du tri par tas repose sur un &#233;l&#233;ment fondamental : le <a href="">tas</a> (d'o&#249; son nom). En effet, ce tri cr&#233;e un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre d&#233;croissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs tri&#233;es dans notre tableau.</p>
 <h2 id="exemple">Exemple</h2>
-<p>On prend la suite de nombre suivant que l&#8217;on va trier dans l&#8217;ordre croissant avec le tri par tas : 1, 9, 3, 7, 6, 1, 4.</p>
-<p>1&#232;re &#233;tape : cr&#233;er le tas max</p>
-<pre><code>   9
-/    \</code></pre>
-<p>7 4 / &#160; /<br />
-1 6 1 3</p>
-<p>Ceci est le tas max qui correspond au tableau 1, 9, 3, 7, 6, 1, 4, je ne d&#233;taillerais pas sa cr&#233;ation vu que j&#8217;en parle dans mon article sur les <a href="http://napnac.ga/algo/structure/arbre.html">arbres</a>.</p>
-<p>2&#232;me &#233;tape : restaurer les &#233;l&#233;ments dans le tableau</p>
-<p>Ce qu&#8217;on va faire maintenant c&#8217;est &#233;changer la racine (l&#8217;&#233;l&#233;ment maximum du tas), avec le dernier &#233;l&#233;ment que l&#8217;on va entasser dans le tas, et recommencer cette op&#233;ration jusqu&#8217;&#224; avoir un tas d&#8217;un seul &#233;l&#233;ment.</p>
-<p>1er tour :</p>
-<pre><code>   7
-/    \</code></pre>
-<p>6 4 / &#160; / 1 3 1 9</p>
-<p>On &#233;change 9 (la racine) et 3 que l&#8217;on entasse dans le tas (pour conserver la propri&#233;t&#233; cl&#233; d&#8217;un tas max), 9 ne fait plus partie du tas.</p>
-<p>2&#232;me tour :</p>
-<pre><code>   6
-/    \</code></pre>
-<p>3 4 / &#160;<br />
-1 1 7 9</p>
-<p>On &#233;change 7 (la racine) et 1 que l&#8217;on entasse dans le tas, 7 ne fais plus partie du tas.</p>
-<p>3&#232;me tour :</p>
-<pre><code>   4
-/    \</code></pre>
-<p>3 1 /<br />
-1 6 7 9</p>
-<p>On &#233;change 6 (la racine) et 1 que l&#8217;on entasse dans le tas, 6 ne fais plus partie du tas.</p>
-<p>4&#232;me tour :</p>
-<pre><code>   3
-/    \</code></pre>
-<p>1 1<br />
-4 6 7 9</p>
-<p>On &#233;change 4 (la racine) et 1 que l&#8217;on entasse dans le tas, 4 ne fais plus partie du tas.</p>
-<p>5&#232;me tour :</p>
-<pre><code>   1
-/    </code></pre>
-<p>1 3 4 6 7 9</p>
-<p>On &#233;change 3 (la racine) et 1 que l&#8217;on entasse dans le tas, 3 ne fais plus partie du tas.</p>
-<p>6&#232;me tour :</p>
-<pre><code>   1    </code></pre>
-<p>1 3 4 6 7 9</p>
-<p>On se retrouve bien &#224; la fin avec : 1, 1, 3, 4, 6, 7, 9.</p>
+<p>On prend la suite de nombres suivante que l&#8217;on va trier dans l&#8217;ordre croissant avec le tri par tas : 1, 9, 3, 7, 6, 1, 4.</p>
+<p><em>1&#232;re &#233;tape</em> : cr&#233;er le tas (max dans notre cas)</p>
+<div class="figure">
+<img src="/static/img/algo/tri/tri_tas/exemple_tas_max.png" alt="Tas max correspondant au tableau" />
+<p class="caption">Tas max correspondant au tableau</p>
+</div>
+<p><em>2&#232;me &#233;tape</em> : parcourir le tas pour trier les &#233;l&#233;ments</p>
+<p>Pour trier les &#233;l&#233;ments gr&#226;ce &#224; notre tas, on retire la racine &#224; chaque tour (l'&#233;l&#233;ment le plus grand de notre tas, et de notre tableau), on le range &#224; sa place d&#233;finitive dans le tableau, et on entasse le dernier &#233;l&#233;ment du tas pour combler le trou de la racine et respecter les r&#232;gles d'un tas.</p>
+<div class="figure">
+<img src="/static/img/algo/tri/tri_tas/exemple_tour1.png" alt="1er tour" />
+<p class="caption">1er tour</p>
+</div>
+<p>La racine du tas (en vert) est plac&#233;e dans le tableau et le dernier &#233;l&#233;ment (en bleu) va remplacer la racine, mais il ne faut pas oublier de l'entasser pour respecter les r&#232;gles du tas max.</p>
+<p>On continue ces op&#233;rations tant que le tas n'est pas vide :</p>
+<div class="figure">
+<img src="/static/img/algo/tri/tri_tas/exemple_tour2.png" alt="Fin du tri par tas" />
+<p class="caption">Fin du tri par tas</p>
+</div>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Voici le pseudo-code du tri par tas :</p>
-<pre class="nohighlight"><code>triParTas(Tableau) :
-   construireTasMax(Tableau)
+<pre class="nohighlight"><code>triParTas :
 
-   Pour i = tailleTableau, allant jusqu&#39;&#224; 1 &#224; pas de 1
-      &#201;changer l&#39;&#233;l&#233;ment de Tableau[1] et l&#39;&#233;l&#233;ment de Tableau[i]
-      D&#233;cr&#233;menter la taille du tableau
-      entasser(Tableau, 1)
+   Contruire le tas max du tableau
 
-construireTasMax(Tableau) :
-   Pour i = tailleTableau / 2, allant jusqu&#39;&#224; 0 &#224; pas de 1
-      entasser(Tableau, i)
-
-entasser(Tableau, index) :
-   enfantGauche -&gt; gauche(index)
-   enfantDroite -&gt; droite(index)
-
-   Si Tableau[enfantGauche] &gt; Tableau[enfantDroite]
-      max -&gt; enfantGauche
-   Sinon
-      max -&gt; index
-   Si Tableau[enfantDroite] &gt; Tableau[max]
-      max -&gt; enfantDroite
-
-   Si max est diff&#233;rent de index
-      &#201;changer l&#39;&#233;l&#233;ment Tableau[index] et l&#39;&#233;l&#233;ment Tableau[max]
-      entasser(Tableau, max)
-gauche(index) :
-   Retourner 2 * index
-droite(index) : 
-   Retourner 2 * index + 1</code></pre>
-<p>Les fonctions <code>construireTasMax</code>, <code>entasser</code>, <code>gauche</code> et <code>droite</code> sont expliqu&#233;es dans mon article sur les arbres, je ne d&#233;crirais donc pas ces derni&#232;res. La fonction <code>triParTas</code>, commence donc pas cr&#233;er le tas max correspondant au tableau donn&#233; en param&#232;tre. Ensuite on &#233;change la valeur maximale du tas (situ&#233; &#224; l&#8217;index 1 de <code>Tableau</code>) avec l&#8217;&#233;l&#233;ment <em>i</em> de <code>Tableau</code> (sa place d&#233;finitive), on l&#8217;enl&#232;ve donc du tas et pour &#234;tre s&#251;r de conserver un tas max on appelle la fonction entasser pour conserver les propri&#233;t&#233;s fondamentales d&#8217;un tas max.</p>
-<p>Voici une image r&#233;sumant tr&#232;s bien le tri par tas :</p>
-<p>source : http://commons.wikimedia.org/wiki/File:Heap_sort_example.gif</p>
+   Pour chaque &#233;l&#233;ment du tableau (en partant de la fin)
+      Echanger l&#39;&#233;l&#233;ment avec la racine
+      D&#233;cr&#233;menter la taille du tas
+      Entasser l&#39;&#233;l&#233;ment plac&#233; &#224; la racine</code></pre>
+<p>En r&#233;alit&#233;, nous ne cr&#233;ons pas de tas &#224; part, on r&#233;arrange simplement les &#233;l&#233;ments du tableau pour qu'il fonctionne comme un tas max car c'est plus simple pour le manipuler. On parcourt donc notre tableau dans le sens inverse, pour toujours avoir comme &#233;l&#233;ment actuel le dernier &#233;l&#233;ment du tas, que l'on va &#233;changer avec la racine qui d&#233;sormais est bien plac&#233;e, on n'oublie pas de diminuer la taille du tas pour ne plus prendre en compte notre &#233;l&#233;ment que l'on vient de placer, et on finit par entasser la nouvelle racine pour continuer &#224; respecter les r&#232;gles d'un tas.</p>
+<p><em>Toutes les fonctions relatives &#224; un tas (<code>construire</code>, <code>entasser</code>, etc.) sont d&#233;crites dans mon article &#224; ce propos je n'en reparlerai pas ici.</em></p>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <em>O(N * log(N))</em> :</p>
-<ul>
-<li>Tout d&#8217;abord, il faut prendre en compte la boucle principale de la fonction <code>triParTas</code> qui parcourt <em>N</em> tours (<em>N</em> &#233;tant la taille du tableau) et s&#8217;ex&#233;cute donc en un temps lin&#233;aire de <em>O(N)</em>.</li>
-<li>Ensuite il faut calculer la complexit&#233; de la fonction <code>entasser</code>, qui est de <em>O(log(N))</em> puisqu&#8217;elle utilise un tas.</li>
-</ul>
-<p>On se retrouve donc bien avec une complexit&#233; en <em>O(N * log(N))</em>.</p>
-<p>Si vous n&#8217;avez pas lu mon article sur le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie complexit&#233; dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</p>
+<p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <em>O(N * log N)</em>. En effet, la boucle principale parcourt <em>N</em> tours (<em>N</em> &#233;tant la taille du tableau), et appelle &#224; chaque tour une fonction pour entasser qui a une complexit&#233; logarithmique.</p>
+<p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie complexit&#233; dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>Voici le lien vers l&#8217;impl&#233;mentation en C de l&#8217;algorithme du tri pas tas :</p>
+<p>Voici le lien vers une impl&#233;mentation en C de l&#8217;algorithme du tri pas tas :</p>
 <p>main.c :</p>
-<p>Cette impl&#233;mentation est simple, je vous conseille de l&#8217;am&#233;liorer avec les suggestions que je vous propose juste en dessous.</p>
-<p>Une seule remarque sur le code, faites attention aux indices des tableaux car en C (et dans beaucoup de langages de programmation) les tableaux ont pour premier index 0 et non 1.</p>
-<h2 id="am&#233;lioration-1">Am&#233;lioration 1</h2>
-<p>Comme pour le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>, le tri par tas peut aussi &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ment. Pour en savoir plus, je vous invite &#224; lire la partie <strong>Am&#233;lioration 2</strong> de mon article sur le tri rapide.</p>
+<h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
+<h3 id="m&#233;lange-dalgorithme">M&#233;lange d'algorithme</h3>
+<p>Comme pour le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>, le tri par tas peut &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ments afin de le rendre plus efficace. Pour en savoir plus, je vous invite &#224; lire la partie <strong>M&#233;lange d'algorithme</strong> dans les <strong>Am&#233;liorations et variantes</strong> de mon article sur le tri rapide.</p>
+<h3 id="smoothsort">Smoothsort</h3>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri par tas est donc un algorithme de tri efficace en <em>O(N * log(N))</em> non stable mais en place, et plut&#244;t facile &#224; impl&#233;menter.</p>
+<p>Le tri par tas est donc un algorithme de tri efficace en <em>O(N * log N)</em> non stable mais en place, et plut&#244;t facile &#224; impl&#233;menter.</p>
  
       <!-- ------------ -->
 
