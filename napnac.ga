@@ -30,6 +30,22 @@ server {
       try_files $uri $uri/ =404;
    }
 
+	error_page 404 /custom_404.html;
+	location = /custom_404.html {
+		root /usr/share/nginx/html;
+		internal;
+	}
+
+	error_page 500 502 503 504 /custom_50x.html;
+	location = /custom_50x.html {
+		root /usr/share/nginx/html;
+		internal;
+	}
+
+	location /testing {
+		fastcgi_pass unix:/does/not/exist;
+	}
+
    if ($http_cf_visitor ~ '{"scheme":"http"}') {
       return 301 https://$server_name$request_uri;
    }
