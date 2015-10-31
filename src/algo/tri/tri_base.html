@@ -134,40 +134,65 @@ table tr:nth-child(2n) {
 <p>Publi&#233; le :<br />
 <em>Modifi&#233; le :</em></p>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri par base (<em>radix sort</em> en anglais) est un algorithme de tri ayant une complexit&#233; algorithmique lin&#233;aire soit <em>O(N)</em>, il &#233;tait utilis&#233; par les trieuses de [cartes perfor&#233;es] et l&#8217;est encore aujourd&#8217;hui dans les ordinateurs modernes. Cet algorithme doit fonctionner &#224; l&#8217;aide d&#8217;un autre algorithme de tri qui doit &#234;tre obligatoirement stable, c&#8217;est-&#224;-dire qu&#8217;il conserve l&#8217;ordre relatif d&#8217;apparition des &#233;l&#233;ments dans un tableau en cas d&#8217;&#233;galit&#233; (par exemple si dans un tableau que je souhaite trier, j&#8217;ai deux 7, un algorithme de tri stable conservera l&#8217;ordre d&#8217;apparition des 7 dans le tableau tri&#233;).</p>
+<p>Le tri par base (<em>radix sort</em> en anglais) est un algorithme de tri ayant une complexit&#233; algorithmique lin&#233;aire, il &#233;tait utilis&#233; par les trieuses de <a href="https://en.wikipedia.org/wiki/Punched_card">cartes perfor&#233;es</a> et l&#8217;est encore aujourd&#8217;hui dans les ordinateurs modernes. Cet algorithme doit fonctionner &#224; l&#8217;aide d&#8217;un autre algorithme de tri qui doit &#234;tre obligatoirement <a href="https://en.wikipedia.org/wiki/Punched_card">stable</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
 <p>L&#8217;algorithme est simple, on va trier successivement (&#224; l&#8217;aide d&#8217;un algorithme de tri stable) les nombres donn&#233;s en entr&#233;e en commen&#231;ant par le chiffre moins significatif de chaque nombre.</p>
-<p>C&#8217;est-&#224;-dire que l&#8217;on va trier tout d&#8217;abord les nombres en fonction du chiffre de l&#8217;unit&#233;, puis trier de nouveau en fonction cette fois-ci du chiffre des dizaines, et ainsi de suite jusqu&#8217;&#224; atteindre le nombre maximum de chiffre contenu dans un nombre.</p>
+<p>C&#8217;est-&#224;-dire que l&#8217;on va trier tout d&#8217;abord les nombres en fonction du chiffre de l&#8217;unit&#233;, puis trier de nouveau en fonction du chiffre des dizaines, et ainsi de suite jusqu&#8217;&#224; atteindre le nombre maximum de chiffre contenu dans un nombre.</p>
 <p>L&#8217;ordre de tri est d&#233;fini dans l&#8217;algorithme de tri utilis&#233; et non dans le tri par base en lui m&#234;me.</p>
 <h2 id="exemple">Exemple</h2>
 <p>Soit le tableau suivant que l&#8217;on souhaite trier dans l&#8217;ordre croissant en utilisant l&#8217;algorithme du tri par base : 56, 87, 2, 36, 74, 19.</p>
-<p>Tout d&#8217;abord, on remarque qu&#8217;il y a au maximum deux chiffres par nombre et que par cons&#233;quent on n&#8217;utilisera notre algorithme de tri stable seulement deux fois.</p>
-<p>Premi&#232;re &#233;tape, on trie les nombres en fonction du chiffre de l&#8217;unit&#233; :</p>
-<p>56 2 87 74 2 +--------&gt; 56 36 36 74 87 19 19</p>
-<p>Vous voyez ici que l&#8217;on a deux 6 dans les unit&#233;s, pour d&#233;cider lequel placer en premier, on prendra toujours celui avec l&#8217;index le plus faible, c&#8217;est-&#224;-dire le plus proche du d&#233;but du tableau (dans notre cas on choisit 56 puis 36), d&#8217;o&#249; l&#8217;obligation d&#8217;utiliser un algorithme de tri stable.</p>
-<p>Deuxi&#232;me &#233;tape, on trie les nombres en fonction du chiffre des dizaines :</p>
-<p>2 2 74 19 56 +--------&gt; 36 36 56 87 74 19 87</p>
-<p>Le 2 n&#8217;a pas de chiffre des dizaines, on fait donc comme s&#8217;il avait un z&#233;ro pour chiffre des dizaines.</p>
-<p>On a atteint le nombre maximum de chiffre dans un nombre, notre tableau est donc tri&#233; :</p>
+<p>Tout d&#8217;abord, on remarque qu&#8217;il y a au maximum deux chiffres par nombre et que par cons&#233;quent on n&#8217;utilisera notre algorithme de tri stable seulement deux fois. On commence donc par trier cette suite de nombre en fonction du chiffre des unit&#233;s, puis on recommence l'op&#233;ration sur le chiffre des dizaines :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">D&#233;but</th>
+<th align="right">1er tour</th>
+<th align="right">2&#232;me tour</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">56</td>
+<td align="right"><strong>2</strong></td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">87</td>
+<td align="right">7<strong>4</strong></td>
+<td align="right"><strong>1</strong>9</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">5<strong>6</strong></td>
+<td align="right"><strong>3</strong>6</td>
+</tr>
+<tr class="even">
+<td align="right">36</td>
+<td align="right">3<strong>6</strong></td>
+<td align="right"><strong>5</strong>6</td>
+</tr>
+<tr class="odd">
+<td align="right">74</td>
+<td align="right">8<strong>7</strong></td>
+<td align="right"><strong>7</strong>4</td>
+</tr>
+<tr class="even">
+<td align="right">19</td>
+<td align="right">1<strong>9</strong></td>
+<td align="right"><strong>8</strong>7</td>
+</tr>
+</tbody>
+</table>
+<p>On atteint le nombre maximum de chiffre, notre tableau est donc tri&#233; :</p>
 <p>2, 19, 36, 56, 74, 87.</p>
-<p>Cependant, vous devez sans doute vous demander quel algorithme de tri utiliser ? Le tri par d&#233;nombrement semble le choix id&#233;al. En effet, on sait que l&#8217;on va trier uniquement des chiffres dont les &#233;l&#233;ments &#224; trier seront toujours compris en 0 et 9 (inclus), soit toujours des nombres entiers pas trop grands et proches les uns des autres. Cela permet donc de pallier tous les &#171; d&#233;fauts &#187; du tri par d&#233;nombrement et de l&#8217;utiliser efficacement.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code du tri par base :</p>
-<pre class="nohighlight"><code>Soit N la taille du tableau &#224; trier
+<pre class="nohighlight"><code>triParBase :
 
-triParBase(Tableau, N) :
-   maxChiffre -&gt; le nombre maximum de chiffre contenu dans un nombre de Tableau
-
-   Pour i = 0, allant jusqu&#39;&#224; maxChiffre &#224; pas de 1
+   Pour chaque chiffre possible
       Trier Tableau en fonction du chiffre i</code></pre>
-<p>Ce pseudo-code peut para&#238;tre un peu vide, en effet le tri par base est juste compos&#233; d&#8217;une boucle puisqu&#8217;il repose sur un autre algorithme de tri.</p>
+<p>Cela peut paraitre assez &#233;trange d'utiliser un autre algorithme de tri dans un algorithme de tri, mais si l'on consid&#232;re cet autre algorithme comme le <a href="/algo/tri/tri_denombrement.html">tri par d&#233;nombrement</a> on peut ainsi pallier un des probl&#232;mes de ce tri au niveau de la m&#233;moire utilis&#233;e. Il va cependant nous falloir modifier l&#233;g&#232;rement notre impl&#233;mentation du tri par d&#233;nombrement car la notion de stabilit&#233; pour ce tri n'a pas vraiment de sens puisqu'on utilise des effectifs sans lien r&#233;el avec notre tableau.</p>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>La complexit&#233; du tri par base peut varier puisqu&#8217;elle d&#233;pend de l&#8217;algorithme utilis&#233; dans le tri. En effet, si l&#8217;on utilise le <a href="http://napnac.ga/algo/tri/tri_denombrement.html">tri par d&#233;nombrement</a> :</p>
-<ul>
-<li>La boucle fait <code>maxChiffre</code> tours.</li>
-<li>A chaque tour de boucle, on utilise le tri par d&#233;nombrement qui comme je vous l&#8217;ai dit dans mon article &#224; propos de ce tri, a une complexit&#233; de <em>O(N)</em> en g&#233;n&#233;ral.</li>
-</ul>
-<p>La complexit&#233; finale est donc de <em>O(maxChiffre * N)</em>, or <code>maxChiffre</code> sera souvent assez petit pour ne pas le prendre en compte, on obtient donc une complexit&#233; moyenne pour le tri par base de <em>O(N)</em>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Voici le lien vers une impl&#233;mentation en C du tri par base :</p>
 <p>main.c :</p>
