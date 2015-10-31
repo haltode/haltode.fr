@@ -7,7 +7,7 @@ Publié le : 14/05/2014
 
 ## Introduction
 
-Le tri par tas (*heap sort* en anglais) est un algorithme de tri par comparaison, plutôt efficace et qui a une complexité en *O(N \* log N)*. C’est un algorithme de tri [non stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
+Le tri par tas (*heapsort* en anglais) est un algorithme de tri par comparaison, plutôt efficace et qui a une complexité en *O(N \* log N)*. C’est un algorithme de tri [non stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
 
 ## Principe de l’algorithme
 
@@ -38,7 +38,7 @@ On continue ces opérations tant que le tas n'est pas vide :
 Voici le pseudo-code du tri par tas :
 
 ```nohighlight
-triParTas :
+triTas :
 
    Contruire le tas max du tableau
 
