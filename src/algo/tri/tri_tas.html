@@ -170,13 +170,13 @@ table tr:nth-child(2n) {
 <p><em>Toutes les fonctions relatives &#224; un tas (<code>construire</code>, <code>entasser</code>, etc.) sont d&#233;crites dans mon article &#224; ce propos je n'en reparlerai pas ici.</em></p>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <em>O(N * log N)</em>. En effet, la boucle principale parcourt <em>N</em> tours (<em>N</em> &#233;tant la taille du tableau), et appelle &#224; chaque tour une fonction pour entasser qui a une complexit&#233; logarithmique.</p>
-<p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie complexit&#233; dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
+<p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie complexit&#233; dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Voici le lien vers une impl&#233;mentation en C de l&#8217;algorithme du tri pas tas :</p>
 <p>main.c :</p>
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
 <h3 id="m&#233;lange-dalgorithme">M&#233;lange d'algorithme</h3>
-<p>Comme pour le <a href="http://napnac.ga/algo/tri/tri_rapide.html">tri rapide</a>, le tri par tas peut &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ments afin de le rendre plus efficace. Pour en savoir plus, je vous invite &#224; lire la partie <strong>M&#233;lange d'algorithme</strong> dans les <strong>Am&#233;liorations et variantes</strong> de mon article sur le tri rapide.</p>
+<p>Comme pour le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, le tri par tas peut &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ments afin de le rendre plus efficace. Pour en savoir plus, je vous invite &#224; lire la partie <strong>M&#233;lange d'algorithme</strong> dans les <strong>Am&#233;liorations et variantes</strong> de mon article sur le tri rapide.</p>
 <h3 id="smoothsort">Smoothsort</h3>
 <h2 id="conclusion">Conclusion</h2>
 <p>Le tri par tas est donc un algorithme de tri efficace en <em>O(N * log N)</em> non stable mais en place, et plut&#244;t facile &#224; impl&#233;menter.</p>

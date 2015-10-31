@@ -56,7 +56,7 @@ En réalité, nous ne créons pas de tas à part, on réarrange simplement les �
 
 La complexité de l’algorithme du tri par tas est en *O(N \* log N)*. En effet, la boucle principale parcourt *N* tours (*N* étant la taille du tableau), et appelle à chaque tour une fonction pour entasser qui a une complexité logarithmique.
 
-*Si vous n’avez pas lu mon article sur le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), je vous conseille au moins de lire la partie complexité dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.*
+*Si vous n’avez pas lu mon article sur le [tri rapide](/algo/tri/tri_rapide.html), je vous conseille au moins de lire la partie complexité dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.*
 
 ## Implémentation
 
@@ -68,7 +68,7 @@ main.c :
 
 ### Mélange d'algorithme
 
-Comme pour le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html), le tri par tas peut être mélangé avec un autre algorithme de tri lorsque le tableau possède peu d’éléments afin de le rendre plus efficace. Pour en savoir plus, je vous invite à lire la partie **Mélange d'algorithme** dans les **Améliorations et variantes** de mon article sur le tri rapide.
+Comme pour le [tri rapide](/algo/tri/tri_rapide.html), le tri par tas peut être mélangé avec un autre algorithme de tri lorsque le tableau possède peu d’éléments afin de le rendre plus efficace. Pour en savoir plus, je vous invite à lire la partie **Mélange d'algorithme** dans les **Améliorations et variantes** de mon article sur le tri rapide.
 
 ### Smoothsort
 

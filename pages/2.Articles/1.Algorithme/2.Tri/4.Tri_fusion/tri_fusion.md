@@ -92,7 +92,7 @@ main.c :
 
 ### Liste chaînée
 
-Les [listes chaînées](http://napnac.ga/algo/structure/liste_chainee.html) sont effectivement un bon moyen d'implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.
+Les [listes chaînées](/algo/structure/liste_chainee.html) sont effectivement un bon moyen d'implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.
 
 La complexité en temps ne bouge pas mais la complexité en mémoire est améliorée.
 

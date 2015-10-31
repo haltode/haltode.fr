@@ -7,7 +7,7 @@ Publié le : 30/04/2014
 
 ## Introduction
 
-Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entrée trop importante, c’est un algorithme non [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais qui tri [en place](https://en.wikipedia.org/wiki/In-place_algorithm). Il a pour complexité algorithmique *O(N²)* comme le [tri à bulles](http://napnac.ga/algo/tri/tri_bulles.html).
+Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entrée trop importante, c’est un algorithme non [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais qui tri [en place](https://en.wikipedia.org/wiki/In-place_algorithm). Il a pour complexité algorithmique *O(N²)* comme le [tri à bulles](/algo/tri/tri_bulles.html).
 
 ## Principe de l’algorithme
 
@@ -91,7 +91,7 @@ Dans le cas où notre tableau contient de nombreux doublons, l'algorithme de tri
 
 ### Tri par tas
 
-On peut voir le [tri par tas](http://napnac.ga/algo/tri/tri_tas.html) comme une amélioration directe au tri par sélection. En effet, si l'on utilise un tas pour permettre de trouver les éléments plus petits rapidement, on obtient une complexité en *O(N \* log N)* et un tri qu'on appelle tri par tas.
+On peut voir le [tri par tas](/algo/tri/tri_tas.html) comme une amélioration directe au tri par sélection. En effet, si l'on utilise un tas pour permettre de trouver les éléments plus petits rapidement, on obtient une complexité en *O(N \* log N)* et un tri qu'on appelle tri par tas.
 
 ## Conclusion
 

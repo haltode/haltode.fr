@@ -7,7 +7,7 @@ Date du projet : octobre 2013 à janvier 2014
 
 ## Introduction
 
-Rhyddid est mon deuxième projet de jeu en C, cette fois ci je n'ai pas repris des jeux existants, et j'ai utilisé uniquement des fonctions de la console (comme l'utilisation de la couleur, inspirée du jeu de Pacman de [ASCII Funfair](http://napnac.ga/projets/ascii_funfair.html)). C’était mon premier projet possédant plusieurs fichiers sources (et peut-être un peu trop quand j'y pense aujourd'hui ...), dont la gestion de ces derniers laisse encore à désirer. Cependant ce projet était bien plus développé que mon précédent, j'ai appris énormément de choses et j’ai pris beaucoup de plaisir à le réaliser.
+Rhyddid est mon deuxième projet de jeu en C, cette fois ci je n'ai pas repris des jeux existants, et j'ai utilisé uniquement des fonctions de la console (comme l'utilisation de la couleur, inspirée du jeu de Pacman de [ASCII Funfair](/projets/ascii_funfair.html)). C’était mon premier projet possédant plusieurs fichiers sources (et peut-être un peu trop quand j'y pense aujourd'hui ...), dont la gestion de ces derniers laisse encore à désirer. Cependant ce projet était bien plus développé que mon précédent, j'ai appris énormément de choses et j’ai pris beaucoup de plaisir à le réaliser.
 
 ## Qu'est-ce que Rhyddid ?
 

@@ -205,7 +205,7 @@ table tr:nth-child(2n) {
 </ul>
 <p>La complexit&#233; en m&#233;moire est en <em>O(N&#178;)</em> (avec <em>N</em> le nombre de n&#339;uds du graphe) et la complexit&#233; pour acc&#233;der aux deux informations cit&#233;es au-dessus est en <em>O(1)</em> (puisqu'il s'agit d'un tableau).</p>
 <h3 id="liste-dadjacence">Liste d'adjacence</h3>
-<p>On peut utiliser une variante de la matrice d'adjacence afin d'&#233;conomiser de la m&#233;moire (mais cette repr&#233;sentation requiert un temps en <em>O(N)</em> pour savoir si deux n&#339;uds sont voisins ou pour conna&#238;tre la pond&#233;ration de tel arc). Cette solution consiste &#224; utiliser un tableau de <a href="http://napnac.ga/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a>, chaque n&#339;ud du graphe a sa propre liste cha&#238;n&#233;e contenant tous ses voisins (et &#233;ventuellement toutes les pond&#233;rations).</p>
+<p>On peut utiliser une variante de la matrice d'adjacence afin d'&#233;conomiser de la m&#233;moire (mais cette repr&#233;sentation requiert un temps en <em>O(N)</em> pour savoir si deux n&#339;uds sont voisins ou pour conna&#238;tre la pond&#233;ration de tel arc). Cette solution consiste &#224; utiliser un tableau de <a href="/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a>, chaque n&#339;ud du graphe a sa propre liste cha&#238;n&#233;e contenant tous ses voisins (et &#233;ventuellement toutes les pond&#233;rations).</p>
 <p>Voici par exemple la liste d'adjacence qui repr&#233;sente le premier graphe de l'article :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/graphe/exemple_liste_adjacence.png" alt="Exemple de liste d&#39;adjacence" />

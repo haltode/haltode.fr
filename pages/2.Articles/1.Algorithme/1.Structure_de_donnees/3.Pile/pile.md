@@ -30,7 +30,7 @@ L’action d’enlever un élément de la pile est appelée : **dépiler** (ou *
 
 Pour représenter une pile, je vais vous présenter deux moyens :
 
-- Avec une [liste chaînée](http://napnac.ga/algo/structure/liste_chainee.html).
+- Avec une [liste chaînée](/algo/structure/liste_chainee.html).
 - Avec un tableau ainsi qu’un index nous indiquant le prochain élément libre dans la pile. Cet index est appelé pointeur de pile (ou *stack pointer* en anglais, souvent abrégé *SP*).
 
 ## Quelques fonctions pour manipuler une pile
@@ -123,7 +123,7 @@ Le lien vers une implémentation en C d’une pile à l’aide d’une liste cha
 
 main.c : 
 
-Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les listes chaînées pour bien comprendre le code : <http://napnac.ga/algo/structure/liste_chainee.html>
+Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les listes chaînées pour bien comprendre le code : </algo/structure/liste_chainee.html>
 
 ### Tableau
 

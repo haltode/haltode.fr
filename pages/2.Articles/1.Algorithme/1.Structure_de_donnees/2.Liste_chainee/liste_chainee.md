@@ -154,6 +154,6 @@ En plus de ces variantes assez "courantes", on peut retrouver d'autres variantes
 
 ## Conclusion
 
-La liste chaînée est donc une structure de données très souple, et efficace pour insérer et supprimer des éléments simplement. De plus, on peut la modifier afin de créer de nouvelles structures de données différentes comme la liste doublement chaînée, la liste chaînée circulaire, mais aussi pour créer une [pile](http://napnac.ga/algo/structure/pile.html) ou encore une [file](http://napnac.ga/algo/structure/file.html).
+La liste chaînée est donc une structure de données très souple, et efficace pour insérer et supprimer des éléments simplement. De plus, on peut la modifier afin de créer de nouvelles structures de données différentes comme la liste doublement chaînée, la liste chaînée circulaire, mais aussi pour créer une [pile](/algo/structure/pile.html) ou encore une [file](/algo/structure/file.html).
 
-Les listes chaînées sont aussi la base de structures de données plus complexes comme les [tables de hachage](http://napnac.ga/algo/structure/table_hachage.html), les [arbres](http://napnac.ga/algo/structure/arbre.html), les [graphes](http://napnac.ga/algo/structure/graphe.html), et de nombreuses variantes de listes chaînées existent.
+Les listes chaînées sont aussi la base de structures de données plus complexes comme les [tables de hachage](/algo/structure/table_hachage.html), les [arbres](/algo/structure/arbre.html), les [graphes](/algo/structure/graphe.html), et de nombreuses variantes de listes chaînées existent.

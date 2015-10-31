@@ -28,7 +28,7 @@ L’action d’enlever un élément de la file est appelée : **défiler** (ou *
 
 ![Un élément est défilé](/static/img/algo/structure/file/exemple_suppression.png)
 
-Cette fois ci, j'implémenterai la file uniquement avec une [liste chaînée](http://napnac.ga/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise beaucoup d'opérations inutiles).
+Cette fois ci, j'implémenterai la file uniquement avec une [liste chaînée](/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise beaucoup d'opérations inutiles).
 
 ## Quelques fonctions pour manipuler une file
 
@@ -94,7 +94,7 @@ Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Templ
 
 ## File à priorité
 
-Une file à priorité (*priority queue* en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'[algorithme de Dijkstra]() pour trouver le plus court chemin entre deux nœuds d'un [graphe](http://napnac.ga/algo/structure/graphe.html) pondéré positivement. Chaque élément se voit attribuer une **clé**, permettant d'organiser la file (d'où le nom de file à **priorité**). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.
+Une file à priorité (*priority queue* en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'[algorithme de Dijkstra]() pour trouver le plus court chemin entre deux nœuds d'un [graphe](/algo/structure/graphe.html) pondéré positivement. Chaque élément se voit attribuer une **clé**, permettant d'organiser la file (d'où le nom de file à **priorité**). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.
 
 On implémente très souvent une file à priorité grâce à un [tas]() (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <http://www.cplusplus.com/reference/queue/priority_queue/>
 

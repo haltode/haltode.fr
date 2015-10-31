@@ -93,7 +93,7 @@ La complexité en mémoire est en *O(N²)* (avec *N* le nombre de nœuds du grap
 
 ### Liste d'adjacence
 
-On peut utiliser une variante de la matrice d'adjacence afin d'économiser de la mémoire (mais cette représentation requiert un temps en *O(N)* pour savoir si deux nœuds sont voisins ou pour connaître la pondération de tel arc). Cette solution consiste à utiliser un tableau de [listes chaînées](http://napnac.ga/algo/structure/liste_chainee.html), chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).
+On peut utiliser une variante de la matrice d'adjacence afin d'économiser de la mémoire (mais cette représentation requiert un temps en *O(N)* pour savoir si deux nœuds sont voisins ou pour connaître la pondération de tel arc). Cette solution consiste à utiliser un tableau de [listes chaînées](/algo/structure/liste_chainee.html), chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).
 
 Voici par exemple la liste d'adjacence qui représente le premier graphe de l'article :
 

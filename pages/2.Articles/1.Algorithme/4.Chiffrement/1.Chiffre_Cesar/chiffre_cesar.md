@@ -13,7 +13,7 @@ Le chiffre de César (aussi appelé *chiffrement par décalage*) est un algorith
 
 Le chiffre de César utilise une **substitution mono-alphabétique** pour chiffrer et déchiffrer un message, c’est-à-dire que l’on décale de *x* rangs dans l’alphabet vers la droite la lettre du message lors du chiffrement, et l’on décale de *x* rangs vers la gauche la lettre lors du déchiffrement (*x* est appelé la **clé de chiffrement**, et doit bien entendu être la même lors du chiffrement et du déchiffrement puisque le chiffre de César est un chiffrement symétrique).
 
-Le fait que la substitution soit mono-alphabétique signifie que si l’on chiffre plusieurs fois la lettre A avec une clé de chiffrement *x*, alors la lettre chiffrée sera toujours la même, ce type de système s’oppose donc à la **substitution poly-alphabétique** utilisée par le [chiffre de Vigenère](http://napnac.ga/algo/chiffrement/chiffre_vigenere.html) par exemple.
+Le fait que la substitution soit mono-alphabétique signifie que si l’on chiffre plusieurs fois la lettre A avec une clé de chiffrement *x*, alors la lettre chiffrée sera toujours la même, ce type de système s’oppose donc à la **substitution poly-alphabétique** utilisée par le [chiffre de Vigenère](/algo/chiffrement/chiffre_vigenere.html) par exemple.
 
 ## Exemple
 

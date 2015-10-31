@@ -66,7 +66,7 @@ L’algorithme du tri par insertion a une complexité de *O(N²)*, on le remarqu
 
 Donc dans le pire des cas on parcourt *N \* N* tours, le tri par insertion a donc une complexité en temps de *O(N²)*.
 
-Cependant, le tri par insertion est très efficace sur des entrées de petites tailles, et encore plus sur des entrées étant déjà presque triées (il est même plus performant que certains tris en *O(N \* log N)* comme le [tri fusion](http://napnac.ga/algo/tri/tri_fusion.html), ou même le [tri rapide](http://napnac.ga/algo/tri/tri_rapide.html)), dans ce cas il peut s’exécuter en temps linéaire.
+Cependant, le tri par insertion est très efficace sur des entrées de petites tailles, et encore plus sur des entrées étant déjà presque triées (il est même plus performant que certains tris en *O(N \* log N)* comme le [tri fusion](/algo/tri/tri_fusion.html), ou même le [tri rapide](/algo/tri/tri_rapide.html)), dans ce cas il peut s’exécuter en temps linéaire.
 
 ## Implémentation
 
@@ -78,7 +78,7 @@ main.c :
 
 ### Utiliser des listes chaînées
 
-Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu'on peut utiliser des [listes chaînées](http://napnac.ga/algo/structure/liste_chainee.html) afin de contrer ce problème. Les listes chaînées permettent d'insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.
+Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu'on peut utiliser des [listes chaînées](/algo/structure/liste_chainee.html) afin de contrer ce problème. Les listes chaînées permettent d'insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.
 
 ### Tri Shell
 
@@ -112,7 +112,7 @@ Malheureusement le tri Shell reste avec une complexité quadratique dans le pire
 
 ### Dichotomie
 
-Une autre amélioration est possible et très efficace. En effet, le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la [dichotomie](http://napnac.ga/algo/recherche/dichotomie.html) (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).
+Une autre amélioration est possible et très efficace. En effet, le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la [dichotomie](/algo/recherche/dichotomie.html) (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).
 
 Cette recherche consiste à utiliser la méthode du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : *début partie triée* ->  *fin partie triée* :
 
