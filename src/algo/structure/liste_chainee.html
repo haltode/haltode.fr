@@ -132,11 +132,13 @@ table tr:nth-child(2n) {
 
 <h1 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h1>
 <p>Publi&#233; le : 08/06/2014<br />
-<em>Modifi&#233; le : 22/10/2015</em></p>
+<em>Modifi&#233; le : 01/11/2015</em></p>
 <h2 id="introduction">Introduction</h2>
-<p>Une liste cha&#238;n&#233;e (<em>linked list</em> en anglais) est une structure de donn&#233;es tr&#232;s utilis&#233;e en programmation et permet d'impl&#233;menter d'autres structures plus complexes. On utilise une liste cha&#238;n&#233;e principalement pour stocker des donn&#233;es de mani&#232;re souple et dynamique, c'est-&#224;-dire pour nous permettre l'insertion et la suppression d'&#233;l&#233;ments facilement (contrairement &#224; un tableau).</p>
+<p>Imaginons un tableau contenant des milliards d'&#233;l&#233;ments...</p>
+<p>Comment <strong>supprimer</strong> un &#233;l&#233;ment en plein milieu du tableau ? On peut d&#233;caler le tableau et r&#233;&#233;crire par-dessus la valeur supprim&#233;e, mais c'est une perte de temps. Ou alors, on r&#233;&#233;crit toutes les valeurs de notre tableau dans un autre en sautant l'&#233;l&#233;ment que l'on veut supprimer, mais c'est une perte de temps et de m&#233;moire. On pourrait aussi marquer l'&#233;l&#233;ment comme &quot;supprim&#233;&quot; avec une valeur sp&#233;cifique qui n'apparait nulle part ailleurs dans notre tableau et ne plus le prendre en compte, mais &#231;a serait une perte de m&#233;moire, et potentiellement une perte de temps si l'on ne fait que parcourir des &#233;l&#233;ments &quot;supprim&#233;s&quot;. Et comment <strong>ajouter</strong> un &#233;l&#233;ment en plein du tableau ? On pourrait cr&#233;er un autre tableau et recopier en incorporant notre nouvel &#233;l&#233;ment, mais c'est une perte de temps et de m&#233;moire, ou alors on pourrait d&#233;caler les &#233;l&#233;ments vers la droite pour faire une place et ins&#233;rer notre nouvel &#233;l&#233;ment, mais encore une fois c'est une perte de temps.</p>
+<p>Avec ces diff&#233;rents probl&#232;mes, on voit que les tableaux ne sont pas adapt&#233;s &#224; toutes les situations, et qu'il faut parfois se servir d'autres structures de donn&#233;es afin de stocker nos &#233;l&#233;ments. Dans notre cas, on a besoin d'une structure de donn&#233;es souple, dynamique, et qui nous permet d'ins&#233;rer et de supprimer des &#233;l&#233;ments facilement : la liste cha&#238;n&#233;e.</p>
 <h2 id="principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</h2>
-<p>Une liste cha&#238;n&#233;e est une structure de donn&#233;es auto r&#233;f&#233;rentielle, c'est-&#224;-dire que chacun de ses &#233;l&#233;ments pointe vers l'&#233;l&#233;ment suivant que l'on appelle alors des <strong>n&#339;uds</strong> (<em>node</em> en anglais). A partir de cette d&#233;finition on peut d&#233;j&#224; &#233;tablir le contenu d'un &#233;l&#233;ment d'une liste cha&#238;n&#233;e :</p>
+<p>Une liste cha&#238;n&#233;e (<em>linked list</em> en anglais) est une structure de donn&#233;es auto r&#233;f&#233;rentielle, c'est-&#224;-dire que chacun de ses &#233;l&#233;ments pointe vers l'&#233;l&#233;ment suivant que l'on appelle des <strong>n&#339;uds</strong> (<em>node</em>). A partir de cette d&#233;finition on peut d&#233;j&#224; &#233;tablir le contenu d'un &#233;l&#233;ment d'une liste cha&#238;n&#233;e :</p>
 <ul>
 <li><strong>Des donn&#233;es</strong> : ces donn&#233;es peuvent &#234;tre de n'importe quels types (entier, flottant, cha&#238;ne de caract&#232;re, etc.), et il peut en y avoir autant que possible par &#233;l&#233;ment.</li>
 <li><strong>Un pointeur</strong> : ce pointeur pointe vers l'&#233;l&#233;ment suivant de la liste, et permet de lier les n&#339;uds entre eux.</li>
@@ -147,15 +149,15 @@ table tr:nth-child(2n) {
 </div>
 <p>Le dernier pointeur de la liste cha&#238;n&#233;e pointe sur la valeur <code>NULL</code>, pour indiquer la fin de la liste.</p>
 <h2 id="diff&#233;rence-avec-les-tableaux">Diff&#233;rence avec les tableaux</h2>
-<p>Les listes cha&#238;n&#233;es vous font sans doute penser &#224; un tableau, mais elles sont tr&#232;s diff&#233;rentes. Les deux ont leurs avantages et leurs inconv&#233;nients, aucune n'est meilleure que l'autre mais il faut savoir quand utiliser la bonne structure de donn&#233;es au bon moment :</p>
+<p>Les deux structures de donn&#233;es sont diff&#233;rentes, et ont leurs avantages et leurs inconv&#233;nients, aucune n'est meilleure que l'autre mais il faut savoir quand utiliser la bonne structure au bon moment :</p>
 <ul>
 <li><strong>Tableau</strong> : les &#233;l&#233;ments sont contigus en m&#233;moire, la taille du tableau ne change pas et est connu &#224; l'avance, l'ajout et la suppression d'un &#233;l&#233;ment du tableau sont des op&#233;rations couteuses en temps et en m&#233;moire, en revanche on peut ais&#233;ment acc&#233;der &#224; un &#233;l&#233;ment du tableau en temps constant (par exemple en C : <code>tableau[2]</code>).</li>
 <li><strong>Liste cha&#238;n&#233;e</strong> : les &#233;l&#233;ments ne sont pas contigus en m&#233;moire, la taille peut varier, on peut facilement ins&#233;rer/supprimer des &#233;l&#233;ments de la liste en temps constant, mais on ne peut pas acc&#233;der &#224; un &#233;l&#233;ment pr&#233;cis de la liste instantan&#233;ment (il faut parcourir la liste jusqu'&#224; cet &#233;l&#233;ment).</li>
 </ul>
 <p>Pour illustrer les diff&#233;rences entre liste cha&#238;n&#233;e et tableau, prenons l'exemple d'un &#233;tudiant qui prend ses cours :</p>
 <ul>
-<li>Un tableau est comme un cahier de cours : on commence au d&#233;but du cahier pour ne pas gaspiller de l'espace, et on &#233;crit son cours au fur et &#224; mesure jusqu'&#224; ne plus avoir de place. Si on rate un cours, on a deux choix : soit on laisse de l'espace pour permettre de recopier le cours plus tard, mais dans ce cas l'espace sera soit trop petit (plus de place), soit trop grand (gaspillage d'espace), soit on recopie tout le cahier en incluant la partie qui manque, cependant cette m&#233;thode est longue et demande un autre cahier.</li>
-<li>Une liste cha&#238;n&#233;e serait comme un classeur : on commence o&#249; on souhaite dans le classeur, on &#233;crit son cours sur des feuilles volantes toutes ind&#233;pendantes les unes des autres et on peut les ins&#233;rer ou les supprimer dans le classeur facilement. Si on est absent pendant un cours, il suffit de copier le cours sur une feuille &#224; part, puis de la placer entre deux feuilles dans le classeur.</li>
+<li>Un tableau est comme un cahier : on commence au d&#233;but pour ne pas gaspiller de l'espace, et on &#233;crit son cours au fur et &#224; mesure jusqu'&#224; ne plus avoir de page libre. Si on rate un cours, on a deux choix : soit on laisse de l'espace pour permettre de recopier le cours plus tard, mais dans ce cas l'espace sera soit trop petit (plus de place), soit trop grand (gaspillage d'espace), soit on recopie tout le cahier en incluant la partie qui manque, cependant cette m&#233;thode est longue et demande un autre cahier.</li>
+<li>Une liste cha&#238;n&#233;e serait comme un classeur : on commence o&#249; on veut dans le classeur, on &#233;crit son cours sur des feuilles volantes toutes ind&#233;pendantes les unes des autres et on peut les ins&#233;rer ou les supprimer dans le classeur facilement. Si on est absent pendant un cours, il suffit de copier le cours sur une feuille &#224; part, puis de la placer entre deux feuilles dans le classeur.</li>
 </ul>
 <div class="figure">
 <img src="/static/img/algo/structure/liste_chainee/exemple_ajout.png" alt="Exemple d&#39;ajout d&#39;&#233;l&#233;ment dans une liste cha&#238;n&#233;e" />
@@ -171,25 +173,25 @@ table tr:nth-child(2n) {
    Cr&#233;er un premier &#233;l&#233;ment
    Initialiser les donn&#233;es de l&#39;&#233;l&#233;ment
    Le faire pointer sur NULL (pour indiquer la fin de la liste)
-   Retourner l&#39;&#233;l&#233;ment
+   Retourner la liste
 supprimerListe :
    Pour chaque &#233;l&#233;ment de la liste
       Supprimer l&#39;&#233;l&#233;ment actuel
 
-ajoutEnT&#234;te (&#233;l&#233;ment) :
+ajoutT&#234;te (&#233;l&#233;ment) :
    Faire pointer le nouvel &#233;l&#233;ment vers le premier &#233;l&#233;ment de la liste
-ajoutEnFin (&#233;l&#233;ment) :
+ajoutFin (&#233;l&#233;ment) :
    Parcourir la liste jusqu&#39;&#224; la fin
    Faire pointer le dernier &#233;l&#233;ment vers l&#39;&#233;l&#233;ment donn&#233; en param&#232;tre
    Faire pointer l&#39;&#233;l&#233;ment donn&#233; en param&#232;tre sur NULL
 ajoutEl&#233;ment (&#233;l&#233;ment, index) :
    Parcourir la liste jusqu&#39;&#224; arriver &#224; l&#39;&#233;l&#233;ment situ&#233; avant l&#39;index donn&#233;
    Faire pointer l&#39;&#233;l&#233;ment actuel sur le nouvel &#233;l&#233;ment
-   Faire pointer le nouvel &#233;l&#233;ment sur le prochain &#233;l&#233;ment
+   Faire pointer le nouvel &#233;l&#233;ment sur le prochain
 
-supprimerEnT&#234;te :
+supprimerT&#234;te :
    Supprimer l&#39;&#233;l&#233;ment en t&#234;te de liste
-supprimerEnFin :
+supprimerFin :
    Parcourir la liste jusqu&#39;&#224; l&#39;avant-dernier &#233;l&#233;ment
    Faire pointer l&#39;&#233;l&#233;ment sur NULL (pour indiquer la fin de la liste)
    Supprimer l&#39;&#233;l&#233;ment suivant
@@ -217,11 +219,11 @@ taille :
 <ul>
 <li><code>cr&#233;erListe</code> : <em>O(1)</em></li>
 <li><code>supprimerListe</code> : <em>O(N)</em></li>
-<li><code>ajoutEnT&#234;te</code> : <em>O(1)</em></li>
-<li><code>ajoutEnFin</code> : <em>O(N)</em></li>
+<li><code>ajoutT&#234;te</code> : <em>O(1)</em></li>
+<li><code>ajoutFin</code> : <em>O(N)</em></li>
 <li><code>ajoutEl&#233;ment</code> : <em>O(N)</em></li>
-<li><code>supprimerEnT&#234;te</code> : <em>O(1)</em></li>
-<li><code>supprimerEnFin</code> : <em>O(N)</em></li>
+<li><code>supprimerT&#234;te</code> : <em>O(1)</em></li>
+<li><code>supprimerFin</code> : <em>O(N)</em></li>
 <li><code>supprimerEl&#233;ment</code> : <em>O(N)</em></li>
 <li><code>afficher</code> : <em>O(N)</em></li>
 <li><code>estVide</code> : <em>O(1)</em></li>
@@ -252,6 +254,7 @@ taille :
 <p class="caption">Exemple de repr&#233;sentation d'une liste cha&#238;n&#233;e circulaire</p>
 </div>
 <p>Lorsque vous utilisez des listes cha&#238;n&#233;es circulaires, il faut faire attention &#224; ne pas tomber dans une boucle infinie lors du parcours de la liste.</p>
+<p>On peut utiliser cette variante de la liste cha&#238;n&#233;e pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jour de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste cha&#238;n&#233;e circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.</p>
 <h3 id="liste-doublement-cha&#238;n&#233;e-circulaire">Liste doublement cha&#238;n&#233;e circulaire</h3>
 <p>Une liste doublement cha&#238;n&#233;e circulaire (<em>doubly circular linked list</em>) est simplement un regroupement des deux derni&#232;res variantes.</p>
 <div class="figure">
