@@ -4,7 +4,6 @@
 catégories d'articles
 - Pseudo-code : coloration syntaxique
 - README complet
-- Table des matières en haut de l'article
 - Bosser intro/conclusion
 - Afficher code sur les articles (balise secrète ?)
 - Flux rss

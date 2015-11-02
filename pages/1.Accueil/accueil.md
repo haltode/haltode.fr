@@ -2,8 +2,6 @@ Bienvenue !
 ===========
 
 
-Bonjour et bienvenue sur mon site ! :)
-
 ## Qui suis-je ?
 
 Je m'appelle Thibault, je suis un jeune passionné d'informatique, de programmation et d'algorithme. Je programme en C principalement et j'écris des articles régulièrement.
