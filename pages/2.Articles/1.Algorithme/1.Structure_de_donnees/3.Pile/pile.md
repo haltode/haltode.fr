@@ -3,20 +3,24 @@ Pile
 algo/structure
 
 Publié le : 08/06/2014  
-*Modifié le : 24/10/2015*
+*Modifié le : 02/11/2015*
 
 ## Introduction
 
-Une pile (*stack* en anglais) est une structure de données de type **LIFO** (**L**ast **I**n **F**irst **O**ut, *dernier arrivé premier sorti*).
+Prenons l'exemple d'une fonction dans un programme...
+
+Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?
+
+Toutes ces questions nous amène à penser qu'il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d'imbrication : la pile.
 
 ## Principe de la pile
 
-Une pile fonctionne exactement comme une pile d’assiettes :
+Une pile (*stack* en anglais) est une structure de données de type **LIFO** (**L**ast **I**n **F**irst **O**ut, *dernier arrivé premier sorti*). Elle fonctionne exactement comme une pile d’assiettes :
 
 - Quand on ajoute une assiette sur la pile on l’ajoute en haut.
-- Quand on enlève une assiette de la pile on enlève celle du haut pour ne pas faire tomber le reste.
+- Quand on enlève une assiette on enlève celle du haut pour ne pas faire tomber le reste.
 
-C’est le principe LIFO, lorsqu’on ajoute un élément sur une pile il est en haut, et lorsqu’on retire un élément de la pile, on retire l’élément tout en haut.
+C’est le principe LIFO, lorsqu’on ajoute un élément sur une pile il est en haut, et lorsqu’on retire un élément on prend le dernier ajouté (celui tout en haut).
 
 ![Exemple de représentation d'une pile](/static/img/algo/structure/pile/exemple_pile.png)
 
@@ -44,7 +48,7 @@ créerPile :
    Créer un premier élément
    Initialiser les données de l'élément
    Le faire pointer sur NULL (pour indiquer la fin de la pile)
-   Retourner l'élément
+   Retourner la pile
 supprimerPile :
    Pour chaque élément de la pile
       Supprimer l'élément actuel
@@ -113,7 +117,7 @@ Soit *N* le nombre d'éléments de la pile.
 - `dépiler` : *O(1)*
 - `afficher` : *O(N)*
 - `estVide` : *O(1)*
-- `taille` : *O(N)*
+- `taille` : liste *O(N)* / tableau *O(1)*
 
 ## Implémentation
 
@@ -123,7 +127,7 @@ Le lien vers une implémentation en C d’une pile à l’aide d’une liste cha
 
 main.c : 
 
-Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les listes chaînées pour bien comprendre le code : </algo/structure/liste_chainee.html>
+Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les [listes chaînées](/algo/structure/liste_chainee.html) pour bien comprendre le code.
 
 ### Tableau
 
@@ -141,7 +145,7 @@ Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Templ
 
 La pile est donc une structure de données facile à implémenter et peut être pratique dans de nombreux domaines : 
 
-- Dans un éditeur : quand vous écrivez votre prochain article sur votre éditeur préféré, et que vous ne cessez de faire des ctrl-z et ctrl-y pour revenir en arrière/avant, et bien vous utilisez une pile. Chaque opération va être empilé pour garder l'ordre dans lequel vous les avez réalisées, et vous pouvez ainsi facilement parcourir la pile des opérations pour vous retrouver à tel moment précis de votre édition.
+- Dans un éditeur : quand vous écrivez votre prochain article sur votre éditeur préféré, et que vous ne cessez de faire des ctrl-z et ctrl-y pour revenir en arrière/avant, et bien vous utilisez une pile. Chaque opération va être empilée pour garder l'ordre dans lequel vous les avez réalisées, et vous pouvez ainsi facilement parcourir la pile des opérations pour vous retrouver à tel moment précis de votre édition.
 - Lors d'un appel de fonction : à chaque fois que vous appelez une fonction dans votre programme, la pile d'exécution (ou [pile d'appel](https://en.wikipedia.org/wiki/Call_stack)) empile les informations à propos de l'endroit où vous réalisez l'appel pour se souvenir où revenir à la fin de la fonction appelée.
-- Pour évaluer des expressions : dans certains cas, une pile peut être utilisé pour évaluer des expressions (mathématiques ou syntaxiques). Par exemple, si vous devez évaluer une expression en notation polonaise inverse ([NPI](https://en.wikipedia.org/wiki/Reverse_Polish_notation)), une pile est indispensable pour calculer l'expression au fur et à mesure des opérations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un opérateur vous dépilez les deux derniers éléments et vous empilez le résultat).
-- Dans une machine virtuelle : plusieurs [machines virtuelles](https://en.wikipedia.org/wiki/Virtual_machine) sont implémentées sur le principe d'une pile, par exemple celle de Java. Si vous voulez en savoir plus à ce sujet, cet article explique très bien le principe de machine virtuelle et les différentes implémentations possible : <https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/>
+- Pour évaluer des expressions : dans certains cas, une pile peut être utilisée pour évaluer des expressions (mathématiques ou syntaxiques). Par exemple, si vous devez évaluer une expression en notation polonaise inverse ([NPI](https://en.wikipedia.org/wiki/Reverse_Polish_notation)), une pile est indispensable pour calculer l'expression au fur et à mesure des opérations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un opérateur vous dépilez les deux derniers éléments et vous empilez le résultat).
+- Dans une machine virtuelle : plusieurs [machines virtuelles](https://en.wikipedia.org/wiki/Virtual_machine) sont implémentées sur le principe d'une pile, par exemple celle de Java. Si vous voulez en savoir plus à ce sujet, cet article explique très bien le principe de machine virtuelle et les différentes implémentations possibles : <https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/>

@@ -132,16 +132,18 @@ table tr:nth-child(2n) {
 
 <h1 id="pile">Pile</h1>
 <p>Publi&#233; le : 08/06/2014<br />
-<em>Modifi&#233; le : 24/10/2015</em></p>
+<em>Modifi&#233; le : 02/11/2015</em></p>
 <h2 id="introduction">Introduction</h2>
-<p>Une pile (<em>stack</em> en anglais) est une structure de donn&#233;es de type <strong>LIFO</strong> (<strong>L</strong>ast <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>dernier arriv&#233; premier sorti</em>).</p>
+<p>Prenons l'exemple d'une fonction dans un programme...</p>
+<p>Cette fonction peut appeler d'autres fonctions qui &#224; leurs tours appellent d'autres fonctions (qui elles m&#234;me appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et o&#249; retourner une fois la fonction appel&#233;e termin&#233;e ? Une premi&#232;re r&#233;ponse pourrait &#234;tre de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? O&#249; ins&#233;rer les nouvelles donn&#233;es ? Comment enlever les &#233;l&#233;ments inutiles (lorsqu'une fonction a finie d'&#234;tre ex&#233;cut&#233;e) ?</p>
+<p>Toutes ces questions nous am&#232;ne &#224; penser qu'il nous faut une structure de donn&#233;es organis&#233;e, bien d&#233;finie et qui puisse g&#233;rer cette id&#233;e d'imbrication : la pile.</p>
 <h2 id="principe-de-la-pile">Principe de la pile</h2>
-<p>Une pile fonctionne exactement comme une pile d&#8217;assiettes :</p>
+<p>Une pile (<em>stack</em> en anglais) est une structure de donn&#233;es de type <strong>LIFO</strong> (<strong>L</strong>ast <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>dernier arriv&#233; premier sorti</em>). Elle fonctionne exactement comme une pile d&#8217;assiettes :</p>
 <ul>
 <li>Quand on ajoute une assiette sur la pile on l&#8217;ajoute en haut.</li>
-<li>Quand on enl&#232;ve une assiette de la pile on enl&#232;ve celle du haut pour ne pas faire tomber le reste.</li>
+<li>Quand on enl&#232;ve une assiette on enl&#232;ve celle du haut pour ne pas faire tomber le reste.</li>
 </ul>
-<p>C&#8217;est le principe LIFO, lorsqu&#8217;on ajoute un &#233;l&#233;ment sur une pile il est en haut, et lorsqu&#8217;on retire un &#233;l&#233;ment de la pile, on retire l&#8217;&#233;l&#233;ment tout en haut.</p>
+<p>C&#8217;est le principe LIFO, lorsqu&#8217;on ajoute un &#233;l&#233;ment sur une pile il est en haut, et lorsqu&#8217;on retire un &#233;l&#233;ment on prend le dernier ajout&#233; (celui tout en haut).</p>
 <div class="figure">
 <img src="/static/img/algo/structure/pile/exemple_pile.png" alt="Exemple de repr&#233;sentation d&#39;une pile" />
 <p class="caption">Exemple de repr&#233;sentation d'une pile</p>
@@ -168,7 +170,7 @@ table tr:nth-child(2n) {
    Cr&#233;er un premier &#233;l&#233;ment
    Initialiser les donn&#233;es de l&#39;&#233;l&#233;ment
    Le faire pointer sur NULL (pour indiquer la fin de la pile)
-   Retourner l&#39;&#233;l&#233;ment
+   Retourner la pile
 supprimerPile :
    Pour chaque &#233;l&#233;ment de la pile
       Supprimer l&#39;&#233;l&#233;ment actuel
@@ -230,13 +232,13 @@ taille :
 <li><code>d&#233;piler</code> : <em>O(1)</em></li>
 <li><code>afficher</code> : <em>O(N)</em></li>
 <li><code>estVide</code> : <em>O(1)</em></li>
-<li><code>taille</code> : <em>O(N)</em></li>
+<li><code>taille</code> : liste <em>O(N)</em> / tableau <em>O(1)</em></li>
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <h3 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h3>
 <p>Le lien vers une impl&#233;mentation en C d&#8217;une pile &#224; l&#8217;aide d&#8217;une liste cha&#238;n&#233;e :</p>
 <p>main.c :</p>
-<p>Le code est simple et ne n&#233;cessite pas d&#8217;explication, si besoin je vous invite &#224; relire l'article sur les listes cha&#238;n&#233;es pour bien comprendre le code : &lt;/algo/structure/liste_chainee.html&gt;</p>
+<p>Le code est simple et ne n&#233;cessite pas d&#8217;explication, si besoin je vous invite &#224; relire l'article sur les <a href="/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a> pour bien comprendre le code.</p>
 <h3 id="tableau">Tableau</h3>
 <p>Le lien vers une impl&#233;mentation en C d&#8217;une pile &#224; l&#8217;aide d&#8217;un tableau :</p>
 <p>main.c :</p>
@@ -246,10 +248,10 @@ taille :
 <h2 id="conclusion">Conclusion</h2>
 <p>La pile est donc une structure de donn&#233;es facile &#224; impl&#233;menter et peut &#234;tre pratique dans de nombreux domaines :</p>
 <ul>
-<li>Dans un &#233;diteur : quand vous &#233;crivez votre prochain article sur votre &#233;diteur pr&#233;f&#233;r&#233;, et que vous ne cessez de faire des ctrl-z et ctrl-y pour revenir en arri&#232;re/avant, et bien vous utilisez une pile. Chaque op&#233;ration va &#234;tre empil&#233; pour garder l'ordre dans lequel vous les avez r&#233;alis&#233;es, et vous pouvez ainsi facilement parcourir la pile des op&#233;rations pour vous retrouver &#224; tel moment pr&#233;cis de votre &#233;dition.</li>
+<li>Dans un &#233;diteur : quand vous &#233;crivez votre prochain article sur votre &#233;diteur pr&#233;f&#233;r&#233;, et que vous ne cessez de faire des ctrl-z et ctrl-y pour revenir en arri&#232;re/avant, et bien vous utilisez une pile. Chaque op&#233;ration va &#234;tre empil&#233;e pour garder l'ordre dans lequel vous les avez r&#233;alis&#233;es, et vous pouvez ainsi facilement parcourir la pile des op&#233;rations pour vous retrouver &#224; tel moment pr&#233;cis de votre &#233;dition.</li>
 <li>Lors d'un appel de fonction : &#224; chaque fois que vous appelez une fonction dans votre programme, la pile d'ex&#233;cution (ou <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appel</a>) empile les informations &#224; propos de l'endroit o&#249; vous r&#233;alisez l'appel pour se souvenir o&#249; revenir &#224; la fin de la fonction appel&#233;e.</li>
-<li>Pour &#233;valuer des expressions : dans certains cas, une pile peut &#234;tre utilis&#233; pour &#233;valuer des expressions (math&#233;matiques ou syntaxiques). Par exemple, si vous devez &#233;valuer une expression en notation polonaise inverse (<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">NPI</a>), une pile est indispensable pour calculer l'expression au fur et &#224; mesure des op&#233;rations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un op&#233;rateur vous d&#233;pilez les deux derniers &#233;l&#233;ments et vous empilez le r&#233;sultat).</li>
-<li>Dans une machine virtuelle : plusieurs <a href="https://en.wikipedia.org/wiki/Virtual_machine">machines virtuelles</a> sont impl&#233;ment&#233;es sur le principe d'une pile, par exemple celle de Java. Si vous voulez en savoir plus &#224; ce sujet, cet article explique tr&#232;s bien le principe de machine virtuelle et les diff&#233;rentes impl&#233;mentations possible : <a href="https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/" class="uri">https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/</a></li>
+<li>Pour &#233;valuer des expressions : dans certains cas, une pile peut &#234;tre utilis&#233;e pour &#233;valuer des expressions (math&#233;matiques ou syntaxiques). Par exemple, si vous devez &#233;valuer une expression en notation polonaise inverse (<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">NPI</a>), une pile est indispensable pour calculer l'expression au fur et &#224; mesure des op&#233;rations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un op&#233;rateur vous d&#233;pilez les deux derniers &#233;l&#233;ments et vous empilez le r&#233;sultat).</li>
+<li>Dans une machine virtuelle : plusieurs <a href="https://en.wikipedia.org/wiki/Virtual_machine">machines virtuelles</a> sont impl&#233;ment&#233;es sur le principe d'une pile, par exemple celle de Java. Si vous voulez en savoir plus &#224; ce sujet, cet article explique tr&#232;s bien le principe de machine virtuelle et les diff&#233;rentes impl&#233;mentations possibles : <a href="https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/" class="uri">https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/</a></li>
 </ul>
  
       <!-- ------------ -->
