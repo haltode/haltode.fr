@@ -23,7 +23,11 @@ find pages -iname "*.md" -type f -exec sh -c \
    title=`sed -n "1p" ${0}` && \
    sed -i "s/TITLE/$title - NapNac/g" src/$(basename ${0%.md}.html) && \
    sed -i "/CSS/r src/static/css/layout.css.html" src/$(basename ${0%.md}.html) && \
-   sed -i "/<h1 id=/a <ul id=\"summary\">" src/$(basename ${0%.md}.html) && \
+   if grep -q "<em>Modifi&#233; le" src/$(basename ${0%.md}.html); then
+      sed -i "/<em>Modifi&#233; le/a <ul id=\"summary\">" src/$(basename ${0%.md}.html)
+   else
+      sed -i "/<h1 id=/a <ul id=\"summary\">" src/$(basename ${0%.md}.html)
+   fi
    sed -i "/<ul id=\"summary\">/a </ul>" src/$(basename ${0%.md}.html) && \
    if grep -q "<h2 " src/$(basename ${0%.md}.html); then
       grep "<h2 " src/$(basename ${0%.md}.html) > summary.tmp &&
