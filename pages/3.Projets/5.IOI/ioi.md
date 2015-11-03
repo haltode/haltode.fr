@@ -3,7 +3,7 @@ IOI
 projets/
 
 Date du projet : septembre 2014 à septembre 2015  
-*Modifié le 12/10/2015*
+*Modifié le : 12/10/2015*
 
 ## Introduction
 

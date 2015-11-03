@@ -13,8 +13,6 @@ catégories d'articles
 ## Structure de données
 ### File
 
-- Opti fonction défiler : mettre un pointeur sur le dernier élément
-pour éviter de parcourir la file
 - Lien algo plus court chemin (dijkstra)
 - Lien tas
 
@@ -34,6 +32,7 @@ pour éviter de parcourir la file
 
 ### Tri par tas
 
+- Lien anchor partie complexité tri rapide
 - Améliorer description image 1er tour dans l'exemple
 - Lien tas
 - Smoothsort (améliorations et variantes)

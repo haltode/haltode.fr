@@ -3,7 +3,7 @@ NandToTetris
 projets/
 
 Date du projet : février 2014 à avril 2014  
-*Modifié le 11/10/2015*
+*Modifié le : 11/10/2015*
 
 ## Introduction
 
