@@ -194,6 +194,27 @@
 \end{tikzpicture}
 
 
+\vspace{2cm}
+% graphe8.png : connexe
+
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=3cm,
+  thick,main node/.style={circle,fill=blue!20,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below left of=1] {2};
+  \node[main node] (3) [below right of=2] {3};
+  \node[main node] (4) [below right of=1] {4};
+  \node[main node] (5) [below right of=4] {5};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+    (2) edge node [right] {} (1)
+        edge [right] node[left] {} (3)
+    (3) edge node[right] {} (4)
+    (4) edge node[right] {} (5)
+    (5) edge node [left] {} (2);
+\end{tikzpicture}
+
 
 \vspace{2cm}
 % arbre_dfs.png
@@ -232,31 +253,6 @@
 \vspace{2cm}
 % graphe_dfs.png
 
-\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
-  thick,main node/.style={circle,fill=blue!20,draw,font=\sffamily\Large\bfseries}]
-
-  \node[main node] (1) {1};
-  \node[main node] (2) [below left of=1] {2};
-  \node[main node] (3) [below right of=2] {3};
-  \node[main node] (4) [below right of=1] {4};
-  \node[main node] (5) [below left of=3] {5};  
-  \node[main node] (6) [below right of=3] {6};
-
-  \path[every node/.style={font=\sffamily\small}]
-    (1) edge node [left] {} (4)
-        edge node [left] {} (6)
-    (2) edge node [right] {} (1)
-        edge node {} (4)
-        edge [right] node[left] {} (3)
-        edge node [right] {} (5)
-    (3) edge node [right] {} (1)
-        edge node [right] {} (6)
-    (4) edge node [left] {} (3)
-        edge node [right] {} (6)
-    (5) edge node [right] {} (1)
-        edge node [right] {} (3)
-    (6) edge node [right] {} (5);
-\end{tikzpicture}
 
 
 \end{document}

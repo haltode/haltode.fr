@@ -132,73 +132,84 @@ table tr:nth-child(2n) {
 
 <h1 id="graphe">Graphe</h1>
 <p>Publi&#233; le : 20/06/2015<br />
-<em>Modifi&#233; le : 26/10/2015</em></p>
+<em>Modifi&#233; le : 04/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-dun-graphe">Principe d'un graphe</a></li>
-<li><a href="#vocabulaire">Vocabulaire</a></li>
+<li><a href="#caract&#233;ristiques">Caract&#233;ristiques</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
 <li><a href="#parcourir-un-graphe">Parcourir un graphe</a></li>
 <li><a href="#op&#233;rations-utiles-sur-un-graphe">Op&#233;rations utiles sur un graphe</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Un graphe est une structure de donn&#233;es incontournable en algorithmie. On utilise les graphes dans de nombreux probl&#232;mes de la vie de tous les jours, comme dans le m&#233;tro, en utilisant le GPS, ou bien en naviguant sur Internet.</p>
+<p>Supposons que je souhaite faire le tour de l'Europe en passant par diverses villes de plusieurs pays. Comment faire une repr&#233;sentation de mon trajet ? Comment rajouter des contraintes suppl&#233;mentaires si par exemple je d&#233;sire faire un trajet d&#233;fini, mais le plus court possible en terme de km ? Comment ins&#233;rer ou supprimer une nouvelle destination dans mon voyage et surtout comment visualiser ce dernier ?</p>
+<p>Naturellement, on pourrait prendre une carte et tracer des traits entre chaque ville de l'itin&#233;raire afin de pouvoir le repr&#233;senter, mais comment le faire comprendre &#224; un ordinateur pour qu'il puisse le manipuler ? Nous avons donc besoin d'une structure de donn&#233;es flexible, permettant de visualiser des chemins entre diff&#233;rents points : le graphe.</p>
 <h2 id="principe-dun-graphe">Principe d'un graphe</h2>
-<p>On peut d&#233;finir un graphe comme &#233;tant un ensemble de <em>n&#339;uds</em> (ou de sommets) &#233;tant reli&#233;s par des <em>arcs</em> (ou des ar&#234;tes).</p>
+<p>On peut d&#233;finir un graphe comme &#233;tant un ensemble de <strong>n&#339;uds</strong> (ou de sommets) &#233;tant reli&#233;s par des <strong>arcs</strong> (ou des ar&#234;tes, des chemins).</p>
 <div class="figure">
 <img src="/static/img/algo/structure/graphe/graphe_exemple.png" alt="Exemple de graphe" />
 <p class="caption">Exemple de graphe</p>
 </div>
-<h2 id="vocabulaire">Vocabulaire</h2>
-<p>Si deux n&#339;uds sont reli&#233;s par un arc, on dit qu'ils sont <em>voisins</em>.</p>
-<p>Le <em>degr&#233; entrant</em> d'un n&#339;ud correspond au nombre d'arcs arrivant sur ce n&#339;ud, il en est de m&#234;me pour le <em>degr&#233; sortant</em> correspondant alors au nombre d'arcs sortant du n&#339;ud.</p>
-<p>Un graphe peut avoir de nombreuses caract&#233;ristiques diff&#233;rentes, en voici une liste non exhaustive.</p>
-<h3 id="orient&#233;non-orient&#233;">Orient&#233;/non orient&#233;</h3>
-<p>Un graphe est dit <em>orient&#233;</em> si ses arcs ont un sens (repr&#233;sent&#233; par une fl&#232;che), par exemple ce graphe :</p>
-<div class="figure">
-<img src="/static/img/algo/structure/graphe/graphe_oriente.png" alt="Graphe orient&#233;" />
-<p class="caption">Graphe orient&#233;</p>
-</div>
-<p>En revanche on dit d'un graphe qu'il est <em>non orient&#233;</em> si aucun sens n'est attribu&#233; &#224; ses arcs :</p>
-<div class="figure">
-<img src="/static/img/algo/structure/graphe/graphe_non_oriente.png" alt="Graphe non orient&#233;" />
-<p class="caption">Graphe non orient&#233;</p>
-</div>
-<p>Dans ce cas pr&#233;cis, on peut donc parcourir les arcs dans les deux sens.</p>
-<h3 id="pond&#233;r&#233;non-pond&#233;r&#233;">Pond&#233;r&#233;/non pond&#233;r&#233;</h3>
-<p>Un graphe est <em>pond&#233;r&#233;</em> si ses arcs ont un <em>poids</em> :</p>
-<div class="figure">
-<img src="/static/img/algo/structure/graphe/graphe_pondere.png" alt="Graphe pond&#233;r&#233;" />
-<p class="caption">Graphe pond&#233;r&#233;</p>
-</div>
-<p>Dans cet exemple on utilise le graphe pour repr&#233;senter une carte routi&#232;re avec comme pond&#233;ration la distance s&#233;parant deux villes.</p>
-<h3 id="cycliqueacyclique">Cyclique/acyclique</h3>
-<p>Un graphe est <em>cyclique</em> s'il contient des cycles (un chemin finissant l&#224; o&#249; il a commenc&#233;) :</p>
-<div class="figure">
-<img src="/static/img/algo/structure/graphe/graphe_cyclique.png" alt="Graphe cyclique" />
-<p class="caption">Graphe cyclique</p>
-</div>
-<p>Un graphe qui ne contient aucun cycle est donc caract&#233;ris&#233; d'<em>acyclique</em> :</p>
-<div class="figure">
-<img src="/static/img/algo/structure/graphe/graphe_acyclique.png" alt="Graphe acyclique" />
-<p class="caption">Graphe acyclique</p>
-</div>
-<h3 id="densecreux">Dense/creux</h3>
-<p>On peut dire d'un graphe qu'il est <em>dense</em> si le nombre d'arcs est proche du nombre maximum possible de ce graphe :</p>
-<div class="figure">
-<img src="/static/img/algo/structure/graphe/graphe_dense.png" alt="Graphe dense" />
-<p class="caption">Graphe dense</p>
-</div>
-<p>Lorsque le nombre d'arcs est faible, on parle d'un graphe <em>creux</em> :</p>
-<div class="figure">
-<img src="/static/img/algo/structure/graphe/graphe_creux.png" alt="Graphe creux" />
-<p class="caption">Graphe creux</p>
-</div>
+<p>En anglais, on parle de <em>nodes</em> ou <em>vertices</em> pour les n&#339;uds, et de <em>edges</em> ou <em>arcs</em> pour les ar&#234;tes.</p>
+<p>Pour information, si deux n&#339;uds sont reli&#233;s par un arc on dit qu'ils sont <em>voisins</em>. De plus, le <em>degr&#233; entrant</em> d'un n&#339;ud correspond au nombre d'arcs arrivant sur ce n&#339;ud, il en est de m&#234;me pour le <em>degr&#233; sortant</em> correspondant alors au nombre d'arcs sortant du n&#339;ud.</p>
+<h2 id="caract&#233;ristiques">Caract&#233;ristiques</h2>
+<p>Un graphe peut avoir de nombreuses caract&#233;ristiques diff&#233;rentes, en voici une liste assez courante :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Caract&#233;ristique</th>
+<th align="left">Description</th>
+<th align="left">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Orient&#233;</td>
+<td align="left">Si les arcs ont un sens (repr&#233;sent&#233; par une fl&#232;che), le graphe est orient&#233;</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_oriente.png" alt="Graphe orient&#233;" /></td>
+</tr>
+<tr class="even">
+<td align="left">Non orient&#233;</td>
+<td align="left">Dans ce cas, on peut parcourir le graphe dans les deux sens</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_non_oriente.png" alt="Graphe non orient&#233;" /></td>
+</tr>
+<tr class="odd">
+<td align="left">Pond&#233;r&#233; / non pond&#233;r&#233;</td>
+<td align="left">Un graphe est pond&#233;r&#233; si ses arcs ont un <em>poids</em> (par exemple la distance entre deux villes)</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_pondere.png" alt="Graphe pond&#233;r&#233;" /></td>
+</tr>
+<tr class="even">
+<td align="left">Cyclique</td>
+<td align="left">Un graphe est cyclique s'il contient des chemins finissant l&#224; o&#249; ils ont commenc&#233; (des cycles)</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_cyclique.png" alt="Graphe cyclique" /></td>
+</tr>
+<tr class="odd">
+<td align="left">Acyclique</td>
+<td align="left">Lorsque le graphe ne contient aucun cycle, il est acyclique</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_acyclique.png" alt="Graphe acyclique" /></td>
+</tr>
+<tr class="even">
+<td align="left">Dense</td>
+<td align="left">Si le nombre d'arcs est proche du nombre maximum d'arcs possible de ce graphe, il est dense</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_dense.png" alt="Graphe dense" /></td>
+</tr>
+<tr class="odd">
+<td align="left">Creux</td>
+<td align="left">Au contraire si le nombre d'arcs est faible par rapport au nombre de n&#339;uds, il est caract&#233;ris&#233; de creux</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_creux.png" alt="Graphe creux" /></td>
+</tr>
+<tr class="even">
+<td align="left">Connexe / non connexe</td>
+<td align="left">Un graphe est dit connexe s'il existe un chemin (de un ou plusieurs n&#339;uds) reliant chaque paire de n&#339;uds possible</td>
+<td align="left"><img src="/static/img/algo/structure/graphe/graphe_connexe.png" alt="Graphe connexe" /></td>
+</tr>
+</tbody>
+</table>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>On peut impl&#233;menter un graphe de diff&#233;rentes fa&#231;ons.</p>
 <h3 id="matrice-dadjacence">Matrice d'adjacence</h3>
-<p>Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de repr&#233;senter des arcs entre deux n&#339;uds. On peut utiliser un tableau 2D de bool&#233;en (<code>true</code> = arc, <code>false</code> = pas d'arc), ou bien un tableau 2D d'entier (ou de flottant) qui permet alors de stocker les pond&#233;rations des arcs (<em>X</em> = pond&#233;ration de l'arc, 0 = par d'arc).</p>
+<p>Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de repr&#233;senter des arcs entre deux n&#339;uds. On peut utiliser un tableau 2D de bool&#233;en (<code>true</code> = arc, <code>false</code> = pas d'arc), ou bien un tableau 2D d'entier (ou de flottant) qui permet alors de stocker les pond&#233;rations des arcs (<em>X</em> = pond&#233;ration de l'arc, 0 = pas d'arc).</p>
 <p>Voici un exemple de matrice d'adjacence (j'ai utilis&#233; le tout premier graphe de l'article pour construire la matrice) :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/graphe/exemple_matrice_adjacence.png" alt="Exemple de matrice d&#39;adjacence" />
@@ -206,7 +217,7 @@ table tr:nth-child(2n) {
 </div>
 <p>Rien de bien compliqu&#233; pour l'impl&#233;menter :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> graphe[NB_NOEUD_MAX][NB_NOEUD_MAX];</code></pre></div>
-<p>Encore une fois, on peut changer le type de la matrice en fonction de nos besoins (<code>bool</code>, <code>float</code>, <code>double</code>...).</p>
+<p>Encore une fois, on peut changer le type de la matrice en fonction de nos besoins (<code>bool</code>, <code>float</code>, <code>double</code>, etc.).</p>
 <p>On utilise ce type de repr&#233;sentation lorsqu'on a tout d'abord assez de m&#233;moire, puis lorsqu'on a besoin d'acc&#233;der souvent et rapidement &#224; des informations du type :</p>
 <ul>
 <li>Est-ce que le n&#339;ud <em>A</em> et le n&#339;ud <em>B</em> sont voisins ?</li>
@@ -220,7 +231,7 @@ table tr:nth-child(2n) {
 <img src="/static/img/algo/structure/graphe/exemple_liste_adjacence.png" alt="Exemple de liste d&#39;adjacence" />
 <p class="caption">Exemple de liste d'adjacence</p>
 </div>
-<p>Pour l'impl&#233;mentation, j'utilise les <code>vector</code> du C++ au lieu de recoder &#224; la main la liste cha&#238;n&#233;e en C (m&#234;me si on peut tout &#224; fait le faire, recoder des structures de donn&#233;es basiques en concours notamment est tout simplement une perte de temps) :</p>
+<p>Pour l'impl&#233;mentation, j'utilise les <a href="http://www.cplusplus.com/reference/vector/vector/">vector</a> du C++ au lieu de recoder &#224; la main la liste cha&#238;n&#233;e en C (m&#234;me si on peut tout &#224; fait le faire, recoder des structures de donn&#233;es basiques en concours notamment est tout simplement une perte de temps) :</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector &lt;Voisin&gt; graphe[NB_NOEUD_MAX];</code></pre></div>
 <p>La structure <code>Voisin</code> contient l'index du voisin, mais elle peut aussi contenir la pond&#233;ration de l'arc liant les deux n&#339;uds et d'autres informations sp&#233;cifiques au graphe.</p>
 <p>La liste d'adjacence est le plus souvent utilis&#233;e lorsque :</p>
@@ -257,15 +268,15 @@ table tr:nth-child(2n) {
 <li>Composante fortement connexe</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
-<p>Un graphe est une structure de donn&#233;es incontournable, utilis&#233;e dans de tr&#232;s nombreux probl&#232;mes (plus ou moins complexes) dans la vie de tous les jours dans beaucoup de domaines diff&#233;rents comme :</p>
+<p>Un graphe est une structure de donn&#233;es incontournable, utilis&#233;e dans de tr&#232;s nombreux probl&#232;mes (plus ou moins complexes) dans la vie de tous les jours et dans beaucoup de domaines diff&#233;rents comme :</p>
 <ul>
 <li>La planification de t&#226;ches</li>
-<li>L'utilisation d'internet</li>
+<li>L'utilisation d'Internet et du GPS</li>
 <li>Les cartes routi&#232;res</li>
 <li>La cr&#233;ation d'itin&#233;raire</li>
 <li>Les composants d'un circuit &#233;lectronique</li>
-<li>La repr&#233;sentation de mol&#233;cule chimique</li>
-<li>...</li>
+<li>La repr&#233;sentation de mol&#233;cules chimiques</li>
+<li>etc.</li>
 </ul>
  
       <!-- ------------ -->
