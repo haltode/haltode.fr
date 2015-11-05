@@ -30,9 +30,14 @@ find pages -iname "*.md" -type f -exec sh -c \
    fi
    sed -i "/<ul id=\"summary\">/a </ul>" src/$(basename ${0%.md}.html) && \
    if grep -q "<h2 " src/$(basename ${0%.md}.html); then
-      grep "<h2 " src/$(basename ${0%.md}.html) > summary.tmp &&
+      grep "<h1 " src/$(basename ${0%.md}.html) > summary.tmp &&
+      grep "<h2 " src/$(basename ${0%.md}.html) >> summary.tmp &&
+      title=`head -n 1 summary.tmp` &&
+      title=${title#*>} &&
+      title=${title%<*} &&
+      sed -i "1s/.*/<li><a href=\"\">$title<\/a><\/li>/" summary.tmp &&
       sed -i "s/<h2 id=\"/<li><a href=\"#/g" summary.tmp &&
-      sed -i "s/<\/h2>/<\/a><\/li>/g" summary.tmp &&
+      sed -i "s/<\/h.>/<\/a><\/li>/g" summary.tmp &&
       sed -i "/<ul id=\"summary\">/r./summary.tmp" src/$(basename ${0%.md}.html) &&
       rm summary.tmp
    fi
