@@ -13,7 +13,7 @@ echo "</style>" >> src/static/css/layout.css.html
 # 5. Get the title
 # 6. Insert the title
 # 7. Insert inline css
-# 8. Insert summary
+# 8. Insert summary + link to original article (without anchors)
 # 9. Move the .html to its actual location in src/
 find pages -iname "*.md" -type f -exec sh -c \
   'location=`sed -n "3p" ${0}` && \
@@ -30,16 +30,17 @@ find pages -iname "*.md" -type f -exec sh -c \
    fi
    sed -i "/<ul id=\"summary\">/a </ul>" src/$(basename ${0%.md}.html) && \
    if grep -q "<h2 " src/$(basename ${0%.md}.html); then
-      grep "<h1 " src/$(basename ${0%.md}.html) > summary.tmp &&
-      grep "<h2 " src/$(basename ${0%.md}.html) >> summary.tmp &&
-      title=`head -n 1 summary.tmp` &&
-      title=${title#*>} &&
-      title=${title%<*} &&
-      sed -i "1s/.*/<li><a href=\"\">$title<\/a><\/li>/" summary.tmp &&
+      grep "<h2 " src/$(basename ${0%.md}.html) > summary.tmp &&
       sed -i "s/<h2 id=\"/<li><a href=\"#/g" summary.tmp &&
       sed -i "s/<\/h.>/<\/a><\/li>/g" summary.tmp &&
       sed -i "/<ul id=\"summary\">/r./summary.tmp" src/$(basename ${0%.md}.html) &&
-      rm summary.tmp
+      rm summary.tmp &&
+      title=`grep "<h1 " src/$(basename ${0%.md}.html)` &&
+      title=${title#*>} &&
+      title=${title%<*} &&
+      echo "<li><a href=\"\">$title</a></li>" > title.tmp &&
+      sed -i "/<ul id=\"summary\">/r./title.tmp" src/$(basename ${0%.md}.html) &&
+      rm title.tmp
    fi
    mv -v src/$(basename ${0%.md}.html) src/$location' {} \;
 
