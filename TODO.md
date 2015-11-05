@@ -11,6 +11,9 @@ catégories d'articles
 
 # Algorithme
 ## Structure de données
+
+- Tableau markdown sur plusieurs lignes (article tableau cumulatif + graphe)
+
 ### File
 
 - Lien algo plus court chemin (dijkstra)

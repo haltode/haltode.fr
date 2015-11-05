@@ -134,7 +134,67 @@ table tr:nth-child(2n) {
 <p>Publi&#233; le :<br />
 <em>Modifi&#233; le :</em></p>
 <ul id="summary">
+<li><a href="">Tableau cumulatif</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-du-tableau-cumulatif">Principe du tableau cumulatif</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#tableau-cumulatif-2d">Tableau cumulatif 2D</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>Je vous donne un tableau poss&#233;dant des milliards de milliards d'&#233;l&#233;ments, et je vous pose des milliards de questions de la forme : Quelle est la somme des &#233;l&#233;ments compris entre l'indice <em>i</em> et <em>j</em> du tableau ? La premi&#232;re id&#233;e d'algorithme na&#239;f que l'on peut avoir, est de parcourir pour chaque question les &#233;l&#233;ments situ&#233;s entre les indices donn&#233;s, et d'augmenter une variable <code>somme</code> au fur et &#224; mesure du parcours.</p>
+<p>Cependant nos parcours sont tr&#232;s nombreux, et notre solution bien trop longue dans le cas extr&#234;me donn&#233;. Il nous faut donc une solution plus efficace, nous permettant de faire moins de parcours inutiles afin de raccourcir notre temps d'ex&#233;cution : le tableau cumulatif.</p>
+<h2 id="principe-du-tableau-cumulatif">Principe du tableau cumulatif</h2>
+<p>Dans notre algorithme na&#239;f, on passe plusieurs fois et tr&#232;s souvent sur de m&#234;mes &#233;l&#233;ments, on peut aussi parcourir le tableau en entier &#224; de multiples occasions, mais lors de ces parcours on n'utilise aucune des informations r&#233;colt&#233;es autrement que pour r&#233;pondre &#224; une seule question parmi des milliards.</p>
+<p>L'id&#233;e du tableau cumulatif est de parcourir une seule fois notre tableau en entier, et d'utiliser les donn&#233;es r&#233;colt&#233;es pour pouvoir ensuite r&#233;pondre &#224; n'importe quel type de question &#224; propos de somme d'&#233;l&#233;ments contigus.</p>
+<p>On peut tr&#232;s simplement expliquer son principe gr&#226;ce &#224; la g&#233;om&#233;trie :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/tableau_cumulatif/explication_geo.png" alt="Explication g&#233;om&#233;trique du tableau cumulatif" />
+<p class="caption">Explication g&#233;om&#233;trique du tableau cumulatif</p>
+</div>
+<h2 id="exemple">Exemple</h2>
+<p>Afin de parfaitement comprendre comment utiliser un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
+<p><em>1&#232;re &#233;tape</em> : cr&#233;er notre tableau cumulatif</p>
+<p>A partir de la suite de nombres, on va cr&#233;er un tableau cumulatif qui contiendra pour chaque &#233;l&#233;ment <em>i</em> l'&#233;l&#233;ment du tableau original + l'&#233;l&#233;ment <em>i - 1</em> de notre tableau cumulatif. Cela aura pour effet de cr&#233;er un tableau contenant dans la premi&#232;re case l'&#233;l&#233;ment 1, dans la deuxi&#232;me case l'&#233;l&#233;ment 1 + 2, dans la troisi&#232;me case l'&#233;l&#233;ment 1 + 2 + 3, etc.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tableau cumulatif</th>
+<th align="left">Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">26</td>
+<td align="left">Le premier &#233;l&#233;ment du tableau cumulatif est le m&#234;me que celui du tableau original</td>
+</tr>
+<tr class="even">
+<td align="left">26, 68</td>
+<td align="left">Le deuxi&#232;me &#233;l&#233;ment est l'addition du deuxi&#232;me &#233;l&#233;ment de notre tableau (42), et du dernier &#233;l&#233;ment de notre tableau cumulatif (26)</td>
+</tr>
+<tr class="odd">
+<td align="left">26, 68, 69</td>
+<td align="left">De nouveau on additionne le troisi&#232;me &#233;l&#233;ment du tableau original (1), et le dernier &#233;l&#233;ment de notre tableau cumulatif (68). On utilise le dernier &#233;l&#233;ment du tableau cumulatif pour &#233;viter justement de devoir reparcourir les deux premiers &#233;l&#233;ments pour les additionner (puisque la deuxi&#232;me case du tableau cumulatif contient d&#233;j&#224; ce r&#233;sultat, on l'utilise afin d'avoir l'addition des trois premiers &#233;l&#233;ments)</td>
+</tr>
+<tr class="even">
+<td align="left">26, 68, 69, 158</td>
+<td align="left">On continue la cr&#233;ation de notre tableau cumulatif</td>
+</tr>
+<tr class="odd">
+<td align="left">26, 68, 69, 158, 161</td>
+<td align="left">Idem</td>
+</tr>
+<tr class="even">
+<td align="left">26, 68, 69, 158, 161, 168</td>
+<td align="left">On arrive au dernier &#233;l&#233;ment, notre tableau cumulatif est termin&#233;</td>
+</tr>
+</tbody>
+</table>
+<p><em>2&#232;me &#233;tape</em> : r&#233;pondre aux questions gr&#226;ce au tableau cumulatif</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<h2 id="tableau-cumulatif-2d">Tableau cumulatif 2D</h2>
+<h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
 
