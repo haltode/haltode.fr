@@ -4,15 +4,12 @@
 catégories d'articles
 - Pseudo-code : coloration syntaxique
 - README complet
-- Bosser intro/conclusion
 - Afficher code sur les articles (balise secrète ?)
 - Flux rss
 - Originalité du site ? Qu'est-ce qui le démarque ?
 
 # Algorithme
 ## Structure de données
-
-- Tableau markdown sur plusieurs lignes (article tableau cumulatif + graphe)
 
 ### File
 
