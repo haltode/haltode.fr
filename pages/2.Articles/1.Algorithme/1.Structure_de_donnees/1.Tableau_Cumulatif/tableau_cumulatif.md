@@ -88,7 +88,9 @@ Le tableau cumulatif ne se limite pas à une seule dimension, on peut l'utiliser
 
 ![Exemple de représentation d'un tableau cumulatif 2D](/static/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png)
 
-Le principe est toujours le même encore une fois, mais il faut adapter nos fonctions qui construisent et répondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions.
+Le principe est toujours le même encore une fois, mais il faut adapter nos fonctions qui construisent et répondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Ce dernier schéma montre comment répondre à une question sur un tableau cumulatif 2D, mais il faut surtout l'initialiser correctement afin de pouvoir l'utiliser :
+
+![Initialisation du tableau cumulatif 2D](/static/img/algo/structure/tableau_cumulatif/init_tableau2D.png)
 
 ## Conclusion
 

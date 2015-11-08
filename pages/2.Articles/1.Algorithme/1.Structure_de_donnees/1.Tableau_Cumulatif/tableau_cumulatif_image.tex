@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes.multipart,chains,arrows}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \begin{document}
 
@@ -72,5 +73,79 @@
 \fill[blue!20, draw=black] (-2,0) rectangle (7,1);
 \end{tikzpicture}
 
+% Tableau cumulatif 2D : requête
+
+\newpage
+
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (4,4);
+\fill[green!20, draw=black] (2,0) rectangle (4,2);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\fill[white] (0,0) rectangle (4,4);
+\fill[green!20, draw=black] (2,0) rectangle (4,2);
+\node at (3,-0.5) {$=$};
+\end{tikzpicture}
+
+\vspace{0.25cm}
+
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (4,4);
+\node at (5,2) {$-$};
+\end{tikzpicture}
+\hspace{0.25cm}
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (2,4);
+\node at (3,2) {$-$};
+\end{tikzpicture}
+\hspace{0.25cm}
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (4,4);
+\fill[white, draw=white] (0,0) rectangle (4,2);
+\draw (0,2) -- (4,2);
+\node at (5,2) {$+$};
+\end{tikzpicture}
+\hspace{0.25cm}
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (2,4);
+\fill[white, draw=white] (0,0) rectangle (4,2);
+\draw (0,2) -- (2,2);
+\end{tikzpicture}
+
+% Tableau cumulatif 2D : initialisation
+
+\newpage
+
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (4,4);
+\fill[green!20, draw=black] (2,0) rectangle (4,2);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\fill[white] (0,0) rectangle (4,4);
+\fill[green!20, draw=black] (2,0) rectangle (4,2);
+\node at (3,-0.5) {$=$};
+\end{tikzpicture}
+
+\vspace{0.25cm}
+
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (2,4);
+\node at (3,2) {$+$};
+\end{tikzpicture}
+\hspace{0.25cm}
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (4,4);
+\fill[white, draw=white] (0,0) rectangle (4,2);
+\draw (0,2) -- (4,2);
+\node at (5,2) {$-$};
+\end{tikzpicture}
+\hspace{0.25cm}
+\begin{tikzpicture}
+\fill[blue!20, draw=black] (0,0) rectangle (2,4);
+\fill[white, draw=white] (0,0) rectangle (4,2);
+\draw (0,2) -- (2,2);
+\end{tikzpicture}
 
 \end{document}
