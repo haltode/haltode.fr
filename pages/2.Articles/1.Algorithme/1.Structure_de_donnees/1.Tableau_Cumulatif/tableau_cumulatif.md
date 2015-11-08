@@ -3,7 +3,7 @@ Tableau cumulatif
 algo/structure
 
 Publié le :   
-*Modifié le :*
+*Modifié le : 08/11/2015*
 
 ## Introduction
 

@@ -18,7 +18,8 @@ catégories d'articles
 
 ### Arbre
 
-- Arbre binaire/ternaire de recherche, tries, etc.
+- Lien dfs, bfs
+- Rajouter variantes
 
 ## Tri
 ### Tri par sélection
