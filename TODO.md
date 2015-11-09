@@ -19,7 +19,7 @@ catégories d'articles
 ### Arbre
 
 - Lien dfs, bfs
-- Rajouter variantes
+- Arbre de recherche : +trie
 
 ## Tri
 ### Tri par sélection
