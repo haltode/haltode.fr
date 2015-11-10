@@ -20,6 +20,8 @@ catégories d'articles
 
 - Lien dfs, bfs
 - Arbre de recherche : +trie
+- Lien variantes
+- Lien algo dijkstra (variantes : tas)
 
 ## Tri
 ### Tri par sélection

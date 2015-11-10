@@ -132,7 +132,7 @@ table tr:nth-child(2n) {
 
 <h1 id="arbre">Arbre</h1>
 <p>Publi&#233; le :<br />
-<em>Modifi&#233; le : 09/11/2015</em></p>
+<em>Modifi&#233; le : 10/11/2015</em></p>
 <ul id="summary">
 <li><a href="">Arbre</a></li>
 <li><a href="#introduction">Introduction</a></li>
@@ -152,9 +152,9 @@ table tr:nth-child(2n) {
 <p class="caption">Exemple d'arbre</p>
 </div>
 <p>La <em>profondeur</em> d'un n&#339;ud est le nombre de n&#339;uds le s&#233;parant de la racine, et la <em>hauteur</em> d'un arbre est simplement la profondeur maximale de ses n&#339;uds.</p>
-<p>Finalement, un arbre peut &#234;tre vu comme un <a href="/algo/structure/graphe.html">graphe</a> particulier (orient&#233;, acyclique et chaque enfant ne peut avoir qu'un seul parent).</p>
+<p>Finalement, un arbre peut &#234;tre vu comme un <a href="/algo/structure/graphe.html">graphe</a> particulier (soit orient&#233;, acyclique et avec comme contrainte que chaque n&#339;ud ne poss&#232;de pas plus d'un p&#232;re).</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on techniquement, je vous invite donc &#224; lire la partie <a href="/algo/structure/graphe.html#impl&#233;mentation">Impl&#233;mentation</a> de mon article sur les graphes pour voir et comprendre les diff&#233;rentes possibilit&#233;s (matrice d'adjacence, liste d'adjacence et liste d'arcs).</p>
+<p>Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on, je vous invite donc &#224; lire la partie <a href="/algo/structure/graphe.html#impl&#233;mentation">Impl&#233;mentation</a> de mon article sur les graphes pour voir et comprendre les diff&#233;rentes possibilit&#233;s (matrice d'adjacence, liste d'adjacence et liste d'arcs).</p>
 <h2 id="parcourir-un-arbre">Parcourir un arbre</h2>
 <p>De m&#234;me, parcourir un arbre revient &#224; parcourir un graphe, on peut donc utiliser les deux algorithmes de parcours :</p>
 <ul>
@@ -164,9 +164,9 @@ table tr:nth-child(2n) {
 <h2 id="variantes">Variantes</h2>
 <p>Un arbre poss&#232;de &#233;norm&#233;ment de variantes, qui elles m&#234;me poss&#232;dent des sous variantes, c'est ce qui rend cette structure de donn&#233;es si importante &#224; conna&#238;tre et &#224; maitriser :</p>
 <ul>
-<li><a href="">Arbre binaire</a> : une variante limitant chaque n&#339;ud &#224; ne poss&#233;der pas plus de deux fils.</li>
-<li><a href="">Tas</a> : un arbre binaire mais organis&#233; selon diff&#233;rentes r&#232;gles le rendant soit maximal soit minimal.</li>
-<li><a href="">Arbre de recherche</a> : un arbre facilitant la recherche d'&#233;l&#233;ments, ce dernier poss&#232;de plusieurs sous variantes plus ou moins optimis&#233;es.</li>
+<li><a href="">Arbre binaire</a> : aucun n&#339;ud ne peut avoir plus de deux fils (d'o&#249; son nom d'arbre <strong>binaire</strong>), ceci permet d'impl&#233;menter beaucoup de variantes poss&#233;dant des applications en termes de recherche, de tri, de stockage, etc.</li>
+<li><a href="">Tas</a> : un arbre binaire mais organis&#233; selon diff&#233;rentes r&#232;gles le rendant soit maximal soit minimal, utile pour chercher le plus grand/plus petit &#233;l&#233;ment dans un tableau (le tas est d'ailleurs l'&#233;l&#233;ment principal d'une <a href="/algo/structure/file.html#file-&#224;-priorit&#233;">file &#224; priorit&#233;</a> qui elle-m&#234;me sert dans l'<a href="">algorithme de Dijkstra</a> afin de trouver le plus court chemin entre deux n&#339;uds d'un graphe).</li>
+<li><a href="">Arbre de recherche</a> : un arbre facilitant la recherche d'&#233;l&#233;ments, ce dernier poss&#232;de plusieurs sous variantes plus ou moins optimis&#233;es en fonction des besoins.</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>L'arbre est donc une structure donn&#233;es &#233;l&#233;mentaire (que l'on peut consid&#233;rer comme un graphe avec des propri&#233;t&#233;s sp&#233;cifiques), s'appliquant dans plusieurs domaines et permettant d'impl&#233;menter une hi&#233;rarchie :</p>
@@ -174,7 +174,7 @@ table tr:nth-child(2n) {
 <li>Votre syst&#232;me de fichier doit sans doute utiliser un arbre pour repr&#233;senter les dossiers, les sous dossiers et les fichiers de votre disque dur. Sous Linux par exemple, la racine de votre ordinateur est <code>/</code>, et vous pouvez acc&#233;der &#224; vos fichiers en indiquant la liste de dossiers &#224; suivre en partant de la racine <code>/home/utilisateur/Documents/.../fichier</code>.</li>
 <li>Pour rechercher des &#233;l&#233;ments, un arbre peut &#234;tre une structure tr&#232;s int&#233;ressante, permettant une recherche en <em>O(log N)</em>, il est d'ailleurs la base d'algorithmes de tris (comme le <a href="/algo/tri/tri_tas.html">tri par tas</a>).</li>
 <li>Afin de stocker un dictionnaire de mots, chaque n&#339;ud repr&#233;senterait une lettre (ou une cha&#238;ne), et on pourrait reconstituer des mots en suivant simplement les chemins en fonction des lettres propos&#233;es. Cette solution permettrait de stocker de mani&#232;re optimale un ensemble de mots, d'autant plus si ces derniers ont des lettres, voir des sous cha&#238;nes communes.</li>
-<li><a href="https://en.wikipedia.org/wiki/Parsing">Parser</a> une expression peut &#234;tre compliqu&#233;e, et un arbre semble parfaitement adapt&#233; pour pratiquer une analyse syntaxique sur des expressions (math&#233;matiques par exemple pour interpr&#233;ter une expression non parenth&#233;s&#233;e et permettant de g&#233;rer les cas de priorit&#233;s d'op&#233;rations).</li>
+<li><a href="https://en.wikipedia.org/wiki/Parsing">Parser</a> une expression peut &#234;tre compliqu&#233;e, et un arbre semble parfaitement adapt&#233; pour pratiquer une analyse syntaxique sur des expressions (en math&#233;matiques par exemple, pour interpr&#233;ter une expression non parenth&#233;s&#233;e et en g&#233;rant les cas de priorit&#233;s d'op&#233;rations).</li>
 <li>Dans un routeur, une <a href="https://en.wikipedia.org/wiki/Routing_table">table de routage</a> sera utilis&#233;e afin de joindre un autre r&#233;seau, et cette derni&#232;re utilise un arbre pour stocker les informations sans trop utiliser de m&#233;moire (&#224; la mani&#232;re du dictionnaire, c'est-&#224;-dire gr&#226;ce &#224; des pr&#233;fixes).</li>
 </ul>
  
