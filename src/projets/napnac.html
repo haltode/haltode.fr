@@ -132,9 +132,48 @@ table tr:nth-child(2n) {
 
 <h1 id="napnac.ga">Napnac.ga</h1>
 <p>Publi&#233; le :<br />
-<em>Modifi&#233; le :</em></p>
+<em>Modifi&#233; le : 11/11/2015</em></p>
 <ul id="summary">
+<li><a href="">Napnac.ga</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#la-cr&#233;ation-du-site">La cr&#233;ation du site</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>Avant ce site, mes articles &#233;taient post&#233;s sur <a href="https://en.wikipedia.org/wiki/WordPress">Wordpress</a> et j'en &#233;tais tr&#232;s content jusqu'&#224; ce que j'apprenne &#224; utiliser de plus en plus le <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> pour &#233;crire mes articles. Finalement, je trouvais le site et sa gestion trop lourde pour son contenu, et je voulais quelque chose de plus simple, plus l&#233;ger et surtout de plus adapt&#233; &#224; mes besoins. Ne souhaitant pas payer pour un service o&#249; je ne serais pas satisfait &#224; 100%, j'ai d&#233;cid&#233; de cr&#233;er mon propre site web sp&#233;cifique &#224; mes envies.</p>
+<h2 id="la-cr&#233;ation-du-site">La cr&#233;ation du site</h2>
+<h3 id="les-pages">Les pages</h3>
+<p>La particularit&#233; de ce site est que toutes les pages que vous voyez sont en r&#233;alit&#233; r&#233;dig&#233;es en Markdown et non en <a href="https://en.wikipedia.org/wiki/HTML">HTML</a> (le langage de base pour la cr&#233;ation de site web). La raison est que je n'appr&#233;cie pas du tout le HTML, et que je me suis fix&#233; comme objectif d'en &#233;crire le moins possible, afin de pouvoir modifier n'importe quelle page facilement car le Markdown est tout de m&#234;me bien plus agr&#233;able &#224; lire et &#224; &#233;crire que le HTML.</p>
+<p>Les deux seules choses n&#233;cessaires qui sont &#233;crites en HTML sont le <em>header</em> et le <em>footer</em> de la page. Le <em>header</em> est simplement le logo et le menu principal du site, et le <em>footer</em> est le bas de la page compos&#233; d'une image. Le reste de la page est &#233;crite en Markdown et suit ce format :</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">Titre de la page
+================
+categorie/sous-categorie/
+
+Publi&#233; le :  
+*Modifi&#233; le :*
+
+<span class="fu">## Je suis un titre</span>
+
+Je suis un paragraphe
+
+Blablabla</code></pre></div>
+<p>Chaque page est ensuite convertie via un script que j'ai &#233;crit en <a href="https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29">Bash</a> qui permet alors de cr&#233;er une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -&gt; HTML), le footer, et sera d&#233;plac&#233;e &#224; la fin du script dans sa cat&#233;gorie correspondante.</p>
+<p>Le lien vers le script (contenant des informations plus d&#233;taill&#233;es &#224; ce propos) : <a href="https://github.com/iTech-/NapNac/blob/master/conversion.sh" class="uri">https://github.com/iTech-/NapNac/blob/master/conversion.sh</a></p>
+<p>Toutes les pages sont stock&#233;es dans le dossier <code>pages</code> et converties en HTML dans le dossier <code>src</code>.</p>
+<h3 id="le-nom-de-domaine">Le nom de domaine</h3>
+<p>Un simple nom de domaine gratuit me suffit pour le moment, mais j'envisage de m'en acheter un plus tard. Pour trouver le nom de domaine, j'ai utilis&#233; <a href="http://www.freenom.com/fr/index.html">Freenom</a> et j'ai choisi de prendre <code>napnac.ga</code>.</p>
+<h3 id="lh&#233;bergeur">L'h&#233;bergeur</h3>
+<p>Pour h&#233;berger mon site, encore une fois je n'ai pas envie de payer pour un h&#233;bergeur, j'ai donc voulu cr&#233;er mon propre serveur gr&#226;ce &#224; ma <a href="https://www.raspberrypi.org/">Raspberry Pi</a> (version 1, mod&#232;le B).</p>
+<p>J'ai install&#233; <a href="https://www.raspberrypi.org/downloads/">Raspbian</a> (l'OS officiel de la Raspberry Pi), et apr&#232;s avoir configur&#233; un acc&#232;s <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a> pour acc&#233;der &#224; mon serveur depuis mon pc principal, j'ai commenc&#233; la configuration dudit serveur. Il y a de nombreux tutoriels sur comment transformer sa Raspberry Pi en serveur, je passerai donc les d&#233;tails. Le serveur que j'ai choisi d'installer est <a href="http://nginx.org/">nginx</a>, son installation et sa configuration sont tr&#232;s simples et je n'ai quasiment rien eu &#224; faire.</p>
+<p>Pour rendre mon site accessible depuis l'ext&#233;rieur, il me faut configurer plusieurs choses. Tout d'abord des ports sp&#233;cifiques de ma livebox doivent &#234;tre redirig&#233;s vers ma Raspberry Pi afin de r&#233;pondre aux requ&#234;tes du client en lui renvoyant les pages HTML stock&#233;es sur mon serveur. De m&#234;me, plusieurs tutoriels existent d&#233;j&#224; &#224; ce sujet, mais voici &#224; quoi ressemble les modifications faites &#224; ma livebox :</p>
+<div class="figure">
+<img src="/static/img/projets/napnac.ga/config_livebox_rpi.png" alt="Configuration des ports de la livebox" />
+<p class="caption">Configuration des ports de la livebox</p>
+</div>
+<p>Enfin, ma livebox poss&#232;de une adresse IP dynamique, j'ai donc choisi d'utiliser <a href="https://www.cloudflare.com/">CloudFlare</a> afin de g&#233;rer le <a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS</a>. De plus, j'ai trouv&#233; un petit <a href="https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/">script</a> permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications n&#233;cessaires lors d'un changement d'IP de ma livebox. Ce script est ex&#233;cut&#233; toutes les 5 minutes sur mon serveur.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le site est d&#233;sormais comme je le souhaite, et j'ai la possibilit&#233; de le changer &#224; n'importe quel moment vu que je contr&#244;le la plupart de son fonctionnement (h&#233;bergement, cr&#233;ation de pages, etc.). A travers ce projet j'ai appris beaucoup sur le fonctionnement de r&#233;seaux (comment configurer un serveur, le rendre accessible depuis l'ext&#233;rieur, y acc&#233;der en SSH, g&#233;rer le DNS, etc.) et j'ai enfin un endroit que j'appr&#233;cie &#224; 100% et o&#249; je peux poster mes articles.</p>
+<p>Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <a href="https://github.com/iTech-/NapNac" class="uri">https://github.com/iTech-/NapNac</a></p>
  
       <!-- ------------ -->
 
