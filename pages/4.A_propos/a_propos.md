@@ -22,6 +22,6 @@ Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste 
 
 ## Site
 
-Ce site a été conçu en [HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language)/[CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade), les pages sont écrites en [Markdown](https://fr.wikipedia.org/wiki/Markdown) et converties via un script [Bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) en page HTML. Toutes les sources du site sont sur github : <https://github.com/iTech-/NapNac>
+Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à lire mon [article dédié](/projets/napnac.html) à ce sujet, ou bien à consulter les sources du projet sur la page Github dédiée : <https://github.com/iTech-/NapNac>.
 
 Le site est sous licence [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/4.0/).

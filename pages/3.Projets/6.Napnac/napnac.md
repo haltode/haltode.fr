@@ -23,7 +23,7 @@ Titre de la page
 categorie/sous-categorie/
 
 Publié le :  
-*Modifié le :*
+Modifié le :
 
 ## Je suis un titre
 
