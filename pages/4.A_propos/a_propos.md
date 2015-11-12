@@ -22,6 +22,6 @@ Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste 
 
 ## Site
 
-Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à lire mon [article dédié](/projets/napnac.html) à ce sujet, ou bien à consulter les sources du projet sur la page Github dédiée : <https://github.com/iTech-/NapNac>.
+Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à lire mon [article dédié](/projets/napnac.html) à ce sujet, ou bien à consulter les sources du projet sur la page Github : <https://github.com/iTech-/NapNac>.
 
 Le site est sous licence [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/4.0/).
