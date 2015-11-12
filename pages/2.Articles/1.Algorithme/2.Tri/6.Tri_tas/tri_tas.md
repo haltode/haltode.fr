@@ -11,7 +11,7 @@ Le tri par tas (*heapsort* en anglais) est un algorithme de tri par comparaison,
 
 ## Principe de l’algorithme
 
-L'algorithme du tri par tas repose sur un élément fondamental : le [tas]() (d'où son nom). En effet, ce tri crée un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre décroissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs triées dans notre tableau.
+L'algorithme du tri par tas repose sur un élément fondamental : le [tas](/algo/structure/arbre/tas.html) (d'où son nom). En effet, ce tri crée un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre décroissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs triées dans notre tableau.
 
 ## Exemple
 
@@ -56,7 +56,7 @@ En réalité, nous ne créons pas de tas à part, on réarrange simplement les �
 
 La complexité de l’algorithme du tri par tas est en *O(N \* log N)*. En effet, la boucle principale parcourt *N* tours (*N* étant la taille du tableau), et appelle à chaque tour une fonction pour entasser qui a une complexité logarithmique.
 
-*Si vous n’avez pas lu mon article sur le [tri rapide](/algo/tri/tri_rapide.html), je vous conseille au moins de lire la partie complexité dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.*
+*Si vous n’avez pas lu mon article sur le [tri rapide](/algo/tri/tri_rapide.html#complexité), je vous conseille au moins de lire la partie complexité dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.*
 
 ## Implémentation
 

@@ -147,7 +147,7 @@ table tr:nth-child(2n) {
 <h2 id="introduction">Introduction</h2>
 <p>Le tri par tas (<em>heapsort</em> en anglais) est un algorithme de tri par comparaison, plut&#244;t efficace et qui a une complexit&#233; en <em>O(N * log N)</em>. C&#8217;est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non stable</a> mais <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
-<p>L'algorithme du tri par tas repose sur un &#233;l&#233;ment fondamental : le <a href="">tas</a> (d'o&#249; son nom). En effet, ce tri cr&#233;e un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre d&#233;croissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs tri&#233;es dans notre tableau.</p>
+<p>L'algorithme du tri par tas repose sur un &#233;l&#233;ment fondamental : le <a href="/algo/structure/arbre/tas.html">tas</a> (d'o&#249; son nom). En effet, ce tri cr&#233;e un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre d&#233;croissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs tri&#233;es dans notre tableau.</p>
 <h2 id="exemple">Exemple</h2>
 <p>On prend la suite de nombres suivante que l&#8217;on va trier dans l&#8217;ordre croissant avec le tri par tas : 1, 9, 3, 7, 6, 1, 4.</p>
 <p><em>1&#232;re &#233;tape</em> : cr&#233;er le tas (max dans notre cas)</p>
@@ -181,7 +181,7 @@ table tr:nth-child(2n) {
 <p><em>Toutes les fonctions relatives &#224; un tas (<code>construire</code>, <code>entasser</code>, etc.) sont d&#233;crites dans mon article &#224; ce propos je n'en reparlerai pas ici.</em></p>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <em>O(N * log N)</em>. En effet, la boucle principale parcourt <em>N</em> tours (<em>N</em> &#233;tant la taille du tableau), et appelle &#224; chaque tour une fonction pour entasser qui a une complexit&#233; logarithmique.</p>
-<p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie complexit&#233; dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
+<p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html#complexit&#233;">tri rapide</a>, je vous conseille au moins de lire la partie complexit&#233; dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Voici le lien vers une impl&#233;mentation en C de l&#8217;algorithme du tri pas tas :</p>
 <p>main.c :</p>

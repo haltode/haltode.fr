@@ -14,19 +14,16 @@ catégories d'articles
 ### File
 
 - Lien algo plus court chemin (dijkstra)
-- Lien tas
 
 ### Arbre
 
 - Lien dfs, bfs
 - Arbre de recherche : +trie
-- Lien variantes
-- Lien algo dijkstra (variantes : tas)
+- Lien algo dijkstra
 
 ## Tri
 ### Tri par sélection
 
-- Lien tas
 - Pseudo-code améliorations
 
 ### Tri rapide
@@ -35,9 +32,7 @@ catégories d'articles
 
 ### Tri par tas
 
-- Lien anchor partie complexité tri rapide
 - Améliorer description image 1er tour dans l'exemple
-- Lien tas
 - Smoothsort (améliorations et variantes)
 
 ### Autre

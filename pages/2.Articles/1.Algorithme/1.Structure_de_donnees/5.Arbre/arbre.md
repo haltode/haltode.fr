@@ -36,9 +36,9 @@ De même, parcourir un arbre revient à parcourir un graphe, on peut donc utilis
 
 Un arbre possède énormément de variantes, qui elles même possèdent des sous variantes, c'est ce qui rend cette structure de données si importante à connaître et à maitriser :
 
-- [Arbre binaire]() : aucun nœud ne peut avoir plus de deux fils (d'où son nom d'arbre **binaire**), ceci permet d'implémenter beaucoup de variantes possédant des applications en termes de recherche, de tri, de stockage, etc.
-- [Tas]() : un arbre binaire mais organisé selon différentes règles le rendant soit maximal soit minimal, utile pour chercher le plus grand/plus petit élément dans un tableau (le tas est d'ailleurs l'élément principal d'une [file à priorité](/algo/structure/file.html#file-à-priorité) qui elle-même sert dans l'[algorithme de Dijkstra]() afin de trouver le plus court chemin entre deux nœuds d'un graphe).
-- [Arbre de recherche]() : un arbre facilitant la recherche d'éléments, ce dernier possède plusieurs sous variantes plus ou moins optimisées en fonction des besoins.
+- [Arbre binaire](/algo/structure/arbre/arbre_binaire.html) : aucun nœud ne peut avoir plus de deux fils (d'où son nom d'arbre **binaire**), ceci permet d'implémenter beaucoup de variantes possédant des applications en termes de recherche, de tri, de stockage, etc.
+- [Tas](/algo/structure/arbre/tas.html) : un arbre binaire mais organisé selon différentes règles le rendant soit maximal soit minimal, utile pour chercher le plus grand/plus petit élément dans un tableau (le tas est d'ailleurs l'élément principal d'une [file à priorité](/algo/structure/file.html#file-à-priorité) qui elle-même sert dans l'[algorithme de Dijkstra]() afin de trouver le plus court chemin entre deux nœuds d'un graphe).
+- [Arbre de recherche](/algo/structure/arbre/arbre_recherche.html) : un arbre facilitant la recherche d'éléments, ce dernier possède plusieurs sous variantes plus ou moins optimisées en fonction des besoins.
 
 ## Conclusion
 

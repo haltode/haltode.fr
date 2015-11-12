@@ -100,7 +100,7 @@ Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Templ
 
 Une file à priorité (*priority queue* en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'[algorithme de Dijkstra]() pour trouver le plus court chemin entre deux nœuds d'un [graphe](/algo/structure/graphe.html) pondéré positivement. Chaque élément se voit attribuer une **clé**, permettant d'organiser la file (d'où le nom de file à **priorité**). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.
 
-On implémente une file à priorité grâce à un [tas]() (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <http://www.cplusplus.com/reference/queue/priority_queue/>.
+On implémente une file à priorité grâce à un [tas](/algo/structure/arbre/tas.html) (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <http://www.cplusplus.com/reference/queue/priority_queue/>.
 
 Notez qu'il ne faut pas confondre file à priorité et tas. En effet, même s'il semble exactement pareil en pratique, en théorie une file à priorité est un type de donnée **abstrait** alors que le tas est une structure de données **réelle**.
 
