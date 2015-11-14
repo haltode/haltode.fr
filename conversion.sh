@@ -8,21 +8,27 @@ echo "</style>" >> src/static/css/layout.css.html
 # Convert all .md files from pages/ into .html files
 # 1. Get location for the future converted .html file
 # 2. Convert the .md file to .tmp.html file
-# 3. Create the .html, containing header + .tmp.html + footer
-# 4. Remove .tmp.html file
-# 5. Get the title
-# 6. Insert the title
-# 7. Insert inline css
-# 8. Insert summary + link to original article (without anchors)
-# 9. Move the .html to its actual location in src/
+#    Create the .html, containing header + .tmp.html + footer
+# 3. Get and insert the title
+# 4. Insert inline css
+# 5. Transform the title into a link
+# 6. Insert summary
+# 7. Move the .html to its actual location in src/
 find pages -iname "*.md" -type f -exec sh -c \
   'location=`sed -n "3p" ${0}` && \
+
    sed "3d" ${0} | pandoc --ascii -o "$(basename ${0%.md}.tmp.html)" && \
    cat src/layout/header.html $(basename ${0%.md}.tmp.html) src/layout/footer.html > src/$(basename ${0%.md}.html) && \
    rm $(basename ${0%.md}.tmp.html) && \
+
    title=`sed -n "1p" ${0}` && \
    sed -i "s/TITLE/$title - NapNac/g" src/$(basename ${0%.md}.html) && \
+
    sed -i "/CSS/r src/static/css/layout.css.html" src/$(basename ${0%.md}.html) && \
+
+   sed -i "s/<h1 id=/<a href=\"\"><h1 id=/" src/$(basename ${0%.md}.html) && \
+   sed -i "s/<\/h1>/<\/h1><\/a>/" src/$(basename ${0%.md}.html) && \
+
    if grep -q "<em>Modifi&#233; le" src/$(basename ${0%.md}.html); then
       sed -i "/<em>Modifi&#233; le/a <ul id=\"summary\">" src/$(basename ${0%.md}.html)
    else
@@ -34,14 +40,7 @@ find pages -iname "*.md" -type f -exec sh -c \
       sed -i "s/<h2 id=\"/<li><a href=\"#/g" summary.tmp &&
       sed -i "s/<\/h.>/<\/a><\/li>/g" summary.tmp &&
       sed -i "/<ul id=\"summary\">/r./summary.tmp" src/$(basename ${0%.md}.html) &&
-      rm summary.tmp &&
-      title=`grep "<h1 " src/$(basename ${0%.md}.html)` &&
-      title=${title#*>} &&
-      title=${title%<*} &&
-      echo "<li><a href=\"\">$title</a></li>" > title.tmp &&
-      sed -i "/<ul id=\"summary\">/r./title.tmp" src/$(basename ${0%.md}.html) &&
-      rm title.tmp
+      rm summary.tmp
    fi
+
    mv -v src/$(basename ${0%.md}.html) src/$location' {} \;
-
-
