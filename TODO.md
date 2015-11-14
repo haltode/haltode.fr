@@ -22,10 +22,6 @@ catégories d'articles
 - Lien algo dijkstra
 
 ## Tri
-### Tri par sélection
-
-- Pseudo-code améliorations
-
 ### Tri rapide
 
 - Code hackerrank
