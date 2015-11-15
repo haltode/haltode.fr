@@ -13,8 +13,8 @@ Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par
 
 Le tri par sélection se décompose en deux étapes :
 
-- Sélectionner un élément (d'où son nom)
-- Le placer à sa bonne place
+- Sélectionner un élément (d'où son nom).
+- Le placer à sa bonne place.
 
 Le facteur qui détermine si un élément est bien placé est son rang (par exemple : le *ième* plus petit élément sera forcément placé en *ième* position du tableau). Le tri par sélection va donc à chaque tour trouver le *ième* plus petit élément du tableau, pour ensuite l'insérer à sa place, en commençant par le premier plus petit, et en augmentant à chaque fois (deuxième plus petit, troisième, etc.).
 
