@@ -132,7 +132,7 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="tri-fusion">Tri fusion</h1></a>
 <p>Publi&#233; le : 10/05/2014<br />
-<em>Modifi&#233; le : 28/10/2015</em></p>
+<em>Modifi&#233; le : 15/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -148,8 +148,8 @@ table tr:nth-child(2n) {
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
 <p>L'algorithme se compose de deux parties distinctes :</p>
 <ul>
-<li><strong>Diviser</strong> : on divise r&#233;cursivement le tableau, c'est-&#224;-dire qu'on va couper le tableau en deux sous tableaux et recommencer cette op&#233;ration sur ces derniers jusqu'&#224; ce que chaque sous-tableau ne contienne plus qu'un seul &#233;l&#233;ment.</li>
-<li><strong>Fusionner</strong> : une fois notre tableau divis&#233; en <em>N</em> sous tableaux (<em>N</em> &#233;tant le nombre d'&#233;l&#233;ments), on fusionne deux &#224; deux les tableaux dans l'ordre du tri (croissant ou d&#233;croissant).</li>
+<li><strong>Diviser</strong> : on divise r&#233;cursivement le tableau, c'est-&#224;-dire qu'on va couper le tableau en deux sous tableaux et recommencer cette op&#233;ration sur ces derniers jusqu'&#224; ce que chaque sous tableau ne contienne plus qu'un seul &#233;l&#233;ment.</li>
+<li><strong>Fusionner</strong> : une fois notre tableau divis&#233; en <em>N</em> sous tableaux (<em>N</em> &#233;tant le nombre d'&#233;l&#233;ments), on fusionne deux &#224; deux les tableaux en r&#233;organisant les &#233;l&#233;ments dans l'ordre du tri (croissant ou d&#233;croissant).</li>
 </ul>
 <p>L'int&#233;r&#234;t de diviser pour ensuite fusionner est que cr&#233;er un tableau tri&#233; &#224; partir de deux sous tableaux peut s'effectuer en temps lin&#233;aire. C'est ce point en particulier qui fait la rapidit&#233; du tri fusion.</p>
 <h2 id="exemple">Exemple</h2>
@@ -157,7 +157,7 @@ table tr:nth-child(2n) {
 <p><em>1&#232;re &#233;tape</em> : diviser</p>
 <p>5, 1, 3 | 8, 9, 6 -&gt; on divise le tableau en deux.</p>
 <p>5, | 1, 3 | 8 | 9, 6 -&gt; on divise en deux les sous tableaux.</p>
-<p>5 | 1 | 3 | 8 | 9 | 6 -&gt; chaque sous-tableau est de nouveau divis&#233; pour n'avoir plus qu'un seul &#233;l&#233;ment.</p>
+<p>5 | 1 | 3 | 8 | 9 | 6 -&gt; chaque sous tableau est de nouveau divis&#233; pour n'avoir plus qu'un seul &#233;l&#233;ment.</p>
 <p><em>2&#232;me &#233;tape</em> : fusionner</p>
 <p>1, 5 | 3, 8 | 6, 9 -&gt; on prend deux sous tableaux adjacents que l'on fusionne en les ordonnant.</p>
 <p>1, 3, 5, 8 | 6, 9 -&gt; on continue la fusion des sous tableaux.</p>
@@ -168,17 +168,18 @@ table tr:nth-child(2n) {
 <img src="/static/img/algo/tri/tri_fusion/exemple_tri.png" alt="Exemple de tri fusion" />
 <p class="caption">Exemple de tri fusion</p>
 </div>
+<p>Les &#233;l&#233;ments en bleu correspondent &#224; l'&#233;tat du tableau apr&#232;s la premi&#232;re &#233;tape, et les &#233;l&#233;ments en vert apr&#232;s la deuxi&#232;me &#233;tape.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Voici le pseudo-code du tri fusion :</p>
 <pre class="nohighlight"><code>triFusion (d&#233;but, fin) :
 
-   Si le tableau actuel a plus d&#39;un &#233;l&#233;ment
-      milieu -&gt; (d&#233;but + fin) / 2
+   Si le tableau a un seul &#233;l&#233;ment
+      Arr&#234;ter
+   Sinon
       triFusion(d&#233;but, milieu)
       triFusion(milieu + 1, fin)
+
       fusionner(d&#233;but, milieu, fin)
-   Sinon
-      Arr&#234;ter
 
 fusionner (d&#233;but, milieu, fin) :
 
@@ -194,20 +195,20 @@ fusionner (d&#233;but, milieu, fin) :
          Incr&#233;menter indexB</code></pre>
 <p>Ce pseudo-code est relativement simple :</p>
 <ul>
-<li>Dans la fonction <code>triFusion</code>, on utilise la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursivit&#233;</a> pour d&#233;couper puis fusionner notre tableau, et on arr&#234;te les appels r&#233;cursifs lorsque le sous-tableau que l'on traite n'a plus qu'un seul &#233;l&#233;ment.</li>
+<li>Dans la fonction <code>triFusion</code>, on utilise la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursivit&#233;</a> pour d&#233;couper puis fusionner notre tableau, et on arr&#234;te les appels r&#233;cursifs lorsque le sous tableau que l'on traite n'a plus qu'un seul &#233;l&#233;ment.</li>
 <li>La fonction <code>fusionner</code> est assez explicite, elle nous permet de cr&#233;er &#224; partir de deux sous tableaux tri&#233;s, un tableau lui aussi tri&#233; en temps lin&#233;aire.</li>
 </ul>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>La complexit&#233; du tri fusion est de <em>O(N * log N)</em>, puisque notre fonction <code>triFusion</code> contient deux appels r&#233;cursifs (complexit&#233; logarithmique en <em>O(log N)</em>) et la fonction <code>fusionner</code> s'&#233;x&#233;cute en temps lin&#233;aire, <em>O(N)</em>.</p>
+<p>La complexit&#233; du tri fusion est de <em>O(N * log N)</em>, puisque notre fonction <code>triFusion</code> contient deux appels r&#233;cursifs (complexit&#233; logarithmique en <em>O(log N)</em>) et la fonction <code>fusionner</code> s'ex&#233;cute en temps lin&#233;aire, <em>O(N)</em>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Le lien vers l&#8217;impl&#233;mentation du tri fusion :</p>
 <p>main.c :</p>
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
 <h3 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h3>
 <p>Les <a href="/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a> sont effectivement un bon moyen d'impl&#233;menter le tri fusion &#224; cause de cette flexibilit&#233; que ce tri impose. En effet, on doit pouvoir s&#233;parer des &#233;l&#233;ments pour les fusionner dans un ordre diff&#233;rent apr&#232;s, et ces op&#233;rations ne sont pas pratiques ni optimales avec des tableaux, mais sont adapt&#233;es &#224; des listes cha&#238;n&#233;es.</p>
-<p>La complexit&#233; en temps ne bouge pas mais la complexit&#233; en m&#233;moire est am&#233;lior&#233;e.</p>
+<p>La complexit&#233; en temps reste la m&#234;me, mais la complexit&#233; en m&#233;moire est am&#233;lior&#233;e.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri fusion est donc un algorithme de tri efficace, qui a pour complexit&#233; <em>O(N * log N)</em>.</p>
+<p>Le tri fusion est donc un algorithme de tri efficace, qui a pour complexit&#233; <em>O(N * log N)</em>. Cependant, cet algorithme est finalement peu utilis&#233; en pratique &#224; cause du <a href="/algo/tri/tri_rapide.html">tri rapide</a> qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilit&#233; d'am&#233;liorations, etc.).</p>
  
       <!-- ------------ -->
 
