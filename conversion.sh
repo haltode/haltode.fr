@@ -18,7 +18,7 @@ find pages -iname "*.md" -type f -exec sh -c \
   'location=`sed -n "3p" ${0}` && \
 
    sed "3d" ${0} | pandoc --ascii -o "$(basename ${0%.md}.tmp.html)" && \
-   cat src/layout/header.html $(basename ${0%.md}.tmp.html) src/layout/footer.html > src/$(basename ${0%.md}.html) && \
+   cat src/templates/header.html $(basename ${0%.md}.tmp.html) src/templates/footer.html > src/$(basename ${0%.md}.html) && \
    rm $(basename ${0%.md}.tmp.html) && \
 
    title=`sed -n "1p" ${0}` && \
