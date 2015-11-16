@@ -132,7 +132,7 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="tri-par-tas">Tri par tas</h1></a>
 <p>Publi&#233; le : 14/05/2014<br />
-<em>Modifi&#233; le : 30/10/2015</em></p>
+<em>Modifi&#233; le : 16/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -155,13 +155,13 @@ table tr:nth-child(2n) {
 <p class="caption">Tas max correspondant au tableau</p>
 </div>
 <p><em>2&#232;me &#233;tape</em> : parcourir le tas pour trier les &#233;l&#233;ments</p>
-<p>Pour trier les &#233;l&#233;ments gr&#226;ce &#224; notre tas, on retire la racine &#224; chaque tour (l'&#233;l&#233;ment le plus grand de notre tas, et de notre tableau), on le range &#224; sa place d&#233;finitive dans le tableau, et on entasse le dernier &#233;l&#233;ment du tas pour combler le trou de la racine et respecter les r&#232;gles d'un tas.</p>
+<p>Pour trier les &#233;l&#233;ments gr&#226;ce &#224; notre tas, on retire la racine &#224; chaque tour (l'&#233;l&#233;ment le plus grand de notre tas, et de notre tableau), on le range &#224; sa place d&#233;finitive, et on entasse le dernier &#233;l&#233;ment du tas pour combler le trou de la racine et respecter les r&#232;gles d'un tas.</p>
 <div class="figure">
 <img src="/static/img/algo/tri/tri_tas/exemple_tour1.png" alt="1er tour" />
 <p class="caption">1er tour</p>
 </div>
-<p>La racine du tas (en vert) est plac&#233;e dans le tableau et le dernier &#233;l&#233;ment (en bleu) va remplacer la racine, mais il ne faut pas oublier de l'entasser pour respecter les r&#232;gles du tas max.</p>
-<p>On continue ces op&#233;rations tant que le tas n'est pas vide :</p>
+<p>La racine du tas (en vert) est plac&#233;e dans le tableau <em>(1)</em> et le dernier &#233;l&#233;ment (en bleu) va remplacer la racine <em>(2)</em>, mais il ne faut pas oublier de l'entasser pour respecter les r&#232;gles du tas max <em>(3)</em>.</p>
+<p>On continue ces op&#233;rations tant que le tas contient des &#233;l&#233;ments :</p>
 <div class="figure">
 <img src="/static/img/algo/tri/tri_tas/exemple_tour2.png" alt="Fin du tri par tas" />
 <p class="caption">Fin du tri par tas</p>
@@ -177,19 +177,48 @@ table tr:nth-child(2n) {
       D&#233;cr&#233;menter la taille du tas
       Entasser l&#39;&#233;l&#233;ment plac&#233; &#224; la racine</code></pre>
 <p>En r&#233;alit&#233;, nous ne cr&#233;ons pas de tas &#224; part, on r&#233;arrange simplement les &#233;l&#233;ments du tableau pour qu'il fonctionne comme un tas max car c'est plus simple pour le manipuler. On parcourt donc notre tableau dans le sens inverse, pour toujours avoir comme &#233;l&#233;ment actuel le dernier &#233;l&#233;ment du tas, que l'on va &#233;changer avec la racine qui d&#233;sormais est bien plac&#233;e, on n'oublie pas de diminuer la taille du tas pour ne plus prendre en compte notre &#233;l&#233;ment que l'on vient de placer, et on finit par entasser la nouvelle racine pour continuer &#224; respecter les r&#232;gles d'un tas.</p>
-<p><em>Toutes les fonctions relatives &#224; un tas (<code>construire</code>, <code>entasser</code>, etc.) sont d&#233;crites dans mon article &#224; ce propos je n'en reparlerai pas ici.</em></p>
+<p><em>Toutes les fonctions relatives &#224; un tas (<code>construire</code>, <code>entasser</code>, etc.) sont d&#233;crites dans mon article &#224; ce propos, je n'en reparlerai donc pas ici.</em></p>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <em>O(N * log N)</em>. En effet, la boucle principale parcourt <em>N</em> tours (<em>N</em> &#233;tant la taille du tableau), et appelle &#224; chaque tour une fonction pour entasser qui a une complexit&#233; logarithmique.</p>
-<p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html#complexit&#233;">tri rapide</a>, je vous conseille au moins de lire la partie complexit&#233; dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
+<p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie <a href="/algo/tri/tri_rapide.html#complexit&#233;">complexit&#233;</a> dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Voici le lien vers une impl&#233;mentation en C de l&#8217;algorithme du tri pas tas :</p>
 <p>main.c :</p>
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
 <h3 id="m&#233;lange-dalgorithme">M&#233;lange d'algorithme</h3>
-<p>Comme pour le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, le tri par tas peut &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ments afin de le rendre plus efficace. Pour en savoir plus, je vous invite &#224; lire la partie <strong>M&#233;lange d'algorithme</strong> dans les <strong>Am&#233;liorations et variantes</strong> de mon article sur le tri rapide.</p>
+<p>Comme pour le tri rapide, le tri par tas peut &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ments afin de le rendre plus efficace. Pour en savoir plus &#224; ce sujet, je vous invite &#224; lire la partie <a href="/algo/tri/tri_rapide.html#m&#233;lange-dalgorithme">m&#233;lange d'algorithme</a> de mon article sur le tri rapide.</p>
 <h3 id="smoothsort">Smoothsort</h3>
+<p>Le Smoothsort est une variante du tri par tas permettant d'am&#233;liorer la complexit&#233; en temps dans le meilleur des cas en <em>O(N)</em> (le cas o&#249; les nombres en entr&#233;e sont d&#233;j&#224; tri&#233;s par exemple). Le principe de ce tri se base non plus sur un seul tas, mais sur plusieurs ayant un comportement diff&#233;rent et s'appuyant sur la <a href="https://en.wikipedia.org/wiki/Leonardo_number">suite de L&#233;onard</a>.</p>
+<p>Cette suite se d&#233;finit comme ceci :</p>
+<p><em>L(0) = 1</em><br />
+<em>L(1) = 1</em><br />
+<em>L(n) = L(n - 1) + L(n - 2) + 1</em></p>
+<p>Les premiers &#233;l&#233;ments sont : 1, 1, 3, 5, 9, 15, 25, 41, 67, etc.</p>
+<p>On va utiliser cette suite afin de cr&#233;er plusieurs tas, dont la taille est un nombre de la suite de L&#233;onard. En plus de cette taille sp&#233;cifique, les tas auront des op&#233;rations d'insertions et de suppressions diff&#233;rentes, pour pouvoir facilement trier notre tableau ensuite.</p>
+<p><strong>Insertion</strong> (cr&#233;ation des tas) :</p>
+<p>L'insertion d'un &#233;l&#233;ment se d&#233;compose en deux &#233;tapes, premi&#232;rement l'ajout et deuxi&#232;mement la r&#233;organisation de nos tas.</p>
+<p>L'ajout se d&#233;roule selon des r&#232;gles bien sp&#233;cifiques, que l'on r&#233;p&#232;te pour chaque &#233;l&#233;ment du tableau :</p>
+<ul>
+<li>Si les deux derniers tas sont de taille <em>L(n + 1)</em> et <em>L(n)</em>, alors le nouvel &#233;l&#233;ment devient la racine des deux tas, et forme un tas plus grand de taille <em>L(n + 2)</em>.</li>
+<li>Sinon si le dernier tas a une taille diff&#233;rente de <em>L(1)</em>, alors le nouvel &#233;l&#233;ment est un tas de taille <em>L(1)</em>.</li>
+<li>Sinon, le nouvel &#233;l&#233;ment est un tas de taille <em>L(0)</em>.</li>
+</ul>
+<p>Une fois l'ajout de notre &#233;l&#233;ment, on va r&#233;organiser les tas cr&#233;&#233;s :</p>
+<ul>
+<li>On consid&#232;re notre dernier tas cr&#233;&#233; comme le tas dit <strong>actuel</strong>.</li>
+<li>Tant qu'il y a un tas avant le tas actuel, et que la racine de ce tas est sup&#233;rieure &#224; la racine du tas actuel et &#224; ses deux premiers enfants : &#233;changer les deux racines et l'autre tas devient le tas actuel.</li>
+<li>Tant que le tas actuel a plus d'un &#233;l&#233;ment et que l'un des deux enfants de la racine de ce tas est sup&#233;rieur &#224; la racine du tas actuel : &#233;changer le plus grand des deux fils avec la racine, et ce fils devient la racine du nouveau tas actuel.</li>
+</ul>
+<p><strong>Suppression</strong> (r&#233;organisation des &#233;l&#233;ments dans le tableau d&#233;sormais tri&#233;) :</p>
+<p>Une fois nos tas cr&#233;&#233;s, il faut les parcourir afin d'en tirer les &#233;l&#233;ments du tableau mais tri&#233;.</p>
+<p>On recommence ces op&#233;rations tant qu'il reste un tas :</p>
+<ul>
+<li>Si le dernier tas a une taille de <em>L(0)</em> ou <em>L(1)</em>, alors on peut simplement le retirer et le placer dans notre tableau.</li>
+<li>Sinon, retirer la racine du tas et r&#233;organiser les &#233;l&#233;ments des deux sous tas si besoin.</li>
+</ul>
+<p>Toutes ces explications peuvent para&#238;tre assez abstraites, et voici un exemple pour mieux comprendre le fonctionnement du Smoothsort :</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri par tas est donc un algorithme de tri efficace en <em>O(N * log N)</em> non stable mais en place, et plut&#244;t facile &#224; impl&#233;menter.</p>
+<p>Le tri par tas est donc un algorithme de tri efficace en <em>O(N * log N)</em> non stable mais en place. En pratique, cet algorithme est moins utilis&#233; que le tri rapide, m&#234;me si en th&#233;orie il a une meilleure complexit&#233; dans le pire des cas. Il sert en revanche &#224; l'am&#233;lioration du tri rapide, dans sa variante l'<a href="/algo/tri/tri_rapide.html#introsort">introsort</a> et reste donc un algorithme de tri essentiel &#224; conna&#238;tre.</p>
  
       <!-- ------------ -->
 

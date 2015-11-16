@@ -132,7 +132,7 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="tri-rapide">Tri rapide</h1></a>
 <p>Publi&#233; le : 10/05/2014<br />
-<em>Modifi&#233; le : 15/11/2015</em></p>
+<em>Modifi&#233; le : 16/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -191,7 +191,7 @@ table tr:nth-child(2n) {
 <p>Le fait que nos sous tableaux soient de la m&#234;me taille (ou environ de la m&#234;me taille), permettrait de diminuer le nombre d'appels r&#233;cursifs de la fonction et am&#233;liorer ainsi notre complexit&#233; en temps. Cette &#233;conomie d'appels r&#233;cursifs peut paraitre mineure sur de petites entr&#233;es, mais peut vraiment faire une grosse diff&#233;rence sur d'importants tableaux. Techniquement, avec cette am&#233;lioration, notre impl&#233;mentation du tri rapide aurait une complexit&#233; dans le pire des cas en <em>O(N * log N)</em>.</p>
 <h3 id="m&#233;lange-dalgorithme">M&#233;lange d'algorithme</h3>
 <p>Il faut savoir que le tri rapide peut s'ex&#233;cuter plus lentement sur de petites entr&#233;es que des algorithmes en temps quadratique comme le <a href="/algo/tri/tri_selection.html">tri par s&#233;lection</a>, ou le <a href="/algo/tri/tri_insertion.html">tri par insertion</a> (qui eux sont moins efficaces sur des entr&#233;es de grande taille).</p>
-<p>On peut donc combiner les deux tris, et faire en sorte d&#8217;utiliser le tri par insertion (ou par s&#233;lection) lorsque la taille du tableau est inf&#233;rieure &#224; une certaine limite. Cette taille limite tourne en g&#233;n&#233;ral autour de 15 &#233;l&#233;ments, mais peut varier selon l&#8217;ordinateur utilis&#233; et l'impl&#233;mentation des deux tris.</p>
+<p>On peut donc combiner les deux tris, et faire en sorte d&#8217;utiliser le tri par insertion (ou par s&#233;lection) lorsque la taille du tableau est inf&#233;rieure &#224; une certaine limite. Cette taille limite varie en g&#233;n&#233;ral entre 15 et 30 &#233;l&#233;ments, mais peut changer selon l&#8217;ordinateur utilis&#233; et l'impl&#233;mentation des deux tris.</p>
 <h3 id="introsort">Introsort</h3>
 <p>Dans le m&#234;me genre que d'utiliser un algorithme quadratique sur de petites entr&#233;es, l'introsort utilise un mix de tri rapide et de <a href="/algo/tri/tri_tas.html">tri par tas</a> afin de palier un probl&#232;me de lenteur d&#251; au nombre d'appels r&#233;cursifs importants du tri rapide. Une fois que ce nombre a d&#233;pass&#233; une certaine limite, le travail est assur&#233; par le tri par tas pour am&#233;liorer le temps d'ex&#233;cution et ne pas exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appel</a>. Gr&#226;ce &#224; cela, notre temps d'ex&#233;cution dans le pire des cas est de <em>O(N * log N)</em>.</p>
 <h2 id="conclusion">Conclusion</h2>

@@ -28,8 +28,7 @@ catégories d'articles
 
 ### Tri par tas
 
-- Améliorer description image 1er tour dans l'exemple
-- Smoothsort (améliorations et variantes)
+- Code du smoothsort + exemple (images)
 
 ### Autre
 

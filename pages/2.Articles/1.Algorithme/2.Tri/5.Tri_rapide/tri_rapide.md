@@ -3,7 +3,7 @@ Tri rapide
 algo/tri
 
 Publié le : 10/05/2014  
-*Modifié le : 15/11/2015*
+*Modifié le : 16/11/2015*
 
 ## Introduction
 
@@ -83,7 +83,7 @@ Le fait que nos sous tableaux soient de la même taille (ou environ de la même 
 
 Il faut savoir que le tri rapide peut s'exécuter plus lentement sur de petites entrées que des algorithmes en temps quadratique comme le [tri par sélection](/algo/tri/tri_selection.html), ou le [tri par insertion](/algo/tri/tri_insertion.html) (qui eux sont moins efficaces sur des entrées de grande taille).
 
-On peut donc combiner les deux tris, et faire en sorte d’utiliser le tri par insertion (ou par sélection) lorsque la taille du tableau est inférieure à une certaine limite. Cette taille limite tourne en général autour de 15 éléments, mais peut varier selon l’ordinateur utilisé et l'implémentation des deux tris.
+On peut donc combiner les deux tris, et faire en sorte d’utiliser le tri par insertion (ou par sélection) lorsque la taille du tableau est inférieure à une certaine limite. Cette taille limite varie en général entre 15 et 30 éléments, mais peut changer selon l’ordinateur utilisé et l'implémentation des deux tris.
 
 ### Introsort
 
