@@ -132,9 +132,55 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="parcours-dun-graphe">Parcours d'un graphe</h1></a>
 <p>Publi&#233; le :<br />
-<em>Modifi&#233; le :</em></p>
+<em>Modifi&#233; le : 17/11/2015</em></p>
 <ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#le-parcours-en-profondeur">Le parcours en profondeur</a></li>
+<li><a href="#le-parcours-en-largeur">Le parcours en largeur</a></li>
+<li><a href="#quel-parcours-choisir">Quel parcours choisir ?</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>Vous vous trouvez dans un labyrinthe contenant des milliards de chemins diff&#233;rents, de plusieurs millions de km chacun, et vous cherchez la sortie. Vous essayez dans un premier temps de sortir en essayant des chemins au hasard, mais vous abandonnez rapidement en vous rendant compte de la taille du labyrinthe. Vous avez donc besoin d'une solution qui marche &#224; tous les coups, et deux solutions s'offrent alors &#224; vous :</p>
+<ul>
+<li>Instinctivement, on peut essayer chaque possibilit&#233; de chemin jusqu'&#224; trouver la sortie, &#231;a marche m&#234;me si c'est lent mais de toute fa&#231;on nous n'avons aucune information sur le labyrinthe ou sur sa sortie, donc n'importe quelle possibilit&#233; pourrait &#234;tre la bonne.</li>
+<li>On peut aussi tenter de parcourir petit &#224; petit chaque possibilit&#233; de chemin, au lieu de faire une possibilit&#233; d'un coup, on essaie au fur et &#224; mesure, en commen&#231;ant par une &quot;case&quot; de profondeur dans chaque chemin, puis deux, puis trois, etc. jusqu'&#224; arriver &#224; notre sortie.</li>
+</ul>
+<p>Dans les deux cas, on pourrait tr&#232;s bien parcourir toutes les possibilit&#233;s et trouver la sortie comme &#233;tant la derni&#232;re. On se rend compte alors qu'il n'y a pas de solution dite <em>optimale</em> &#224; ce probl&#232;me si l'on ne connait rien sur notre labyrinthe. Les deux solutions ont alors leurs avantages et leurs inconv&#233;nients, et il faut savoir quand pr&#233;f&#233;rer l'une par rapport &#224; l'autre.</p>
+<p>Ce labyrinthe pourrait &#234;tre repr&#233;sent&#233; comme un <a href="/algo/structure/graphe.html">graphe</a>, o&#249; chaque &quot;case&quot; du labyrinthe repr&#233;sente un n&#339;ud du graphe, et un arc pourrait repr&#233;senter un simple chemin ou bien une intersection. Maintenant qu'on voit notre labyrinthe comme un graphe, on peut aussi voir les deux choix de parcours comme les deux mani&#232;res de parcourir un graphe, qu'on appelle respectivement : le parcours en profondeur, et le parcours en largeur.</p>
+<h2 id="le-parcours-en-profondeur">Le parcours en profondeur</h2>
+<h3 id="principe">Principe</h3>
+<p>Le parcours en profondeur (ou plus commun&#233;ment <em>DFS</em> pour <em>Depth First Search</em>) permet de parcourir un graphe en utilisant le principe de la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursivit&#233;</a>. Ce parcours a la particularit&#233; de parcourir les n&#339;uds du graphe les plus &quot;profonds&quot; en premier (c'est-&#224;-dire les plus &#233;loign&#233;s du n&#339;ud de d&#233;part) avant de &quot;remonter&quot; progressivement dans le graphe.</p>
+<p>Ce parcours s'assimile donc &#224; notre premi&#232;re solution pour notre sortie de labyrinthe, on essaie une possibilit&#233; jusqu'au bout, on revient un peu en arri&#232;re sur la derni&#232;re intersection, on explore cette partie de nouveau en entier, on revient un peu en arri&#232;re, etc.</p>
+<h3 id="exemple">Exemple</h3>
+<p>La meilleure mani&#232;re de comprendre ce parcours est de le visualiser sur un <a href="/algo/structure/arbre.html">arbre</a> :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/graphe/dfs/exemple_dfs_arbre.png" alt="Exemple de DFS sur un arbre" />
+<p class="caption">Exemple de DFS sur un arbre</p>
+</div>
+<p>Chaque n&#339;ud repr&#233;sente l'ordre de parcours du dfs, on peut m&#234;me y rajouter des fl&#232;ches pour que &#231;a soit plus clair :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/graphe/dfs/exemple_dfs_arbre_fleche.png" alt="Exemple fl&#233;ch&#233; de DFS sur un arbre" />
+<p class="caption">Exemple fl&#233;ch&#233; de DFS sur un arbre</p>
+</div>
+<p>On voit bien qu'on parcourt tant qu'on peut les fils gauches, puis lorsqu'on est bloqu&#233;, on remonte tant qu'il n'y a pas de fils droit non parcouru, et lorsqu'on en trouve un on recommence l'op&#233;ration.</p>
+<p>Jusqu'ici nous n'avons vu notre algorithme en action uniquement sur un arbre car cela facilite la compr&#233;hension du parcours, mais de mani&#232;re plus g&#233;n&#233;ral on peut l'utiliser sur un graphe (on ne parlera plus alors de fils gauche ou droit, mais on prendra un voisin consid&#233;r&#233; tout simplement comme non parcouru) :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/graphe/dfs/exemple_dfs_graphe.png" alt="Exemple de DFS sur un graphe" />
+<p class="caption">Exemple de DFS sur un graphe</p>
+</div>
+<p>Techniquement sur un graphe, on peut le parcourir de diff&#233;rentes fa&#231;ons en utilisant un DFS en fonction de l'ordre de parcours des n&#339;uds choisis.</p>
+<h3 id="pseudo-code">Pseudo-code</h3>
+<h3 id="complexit&#233;">Complexit&#233;</h3>
+<h3 id="impl&#233;mentation">Impl&#233;mentation</h3>
+<h2 id="le-parcours-en-largeur">Le parcours en largeur</h2>
+<h3 id="principe-1">Principe</h3>
+<h3 id="exemple-1">Exemple</h3>
+<h3 id="pseudo-code-1">Pseudo-code</h3>
+<h3 id="complexit&#233;-1">Complexit&#233;</h3>
+<h3 id="impl&#233;mentation-1">Impl&#233;mentation</h3>
+<h2 id="quel-parcours-choisir">Quel parcours choisir ?</h2>
+<h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
 
