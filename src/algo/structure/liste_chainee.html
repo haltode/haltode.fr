@@ -263,7 +263,171 @@ taille :
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>
-<p>main.c :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="ot">#include &lt;stdlib.h&gt;</span>
+
+<span class="kw">typedef</span> <span class="kw">struct</span> Liste Liste;
+<span class="kw">struct</span> Liste
+{
+    <span class="dt">int</span> donnee;
+    Liste *suivant;
+};
+
+
+<span class="dt">void</span> creerListe(Liste **liste);
+<span class="dt">void</span> supprimerListe(Liste **liste);
+
+<span class="dt">void</span> ajouterEnTeteListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee);
+<span class="dt">void</span> ajouterEnFinListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee);
+<span class="dt">void</span> ajouterIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement);
+
+<span class="dt">void</span> supprimerEnTeteListe(Liste **liste);
+<span class="dt">void</span> supprimerEnFinListe(Liste **liste);
+<span class="dt">void</span> supprimerIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement);
+
+<span class="dt">void</span> afficherListe(Liste **liste);
+
+<span class="dt">int</span> estVideListe(Liste **liste);
+
+<span class="dt">int</span> tailleListe(Liste **liste);
+
+
+<span class="dt">void</span> creerListe(Liste **liste)
+{
+    *liste = malloc(<span class="kw">sizeof</span>(Liste));
+    *liste = NULL;
+}
+
+<span class="dt">void</span> supprimerListe(Liste **liste)
+{
+    Liste *indexListe;
+
+    <span class="kw">for</span>(indexListe = *liste; indexListe != NULL; )
+    {
+        Liste *temp;
+
+        temp = indexListe-&gt;suivant;
+        free(indexListe);
+        indexListe = temp;
+    }
+}
+
+<span class="dt">void</span> ajouterEnTeteListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee)
+{
+    Liste *nouveauElement;
+
+    nouveauElement = malloc(<span class="kw">sizeof</span>(Liste));
+
+    nouveauElement-&gt;donnee = donnee;
+    nouveauElement-&gt;suivant = *liste;
+    *liste = nouveauElement;
+}
+
+<span class="dt">void</span> ajouterEnFinListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee)
+{
+    Liste *nouveauElement;
+    Liste *indexListe;
+
+    nouveauElement = malloc(<span class="kw">sizeof</span>(Liste));
+
+    nouveauElement-&gt;donnee = donnee;
+    nouveauElement-&gt;suivant = NULL;
+
+    <span class="kw">for</span>(indexListe = *liste; indexListe-&gt;suivant != NULL; indexListe = indexListe-&gt;suivant)
+        ;
+
+    indexListe-&gt;suivant = nouveauElement;
+}
+
+<span class="dt">void</span> ajouterIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement)
+{
+    Liste *nouveauElement;
+    Liste *indexListe;
+    <span class="dt">int</span> indexElement;
+
+    nouveauElement = malloc(<span class="kw">sizeof</span>(Liste));
+
+    nouveauElement-&gt;donnee = donnee;
+
+    <span class="kw">for</span>(indexListe = *liste, indexElement = <span class="dv">0</span>; indexElement &lt; indexNouveauElement - <span class="dv">1</span>; indexListe = indexListe-&gt;suivant, ++indexElement)
+        ;
+
+    nouveauElement-&gt;suivant = indexListe-&gt;suivant;
+    indexListe-&gt;suivant = nouveauElement;
+}
+
+<span class="dt">void</span> supprimerEnTeteListe(Liste **liste)
+{
+    Liste *temp;
+
+    temp = *liste;
+    *liste = temp-&gt;suivant; 
+
+    free(temp);
+}
+
+<span class="dt">void</span> supprimerEnFinListe(Liste **liste)
+{
+    Liste *indexListe;
+
+    <span class="kw">for</span>(indexListe = *liste; indexListe-&gt;suivant-&gt;suivant != NULL; indexListe = indexListe-&gt;suivant)
+        ;
+
+    free(indexListe-&gt;suivant);
+    indexListe-&gt;suivant = NULL;
+}
+
+<span class="dt">void</span> supprimerIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement)
+{
+    Liste *indexListe;
+    <span class="dt">int</span> indexElement;
+
+    <span class="kw">for</span>(indexListe = *liste, indexElement = <span class="dv">0</span>; indexElement &lt; indexNouveauElement - <span class="dv">1</span>; indexListe = indexListe-&gt;suivant, ++indexElement)
+        ;
+
+    free(indexListe-&gt;suivant);
+    indexListe-&gt;suivant = indexListe-&gt;suivant-&gt;suivant;
+}
+
+<span class="dt">void</span> afficherListe(Liste **liste)
+{
+    Liste *indexListe;
+
+    <span class="kw">for</span>(indexListe = *liste; indexListe != NULL; indexListe = indexListe-&gt;suivant)
+        printf(<span class="st">&quot;%d -&gt; &quot;</span>, indexListe-&gt;donnee);
+
+    printf(<span class="st">&quot;NULL</span><span class="ch">\n</span><span class="st">&quot;</span>);
+}
+
+<span class="dt">int</span> estVideListe(Liste **liste)
+{
+    <span class="kw">if</span>(*liste == NULL)
+        <span class="kw">return</span> <span class="dv">1</span>;
+    <span class="kw">else</span>
+        <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="dt">int</span> tailleListe(Liste **liste)
+{
+    Liste *indexListe;
+    <span class="dt">int</span> nbElement;
+
+    <span class="kw">for</span>(indexListe = *liste, nbElement = <span class="dv">0</span>; indexListe != NULL; indexListe = indexListe-&gt;suivant, ++nbElement)
+        ;
+
+    <span class="kw">return</span> nbElement;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+    Liste *liste;
+
+    creerListe(&amp;liste);
+
+    supprimerListe(&amp;liste);
+
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
 <p>Le code est relativement simple &#224; comprendre et &#224; utiliser, une connaissance des pointeurs est cependant n&#233;cessaire.</p>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation de liste cha&#238;n&#233;e ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/" class="uri">http://www.cplusplus.com/reference/list/list/</a>.</p>
 <h2 id="variantes-de-la-liste-cha&#238;n&#233;e">Variantes de la liste cha&#238;n&#233;e</h2>

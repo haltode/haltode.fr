@@ -112,7 +112,8 @@ Soit *N* le nombre d'éléments de la liste chaînée.
 
 Une implémentation en C des fonctions présentées au-dessus :
 
-main.c :
+[INSERT]
+main.c
 
 Le code est relativement simple à comprendre et à utiliser, une connaissance des pointeurs est cependant nécessaire.
 
