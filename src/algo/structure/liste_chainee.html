@@ -134,6 +134,19 @@ table tr:nth-child(2n) {
    </head>
 
    <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+    function toggle_visibility(id) {
+       var element = document.getElementById(id);
+       if(element.style.display == 'block')
+          element.style.display = 'none';
+       else
+          element.style.display = 'block';
+    }
+</script>
+      <!---- ---->
+
       <header>
          <a href="/">
             <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
@@ -263,6 +276,8 @@ taille :
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>
+<a href="#" onclick="toggle_visibility('main.c');">main.c</a>
+<div id="main.c">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 <span class="ot">#include &lt;stdlib.h&gt;</span>
 
@@ -428,6 +443,7 @@ taille :
 
     <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
+</div>
 <p>Le code est relativement simple &#224; comprendre et &#224; utiliser, une connaissance des pointeurs est cependant n&#233;cessaire.</p>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation de liste cha&#238;n&#233;e ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/" class="uri">http://www.cplusplus.com/reference/list/list/</a>.</p>
 <h2 id="variantes-de-la-liste-cha&#238;n&#233;e">Variantes de la liste cha&#238;n&#233;e</h2>
