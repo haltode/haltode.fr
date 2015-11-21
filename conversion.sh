@@ -25,11 +25,18 @@ find pages -iname "*.md" -type f -exec sh -c \
 		filename=`sed "$line_number q;d" copy.md` &&
 		extension="${filename##*.}" &&
 
-		sed -i "$line_number s/.*/\\\`\\\`\\\`\n<\/div>/" copy.md &&
-		((line_number--)) &&
-      sed -i "$line_number s/.*/<a href=\"javascript:toggle_visibility('\''$filename'\'');\">$filename<\/a><div id=\"$filename\" style=\"display: none;\">\n\\\`\\\`\\\`$extension/" copy.md &&
+      lenght=`cat $(dirname ${0})/$filename | wc -l` &&
+      if [ $lenght -gt 20 ]; then
+         sed -i "$line_number s/.*/\\\`\\\`\\\`\n<\/div>/" copy.md &&
+         ((line_number--)) &&
+         sed -i "$line_number s/.*/<a href=\"javascript:toggle_visibility('\''$filename'\'');\">$filename<\/a><div id=\"$filename\" style=\"display: none;\">\n\\\`\\\`\\\`$extension/" copy.md &&
+         ((line_number++))
+      else
+         sed -i "$line_number s/.*/\\\`\\\`\\\`/" copy.md &&
+         ((line_number--)) &&
+         sed -i "$line_number s/.*/\\\`\\\`\\\`$extension/" copy.md
+      fi
 
-		((line_number++)) &&
       sed -i "$line_number r $(dirname ${0})/$filename" copy.md
    done
 
