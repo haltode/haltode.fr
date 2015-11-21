@@ -137,13 +137,13 @@ table tr:nth-child(2n) {
 
       <!-- Javascript -->
 <script type="text/javascript">
-    function toggle_visibility(id) {
-       var element = document.getElementById(id);
-       if(element.style.display == 'block')
-          element.style.display = 'none';
-       else
-          element.style.display = 'block';
-    }
+   function toggle_visibility(id) {
+      var element = document.getElementById(id);
+      if(element.style.display == 'block')
+         element.style.display = 'none';
+      else
+         element.style.display = 'block';
+   }
 </script>
       <!---- ---->
 
@@ -277,7 +277,7 @@ taille :
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>
 <a href="javascript:toggle_visibility('main.c');">main.c</a>
-<div id="main.c">
+<div id="main.c" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 <span class="ot">#include &lt;stdlib.h&gt;</span>
 
