@@ -166,8 +166,8 @@ table tr:nth-child(2n) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="tableau-cumulatif">Tableau cumulatif</h1></a>
-<p>Publi&#233; le :<br />
-<em>Modifi&#233; le : 08/11/2015</em></p>
+<p>Publi&#233; le : 21/11/2015<br />
+<em>Modifi&#233; le : 21/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tableau-cumulatif">Principe du tableau cumulatif</a></li>
@@ -178,18 +178,18 @@ table tr:nth-child(2n) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Je vous donne un tableau poss&#233;dant des milliards de milliards d'&#233;l&#233;ments, et je vous pose des milliards de questions de la forme : Quelle est la somme des &#233;l&#233;ments compris entre l'indice <em>i</em> et <em>j</em> du tableau (avec <em>i &lt; j</em>) ? La premi&#232;re id&#233;e d'algorithme na&#239;f que l'on peut avoir, est de parcourir pour chaque question les &#233;l&#233;ments situ&#233;s entre les indices donn&#233;s, et d'augmenter une variable <code>somme</code> au fur et &#224; mesure du parcours.</p>
-<p>Cependant nos parcours sont tr&#232;s nombreux, et notre solution bien trop longue dans le cas extr&#234;me donn&#233;. Il nous faut donc une solution plus efficace, nous permettant de faire moins de parcours inutiles afin de raccourcir notre temps d'ex&#233;cution : le tableau cumulatif.</p>
+<p>Je vous donne un tableau poss&#233;dant des trilliards d'&#233;l&#233;ments, et je vous pose des milliards de questions de la forme : Quelle est la somme des &#233;l&#233;ments compris entre l'indice <em>i</em> et <em>j</em> du tableau (avec <em>i &lt; j</em>) ? La premi&#232;re id&#233;e d'algorithme na&#239;f que l'on peut avoir, est de parcourir pour chaque question les &#233;l&#233;ments situ&#233;s entre les indices donn&#233;s, et d'augmenter une variable <code>somme</code> au fur et &#224; mesure du parcours.</p>
+<p>Cependant notre solution est bien trop longue pour le cas extr&#234;me donn&#233; en entr&#233;e, &#224; cause des nombreux parcours que l'on r&#233;alise. Il nous faut donc une solution plus efficace, et une structure adapt&#233;e nous permettant de faire moins de parcours inutiles et ainsi raccourcir notre temps d'ex&#233;cution : le tableau cumulatif.</p>
 <h2 id="principe-du-tableau-cumulatif">Principe du tableau cumulatif</h2>
-<p>Dans notre algorithme na&#239;f, on passe plusieurs fois et tr&#232;s souvent sur de m&#234;mes &#233;l&#233;ments, on peut aussi parcourir le tableau en entier &#224; de multiples occasions, mais lors de ces parcours on n'utilise aucune des informations r&#233;colt&#233;es autrement que pour r&#233;pondre &#224; une seule question parmi des milliards.</p>
-<p>L'id&#233;e du tableau cumulatif (<em>summed area table</em> en anglais) est de parcourir une seule fois notre tableau en entier, et d'utiliser les donn&#233;es r&#233;colt&#233;es pour pouvoir ensuite r&#233;pondre &#224; n'importe quel type de question &#224; propos de somme d'&#233;l&#233;ments contigus.</p>
+<p>Dans notre algorithme na&#239;f, on n'utilise lors de nos parcours les informations r&#233;colt&#233;es uniquement pour r&#233;pondre &#224; une seule question parmi des milliards. Ceci nous oblige &#224; repasser sur des parties du tableau d&#233;j&#224; parcourue (voir le tableau en entier), r&#233;sultant en un temps d'ex&#233;cution trop &#233;lev&#233;e.</p>
+<p>L'id&#233;e du tableau cumulatif (<em>summed area table</em> en anglais) est de parcourir une seule fois notre tableau enti&#232;rement, et d'utiliser les donn&#233;es r&#233;colt&#233;es pour pouvoir ensuite r&#233;pondre &#224; n'importe quel type de question &#224; propos de somme d'&#233;l&#233;ments contigus.</p>
 <p>On peut tr&#232;s simplement expliquer son principe gr&#226;ce &#224; la g&#233;om&#233;trie et aux intervalles :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/tableau_cumulatif/explication_geo.png" alt="Explication g&#233;om&#233;trique du tableau cumulatif" />
 <p class="caption">Explication g&#233;om&#233;trique du tableau cumulatif</p>
 </div>
-<p>La partie verte dans le premier rectangle repr&#233;sente la question pos&#233;e, et on voit qu'on peut retrouver exactement la m&#234;me partie en utilisant deux sous parties du rectangle commen&#231;ant toutes les deux au m&#234;me endroit. L'avantage de pouvoir d&#233;composer n'importe quelle sous partie du rectangle en deux sous parties ayant un d&#233;but commun, est qu'on r&#233;duit alors le nombre de possibilit&#233;s de sous parties. En effet, avec un d&#233;but et une fin variable le nombre d'intervalles possibles est d'environ <em>N&#178;</em> (avec <em>N</em> la taille du rectangle), alors qu'avec un d&#233;but d'intervalle fixe et uniquement une fin variable on arrive &#224; <em>N</em> possibilit&#233;s de sous parties.</p>
-<p>Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un d&#233;but fixe et une fin variable afin de pouvoir finalement connaitre rapidement n'importe quel intervalle de notre tableau d'&#233;l&#233;ments.</p>
+<p>La partie verte dans le premier rectangle repr&#233;sente la question pos&#233;e, et on voit qu'on peut retrouver exactement la m&#234;me partie en utilisant deux sous parties du rectangle commen&#231;ant toutes les deux au m&#234;me endroit. L'avantage de pouvoir d&#233;composer n'importe quelle sous partie du rectangle en deux autres ayant un d&#233;but commun, est qu'on r&#233;duit alors le nombre de possibilit&#233;s de sous parties. En effet, avec un d&#233;but et une fin variable le nombre d'intervalles possibles est d'environ <em>N&#178;</em> (avec <em>N</em> la taille du rectangle), alors qu'avec un d&#233;but d'intervalle fixe et uniquement une fin variable on arrive &#224; <em>N</em> possibilit&#233;s de sous parties.</p>
+<p>Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un d&#233;but fixe et une fin variable afin de pouvoir finalement connaitre rapidement n'importe quelle sous partie de notre tableau d'&#233;l&#233;ments.</p>
 <div class="figure">
 <img src="/static/img/algo/structure/tableau_cumulatif/representation_inter.png" alt="Intervalles n&#233;cessaires pour r&#233;pondre &#224; toutes les questions" />
 <p class="caption">Intervalles n&#233;cessaires pour r&#233;pondre &#224; toutes les questions</p>
@@ -197,7 +197,7 @@ table tr:nth-child(2n) {
 <h2 id="exemple">Exemple</h2>
 <p>Afin de parfaitement comprendre comment utiliser un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
 <p><em>1&#232;re &#233;tape</em> : cr&#233;er notre tableau cumulatif</p>
-<p>A partir de la suite de nombres, on va cr&#233;er un tableau cumulatif qui contiendra pour chaque &#233;l&#233;ment <em>i</em> l'&#233;l&#233;ment du tableau original + l'&#233;l&#233;ment <em>i - 1</em> de notre tableau cumulatif. Cela aura pour effet de cr&#233;er un tableau contenant nos intervalles n&#233;cessaires, c'est-&#224;-dire dans la premi&#232;re case l'&#233;l&#233;ment 1, dans la deuxi&#232;me case l'&#233;l&#233;ment 1 + 2, dans la troisi&#232;me case l'&#233;l&#233;ment 1 + 2 + 3, etc.</p>
+<p>A partir de la suite de nombres, on va cr&#233;er un tableau cumulatif qui contiendra tous nos intervalles n&#233;cessaires, c'est-&#224;-dire dans la premi&#232;re case l'&#233;l&#233;ment 1, dans la deuxi&#232;me case l'&#233;l&#233;ment 1 + 2, dans la troisi&#232;me case l'&#233;l&#233;ment 1 + 2 + 3, etc.</p>
 <table>
 <thead>
 <tr class="header">
@@ -225,7 +225,6 @@ table tr:nth-child(2n) {
 </tr>
 </tbody>
 </table>
-<p>Notre premier &#233;l&#233;ment est le m&#234;me que celui du tableau original, et ensuite pour cr&#233;er la prochaine case du tableau cumulatif on additionne celle qu'on vient de cr&#233;er avec le prochain &#233;l&#233;ment de notre tableau. Par exemple pour la troisi&#232;me case du tableau cumulatif, on prend la deuxi&#232;me case de ce tableau (68), que l'on additionne avec le troisi&#232;me &#233;l&#233;ment du tableau original (1), on obtient bien 69.</p>
 <p><em>2&#232;me &#233;tape</em> : r&#233;pondre aux questions gr&#226;ce au tableau cumulatif</p>
 <p>On a d&#233;sormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l'on va utiliser pour r&#233;pondre &#224; des questions du type quelle est la somme des &#233;l&#233;ments du tableau original entre deux indices <em>i</em> et <em>j</em> donn&#233;s. Il faut juste faire attention &#224; une chose, c'est d'utiliser comme indice de d&#233;but d'intervalle <em>i - 1</em> et non <em>i</em> car sinon notre premier &#233;l&#233;ment ne sera pas inclus.</p>
 <table>
@@ -251,7 +250,7 @@ table tr:nth-child(2n) {
 <td align="center">6</td>
 <td align="left">26, 42, <strong>1</strong>, <strong>89</strong>, <strong>3</strong>, <strong>7</strong></td>
 <td align="left">26, <strong>68</strong>, 69, 158, 161, <strong>168</strong></td>
-<td align="left">On soustrait l'&#233;l&#233;ment <em>j</em> (6&#232;me) et l'&#233;l&#233;ment <em>i - 1</em> (2&#232;me) soit 168 - 68 = 100 (or 1 + 80 + 3 + 7 = 100)</td>
+<td align="left">On soustrait l'&#233;l&#233;ment <em>j</em> (6&#232;me) et l'&#233;l&#233;ment <em>i - 1</em> (2&#232;me) soit 168 - 68 = 100 (or 1 + 89 + 3 + 7 = 100)</td>
 </tr>
 <tr class="even">
 <td align="center">1</td>
@@ -277,26 +276,189 @@ table tr:nth-child(2n) {
 </tbody>
 </table>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>Si l'on reprend notre &#233;nonc&#233; dans l'introduction, on nous donne un tableau de taille <em>N</em>, et <em>M</em> questions du type : Quelle est la somme des &#233;l&#233;ments de <em>i</em> &#224; <em>j</em> dans le tableau ? Notre solution na&#239;ve, dans le pire des cas, aura une complexit&#233; en <em>O(N * M)</em> (lorsqu'on parcourt &#224; chaque fois le tableau en entier, soit quand <em>i</em> = 0 et <em>j</em> = <em>N</em> pour chaque question). En revanche, notre tableau cumulatif revient &#224; une complexit&#233; dans le pire des cas en <em>O(N)</em> car on parcourt une seule fois le tableau donn&#233; et pour r&#233;pondre aux questions on a juste besoin d'acc&#233;der au tableau cumulatif (donc op&#233;ration en <em>O(1)</em>).</p>
+<p>Si l'on reprend notre &#233;nonc&#233; dans l'introduction, on nous donne un tableau de taille <em>N</em>, et <em>M</em> questions du type : Quelle est la somme des &#233;l&#233;ments de <em>i</em> &#224; <em>j</em> dans le tableau ? Notre solution na&#239;ve, dans le pire des cas, aura une complexit&#233; en <em>O(N * M)</em> (lorsqu'on parcourt &#224; chaque fois le tableau en entier, soit quand <em>i</em> = 0 et <em>j</em> = <em>N</em> pour chaque question). En revanche, notre tableau cumulatif revient &#224; une complexit&#233; lin&#233;aire dans le pire des cas en <em>O(N + M)</em> car on parcourt une seule fois le tableau donn&#233; et pour r&#233;pondre aux questions on a juste besoin d'acc&#233;der au tableau cumulatif (donc op&#233;ration en <em>O(1)</em>).</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C d'un tableau cumulatif et de son utilisation :</p>
-<p>main.c :</p>
+<a href="javascript:toggle_visibility('tableau_cumulatif.c');">tableau_cumulatif.c</a>
+<div id="tableau_cumulatif.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">int</span> tableau[TAILLE_MAX];
+<span class="dt">int</span> cumulatif[TAILLE_MAX];
+<span class="dt">int</span> nbElement;
+
+<span class="dt">void</span> initTab(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iEle;
+
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;nbElement);
+   <span class="kw">for</span>(iEle = <span class="dv">0</span>; iEle &lt; nbElement; ++iEle)
+      scanf(<span class="st">&quot;%d &quot;</span>, &amp;tableau[iEle]);
+}
+
+<span class="dt">void</span> initCumulatif(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iEle;
+   <span class="dt">int</span> dernier;
+
+   dernier = <span class="dv">0</span>;
+   <span class="kw">for</span>(iEle = <span class="dv">0</span>; iEle &lt; nbElement; ++iEle) {
+      cumulatif[iEle] = tableau[iEle] + dernier;
+      dernier = cumulatif[iEle];
+   }
+}
+
+<span class="dt">int</span> somme(<span class="dt">int</span> debut, <span class="dt">int</span> fin)
+{
+   <span class="kw">if</span>(debut == <span class="dv">0</span>)
+      <span class="kw">return</span> cumulatif[fin];
+   <span class="kw">else</span>
+      <span class="kw">return</span> cumulatif[fin] - cumulatif[debut - <span class="dv">1</span>];
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   initTab();
+   initCumulatif();
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">2</span>, <span class="dv">5</span>));
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">0</span>, <span class="dv">3</span>));
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">3</span>, <span class="dv">4</span>));
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">0</span>, <span class="dv">5</span>));
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>L'entr&#233;e :</p>
+<a href="javascript:toggle_visibility('test01.in');">test01.in</a>
+<div id="test01.in" style="display: none;">
+<pre class="in"><code>6
+26 42 1 89 3 7</code></pre>
+</div>
+<p>La sortie :</p>
+<pre><code>$ ./cumulatif &lt; test01.in
+100
+158
+92
+168</code></pre>
+<p>Quelques remarques sur le code :</p>
+<ul>
+<li>Il faut faire attention avec les indices des tableaux qui commencent &#224; 0 en C.</li>
+<li>Pour initialiser le tableau cumulatif, je r&#233;utilise les sommes d'&#233;l&#233;ments pr&#233;c&#233;dentes que j'ai calcul&#233;es pour cr&#233;er les prochaines afin d'avoir une complexit&#233; lin&#233;aire dans ma fonction <code>initCumulatif</code>.</li>
+<li>Dans la fonction <code>somme</code>, j'admets que <code>debut</code> est inf&#233;rieur &#224; <code>fin</code> et que les indices ne sont pas en dehors du tableau pour simplifier le code.</li>
+</ul>
 <h2 id="variantes">Variantes</h2>
 <h3 id="autres-op&#233;rations-que-la-somme">Autres op&#233;rations que la somme</h3>
-<p>Il est possible de r&#233;pondre &#224; des questions plus g&#233;n&#233;rales que sur la somme d'&#233;l&#233;ments, pour cela il suffit que notre op&#233;ration poss&#232;de un &quot;inverse&quot;. Par exemple l'inverse de l'addition est la soustraction (c'est d'ailleurs ce qu'on utilise dans notre tableau cumulatif, l'addition pour le construire, et la soustraction pour r&#233;pondre aux questions), et l'inverse de la multiplication est la division. Il est donc possible de modifier le comportement de notre tableau cumulatif pour prendre en compte le produit d'une suite de nombre, la soustraction d'&#233;l&#233;ments contigus, etc. Le principe reste exactement le m&#234;me, il suffit juste de changer la mani&#232;re de construire et de r&#233;pondre aux questions en fonction de l'op&#233;ration choisie.</p>
+<p>Il est possible de r&#233;pondre &#224; des questions plus g&#233;n&#233;rales que sur la somme d'&#233;l&#233;ments, pour cela il suffit que notre op&#233;ration poss&#232;de une op&#233;ration &quot;inverse&quot;. Par exemple, l'inverse de l'addition est la soustraction (c'est d'ailleurs ce qu'on utilise dans notre tableau cumulatif, l'addition pour le construire, et la soustraction pour r&#233;pondre aux questions), et l'inverse de la multiplication est la division. Il est donc possible de modifier le comportement de notre tableau cumulatif pour prendre en compte le produit d'une suite de nombre, la soustraction d'&#233;l&#233;ments contigus, etc. Le principe reste exactement le m&#234;me, il suffit juste de changer la mani&#232;re de construire et de r&#233;pondre aux questions en fonction de l'op&#233;ration choisie.</p>
 <h3 id="tableau-cumulatif-2d">Tableau cumulatif 2D</h3>
 <p>Le tableau cumulatif ne se limite pas &#224; une seule dimension, on peut l'utiliser sur deux dimensions :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png" alt="Exemple de repr&#233;sentation d&#39;un tableau cumulatif 2D" />
 <p class="caption">Exemple de repr&#233;sentation d'un tableau cumulatif 2D</p>
 </div>
-<p>Le principe est toujours le m&#234;me encore une fois, mais il faut adapter nos fonctions qui construisent et r&#233;pondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Ce dernier sch&#233;ma montre comment r&#233;pondre &#224; une question sur un tableau cumulatif 2D, mais il faut surtout l'initialiser correctement afin de pouvoir l'utiliser :</p>
+<p>Le principe est toujours le m&#234;me, mais il faut adapter nos fonctions qui construisent et r&#233;pondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Le dernier sch&#233;ma montre comment r&#233;pondre &#224; une question sur un tableau cumulatif 2D, mais il faut surtout l'initialiser correctement afin de pouvoir l'utiliser :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/tableau_cumulatif/init_tableau2D.png" alt="Initialisation du tableau cumulatif 2D" />
 <p class="caption">Initialisation du tableau cumulatif 2D</p>
 </div>
+<p>Une impl&#233;mentation d'un tableau cumulatif 2D en C :</p>
+<a href="javascript:toggle_visibility('tableau_cumulatif2D.c');">tableau_cumulatif2D.c</a>
+<div id="tableau_cumulatif2D.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define NB_LIG_MAX 1000</span>
+<span class="ot">#define NB_COL_MAX 1000</span>
+
+<span class="dt">int</span> tableau[NB_LIG_MAX][NB_COL_MAX];
+<span class="dt">int</span> cumulatif[NB_LIG_MAX][NB_COL_MAX];
+<span class="dt">int</span> nbLig, nbCol;
+
+<span class="dt">void</span> initTab(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iLig, iCol;
+
+   scanf(<span class="st">&quot;%d %d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;nbLig, &amp;nbCol);
+   <span class="kw">for</span>(iLig = <span class="dv">0</span>; iLig &lt; nbLig; ++iLig) {
+      <span class="kw">for</span>(iCol = <span class="dv">0</span>; iCol &lt; nbCol; ++iCol)
+         scanf(<span class="st">&quot;%d &quot;</span>, &amp;tableau[iLig][iCol]);
+      scanf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+   }
+}
+
+<span class="dt">void</span> initCumulatif(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iLig, iCol;
+
+   <span class="kw">for</span>(iLig = <span class="dv">0</span>; iLig &lt; nbLig; ++iLig) {
+      <span class="kw">for</span>(iCol = <span class="dv">0</span>; iCol &lt; nbCol; ++iCol) {
+         cumulatif[iLig][iCol] = tableau[iLig][iCol];
+
+         <span class="kw">if</span>(iLig - <span class="dv">1</span> &gt;= <span class="dv">0</span>)
+            cumulatif[iLig][iCol] += cumulatif[iLig - <span class="dv">1</span>][iCol];
+         <span class="kw">if</span>(iCol - <span class="dv">1</span> &gt;= <span class="dv">0</span>)
+            cumulatif[iLig][iCol] += cumulatif[iLig][iCol - <span class="dv">1</span>];
+         <span class="kw">if</span>(iLig - <span class="dv">1</span> &gt;= <span class="dv">0</span> &amp;&amp; iCol - <span class="dv">1</span> &gt;= <span class="dv">0</span>)
+            cumulatif[iLig][iCol] -= cumulatif[iLig - <span class="dv">1</span>][iCol - <span class="dv">1</span>];
+      }
+   }
+}
+
+<span class="dt">int</span> somme(<span class="dt">int</span> lig1, <span class="dt">int</span> col1, <span class="dt">int</span> lig2, <span class="dt">int</span> col2)
+{
+   <span class="dt">int</span> resultat;
+
+   resultat = cumulatif[lig2][col2];
+   
+   <span class="kw">if</span>(col1 - <span class="dv">1</span> &gt;= <span class="dv">0</span>)
+      resultat -= cumulatif[lig2][col1 - <span class="dv">1</span>];
+   <span class="kw">if</span>(lig1 - <span class="dv">1</span> &gt;= <span class="dv">0</span>)
+      resultat -= cumulatif[lig1 - <span class="dv">1</span>][col2];
+   <span class="kw">if</span>(lig1 - <span class="dv">1</span> &gt;= <span class="dv">0</span> &amp;&amp; col1 - <span class="dv">1</span> &gt;= <span class="dv">0</span>)
+      resultat += cumulatif[lig1 - <span class="dv">1</span>][col1 - <span class="dv">1</span>];
+
+   <span class="kw">return</span> resultat;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   initTab();
+   initCumulatif();
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>));
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">3</span>));
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>));
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, somme(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>));
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>L'entr&#233;e :</p>
+<a href="javascript:toggle_visibility('test02.in');">test02.in</a>
+<div id="test02.in" style="display: none;">
+<pre class="in"><code>4 4
+4 6 8 9
+1 8 5 9
+7 2 3 3
+6 1 4 7</code></pre>
+</div>
+<p>On obtient en sortie :</p>
+<pre><code>$ ./cumulatif2D &lt; test02.in
+18
+83
+27
+12</code></pre>
+<p>Le tableau cumulatif 2D ressemble &#224; cela pour l'entr&#233;e :</p>
+<pre><code>4 10 18 27
+5 19 32 50
+12 28 44 65
+18 35 55 83</code></pre>
+<p>Le code suit exactement les deux sch&#233;mas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexit&#233; en temps cette fois est en <em>O(N&#178;)</em> pour l'initialisation et <em>O(M)</em> pour la r&#233;ponse, contre une complexit&#233; pour la r&#233;ponse de <em>O(N&#178; </em> M)* pour l'algorithme na&#239;f.</p>
+<h3 id="tableau-cumulatif-&#224;-n-dimensions">Tableau cumulatif &#224; N dimensions ?</h3>
+<p>Nous avons vu qu'il &#233;tait possible de cr&#233;er un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur <em>N</em> dimensions ? Techniquement, cela est possible, mais la repr&#233;sentation de <em>N</em> dimensions risque d'&#234;tre tr&#232;s complexe et il sera alors difficile de visualiser le comportement (initialisation et acc&#232;s pour r&#233;pondre aux questions) de notre tableau cumulatif. De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-del&#224; de 3 dimensions, vu que nous ne percevons pas la 4&#232;me.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tableau cumulatif est donc une structure de donn&#233;es permettant de conna&#238;tre la somme d'&#233;l&#233;ments contigus rapidement, mais ce dernier ne se limite pas &#224; la somme on peut aussi l'utiliser pour la soustraction, la multiplication et la division, et on peut recr&#233;er cette structure en deux dimensions.</p>
+<p>Le tableau cumulatif est donc une structure de donn&#233;es permettant de conna&#238;tre la somme d'&#233;l&#233;ments contigus rapidement, mais ce dernier ne se limite pas &#224; la somme on peut aussi l'utiliser pour la soustraction, la multiplication et la division, et on peut recr&#233;er cette structure en deux (voir <em>N</em>) dimensions.</p>
  
       <!-- ------------ -->
 

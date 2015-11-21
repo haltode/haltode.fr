@@ -1,10 +1,6 @@
 # Général
 
-- Arbre de lien en haut de l'article pour revenir en arrière en terme de 
-catégories d'articles
-- Pseudo-code : coloration syntaxique
 - README complet
-- Afficher code sur les articles (balise secrète ?)
 - Flux rss
 - Originalité du site ? Qu'est-ce qui le démarque ?
 
