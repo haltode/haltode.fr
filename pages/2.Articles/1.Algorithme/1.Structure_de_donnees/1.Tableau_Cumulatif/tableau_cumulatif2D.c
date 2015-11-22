@@ -42,7 +42,7 @@ int somme(int lig1, int col1, int lig2, int col2)
    int resultat;
 
    resultat = cumulatif[lig2][col2];
-   
+
    if(col1 - 1 >= 0)
       resultat -= cumulatif[lig2][col1 - 1];
    if(lig1 - 1 >= 0)

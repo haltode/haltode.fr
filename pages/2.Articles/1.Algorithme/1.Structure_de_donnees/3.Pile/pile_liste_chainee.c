@@ -67,12 +67,12 @@ int main(void)
    creerPile(&pile);
 
    empiler(&pile, 42);
-	// 42
-	empiler(&pile, 9);
-	// 9
-	// 42
+   // 42
+   empiler(&pile, 9);
+   // 9
+   // 42
 
-	int retour = depiler(&pile);
+   int retour = depiler(&pile);
    // retour = 9
 
    supprimerPile(&pile);

@@ -7,32 +7,32 @@ int PP;
 
 void creerPile(void)
 {
-	PP = 0;
+   PP = 0;
 }
 
 void empiler(int donnee)
 {
-	pile[PP] = donnee;
-	++PP;
+   pile[PP] = donnee;
+   ++PP;
 }
 
 int depiler(void)
 {
-	--PP;
-	return pile[PP];
+   --PP;
+   return pile[PP];
 }
 
 int estVidePile(void)
 {
-	if(PP == 0)
-		return 1;
-	else
-		return 0;
+   if(PP == 0)
+      return 1;
+   else
+      return 0;
 }
 
 int main(void)
 {
-	creerPile();
+   creerPile();
 
    empiler(42);
    // 42
@@ -43,5 +43,5 @@ int main(void)
    int retour = depiler();
    // retour = 9
 
-	return 0;
+   return 0;
 }

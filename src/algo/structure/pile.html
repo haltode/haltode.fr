@@ -339,12 +339,12 @@ estVide :
    creerPile(&amp;pile);
 
    empiler(&amp;pile, <span class="dv">42</span>);
-    <span class="co">// 42</span>
-    empiler(&amp;pile, <span class="dv">9</span>);
-    <span class="co">// 9</span>
-    <span class="co">// 42</span>
+   <span class="co">// 42</span>
+   empiler(&amp;pile, <span class="dv">9</span>);
+   <span class="co">// 9</span>
+   <span class="co">// 42</span>
 
-    <span class="dt">int</span> retour = depiler(&amp;pile);
+   <span class="dt">int</span> retour = depiler(&amp;pile);
    <span class="co">// retour = 9</span>
 
    supprimerPile(&amp;pile);
@@ -365,32 +365,32 @@ estVide :
 
 <span class="dt">void</span> creerPile(<span class="dt">void</span>)
 {
-    PP = <span class="dv">0</span>;
+   PP = <span class="dv">0</span>;
 }
 
 <span class="dt">void</span> empiler(<span class="dt">int</span> donnee)
 {
-    pile[PP] = donnee;
-    ++PP;
+   pile[PP] = donnee;
+   ++PP;
 }
 
 <span class="dt">int</span> depiler(<span class="dt">void</span>)
 {
-    --PP;
-    <span class="kw">return</span> pile[PP];
+   --PP;
+   <span class="kw">return</span> pile[PP];
 }
 
 <span class="dt">int</span> estVidePile(<span class="dt">void</span>)
 {
-    <span class="kw">if</span>(PP == <span class="dv">0</span>)
-        <span class="kw">return</span> <span class="dv">1</span>;
-    <span class="kw">else</span>
-        <span class="kw">return</span> <span class="dv">0</span>;
+   <span class="kw">if</span>(PP == <span class="dv">0</span>)
+      <span class="kw">return</span> <span class="dv">1</span>;
+   <span class="kw">else</span>
+      <span class="kw">return</span> <span class="dv">0</span>;
 }
 
 <span class="dt">int</span> main(<span class="dt">void</span>)
 {
-    creerPile();
+   creerPile();
 
    empiler(<span class="dv">42</span>);
    <span class="co">// 42</span>
@@ -401,7 +401,7 @@ estVide :
    <span class="dt">int</span> retour = depiler();
    <span class="co">// retour = 9</span>
 
-    <span class="kw">return</span> <span class="dv">0</span>;
+   <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
 <p>Cette impl&#233;mentation est simple &#224; comprendre et &#224; utiliser.</p>

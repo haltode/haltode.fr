@@ -59,7 +59,7 @@ void ajouterElement(Liste *liste, int donnee, int index)
    Noeud *nouveau;
    Noeud *iListe;
    int iEle;
-   
+
    iListe = *liste;
    for(iEle = 0; iEle < index - 1; ++iEle)
       iListe = iListe->suivant;
@@ -119,7 +119,7 @@ int main(void)
    Liste liste;
 
    creerListe(&liste);
-   
+
    printf("%d\n", estVide(&liste));
    // 1
 
