@@ -3,13 +3,11 @@ Pile
 algo/structure
 
 Publié le : 08/06/2014  
-*Modifié le : 02/11/2015*
+*Modifié le : 22/11/2015*
 
 ## Introduction
 
-Prenons l'exemple d'une fonction dans un programme...
-
-Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?
+Prenons l'exemple d'une fonction dans un programme. Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?
 
 Toutes ces questions nous amène à penser qu'il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d'imbrication : la pile.
 
@@ -61,20 +59,11 @@ dépiler :
    Faire pointer le haut de la pile vers NULL
    Retourner les données sauvegardées
 
-afficher :
-   Pour chaque élément de la pile
-      Afficher les données de l'élément actuel
-
 estVide :
    Si le premier élément de la pile est NULL
       Retourner vrai
    Sinon
       Retourner faux
-
-taille :
-   Pour chaque élément de la pile
-      Incrémenter nbElement
-   Retourner nbElement 
 ```
 
 ### Avec un tableau
@@ -93,18 +82,11 @@ dépiler :
    Décrémenter le PP
    Retourner les données de l'élément d'index PP du tableau
 
-afficher :
-   Pour chaque élément de la pile
-      Afficher les données de l'élément actuel
-
 estVide :
    Si PP = 0
       Retourner vrai
    Sinon 
       Retourner faux
-
-taille :
-   Retourner PP
 ```
 
 ## Complexité
@@ -115,27 +97,23 @@ Soit *N* le nombre d'éléments de la pile.
 - `supprimerPile` : *O(N)*
 - `empiler` : *O(1)*
 - `dépiler` : *O(1)*
-- `afficher` : *O(N)*
 - `estVide` : *O(1)*
-- `taille` : liste *O(N)* / tableau *O(1)*
 
 ## Implémentation
 
 ### Liste chaînée
 
-Le lien vers une implémentation en C d’une pile à l’aide d’une liste chaînée :
-
-main.c : 
+[INSERT]
+pile_liste_chainee.c
 
 Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les [listes chaînées](/algo/structure/liste_chainee.html) pour bien comprendre le code.
 
 ### Tableau
 
-Le lien vers une implémentation en C d’une pile à l’aide d’un tableau :
+[INSERT]
+pile_tableau.c
 
-main.c : 
-
-Cette implémentation a pour but d’être extrêmement simple à utiliser, comprendre et à implémenter.
+Cette implémentation est simple à comprendre et à utiliser.
 
 ### STL
 
