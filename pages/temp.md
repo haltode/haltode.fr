@@ -13,7 +13,7 @@ La liste des articles publiés :
     - Structure de données :
 
          <p class="pret"><span>- Tableau cumulatif</br></span></p>
-         <p class="relire"><span>- Liste chaînée</br></span></p>
+         <p class="pret"><span>- Liste chaînée</br></span></p>
          <p class="relire"><span>- Pile</br></span></p>
          <p class="relire"><span>- File</br></span></p>
          <p class="relire"><span>- Arbre</span></p> <p class="faire"><span>Arbre binaire</span></p> / <p class="faire"><span>Tas</span></p> / <p class="faire"><span>Arbre de recherche</br></span></p>

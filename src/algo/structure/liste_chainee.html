@@ -175,7 +175,7 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h1></a>
 <p>Publi&#233; le : 08/06/2014<br />
-<em>Modifi&#233; le : 01/11/2015</em></p>
+<em>Modifi&#233; le : 22/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</a></li>
@@ -187,8 +187,7 @@ table tr:nth-child(2n) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Imaginons un tableau contenant des milliards d'&#233;l&#233;ments...</p>
-<p>Comment supprimer un &#233;l&#233;ment en plein milieu du tableau ? Pourquoi pas cr&#233;er un deuxi&#232;me tableau dans lequel on recopie toutes nos valeurs (sauf celle que l'on veut supprimer) ? Ca marcherait bien, mais cette op&#233;ration serait longue et co&#251;teuse en m&#233;moire. On peut essayer de d&#233;caler le tableau en r&#233;&#233;crivant sur la valeur que l'on veut supprimer, gr&#226;ce &#224; &#231;a on fait des &#233;conomies de m&#233;moire mais cela prend beaucoup de temps. Et comment ajouter un &#233;l&#233;ment dans notre tableau ? De m&#234;me, on peut recr&#233;er un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel &#233;l&#233;ment. On peut aussi faire des &#233;conomies de m&#233;moire en d&#233;calant les &#233;l&#233;ments vers la droite pour laisser un espace au milieu afin d'ins&#233;rer notre nouvel &#233;l&#233;ment. Toujours &#233;tant, cette solution prend trop de temps et ceci nous pousse &#224; comprendre que les tableaux ne sont pas adapt&#233;s &#224; toutes les situations.</p>
+<p>Imaginons un tableau contenant des milliards d'&#233;l&#233;ments. Comment supprimer un &#233;l&#233;ment en plein milieu du tableau ? Pourquoi pas cr&#233;er un deuxi&#232;me tableau dans lequel on recopie toutes nos valeurs (sauf celle que l'on veut supprimer) ? Cela marcherait bien, mais cette op&#233;ration serait longue et co&#251;teuse en m&#233;moire. On peut essayer de d&#233;caler le tableau en r&#233;&#233;crivant sur la valeur que l'on veut supprimer, gr&#226;ce &#224; &#231;a on fait des &#233;conomies de m&#233;moire mais cela prend beaucoup de temps. Et comment ajouter un &#233;l&#233;ment dans notre tableau ? De m&#234;me, on peut recr&#233;er un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel &#233;l&#233;ment. On peut aussi faire des &#233;conomies de m&#233;moire en d&#233;calant les &#233;l&#233;ments vers la droite pour laisser un espace au milieu afin d'ins&#233;rer notre nouvel &#233;l&#233;ment. Cependant cette solution prend trop de temps et ceci nous pousse &#224; comprendre que les tableaux ne sont pas adapt&#233;s &#224; toutes les situations.</p>
 <p>Face &#224; ces probl&#232;mes de temps, et de m&#233;moire, on a besoin d'une nouvelle structure de donn&#233;es souple, dynamique, et qui nous permet d'ins&#233;rer et de supprimer des &#233;l&#233;ments facilement : la liste cha&#238;n&#233;e.</p>
 <h2 id="principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</h2>
 <p>Une liste cha&#238;n&#233;e (<em>linked list</em> en anglais) est une structure de donn&#233;es auto r&#233;f&#233;rentielle, c'est-&#224;-dire que chacun de ses &#233;l&#233;ments pointe vers l'&#233;l&#233;ment suivant que l'on appelle des <strong>n&#339;uds</strong> (<em>node</em>). A partir de cette d&#233;finition on peut d&#233;j&#224; &#233;tablir le contenu d'un &#233;l&#233;ment d'une liste cha&#238;n&#233;e :</p>
@@ -246,27 +245,18 @@ supprimerT&#234;te :
    Supprimer l&#39;&#233;l&#233;ment en t&#234;te de liste
 supprimerFin :
    Parcourir la liste jusqu&#39;&#224; l&#39;avant-dernier &#233;l&#233;ment
-   Faire pointer l&#39;&#233;l&#233;ment sur NULL (pour indiquer la fin de la liste)
    Supprimer l&#39;&#233;l&#233;ment suivant
+   Faire pointer l&#39;&#233;l&#233;ment sur NULL (pour indiquer la fin de la liste)
 supprimerEl&#233;ment (index) :
    Parcourir la liste jusqu&#39;&#224; arriver &#224; l&#39;&#233;l&#233;ment situ&#233; avant l&#39;index donn&#233;
    Faire pointer l&#39;&#233;l&#233;ment actuel sur le pointeur de l&#39;&#233;l&#233;ment &#224; supprimer 
    Supprimer l&#39;&#233;l&#233;ment suivant
 
-afficher :
-   Pour chaque &#233;l&#233;ment de la liste
-      Afficher les donn&#233;es de l&#39;&#233;l&#233;ment actuel
-
 estVide :
    Si le premier &#233;l&#233;ment de la liste est NULL
       Retourner vrai
    Sinon
-      Retourner faux
-
-taille :
-   Pour chaque &#233;l&#233;ment de la liste
-      Incr&#233;menter nbElement
-   Retourner nbElement</code></pre>
+      Retourner faux</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>Soit <em>N</em> le nombre d'&#233;l&#233;ments de la liste cha&#238;n&#233;e.</p>
 <ul>
@@ -278,178 +268,160 @@ taille :
 <li><code>supprimerT&#234;te</code> : <em>O(1)</em></li>
 <li><code>supprimerFin</code> : <em>O(N)</em></li>
 <li><code>supprimerEl&#233;ment</code> : <em>O(N)</em></li>
-<li><code>afficher</code> : <em>O(N)</em></li>
 <li><code>estVide</code> : <em>O(1)</em></li>
-<li><code>taille</code> : <em>O(N)</em></li>
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>
-<a href="javascript:toggle_visibility('main.c');">main.c</a>
-<div id="main.c" style="display: none;">
+<a href="javascript:toggle_visibility('liste_chainee.c');">liste_chainee.c</a>
+<div id="liste_chainee.c" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 <span class="ot">#include &lt;stdlib.h&gt;</span>
 
-<span class="kw">typedef</span> <span class="kw">struct</span> Liste Liste;
-<span class="kw">struct</span> Liste
+<span class="kw">typedef</span> <span class="kw">struct</span> Noeud Noeud;
+<span class="kw">struct</span> Noeud
 {
-    <span class="dt">int</span> donnee;
-    Liste *suivant;
+   Noeud *suivant;
+   <span class="dt">int</span> donnee;
 };
 
+<span class="kw">typedef</span> Noeud *Liste;
 
-<span class="dt">void</span> creerListe(Liste **liste);
-<span class="dt">void</span> supprimerListe(Liste **liste);
-
-<span class="dt">void</span> ajouterEnTeteListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee);
-<span class="dt">void</span> ajouterEnFinListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee);
-<span class="dt">void</span> ajouterIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement);
-
-<span class="dt">void</span> supprimerEnTeteListe(Liste **liste);
-<span class="dt">void</span> supprimerEnFinListe(Liste **liste);
-<span class="dt">void</span> supprimerIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement);
-
-<span class="dt">void</span> afficherListe(Liste **liste);
-
-<span class="dt">int</span> estVideListe(Liste **liste);
-
-<span class="dt">int</span> tailleListe(Liste **liste);
-
-
-<span class="dt">void</span> creerListe(Liste **liste)
+<span class="dt">void</span> creerListe(Liste *liste)
 {
-    *liste = malloc(<span class="kw">sizeof</span>(Liste));
-    *liste = NULL;
+   *liste = NULL;
 }
 
-<span class="dt">void</span> supprimerListe(Liste **liste)
+<span class="dt">void</span> supprimerListe(Liste *liste)
 {
-    Liste *indexListe;
+   Noeud *iListe;
 
-    <span class="kw">for</span>(indexListe = *liste; indexListe != NULL; )
-    {
-        Liste *temp;
+   <span class="kw">for</span>(iListe = *liste; iListe != NULL; ) {
+      Noeud *temp;
 
-        temp = indexListe-&gt;suivant;
-        free(indexListe);
-        indexListe = temp;
-    }
+      temp = iListe-&gt;suivant;
+      free(iListe);
+      iListe = temp;
+   }
 }
 
-<span class="dt">void</span> ajouterEnTeteListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee)
+<span class="dt">void</span> ajouterTete(Liste *liste, <span class="dt">int</span> donnee)
 {
-    Liste *nouveauElement;
+   Noeud *nouveau;
 
-    nouveauElement = malloc(<span class="kw">sizeof</span>(Liste));
+   nouveau = malloc(<span class="kw">sizeof</span>(Noeud));
+   nouveau-&gt;suivant = *liste;
+   nouveau-&gt;donnee = donnee;
 
-    nouveauElement-&gt;donnee = donnee;
-    nouveauElement-&gt;suivant = *liste;
-    *liste = nouveauElement;
+   *liste = nouveau;
 }
 
-<span class="dt">void</span> ajouterEnFinListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee)
+<span class="dt">void</span> ajouterFin(Liste *liste, <span class="dt">int</span> donnee)
 {
-    Liste *nouveauElement;
-    Liste *indexListe;
+   Noeud *nouveau;
+   Noeud *iListe;
 
-    nouveauElement = malloc(<span class="kw">sizeof</span>(Liste));
+   nouveau = malloc(<span class="kw">sizeof</span>(Noeud));
+   nouveau-&gt;suivant = NULL;
+   nouveau-&gt;donnee = donnee;
 
-    nouveauElement-&gt;donnee = donnee;
-    nouveauElement-&gt;suivant = NULL;
+   <span class="kw">for</span>(iListe = *liste; iListe-&gt;suivant != NULL; iListe = iListe-&gt;suivant)
+      ;
 
-    <span class="kw">for</span>(indexListe = *liste; indexListe-&gt;suivant != NULL; indexListe = indexListe-&gt;suivant)
-        ;
-
-    indexListe-&gt;suivant = nouveauElement;
+   iListe-&gt;suivant = nouveau;
 }
 
-<span class="dt">void</span> ajouterIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> donnee, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement)
+<span class="dt">void</span> ajouterElement(Liste *liste, <span class="dt">int</span> donnee, <span class="dt">int</span> index)
 {
-    Liste *nouveauElement;
-    Liste *indexListe;
-    <span class="dt">int</span> indexElement;
+   Noeud *nouveau;
+   Noeud *iListe;
+   <span class="dt">int</span> iEle;
+   
+   iListe = *liste;
+   <span class="kw">for</span>(iEle = <span class="dv">0</span>; iEle &lt; index - <span class="dv">1</span>; ++iEle)
+      iListe = iListe-&gt;suivant;
 
-    nouveauElement = malloc(<span class="kw">sizeof</span>(Liste));
+   nouveau = malloc(<span class="kw">sizeof</span>(Noeud));
+   nouveau-&gt;suivant = iListe-&gt;suivant;
+   nouveau-&gt;donnee = donnee;
 
-    nouveauElement-&gt;donnee = donnee;
-
-    <span class="kw">for</span>(indexListe = *liste, indexElement = <span class="dv">0</span>; indexElement &lt; indexNouveauElement - <span class="dv">1</span>; indexListe = indexListe-&gt;suivant, ++indexElement)
-        ;
-
-    nouveauElement-&gt;suivant = indexListe-&gt;suivant;
-    indexListe-&gt;suivant = nouveauElement;
+   iListe-&gt;suivant = nouveau;
 }
 
-<span class="dt">void</span> supprimerEnTeteListe(Liste **liste)
+<span class="dt">void</span> supprimerTete(Liste *liste)
 {
-    Liste *temp;
+   Noeud *temp;
 
-    temp = *liste;
-    *liste = temp-&gt;suivant; 
-
-    free(temp);
+   temp = (*liste)-&gt;suivant;
+   free(*liste);
+   *liste = temp;
 }
 
-<span class="dt">void</span> supprimerEnFinListe(Liste **liste)
+<span class="dt">void</span> supprimerFin(Liste *liste)
 {
-    Liste *indexListe;
+   Noeud *iListe;
 
-    <span class="kw">for</span>(indexListe = *liste; indexListe-&gt;suivant-&gt;suivant != NULL; indexListe = indexListe-&gt;suivant)
-        ;
+   <span class="kw">for</span>(iListe = *liste; iListe-&gt;suivant-&gt;suivant != NULL; iListe = iListe-&gt;suivant)
+      ;
 
-    free(indexListe-&gt;suivant);
-    indexListe-&gt;suivant = NULL;
+   free(iListe-&gt;suivant); 
+   iListe-&gt;suivant = NULL;
 }
 
-<span class="dt">void</span> supprimerIndexListe(Liste **liste, <span class="dt">const</span> <span class="dt">int</span> indexNouveauElement)
+<span class="dt">void</span> supprimerElement(Liste *liste, <span class="dt">int</span> index)
 {
-    Liste *indexListe;
-    <span class="dt">int</span> indexElement;
+   Noeud *iListe;
+   <span class="dt">int</span> iEle;
 
-    <span class="kw">for</span>(indexListe = *liste, indexElement = <span class="dv">0</span>; indexElement &lt; indexNouveauElement - <span class="dv">1</span>; indexListe = indexListe-&gt;suivant, ++indexElement)
-        ;
+   iListe = *liste;
+   <span class="kw">for</span>(iEle = <span class="dv">0</span>; iEle &lt; index - <span class="dv">1</span>; ++iEle)
+      iListe = iListe-&gt;suivant;
 
-    free(indexListe-&gt;suivant);
-    indexListe-&gt;suivant = indexListe-&gt;suivant-&gt;suivant;
+   Noeud *temp;
+   temp = iListe-&gt;suivant;
+   iListe-&gt;suivant = temp-&gt;suivant;
+   free(temp);
 }
 
-<span class="dt">void</span> afficherListe(Liste **liste)
+<span class="dt">int</span> estVide(Liste *liste)
 {
-    Liste *indexListe;
-
-    <span class="kw">for</span>(indexListe = *liste; indexListe != NULL; indexListe = indexListe-&gt;suivant)
-        printf(<span class="st">&quot;%d -&gt; &quot;</span>, indexListe-&gt;donnee);
-
-    printf(<span class="st">&quot;NULL</span><span class="ch">\n</span><span class="st">&quot;</span>);
-}
-
-<span class="dt">int</span> estVideListe(Liste **liste)
-{
-    <span class="kw">if</span>(*liste == NULL)
-        <span class="kw">return</span> <span class="dv">1</span>;
-    <span class="kw">else</span>
-        <span class="kw">return</span> <span class="dv">0</span>;
-}
-
-<span class="dt">int</span> tailleListe(Liste **liste)
-{
-    Liste *indexListe;
-    <span class="dt">int</span> nbElement;
-
-    <span class="kw">for</span>(indexListe = *liste, nbElement = <span class="dv">0</span>; indexListe != NULL; indexListe = indexListe-&gt;suivant, ++nbElement)
-        ;
-
-    <span class="kw">return</span> nbElement;
+   <span class="kw">if</span>(*liste == NULL)
+      <span class="kw">return</span> <span class="dv">1</span>;
+   <span class="kw">else</span>
+      <span class="kw">return</span> <span class="dv">0</span>;
 }
 
 <span class="dt">int</span> main(<span class="dt">void</span>)
 {
-    Liste *liste;
+   Liste liste;
 
-    creerListe(&amp;liste);
+   creerListe(&amp;liste);
+   
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, estVide(&amp;liste));
+   <span class="co">// 1</span>
 
-    supprimerListe(&amp;liste);
+   ajouterTete(&amp;liste, <span class="dv">42</span>);
+   <span class="co">// 42</span>
+   ajouterTete(&amp;liste, <span class="dv">2</span>);
+   <span class="co">// 2 42</span>
+   ajouterFin(&amp;liste, <span class="dv">69</span>);
+   <span class="co">// 2 42 69</span>
+   ajouterElement(&amp;liste, <span class="dv">7</span>, <span class="dv">2</span>);
+   <span class="co">// 2 42 7 69 </span>
 
-    <span class="kw">return</span> <span class="dv">0</span>;
+   supprimerTete(&amp;liste);
+   <span class="co">// 42 7 69</span>
+   supprimerFin(&amp;liste);
+   <span class="co">// 42 7</span>
+   ajouterFin(&amp;liste, <span class="dv">2</span>);
+   supprimerElement(&amp;liste, <span class="dv">1</span>);
+   <span class="co">// 42 2</span>
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, estVide(&amp;liste));
+   <span class="co">// 0</span>
+
+   supprimerListe(&amp;liste);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
 <p>Le code est relativement simple &#224; comprendre et &#224; utiliser, une connaissance des pointeurs est cependant n&#233;cessaire.</p>
@@ -467,13 +439,22 @@ taille :
 <img src="/static/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png" alt="Exemple de repr&#233;sentation d&#39;une liste doublement cha&#238;n&#233;e" />
 <p class="caption">Exemple de repr&#233;sentation d'une liste doublement cha&#238;n&#233;e</p>
 </div>
+<p>La structure d'une liste doublement cha&#238;n&#233;e ressemble &#224; cela :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> Noeud Noeud;
+<span class="kw">struct</span> Noeud
+{
+   Noeud *suivant;
+   Noeud *precedent;
+   <span class="dt">int</span> donnee;
+}
+
+<span class="kw">typedef</span> Noeud *Liste;</code></pre></div>
 <h3 id="liste-cha&#238;n&#233;e-circulaire">Liste cha&#238;n&#233;e circulaire</h3>
 <p>La liste cha&#238;n&#233;e circulaire (<em>circular linked list</em>) est une liste cha&#238;n&#233;e ne poss&#233;dant pas de fin. En effet, le pointeur de fin de liste pointe vers le d&#233;but de la liste formant ainsi un cycle.</p>
 <div class="figure">
 <img src="/static/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png" alt="Exemple de repr&#233;sentation d&#39;une liste cha&#238;n&#233;e circulaire" />
 <p class="caption">Exemple de repr&#233;sentation d'une liste cha&#238;n&#233;e circulaire</p>
 </div>
-<p>Lorsque vous utilisez des listes cha&#238;n&#233;es circulaires, il faut faire attention &#224; ne pas tomber dans une boucle infinie lors du parcours de la liste.</p>
 <p>On peut utiliser cette variante de la liste cha&#238;n&#233;e pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jour de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste cha&#238;n&#233;e circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.</p>
 <h3 id="liste-doublement-cha&#238;n&#233;e-circulaire">Liste doublement cha&#238;n&#233;e circulaire</h3>
 <p>Une liste doublement cha&#238;n&#233;e circulaire (<em>doubly circular linked list</em>) est simplement un regroupement des deux derni&#232;res variantes.</p>
@@ -482,10 +463,10 @@ taille :
 <p class="caption">Exemple de repr&#233;sentation d'une liste doublement cha&#238;n&#233;e circulaire</p>
 </div>
 <h3 id="dautres-variantes-plus-complexes">D'autres variantes plus complexes</h3>
-<p>En plus de ces variantes assez &quot;courantes&quot;, on peut retrouver d'autres variantes plus compliqu&#233;es mais utiles dans certains cas pr&#233;cis :</p>
+<p>En plus de ces variantes assez &quot;courantes&quot;, on peut retrouver d'autres variantes plus compliqu&#233;es mais qui peuvent toujours servir :</p>
 <ul>
-<li><strong>Liste &#224; enjambements</strong> (<em>skip list</em>) : ensemble de listes cha&#238;n&#233;es stock&#233;es &quot;parall&#232;lement&quot; et qui permet de sauter des &#233;l&#233;ments en fonction de nos besoins, pratique pour trier et rechercher. (<a href="https://en.wikipedia.org/wiki/Skip_list" class="uri">https://en.wikipedia.org/wiki/Skip_list</a>).</li>
-<li><strong>Cha&#238;nage XOR</strong> (<em>XOR linked list</em>) : permet de diminuer le co&#251;t en m&#233;moire des listes doublement cha&#238;n&#233;es gr&#226;ce &#224; l'op&#233;ration bit &#224; bit XOR (<a href="https://en.wikipedia.org/wiki/XOR_linked_list" class="uri">https://en.wikipedia.org/wiki/XOR_linked_list</a>).</li>
+<li><strong>Liste &#224; enjambements</strong> (<em>skip list</em>) : ensemble de listes cha&#238;n&#233;es stock&#233;es &quot;parall&#232;lement&quot; et qui permet de sauter des &#233;l&#233;ments en fonction de nos besoins, pratique pour trier et rechercher (<a href="https://en.wikipedia.org/wiki/Skip_list" class="uri">https://en.wikipedia.org/wiki/Skip_list</a>).</li>
+<li><strong>Cha&#238;nage XOR</strong> (<em>XOR linked list</em>) : permet de diminuer le co&#251;t en m&#233;moire des listes doublements cha&#238;n&#233;es gr&#226;ce &#224; l'op&#233;ration bit &#224; bit XOR (<a href="https://en.wikipedia.org/wiki/XOR_linked_list" class="uri">https://en.wikipedia.org/wiki/XOR_linked_list</a>).</li>
 <li><strong>Liste cha&#238;n&#233;e d&#233;roul&#233;e</strong> (<em>unrolled linked list</em>) : cette variante stocke plusieurs &#233;l&#233;ments au lieu d'un seul par n&#339;ud, et fait office de compromis entre un tableau et une liste que l'on peut modifier pour qu'elle se rapproche plus de l'un que de l'autre selon les besoins (<a href="https://en.wikipedia.org/wiki/Unrolled_linked_list" class="uri">https://en.wikipedia.org/wiki/Unrolled_linked_list</a>).</li>
 <li><strong>VList</strong> : comme la pr&#233;c&#233;dente c'est un compromis qui stocke des tableaux d'&#233;l&#233;ments plut&#244;t qu'un unique &#233;l&#233;ment dans chaque n&#339;ud, except&#233; que cette fois ci les tableaux sont de tailles variables contrairement &#224; une liste cha&#238;n&#233;e d&#233;roul&#233;e o&#249; les tableaux sont tous de tailles fixes (<a href="https://en.wikipedia.org/wiki/VList" class="uri">https://en.wikipedia.org/wiki/VList</a>).</li>
 </ul>

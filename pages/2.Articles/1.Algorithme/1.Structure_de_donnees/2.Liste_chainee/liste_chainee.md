@@ -3,13 +3,11 @@ Liste chaînée
 algo/structure/
 
 Publié le : 08/06/2014  
-*Modifié le : 01/11/2015*
+*Modifié le : 22/11/2015*
 
 ## Introduction
 
-Imaginons un tableau contenant des milliards d'éléments...
-
-Comment supprimer un élément en plein milieu du tableau ? Pourquoi pas créer un deuxième tableau dans lequel on recopie toutes nos valeurs (sauf celle que l'on veut supprimer) ? Ca marcherait bien, mais cette opération serait longue et coûteuse en mémoire. On peut essayer de décaler le tableau en réécrivant sur la valeur que l'on veut supprimer, grâce à ça on fait des économies de mémoire mais cela prend beaucoup de temps. Et comment ajouter un élément dans notre tableau ? De même, on peut recréer un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel élément. On peut aussi faire des économies de mémoire en décalant les éléments vers la droite pour laisser un espace au milieu afin d'insérer notre nouvel élément. Toujours étant, cette solution prend trop de temps et ceci nous pousse à comprendre que les tableaux ne sont pas adaptés à toutes les situations.
+Imaginons un tableau contenant des milliards d'éléments. Comment supprimer un élément en plein milieu du tableau ? Pourquoi pas créer un deuxième tableau dans lequel on recopie toutes nos valeurs (sauf celle que l'on veut supprimer) ? Cela marcherait bien, mais cette opération serait longue et coûteuse en mémoire. On peut essayer de décaler le tableau en réécrivant sur la valeur que l'on veut supprimer, grâce à ça on fait des économies de mémoire mais cela prend beaucoup de temps. Et comment ajouter un élément dans notre tableau ? De même, on peut recréer un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel élément. On peut aussi faire des économies de mémoire en décalant les éléments vers la droite pour laisser un espace au milieu afin d'insérer notre nouvel élément. Cependant cette solution prend trop de temps et ceci nous pousse à comprendre que les tableaux ne sont pas adaptés à toutes les situations.
 
 Face à ces problèmes de temps, et de mémoire, on a besoin d'une nouvelle structure de données souple, dynamique, et qui nous permet d'insérer et de supprimer des éléments facilement : la liste chaînée.
 
@@ -69,27 +67,18 @@ supprimerTête :
    Supprimer l'élément en tête de liste
 supprimerFin :
    Parcourir la liste jusqu'à l'avant-dernier élément
-   Faire pointer l'élément sur NULL (pour indiquer la fin de la liste)
    Supprimer l'élément suivant
+   Faire pointer l'élément sur NULL (pour indiquer la fin de la liste)
 supprimerElément (index) :
    Parcourir la liste jusqu'à arriver à l'élément situé avant l'index donné
    Faire pointer l'élément actuel sur le pointeur de l'élément à supprimer 
    Supprimer l'élément suivant
-
-afficher :
-   Pour chaque élément de la liste
-      Afficher les données de l'élément actuel
 
 estVide :
    Si le premier élément de la liste est NULL
       Retourner vrai
    Sinon
       Retourner faux
-
-taille :
-   Pour chaque élément de la liste
-      Incrémenter nbElement
-   Retourner nbElement
 ```
 
 ## Complexité
@@ -104,16 +93,14 @@ Soit *N* le nombre d'éléments de la liste chaînée.
 - `supprimerTête` : *O(1)*
 - `supprimerFin` : *O(N)*
 - `supprimerElément` : *O(N)*
-- `afficher` : *O(N)*
 - `estVide` : *O(1)*
-- `taille` : *O(N)*
 
 ## Implémentation
 
 Une implémentation en C des fonctions présentées au-dessus :
 
 [INSERT]
-main.c
+liste_chainee.c
 
 Le code est relativement simple à comprendre et à utiliser, une connaissance des pointeurs est cependant nécessaire.
 
@@ -134,13 +121,25 @@ Cette structure est légèrement plus coûteuse en mémoire et en opération, ma
 
 ![Exemple de représentation d'une liste doublement chaînée](/static/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png)
 
+La structure d'une liste doublement chaînée ressemble à cela :
+
+```c
+typedef struct Noeud Noeud;
+struct Noeud
+{
+   Noeud *suivant;
+   Noeud *precedent;
+   int donnee;
+}
+
+typedef Noeud *Liste;
+```
+
 ### Liste chaînée circulaire
 
 La liste chaînée circulaire (*circular linked list*) est une liste chaînée ne possédant pas de fin. En effet, le pointeur de fin de liste pointe vers le début de la liste formant ainsi un cycle.
  
 ![Exemple de représentation d'une liste chaînée circulaire](/static/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png)
-
-Lorsque vous utilisez des listes chaînées circulaires, il faut faire attention à ne pas tomber dans une boucle infinie lors du parcours de la liste.
 
 On peut utiliser cette variante de la liste chaînée pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jour de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste chaînée circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.
 
@@ -152,10 +151,10 @@ Une liste doublement chaînée circulaire (*doubly circular linked list*) est si
 
 ### D'autres variantes plus complexes
 
-En plus de ces variantes assez "courantes", on peut retrouver d'autres variantes plus compliquées mais utiles dans certains cas précis :
+En plus de ces variantes assez "courantes", on peut retrouver d'autres variantes plus compliquées mais qui peuvent toujours servir :
 
-- **Liste à enjambements** (*skip list*) : ensemble de listes chaînées stockées "parallèlement" et qui permet de sauter des éléments en fonction de nos besoins, pratique pour trier et rechercher. (<https://en.wikipedia.org/wiki/Skip_list>).
-- **Chaînage XOR** (*XOR linked list*) : permet de diminuer le coût en mémoire des listes doublement chaînées grâce à l'opération bit à bit XOR (<https://en.wikipedia.org/wiki/XOR_linked_list>).
+- **Liste à enjambements** (*skip list*) : ensemble de listes chaînées stockées "parallèlement" et qui permet de sauter des éléments en fonction de nos besoins, pratique pour trier et rechercher (<https://en.wikipedia.org/wiki/Skip_list>).
+- **Chaînage XOR** (*XOR linked list*) : permet de diminuer le coût en mémoire des listes doublements chaînées grâce à l'opération bit à bit XOR (<https://en.wikipedia.org/wiki/XOR_linked_list>).
 - **Liste chaînée déroulée** (*unrolled linked list*) : cette variante stocke plusieurs éléments au lieu d'un seul par nœud, et fait office de compromis entre un tableau et une liste que l'on peut modifier pour qu'elle se rapproche plus de l'un que de l'autre selon les besoins (<https://en.wikipedia.org/wiki/Unrolled_linked_list>).
 - **VList** : comme la précédente c'est un compromis qui stocke des tableaux d'éléments plutôt qu'un unique élément dans chaque nœud, excepté que cette fois ci les tableaux sont de tailles variables contrairement à une liste chaînée déroulée où les tableaux sont tous de tailles fixes (<https://en.wikipedia.org/wiki/VList>).
 
