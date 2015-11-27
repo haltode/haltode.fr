@@ -175,7 +175,7 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="tableau-cumulatif">Tableau cumulatif</h1></a>
 <p>Publi&#233; le : 21/11/2015<br />
-<em>Modifi&#233; le : 21/11/2015</em></p>
+<em>Modifi&#233; le : 27/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tableau-cumulatif">Principe du tableau cumulatif</a></li>
@@ -189,21 +189,21 @@ table tr:nth-child(2n) {
 <p>Je vous donne un tableau poss&#233;dant des trilliards d'&#233;l&#233;ments, et je vous pose des milliards de questions de la forme : Quelle est la somme des &#233;l&#233;ments compris entre l'indice <em>i</em> et <em>j</em> du tableau (avec <em>i &lt; j</em>) ? La premi&#232;re id&#233;e d'algorithme na&#239;f que l'on peut avoir, est de parcourir pour chaque question les &#233;l&#233;ments situ&#233;s entre les indices donn&#233;s, et d'augmenter une variable <code>somme</code> au fur et &#224; mesure du parcours.</p>
 <p>Cependant notre solution est bien trop longue pour le cas extr&#234;me donn&#233; en entr&#233;e, &#224; cause des nombreux parcours que l'on r&#233;alise. Il nous faut donc une solution plus efficace, et une structure adapt&#233;e nous permettant de faire moins de parcours inutiles et ainsi raccourcir notre temps d'ex&#233;cution : le tableau cumulatif.</p>
 <h2 id="principe-du-tableau-cumulatif">Principe du tableau cumulatif</h2>
-<p>Dans notre algorithme na&#239;f, on n'utilise lors de nos parcours les informations r&#233;colt&#233;es uniquement pour r&#233;pondre &#224; une seule question parmi des milliards. Ceci nous oblige &#224; repasser sur des parties du tableau d&#233;j&#224; parcourue (voir le tableau en entier), r&#233;sultant en un temps d'ex&#233;cution trop &#233;lev&#233;e.</p>
-<p>L'id&#233;e du tableau cumulatif (<em>summed area table</em> en anglais) est de parcourir une seule fois notre tableau enti&#232;rement, et d'utiliser les donn&#233;es r&#233;colt&#233;es pour pouvoir ensuite r&#233;pondre &#224; n'importe quel type de question &#224; propos de somme d'&#233;l&#233;ments contigus.</p>
+<p>Dans notre algorithme na&#239;f, on n'utilise lors de nos parcours les informations r&#233;colt&#233;es uniquement pour r&#233;pondre &#224; une seule question parmi des milliards. Ceci nous oblige &#224; repasser sur des parties du tableau d&#233;j&#224; parcourue (voir le tableau en entier), r&#233;sultant en un temps d'ex&#233;cution trop &#233;lev&#233;.</p>
+<p>L'id&#233;e du tableau cumulatif (<em>summed area table</em> en anglais) est de parcourir une seule fois notre tableau enti&#232;rement, et d'utiliser les donn&#233;es r&#233;colt&#233;es pour ensuite r&#233;pondre &#224; n'importe quel type de question &#224; propos de somme d'&#233;l&#233;ments contigus.</p>
 <p>On peut tr&#232;s simplement expliquer son principe gr&#226;ce &#224; la g&#233;om&#233;trie et aux intervalles :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/tableau_cumulatif/explication_geo.png" alt="Explication g&#233;om&#233;trique du tableau cumulatif" />
 <p class="caption">Explication g&#233;om&#233;trique du tableau cumulatif</p>
 </div>
 <p>La partie verte dans le premier rectangle repr&#233;sente la question pos&#233;e, et on voit qu'on peut retrouver exactement la m&#234;me partie en utilisant deux sous parties du rectangle commen&#231;ant toutes les deux au m&#234;me endroit. L'avantage de pouvoir d&#233;composer n'importe quelle sous partie du rectangle en deux autres ayant un d&#233;but commun, est qu'on r&#233;duit alors le nombre de possibilit&#233;s de sous parties. En effet, avec un d&#233;but et une fin variable le nombre d'intervalles possibles est d'environ <em>N&#178;</em> (avec <em>N</em> la taille du rectangle), alors qu'avec un d&#233;but d'intervalle fixe et uniquement une fin variable on arrive &#224; <em>N</em> possibilit&#233;s de sous parties.</p>
-<p>Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un d&#233;but fixe et une fin variable afin de pouvoir finalement connaitre rapidement n'importe quelle sous partie de notre tableau d'&#233;l&#233;ments.</p>
+<p>Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un d&#233;but fixe et une fin variable, afin de pouvoir connaitre rapidement n'importe quelle sous partie de notre tableau d'&#233;l&#233;ments.</p>
 <div class="figure">
 <img src="/static/img/algo/structure/tableau_cumulatif/representation_inter.png" alt="Intervalles n&#233;cessaires pour r&#233;pondre &#224; toutes les questions" />
 <p class="caption">Intervalles n&#233;cessaires pour r&#233;pondre &#224; toutes les questions</p>
 </div>
 <h2 id="exemple">Exemple</h2>
-<p>Afin de parfaitement comprendre comment utiliser un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
+<p>Afin de parfaitement comprendre l'utilisation d'un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
 <p><em>1&#232;re &#233;tape</em> : cr&#233;er notre tableau cumulatif</p>
 <p>A partir de la suite de nombres, on va cr&#233;er un tableau cumulatif qui contiendra tous nos intervalles n&#233;cessaires, c'est-&#224;-dire dans la premi&#232;re case l'&#233;l&#233;ment 1, dans la deuxi&#232;me case l'&#233;l&#233;ment 1 + 2, dans la troisi&#232;me case l'&#233;l&#233;ment 1 + 2 + 3, etc.</p>
 <table>
@@ -363,7 +363,7 @@ table tr:nth-child(2n) {
 <img src="/static/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png" alt="Exemple de repr&#233;sentation d&#39;un tableau cumulatif 2D" />
 <p class="caption">Exemple de repr&#233;sentation d'un tableau cumulatif 2D</p>
 </div>
-<p>Le principe est toujours le m&#234;me, mais il faut adapter nos fonctions qui construisent et r&#233;pondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Le dernier sch&#233;ma montre comment r&#233;pondre &#224; une question sur un tableau cumulatif 2D, mais il faut surtout l'initialiser correctement afin de pouvoir l'utiliser :</p>
+<p>Le principe est toujours le m&#234;me, mais il faut adapter nos fonctions qui construisent et r&#233;pondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Ici on remarque bien sur notre image que l'on cherche &#224; retrouver n'importe quelle sous partie du rectangle en ayant un coin fixe (le coin en haut &#224; gauche dans notre cas), pour de nouveau r&#233;duire le nombre de possibilit&#233;s. Ce sch&#233;ma nous montre comment r&#233;pondre &#224; une question sur un tableau cumulatif 2D, mais il faut surtout l'initialiser correctement afin de pouvoir l'utiliser :</p>
 <div class="figure">
 <img src="/static/img/algo/structure/tableau_cumulatif/init_tableau2D.png" alt="Initialisation du tableau cumulatif 2D" />
 <p class="caption">Initialisation du tableau cumulatif 2D</p>
@@ -456,11 +456,11 @@ table tr:nth-child(2n) {
 5 19 32 50
 12 28 44 65
 18 35 55 83</code></pre>
-<p>Le code suit exactement les deux sch&#233;mas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexit&#233; en temps cette fois est en <em>O(N&#178;)</em> pour l'initialisation et <em>O(M)</em> pour la r&#233;ponse, contre une complexit&#233; pour la r&#233;ponse de <em>O(N&#178; </em> M)* pour l'algorithme na&#239;f.</p>
+<p>Le code suit exactement les deux sch&#233;mas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexit&#233; en temps cette fois est en <em>O(N&#178;)</em> pour l'initialisation et <em>O(M)</em> pour la r&#233;ponse, contre une complexit&#233; pour la r&#233;ponse de <em>O(N&#178; * M)</em> pour l'algorithme na&#239;f.</p>
 <h3 id="tableau-cumulatif-&#224;-n-dimensions">Tableau cumulatif &#224; N dimensions ?</h3>
-<p>Nous avons vu qu'il &#233;tait possible de cr&#233;er un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur <em>N</em> dimensions ? Techniquement, cela est possible, mais la repr&#233;sentation de <em>N</em> dimensions risque d'&#234;tre tr&#232;s complexe et il sera alors difficile de visualiser le comportement (initialisation et acc&#232;s pour r&#233;pondre aux questions) de notre tableau cumulatif. De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-del&#224; de 3 dimensions, vu que nous ne percevons pas la 4&#232;me.</p>
+<p>Nous avons vu qu'il &#233;tait possible de cr&#233;er un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur <em>N</em> dimensions ? Techniquement, cela est possible, mais la repr&#233;sentation de <em>N</em> dimensions risque d'&#234;tre tr&#232;s complexe et il sera alors difficile de visualiser le comportement de notre tableau cumulatif (initialisation et acc&#232;s pour r&#233;pondre aux questions). De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-del&#224; de 3 dimensions, vu que nous ne percevons pas la 4&#232;me.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tableau cumulatif est donc une structure de donn&#233;es permettant de conna&#238;tre la somme d'&#233;l&#233;ments contigus rapidement, mais ce dernier ne se limite pas &#224; la somme on peut aussi l'utiliser pour la soustraction, la multiplication et la division, et on peut recr&#233;er cette structure en deux (voir <em>N</em>) dimensions.</p>
+<p>Le tableau cumulatif est donc une structure de donn&#233;es permettant de conna&#238;tre la somme d'&#233;l&#233;ments contigus rapidement, mais ce dernier ne se limite pas &#224; la somme on peut aussi l'utiliser pour d'autres op&#233;rations comme la soustraction, la multiplication et la division, et on peut recr&#233;er cette structure en deux (voir m&#234;me <em>N</em>) dimensions.</p>
  
       <!-- ------------ -->
 

@@ -3,7 +3,7 @@ Tableau cumulatif
 algo/structure
 
 Publié le : 21/11/2015  
-*Modifié le : 21/11/2015*
+*Modifié le : 27/11/2015*
 
 ## Introduction
 
@@ -13,9 +13,9 @@ Cependant notre solution est bien trop longue pour le cas extrême donné en ent
 
 ## Principe du tableau cumulatif
 
-Dans notre algorithme naïf, on n'utilise lors de nos parcours les informations récoltées uniquement pour répondre à une seule question parmi des milliards. Ceci nous oblige à repasser sur des parties du tableau déjà parcourue (voir le tableau en entier), résultant en un temps d'exécution trop élevée.
+Dans notre algorithme naïf, on n'utilise lors de nos parcours les informations récoltées uniquement pour répondre à une seule question parmi des milliards. Ceci nous oblige à repasser sur des parties du tableau déjà parcourue (voir le tableau en entier), résultant en un temps d'exécution trop élevé.
 
-L'idée du tableau cumulatif (*summed area table* en anglais) est de parcourir une seule fois notre tableau entièrement, et d'utiliser les données récoltées pour pouvoir ensuite répondre à n'importe quel type de question à propos de somme d'éléments contigus.
+L'idée du tableau cumulatif (*summed area table* en anglais) est de parcourir une seule fois notre tableau entièrement, et d'utiliser les données récoltées pour ensuite répondre à n'importe quel type de question à propos de somme d'éléments contigus.
 
 On peut très simplement expliquer son principe grâce à la géométrie et aux intervalles :
 
@@ -23,13 +23,13 @@ On peut très simplement expliquer son principe grâce à la géométrie et aux 
 
 La partie verte dans le premier rectangle représente la question posée, et on voit qu'on peut retrouver exactement la même partie en utilisant deux sous parties du rectangle commençant toutes les deux au même endroit. L'avantage de pouvoir décomposer n'importe quelle sous partie du rectangle en deux autres ayant un début commun, est qu'on réduit alors le nombre de possibilités de sous parties. En effet, avec un début et une fin variable le nombre d'intervalles possibles est d'environ *N²* (avec *N* la taille du rectangle), alors qu'avec un début d'intervalle fixe et uniquement une fin variable on arrive à *N* possibilités de sous parties.
 
-Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un début fixe et une fin variable afin de pouvoir finalement connaitre rapidement n'importe quelle sous partie de notre tableau d'éléments.
+Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un début fixe et une fin variable, afin de pouvoir connaitre rapidement n'importe quelle sous partie de notre tableau d'éléments.
 
 ![Intervalles nécessaires pour répondre à toutes les questions](/static/img/algo/structure/tableau_cumulatif/representation_inter.png)
 
 ## Exemple
 
-Afin de parfaitement comprendre comment utiliser un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.
+Afin de parfaitement comprendre l'utilisation d'un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.
 
 *1ère étape* : créer notre tableau cumulatif
 
@@ -108,7 +108,7 @@ Le tableau cumulatif ne se limite pas à une seule dimension, on peut l'utiliser
 
 ![Exemple de représentation d'un tableau cumulatif 2D](/static/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png)
 
-Le principe est toujours le même, mais il faut adapter nos fonctions qui construisent et répondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Le dernier schéma montre comment répondre à une question sur un tableau cumulatif 2D, mais il faut surtout l'initialiser correctement afin de pouvoir l'utiliser :
+Le principe est toujours le même, mais il faut adapter nos fonctions qui construisent et répondent aux questions, pour qu'elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Ici on remarque bien sur notre image que l'on cherche à retrouver n'importe quelle sous partie du rectangle en ayant un coin fixe (le coin en haut à gauche dans notre cas), pour de nouveau réduire le nombre de possibilités. Ce schéma nous montre comment répondre à une question sur un tableau cumulatif 2D, mais il faut surtout l'initialiser correctement afin de pouvoir l'utiliser :
 
 ![Initialisation du tableau cumulatif 2D](/static/img/algo/structure/tableau_cumulatif/init_tableau2D.png)
 
@@ -141,13 +141,13 @@ Le tableau cumulatif 2D ressemble à cela pour l'entrée :
 18 35 55 83
 ```
 
-Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en *O(N²)* pour l'initialisation et *O(M)* pour la réponse, contre une complexité pour la réponse de *O(N² * M)* pour l'algorithme naïf.
+Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en *O(N²)* pour l'initialisation et *O(M)* pour la réponse, contre une complexité pour la réponse de *O(N² \* M)* pour l'algorithme naïf.
 
 
 ### Tableau cumulatif à N dimensions ?
 
-Nous avons vu qu'il était possible de créer un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur *N* dimensions ? Techniquement, cela est possible, mais la représentation de *N* dimensions risque d'être très complexe et il sera alors difficile de visualiser le comportement (initialisation et accès pour répondre aux questions) de notre tableau cumulatif. De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-delà de 3 dimensions, vu que nous ne percevons pas la 4ème.
+Nous avons vu qu'il était possible de créer un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur *N* dimensions ? Techniquement, cela est possible, mais la représentation de *N* dimensions risque d'être très complexe et il sera alors difficile de visualiser le comportement de notre tableau cumulatif (initialisation et accès pour répondre aux questions). De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-delà de 3 dimensions, vu que nous ne percevons pas la 4ème.
 
 ## Conclusion
 
-Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (voir *N*) dimensions.
+Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour d'autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (voir même *N*) dimensions.
