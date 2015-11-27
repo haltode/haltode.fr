@@ -20,7 +20,7 @@ find pages -iname "*.md" -type f -exec sh -c \
 
    while grep -q "\[INSERT\]" copy.md; do
 		line_number=`grep -n -m 1 "\[INSERT\]" copy.md | cut -d: -f 1` &&
-		((line_number++)) &&
+		line_number=$((line_number + 1)) &&
 
 		filename=`sed "$line_number q;d" copy.md` &&
 		extension="${filename##*.}" &&
@@ -28,12 +28,12 @@ find pages -iname "*.md" -type f -exec sh -c \
       lenght=`cat $(dirname ${0})/$filename | wc -l` &&
       if [ $lenght -gt 20 ]; then
          sed -i "$line_number s/.*/\\\`\\\`\\\`\n<\/div>/" copy.md &&
-         ((line_number--)) &&
+         line_number=$((line_number - 1)) &&
          sed -i "$line_number s/.*/<a href=\"javascript:toggle_visibility('\''$filename'\'');\">$filename<\/a><div id=\"$filename\" style=\"display: none;\">\n\\\`\\\`\\\`$extension/" copy.md &&
-         ((line_number++))
+         line_number=$((line_number + 1))
       else
          sed -i "$line_number s/.*/\\\`\\\`\\\`/" copy.md &&
-         ((line_number--)) &&
+         line_number=$((line_number - 1)) &&
          sed -i "$line_number s/.*/\\\`\\\`\\\`$extension/" copy.md
       fi
 
