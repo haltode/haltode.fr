@@ -2,7 +2,7 @@ TPE
 ===
 
 Publié le :  
-*Modifié le : 22/11/2015*
+*Modifié le : 27/11/2015*
 
 ## Introduction
 
@@ -26,9 +26,21 @@ Toutes ces différences entre de si grandes puissances n'ont fait que créer des
 
 ### Les projets
 
-De nombreuses courses dans différents domaines (militaire, spatiale, développement de nouvelles technologies, etc.) sont lancées entre les deux superpuissances et des centaines de projets secrets sont alors commencés et même si beaucoup n'ont jamais vu le jour, ils ont permis d'améliorer les techniques actuelles.
+De nombreuses courses dans différents domaines (militaire, spatial, informatique, etc.) sont lancées entre les deux superpuissances et des centaines de projets secrets sont alors financés et même si beaucoup n'ont jamais vu le jour, ils ont permis d'améliorer les techniques actuelles. L'un des objectifs principal de cette guerre est la surveillance, en effet la collecte de données est essentielle et permet de connaitre et d'anticiper les actions de l'adversaire. Les espions sont des atouts redoutables, mais les deux pays commencent à comprendre que les capacités humaines sont limitées et se tournent vers les nouvelles technologies qui ont prouvées leur efficacité redoutable lors de la Seconde Guerre mondiale avec l'incroyable invention d'[Alan Turing](https://fr.wikipedia.org/wiki/Alan_Turing#Cryptanalyse_d.27Enigma) qui a permis de sauver des millions de vie et de raccourcir la guerre d'environ deux ans.
 
-[Projet West Ford]
+[TODO : intro projets]
+
+#### Projet Echelon
+
+Dans les années 60, le projet Echelon est officieusement créé suite à l'accord en 1943 lors de la Seconde Guerre mondiale entre les Etats-Unis et le Royaume-Uni afin de se partager les données collectées par les services de renseignement des deux pays. L'objectif du projet est de surveiller entièrement le bloc soviétique et ses alliés grâce à un réseau important de satellites et de centres de traitement automatisés.Pour cela, le réseau intercepte toutes les communications passant par des satellites commerciaux afin de collecter les appels téléphoniques, les mails, et les fax qui seront ensuite traitées dans des centres à l'aide d'ordinateurs.
+
+[TODO : explication physique]
+
+Aujourd'hui, le projet de renseignement s'est développé mondialement, et de nombreux pays ont rejoins le programme. C'est le plus grand et le plus puissant réseau de renseignement à ce jour, avec un budget de plusieurs dizaines de milliards de dollars par an rien que pour les Etats-Unis. [TODO : travailler ouverture]
+
+#### Projet Jennifer
+#### Projet Ivy-Bells
+#### Projet West-Ford
 
 ## Transition ?
 
@@ -37,8 +49,13 @@ De nombreuses courses dans différents domaines (militaire, spatiale, développe
 Une fois la tension redescendue et la 3ème Guerre mondiale évitée, les pays diminuent la surveillance internationale, afin d'éviter de nouveaux conflits, et se concentrent sur leur propre population en particulier afin de tester de nouvelles méthodes de surveillance. [TODO : NSA]
 
 [TODO : depuis la 3ème révolution industrielle ...]
+
 Au milieu du XXe siècle, on assiste à une réelle révolution industrielle donnant jour aux prémisses de l'informatique moderne.
 
 Avec l'explosion d'Internet, les services secrets s'intéressent aux nouveaux moyens de communication, et la surveillance de masse prend un tout autre sens.
 
 ## Conclusion
+
+### Source
+
+
