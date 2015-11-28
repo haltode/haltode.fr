@@ -3,13 +3,13 @@ Pile
 algo/structure
 
 Publié le : 08/06/2014  
-*Modifié le : 22/11/2015*
+*Modifié le : 28/11/2015*
 
 ## Introduction
 
 Prenons l'exemple d'une fonction dans un programme. Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?
 
-Toutes ces questions nous amène à penser qu'il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d'imbrication : la pile.
+Toutes ces questions nous amènent à penser qu'il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d'imbrication : la pile.
 
 ## Principe de la pile
 
@@ -113,7 +113,7 @@ Le code est simple et ne nécessite pas d’explication, si besoin je vous invit
 [INSERT]
 pile_tableau.c
 
-Cette implémentation est simple à comprendre et à utiliser.
+Cette implémentation est facile à comprendre et à utiliser.
 
 ### STL
 
@@ -125,5 +125,5 @@ La pile est donc une structure de données facile à implémenter et peut être 
 
 - Dans un éditeur : quand vous écrivez votre prochain article sur votre éditeur préféré, et que vous ne cessez de faire des ctrl-z et ctrl-y pour revenir en arrière/avant, et bien vous utilisez une pile. Chaque opération va être empilée pour garder l'ordre dans lequel vous les avez réalisées, et vous pouvez ainsi facilement parcourir la pile des opérations pour vous retrouver à tel moment précis de votre édition.
 - Lors d'un appel de fonction : à chaque fois que vous appelez une fonction dans votre programme, la pile d'exécution (ou [pile d'appel](https://en.wikipedia.org/wiki/Call_stack)) empile les informations à propos de l'endroit où vous réalisez l'appel pour se souvenir où revenir à la fin de la fonction appelée.
-- Pour évaluer des expressions : dans certains cas, une pile peut être utilisée pour évaluer des expressions (mathématiques ou syntaxiques). Par exemple, si vous devez évaluer une expression en notation polonaise inverse ([NPI](https://en.wikipedia.org/wiki/Reverse_Polish_notation)), une pile est indispensable pour calculer l'expression au fur et à mesure des opérations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un opérateur vous dépilez les deux derniers éléments et vous empilez le résultat).
+- Pour évaluer des expressions : dans certains cas, une pile peut être utilisée pour évaluer des expressions (mathématiques ou syntaxiques). Par exemple, si vous devez évaluer une expression en notation polonaise inverse ([NPI](https://en.wikipedia.org/wiki/Reverse_Polish_notation)), une pile est indispensable pour calculer l'expression au fur et à mesure des opérations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un opérateur vous dépilez les deux derniers éléments, et vous empilez le résultat).
 - Dans une machine virtuelle : plusieurs [machines virtuelles](https://en.wikipedia.org/wiki/Virtual_machine) sont implémentées sur le principe d'une pile, par exemple celle de Java. Si vous voulez en savoir plus à ce sujet, cet article explique très bien le principe de machine virtuelle et les différentes implémentations possibles : <https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/>
