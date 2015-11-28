@@ -175,7 +175,7 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h1></a>
 <p>Publi&#233; le : 08/06/2014<br />
-<em>Modifi&#233; le : 27/11/2015</em></p>
+<em>Modifi&#233; le : 28/11/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</a></li>
@@ -222,10 +222,7 @@ table tr:nth-child(2n) {
 <h2 id="quelques-fonctions-pour-manipuler-les-listes-cha&#238;n&#233;es">Quelques fonctions pour manipuler les listes cha&#238;n&#233;es</h2>
 <p>Pour manipuler correctement les listes cha&#238;n&#233;es, il faut conna&#238;tre quelques fonctions basiques pour ajouter un &#233;l&#233;ment, le supprimer, rechercher un &#233;l&#233;ment pr&#233;cis dans la liste, etc.</p>
 <pre class="nohighlight"><code>cr&#233;erListe :
-   Cr&#233;er un premier &#233;l&#233;ment
-   Initialiser les donn&#233;es de l&#39;&#233;l&#233;ment
-   Le faire pointer sur NULL (pour indiquer la fin de la liste)
-   Retourner la liste
+   Initialiser la liste &#224; NULL
 supprimerListe :
    Pour chaque &#233;l&#233;ment de la liste
       Supprimer l&#39;&#233;l&#233;ment actuel
@@ -449,6 +446,7 @@ estVide :
 }
 
 <span class="kw">typedef</span> Noeud *Liste;</code></pre></div>
+<p>La liste doublement cha&#238;n&#233;e est notamment la base de la <a href="/algo/structure/file.html">file</a> et permet une impl&#233;mentation efficace de cette structure.</p>
 <h3 id="liste-cha&#238;n&#233;e-circulaire">Liste cha&#238;n&#233;e circulaire</h3>
 <p>La liste cha&#238;n&#233;e circulaire (<em>circular linked list</em>) est une liste cha&#238;n&#233;e ne poss&#233;dant pas de fin. En effet, le pointeur de fin de liste pointe vers le d&#233;but de la liste formant ainsi un cycle.</p>
 <div class="figure">

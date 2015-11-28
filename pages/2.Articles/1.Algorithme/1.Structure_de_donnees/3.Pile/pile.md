@@ -43,10 +43,7 @@ Comme pour une liste chaînée, il existe différentes fonctions de bases permet
 
 ```nohighlight
 créerPile :
-   Créer un premier élément
-   Initialiser les données de l'élément
-   Le faire pointer sur NULL (pour indiquer la fin de la pile)
-   Retourner la pile
+   Initialiser la pile à NULL
 supprimerPile :
    Pour chaque élément de la pile
       Supprimer l'élément actuel

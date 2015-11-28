@@ -3,7 +3,7 @@ Liste chaînée
 algo/structure/
 
 Publié le : 08/06/2014  
-*Modifié le : 27/11/2015*
+*Modifié le : 28/11/2015*
 
 ## Introduction
 
@@ -44,10 +44,7 @@ Pour manipuler correctement les listes chaînées, il faut connaître quelques f
 
 ```nohighlight
 créerListe :
-   Créer un premier élément
-   Initialiser les données de l'élément
-   Le faire pointer sur NULL (pour indiquer la fin de la liste)
-   Retourner la liste
+   Initialiser la liste à NULL
 supprimerListe :
    Pour chaque élément de la liste
       Supprimer l'élément actuel
@@ -134,6 +131,8 @@ struct Noeud
 
 typedef Noeud *Liste;
 ```
+
+La liste doublement chaînée est notamment la base de la [file](/algo/structure/file.html) et permet une implémentation efficace de cette structure.
 
 ### Liste chaînée circulaire
 
