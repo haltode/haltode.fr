@@ -3,11 +3,11 @@ File
 algo/structure/
 
 Publié le : 08/06/2014  
-*Modifié le : 03/11/2015*
+*Modifié le : 28/11/2015*
 
 ## Introduction
 
-Comment un centre d'appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si un autre appelle ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d'attente, et cette structure s'appelle justement : la file.
+Comment un centre d'appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si d'autres appellent à leur tour ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d'attente, et cette structure s'appelle justement : la file.
 
 ## Principe de la file
 
@@ -30,7 +30,7 @@ L’action d’enlever un élément de la file est appelée : **défiler** (ou *
 
 Comme la fin de la file est située "à gauche", notre premier élément pointera vers `NULL` pour indiquer le début de la file (et non la fin comme pour une [liste chaînée](/algo/structure/liste_chainee.html), ou une [pile](/algo/structure/pile.html)).
 
-Cette fois ci, j'implémenterai la file uniquement avec une liste chaînée car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise beaucoup d'opérations inutiles).
+Pour représenter une file, on peut utiliser une [liste chaînée](/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d'opérations que nécessaires). Cependant, on peut encore améliorer l'implémentation de notre file, en utilisant une [liste doublement chaînée](/algo/structure/liste_chainee.html#liste-doublement-chaînée). En effet, si l'on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu'avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.
 
 ## Quelques fonctions pour manipuler une file
 
@@ -38,36 +38,27 @@ Des fonctions de base sont nécessaires afin de bien manipuler une file.
 
 ```nohighlight
 créerFile :
-   Créer un premier élément
-   Initialiser les données de l'élément
-   Le faire pointer sur NULL (pour indiquer la fin de la file)
-   Retourner la file
+   Initialiser les pointeurs de début et de fin à NULL
 supprimerFile :
    Pour chaque élément de la file
       Supprimer l'élément actuel
 
 enfiler (élément) :
-   Faire pointer le nouvel élément vers la fin de la file
+   Faire pointer l'élément suivant du nouvel élément vers la fin
+   Faire pointer l'élément précédent du nouvel élément vers NULL
+   Mettre à jour le pointeur de fin
 défiler :
    Sauvegarder les données de l'élément en début de file
-   Supprimer cet élément 
-   Faire pointer le nouveau premier élément vers NULL
+   Supprimer cet élément
+   Faire pointer l'élément suivant du nouveau premier élément vers NULL 
+   Mettre à jour le pointeur de début
    Retourner les données sauvegardées
 
-afficher :
-   Pour chaque élément de la file
-      Afficher les données de l'élément actuel
-
 estVide :
-   Si le premier élément de la file est NULL
+   Si les deux pointeurs de début et de fin pointent vers NULL
       Retourner vrai
    Sinon
       Retourner faux
-
-taille :
-   Pour chaque élément de la file
-      Incrémenter nbElement
-   Retourner nbElement
 ```
 
 ## Complexité
@@ -78,19 +69,14 @@ Soit *N* le nombre d'éléments de la file.
 - `supprimerFile` : *O(N)*
 - `enfiler` : *O(1)*
 - `défiler` : *O(1)*
-- `afficher` : *O(N)*
 - `estVide` : *O(1)*
-- `taille` : *O(N)*
 
 ## Implémentation
 
-Afin d'avoir une complexité en *O(1)* pour l'insertion et la suppression d'un élément, notre file nécessitera deux pointeurs pour y accéder, l'un pointant vers le début de la file (pour défiler) et l'autre pointant vers la fin (pour enfiler).
-
 Le lien vers une implémentation en C d’une file :
 
-main.c : 
-
-*Il est tout à fait possible d'utiliser une [liste doublement chaînée](/algo/structure/liste_chainee.html#liste-doublement-chaînée) pour implémenter une file car cette dernière aura naturellement une complexité d'insertion et de suppression en temps constant.*
+[INSERT]
+file.c
 
 ### STL
 
@@ -102,7 +88,7 @@ Une file à priorité (*priority queue* en anglais), est sans doute la variante 
 
 On implémente une file à priorité grâce à un [tas](/algo/structure/arbre/tas.html) (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <http://www.cplusplus.com/reference/queue/priority_queue/>.
 
-Notez qu'il ne faut pas confondre file à priorité et tas. En effet, même s'il semble exactement pareil en pratique, en théorie une file à priorité est un type de donnée **abstrait** alors que le tas est une structure de données **réelle**.
+Notez qu'il ne faut pas confondre file à priorité et tas. En effet, même si les deux notions semblent exactement pareil en pratique, en théorie une file à priorité est un type de donnée **abstrait**, alors que le tas est une structure de données **réelle** et **concrète**.
 
 ## Conclusion
 
