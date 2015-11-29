@@ -2,7 +2,7 @@ TPE
 ===
 
 Publié le :  
-*Modifié le : 27/11/2015*
+*Modifié le : 29/11/2015*
 
 ## Introduction
 
@@ -24,6 +24,8 @@ La Seconde Guerre mondiale épuise les pays de l'Europe, et les Etats-Unis et l'
 
 Toutes ces différences entre de si grandes puissances n'ont fait que créer des conflits, et avec la dissolution de la Grande alliance, la Guerre froide été déclarée entre les deux camps.
 
+!["De Stettin dans la Baltique jusqu'à Trieste dans l'Adriatique, un rideau de fer est descendu à travers le continent." - Wiston Churchill](/static/img/tpe/wiston_churchill.jpg)
+
 ### Les projets
 
 De nombreuses courses dans différents domaines (militaire, spatial, informatique, etc.) sont lancées entre les deux superpuissances et des centaines de projets secrets sont alors financés et même si beaucoup n'ont jamais vu le jour, ils ont permis d'améliorer les techniques actuelles. L'un des objectifs principal de cette guerre est la surveillance, en effet la collecte de données est essentielle et permet de connaitre et d'anticiper les actions de l'adversaire. Les espions sont des atouts redoutables, mais les deux pays commencent à comprendre que les capacités humaines sont limitées et se tournent vers les nouvelles technologies qui ont prouvées leur efficacité redoutable lors de la Seconde Guerre mondiale avec l'incroyable invention d'[Alan Turing](https://fr.wikipedia.org/wiki/Alan_Turing#Cryptanalyse_d.27Enigma) qui a permis de sauver des millions de vie et de raccourcir la guerre d'environ deux ans.
@@ -34,7 +36,36 @@ De nombreuses courses dans différents domaines (militaire, spatial, informatiqu
 
 Dans les années 60, le projet Echelon est officieusement créé suite à l'accord en 1943 lors de la Seconde Guerre mondiale entre les Etats-Unis et le Royaume-Uni afin de se partager les données collectées par les services de renseignement des deux pays. L'objectif du projet est de surveiller entièrement le bloc soviétique et ses alliés grâce à un réseau important de satellites et de centres de traitement automatisés.Pour cela, le réseau intercepte toutes les communications passant par des satellites commerciaux afin de collecter les appels téléphoniques, les mails, et les fax qui seront ensuite traitées dans des centres à l'aide d'ordinateurs.
 
-[TODO : explication physique]
+Les signaux interceptés par l'ensemble du projet peuvent être répartis en deux principales catégories :
+
+- Les ondes radios : c'est ce qui est le plus utilisé à l'époque pour établir des communications militaires ou diplomatiques.
+- Les émissions électromagnétiques : un appareil électronique (par exemple un radar) émet des données permettant d'en déduire sa localisation, sa portée, sa longueur d'onde etc.
+
+Les ondes radio à haute fréquence ont l'avantage de se refléter sur le sol et sur l'ionosphère, ce qui permet de propager l'onde jusqu'à de très longues distances grâce à ces multiples réflexions. La réception est alors facilité, mais l'interception aussi à cause de la large surface possible où l'onde arrivera.
+
+![Propagation d'onde radio à haute fréquence sur la Terre](/static/img/tpe/onde_haute_frequence.jpg)
+
+Une simple surface calme en termes d'ondes radios au alentour suffit pour intercepter des messages à haute fréquence. L'antenne la plus connue est l'AN/FLR-9, elle mesure plus de 400m de diamètre et est composée de trois couches servant à intercepter les ondes à hautes fréquences qui se reflétaient dessus. Cette antenne pouvait intercepter des communications dans n'importe quelles directions à plus de 7000km autour.
+
+![Exemple d'antenne AN/FLR-9](/static/img/tpe/zone_interception_onde_radio.jpg)
+
+Son fonctionnement se base sur trois éléments principaux :
+
+- Des antennes larges permettant de capter des ondes dans un plus grand champs de fréquence (comparé aux antennes classiques très efficace sur certaines fréquences précises).
+- Des écrans réfléchissantes afin d'intensifier l'onde pour mieux l'analyser ensuite et pouvoir plus facilement reconnaître des motifs dedans.
+- Des écrans artificiels au sol afin de stabiliser le sol et permettre une homogénéité des analyses de l'antenne (sans que le sol naturel interfère dans les résultats).
+
+![Les différents éléments de l'antenne AN/FLR-9](/static/img/tpe/antenne_fonctionnement.jpg)
+
+[TODO : analyse des données récoltées + bouger les fréquences pour raccourcir le paragraphe]
+
+Chacune des trois couches va intercepter des ondes radios entre des fréquences spécifiques :
+
+- Couche A : 2 à 6 MHz
+- Couche B : 6 à 18 MHz
+- Couche C : 18 à 30 MHz
+
+[TODO : onde haute fréquence, onde radio courte, cable sous marin, communication satellite]
 
 Aujourd'hui, le projet de renseignement s'est développé mondialement, et de nombreux pays ont rejoins le programme. C'est le plus grand et le plus puissant réseau de renseignement à ce jour, avec un budget de plusieurs dizaines de milliards de dollars par an rien que pour les Etats-Unis. [TODO : travailler ouverture]
 
@@ -54,8 +85,21 @@ Au milieu du XXe siècle, on assiste à une réelle révolution industrielle don
 
 Avec l'explosion d'Internet, les services secrets s'intéressent aux nouveaux moyens de communication, et la surveillance de masse prend un tout autre sens.
 
+[TODO : prism]
+
 ## Conclusion
 
 ### Source
 
+[TODO : organiser source]
 
+- <www.premium-rx.org/ref/wullenweber.pdf>
+- <https://fr.wikipedia.org/wiki/Onde_radio>
+- <https://fas.org/irp/program/collect/an-flr-9.htm>
+- <https://en.wikipedia.org/wiki/AN/FLR-9>
+- <http://fas.org/irp/eprint/ic2000/ic2000.htm>
+- <https://fr.wikipedia.org/wiki/Haute_fr%C3%A9quence>
+- <http://www.monde-diplomatique.fr/mav/46/RIVIERE/1908>
+- <https://en.wikipedia.org/wiki/ECHELON>
+- <http://www.herodote.net/5_mars_1946-evenement-19460305.php>
+- <https://en.wikipedia.org/wiki/Signals_intelligence>
