@@ -13,11 +13,11 @@ Mais je vais vous présenter une structure de données plus large que l'arbre g�
 
 ## Principe d'un arbre
 
-Un arbre (*tree* en anglais) est une structure de données permettant de représenter une hiérarchie. Chaque élément d'un arbre est appelé un *nœud*, et ils peuvent être reliés par des *arêtes* à plusieurs nœuds enfants qu'on appelle *fils* (le nœud parent est appelé *père*, et le premier nœud de l'arbre est la *racine*, c'est le seul élément ne possédant pas de père). Si le nœud ne possède aucun fils, on parle alors de *feuille*.
+Un arbre (*tree* en anglais) est une structure de données permettant de représenter une hiérarchie. Chaque élément d'un arbre est appelé un **nœud**, et ils peuvent être reliés par des **arêtes** à plusieurs nœuds enfants qu'on appelle **fils** (le nœud parent est appelé **père**, et le premier nœud de l'arbre est la **racine**, c'est le seul élément ne possédant pas de père). Si le nœud ne possède aucun fils, on parle alors de **feuille**.
 
 ![Exemple d'arbre](/static/img/algo/structure/arbre/exemple_arbre.png)
 
-La *profondeur* d'un nœud est le nombre de nœuds le séparant de la racine, et la *hauteur* d'un arbre est simplement la profondeur maximale de ses nœuds.
+La **profondeur** d'un nœud est le nombre de nœuds le séparant de la racine, et la **hauteur** d'un arbre est simplement la profondeur maximale de ses nœuds.
 
 Finalement, un arbre peut être vu comme un [graphe](/algo/structure/graphe.html) particulier (c'est-à-dire orienté, acyclique et avec comme contrainte que chaque nœud ne possède pas plus d'un père).
 
@@ -27,7 +27,7 @@ Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'implé
 
 ## Parcourir un arbre
 
-De même, parcourir un arbre revient à parcourir un graphe, on peut donc utiliser les deux algorithmes de parcours :
+De même, parcourir un arbre revient à parcourir un graphe, on peut donc utiliser les deux algorithmes de parcours de graphe :
 
 - [Parcours en profondeur]() : DFS (*Depth First Search*)
 - [Parcours en largeur]() : BFS (*Breadth First Search*)

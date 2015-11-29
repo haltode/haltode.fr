@@ -15,6 +15,11 @@
 
 - Lien dfs, bfs
 
+### Graphe
+
+- Lien dfs, bfs
+- Lien opérations utiles ? (faire un article regroupant le reste ?)
+
 ## Tri
 ### Tri rapide
 
