@@ -55,7 +55,7 @@ Son fonctionnement se base sur trois éléments principaux :
 - Des écrans réfléchissantes afin d'intensifier l'onde pour mieux l'analyser ensuite et pouvoir plus facilement reconnaître des motifs dedans.
 - Des écrans artificiels au sol afin de stabiliser le sol et permettre une homogénéité des analyses de l'antenne (sans que le sol naturel interfère dans les résultats).
 
-![Les différents éléments de l'antenne AN/FLR-9](/static/img/tpe/antenne_fonctionnement.jpg)
+![Les différents éléments de l'antenne AN/FLR-9](/static/img/tpe/antenne_fonctionnement.png)
 
 [TODO : analyse des données récoltées + bouger les fréquences pour raccourcir le paragraphe]
 
