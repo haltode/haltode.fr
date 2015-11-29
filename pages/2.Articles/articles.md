@@ -12,7 +12,7 @@ La liste des articles publiés :
          - [Liste chaînée](/algo/structure/liste_chainee.html)
          - [Pile](/algo/structure/pile.html)
          - [File](/algo/structure/file.html)
-         - [Arbre](/algo/structure/arbre.html) - [Arbre binaire](/algo/structure/arbre/arbre_binaire.html) / [Tas](/algo/structure/arbre/tas.html) / [Arbre de recherche](/algo/structure/arbre/arbre_recherche.html)
+         - [Arbre](/algo/structure/arbre.html) - [Arbre binaire](/algo/structure/arbre/arbre_binaire.html) / [Tas](/algo/structure/arbre/tas.html) / [Arbre de recherche](/algo/structure/arbre/arbre_recherche.html) / [Trie](/algo/structure/arbre/trie.html)
          - [Graphe](/algo/structure/graphe.html) - [Parcours](/algo/structure/graphe/parcours.html) / [Plus court chemin](/algo/structure/graphe/plus_court_chemin.html)
          - [Table de hachage ](/algo/structure/table_hachage.html)
 

@@ -14,8 +14,6 @@
 ### Arbre
 
 - Lien dfs, bfs
-- Arbre de recherche : +trie
-- Lien algo dijkstra
 
 ## Tri
 ### Tri rapide
