@@ -3,50 +3,71 @@ Parcours d'un graphe
 algo/structure/graphe/
 
 Publié le :  
-*Modifié le : 17/11/2015*
+*Modifié le : 01/12/2015*
 
 ## Introduction
 
-Vous vous trouvez dans un labyrinthe contenant des milliards de chemins différents, de plusieurs millions de km chacun, et vous cherchez la sortie. Vous essayez dans un premier temps de sortir en essayant des chemins au hasard, mais vous abandonnez rapidement en vous rendant compte de la taille du labyrinthe. Vous avez donc besoin d'une solution qui marche à tous les coups, et deux solutions s'offrent alors à vous :
-
-- Instinctivement, on peut essayer chaque possibilité de chemin jusqu'à trouver la sortie, ça marche même si c'est lent mais de toute façon nous n'avons aucune information sur le labyrinthe ou sur sa sortie, donc n'importe quelle possibilité pourrait être la bonne.
-- On peut aussi tenter de parcourir petit à petit chaque possibilité de chemin, au lieu de faire une possibilité d'un coup, on essaie au fur et à mesure, en commençant par une "case" de profondeur dans chaque chemin, puis deux, puis trois, etc. jusqu'à arriver à notre sortie.
-
-Dans les deux cas, on pourrait très bien parcourir toutes les possibilités et trouver la sortie comme étant la dernière. On se rend compte alors qu'il n'y a pas de solution dite *optimale* à ce problème si l'on ne connait rien sur notre labyrinthe. Les deux solutions ont alors leurs avantages et leurs inconvénients, et il faut savoir quand préférer l'une par rapport à l'autre.
-
-Ce labyrinthe pourrait être représenté comme un [graphe](/algo/structure/graphe.html), où chaque "case" du labyrinthe représente un nœud du graphe, et un arc pourrait représenter un simple chemin ou bien une intersection. Maintenant qu'on voit notre labyrinthe comme un graphe, on peut aussi voir les deux choix de parcours comme les deux manières de parcourir un graphe, qu'on appelle respectivement : le parcours en profondeur, et le parcours en largeur.
+Le parcours d'un [graphe](/algo/structure/graphe.html) est une opération essentielle à connaître à propos de cette structure. Il est fondamental de maitriser les différents algorithmes de parcours de graphe, ainsi que leur application et surtout savoir quand les utiliser en fonction de la situation.
 
 ## Le parcours en profondeur
 
+Vous vous trouvez dans un labyrinthe contenant de nombreux chemins possibles, et vous cherchez la sortie alors que vous ne connaissez aucunes indications sur ce labyrinthe. Tout d'abord, on peut représenter notre labyrinthe comme un graphe dit *implicite*, qui sera non pondéré (chaque arc aura alors une distance de *1* unité). En effet, chaque intersection sera représentée par un nœud du graphe, et chaque chemin par un arc. L'entrée et la sortie du labyrinthe sont juste de simples nœuds distincts du graphe, et le fait de trouver la sortie du labyrinthe, revient à trouver un chemin reliant le nœud d'entrée au nœud de sortie.
+
+Vu qu'on ne connait rien sur ce labyrinthe, il est impossible de deviner le chemin nous permettant d'arriver à la sortie puisque ça pourrait être n'importe lequel du graphe. On peut donc tout simplement essayer chacun des chemins jusqu'à trouver le bon. Ce parcours est alors qualifié de : parcours en profondeur.
+
 ### Principe
 
-Le parcours en profondeur (ou plus communément *DFS* pour *Depth First Search*) permet de parcourir un graphe en utilisant le principe de la [récursivité](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29). Ce parcours a la particularité de parcourir les nœuds du graphe les plus "profonds" en premier (c'est-à-dire les plus éloignés du nœud de départ) avant de "remonter" progressivement dans le graphe.
+Le parcours en profondeur (ou plus communément *DFS* pour *Depth First Search*) permet de parcourir un graphe en utilisant le principe de la [récursivité](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29). Ce parcours se distingue facilement car il visite les nœuds du graphe les plus "profonds" en premier (c'est-à-dire les plus éloignés du nœud de départ), avant de "remonter" progressivement dans le graphe.
 
-Ce parcours s'assimile donc à notre première solution pour notre sortie de labyrinthe, on essaie une possibilité jusqu'au bout, on revient un peu en arrière sur la dernière intersection, on explore cette partie de nouveau en entier, on revient un peu en arrière, etc. 
+Dans notre cas du labyrinthe, on essaie un chemin jusqu'à être bloqué, puis on revient à la dernière intersection, on continue jusqu'à être bloqué, on revient à la dernière intersection, etc. jusqu'à tomber sur la sortie.
 
 ### Exemple
 
-La meilleure manière de comprendre ce parcours est de le visualiser sur un [arbre](/algo/structure/arbre.html) :
+La meilleure manière de comprendre ce type de parcours est de le visualiser :
 
-![Exemple de DFS sur un arbre](/static/img/algo/structure/graphe/dfs/exemple_dfs_arbre.png)
+![Exemple de DFS sur un graphe](/static/img/algo/structure/graphe/dfs/exemple_dfs.png)
 
-Chaque nœud représente l'ordre de parcours du dfs, on peut même y rajouter des flèches pour que ça soit plus clair :
+Ce graphe représente notre labyrinthe, et chaque nœud correspond à l'ordre de parcours du DFS (en plus de la flèche montrant comment agit un parcours en profondeur en entier sur notre graphe).
 
-![Exemple fléché de DFS sur un arbre](/static/img/algo/structure/graphe/dfs/exemple_dfs_arbre_fleche.png)
+Si par exemple notre entrée de labyrinthe est le nœud 1, et que notre sortie est le nœud 6, on parcourra avant de trouver la sortie, les nœuds 2, 3, 4, et 5.
 
-On voit bien qu'on parcourt tant qu'on peut les fils gauches, puis lorsqu'on est bloqué, on remonte tant qu'il n'y a pas de fils droit non parcouru, et lorsqu'on en trouve un on recommence l'opération.
-
-Jusqu'ici nous n'avons vu notre algorithme en action uniquement sur un arbre car cela facilite la compréhension du parcours, mais de manière plus général on peut l'utiliser sur un graphe (on ne parlera plus alors de fils gauche ou droit, mais on prendra un voisin considéré tout simplement comme non parcouru) :
-
-![Exemple de DFS sur un graphe](/static/img/algo/structure/graphe/dfs/exemple_dfs_graphe.png)
-
-Techniquement sur un graphe, on peut le parcourir de différentes façons en utilisant un DFS en fonction de l'ordre de parcours des nœuds choisis.
+Techniquement sur un graphe, on peut effectuer un DFS de différentes façons en fonction de l'ordre de visite des voisins. Par exemple, on aurait pu après le nœud 1 visiter le nœud 7, puis le 9, puis le 8, puis le 6, le 2, le 4, le 5, et enfin le 3. Ce parcours est bien un DFS, mais il est juste différent car on a choisi un autre ordre pour parcourir les voisins des nœuds rencontrés.
 
 ### Pseudo-code
 
+```nohighlight
+DFS (noeud) :
+  
+   Marquer le nœud comme visité
+
+   Pour chaque voisin du nœud passé en paramètre
+      Si le voisin n'est pas marqué visité
+         DFS(voisin)
+```
+
 ### Complexité
 
+Dans le pire des cas, si notre sortie est le dernier nœud que l'on visite, notre algorithme va devoir parcourir les *M* arcs du graphe, on a donc une complexité en temps linéaire de *O(M)*.
+
 ### Implémentation
+
+On peut implémenter un DFS de deux manières différentes, même si on a plutôt tendance à le coder de manière récursive car le code est plus court et plus intuitif.
+
+#### Récursif
+
+Une implémentation récursive en C++ (j'utilise le C++ afin d'utiliser les `vector` pour représenter notre graphe) :
+
+[INSERT]
+dfs_recursif.cpp
+
+#### Itératif
+
+[REFAIRE EXPLICATION + AVANTAGE VERSION ITERATIVE]
+
+Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel récursif créée par notre dernière implémentation. En effet, si on empile les voisins du nœud actuel au lieu de faire un appel récursif, l'ordre de parcours sera conservé car la pile d'appel d'une fonction est une pile toute simple finalement. Pour vous convaincre je vous invite à essayer de faire un exemple, en empilant les voisins au lieu de faire un appel récursif, vous verrez que le principe du parcours en profondeur est bien le même avec une pile.
+
+[INSERT]
+dfs_iteratif.cpp
 
 ## Le parcours en largeur
 

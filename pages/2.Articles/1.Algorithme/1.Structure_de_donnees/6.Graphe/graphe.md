@@ -3,7 +3,7 @@ Graphe
 algo/structure/
 
 Publié le : 20/06/2015  
-*Modifié le : 29/11/2015*
+*Modifié le : 01/12/2015*
 
 ## Introduction
 
@@ -108,8 +108,8 @@ Une liste d'arcs est plus rarement utilisée pour représenter un graphe, mais p
 
 Afin de parcourir notre graphe, on peut utiliser deux algorithmes différents :
 
-- [Parcours en profondeur]() : DFS (*Depth First Search*)
-- [Parcours en largeur]() : BFS (*Breadth First Search*)
+- [Parcours en profondeur](/algo/structure/graphe/parcours.html#le-parcours-en-profondeur) : DFS (*Depth First Search*)
+- [Parcours en largeur](/algo/structure/graphe/parcours.html#le-parcours-en-largeur) : BFS (*Breadth First Search*)
 
 ## Opérations utiles sur un graphe
 

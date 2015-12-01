@@ -1,23 +1,22 @@
 # Général
 
-- README complet
+- README complet + explication script conversio.sh
 - Flux rss
 - Originalité du site ? Qu'est-ce qui le démarque ?
 
 # Algorithme
 ## Structure de données
 
+### Tableau cumulatif
+
+- Pseudo-code (1D et 2D)
+
 ### File
 
 - Lien algo plus court chemin (dijkstra)
 
-### Arbre
-
-- Lien dfs, bfs
-
 ### Graphe
 
-- Lien dfs, bfs
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
 
 ## Tri

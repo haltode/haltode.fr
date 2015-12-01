@@ -3,7 +3,7 @@ Arbre
 algo/structure
 
 Publié le : 29/11/2015  
-*Modifié le : 29/11/2015*
+*Modifié le : 01/12/2015*
 
 ## Introduction
 
@@ -29,8 +29,8 @@ Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'implé
 
 De même, parcourir un arbre revient à parcourir un graphe, on peut donc utiliser les deux algorithmes de parcours de graphe :
 
-- [Parcours en profondeur]() : DFS (*Depth First Search*)
-- [Parcours en largeur]() : BFS (*Breadth First Search*)
+- [Parcours en profondeur](/algo/structure/graphe/parcours.html#le-parcours-en-profondeur) : DFS (*Depth First Search*)
+- [Parcours en largeur](/algo/structure/graphe/parcours.html#le-parcours-en-largeur) : BFS (*Breadth First Search*)
 
 ## Variantes
 
