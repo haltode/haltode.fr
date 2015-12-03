@@ -5,21 +5,25 @@
 \usepackage{verbatim}
 
 \begin{document}
+
 \pagestyle{empty}
 
-\tikzstyle{int}=[draw, fill=blue!20, minimum size=2em]
-\tikzstyle{init} = [pin edge={to-,thin,black}]
+\tikzstyle{int} 	= [draw, fill = blue!20, minimum size = 2em]
+\tikzstyle{init} 	= [pin edge = {to-, thin, black}]
 
-\begin{tikzpicture}[node distance=4cm,auto,>=latex']
-    \node [int] (a) {.vm};
-    \node (b) [left of=a,node distance=4cm, coordinate] {a};
-    \node [int] (c) [right of=a] {.asm};
-    \node [int] (d) [right of=c, node distance=3.5cm] {.hack};
-    \node [int] (e) [left of=a, node distance=4.5cm] {.jack};
-    \node [coordinate] (end) [right of=c, node distance=3cm]{};
-    \path[->] (b) edge node {Jack Analyzer} (a);
-    \path[->] (a) edge node {VM Translator} (c);
-    \draw[->] (c) edge node {Assembler} (end) ;
+\begin{tikzpicture}[node distance = 4cm, auto, >=latex']
+
+	\node [int] (a) {.vm};
+	\node (b) [left of = a, node distance = 4cm, coordinate] {a};
+	\node [int] (c) [right of = a] {.asm};
+	\node [int] (d) [right of = c, node distance = 3.5cm] {.hack};
+	\node [int] (e) [left of = a, node distance = 4.5cm] {.jack};
+	\node [coordinate] (end) [right of = c, node distance = 3cm]{};
+	
+	\path[->] (b) edge node {Jack Analyzer} (a);
+	\path[->] (a) edge node {VM Translator} (c);
+	\draw[->] (c) edge node {Assembler} (end) ;
+	
 \end{tikzpicture}
 
 \end{document}
