@@ -3,7 +3,7 @@ Parcours d'un graphe
 algo/structure/graphe/
 
 Publié le :  
-*Modifié le : 01/12/2015*
+*Modifié le : 03/12/2015*
 
 ## Introduction
 
@@ -17,7 +17,7 @@ Vu qu'on ne connait rien sur ce labyrinthe, il est impossible de deviner le chem
 
 ### Principe
 
-Le parcours en profondeur (ou plus communément *DFS* pour *Depth First Search*) permet de parcourir un graphe en utilisant le principe de la [récursivité](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29). Ce parcours se distingue facilement car il visite les nœuds du graphe les plus "profonds" en premier (c'est-à-dire les plus éloignés du nœud de départ), avant de "remonter" progressivement dans le graphe.
+Le parcours en profondeur (ou plus communément *DFS* pour *Depth First Search*) permet de parcourir un graphe en utilisant le principe de la [récursivité](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29). Ce parcours visite les nœuds du graphe les plus "profonds" en premier (c'est-à-dire les plus éloignés du nœud de départ), avant de "remonter" progressivement dans le graphe.
 
 Dans notre cas du labyrinthe, on essaie un chemin jusqu'à être bloqué, puis on revient à la dernière intersection, on continue jusqu'à être bloqué, on revient à la dernière intersection, etc. jusqu'à tomber sur la sortie.
 
@@ -27,13 +27,15 @@ La meilleure manière de comprendre ce type de parcours est de le visualiser :
 
 ![Exemple de DFS sur un graphe](/static/img/algo/structure/graphe/dfs/exemple_dfs.png)
 
-Ce graphe représente notre labyrinthe, et chaque nœud correspond à l'ordre de parcours du DFS (en plus de la flèche montrant comment agit un parcours en profondeur en entier sur notre graphe).
+Ce graphe représente notre labyrinthe, et chaque nœud correspond à l'ordre de parcours du DFS (la flèche montre uniquement comment agit un parcours en profondeur en entier sur notre graphe).
 
 Si par exemple notre entrée de labyrinthe est le nœud 1, et que notre sortie est le nœud 6, on parcourra avant de trouver la sortie, les nœuds 2, 3, 4, et 5.
 
-Techniquement sur un graphe, on peut effectuer un DFS de différentes façons en fonction de l'ordre de visite des voisins. Par exemple, on aurait pu après le nœud 1 visiter le nœud 7, puis le 9, puis le 8, puis le 6, le 2, le 4, le 5, et enfin le 3. Ce parcours est bien un DFS, mais il est juste différent car on a choisi un autre ordre pour parcourir les voisins des nœuds rencontrés.
+Cependant sur un graphe, on peut effectuer un DFS de différentes façons en fonction de l'ordre de visite des voisins. Par exemple, on aurait pu après le nœud 1 visiter le nœud 7, puis le 9, puis le 8, puis le 6, le 2, le 4, le 5, et enfin le 3. Ce parcours est bien un DFS, mais il est juste différent car on a choisi un autre ordre pour parcourir les voisins des nœuds rencontrés.
 
 ### Pseudo-code
+
+On utilise le principe de la récursivité pour définir notre parcours en profondeur :
 
 ```nohighlight
 DFS (noeud) :
@@ -55,19 +57,103 @@ On peut implémenter un DFS de deux manières différentes, même si on a plutô
 
 #### Récursif
 
-Une implémentation récursive en C++ (j'utilise le C++ afin d'utiliser les `vector` pour représenter notre graphe) :
+Une implémentation récursive en C++ (j'utilise le C++ afin d'avoir les `vector` pour représenter notre graphe) :
 
 [INSERT]
 dfs_recursif.cpp
 
+Si en entrée on donne notre graphe (celui de l'exemple et sous forme d'une liste d'arcs) :
+
+[INSERT]
+test01.in
+
+On obtient bien en sortie :
+
+```
+$ ./recursif < test01.in
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+Et pour vous montrer que l'ordre d'un parcours en profondeur peut changer selon l'ordre des voisins visités, prenons le même graphe mais avec un ordre différent dans sa description (l'ordre inverse) :
+
+[INSERT]
+test02.in
+
+En sortie cette fois on a :
+
+```
+$ ./recursif < test02.in
+1
+7
+9
+8
+6
+2
+4
+5
+3
+```
+
 #### Itératif
 
-[REFAIRE EXPLICATION + AVANTAGE VERSION ITERATIVE]
+Il est rare d'implémenter de façon itérative un parcours en profondeur, mais cela peut être utile pour ne pas faire exploser la [pile d'appels](https://en.wikipedia.org/wiki/Call_stack) à cause des nombreux appels récursifs imbriqués provoqués par notre dernière implémentation.
 
-Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel récursif créée par notre dernière implémentation. En effet, si on empile les voisins du nœud actuel au lieu de faire un appel récursif, l'ordre de parcours sera conservé car la pile d'appel d'une fonction est une pile toute simple finalement. Pour vous convaincre je vous invite à essayer de faire un exemple, en empilant les voisins au lieu de faire un appel récursif, vous verrez que le principe du parcours en profondeur est bien le même avec une pile.
+Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel. En effet, si on empile les voisins du nœud actuel au lieu de faire un appel récursif dessus, on gardera un parcours en profondeur car la pile d'appel reste néanmoins une pile avec quelques informations supplémentaires. Pour vous convaincre je vous invite à essayer de faire un exemple, en empilant les voisins au lieu de faire un appel récursif, vous verrez que le principe du parcours en profondeur est bien le même avec une pile.
 
 [INSERT]
 dfs_iteratif.cpp
+
+En entrée :
+
+[INSERT]
+test01.in
+
+Et la sortie affichée :
+
+```
+$ ./iteratif < test01.in
+1
+7
+9
+8
+6
+2
+4
+5
+3
+```
+
+Et si on donne notre entrée modifiée (à l'envers) :
+
+[INSERT]
+test02.in
+
+On a en sortie cette fois :
+
+```
+$ ./iteratif < test02.in
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+Vous constatez donc que la pile "inverse" l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin dès qu'on en a trouvé un non visité (comme le fait la version récursive), mais on les empile tous, et ils vont donc se superposer (ce qui va "inverser" l'ordre car c'est le principe d'une pile : le dernier arrivé, le premier sorti).
+
+### Utilisation
 
 ## Le parcours en largeur
 
@@ -81,6 +167,6 @@ dfs_iteratif.cpp
 
 ### Implémentation
 
-## Quel parcours choisir ?
+### Utilisation
 
 ## Conclusion
