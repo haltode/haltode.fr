@@ -3,7 +3,7 @@ NandToTetris
 projets/
 
 Date du projet : février 2014 à avril 2014  
-*Modifié le : 11/10/2015*
+*Modifié le : 03/12/2015*
 
 ## Introduction
 
@@ -19,9 +19,7 @@ Le projet consiste donc à créer :
 - un **compilateur** complet pour le langage Jack (le langage de base de l’ordinateur).
 - un **mini-OS** nous permettant d'avoir des appels systèmes basiques.
 
-J’ai réalisé ce projet à l’aide du livre *The Elements of Computing Systems : Building a Modern Computer from First Principles*, vous pouvez retrouver un court avis sur ce livre [ici](/livres.html).
-
-Ce livre fournit des émulateurs, et des fichiers de tests pour la création de ce projet, ainsi que les explications nécessaires.
+J’ai réalisé ce projet à l’aide du livre *The Elements of Computing Systems : Building a Modern Computer from First Principles*. Ce livre fournit des émulateurs, et des fichiers de tests pour la création de ce projet, ainsi que les explications nécessaires.
 
 ### L'ordinateur
 

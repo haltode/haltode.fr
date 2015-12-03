@@ -175,7 +175,7 @@ table tr:nth-child(2n) {
 
 <a href=""><h1 id="nandtotetris">NandToTetris</h1></a>
 <p>Date du projet : f&#233;vrier 2014 &#224; avril 2014<br />
-<em>Modifi&#233; le : 11/10/2015</em></p>
+<em>Modifi&#233; le : 03/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#quest-ce-que-nandtotetris">Qu'est-ce que NandToTetris ?</a></li>
@@ -193,8 +193,7 @@ table tr:nth-child(2n) {
 <li>un <strong>compilateur</strong> complet pour le langage Jack (le langage de base de l&#8217;ordinateur).</li>
 <li>un <strong>mini-OS</strong> nous permettant d'avoir des appels syst&#232;mes basiques.</li>
 </ul>
-<p>J&#8217;ai r&#233;alis&#233; ce projet &#224; l&#8217;aide du livre <em>The Elements of Computing Systems : Building a Modern Computer from First Principles</em>, vous pouvez retrouver un court avis sur ce livre <a href="/livres.html">ici</a>.</p>
-<p>Ce livre fournit des &#233;mulateurs, et des fichiers de tests pour la cr&#233;ation de ce projet, ainsi que les explications n&#233;cessaires.</p>
+<p>J&#8217;ai r&#233;alis&#233; ce projet &#224; l&#8217;aide du livre <em>The Elements of Computing Systems : Building a Modern Computer from First Principles</em>. Ce livre fournit des &#233;mulateurs, et des fichiers de tests pour la cr&#233;ation de ce projet, ainsi que les explications n&#233;cessaires.</p>
 <h3 id="lordinateur">L'ordinateur</h3>
 <p>L'ordinateur est bas&#233; sur une architecture 16 bits de <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">von Neumann</a>, et peut accueillir un clavier et un &#233;cran de 256&#215;512 en noir et blanc.</p>
 <p>Pour la cr&#233;ation de l'ordinateur, on va donc partir de la porte logique <a href="https://fr.wikipedia.org/wiki/Fonction_NON-ET">NAND</a> qui est notre &#233;l&#233;ment de base (elle est int&#233;gr&#233;e directement dans l'&#233;mulateur ce qui nous permet de l'utiliser avec les autres &#233;l&#233;ments sans probl&#232;me). Gr&#226;ce &#224; cette porte logique, on peut en cr&#233;er d'autres comme <a href="https://fr.wikipedia.org/wiki/Fonction_ET">AND</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_OU">OR</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_NON">NOT</a>, etc. et &#224; partir de ces portes on peut construire l&#8217;<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a>. Pour la <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">RAM</a> de l'ordinateur, il faut la construire &#233;tape par &#233;tape et augmenter progressivement en capacit&#233; de stockage. On commence par la construction d'un <a href="https://fr.wikipedia.org/wiki/Bascule_%28circuit_logique%29">flip-flop</a> qui nous permet de r&#233;aliser un <a href="https://fr.wikipedia.org/wiki/Bit">bit</a>, puis un registre et enfin la RAM compl&#232;te. Le <a href="https://fr.wikipedia.org/wiki/Processeur">CPU</a> vient en dernier et ach&#232;ve la cr&#233;ation de notre ordinateur.</p>
