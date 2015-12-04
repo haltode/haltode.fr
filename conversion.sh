@@ -32,7 +32,7 @@ function insert_code {
          sed -i "$line_number s/.*/\\\`\\\`\\\`\n<\/div>/" copy.md
          line_number=$((line_number - 1))
          # Insert the hide/show button + Specify syntax highlighting
-         sed -i "$line_number s/.*/<a href=\"javascript:toggle_visibility('\''$filename'\'');\">$filename<\/a><div id=\"$filename\" style=\"display: none;\">\n\\\`\\\`\\\`$extension/" copy.md
+         sed -i "$line_number s/.*/<a href=\"javascript:toggle_visibility('$filename');\">$filename<\/a><div id=\"$filename\" style=\"display: none;\">\n\\\`\\\`\\\`$extension/" copy.md
          line_number=$((line_number + 1))
       else
          # Specify syntax highlighting

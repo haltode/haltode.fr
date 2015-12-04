@@ -217,7 +217,7 @@ function toggle_visibility(id) {
 <p>On peut impl&#233;menter un DFS de deux mani&#232;res diff&#233;rentes, m&#234;me si on a plut&#244;t tendance &#224; le coder de mani&#232;re r&#233;cursive car le code est plus court et plus intuitif.</p>
 <h4 id="r&#233;cursif">R&#233;cursif</h4>
 <p>Une impl&#233;mentation r&#233;cursive en C++ (j'utilise le C++ afin d'avoir les <code>vector</code> pour repr&#233;senter notre graphe) :</p>
-<a href="javascript:toggle_visibility('''dfs_recursif.cpp''');">dfs_recursif.cpp</a>
+<a href="javascript:toggle_visibility('dfs_recursif.cpp');">dfs_recursif.cpp</a>
 <div id="dfs_recursif.cpp" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
 <span class="ot">#include &lt;vector&gt;</span>
@@ -302,7 +302,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 <h4 id="it&#233;ratif">It&#233;ratif</h4>
 <p>Il est rare d'impl&#233;menter de fa&#231;on it&#233;rative un parcours en profondeur, mais cela peut &#234;tre utile pour ne pas faire exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appels</a> &#224; cause des nombreux appels r&#233;cursifs imbriqu&#233;s provoqu&#233;s par notre derni&#232;re impl&#233;mentation.</p>
 <p>Pour passer de la version r&#233;cursive &#224; la version it&#233;rative, on utilise simplement une <a href="/algo/structure/pile.html">pile</a> afin de &quot;simuler&quot; la pile d'appel. En effet, si on empile les voisins du n&#339;ud actuel au lieu de faire un appel r&#233;cursif dessus, on gardera un parcours en profondeur car la pile d'appel reste n&#233;anmoins une pile avec quelques informations suppl&#233;mentaires. Pour vous convaincre je vous invite &#224; essayer de faire un exemple, en empilant les voisins au lieu de faire un appel r&#233;cursif, vous verrez que le principe du parcours en profondeur est bien le m&#234;me avec une pile.</p>
-<a href="javascript:toggle_visibility('''dfs_iteratif.cpp''');">dfs_iteratif.cpp</a>
+<a href="javascript:toggle_visibility('dfs_iteratif.cpp');">dfs_iteratif.cpp</a>
 <div id="dfs_iteratif.cpp" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
 <span class="ot">#include &lt;vector&gt;</span>

@@ -290,7 +290,7 @@ function toggle_visibility(id) {
 <p>Si l'on reprend notre &#233;nonc&#233; dans l'introduction, on nous donne un tableau de taille <em>N</em>, et <em>M</em> questions du type : Quelle est la somme des &#233;l&#233;ments de <em>i</em> &#224; <em>j</em> dans le tableau ? Notre solution na&#239;ve, dans le pire des cas, aura une complexit&#233; en <em>O(N * M)</em> (lorsqu'on parcourt &#224; chaque fois le tableau en entier, soit quand <em>i</em> = 0 et <em>j</em> = <em>N</em> pour chaque question). En revanche, notre tableau cumulatif revient &#224; une complexit&#233; lin&#233;aire dans le pire des cas en <em>O(N + M)</em> car on parcourt une seule fois le tableau donn&#233; et pour r&#233;pondre aux questions on a juste besoin d'acc&#233;der au tableau cumulatif (donc op&#233;ration en <em>O(1)</em>).</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C d'un tableau cumulatif et de son utilisation :</p>
-<a href="javascript:toggle_visibility('''tableau_cumulatif.c''');">tableau_cumulatif.c</a>
+<a href="javascript:toggle_visibility('tableau_cumulatif.c');">tableau_cumulatif.c</a>
 <div id="tableau_cumulatif.c" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 
@@ -372,7 +372,7 @@ function toggle_visibility(id) {
 <p class="caption">Initialisation du tableau cumulatif 2D</p>
 </div>
 <p>Une impl&#233;mentation d'un tableau cumulatif 2D en C :</p>
-<a href="javascript:toggle_visibility('''tableau_cumulatif2D.c''');">tableau_cumulatif2D.c</a>
+<a href="javascript:toggle_visibility('tableau_cumulatif2D.c');">tableau_cumulatif2D.c</a>
 <div id="tableau_cumulatif2D.c" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 
