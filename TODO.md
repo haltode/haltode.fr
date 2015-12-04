@@ -1,6 +1,6 @@
 # Général
 
-- README complet + explication script conversio.sh
+- README complet
 - Flux rss
 - Originalité du site ? Qu'est-ce qui le démarque ?
 

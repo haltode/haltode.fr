@@ -4,8 +4,10 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
       <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
+
       <!-- CSS -->
 <style>
 body {
@@ -138,6 +140,7 @@ table tr:nth-child(2n) {
 }
 </style>
       <!---- ---->
+
       <title>Liste chaînée - NapNac</title>
    </head>
 
@@ -145,13 +148,13 @@ table tr:nth-child(2n) {
 
       <!-- Javascript -->
 <script type="text/javascript">
-   function toggle_visibility(id) {
-      var element = document.getElementById(id);
-      if(element.style.display == 'block')
-         element.style.display = 'none';
-      else
-         element.style.display = 'block';
-   }
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
 </script>
       <!---- ---->
 
@@ -269,7 +272,7 @@ estVide :
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>
-<a href="javascript:toggle_visibility('liste_chainee.c');">liste_chainee.c</a>
+<a href="javascript:toggle_visibility('''liste_chainee.c''');">liste_chainee.c</a>
 <div id="liste_chainee.c" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 <span class="ot">#include &lt;stdlib.h&gt;</span>
