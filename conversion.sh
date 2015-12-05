@@ -50,7 +50,38 @@ function insert_code {
    done
 }
 
-# Takes an article (in markdown) and convert it into an .html file
+# List of article that don't need a summary
+declare -a no_summary=("accueil" "a_propos" "pseudo-c" "ascii_funfair" "rhyddid"
+"nandtotetris" "ioi" "napnac")
+
+# Insert summary of the article (h2 links)
+function insert_summary {
+   
+   # First check if we need a summary for this article
+   for i in "${no_summary[@]}"
+   do
+      if [ "$(basename ${1%.md})" == "$i" ]; then
+         return 0
+      fi
+   done
+
+   # Insert the summary after the "last modification" date
+   if grep -q "<em>Modifi&#233; le" src/pages/$(basename ${1%.md}.html); then
+      sed -i "/<em>Modifi&#233; le/a <ul id=\"summary\">" src/pages/$(basename ${1%.md}.html)
+   else
+      sed -i "/<h1 id=/a <ul id=\"summary\">" src/pages/$(basename ${1%.md}.html)
+   fi
+   sed -i "/<ul id=\"summary\">/a </ul>" src/pages/$(basename ${1%.md}.html)
+   if grep -q "<h2 " src/pages/$(basename ${1%.md}.html); then
+      grep "<h2 " src/pages/$(basename ${1%.md}.html) > summary.tmp
+      sed -i "s/<h2 id=\"/<li><a href=\"\#/g" summary.tmp
+      sed -i "s/<\/h.>/<\/a><\/li>/g" summary.tmp
+      sed -i "/<ul id=\"summary\">/r./summary.tmp" src/pages/$(basename ${1%.md}.html)
+      rm summary.tmp
+   fi
+}
+
+# Take an article (in markdown) and convert it into an .html file
 function convert {
 
    cp $1 copy.md
@@ -77,21 +108,8 @@ function convert {
    sed -i "s/<h1 id=/<a href=\"\"><h1 id=/" src/pages/$(basename ${1%.md}.html)
    sed -i "s/<\/h1>/<\/h1><\/a>/" src/pages/$(basename ${1%.md}.html)
 
-   # Insert summary of the article (h2 links)
-   if grep -q "<em>Modifi&#233; le" src/pages/$(basename ${1%.md}.html); then
-      sed -i "/<em>Modifi&#233; le/a <ul id=\"summary\">" src/pages/$(basename ${1%.md}.html)
-   else
-      sed -i "/<h1 id=/a <ul id=\"summary\">" src/pages/$(basename ${1%.md}.html)
-   fi
-   sed -i "/<ul id=\"summary\">/a </ul>" src/pages/$(basename ${1%.md}.html)
-   if grep -q "<h2 " src/pages/$(basename ${1%.md}.html); then
-      grep "<h2 " src/pages/$(basename ${1%.md}.html) > summary.tmp
-      sed -i "s/<h2 id=\"/<li><a href=\"\#/g" summary.tmp
-      sed -i "s/<\/h.>/<\/a><\/li>/g" summary.tmp
-      sed -i "/<ul id=\"summary\">/r./summary.tmp" src/pages/$(basename ${1%.md}.html)
-      rm summary.tmp
-   fi
-
+   insert_summary $1
+   
    # Move the converted file to its actual location in src/pages/
    location=`sed -n "3p" copy.md`
    mv -v src/pages/$(basename ${1%.md}.html) src/pages/$location
