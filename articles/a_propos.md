@@ -24,6 +24,6 @@ Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste 
 
 Les pages de ce site sont écrites en [Markdown](https://en.wikipedia.org/wiki/Markdown), et converties grâce à un script [Bash](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29). Les images et les schémas sont créés grâce à [LaTeX](https://en.wikipedia.org/wiki/LaTeX) et notamment le package [tikz](http://www.texample.net/tikz/examples/).
 
-Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à lire mon [article dédié](/projets/napnac.html) à ce sujet, ou bien à consulter les sources du projet sur la page Github : <https://github.com/iTech-/NapNac>.
+Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à lire mon [article dédié](/pages/projets/napnac.html) à ce sujet, ou bien à consulter les sources du projet sur la page Github : <https://github.com/iTech-/NapNac>.
 
 Le site est sous licence [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/4.0/).

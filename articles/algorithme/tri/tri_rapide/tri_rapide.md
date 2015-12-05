@@ -7,7 +7,7 @@ Publié le : 10/05/2014
 
 ## Introduction
 
-Le tri rapide (*quicksort* en anglais) est un algorithme de tri par comparaison, son fonctionnement est plutôt simple à comprendre et il est très utilisé sur de grandes entrées. En effet, il a pour complexité moyenne *O(N \* log N)* et *O(N²)* dans le pire des cas. Cependant, même si cet algorithme est lent dans le pire des cas, il est plus utilisé en pratique que d’autres tris comme le [tri par fusion](/algo/tri/tri_fusion.html) qui a une complexité dans le pire des cas en *O(N \* log N)*. C’est un algorithme [non stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
+Le tri rapide (*quicksort* en anglais) est un algorithme de tri par comparaison, son fonctionnement est plutôt simple à comprendre et il est très utilisé sur de grandes entrées. En effet, il a pour complexité moyenne *O(N \* log N)* et *O(N²)* dans le pire des cas. Cependant, même si cet algorithme est lent dans le pire des cas, il est plus utilisé en pratique que d’autres tris comme le [tri par fusion](/pages/algo/tri/tri_fusion.html) qui a une complexité dans le pire des cas en *O(N \* log N)*. C’est un algorithme [non stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
 
 ## Principe de l’algorithme
 
@@ -53,13 +53,13 @@ triRapide (début, fin) :
       triRapide(pivot + 1, fin)
 ```
 
-On utilise le principe de [récursivité](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29) pour implémenter notre tri rapide (comme pour le [tri fusion](/algo/tri/tri_fusion.html)). Les appels récursifs s'arrêtent quand le sous tableau actuel n'a plus qu'un seul élément, sinon on partitionne notre tableau (choix du pivot et réorganisation), puis on recommence l'opération sur les deux parties du tableau ne contenant pas le pivot (la partie où les éléments lui sont inférieurs, et la partie où ils sont supérieurs).
+On utilise le principe de [récursivité](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29) pour implémenter notre tri rapide (comme pour le [tri fusion](/pages/algo/tri/tri_fusion.html)). Les appels récursifs s'arrêtent quand le sous tableau actuel n'a plus qu'un seul élément, sinon on partitionne notre tableau (choix du pivot et réorganisation), puis on recommence l'opération sur les deux parties du tableau ne contenant pas le pivot (la partie où les éléments lui sont inférieurs, et la partie où ils sont supérieurs).
 
 ## Complexité
 
 Le tri rapide a une complexité moyenne de *O(N \* log N)*, en effet notre fonction utilise deux appels récursifs ayant une complexité logarithmique, et le partitionnement du tableau peut se faire en temps linéaire.
 
-Il faut savoir que le tri rapide peut s'exécuter deux fois plus vite que le [tri par tas](/algo/tri/tri_tas.html) pour des raisons de [mémoire cache](https://en.wikipedia.org/wiki/Cache_%28computing%29). Les deux algorithmes ont la même complexité en moyenne, mais le tri par tas compare en général des éléments du tableau qui sont assez éloignés contrairement au tri rapide. Or, quand vous accédez à un tableau, votre ordinateur place une certaine partie de ce tableau (ou la totalité) dans une mémoire cache pour que l'accès à ce dernier se fasse plus rapidement. Dans le cas de très grandes entrées, le tri par tas va obliger la mémoire à charger et décharger successivement des parties du tableau (trop grand pour être entièrement stocké dans la mémoire cache), ce qui ralentira l'exécution du programme.
+Il faut savoir que le tri rapide peut s'exécuter deux fois plus vite que le [tri par tas](/pages/algo/tri/tri_tas.html) pour des raisons de [mémoire cache](https://en.wikipedia.org/wiki/Cache_%28computing%29). Les deux algorithmes ont la même complexité en moyenne, mais le tri par tas compare en général des éléments du tableau qui sont assez éloignés contrairement au tri rapide. Or, quand vous accédez à un tableau, votre ordinateur place une certaine partie de ce tableau (ou la totalité) dans une mémoire cache pour que l'accès à ce dernier se fasse plus rapidement. Dans le cas de très grandes entrées, le tri par tas va obliger la mémoire à charger et décharger successivement des parties du tableau (trop grand pour être entièrement stocké dans la mémoire cache), ce qui ralentira l'exécution du programme.
 
 ## Implémentation
 
@@ -81,13 +81,13 @@ Le fait que nos sous tableaux soient de la même taille (ou environ de la même 
 
 ### Mélange d'algorithme
 
-Il faut savoir que le tri rapide peut s'exécuter plus lentement sur de petites entrées que des algorithmes en temps quadratique comme le [tri par sélection](/algo/tri/tri_selection.html), ou le [tri par insertion](/algo/tri/tri_insertion.html) (qui eux sont moins efficaces sur des entrées de grande taille).
+Il faut savoir que le tri rapide peut s'exécuter plus lentement sur de petites entrées que des algorithmes en temps quadratique comme le [tri par sélection](/pages/algo/tri/tri_selection.html), ou le [tri par insertion](/pages/algo/tri/tri_insertion.html) (qui eux sont moins efficaces sur des entrées de grande taille).
 
 On peut donc combiner les deux tris, et faire en sorte d’utiliser le tri par insertion (ou par sélection) lorsque la taille du tableau est inférieure à une certaine limite. Cette taille limite varie en général entre 15 et 30 éléments, mais peut changer selon l’ordinateur utilisé et l'implémentation des deux tris.
 
 ### Introsort
 
-Dans le même genre que d'utiliser un algorithme quadratique sur de petites entrées, l'introsort utilise un mix de tri rapide et de [tri par tas](/algo/tri/tri_tas.html) afin de palier un problème de lenteur dû au nombre d'appels récursifs importants du tri rapide. Une fois que ce nombre a dépassé une certaine limite, le travail est assuré par le tri par tas pour améliorer le temps d'exécution et ne pas exploser la [pile d'appel](https://en.wikipedia.org/wiki/Call_stack). Grâce à cela, notre temps d'exécution dans le pire des cas est de *O(N \* log N)*.
+Dans le même genre que d'utiliser un algorithme quadratique sur de petites entrées, l'introsort utilise un mix de tri rapide et de [tri par tas](/pages/algo/tri/tri_tas.html) afin de palier un problème de lenteur dû au nombre d'appels récursifs importants du tri rapide. Une fois que ce nombre a dépassé une certaine limite, le travail est assuré par le tri par tas pour améliorer le temps d'exécution et ne pas exploser la [pile d'appel](https://en.wikipedia.org/wiki/Call_stack). Grâce à cela, notre temps d'exécution dans le pire des cas est de *O(N \* log N)*.
 
 ## Conclusion
 

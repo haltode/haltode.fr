@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Temporary css ---- */
+
+.pret {
+   background-color: #00CC00;
+   display: inline;
+}
+
+.relire {
+   background-color: #FF9900;
+   display: inline;
+}
+
+.encours {
+   background-color: #3366CC;
+   display: inline;
+}
+
+.faire {
+   background-color: #FF0000;
+   display: inline;
+}
+</style>
+      <!---- ---->
+
+      <title>Tri par dénombrement - NapNac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/pages/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/pages/">Accueil</a></li>
+            <li><a href="/pages/articles.html">Articles</a></li>
+            <li><a href="/pages/projets.html">Projets</a></li>
+            <li><a href="/pages/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="tri-par-d&#233;nombrement">Tri par d&#233;nombrement</h1></a>
+<p>Publi&#233; le : 05/07/2014<br />
+<em>Modifi&#233; le : 31/10/2015</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#d&#233;fauts">D&#233;fauts</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#complexit&#233;">Complexit&#233;</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Le tri par d&#233;nombrement (<em>counting sort</em> en anglais) est l&#8217;un des algorithmes de tri le plus rapide, et pourtant c&#8217;est aussi l&#8217;un des plus simples, cependant cet algorithme a quelques d&#233;fauts. Il s&#8217;appuie sur la fr&#233;quence d&#8217;apparition des valeurs pour trier le tableau en un temps lin&#233;aire.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>Le principe est simple, on parcourt le tableau et on compte le nombre de fois que chaque &#233;l&#233;ment appara&#238;t. Une fois que l&#8217;on a le tableau des effectifs <em>E</em> (avec <em>E[i]</em> le nombre de fois o&#249; <em>i</em> appara&#238;t dans le tableau), on peut le parcourir dans le sens croissant (pour un tri croissant), ou d&#233;croissant (pour un tri d&#233;croissant) et placer dans le tableau tri&#233; <em>E[i]</em> fois l&#8217;&#233;l&#233;ment <em>i</em> (avec <em>i</em> allant de l&#8217;&#233;l&#233;ment minimum du tableau jusqu&#8217;&#224; l&#8217;&#233;l&#233;ment maximum).</p>
+<h2 id="exemple">Exemple</h2>
+<p>Voici un tableau d&#8217;entier que l&#8217;on souhaite trier dans l&#8217;ordre croissant en utilisant le tri par d&#233;nombrement : 8, 6, 1, 3, 8, 1, 1.</p>
+<p>La premi&#232;re &#233;tape est de cr&#233;er notre tableau des effectifs <em>E</em>, la deuxi&#232;me &#233;tape est simplement de le parcourir et de recopier dans le tableau tri&#233; les valeurs :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">i</th>
+<th align="left">E[i]</th>
+<th align="left">Action</th>
+<th align="left">Tableau tri&#233;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">on ne fait rien</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">3</td>
+<td align="left">on ajoute trois fois 1</td>
+<td align="left">1 1 1</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">on ne fait rien</td>
+<td align="left">1 1 1</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">on ajoute une fois 3</td>
+<td align="left">1 1 1 3</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">on ne fait rien</td>
+<td align="left">1 1 1 3</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">on ne fait rien</td>
+<td align="left">1 1 1 3</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="left">1</td>
+<td align="left">on ajoute une fois 6</td>
+<td align="left">1 1 1 3 6</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">on ne fait rien</td>
+<td align="left">1 1 1 3 6</td>
+</tr>
+<tr class="odd">
+<td align="left">8</td>
+<td align="left">2</td>
+<td align="left">on ajoute deux fois 8</td>
+<td align="left">1 1 1 3 6 8 8</td>
+</tr>
+</tbody>
+</table>
+<p>On a atteint le maximum de notre tableau des effectifs <em>E</em>, notre tableau est donc tri&#233; :</p>
+<p>1, 1, 1, 3, 6, 8, 8.</p>
+<h2 id="d&#233;fauts">D&#233;fauts</h2>
+<p>Cependant cet algorithme poss&#232;de des d&#233;fauts (m&#234;me s'il s&#8217;ex&#233;cute en un temps lin&#233;aire) :</p>
+<ul>
+<li>Il ne s&#8217;applique que si les nombres du tableau sont des entiers, car je vous rappelle qu'on a <em>E</em> un tableau des effectifs avec <em>E[i]</em> le nombre de fois o&#249; <em>i</em> appara&#238;t dans le tableau, donc si <em>i</em> est un nombre d&#233;cimal on ne pourra pas le stocker dans notre tableau des effectifs car il faut que l&#8217;index soit un nombre entier. Pour les nombres entiers n&#233;gatifs, il est possible de contourner le probl&#232;me mais pour des nombres d&#233;cimaux il ne l&#8217;est pas.</li>
+<li>Il peut prendre tr&#232;s vite beaucoup de place en m&#233;moire. En effet, le tableau des effectifs <em>E</em> a pour taille la valeur maximale du tableau, or si cette valeur est tr&#232;s grande, le tableau <em>E</em> prendra &#233;norm&#233;ment de place en m&#233;moire. De plus si les valeurs du tableau sont &#233;loign&#233;es entre elles, alors beaucoup d&#8217;espace m&#233;moire restera inutilis&#233;.</li>
+</ul>
+<p>Cet algorithme est donc tr&#232;s utile et efficace si l&#8217;on sait que notre tableau en entr&#233;e contient des nombres entiers relativement petits et proches de pr&#233;f&#233;rence.</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code de l&#8217;algorithme :</p>
+<pre class="nohighlight"><code>triD&#233;nombrement :
+
+   Chercher l&#39;&#233;l&#233;ment maximum du tableau
+   Cr&#233;er un tableau E de taille Max + 1, initialis&#233; &#224; 0
+
+   Pour chaque &#233;l&#233;ment du tableau
+      Incr&#233;menter E[Tableau[i]]
+
+   Pour chaque &#233;l&#233;ment de E
+      Si l&#39;&#233;l&#233;ment i de E est diff&#233;rent de 0
+         Recopier E[i] fois le nombre i dans le tableau tri&#233;</code></pre>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>La complexit&#233; en temps de cet algorithme se calcule assez facilement. En effet, les seules op&#233;rations que l'on effectue dans notre fonction se font en temps lin&#233;aire. L'initialisation du tableau des effectifs se fait en <em>O(N)</em> (avec <em>N</em> la taille du tableau), et la copie des &#233;l&#233;ments dans notre tableau tri&#233; en <em>O(M)</em> (avec <em>M</em> correspondant &#224; <code>Max</code>).</p>
+<p>La complexit&#233; finale de notre algorithme est de <em>O(N + M)</em>, soit une complexit&#233; en temps lin&#233;aire.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Le lien vers une impl&#233;mentation en C du tri par d&#233;nombrement :</p>
+<p>main.c :</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tri par d&#233;nombrement est donc un algorithme de tri tr&#232;s efficace dans certaines conditions seulement, et s&#8217;ex&#233;cute en un temps lin&#233;aire.</p>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

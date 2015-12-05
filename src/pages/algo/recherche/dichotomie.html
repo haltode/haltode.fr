@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Temporary css ---- */
+
+.pret {
+   background-color: #00CC00;
+   display: inline;
+}
+
+.relire {
+   background-color: #FF9900;
+   display: inline;
+}
+
+.encours {
+   background-color: #3366CC;
+   display: inline;
+}
+
+.faire {
+   background-color: #FF0000;
+   display: inline;
+}
+</style>
+      <!---- ---->
+
+      <title>Dichotomie - NapNac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/pages/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/pages/">Accueil</a></li>
+            <li><a href="/pages/articles.html">Articles</a></li>
+            <li><a href="/pages/projets.html">Projets</a></li>
+            <li><a href="/pages/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="dichotomie">Dichotomie</h1></a>
+<p>Publi&#233; le :28/06/2014<br />
+<em>Modifi&#233; le :</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#complexit&#233;">Complexit&#233;</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>La dichotomie (<em>binary search</em> en anglais) est un algorithme tr&#232;s utilis&#233; pour rechercher un &#233;l&#233;ment dans un ensemble tri&#233; rapidement, il peut s&#8217;appliquer dans de nombreux probl&#232;mes.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>La dichotomie est un moyen tr&#232;s efficace de chercher un &#233;l&#233;ment pr&#233;cis dans un ensemble d&#8217;&#233;l&#233;ment <strong>tri&#233;</strong>. Elle utilise la m&#233;thode de &quot;diviser pour r&#233;gner&quot; sur l&#8217;ensemble pour rechercher l&#8217;&#233;l&#233;ment voulu rapidement.</p>
+<p>La m&#233;thode de &#171; diviser pour r&#233;gner &#187; consiste &#224; diviser un gros probl&#232;me en deux plus petits sous-probl&#232;mes, eux-m&#234;mes divisibles en sous-sous-probl&#232;mes jusqu&#8217;&#224; arriver &#224; un seul petit probl&#232;me facile et rapide &#224; r&#233;soudre.</p>
+<p>Prenons un cas particulier o&#249; l&#8217;on utilise la dichotomie : on cherche un &#233;l&#233;ment dans un tableau d&#8217;entier tri&#233;. On compare l&#8217;&#233;l&#233;ment &#224; chercher avec l&#8217;&#233;l&#233;ment au milieu du tableau, si l&#8217;&#233;l&#233;ment central est sup&#233;rieur on sait que l&#8217;on continuera de chercher dans le premier sous-tableau (du d&#233;but du tableau jusqu&#8217;au milieu), sinon si il est inf&#233;rieur on sait que l&#8217;on cherchera dans le deuxi&#232;me sous-tableau (du milieu jusqu&#8217;&#224; la fin du tableau). On r&#233;p&#232;te cette op&#233;ration jusqu&#8217;&#224; se retrouver avec un sous-tableau contenant un seul &#233;l&#233;ment : l&#8217;&#233;l&#233;ment que l&#8217;on recherche. Vous voyez qu&#8217;il est donc fondamental que le tableau soit tri&#233; pour l&#8217;algorithme fonctionne correctement.</p>
+<p>La dichotomie va donc comparer l&#8217;&#233;l&#233;ment situ&#233; au milieu de l&#8217;ensemble tri&#233; et l&#8217;&#233;l&#233;ment que l&#8217;on souhaite chercher, puis va d&#233;cider dans quelle sous-partie de l&#8217;ensemble continuer la recherche. Et ainsi de suite jusqu&#8217;&#224; trouver notre &#233;l&#233;ment. La dichotomie affine donc l&#8217;espace de recherche de moiti&#233; &#224; chaque comparaison, r&#233;duisant ainsi au final le nombre comparaisons effectu&#233;es.</p>
+<p>Encore une fois, la dichotomie est tr&#232;s utile sur des grandes entr&#233;es, imaginez avoir une base de donn&#233;es compos&#233;es de milliards de milliards de nombres et d&#8217;avoir la parcourir &#224; chaque recherche serait bien trop long. Mais m&#234;me sur de plus petits exemples, on peut voir la diff&#233;rence entre une recherche banale (parcourant tous les &#233;l&#233;ments jusqu&#8217;&#224; trouver celui qu&#8217;on cherche) et une recherche dichotomique.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Nous avons un tableau d&#8217;entier tri&#233; : 1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304, 7662. Et nous souhaitons trouver la valeur 512. Utilisons la dichotomie pour trouver 512 dans notre tableau efficacement :</p>
+<p>On commence donc par comparer l&#8217;&#233;l&#233;ment centrale du tableau avec l&#8217;&#233;l&#233;ment que l&#8217;on souhaite trouver :</p>
+<p>1, 8, 15, 42, 99, <strong>160</strong>, 380, 512, 678, 952, 1304, 7662 : Ici l&#8217;&#233;l&#233;ment situ&#233; au milieu du tableau est 160, or 160 est inf&#233;rieur &#224; 512, et puisque le tableau est tri&#233;, on d&#233;duit donc que 512 ne se trouve pas &#224; gauche de 160 (inclus), on continue donc de chercher dans le sous-tableau constitu&#233; des &#233;l&#233;ments 380, 512, 678, 952, 1304, 7662.</p>
+<p><del>1, 8, 15, 42, 99, 160</del> | 380, 512, <strong>678</strong>, 952, 1304, 7662 : Ici l&#8217;&#233;l&#233;ment situ&#233; au milieu du sous-tableau est 678, or 678 est sup&#233;rieur &#224; 512, on d&#233;duit donc que 512 ne se trouve pas &#224; droite de 678 (inclus), on continue donc de chercher dans le sous-sous-tableau constitu&#233; des &#233;l&#233;ments 380, 512.</p>
+<p><del>1, 8, 15, 42, 99, 160</del> | <strong>380</strong>, 512 | <del>678, 952, 1304, 7662</del> : Ici l&#8217;&#233;l&#233;ment situ&#233; au milieu du sous-sous-tableau est 380, or 380 est inf&#233;rieur &#224; 512, on d&#233;duit donc 512 ne se trouve pas &#224; droite de 380 (inclus), on continue donc de chercher dans le sous-sous-sous-tableau constitu&#233; de l&#8217;&#233;l&#233;ment 512.</p>
+<p><del>1, 8, 15, 42, 99, 160</del> | <del>380</del> | <strong>512</strong> | <del>678, 952, 1304, 7662</del> : Ici il ne reste plus qu&#8217;un seul &#233;l&#233;ment, on a donc trouv&#233; notre &#233;l&#233;ment : 512.</p>
+<p>Vous voyez donc qu&#8217;il nous a fallu trois comparaisons seulement pour trouver le nombre 512 dans notre tableau tri&#233;.</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code de la dichotomie :</p>
+<pre><code>Soit N la taille du tableau &#224; trier
+
+dichotomie(Tableau, N, Recherche) :
+
+d&#233;but -&gt; 0
+fin -&gt; N - 1
+
+Faire
+
+milieu -&gt; (d&#233;but + fin) / 2
+
+Si l&#39;&#233;l&#233;ment milieu de Tableau est inf&#233;rieur &#224; Recherche
+d&#233;but -&gt; milieu + 1
+Sinon si l&#39;&#233;l&#233;ment milieu de Tableau est sup&#233;rieur &#224; Recherche
+fin -&gt; milieu - 1
+Sinon si l&#39;&#233;l&#233;ment milieu de Tableau est &#233;gal &#224; Recherche
+Retourner milieu
+
+Tant que l&#39;&#233;l&#233;ment milieu de Tableau est diff&#233;rent de Recherche</code></pre>
+<p>Dans ce pseudo-code, j&#8217;ai choisit de retourner la position de l&#8217;&#233;l&#233;ment que l&#8217;on cherche dans le tableau, on pourrait aussi renvoyer 1 si l&#8217;&#233;l&#233;ment est bien dans le tableau et 0 sinon.</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>La dichotomie peut &#234;tre repr&#233;sent&#233; comme un <a href="/pages/algo/structure/arbre.html">arbre</a> cr&#233;&#233; &#224; partir du tableau. L&#8217;algorithme parcourt le chemin lui permettant d&#8217;arriver &#224; l&#8217;&#233;l&#233;ment recherch&#233; :</p>
+<p>1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304, 7662</p>
+<p>/<br />
+/<br />
+/<br />
+ 1, 8, 15, 42, 99, 160 380, 512, 678, 952, 1304, 7662</p>
+<p>/ &#160; /<br />
+/ &#160; /<br />
+/ &#160; /<br />
+ 1, 8, 15 42, 99, 160 380, 512, 678 952, 1304, 7662</p>
+<p>/ &#160; / &#160; / &#160; /<br />
+/ &#160; / &#160; / &#160; /<br />
+/ &#160; / &#160; / &#160; /<br />
+ 1, 8 15 42, 99 160 380, 512 678 952, 1304 7662</p>
+<p>| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | 1 8 15 42 99 160 380 512 678 952 1304 7662</p>
+<p>Ici, vous pouvez voir que pour arriver &#224; l&#8217;&#233;l&#233;ment 512, on suit bien les m&#234;mes &#233;tapes que j&#8217;ai expliqu&#233;es dans la partie <strong>Exemple</strong>.</p>
+<p>La complexit&#233; d&#233;pend donc de la hauteur de l&#8217;arbre comme vous l&#8217;avez vu dans le sch&#233;ma juste au dessus. Elle est donc en <em>O(log(N))</em>, ce qui est extr&#234;mement rapide.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Le lien vers une impl&#233;mentation it&#233;rative en C d&#8217;une recherche dichotomique :</p>
+<p>main.c : <a href="http://git.io/vtzIf" class="uri">http://git.io/vtzIf</a></p>
+<p>Ainsi que le lien vers une impl&#233;mentation r&#233;cursive en C :</p>
+<p>main.c : <a href="http://git.io/vtzIk" class="uri">http://git.io/vtzIk</a></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>La dichotomie est donc un algorithme de recherche efficace, rapide, et facile &#224; impl&#233;menter.</p>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

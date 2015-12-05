@@ -6,9 +6,9 @@ Liste de mes différents projets personnels :
 
 | Date                      | Projet                                                        | Description                                                             |
 | ------------------------- | :------------------------------------------------------------ | :---------------------------------------------------------------------- |
-| **10/2015**               | [Napnac.ga](/projets/napnac.html)             | Mon site personnel où je poste mes articles et je parle de mes projets  |
-| **09/2014** - **09/2015** | [IOI](/projets/ioi.html)                      | Mon entraînement et mon parcours pour les IOI                           |
-| **02/2014** - **04/2014** | [NandToTetris](/projets/nandtotetris.html)    | Un ordinateur émulé accompagné d'un compilateur et d'un mini-OS         |
-| **10/2013** - **01/2014** | [Rhyddid](/projets/rhyddid.html)              | Rogue-like construit entièrement en console                             |
-| **06/2013** - **09/2013** | [ASCII Funfair](/projets/ascii_funfair.html)  | Programme regroupant différents jeux connus, en solo et en multijoueur  |
-| **04/2013**               | [Pseudo-C](/projets/pseudo-c.html)            | Traducteur et interpréteur de pseudo-code en langage C                  |
+| **10/2015**               | [Napnac.ga](/pages/projets/napnac.html)             | Mon site personnel où je poste mes articles et je parle de mes projets  |
+| **09/2014** - **09/2015** | [IOI](/pages/projets/ioi.html)                      | Mon entraînement et mon parcours pour les IOI                           |
+| **02/2014** - **04/2014** | [NandToTetris](/pages/projets/nandtotetris.html)    | Un ordinateur émulé accompagné d'un compilateur et d'un mini-OS         |
+| **10/2013** - **01/2014** | [Rhyddid](/pages/projets/rhyddid.html)              | Rogue-like construit entièrement en console                             |
+| **06/2013** - **09/2013** | [ASCII Funfair](/pages/projets/ascii_funfair.html)  | Programme regroupant différents jeux connus, en solo et en multijoueur  |
+| **04/2013**               | [Pseudo-C](/pages/projets/pseudo-c.html)            | Traducteur et interpréteur de pseudo-code en langage C                  |

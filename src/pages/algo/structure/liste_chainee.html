@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Temporary css ---- */
+
+.pret {
+   background-color: #00CC00;
+   display: inline;
+}
+
+.relire {
+   background-color: #FF9900;
+   display: inline;
+}
+
+.encours {
+   background-color: #3366CC;
+   display: inline;
+}
+
+.faire {
+   background-color: #FF0000;
+   display: inline;
+}
+</style>
+      <!---- ---->
+
+      <title>Liste chaînée - NapNac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/pages/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/pages/">Accueil</a></li>
+            <li><a href="/pages/articles.html">Articles</a></li>
+            <li><a href="/pages/projets.html">Projets</a></li>
+            <li><a href="/pages/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h1></a>
+<p>Publi&#233; le : 08/06/2014<br />
+<em>Modifi&#233; le : 28/11/2015</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</a></li>
+<li><a href="#diff&#233;rence-avec-les-tableaux">Diff&#233;rence avec les tableaux</a></li>
+<li><a href="#quelques-fonctions-pour-manipuler-les-listes-cha&#238;n&#233;es">Quelques fonctions pour manipuler les listes cha&#238;n&#233;es</a></li>
+<li><a href="#complexit&#233;">Complexit&#233;</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#variantes-de-la-liste-cha&#238;n&#233;e">Variantes de la liste cha&#238;n&#233;e</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Imaginons un tableau contenant des milliards d'&#233;l&#233;ments. Comment supprimer un &#233;l&#233;ment en plein milieu du tableau ? Pourquoi pas cr&#233;er un deuxi&#232;me tableau dans lequel on recopie toutes nos valeurs (sauf celles que l'on veut supprimer) ? Cela marche bien, mais cette op&#233;ration est longue et co&#251;teuse en m&#233;moire. On peut essayer de d&#233;caler le tableau en r&#233;&#233;crivant sur la valeur que l'on veut supprimer, gr&#226;ce &#224; &#231;a on fait des &#233;conomies de m&#233;moire mais cela prend beaucoup de temps. Et comment ajouter un &#233;l&#233;ment dans notre tableau ? De m&#234;me, on peut recr&#233;er un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel &#233;l&#233;ment. On peut aussi faire des &#233;conomies de m&#233;moire en d&#233;calant les &#233;l&#233;ments vers la droite pour laisser un espace au milieu afin d'ins&#233;rer notre nouvel &#233;l&#233;ment. Cependant, cette solution prend trop de temps et ceci nous pousse &#224; comprendre que les tableaux ne sont pas adapt&#233;s &#224; toutes les situations.</p>
+<p>Face &#224; ces probl&#232;mes de temps, et de m&#233;moire, on a besoin d'une nouvelle structure de donn&#233;es souple, dynamique, et qui nous permet d'ins&#233;rer et de supprimer des &#233;l&#233;ments facilement : la liste cha&#238;n&#233;e.</p>
+<h2 id="principe-de-la-liste-cha&#238;n&#233;e">Principe de la liste cha&#238;n&#233;e</h2>
+<p>Une liste cha&#238;n&#233;e (<em>linked list</em> en anglais) est une structure de donn&#233;es auto r&#233;f&#233;rentielle, c'est-&#224;-dire que chacun de ses &#233;l&#233;ments pointe vers l'&#233;l&#233;ment suivant que l'on appelle des <strong>n&#339;uds</strong> (<em>node</em>). A partir de cette d&#233;finition on peut d&#233;j&#224; &#233;tablir le contenu d'un &#233;l&#233;ment d'une liste cha&#238;n&#233;e :</p>
+<ul>
+<li><strong>Des donn&#233;es</strong> : ces donn&#233;es peuvent &#234;tre de n'importe quels types (entier, flottant, cha&#238;ne de caract&#232;re, etc.), et il peut en y avoir autant que possible par &#233;l&#233;ment.</li>
+<li><strong>Un pointeur</strong> : ce pointeur pointe vers l'&#233;l&#233;ment suivant de la liste, et permet de lier les n&#339;uds entre eux.</li>
+</ul>
+<div class="figure">
+<img src="/static/img/algo/structure/liste_chainee/exemple_liste_chainee.png" alt="Exemple de repr&#233;sentation d&#39;une liste cha&#238;n&#233;e" />
+<p class="caption">Exemple de repr&#233;sentation d'une liste cha&#238;n&#233;e</p>
+</div>
+<p>Le dernier pointeur de la liste cha&#238;n&#233;e pointe sur la valeur <code>NULL</code>, pour indiquer la fin de la liste.</p>
+<h2 id="diff&#233;rence-avec-les-tableaux">Diff&#233;rence avec les tableaux</h2>
+<p>Les deux structures de donn&#233;es sont diff&#233;rentes, et ont leurs avantages et leurs inconv&#233;nients, aucune n'est meilleure que l'autre mais il faut savoir quand utiliser la bonne structure au bon moment :</p>
+<ul>
+<li><strong>Tableau</strong> : les &#233;l&#233;ments sont contigus en m&#233;moire, la taille du tableau ne change pas et est connue &#224; l'avance, l'ajout et la suppression d'un &#233;l&#233;ment du tableau sont des op&#233;rations couteuses en temps et en m&#233;moire, en revanche on peut ais&#233;ment acc&#233;der &#224; un &#233;l&#233;ment du tableau en temps constant (par exemple en C : <code>tableau[2]</code>).</li>
+<li><strong>Liste cha&#238;n&#233;e</strong> : les &#233;l&#233;ments ne sont pas contigus en m&#233;moire, la taille peut varier, on peut facilement ins&#233;rer/supprimer des &#233;l&#233;ments de la liste en temps constant, mais on ne peut pas acc&#233;der &#224; un &#233;l&#233;ment pr&#233;cis de la liste instantan&#233;ment (il faut parcourir la liste jusqu'&#224; cet &#233;l&#233;ment).</li>
+</ul>
+<p>Pour illustrer les diff&#233;rences entre liste cha&#238;n&#233;e et tableau, prenons l'exemple d'un &#233;tudiant qui prend ses cours :</p>
+<ul>
+<li>Un tableau est comme un cahier : on commence au d&#233;but pour ne pas gaspiller de l'espace, et on &#233;crit son cours au fur et &#224; mesure jusqu'&#224; ne plus avoir de page libre. Si on rate un cours, on a deux choix : soit on laisse de l'espace pour permettre de recopier le cours plus tard, mais dans ce cas l'espace sera soit trop petit (plus de place), soit trop grand (gaspillage d'espace), soit on recopie tout le cahier en incluant la partie qui manque, cependant cette m&#233;thode est longue et demande un autre cahier. De m&#234;me, si on souhaite retirer une partie du cours, on peut recopier sur un autre cahier sans la partie que l'on souhaite enlever.</li>
+<li>Une liste cha&#238;n&#233;e serait comme un classeur : on commence o&#249; on veut dans le classeur, on &#233;crit son cours sur des feuilles volantes toutes ind&#233;pendantes les unes des autres et on peut les ins&#233;rer ou les supprimer dans le classeur facilement. Si on est absent pendant un cours, il suffit de copier le cours sur une feuille &#224; part, puis de la placer entre deux feuilles dans le classeur. Lorsqu'on souhaite retirer une partie du cours, il suffit de d&#233;tacher les feuilles correspondantes.</li>
+</ul>
+<div class="figure">
+<img src="/static/img/algo/structure/liste_chainee/exemple_ajout.png" alt="Exemple d&#39;ajout d&#39;un &#233;l&#233;ment dans une liste cha&#238;n&#233;e" />
+<p class="caption">Exemple d'ajout d'un &#233;l&#233;ment dans une liste cha&#238;n&#233;e</p>
+</div>
+<div class="figure">
+<img src="/static/img/algo/structure/liste_chainee/exemple_suppression.png" alt="Exemple de suppression d&#39;un &#233;l&#233;ment dans une liste cha&#238;n&#233;e" />
+<p class="caption">Exemple de suppression d'un &#233;l&#233;ment dans une liste cha&#238;n&#233;e</p>
+</div>
+<h2 id="quelques-fonctions-pour-manipuler-les-listes-cha&#238;n&#233;es">Quelques fonctions pour manipuler les listes cha&#238;n&#233;es</h2>
+<p>Pour manipuler correctement les listes cha&#238;n&#233;es, il faut conna&#238;tre quelques fonctions basiques pour ajouter un &#233;l&#233;ment, le supprimer, rechercher un &#233;l&#233;ment pr&#233;cis dans la liste, etc.</p>
+<pre class="nohighlight"><code>cr&#233;erListe :
+   Initialiser la liste &#224; NULL
+supprimerListe :
+   Pour chaque &#233;l&#233;ment de la liste
+      Supprimer l&#39;&#233;l&#233;ment actuel
+
+ajoutT&#234;te (&#233;l&#233;ment) :
+   Faire pointer le nouvel &#233;l&#233;ment vers le premier &#233;l&#233;ment de la liste
+ajoutFin (&#233;l&#233;ment) :
+   Parcourir la liste jusqu&#39;&#224; la fin
+   Faire pointer le dernier &#233;l&#233;ment vers l&#39;&#233;l&#233;ment donn&#233; en param&#232;tre
+   Faire pointer l&#39;&#233;l&#233;ment donn&#233; en param&#232;tre sur NULL
+ajoutEl&#233;ment (&#233;l&#233;ment, index) :
+   Parcourir la liste jusqu&#39;&#224; arriver &#224; l&#39;&#233;l&#233;ment situ&#233; avant l&#39;index donn&#233;
+   Faire pointer l&#39;&#233;l&#233;ment actuel sur le nouvel &#233;l&#233;ment
+   Faire pointer le nouvel &#233;l&#233;ment sur le prochain
+
+supprimerT&#234;te :
+   Supprimer l&#39;&#233;l&#233;ment en t&#234;te de liste
+supprimerFin :
+   Parcourir la liste jusqu&#39;&#224; l&#39;avant-dernier &#233;l&#233;ment
+   Supprimer l&#39;&#233;l&#233;ment suivant
+   Faire pointer l&#39;&#233;l&#233;ment sur NULL (pour indiquer la fin de la liste)
+supprimerEl&#233;ment (index) :
+   Parcourir la liste jusqu&#39;&#224; arriver &#224; l&#39;&#233;l&#233;ment situ&#233; avant l&#39;index donn&#233;
+   Faire pointer l&#39;&#233;l&#233;ment actuel sur le pointeur de l&#39;&#233;l&#233;ment &#224; supprimer 
+   Supprimer l&#39;&#233;l&#233;ment suivant
+
+estVide :
+   Si le premier &#233;l&#233;ment de la liste est NULL
+      Retourner vrai
+   Sinon
+      Retourner faux</code></pre>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>Soit <em>N</em> le nombre d'&#233;l&#233;ments de la liste cha&#238;n&#233;e.</p>
+<ul>
+<li><code>cr&#233;erListe</code> : <em>O(1)</em></li>
+<li><code>supprimerListe</code> : <em>O(N)</em></li>
+<li><code>ajoutT&#234;te</code> : <em>O(1)</em></li>
+<li><code>ajoutFin</code> : <em>O(N)</em></li>
+<li><code>ajoutEl&#233;ment</code> : <em>O(N)</em></li>
+<li><code>supprimerT&#234;te</code> : <em>O(1)</em></li>
+<li><code>supprimerFin</code> : <em>O(N)</em></li>
+<li><code>supprimerEl&#233;ment</code> : <em>O(N)</em></li>
+<li><code>estVide</code> : <em>O(1)</em></li>
+</ul>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>
+<a href="javascript:toggle_visibility('liste_chainee.c');">liste_chainee.c</a>
+<div id="liste_chainee.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="ot">#include &lt;stdlib.h&gt;</span>
+
+<span class="kw">typedef</span> <span class="kw">struct</span> Noeud Noeud;
+<span class="kw">struct</span> Noeud
+{
+   Noeud *suivant;
+   <span class="dt">int</span> donnee;
+};
+
+<span class="kw">typedef</span> Noeud *Liste;
+
+<span class="dt">void</span> creerListe(Liste *liste)
+{
+   *liste = NULL;
+}
+
+<span class="dt">void</span> supprimerListe(Liste *liste)
+{
+   Noeud *iListe;
+
+   <span class="kw">for</span>(iListe = *liste; iListe != NULL; ) {
+      Noeud *temp;
+
+      temp = iListe-&gt;suivant;
+      free(iListe);
+      iListe = temp;
+   }
+}
+
+<span class="dt">void</span> ajouterTete(Liste *liste, <span class="dt">int</span> donnee)
+{
+   Noeud *nouveau;
+
+   nouveau = malloc(<span class="kw">sizeof</span>(Noeud));
+   nouveau-&gt;suivant = *liste;
+   nouveau-&gt;donnee = donnee;
+
+   *liste = nouveau;
+}
+
+<span class="dt">void</span> ajouterFin(Liste *liste, <span class="dt">int</span> donnee)
+{
+   Noeud *nouveau;
+   Noeud *iListe;
+
+   nouveau = malloc(<span class="kw">sizeof</span>(Noeud));
+   nouveau-&gt;suivant = NULL;
+   nouveau-&gt;donnee = donnee;
+
+   <span class="kw">for</span>(iListe = *liste; iListe-&gt;suivant != NULL; iListe = iListe-&gt;suivant)
+      ;
+
+   iListe-&gt;suivant = nouveau;
+}
+
+<span class="dt">void</span> ajouterElement(Liste *liste, <span class="dt">int</span> donnee, <span class="dt">int</span> index)
+{
+   Noeud *nouveau;
+   Noeud *iListe;
+   <span class="dt">int</span> iEle;
+
+   iListe = *liste;
+   <span class="kw">for</span>(iEle = <span class="dv">0</span>; iEle &lt; index - <span class="dv">1</span>; ++iEle)
+      iListe = iListe-&gt;suivant;
+
+   nouveau = malloc(<span class="kw">sizeof</span>(Noeud));
+   nouveau-&gt;suivant = iListe-&gt;suivant;
+   nouveau-&gt;donnee = donnee;
+
+   iListe-&gt;suivant = nouveau;
+}
+
+<span class="dt">void</span> supprimerTete(Liste *liste)
+{
+   Noeud *temp;
+
+   temp = (*liste)-&gt;suivant;
+   free(*liste);
+   *liste = temp;
+}
+
+<span class="dt">void</span> supprimerFin(Liste *liste)
+{
+   Noeud *iListe;
+
+   <span class="kw">for</span>(iListe = *liste; iListe-&gt;suivant-&gt;suivant != NULL; iListe = iListe-&gt;suivant)
+      ;
+
+   free(iListe-&gt;suivant); 
+   iListe-&gt;suivant = NULL;
+}
+
+<span class="dt">void</span> supprimerElement(Liste *liste, <span class="dt">int</span> index)
+{
+   Noeud *iListe;
+   <span class="dt">int</span> iEle;
+
+   iListe = *liste;
+   <span class="kw">for</span>(iEle = <span class="dv">0</span>; iEle &lt; index - <span class="dv">1</span>; ++iEle)
+      iListe = iListe-&gt;suivant;
+
+   Noeud *temp;
+   temp = iListe-&gt;suivant;
+   iListe-&gt;suivant = temp-&gt;suivant;
+   free(temp);
+}
+
+<span class="dt">int</span> estVide(Liste *liste)
+{
+   <span class="kw">if</span>(*liste == NULL)
+      <span class="kw">return</span> <span class="dv">1</span>;
+   <span class="kw">else</span>
+      <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   Liste liste;
+
+   creerListe(&amp;liste);
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, estVide(&amp;liste));
+   <span class="co">// 1</span>
+
+   ajouterTete(&amp;liste, <span class="dv">42</span>);
+   <span class="co">// 42</span>
+   ajouterTete(&amp;liste, <span class="dv">2</span>);
+   <span class="co">// 2 42</span>
+   ajouterFin(&amp;liste, <span class="dv">69</span>);
+   <span class="co">// 2 42 69</span>
+   ajouterElement(&amp;liste, <span class="dv">7</span>, <span class="dv">2</span>);
+   <span class="co">// 2 42 7 69 </span>
+
+   supprimerTete(&amp;liste);
+   <span class="co">// 42 7 69</span>
+   supprimerFin(&amp;liste);
+   <span class="co">// 42 7</span>
+   ajouterFin(&amp;liste, <span class="dv">2</span>);
+   supprimerElement(&amp;liste, <span class="dv">1</span>);
+   <span class="co">// 42 2</span>
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, estVide(&amp;liste));
+   <span class="co">// 0</span>
+
+   supprimerListe(&amp;liste);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Le code est relativement simple &#224; comprendre et &#224; utiliser, une connaissance des pointeurs est cependant n&#233;cessaire.</p>
+<p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une impl&#233;mentation de liste cha&#238;n&#233;e ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/" class="uri">http://www.cplusplus.com/reference/list/list/</a>.</p>
+<h2 id="variantes-de-la-liste-cha&#238;n&#233;e">Variantes de la liste cha&#238;n&#233;e</h2>
+<p>Il existe plusieurs variantes de la liste cha&#238;n&#233;e qui sont pratiques dans certains probl&#232;mes pr&#233;cis.</p>
+<h3 id="liste-doublement-cha&#238;n&#233;e">Liste doublement cha&#238;n&#233;e</h3>
+<p>La liste double cha&#238;n&#233;e (<em>doubly linked list</em>) consiste &#224; ce que chaque &#233;l&#233;ment de la liste poss&#232;de deux pointeurs :</p>
+<ul>
+<li>Un pointeur vers le <strong>prochain</strong> &#233;l&#233;ment.</li>
+<li>Un pointeur vers le <strong>pr&#233;c&#233;dent</strong> &#233;l&#233;ment.</li>
+</ul>
+<p>Cette structure est l&#233;g&#232;rement plus co&#251;teuse en m&#233;moire et en op&#233;ration, mais rend le d&#233;placement au sein de la liste plus pratique car on peut la parcourir dans les deux sens et on peut ins&#233;rer/supprimer des &#233;l&#233;ments avant d'autres et non uniquement apr&#232;s.</p>
+<div class="figure">
+<img src="/static/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png" alt="Exemple de repr&#233;sentation d&#39;une liste doublement cha&#238;n&#233;e" />
+<p class="caption">Exemple de repr&#233;sentation d'une liste doublement cha&#238;n&#233;e</p>
+</div>
+<p>La structure d'une liste doublement cha&#238;n&#233;e ressemble &#224; cela :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> Noeud Noeud;
+<span class="kw">struct</span> Noeud
+{
+   Noeud *suivant;
+   Noeud *precedent;
+   <span class="dt">int</span> donnee;
+}
+
+<span class="kw">typedef</span> Noeud *Liste;</code></pre></div>
+<p>La liste doublement cha&#238;n&#233;e est notamment la base de la <a href="/pages/algo/structure/file.html">file</a> et permet une impl&#233;mentation efficace de cette structure.</p>
+<h3 id="liste-cha&#238;n&#233;e-circulaire">Liste cha&#238;n&#233;e circulaire</h3>
+<p>La liste cha&#238;n&#233;e circulaire (<em>circular linked list</em>) est une liste cha&#238;n&#233;e ne poss&#233;dant pas de fin. En effet, le pointeur de fin de liste pointe vers le d&#233;but de la liste formant ainsi un cycle.</p>
+<div class="figure">
+<img src="/static/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png" alt="Exemple de repr&#233;sentation d&#39;une liste cha&#238;n&#233;e circulaire" />
+<p class="caption">Exemple de repr&#233;sentation d'une liste cha&#238;n&#233;e circulaire</p>
+</div>
+<p>On peut utiliser cette variante de la liste cha&#238;n&#233;e pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jeu de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste cha&#238;n&#233;e circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.</p>
+<h3 id="liste-doublement-cha&#238;n&#233;e-circulaire">Liste doublement cha&#238;n&#233;e circulaire</h3>
+<p>Une liste doublement cha&#238;n&#233;e circulaire (<em>doubly circular linked list</em>) est simplement un regroupement des deux derni&#232;res variantes.</p>
+<div class="figure">
+<img src="/static/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png" alt="Exemple de repr&#233;sentation d&#39;une liste doublement cha&#238;n&#233;e circulaire" />
+<p class="caption">Exemple de repr&#233;sentation d'une liste doublement cha&#238;n&#233;e circulaire</p>
+</div>
+<h3 id="dautres-variantes-plus-complexes">D'autres variantes plus complexes</h3>
+<p>En plus de ces variantes assez &quot;courantes&quot;, on peut retrouver d'autres variantes plus compliqu&#233;es mais qui peuvent toujours servir :</p>
+<ul>
+<li><strong>Liste &#224; enjambements</strong> (<em>skip list</em>) : ensemble de listes cha&#238;n&#233;es stock&#233;es &quot;parall&#232;lement&quot; et qui permet de sauter des &#233;l&#233;ments en fonction de nos besoins, pratique pour trier et rechercher (<a href="https://en.wikipedia.org/wiki/Skip_list" class="uri">https://en.wikipedia.org/wiki/Skip_list</a>).</li>
+<li><strong>Cha&#238;nage XOR</strong> (<em>XOR linked list</em>) : permet de diminuer le co&#251;t en m&#233;moire des listes doublements cha&#238;n&#233;es gr&#226;ce &#224; l'op&#233;ration bit &#224; bit XOR (<a href="https://en.wikipedia.org/wiki/XOR_linked_list" class="uri">https://en.wikipedia.org/wiki/XOR_linked_list</a>).</li>
+<li><strong>Liste cha&#238;n&#233;e d&#233;roul&#233;e</strong> (<em>unrolled linked list</em>) : cette variante stocke plusieurs &#233;l&#233;ments au lieu d'un seul par n&#339;ud, et fait office de compromis entre un tableau et une liste que l'on peut modifier pour qu'elle se rapproche plus de l'un que de l'autre selon les besoins (<a href="https://en.wikipedia.org/wiki/Unrolled_linked_list" class="uri">https://en.wikipedia.org/wiki/Unrolled_linked_list</a>).</li>
+<li><strong>VList</strong> : comme la pr&#233;c&#233;dente, c'est un compromis qui stocke des tableaux d'&#233;l&#233;ments plut&#244;t qu'un unique &#233;l&#233;ment dans chaque n&#339;ud, except&#233; que cette fois ci les tableaux sont de tailles variables contrairement &#224; une liste cha&#238;n&#233;e d&#233;roul&#233;e o&#249; les tableaux sont tous de la m&#234;me taille (<a href="https://en.wikipedia.org/wiki/VList" class="uri">https://en.wikipedia.org/wiki/VList</a>).</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>La liste cha&#238;n&#233;e est donc une structure de donn&#233;es tr&#232;s souple, et efficace pour ins&#233;rer et supprimer des &#233;l&#233;ments simplement. De plus, on peut la modifier afin de cr&#233;er de nouvelles structures de donn&#233;es diff&#233;rentes comme la liste doublement cha&#238;n&#233;e, la liste cha&#238;n&#233;e circulaire, mais aussi pour cr&#233;er une <a href="/pages/algo/structure/pile.html">pile</a> ou encore une <a href="/pages/algo/structure/file.html">file</a>.</p>
+<p>Les listes cha&#238;n&#233;es sont aussi la base de structures de donn&#233;es plus complexes comme les <a href="/pages/algo/structure/arbre.html">arbres</a>, les <a href="/pages/algo/structure/graphe.html">graphes</a>, les <a href="/pages/algo/structure/table_hachage.html">tables de hachage</a> et de nombreuses variantes de listes cha&#238;n&#233;es existent.</p>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

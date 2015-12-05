@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Temporary css ---- */
+
+.pret {
+   background-color: #00CC00;
+   display: inline;
+}
+
+.relire {
+   background-color: #FF9900;
+   display: inline;
+}
+
+.encours {
+   background-color: #3366CC;
+   display: inline;
+}
+
+.faire {
+   background-color: #FF0000;
+   display: inline;
+}
+</style>
+      <!---- ---->
+
+      <title>NandToTetris - NapNac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/pages/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/pages/">Accueil</a></li>
+            <li><a href="/pages/articles.html">Articles</a></li>
+            <li><a href="/pages/projets.html">Projets</a></li>
+            <li><a href="/pages/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="nandtotetris">NandToTetris</h1></a>
+<p>Date du projet : f&#233;vrier 2014 &#224; avril 2014<br />
+<em>Modifi&#233; le : 03/12/2015</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#quest-ce-que-nandtotetris">Qu'est-ce que NandToTetris ?</a></li>
+<li><a href="#le-langage-jack">Le langage Jack</a></li>
+<li><a href="#lien">Lien</a></li>
+<li><a href="#quelques-astuces...">Quelques astuces...</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Ce projet est celui que je consid&#232;re comme &#233;tant mon premier gros projet puisqu'il m&#8217;aura fallu plusieurs mois pour le finir.</p>
+<h2 id="quest-ce-que-nandtotetris">Qu'est-ce que NandToTetris ?</h2>
+<p>NandToTetris signifie litt&#233;ralement <em>&quot;De la porte NAND (NON ET) &#224; Tetris&quot;</em>, on va donc partir d'une <a href="https://fr.wikipedia.org/wiki/Fonction_logique">porte logique</a> pour construire un ordinateur fonctionnel et complet afin de pouvoir programmer dessus et &#233;ventuellement r&#233;aliser des jeux comme Tetris.</p>
+<p>Le projet consiste donc &#224; cr&#233;er :</p>
+<ul>
+<li>un <strong>ordinateur</strong> capable d'&#234;tre &#233;mul&#233;.</li>
+<li>un <strong>compilateur</strong> complet pour le langage Jack (le langage de base de l&#8217;ordinateur).</li>
+<li>un <strong>mini-OS</strong> nous permettant d'avoir des appels syst&#232;mes basiques.</li>
+</ul>
+<p>J&#8217;ai r&#233;alis&#233; ce projet &#224; l&#8217;aide du livre <em>The Elements of Computing Systems : Building a Modern Computer from First Principles</em>. Ce livre fournit des &#233;mulateurs, et des fichiers de tests pour la cr&#233;ation de ce projet, ainsi que les explications n&#233;cessaires.</p>
+<h3 id="lordinateur">L'ordinateur</h3>
+<p>L'ordinateur est bas&#233; sur une architecture 16 bits de <a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">von Neumann</a>, et peut accueillir un clavier et un &#233;cran de 256&#215;512 en noir et blanc.</p>
+<p>Pour la cr&#233;ation de l'ordinateur, on va donc partir de la porte logique <a href="https://fr.wikipedia.org/wiki/Fonction_NON-ET">NAND</a> qui est notre &#233;l&#233;ment de base (elle est int&#233;gr&#233;e directement dans l'&#233;mulateur ce qui nous permet de l'utiliser avec les autres &#233;l&#233;ments sans probl&#232;me). Gr&#226;ce &#224; cette porte logique, on peut en cr&#233;er d'autres comme <a href="https://fr.wikipedia.org/wiki/Fonction_ET">AND</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_OU">OR</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_NON">NOT</a>, etc. et &#224; partir de ces portes on peut construire l&#8217;<a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique">ALU</a>. Pour la <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">RAM</a> de l'ordinateur, il faut la construire &#233;tape par &#233;tape et augmenter progressivement en capacit&#233; de stockage. On commence par la construction d'un <a href="https://fr.wikipedia.org/wiki/Bascule_%28circuit_logique%29">flip-flop</a> qui nous permet de r&#233;aliser un <a href="https://fr.wikipedia.org/wiki/Bit">bit</a>, puis un registre et enfin la RAM compl&#232;te. Le <a href="https://fr.wikipedia.org/wiki/Processeur">CPU</a> vient en dernier et ach&#232;ve la cr&#233;ation de notre ordinateur.</p>
+<p>Toutes les parties de l&#8217;ordinateur sont cr&#233;&#233;es &#224; partir de fichiers .hdl qui peuvent &#234;tre simul&#233;s &#224; l&#8217;aide du CPU Emulator fournit par le livre.</p>
+<h3 id="le-compilateur">Le compilateur</h3>
+<p>Ensuite on cr&#233;e le compilateur (&#224; partir de n&#8217;importe quel langage, j&#8217;ai choisi le C) qui est constitu&#233; d&#8217;une <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle">machine virtuelle</a>.</p>
+<div class="figure">
+<img src="/static/img/projets/nandtotetris/schema_compilateur.png" alt="Fonctionnement du compilateur" />
+<p class="caption">Fonctionnement du compilateur</p>
+</div>
+<p>Il est d&#233;compos&#233; en 3 programmes :</p>
+<ul>
+<li><strong>Jack Analyzer</strong> : Ce programme nettoie les fichiers .jack (enl&#232;ve les commentaires, les espaces blancs inutiles etc.), puis il traduit pour chaque fichier .jack son &#233;quivalent en .vm (langage de la machine virtuelle).</li>
+<li><strong>VM Translator</strong> : Ce programme traduit tous les .vm en un seul fichier .asm (assembleur, langage de l&#8217;ordinateur).</li>
+<li><strong>Assembler</strong> : Ce programme traduit le fichier .asm en un seul fichier binaire .hack (ex&#233;cutable par l&#8217;ordinateur).</li>
+</ul>
+<p>L&#8217;int&#233;r&#234;t d&#8217;avoir une machine virtuelle est que si je veux par exemple ajouter un langage de programmation sur l&#8217;ordinateur, il me suffit de cr&#233;er un programme qui traduit du nouveau langage en langage de la machine virtuelle et donc je ne recode pas inutilement la partie VM Translator et Assembler.</p>
+<h3 id="le-mini-os">Le mini-OS</h3>
+<p>Enfin on cr&#233;e le mini-OS qui est plut&#244;t une librairie qui fournit des fonctions de bases et des appels syst&#232;mes pour le langage Jack. Le tout cod&#233; en Jack, contenant presque 50 appels syst&#232;mes r&#233;partis en 8 fichiers sources :</p>
+<ul>
+<li><strong>Math</strong> : Fonctions math&#233;matiques de base.</li>
+<li><strong>String</strong> : Cr&#233;e la classe String ainsi que plusieurs fonctions permettant de manipuler les cha&#238;nes de caract&#232;res.</li>
+<li><strong>Array</strong> : Cr&#233;e la classe Array.</li>
+<li><strong>Output</strong> : Permet d&#8217;afficher du texte, des nombres etc. sur l&#8217;&#233;cran.</li>
+<li><strong>Screen</strong> : Permet d&#8217;afficher des lignes, des rectangles, des cercles etc. sur l&#8217;&#233;cran.</li>
+<li><strong>Keyboard</strong> : Permet de lire sur l&#8217;entr&#233;e de l&#8217;ordinateur (le clavier) des nombres, des caract&#232;res, des cha&#238;nes etc.</li>
+<li><strong>Memory</strong> : Permet d&#8217;allouer et de d&#233;-allouer des objets et d&#233;finit quelques appels syst&#232;mes sur la m&#233;moire.</li>
+<li><strong>Sys</strong> : Fournit quelques appels syst&#232;mes sur l&#8217;ordinateur comme une fonction arr&#234;tant le programme en cours, une fonction en cas d&#8217;erreur, une fonction qui attends un certains nombres de millisecondes.</li>
+</ul>
+<h2 id="le-langage-jack">Le langage Jack</h2>
+<p>Le langage de programmation Jack est un langage simple orient&#233; objet dont vous pouvez trouver une description compl&#232;te ici : <a href="http://www.nand2tetris.org/09.php" class="uri">http://www.nand2tetris.org/09.php</a></p>
+<p>Un exemple de programme affichant &quot;Hello world !&quot; en Jack :</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">class</span> Main
+{
+   function <span class="dt">void</span> <span class="fu">main</span>()
+   {
+      <span class="kw">do</span> Output.<span class="fu">printString</span>(<span class="st">&quot;Hello world !&quot;</span>);
+      <span class="kw">do</span> Output.<span class="fu">println</span>();
+
+      <span class="kw">return</span> ;
+   }
+}</code></pre></div>
+<h2 id="lien">Lien</h2>
+<p>Le lien vers la page Github du projet : <a href="https://github.com/iTech-/NandToTetris" class="uri">https://github.com/iTech-/NandToTetris</a><br />
+Le site du livre : <a href="http://www.nand2tetris.org/" class="uri">http://www.nand2tetris.org/</a></p>
+<p>D'autres liens utiles &#224; propos du projet :</p>
+<ul>
+<li>L'int&#233;gralit&#233; du livre en format .pdf : <a href="http://www.nand2tetris.org/course.php" class="uri">http://www.nand2tetris.org/course.php</a></li>
+<li>Le livre en format paper : <a href="http://www.nand2tetris.org/book.php" class="uri">http://www.nand2tetris.org/book.php</a></li>
+<li>Tous les fichiers fournit avec le livre (&#233;mulateurs, fichiers tests etc.) : <a href="http://www.nand2tetris.org/software.php" class="uri">http://www.nand2tetris.org/software.php</a></li>
+</ul>
+<h2 id="quelques-astuces...">Quelques astuces...</h2>
+<p>J&#8217;aimerai finir sur quelques petites <em>astuces</em> que j&#8217;aurai bien aim&#233; conna&#238;tre quand j&#8217;ai commenc&#233; ce projet. Il faut savoir que j'ai tir&#233; ces astuces du projet en soi, mais ces derni&#232;res sont applicables dans de nombreux autres domaines :</p>
+<ul>
+<li>Si vous ne comprenez pas un point dans un chapitre, <strong>ne sautez surtout pas ce point</strong>. C&#8217;est sans doute la pire erreur que j&#8217;ai pu faire, si vous ne comprenez pas quelque chose, relisez le passage l&#8217;expliquant, faites des tests de votre c&#244;t&#233;, cherchez sur internet etc. jusqu&#8217;&#224; avoir compris car sinon vous ne pourrez pas impl&#233;menter la partie concern&#233;e et vous perdrez bien plus de temps que si vous aviez cherch&#233; &#224; comprendre d&#232;s le d&#233;part.</li>
+<li><strong>Prenez votre temps</strong>, j&#8217;ai du lire au moins 2-3 fois chaque chapitre pour &#234;tre s&#251;r d&#8217;avoir bien tout compris.</li>
+<li><strong>N&#8217;abandonnez pas !</strong> &#199;a aura &#233;t&#233; assez difficile pour moi de finir ce projet, mais je n&#8217;ai pas abandonn&#233; et j&#8217;ai finalement r&#233;ussi, vous bloquerai s&#251;rement quelque part &#224; un moment mais r&#233;fl&#233;chissez et vous trouverez &#224; votre mani&#232;re la solution. Pour la petite anecdote, j&#8217;ai pass&#233; presque deux semaines sur le VM Translator &#224; cause d&#8217;un probl&#232;me que je n&#8217;arrivais pas &#224; fixer.</li>
+</ul>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

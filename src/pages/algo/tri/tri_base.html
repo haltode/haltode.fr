@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Temporary css ---- */
+
+.pret {
+   background-color: #00CC00;
+   display: inline;
+}
+
+.relire {
+   background-color: #FF9900;
+   display: inline;
+}
+
+.encours {
+   background-color: #3366CC;
+   display: inline;
+}
+
+.faire {
+   background-color: #FF0000;
+   display: inline;
+}
+</style>
+      <!---- ---->
+
+      <title>Tri par base - NapNac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/pages/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/pages/">Accueil</a></li>
+            <li><a href="/pages/articles.html">Articles</a></li>
+            <li><a href="/pages/projets.html">Projets</a></li>
+            <li><a href="/pages/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="tri-par-base">Tri par base</h1></a>
+<p>Publi&#233; le :<br />
+<em>Modifi&#233; le :</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#complexit&#233;">Complexit&#233;</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Le tri par base (<em>radix sort</em> en anglais) est un algorithme de tri ayant une complexit&#233; algorithmique lin&#233;aire, il &#233;tait utilis&#233; par les trieuses de <a href="https://en.wikipedia.org/wiki/Punched_card">cartes perfor&#233;es</a> et l&#8217;est encore aujourd&#8217;hui dans les ordinateurs modernes. Cet algorithme doit fonctionner &#224; l&#8217;aide d&#8217;un autre algorithme de tri qui doit &#234;tre obligatoirement <a href="https://en.wikipedia.org/wiki/Punched_card">stable</a>.</p>
+<h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
+<p>L&#8217;algorithme est simple, on va trier successivement (&#224; l&#8217;aide d&#8217;un algorithme de tri stable) les nombres donn&#233;s en entr&#233;e en commen&#231;ant par le chiffre moins significatif de chaque nombre.</p>
+<p>C&#8217;est-&#224;-dire que l&#8217;on va trier tout d&#8217;abord les nombres en fonction du chiffre de l&#8217;unit&#233;, puis trier de nouveau en fonction du chiffre des dizaines, et ainsi de suite jusqu&#8217;&#224; atteindre le nombre maximum de chiffre contenu dans un nombre.</p>
+<p>L&#8217;ordre de tri est d&#233;fini dans l&#8217;algorithme de tri utilis&#233; et non dans le tri par base en lui m&#234;me.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Soit le tableau suivant que l&#8217;on souhaite trier dans l&#8217;ordre croissant en utilisant l&#8217;algorithme du tri par base : 56, 87, 2, 36, 74, 19.</p>
+<p>Tout d&#8217;abord, on remarque qu&#8217;il y a au maximum deux chiffres par nombre et que par cons&#233;quent on n&#8217;utilisera notre algorithme de tri stable seulement deux fois. On commence donc par trier cette suite de nombre en fonction du chiffre des unit&#233;s, puis on recommence l'op&#233;ration sur le chiffre des dizaines :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">D&#233;but</th>
+<th align="right">1er tour</th>
+<th align="right">2&#232;me tour</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">56</td>
+<td align="right"><strong>2</strong></td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">87</td>
+<td align="right">7<strong>4</strong></td>
+<td align="right"><strong>1</strong>9</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">5<strong>6</strong></td>
+<td align="right"><strong>3</strong>6</td>
+</tr>
+<tr class="even">
+<td align="right">36</td>
+<td align="right">3<strong>6</strong></td>
+<td align="right"><strong>5</strong>6</td>
+</tr>
+<tr class="odd">
+<td align="right">74</td>
+<td align="right">8<strong>7</strong></td>
+<td align="right"><strong>7</strong>4</td>
+</tr>
+<tr class="even">
+<td align="right">19</td>
+<td align="right">1<strong>9</strong></td>
+<td align="right"><strong>8</strong>7</td>
+</tr>
+</tbody>
+</table>
+<p>On atteint le nombre maximum de chiffre, notre tableau est donc tri&#233; :</p>
+<p>2, 19, 36, 56, 74, 87.</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du tri par base :</p>
+<pre class="nohighlight"><code>triParBase :
+
+   Pour chaque chiffre possible
+      Trier Tableau en fonction du chiffre i</code></pre>
+<p>Cela peut paraitre assez &#233;trange d'utiliser un autre algorithme de tri dans un algorithme de tri, mais si l'on consid&#232;re cet autre algorithme comme le <a href="/pages/algo/tri/tri_denombrement.html">tri par d&#233;nombrement</a> on peut ainsi pallier un des probl&#232;mes de ce tri au niveau de la m&#233;moire utilis&#233;e. Il va cependant nous falloir modifier l&#233;g&#232;rement notre impl&#233;mentation du tri par d&#233;nombrement car la notion de stabilit&#233; pour ce tri n'a pas vraiment de sens puisqu'on utilise des effectifs sans lien r&#233;el avec notre tableau.</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Voici le lien vers une impl&#233;mentation en C du tri par base :</p>
+<p>main.c :</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tri par base est donc un algorithme de tri rapide, sur des nombres ne comportant pas beaucoup de chiffres, de plus il se base sur un autre algorithme de tri stable pour fonctionner.</p>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

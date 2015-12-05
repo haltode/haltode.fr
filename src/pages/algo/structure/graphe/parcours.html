@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Temporary css ---- */
+
+.pret {
+   background-color: #00CC00;
+   display: inline;
+}
+
+.relire {
+   background-color: #FF9900;
+   display: inline;
+}
+
+.encours {
+   background-color: #3366CC;
+   display: inline;
+}
+
+.faire {
+   background-color: #FF0000;
+   display: inline;
+}
+</style>
+      <!---- ---->
+
+      <title>Parcours d'un graphe - NapNac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/pages/">
+            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/pages/">Accueil</a></li>
+            <li><a href="/pages/articles.html">Articles</a></li>
+            <li><a href="/pages/projets.html">Projets</a></li>
+            <li><a href="/pages/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="parcours-dun-graphe">Parcours d'un graphe</h1></a>
+<p>Publi&#233; le :<br />
+<em>Modifi&#233; le : 03/12/2015</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#le-parcours-en-profondeur">Le parcours en profondeur</a></li>
+<li><a href="#le-parcours-en-largeur">Le parcours en largeur</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Le parcours d'un <a href="/pages/algo/structure/graphe.html">graphe</a> est une op&#233;ration essentielle &#224; conna&#238;tre &#224; propos de cette structure. Il est fondamental de maitriser les diff&#233;rents algorithmes de parcours de graphe, ainsi que leur application et surtout savoir quand les utiliser en fonction de la situation.</p>
+<h2 id="le-parcours-en-profondeur">Le parcours en profondeur</h2>
+<p>Vous vous trouvez dans un labyrinthe contenant de nombreux chemins possibles, et vous cherchez la sortie alors que vous ne connaissez aucunes indications sur ce labyrinthe. Tout d'abord, on peut repr&#233;senter notre labyrinthe comme un graphe dit <em>implicite</em>, qui sera non pond&#233;r&#233; (chaque arc aura alors une distance de <em>1</em> unit&#233;). En effet, chaque intersection sera repr&#233;sent&#233;e par un n&#339;ud du graphe, et chaque chemin par un arc. L'entr&#233;e et la sortie du labyrinthe sont juste de simples n&#339;uds distincts du graphe, et le fait de trouver la sortie du labyrinthe, revient &#224; trouver un chemin reliant le n&#339;ud d'entr&#233;e au n&#339;ud de sortie.</p>
+<p>Vu qu'on ne connait rien sur ce labyrinthe, il est impossible de deviner le chemin nous permettant d'arriver &#224; la sortie puisque &#231;a pourrait &#234;tre n'importe lequel du graphe. On peut donc tout simplement essayer chacun des chemins jusqu'&#224; trouver le bon. Ce parcours est alors qualifi&#233; de : parcours en profondeur.</p>
+<h3 id="principe">Principe</h3>
+<p>Le parcours en profondeur (ou plus commun&#233;ment <em>DFS</em> pour <em>Depth First Search</em>) permet de parcourir un graphe en utilisant le principe de la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursivit&#233;</a>. Ce parcours visite les n&#339;uds du graphe les plus &quot;profonds&quot; en premier (c'est-&#224;-dire les plus &#233;loign&#233;s du n&#339;ud de d&#233;part), avant de &quot;remonter&quot; progressivement dans le graphe.</p>
+<p>Dans notre cas du labyrinthe, on essaie un chemin jusqu'&#224; &#234;tre bloqu&#233;, puis on revient &#224; la derni&#232;re intersection, on continue jusqu'&#224; &#234;tre bloqu&#233;, on revient &#224; la derni&#232;re intersection, etc. jusqu'&#224; tomber sur la sortie.</p>
+<h3 id="exemple">Exemple</h3>
+<p>La meilleure mani&#232;re de comprendre ce type de parcours est de le visualiser :</p>
+<div class="figure">
+<img src="/static/img/algo/structure/graphe/dfs/exemple_dfs.png" alt="Exemple de DFS sur un graphe" />
+<p class="caption">Exemple de DFS sur un graphe</p>
+</div>
+<p>Ce graphe repr&#233;sente notre labyrinthe, et chaque n&#339;ud correspond &#224; l'ordre de parcours du DFS (la fl&#232;che montre uniquement comment agit un parcours en profondeur en entier sur notre graphe).</p>
+<p>Si par exemple notre entr&#233;e de labyrinthe est le n&#339;ud 1, et que notre sortie est le n&#339;ud 6, on parcourra avant de trouver la sortie, les n&#339;uds 2, 3, 4, et 5.</p>
+<p>Cependant sur un graphe, on peut effectuer un DFS de diff&#233;rentes fa&#231;ons en fonction de l'ordre de visite des voisins. Par exemple, on aurait pu apr&#232;s le n&#339;ud 1 visiter le n&#339;ud 7, puis le 9, puis le 8, puis le 6, le 2, le 4, le 5, et enfin le 3. Ce parcours est bien un DFS, mais il est juste diff&#233;rent car on a choisi un autre ordre pour parcourir les voisins des n&#339;uds rencontr&#233;s.</p>
+<h3 id="pseudo-code">Pseudo-code</h3>
+<p>On utilise le principe de la r&#233;cursivit&#233; pour d&#233;finir notre parcours en profondeur :</p>
+<pre class="nohighlight"><code>DFS (noeud) :
+  
+   Marquer le n&#339;ud comme visit&#233;
+
+   Pour chaque voisin du n&#339;ud pass&#233; en param&#232;tre
+      Si le voisin n&#39;est pas marqu&#233; visit&#233;
+         DFS(voisin)</code></pre>
+<h3 id="complexit&#233;">Complexit&#233;</h3>
+<p>Dans le pire des cas, si notre sortie est le dernier n&#339;ud que l'on visite, notre algorithme va devoir parcourir les <em>M</em> arcs du graphe, on a donc une complexit&#233; en temps lin&#233;aire de <em>O(M)</em>.</p>
+<h3 id="impl&#233;mentation">Impl&#233;mentation</h3>
+<p>On peut impl&#233;menter un DFS de deux mani&#232;res diff&#233;rentes, m&#234;me si on a plut&#244;t tendance &#224; le coder de mani&#232;re r&#233;cursive car le code est plus court et plus intuitif.</p>
+<h4 id="r&#233;cursif">R&#233;cursif</h4>
+<p>Une impl&#233;mentation r&#233;cursive en C++ (j'utilise le C++ afin d'avoir les <code>vector</code> pour repr&#233;senter notre graphe) :</p>
+<a href="javascript:toggle_visibility('dfs_recursif.cpp');">dfs_recursif.cpp</a>
+<div id="dfs_recursif.cpp" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
+<span class="ot">#include &lt;vector&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="dt">const</span> <span class="dt">int</span> NB_NOEUD_MAX = <span class="dv">1000</span>;
+
+vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
+<span class="dt">bool</span> dejaVu[NB_NOEUD_MAX];
+
+<span class="dt">void</span> DFS(<span class="dt">int</span> noeud)
+{
+   printf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, noeud);
+
+   dejaVu[noeud] = <span class="kw">true</span>;
+
+   <span class="dt">int</span> iVoisin;
+   <span class="kw">for</span>(iVoisin = <span class="dv">0</span>; iVoisin &lt; graphe[noeud].size(); ++iVoisin)
+      <span class="kw">if</span>(!dejaVu[graphe[noeud][iVoisin]])
+         DFS(graphe[noeud][iVoisin]);
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> nbArc;
+   <span class="dt">int</span> iArc;
+
+   scanf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;nbArc);
+   <span class="kw">for</span>(iArc = <span class="dv">0</span>; iArc &lt; nbArc; ++iArc) {
+      <span class="dt">int</span> noeud1, noeud2;       
+      scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;noeud1, &amp;noeud2);
+      graphe[noeud1].push_back(noeud2);
+   }
+   
+   DFS(<span class="dv">1</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Si en entr&#233;e on donne notre graphe (celui de l'exemple et sous forme d'une liste d'arcs) :</p>
+<pre class="in"><code>8
+1 2
+1 6
+1 7
+2 3
+2 4
+4 5
+7 8
+7 9</code></pre>
+<p>On obtient bien en sortie :</p>
+<pre><code>$ ./recursif &lt; test01.in
+1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre>
+<p>Et pour vous montrer que l'ordre d'un parcours en profondeur peut changer selon l'ordre des voisins visit&#233;s, prenons le m&#234;me graphe mais avec un ordre diff&#233;rent dans sa description (l'ordre inverse) :</p>
+<pre class="in"><code>8
+1 7
+1 6
+1 2
+7 9
+7 8
+2 4
+2 3
+4 5</code></pre>
+<p>En sortie cette fois on a :</p>
+<pre><code>$ ./recursif &lt; test02.in
+1
+7
+9
+8
+6
+2
+4
+5
+3</code></pre>
+<h4 id="it&#233;ratif">It&#233;ratif</h4>
+<p>Il est rare d'impl&#233;menter de fa&#231;on it&#233;rative un parcours en profondeur, mais cela peut &#234;tre utile pour ne pas faire exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appels</a> &#224; cause des nombreux appels r&#233;cursifs imbriqu&#233;s provoqu&#233;s par notre derni&#232;re impl&#233;mentation.</p>
+<p>Pour passer de la version r&#233;cursive &#224; la version it&#233;rative, on utilise simplement une <a href="/pages/algo/structure/pile.html">pile</a> afin de &quot;simuler&quot; la pile d'appel. En effet, si on empile les voisins du n&#339;ud actuel au lieu de faire un appel r&#233;cursif dessus, on gardera un parcours en profondeur car la pile d'appel reste n&#233;anmoins une pile avec quelques informations suppl&#233;mentaires. Pour vous convaincre je vous invite &#224; essayer de faire un exemple, en empilant les voisins au lieu de faire un appel r&#233;cursif, vous verrez que le principe du parcours en profondeur est bien le m&#234;me avec une pile.</p>
+<a href="javascript:toggle_visibility('dfs_iteratif.cpp');">dfs_iteratif.cpp</a>
+<div id="dfs_iteratif.cpp" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
+<span class="ot">#include &lt;vector&gt;</span>
+<span class="ot">#include &lt;stack&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="dt">const</span> <span class="dt">int</span> NB_NOEUD_MAX = <span class="dv">1000</span>;
+
+vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
+<span class="dt">bool</span> dejaVu[NB_NOEUD_MAX];
+
+<span class="dt">void</span> DFS(<span class="dt">int</span> debut)
+{
+   stack &lt;<span class="dt">int</span>&gt; pile;
+   <span class="dt">int</span> actuel;
+   <span class="dt">int</span> iVoisin;
+
+   pile.push(debut);
+
+   <span class="kw">while</span>(!pile.empty()) {
+      actuel = pile.top();
+      pile.pop();
+
+      printf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, actuel);
+
+      dejaVu[actuel] = <span class="kw">true</span>;
+
+      <span class="kw">for</span>(iVoisin = <span class="dv">0</span>; iVoisin &lt; graphe[actuel].size(); ++iVoisin)
+         <span class="kw">if</span>(!dejaVu[graphe[actuel][iVoisin]])
+            pile.push(graphe[actuel][iVoisin]);
+   }
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> nbArc;
+   <span class="dt">int</span> iArc;
+
+   scanf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;nbArc);
+   <span class="kw">for</span>(iArc = <span class="dv">0</span>; iArc &lt; nbArc; ++iArc) {
+      <span class="dt">int</span> noeud1, noeud2;       
+      scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;noeud1, &amp;noeud2);
+      graphe[noeud1].push_back(noeud2);
+   }
+   
+   DFS(<span class="dv">1</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>En entr&#233;e :</p>
+<pre class="in"><code>8
+1 2
+1 6
+1 7
+2 3
+2 4
+4 5
+7 8
+7 9</code></pre>
+<p>Et la sortie affich&#233;e :</p>
+<pre><code>$ ./iteratif &lt; test01.in
+1
+7
+9
+8
+6
+2
+4
+5
+3</code></pre>
+<p>Et si on donne notre entr&#233;e modifi&#233;e (&#224; l'envers) :</p>
+<pre class="in"><code>8
+1 7
+1 6
+1 2
+7 9
+7 8
+2 4
+2 3
+4 5</code></pre>
+<p>On a en sortie cette fois :</p>
+<pre><code>$ ./iteratif &lt; test02.in
+1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre>
+<p>Vous constatez donc que la pile &quot;inverse&quot; l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin d&#232;s qu'on en a trouv&#233; un non visit&#233; (comme le fait la version r&#233;cursive), mais on les empile tous, et ils vont donc se superposer (ce qui va &quot;inverser&quot; l'ordre car c'est le principe d'une pile : le dernier arriv&#233;, le premier sorti).</p>
+<h3 id="utilisation">Utilisation</h3>
+<h2 id="le-parcours-en-largeur">Le parcours en largeur</h2>
+<h3 id="principe-1">Principe</h3>
+<h3 id="exemple-1">Exemple</h3>
+<h3 id="pseudo-code-1">Pseudo-code</h3>
+<h3 id="complexit&#233;-1">Complexit&#233;</h3>
+<h3 id="impl&#233;mentation-1">Impl&#233;mentation</h3>
+<h3 id="utilisation-1">Utilisation</h3>
+<h2 id="conclusion">Conclusion</h2>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
+         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         title="Non à la loi renseignement" height="60" width="468" /></a></p>
+      </footer>
+   </body>
+</html>

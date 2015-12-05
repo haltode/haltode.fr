@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function remove_old_files {
+   find src/pages -name "*.html" -type f -delete
+}
+
 function generate_css {
    echo "<style>" > src/static/css/layout.css.html
    cat src/static/css/layout.css >> src/static/css/layout.css.html
@@ -58,44 +62,45 @@ function convert {
    # This will be the core file, but we need to add the header and the footer to
    # it so it can be the entire .html file
    sed "3d" copy.md | pandoc --ascii -o "$(basename ${1%.md}.tmp.html)"
-   cat src/templates/header.html $(basename ${1%.md}.tmp.html) src/templates/footer.html > src/$(basename ${1%.md}.html)
+   cat src/templates/header.html $(basename ${1%.md}.tmp.html) src/templates/footer.html > src/pages/$(basename ${1%.md}.html)
    rm $(basename ${1%.md}.tmp.html)
 
    # Insert the page's title
    title=`sed -n "1p" copy.md`
-   sed -i "s/TITLE/$title - NapNac/g" src/$(basename ${1%.md}.html)
+   sed -i "s/TITLE/$title - NapNac/g" src/pages/$(basename ${1%.md}.html)
 
    # Insert inline CSS/JS
-   sed -i "/CSS/r src/static/css/layout.css.html" src/$(basename ${1%.md}.html)
-   sed -i "/Javascript/r src/static/js/script.js.html" src/$(basename ${1%.md}.html)
+   sed -i "/CSS/r src/static/css/layout.css.html" src/pages/$(basename ${1%.md}.html)
+   sed -i "/Javascript/r src/static/js/script.js.html" src/pages/$(basename ${1%.md}.html)
 
    # Transform title into a link to the actual page
-   sed -i "s/<h1 id=/<a href=\"\"><h1 id=/" src/$(basename ${1%.md}.html)
-   sed -i "s/<\/h1>/<\/h1><\/a>/" src/$(basename ${1%.md}.html)
+   sed -i "s/<h1 id=/<a href=\"\"><h1 id=/" src/pages/$(basename ${1%.md}.html)
+   sed -i "s/<\/h1>/<\/h1><\/a>/" src/pages/$(basename ${1%.md}.html)
 
    # Insert summary of the article (h2 links)
-   if grep -q "<em>Modifi&#233; le" src/$(basename ${1%.md}.html); then
-      sed -i "/<em>Modifi&#233; le/a <ul id=\"summary\">" src/$(basename ${1%.md}.html)
+   if grep -q "<em>Modifi&#233; le" src/pages/$(basename ${1%.md}.html); then
+      sed -i "/<em>Modifi&#233; le/a <ul id=\"summary\">" src/pages/$(basename ${1%.md}.html)
    else
-      sed -i "/<h1 id=/a <ul id=\"summary\">" src/$(basename ${1%.md}.html)
+      sed -i "/<h1 id=/a <ul id=\"summary\">" src/pages/$(basename ${1%.md}.html)
    fi
-   sed -i "/<ul id=\"summary\">/a </ul>" src/$(basename ${1%.md}.html)
-   if grep -q "<h2 " src/$(basename ${1%.md}.html); then
-      grep "<h2 " src/$(basename ${1%.md}.html) > summary.tmp
+   sed -i "/<ul id=\"summary\">/a </ul>" src/pages/$(basename ${1%.md}.html)
+   if grep -q "<h2 " src/pages/$(basename ${1%.md}.html); then
+      grep "<h2 " src/pages/$(basename ${1%.md}.html) > summary.tmp
       sed -i "s/<h2 id=\"/<li><a href=\"\#/g" summary.tmp
       sed -i "s/<\/h.>/<\/a><\/li>/g" summary.tmp
-      sed -i "/<ul id=\"summary\">/r./summary.tmp" src/$(basename ${1%.md}.html)
+      sed -i "/<ul id=\"summary\">/r./summary.tmp" src/pages/$(basename ${1%.md}.html)
       rm summary.tmp
    fi
 
-   # Move the converted file to its actual location in src/
+   # Move the converted file to its actual location in src/pages/
    location=`sed -n "3p" copy.md`
-   mv -v src/$(basename ${1%.md}.html) src/$location
+   mv -v src/pages/$(basename ${1%.md}.html) src/pages/$location
 
    rm copy.md
 }
 
 
+remove_old_files
 generate_css
 generate_js
 

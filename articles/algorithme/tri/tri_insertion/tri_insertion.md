@@ -74,7 +74,7 @@ main.c :
 
 ### Utiliser des listes chaînées
 
-Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu'on peut utiliser des [listes chaînées](/algo/structure/liste_chainee.html) afin de contrer ce problème. Les listes chaînées permettent d'insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.
+Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu'on peut utiliser des [listes chaînées](/pages/algo/structure/liste_chainee.html) afin de contrer ce problème. Les listes chaînées permettent d'insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.
 
 ### Tri Shell
 
@@ -108,7 +108,7 @@ Malheureusement, le tri Shell reste avec une complexité quadratique dans le pir
 
 ### Dichotomie
 
-Le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la [dichotomie](/algo/recherche/dichotomie.html) (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).
+Le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la [dichotomie](/pages/algo/recherche/dichotomie.html) (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).
 
 Cette recherche consiste à utiliser la méthode du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : *début partie triée* ->  *fin partie triée* :
 

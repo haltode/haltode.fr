@@ -67,7 +67,7 @@ La complexité en mémoire est en *O(N²)* (avec *N* le nombre de nœuds du grap
 
 ### Liste d'adjacence
 
-On peut utiliser une variante de la matrice d'adjacence afin d'économiser de la mémoire (mais cette représentation requiert un temps en *O(N)* pour savoir si deux nœuds sont voisins ou pour connaître la pondération d'un arc). Cette solution consiste à utiliser un tableau de [listes chaînées](/algo/structure/liste_chainee.html), chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).
+On peut utiliser une variante de la matrice d'adjacence afin d'économiser de la mémoire (mais cette représentation requiert un temps en *O(N)* pour savoir si deux nœuds sont voisins ou pour connaître la pondération d'un arc). Cette solution consiste à utiliser un tableau de [listes chaînées](/pages/algo/structure/liste_chainee.html), chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).
 
 Voici par exemple la liste d'adjacence qui représente de nouveau le premier graphe de l'article :
 
@@ -108,8 +108,8 @@ Une liste d'arcs est plus rarement utilisée pour représenter un graphe, mais p
 
 Afin de parcourir notre graphe, on peut utiliser deux algorithmes différents :
 
-- [Parcours en profondeur](/algo/structure/graphe/parcours.html#le-parcours-en-profondeur) : DFS (*Depth First Search*)
-- [Parcours en largeur](/algo/structure/graphe/parcours.html#le-parcours-en-largeur) : BFS (*Breadth First Search*)
+- [Parcours en profondeur](/pages/algo/structure/graphe/parcours.html#le-parcours-en-profondeur) : DFS (*Depth First Search*)
+- [Parcours en largeur](/pages/algo/structure/graphe/parcours.html#le-parcours-en-largeur) : BFS (*Breadth First Search*)
 
 ## Opérations utiles sur un graphe
 
@@ -119,7 +119,7 @@ Voici une liste non exhaustive d'opérations utiles lorsqu'on manipule un graphe
 - Tri topologique
 - Arc essentiel
 - Circuit eulérien
-- [Recherche du plus court chemin](/algo/structure/graphe/plus_court_chemin.html)
+- [Recherche du plus court chemin](/pages/algo/structure/graphe/plus_court_chemin.html)
 - Arbre couvrant minimal
 - Composante fortement connexe
 

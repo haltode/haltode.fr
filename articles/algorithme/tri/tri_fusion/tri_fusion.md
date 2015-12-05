@@ -94,10 +94,10 @@ main.c :
 
 ### Liste chaînée
 
-Les [listes chaînées](/algo/structure/liste_chainee.html) sont effectivement un bon moyen d'implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.
+Les [listes chaînées](/pages/algo/structure/liste_chainee.html) sont effectivement un bon moyen d'implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.
 
 La complexité en temps reste la même, mais la complexité en mémoire est améliorée.
 
 ## Conclusion
 
-Le tri fusion est donc un algorithme de tri efficace, qui a pour complexité *O(N \* log N)*. Cependant, cet algorithme est finalement peu utilisé en pratique à cause du [tri rapide](/algo/tri/tri_rapide.html) qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilité d'améliorations, etc.).
+Le tri fusion est donc un algorithme de tri efficace, qui a pour complexité *O(N \* log N)*. Cependant, cet algorithme est finalement peu utilisé en pratique à cause du [tri rapide](/pages/algo/tri/tri_rapide.html) qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilité d'améliorations, etc.).
