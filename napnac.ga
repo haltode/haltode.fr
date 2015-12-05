@@ -10,12 +10,11 @@ server {
    root /home/pi/NapNac/napnac.ga/src/;
    index pages/accueil.html;
    charset utf-8;
-
+   
    # First attempt to serve request as file, then
    # as directory, then fall back to displaying a 404
    location / {
-      try_files $uri $uri/ =404;
-      rewrite ^/pages(.*)$ $1 last;
+      try_files $uri pages/$uri =404;
    }
 
    # Custom error pages (404 and 50x)
