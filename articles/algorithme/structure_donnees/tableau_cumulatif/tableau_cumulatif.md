@@ -3,7 +3,7 @@ Tableau cumulatif
 algo/structure
 
 Publié le : 21/11/2015  
-*Modifié le : 27/11/2015*
+*Modifié le : 05/12/2015*
 
 ## Introduction
 
@@ -82,13 +82,8 @@ test01.in
 
 La sortie :
 
-```
-$ ./cumulatif < test01.in
-100
-158
-92
-168
-```
+[INSERT]
+test01.out
 
 Quelques remarques sur le code :
 
@@ -124,13 +119,8 @@ test02.in
 
 On obtient en sortie :
 
-```
-$ ./cumulatif2D < test02.in
-18
-83
-27
-12
-```
+[INSERT]
+test02.out
 
 Le tableau cumulatif 2D ressemble à cela pour l'entrée :
 

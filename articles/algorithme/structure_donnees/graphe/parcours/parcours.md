@@ -3,7 +3,7 @@ Parcours d'un graphe
 algo/structure/graphe/
 
 Publié le :  
-*Modifié le : 03/12/2015*
+*Modifié le : 05/12/2015*
 
 ## Introduction
 
@@ -69,18 +69,8 @@ test01.in
 
 On obtient bien en sortie :
 
-```
-$ ./recursif < test01.in
-1
-2
-3
-4
-5
-6
-7
-8
-9
-```
+[INSERT]
+test01_recursif.out
 
 Et pour vous montrer que l'ordre d'un parcours en profondeur peut changer selon l'ordre des voisins visités, prenons le même graphe mais avec un ordre différent dans sa description (l'ordre inverse) :
 
@@ -89,18 +79,8 @@ test02.in
 
 En sortie cette fois on a :
 
-```
-$ ./recursif < test02.in
-1
-7
-9
-8
-6
-2
-4
-5
-3
-```
+[INSERT]
+test02_recursif.out
 
 #### Itératif
 
@@ -118,18 +98,8 @@ test01.in
 
 Et la sortie affichée :
 
-```
-$ ./iteratif < test01.in
-1
-7
-9
-8
-6
-2
-4
-5
-3
-```
+[INSERT]
+test01_iteratif.out
 
 Et si on donne notre entrée modifiée (à l'envers) :
 
@@ -138,18 +108,8 @@ test02.in
 
 On a en sortie cette fois :
 
-```
-$ ./iteratif < test02.in
-1
-2
-3
-4
-5
-6
-7
-8
-9
-```
+[INSERT]
+test02_iteratif.out
 
 Vous constatez donc que la pile "inverse" l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin dès qu'on en a trouvé un non visité (comme le fait la version récursive), mais on les empile tous, et ils vont donc se superposer (ce qui va "inverser" l'ordre car c'est le principe d'une pile : le dernier arrivé, le premier sorti).
 

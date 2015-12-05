@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="parcours-dun-graphe">Parcours d'un graphe</h1></a>
 <p>Publi&#233; le :<br />
-<em>Modifi&#233; le : 03/12/2015</em></p>
+<em>Modifi&#233; le : 05/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#le-parcours-en-profondeur">Le parcours en profondeur</a></li>
@@ -268,16 +268,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 7 8
 7 9</code></pre>
 <p>On obtient bien en sortie :</p>
-<pre><code>$ ./recursif &lt; test01.in
-1
-2
-3
-4
-5
-6
-7
-8
-9</code></pre>
+<pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <p>Et pour vous montrer que l'ordre d'un parcours en profondeur peut changer selon l'ordre des voisins visit&#233;s, prenons le m&#234;me graphe mais avec un ordre diff&#233;rent dans sa description (l'ordre inverse) :</p>
 <pre class="in"><code>8
 1 7
@@ -289,16 +280,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 2 3
 4 5</code></pre>
 <p>En sortie cette fois on a :</p>
-<pre><code>$ ./recursif &lt; test02.in
-1
-7
-9
-8
-6
-2
-4
-5
-3</code></pre>
+<pre class="out"><code>1 7 9 8 6 2 4 5 3</code></pre>
 <h4 id="it&#233;ratif">It&#233;ratif</h4>
 <p>Il est rare d'impl&#233;menter de fa&#231;on it&#233;rative un parcours en profondeur, mais cela peut &#234;tre utile pour ne pas faire exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appels</a> &#224; cause des nombreux appels r&#233;cursifs imbriqu&#233;s provoqu&#233;s par notre derni&#232;re impl&#233;mentation.</p>
 <p>Pour passer de la version r&#233;cursive &#224; la version it&#233;rative, on utilise simplement une <a href="/algo/structure/pile.html">pile</a> afin de &quot;simuler&quot; la pile d'appel. En effet, si on empile les voisins du n&#339;ud actuel au lieu de faire un appel r&#233;cursif dessus, on gardera un parcours en profondeur car la pile d'appel reste n&#233;anmoins une pile avec quelques informations suppl&#233;mentaires. Pour vous convaincre je vous invite &#224; essayer de faire un exemple, en empilant les voisins au lieu de faire un appel r&#233;cursif, vous verrez que le principe du parcours en profondeur est bien le m&#234;me avec une pile.</p>
@@ -364,16 +346,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 7 8
 7 9</code></pre>
 <p>Et la sortie affich&#233;e :</p>
-<pre><code>$ ./iteratif &lt; test01.in
-1
-7
-9
-8
-6
-2
-4
-5
-3</code></pre>
+<pre class="out"><code>1 7 9 8 6 2 4 5 3</code></pre>
 <p>Et si on donne notre entr&#233;e modifi&#233;e (&#224; l'envers) :</p>
 <pre class="in"><code>8
 1 7
@@ -385,16 +358,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 2 3
 4 5</code></pre>
 <p>On a en sortie cette fois :</p>
-<pre><code>$ ./iteratif &lt; test02.in
-1
-2
-3
-4
-5
-6
-7
-8
-9</code></pre>
+<pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <p>Vous constatez donc que la pile &quot;inverse&quot; l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin d&#232;s qu'on en a trouv&#233; un non visit&#233; (comme le fait la version r&#233;cursive), mais on les empile tous, et ils vont donc se superposer (ce qui va &quot;inverser&quot; l'ordre car c'est le principe d'une pile : le dernier arriv&#233;, le premier sorti).</p>
 <h3 id="utilisation">Utilisation</h3>
 <h2 id="le-parcours-en-largeur">Le parcours en largeur</h2>
