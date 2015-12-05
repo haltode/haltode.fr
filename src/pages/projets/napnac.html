@@ -2,7 +2,7 @@
 <html>
    <head>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
-      <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+      <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
 
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
@@ -160,7 +160,7 @@ function toggle_visibility(id) {
 
       <header>
          <a href="/">
-            <img src="/static/img/logo.png" alt="Logo du site" height="100" width="300">
+            <img src="//static.napnac.ga/img/logo.png" alt="Logo du site" height="100" width="300">
          </a>
 
       </header>
@@ -212,7 +212,7 @@ Blablabla</code></pre></div>
 <p>J'ai install&#233; <a href="https://www.raspberrypi.org/downloads/">Raspbian</a> (l'OS officiel de la Raspberry Pi), et apr&#232;s avoir configur&#233; un acc&#232;s <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a> pour acc&#233;der &#224; mon serveur depuis mon pc principal, j'ai commenc&#233; la configuration dudit serveur. Il y a de nombreux tutoriels sur comment transformer sa Raspberry Pi en serveur, je passerai donc les d&#233;tails. Le serveur que j'ai choisi d'installer est <a href="http://nginx.org/">nginx</a>, son installation et sa configuration sont tr&#232;s simples et je n'ai quasiment rien eu &#224; faire.</p>
 <p>Pour rendre mon site accessible depuis l'ext&#233;rieur, il me faut configurer plusieurs choses. Tout d'abord des ports sp&#233;cifiques de ma livebox doivent &#234;tre redirig&#233;s vers ma Raspberry Pi afin de r&#233;pondre aux requ&#234;tes du client en lui renvoyant les pages HTML stock&#233;es sur mon serveur. De m&#234;me, plusieurs tutoriels existent d&#233;j&#224; &#224; ce sujet, mais voici &#224; quoi ressemble les modifications faites &#224; ma livebox :</p>
 <div class="figure">
-<img src="/static/img/projets/napnac.ga/config_livebox_rpi.png" alt="Configuration des ports de la livebox" />
+<img src="//static.napnac.ga/img/projets/napnac.ga/config_livebox_rpi.png" alt="Configuration des ports de la livebox" />
 <p class="caption">Configuration des ports de la livebox</p>
 </div>
 <p>Enfin, ma livebox poss&#232;de une adresse IP dynamique, j'ai donc choisi d'utiliser <a href="https://www.cloudflare.com/">CloudFlare</a> afin de g&#233;rer le <a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS</a>. De plus, j'ai trouv&#233; un petit <a href="https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/">script</a> permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications n&#233;cessaires lors d'un changement d'IP de ma livebox. Ce script est ex&#233;cut&#233; toutes les 5 minutes sur mon serveur.</p>
@@ -225,7 +225,7 @@ Blablabla</code></pre></div>
       <footer>
          <br>
          <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
-         src="/static/img/PJL_banner.png" alt="Non à la loi renseignement" 
+         src="//static.napnac.ga/img/PJL_banner.png" alt="Non à la loi renseignement" 
          title="Non à la loi renseignement" height="60" width="468" /></a></p>
       </footer>
    </body>

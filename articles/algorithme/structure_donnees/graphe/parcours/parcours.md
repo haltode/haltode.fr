@@ -25,7 +25,7 @@ Dans notre cas du labyrinthe, on essaie un chemin jusqu'à être bloqué, puis o
 
 La meilleure manière de comprendre ce type de parcours est de le visualiser :
 
-![Exemple de DFS sur un graphe](/static/img/algo/structure/graphe/dfs/exemple_dfs.png)
+![Exemple de DFS sur un graphe](//static.napnac.ga/img/algo/structure/graphe/dfs/exemple_dfs.png)
 
 Ce graphe représente notre labyrinthe, et chaque nœud correspond à l'ordre de parcours du DFS (la flèche montre uniquement comment agit un parcours en profondeur en entier sur notre graphe).
 

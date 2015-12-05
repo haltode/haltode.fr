@@ -15,7 +15,7 @@ Naturellement, on pourrait prendre une carte et tracer des traits entre chaque v
 
 On peut définir un graphe comme étant un ensemble de **nœuds** (ou de sommets) étant reliés par des **arcs** (ou des arêtes, des chemins).
 
-![Exemple de graphe](/static/img/algo/structure/graphe/graphe_exemple.png)
+![Exemple de graphe](//static.napnac.ga/img/algo/structure/graphe/graphe_exemple.png)
 
 En anglais, on parle de *nodes* ou *vertices* pour les nœuds, et de *edges* ou *arcs* pour les arêtes.
 
@@ -27,14 +27,14 @@ Un graphe peut avoir de nombreuses caractéristiques différentes, en voici une 
 
 | Caractéristique       | Description                                                                                                        | Exemple                                                                         |
 | ---------------       | -----------                                                                                                        | -------                                                                         |
-| Orienté               | Si les arcs ont un sens (représenté par une flèche), le graphe est orienté.                                        | ![Graphe orienté](/static/img/algo/structure/graphe/graphe_oriente.png)         |
-| Non orienté           | Dans ce cas, on peut parcourir le graphe dans les deux sens.                                                       | ![Graphe non orienté](/static/img/algo/structure/graphe/graphe_non_oriente.png) |
-| Pondéré / non pondéré | Un graphe est pondéré si ses arcs ont un **poids** (par exemple la distance en km entre deux villes).              | ![Graphe pondéré](/static/img/algo/structure/graphe/graphe_pondere.png)         |
-| Cyclique              | Un graphe est cyclique s'il contient des chemins finissant là où ils ont commencé (des cycles).                    | ![Graphe cyclique](/static/img/algo/structure/graphe/graphe_cyclique.png)       |
-| Acyclique             | Lorsque le graphe ne contient aucun cycle, il est acyclique.                                                       | ![Graphe acyclique](/static/img/algo/structure/graphe/graphe_acyclique.png)     |
-| Dense                 | Si le nombre d'arcs est proche du nombre maximum d'arcs possibles de ce graphe, il est dense.                       | ![Graphe dense](/static/img/algo/structure/graphe/graphe_dense.png)             |
-| Creux                 | Au contraire, si le nombre d'arcs est faible par rapport au nombre de nœuds, il est caractérisé de creux.          | ![Graphe creux](/static/img/algo/structure/graphe/graphe_creux.png)             |
-| Connexe / non connexe | Un graphe est dit connexe s'il existe un chemin (de un ou plusieurs nœuds) reliant chaque paire de nœuds possible. | ![Graphe connexe](/static/img/algo/structure/graphe/graphe_connexe.png)         |
+| Orienté               | Si les arcs ont un sens (représenté par une flèche), le graphe est orienté.                                        | ![Graphe orienté](//static.napnac.ga/img/algo/structure/graphe/graphe_oriente.png)         |
+| Non orienté           | Dans ce cas, on peut parcourir le graphe dans les deux sens.                                                       | ![Graphe non orienté](//static.napnac.ga/img/algo/structure/graphe/graphe_non_oriente.png) |
+| Pondéré / non pondéré | Un graphe est pondéré si ses arcs ont un **poids** (par exemple la distance en km entre deux villes).              | ![Graphe pondéré](//static.napnac.ga/img/algo/structure/graphe/graphe_pondere.png)         |
+| Cyclique              | Un graphe est cyclique s'il contient des chemins finissant là où ils ont commencé (des cycles).                    | ![Graphe cyclique](//static.napnac.ga/img/algo/structure/graphe/graphe_cyclique.png)       |
+| Acyclique             | Lorsque le graphe ne contient aucun cycle, il est acyclique.                                                       | ![Graphe acyclique](//static.napnac.ga/img/algo/structure/graphe/graphe_acyclique.png)     |
+| Dense                 | Si le nombre d'arcs est proche du nombre maximum d'arcs possibles de ce graphe, il est dense.                       | ![Graphe dense](//static.napnac.ga/img/algo/structure/graphe/graphe_dense.png)             |
+| Creux                 | Au contraire, si le nombre d'arcs est faible par rapport au nombre de nœuds, il est caractérisé de creux.          | ![Graphe creux](//static.napnac.ga/img/algo/structure/graphe/graphe_creux.png)             |
+| Connexe / non connexe | Un graphe est dit connexe s'il existe un chemin (de un ou plusieurs nœuds) reliant chaque paire de nœuds possible. | ![Graphe connexe](//static.napnac.ga/img/algo/structure/graphe/graphe_connexe.png)         |
 
 ## Implémentation
 
@@ -46,9 +46,9 @@ Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de 
 
 Voici un exemple de matrice d'adjacence (j'ai utilisé le premier graphe de l'article pour construire la matrice) :
 
-![Exemple de matrice d'adjacence](/static/img/algo/structure/graphe/exemple_matrice_adjacence.png)
+![Exemple de matrice d'adjacence](//static.napnac.ga/img/algo/structure/graphe/exemple_matrice_adjacence.png)
 
-![Graphe correspondant à la matrice d'adjacence](/static/img/algo/structure/graphe/graphe_exemple.png)
+![Graphe correspondant à la matrice d'adjacence](//static.napnac.ga/img/algo/structure/graphe/graphe_exemple.png)
 
 Rien de bien compliqué pour l'implémenter :
 
@@ -71,7 +71,7 @@ On peut utiliser une variante de la matrice d'adjacence afin d'économiser de la
 
 Voici par exemple la liste d'adjacence qui représente de nouveau le premier graphe de l'article :
 
-![Exemple de liste d'adjacence](/static/img/algo/structure/graphe/exemple_liste_adjacence.png)
+![Exemple de liste d'adjacence](//static.napnac.ga/img/algo/structure/graphe/exemple_liste_adjacence.png)
 
 Pour l'implémentation, j'utilise les [vector](http://www.cplusplus.com/reference/vector/vector/) du C++ au lieu de recoder à la main la liste chaînée en C (même si on peut tout à fait le faire, recoder des structures de données basiques peut être une perte de temps, notamment pendant un concours de programmation) :
 
@@ -92,7 +92,7 @@ Enfin on peut utiliser une dernière solution, en représentant tous les arcs du
 
 Voici l'exemple d'une liste d'arcs (toujours sur le même graphe) :
 
-![Exemple de liste d'arcs](/static/img/algo/structure/graphe/exemple_liste_arcs.png)
+![Exemple de liste d'arcs](//static.napnac.ga/img/algo/structure/graphe/exemple_liste_arcs.png)
 
 De même que pour la liste d'adjacence, j'utilise les `vector` :
 

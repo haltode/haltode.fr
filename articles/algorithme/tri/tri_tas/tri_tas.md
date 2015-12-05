@@ -19,19 +19,19 @@ On prend la suite de nombres suivante que l’on va trier dans l’ordre croissa
 
 *1ère étape* : créer le tas (max dans notre cas)
 
-![Tas max correspondant au tableau](/static/img/algo/tri/tri_tas/exemple_tas_max.png)
+![Tas max correspondant au tableau](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tas_max.png)
 
 *2ème étape* : parcourir le tas pour trier les éléments
 
 Pour trier les éléments grâce à notre tas, on retire la racine à chaque tour (l'élément le plus grand de notre tas, et de notre tableau), on le range à sa place définitive, et on entasse le dernier élément du tas pour combler le trou de la racine et respecter les règles d'un tas.
 
-![1er tour](/static/img/algo/tri/tri_tas/exemple_tour1.png)
+![1er tour](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour1.png)
 
 La racine du tas (en vert) est placée dans le tableau *(1)* et le dernier élément (en bleu) va remplacer la racine *(2)*, mais il ne faut pas oublier de l'entasser pour respecter les règles du tas max *(3)*.
 
 On continue ces opérations tant que le tas contient des éléments :
 
-![Fin du tri par tas](/static/img/algo/tri/tri_tas/exemple_tour2.png)
+![Fin du tri par tas](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour2.png)
 
 ## Pseudo-code
 

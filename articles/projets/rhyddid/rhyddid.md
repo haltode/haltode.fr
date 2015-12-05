@@ -21,15 +21,15 @@ Le jeu contient 6 races, 15 métiers, 35 armes, 30 armures, 3 types de potions d
 
 Voici quelques captures d’écran du jeu :
 
-![Lors de la création d'un personnage (visualisation 3D de la race)](/static/img/projets/rhyddid/nouveau_perso.png)
+![Lors de la création d'un personnage (visualisation 3D de la race)](//static.napnac.ga/img/projets/rhyddid/nouveau_perso.png)
 
-![Le jeu](/static/img/projets/rhyddid/jeu.png)
+![Le jeu](//static.napnac.ga/img/projets/rhyddid/jeu.png)
 
-![Dans une caverne](/static/img/projets/rhyddid/caverne.png)
+![Dans une caverne](//static.napnac.ga/img/projets/rhyddid/caverne.png)
 
-![En plein combat](/static/img/projets/rhyddid/combat.png)
+![En plein combat](//static.napnac.ga/img/projets/rhyddid/combat.png)
 
-![Dans la boutique](/static/img/projets/rhyddid/boutique.png)
+![Dans la boutique](//static.napnac.ga/img/projets/rhyddid/boutique.png)
 
 ## Lien
 

@@ -42,7 +42,7 @@ Prenons comme exemple la suite de nombre : 5, 1, 3, 8, 9, 6 que l’on veut trie
 
 Pour résumer les deux étapes du tri :
 
-![Exemple de tri fusion](/static/img/algo/tri/tri_fusion/exemple_tri.png)
+![Exemple de tri fusion](//static.napnac.ga/img/algo/tri/tri_fusion/exemple_tri.png)
 
 Les éléments en bleu correspondent à l'état du tableau après la première étape, et les éléments en vert après la deuxième étape.
 

@@ -50,7 +50,7 @@ J'ai installé [Raspbian](https://www.raspberrypi.org/downloads/) (l'OS officiel
 
 Pour rendre mon site accessible depuis l'extérieur, il me faut configurer plusieurs choses. Tout d'abord des ports spécifiques de ma livebox doivent être redirigés vers ma Raspberry Pi afin de répondre aux requêtes du client en lui renvoyant les pages HTML stockées sur mon serveur. De même, plusieurs tutoriels existent déjà à ce sujet, mais voici à quoi ressemble les modifications faites à ma livebox :
 
-![Configuration des ports de la livebox](/static/img/projets/napnac.ga/config_livebox_rpi.png)
+![Configuration des ports de la livebox](//static.napnac.ga/img/projets/napnac.ga/config_livebox_rpi.png)
 
 Enfin, ma livebox possède une adresse IP dynamique, j'ai donc choisi d'utiliser [CloudFlare](https://www.cloudflare.com/) afin de gérer le [DNS](https://en.wikipedia.org/wiki/Domain_Name_System). De plus, j'ai trouvé un petit [script](https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/) permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications nécessaires lors d'un changement d'IP de ma livebox. Ce script est exécuté toutes les 5 minutes sur mon serveur.
 

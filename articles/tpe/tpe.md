@@ -20,7 +20,7 @@ La Seconde Guerre mondiale épuise les pays de l'Europe, et les Etats-Unis et l'
 
 Toutes ces différences entre de si grandes puissances n'ont fait que créer des conflits, et avec la dissolution de la Grande alliance, la Guerre froide été déclarée entre les deux camps.
 
-!["De Stettin dans la Baltique jusqu'à Trieste dans l'Adriatique, un rideau de fer est descendu à travers le continent." - Wiston Churchill](/static/img/tpe/wiston_churchill.jpg)
+!["De Stettin dans la Baltique jusqu'à Trieste dans l'Adriatique, un rideau de fer est descendu à travers le continent." - Wiston Churchill](//static.napnac.ga/img/tpe/wiston_churchill.jpg)
 
 ## Les projets de la Guerre froide
 
@@ -39,11 +39,11 @@ Les signaux interceptés par l'ensemble du projet peuvent être répartis en deu
 
 Les ondes radio à haute fréquence ont l'avantage de se refléter sur le sol et sur l'[ionosphère](https://fr.wikipedia.org/wiki/Ionosph%C3%A8re), ce qui permet de propager l'onde jusqu'à de très longues distances grâce à ces multiples réflexions. La réception est alors facilité, mais l'interception aussi à cause de la large surface possible où l'onde arrivera.
 
-![Propagation d'onde radio à haute fréquence sur la Terre](/static/img/tpe/onde_haute_frequence.jpg)
+![Propagation d'onde radio à haute fréquence sur la Terre](//static.napnac.ga/img/tpe/onde_haute_frequence.jpg)
 
 Une simple surface calme en termes d'ondes radio au alentour suffit pour intercepter des messages à haute fréquence. L'antenne la plus connue est l'AN/FLR-9, elle mesure plus de 400m de diamètre et est composée de trois couches servant à intercepter les ondes à hautes fréquences qui se reflétaient dessus. Cette antenne pouvait intercepter des communications dans n'importe quelles directions à plus de 7000km autour.
 
-![Exemple d'antenne AN/FLR-9](/static/img/tpe/zone_interception_onde_radio.jpg)
+![Exemple d'antenne AN/FLR-9](//static.napnac.ga/img/tpe/zone_interception_onde_radio.jpg)
 
 Son fonctionnement se base sur trois éléments principaux :
 
@@ -51,7 +51,7 @@ Son fonctionnement se base sur trois éléments principaux :
 - Des écrans réfléchissantes afin d'intensifier l'onde pour mieux l'analyser ensuite et pouvoir plus facilement reconnaître des motifs dedans.
 - Des écrans artificiels au sol afin de le stabiliser et de permettre une homogénéité des analyses de l'antenne (sans que le sol naturel interfère dans les résultats).
 
-![Les différents éléments de l'antenne AN/FLR-9](/static/img/tpe/antenne_fonctionnement.png)
+![Les différents éléments de l'antenne AN/FLR-9](//static.napnac.ga/img/tpe/antenne_fonctionnement.png)
 
 [TODO : mettre les fréquences dans un schéma et montrer les utilisations spécifiques]
 

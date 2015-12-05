@@ -18,7 +18,7 @@ Une liste chaînée (*linked list* en anglais) est une structure de données aut
 - **Des données** : ces données peuvent être de n'importe quels types (entier, flottant, chaîne de caractère, etc.), et il peut en y avoir autant que possible par élément.
 - **Un pointeur** : ce pointeur pointe vers l'élément suivant de la liste, et permet de lier les nœuds entre eux.
 
-![Exemple de représentation d'une liste chaînée](/static/img/algo/structure/liste_chainee/exemple_liste_chainee.png)
+![Exemple de représentation d'une liste chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_chainee.png)
 
 Le dernier pointeur de la liste chaînée pointe sur la valeur `NULL`, pour indiquer la fin de la liste.
 
@@ -34,9 +34,9 @@ Pour illustrer les différences entre liste chaînée et tableau, prenons l'exem
 - Un tableau est comme un cahier : on commence au début pour ne pas gaspiller de l'espace, et on écrit son cours au fur et à mesure jusqu'à ne plus avoir de page libre. Si on rate un cours, on a deux choix : soit on laisse de l'espace pour permettre de recopier le cours plus tard, mais dans ce cas l'espace sera soit trop petit (plus de place), soit trop grand (gaspillage d'espace), soit on recopie tout le cahier en incluant la partie qui manque, cependant cette méthode est longue et demande un autre cahier. De même, si on souhaite retirer une partie du cours, on peut recopier sur un autre cahier sans la partie que l'on souhaite enlever.
 - Une liste chaînée serait comme un classeur : on commence où on veut dans le classeur, on écrit son cours sur des feuilles volantes toutes indépendantes les unes des autres et on peut les insérer ou les supprimer dans le classeur facilement. Si on est absent pendant un cours, il suffit de copier le cours sur une feuille à part, puis de la placer entre deux feuilles dans le classeur. Lorsqu'on souhaite retirer une partie du cours, il suffit de détacher les feuilles correspondantes.
 
-![Exemple d'ajout d'un élément dans une liste chaînée](/static/img/algo/structure/liste_chainee/exemple_ajout.png)
+![Exemple d'ajout d'un élément dans une liste chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_ajout.png)
 
-![Exemple de suppression d'un élément dans une liste chaînée](/static/img/algo/structure/liste_chainee/exemple_suppression.png)
+![Exemple de suppression d'un élément dans une liste chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_suppression.png)
 
 ## Quelques fonctions pour manipuler les listes chaînées
 
@@ -116,7 +116,7 @@ La liste double chaînée (*doubly linked list*) consiste à ce que chaque élé
 
 Cette structure est légèrement plus coûteuse en mémoire et en opération, mais rend le déplacement au sein de la liste plus pratique car on peut la parcourir dans les deux sens et on peut insérer/supprimer des éléments avant d'autres et non uniquement après.
 
-![Exemple de représentation d'une liste doublement chaînée](/static/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png)
+![Exemple de représentation d'une liste doublement chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png)
 
 La structure d'une liste doublement chaînée ressemble à cela :
 
@@ -138,7 +138,7 @@ La liste doublement chaînée est notamment la base de la [file](/pages/algo/str
 
 La liste chaînée circulaire (*circular linked list*) est une liste chaînée ne possédant pas de fin. En effet, le pointeur de fin de liste pointe vers le début de la liste formant ainsi un cycle.
  
-![Exemple de représentation d'une liste chaînée circulaire](/static/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png)
+![Exemple de représentation d'une liste chaînée circulaire](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png)
 
 On peut utiliser cette variante de la liste chaînée pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jeu de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste chaînée circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.
 
@@ -146,7 +146,7 @@ On peut utiliser cette variante de la liste chaînée pour stocker par exemple l
 
 Une liste doublement chaînée circulaire (*doubly circular linked list*) est simplement un regroupement des deux dernières variantes.
 
-![Exemple de représentation d'une liste doublement chaînée circulaire](/static/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png)
+![Exemple de représentation d'une liste doublement chaînée circulaire](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png)
 
 ### D'autres variantes plus complexes
 

@@ -40,7 +40,7 @@ Pour insérer un élément dans la partie triée, on parcourt de droite à gauch
 
 Pour résumer l'idée de l'algorithme :
 
-![Exemple de tri par insertion](/static/img/algo/tri/tri_insertion/exemple_tri.png)
+![Exemple de tri par insertion](//static.napnac.ga/img/algo/tri/tri_insertion/exemple_tri.png)
 
 La partie verte du tableau est la partie triée, l'élément en bleu est le prochain élément non trié à placer et la partie blanche est la partie non triée.
 

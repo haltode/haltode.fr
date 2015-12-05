@@ -33,7 +33,7 @@ Toutes les parties de l’ordinateur sont créées à partir de fichiers .hdl qu
 
 Ensuite on crée le compilateur (à partir de n’importe quel langage, j’ai choisi le C) qui est constitué d’une [machine virtuelle](https://fr.wikipedia.org/wiki/Machine_virtuelle).
 
-![Fonctionnement du compilateur](/static/img/projets/nandtotetris/schema_compilateur.png)
+![Fonctionnement du compilateur](//static.napnac.ga/img/projets/nandtotetris/schema_compilateur.png)
 
 Il est décomposé en 3 programmes :
 

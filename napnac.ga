@@ -7,14 +7,50 @@ server {
    ssl_certificate /etc/nginx/ssl/nginx.crt;
    ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
-   root /home/pi/NapNac/napnac.ga/src/;
-   index pages/accueil.html;
+   root /home/pi/NapNac/napnac.ga/src/pages/;
+   index accueil.html;
    charset utf-8;
    
    # First attempt to serve request as file, then
    # as directory, then fall back to displaying a 404
    location / {
-      try_files $uri pages/$uri =404;
+      try_files $uri $uri/ =404;
+   }
+
+   # Custom error pages (404 and 50x)
+   error_page 404 /custom_404.html;
+   location = /custom_404.html {
+      root /usr/share/nginx/html;
+      internal;
+   }
+   error_page 500 502 503 504 /custom_50x.html;
+   location = /custom_50x.html {
+      root /usr/share/nginx/html;
+      internal;
+   }
+
+   # Enables https by default
+   if ($http_cf_visitor ~ '{"scheme":"http"}') {
+      return 301 https://$server_name$request_uri;
+   }
+}
+
+# static.napnac.ga subdomain config
+server {
+   listen 80;
+   listen 443 ssl;
+
+   server_name static.napnac.ga;
+   ssl_certificate /etc/nginx/ssl/nginx.crt;
+   ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+   root /home/pi/NapNac/napnac.ga/src/static/;
+   charset utf-8;
+   
+   # First attempt to serve request as file, then
+   # as directory, then fall back to displaying a 404
+   location / {
+      try_files $uri $uri/ =404;
    }
 
    # Custom error pages (404 and 50x)
