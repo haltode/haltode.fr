@@ -47,7 +47,7 @@ triParBase :
       Trier Tableau en fonction du chiffre i
 ```
 
-Cela peut paraitre assez étrange d'utiliser un autre algorithme de tri dans un algorithme de tri, mais si l'on considère cet autre algorithme comme le [tri par dénombrement](/pages/algo/tri/tri_denombrement.html) on peut ainsi pallier un des problèmes de ce tri au niveau de la mémoire utilisée. Il va cependant nous falloir modifier légèrement notre implémentation du tri par dénombrement car la notion de stabilité pour ce tri n'a pas vraiment de sens puisqu'on utilise des effectifs sans lien réel avec notre tableau.
+Cela peut paraitre assez étrange d'utiliser un autre algorithme de tri dans un algorithme de tri, mais si l'on considère cet autre algorithme comme le [tri par dénombrement](/algo/tri/tri_denombrement.html) on peut ainsi pallier un des problèmes de ce tri au niveau de la mémoire utilisée. Il va cependant nous falloir modifier légèrement notre implémentation du tri par dénombrement car la notion de stabilité pour ce tri n'a pas vraiment de sens puisqu'on utilise des effectifs sans lien réel avec notre tableau.
 
 ## Complexité
 

@@ -19,34 +19,34 @@ Un arbre (*tree* en anglais) est une structure de données permettant de représ
 
 La **profondeur** d'un nœud est le nombre de nœuds le séparant de la racine, et la **hauteur** d'un arbre est simplement la profondeur maximale de ses nœuds.
 
-Finalement, un arbre peut être vu comme un [graphe](/pages/algo/structure/graphe.html) particulier (c'est-à-dire orienté, acyclique et avec comme contrainte que chaque nœud ne possède pas plus d'un père).
+Finalement, un arbre peut être vu comme un [graphe](/algo/structure/graphe.html) particulier (c'est-à-dire orienté, acyclique et avec comme contrainte que chaque nœud ne possède pas plus d'un père).
 
 ## Implémentation
 
-Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'implémenter de la même façon, je vous invite donc à lire la partie [Implémentation](/pages/algo/structure/graphe.html#implémentation) de mon article sur les graphes pour voir et comprendre les différentes possibilités (matrice d'adjacence, liste d'adjacence et liste d'arcs).
+Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'implémenter de la même façon, je vous invite donc à lire la partie [Implémentation](/algo/structure/graphe.html#implémentation) de mon article sur les graphes pour voir et comprendre les différentes possibilités (matrice d'adjacence, liste d'adjacence et liste d'arcs).
 
 ## Parcourir un arbre
 
 De même, parcourir un arbre revient à parcourir un graphe, on peut donc utiliser les deux algorithmes de parcours de graphe :
 
-- [Parcours en profondeur](/pages/algo/structure/graphe/parcours.html#le-parcours-en-profondeur) : DFS (*Depth First Search*)
-- [Parcours en largeur](/pages/algo/structure/graphe/parcours.html#le-parcours-en-largeur) : BFS (*Breadth First Search*)
+- [Parcours en profondeur](/algo/structure/graphe/parcours.html#le-parcours-en-profondeur) : DFS (*Depth First Search*)
+- [Parcours en largeur](/algo/structure/graphe/parcours.html#le-parcours-en-largeur) : BFS (*Breadth First Search*)
 
 ## Variantes
 
 Un arbre possède énormément de variantes, qui elles même possèdent des sous variantes, c'est ce qui rend cette structure de données si importante à connaître et à maitriser :
 
-- [Arbre binaire](/pages/algo/structure/arbre/arbre_binaire.html) : aucun nœud ne peut avoir plus de deux fils (d'où son nom d'arbre **binaire**), ceci est la base de beaucoup d'autres variantes possédant des applications en termes de recherche, de tri, de stockage, etc.
-- [Tas](/pages/algo/structure/arbre/tas.html) : un arbre organisé selon différentes règles afin d'être soit maximal, soit minimal, utile pour chercher le plus grand/plus petit élément dans un tableau rapidement. 
-- [Arbre de recherche](/pages/algo/structure/arbre/arbre_recherche.html) : un arbre facilitant la recherche d'éléments, ce dernier possède plusieurs sous variantes plus ou moins optimisées en fonction des différents besoins et des données.
-- [Trie](/pages/algo/structure/arbre/trie.html) : un arbre dit *préfixe*, qui stocke des chaînes de caractères (ou de simple caractère) dans ses nœuds, ce qui est pratique pour implémenter un dictionnaire de mots, ou pour faire un tri lexicographique. 
+- [Arbre binaire](/algo/structure/arbre/arbre_binaire.html) : aucun nœud ne peut avoir plus de deux fils (d'où son nom d'arbre **binaire**), ceci est la base de beaucoup d'autres variantes possédant des applications en termes de recherche, de tri, de stockage, etc.
+- [Tas](/algo/structure/arbre/tas.html) : un arbre organisé selon différentes règles afin d'être soit maximal, soit minimal, utile pour chercher le plus grand/plus petit élément dans un tableau rapidement. 
+- [Arbre de recherche](/algo/structure/arbre/arbre_recherche.html) : un arbre facilitant la recherche d'éléments, ce dernier possède plusieurs sous variantes plus ou moins optimisées en fonction des différents besoins et des données.
+- [Trie](/algo/structure/arbre/trie.html) : un arbre dit *préfixe*, qui stocke des chaînes de caractères (ou de simple caractère) dans ses nœuds, ce qui est pratique pour implémenter un dictionnaire de mots, ou pour faire un tri lexicographique. 
 
 ## Conclusion
 
 L'arbre est donc une structure données élémentaire (que l'on peut considérer comme un graphe avec des propriétés spécifiques), s'appliquant dans plusieurs domaines et permettant d'implémenter une hiérarchie :
 
 - Votre système de fichier doit sans doute utiliser un arbre pour représenter les dossiers, les sous dossiers et les fichiers de votre disque dur. Sous [Linux](https://en.wikipedia.org/wiki/Linux) par exemple, la racine de votre ordinateur est `/`, et vous pouvez accéder à vos fichiers en indiquant la liste de dossiers à suivre en partant de la racine `/home/utilisateur/Documents/.../fichier`.
-- Pour rechercher des éléments, un arbre peut être une structure très intéressante, permettant une recherche en *O(log N)*, il est d'ailleurs la base d'algorithmes de tris (comme le [tri par tas](/pages/algo/tri/tri_tas.html)).
+- Pour rechercher des éléments, un arbre peut être une structure très intéressante, permettant une recherche en *O(log N)*, il est d'ailleurs la base d'algorithmes de tris (comme le [tri par tas](/algo/tri/tri_tas.html)).
 - Quand vous tapez une phrase et que votre moteur de recherche la complète, il utilise sans doute un arbre (et plus particulièrement un trie), afin de stocker efficacement les différentes possibilités de recherche en fonction de différents critères (nombre de fois recherché, nombre de liens en rapport, etc.).
 - [Parser](https://en.wikipedia.org/wiki/Parsing) une expression peut être compliqué, et un arbre semble parfaitement adapté pour pratiquer une analyse syntaxique sur des expressions (en mathématiques par exemple, pour interpréter une expression non parenthésée et en gérant les cas de priorités d'opérations).
 - Dans un routeur, une [table de routage](https://en.wikipedia.org/wiki/Routing_table) sera utilisée afin de joindre un autre réseau, et cette dernière utilise un arbre pour stocker les informations sans trop utiliser de mémoire (à la manière du dictionnaire, c'est-à-dire grâce à des préfixes).

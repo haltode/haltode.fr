@@ -7,7 +7,7 @@ Publié le : 30/04/2014
 
 ## Introduction
 
-Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entrée trop importante, c’est un algorithme non [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais qui trie [en place](https://en.wikipedia.org/wiki/In-place_algorithm). Il a pour complexité algorithmique *O(N²)* comme le [tri à bulles](/pages/algo/tri/tri_bulles.html).
+Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entrée trop importante, c’est un algorithme non [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais qui trie [en place](https://en.wikipedia.org/wiki/In-place_algorithm). Il a pour complexité algorithmique *O(N²)* comme le [tri à bulles](/algo/tri/tri_bulles.html).
 
 ## Principe de l’algorithme
 
@@ -105,8 +105,8 @@ Pour chaque élément
 
 ### Tri par tas
 
-On peut voir le [tri par tas](/pages/algo/tri/tri_tas.html) comme une amélioration directe du tri par sélection. En effet, si l'on utilise un [tas](/pages/algo/structure/arbre/tas.html) pour permettre de trouver les plus petits éléments rapidement, on obtient une complexité en *O(N \* log N)* et un tri qu'on appelle tri par tas.
+On peut voir le [tri par tas](/algo/tri/tri_tas.html) comme une amélioration directe du tri par sélection. En effet, si l'on utilise un [tas](/algo/structure/arbre/tas.html) pour permettre de trouver les plus petits éléments rapidement, on obtient une complexité en *O(N \* log N)* et un tri qu'on appelle tri par tas.
 
 ## Conclusion
 
-Le tri par sélection est donc un algorithme assez simple, mais peu efficace à cause de sa complexité en *O(N²)*. Cependant des améliorations et des variantes permettent de le rendre plus rapide, et le tri par sélection sert de base au tri par tas, un autre algorithme de tri bien plus efficace avec une complexité en *O(N log N)*. Même avec une complexité quadratique, ce tri reste en pratique utilisé sur de petites entrées, mais aussi lorsqu'on a besoin d'un nombre d'échanges faible au sein du tableau (contrairement au [tri par insertion](/pages/algo/tri/tri_insertion.html) qui peut être plus rapide, mais réalise plus d'échanges).
+Le tri par sélection est donc un algorithme assez simple, mais peu efficace à cause de sa complexité en *O(N²)*. Cependant des améliorations et des variantes permettent de le rendre plus rapide, et le tri par sélection sert de base au tri par tas, un autre algorithme de tri bien plus efficace avec une complexité en *O(N log N)*. Même avec une complexité quadratique, ce tri reste en pratique utilisé sur de petites entrées, mais aussi lorsqu'on a besoin d'un nombre d'échanges faible au sein du tableau (contrairement au [tri par insertion](/algo/tri/tri_insertion.html) qui peut être plus rapide, mais réalise plus d'échanges).

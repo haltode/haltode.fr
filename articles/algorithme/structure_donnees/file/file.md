@@ -28,9 +28,9 @@ L’action d’enlever un élément de la file est appelée : **défiler** (ou *
 
 ![Un élément est défilé](//static.napnac.ga/img/algo/structure/file/exemple_suppression.png)
 
-Comme la fin de la file est située "à gauche", notre premier élément pointera vers `NULL` pour indiquer le début de la file (et non la fin comme pour une [liste chaînée](/pages/algo/structure/liste_chainee.html), ou une [pile](/pages/algo/structure/pile.html)).
+Comme la fin de la file est située "à gauche", notre premier élément pointera vers `NULL` pour indiquer le début de la file (et non la fin comme pour une [liste chaînée](/algo/structure/liste_chainee.html), ou une [pile](/algo/structure/pile.html)).
 
-Pour représenter une file, on peut utiliser une [liste chaînée](/pages/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d'opérations que nécessaires). Cependant, on peut encore améliorer l'implémentation de notre file, en utilisant une [liste doublement chaînée](/pages/algo/structure/liste_chainee.html#liste-doublement-chaînée). En effet, si l'on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu'avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.
+Pour représenter une file, on peut utiliser une [liste chaînée](/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d'opérations que nécessaires). Cependant, on peut encore améliorer l'implémentation de notre file, en utilisant une [liste doublement chaînée](/algo/structure/liste_chainee.html#liste-doublement-chaînée). En effet, si l'on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu'avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.
 
 ## Quelques fonctions pour manipuler une file
 
@@ -84,9 +84,9 @@ Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Templ
 
 ## File à priorité
 
-Une file à priorité (*priority queue* en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'[algorithme de Dijkstra]() pour trouver le plus court chemin entre deux nœuds d'un [graphe](/pages/algo/structure/graphe.html) pondéré positivement. Chaque élément se voit attribuer une **clé**, permettant d'organiser la file (d'où le nom de file à **priorité**). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.
+Une file à priorité (*priority queue* en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'[algorithme de Dijkstra]() pour trouver le plus court chemin entre deux nœuds d'un [graphe](/algo/structure/graphe.html) pondéré positivement. Chaque élément se voit attribuer une **clé**, permettant d'organiser la file (d'où le nom de file à **priorité**). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.
 
-On implémente une file à priorité grâce à un [tas](/pages/algo/structure/arbre/tas.html) (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <http://www.cplusplus.com/reference/queue/priority_queue/>.
+On implémente une file à priorité grâce à un [tas](/algo/structure/arbre/tas.html) (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <http://www.cplusplus.com/reference/queue/priority_queue/>.
 
 Notez qu'il ne faut pas confondre file à priorité et tas. En effet, même si les deux notions semblent exactement pareil en pratique, en théorie une file à priorité est un type de donnée **abstrait**, alors que le tas est une structure de données **réelle** et **concrète**.
 

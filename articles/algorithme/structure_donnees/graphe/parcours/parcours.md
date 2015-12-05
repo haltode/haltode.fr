@@ -7,7 +7,7 @@ Publié le :
 
 ## Introduction
 
-Le parcours d'un [graphe](/pages/algo/structure/graphe.html) est une opération essentielle à connaître à propos de cette structure. Il est fondamental de maitriser les différents algorithmes de parcours de graphe, ainsi que leur application et surtout savoir quand les utiliser en fonction de la situation.
+Le parcours d'un [graphe](/algo/structure/graphe.html) est une opération essentielle à connaître à propos de cette structure. Il est fondamental de maitriser les différents algorithmes de parcours de graphe, ainsi que leur application et surtout savoir quand les utiliser en fonction de la situation.
 
 ## Le parcours en profondeur
 
@@ -106,7 +106,7 @@ $ ./recursif < test02.in
 
 Il est rare d'implémenter de façon itérative un parcours en profondeur, mais cela peut être utile pour ne pas faire exploser la [pile d'appels](https://en.wikipedia.org/wiki/Call_stack) à cause des nombreux appels récursifs imbriqués provoqués par notre dernière implémentation.
 
-Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/pages/algo/structure/pile.html) afin de "simuler" la pile d'appel. En effet, si on empile les voisins du nœud actuel au lieu de faire un appel récursif dessus, on gardera un parcours en profondeur car la pile d'appel reste néanmoins une pile avec quelques informations supplémentaires. Pour vous convaincre je vous invite à essayer de faire un exemple, en empilant les voisins au lieu de faire un appel récursif, vous verrez que le principe du parcours en profondeur est bien le même avec une pile.
+Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel. En effet, si on empile les voisins du nœud actuel au lieu de faire un appel récursif dessus, on gardera un parcours en profondeur car la pile d'appel reste néanmoins une pile avec quelques informations supplémentaires. Pour vous convaincre je vous invite à essayer de faire un exemple, en empilant les voisins au lieu de faire un appel récursif, vous verrez que le principe du parcours en profondeur est bien le même avec une pile.
 
 [INSERT]
 dfs_iteratif.cpp

@@ -197,28 +197,28 @@ function toggle_visibility(id) {
 <p class="caption">Exemple d'arbre</p>
 </div>
 <p>La <strong>profondeur</strong> d'un n&#339;ud est le nombre de n&#339;uds le s&#233;parant de la racine, et la <strong>hauteur</strong> d'un arbre est simplement la profondeur maximale de ses n&#339;uds.</p>
-<p>Finalement, un arbre peut &#234;tre vu comme un <a href="/pages/algo/structure/graphe.html">graphe</a> particulier (c'est-&#224;-dire orient&#233;, acyclique et avec comme contrainte que chaque n&#339;ud ne poss&#232;de pas plus d'un p&#232;re).</p>
+<p>Finalement, un arbre peut &#234;tre vu comme un <a href="/algo/structure/graphe.html">graphe</a> particulier (c'est-&#224;-dire orient&#233;, acyclique et avec comme contrainte que chaque n&#339;ud ne poss&#232;de pas plus d'un p&#232;re).</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on, je vous invite donc &#224; lire la partie <a href="/pages/algo/structure/graphe.html#impl&#233;mentation">Impl&#233;mentation</a> de mon article sur les graphes pour voir et comprendre les diff&#233;rentes possibilit&#233;s (matrice d'adjacence, liste d'adjacence et liste d'arcs).</p>
+<p>Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on, je vous invite donc &#224; lire la partie <a href="/algo/structure/graphe.html#impl&#233;mentation">Impl&#233;mentation</a> de mon article sur les graphes pour voir et comprendre les diff&#233;rentes possibilit&#233;s (matrice d'adjacence, liste d'adjacence et liste d'arcs).</p>
 <h2 id="parcourir-un-arbre">Parcourir un arbre</h2>
 <p>De m&#234;me, parcourir un arbre revient &#224; parcourir un graphe, on peut donc utiliser les deux algorithmes de parcours de graphe :</p>
 <ul>
-<li><a href="/pages/algo/structure/graphe/parcours.html#le-parcours-en-profondeur">Parcours en profondeur</a> : DFS (<em>Depth First Search</em>)</li>
-<li><a href="/pages/algo/structure/graphe/parcours.html#le-parcours-en-largeur">Parcours en largeur</a> : BFS (<em>Breadth First Search</em>)</li>
+<li><a href="/algo/structure/graphe/parcours.html#le-parcours-en-profondeur">Parcours en profondeur</a> : DFS (<em>Depth First Search</em>)</li>
+<li><a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">Parcours en largeur</a> : BFS (<em>Breadth First Search</em>)</li>
 </ul>
 <h2 id="variantes">Variantes</h2>
 <p>Un arbre poss&#232;de &#233;norm&#233;ment de variantes, qui elles m&#234;me poss&#232;dent des sous variantes, c'est ce qui rend cette structure de donn&#233;es si importante &#224; conna&#238;tre et &#224; maitriser :</p>
 <ul>
-<li><a href="/pages/algo/structure/arbre/arbre_binaire.html">Arbre binaire</a> : aucun n&#339;ud ne peut avoir plus de deux fils (d'o&#249; son nom d'arbre <strong>binaire</strong>), ceci est la base de beaucoup d'autres variantes poss&#233;dant des applications en termes de recherche, de tri, de stockage, etc.</li>
-<li><a href="/pages/algo/structure/arbre/tas.html">Tas</a> : un arbre organis&#233; selon diff&#233;rentes r&#232;gles afin d'&#234;tre soit maximal, soit minimal, utile pour chercher le plus grand/plus petit &#233;l&#233;ment dans un tableau rapidement.</li>
-<li><a href="/pages/algo/structure/arbre/arbre_recherche.html">Arbre de recherche</a> : un arbre facilitant la recherche d'&#233;l&#233;ments, ce dernier poss&#232;de plusieurs sous variantes plus ou moins optimis&#233;es en fonction des diff&#233;rents besoins et des donn&#233;es.</li>
-<li><a href="/pages/algo/structure/arbre/trie.html">Trie</a> : un arbre dit <em>pr&#233;fixe</em>, qui stocke des cha&#238;nes de caract&#232;res (ou de simple caract&#232;re) dans ses n&#339;uds, ce qui est pratique pour impl&#233;menter un dictionnaire de mots, ou pour faire un tri lexicographique.</li>
+<li><a href="/algo/structure/arbre/arbre_binaire.html">Arbre binaire</a> : aucun n&#339;ud ne peut avoir plus de deux fils (d'o&#249; son nom d'arbre <strong>binaire</strong>), ceci est la base de beaucoup d'autres variantes poss&#233;dant des applications en termes de recherche, de tri, de stockage, etc.</li>
+<li><a href="/algo/structure/arbre/tas.html">Tas</a> : un arbre organis&#233; selon diff&#233;rentes r&#232;gles afin d'&#234;tre soit maximal, soit minimal, utile pour chercher le plus grand/plus petit &#233;l&#233;ment dans un tableau rapidement.</li>
+<li><a href="/algo/structure/arbre/arbre_recherche.html">Arbre de recherche</a> : un arbre facilitant la recherche d'&#233;l&#233;ments, ce dernier poss&#232;de plusieurs sous variantes plus ou moins optimis&#233;es en fonction des diff&#233;rents besoins et des donn&#233;es.</li>
+<li><a href="/algo/structure/arbre/trie.html">Trie</a> : un arbre dit <em>pr&#233;fixe</em>, qui stocke des cha&#238;nes de caract&#232;res (ou de simple caract&#232;re) dans ses n&#339;uds, ce qui est pratique pour impl&#233;menter un dictionnaire de mots, ou pour faire un tri lexicographique.</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>L'arbre est donc une structure donn&#233;es &#233;l&#233;mentaire (que l'on peut consid&#233;rer comme un graphe avec des propri&#233;t&#233;s sp&#233;cifiques), s'appliquant dans plusieurs domaines et permettant d'impl&#233;menter une hi&#233;rarchie :</p>
 <ul>
 <li>Votre syst&#232;me de fichier doit sans doute utiliser un arbre pour repr&#233;senter les dossiers, les sous dossiers et les fichiers de votre disque dur. Sous <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> par exemple, la racine de votre ordinateur est <code>/</code>, et vous pouvez acc&#233;der &#224; vos fichiers en indiquant la liste de dossiers &#224; suivre en partant de la racine <code>/home/utilisateur/Documents/.../fichier</code>.</li>
-<li>Pour rechercher des &#233;l&#233;ments, un arbre peut &#234;tre une structure tr&#232;s int&#233;ressante, permettant une recherche en <em>O(log N)</em>, il est d'ailleurs la base d'algorithmes de tris (comme le <a href="/pages/algo/tri/tri_tas.html">tri par tas</a>).</li>
+<li>Pour rechercher des &#233;l&#233;ments, un arbre peut &#234;tre une structure tr&#232;s int&#233;ressante, permettant une recherche en <em>O(log N)</em>, il est d'ailleurs la base d'algorithmes de tris (comme le <a href="/algo/tri/tri_tas.html">tri par tas</a>).</li>
 <li>Quand vous tapez une phrase et que votre moteur de recherche la compl&#232;te, il utilise sans doute un arbre (et plus particuli&#232;rement un trie), afin de stocker efficacement les diff&#233;rentes possibilit&#233;s de recherche en fonction de diff&#233;rents crit&#232;res (nombre de fois recherch&#233;, nombre de liens en rapport, etc.).</li>
 <li><a href="https://en.wikipedia.org/wiki/Parsing">Parser</a> une expression peut &#234;tre compliqu&#233;, et un arbre semble parfaitement adapt&#233; pour pratiquer une analyse syntaxique sur des expressions (en math&#233;matiques par exemple, pour interpr&#233;ter une expression non parenth&#233;s&#233;e et en g&#233;rant les cas de priorit&#233;s d'op&#233;rations).</li>
 <li>Dans un routeur, une <a href="https://en.wikipedia.org/wiki/Routing_table">table de routage</a> sera utilis&#233;e afin de joindre un autre r&#233;seau, et cette derni&#232;re utilise un arbre pour stocker les informations sans trop utiliser de m&#233;moire (&#224; la mani&#232;re du dictionnaire, c'est-&#224;-dire gr&#226;ce &#224; des pr&#233;fixes).</li>

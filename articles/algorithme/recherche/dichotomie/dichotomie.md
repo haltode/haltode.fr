@@ -68,7 +68,7 @@ Dans ce pseudo-code, j’ai choisit de retourner la position de l’élément qu
 
 ## Complexité
 
-La dichotomie peut être représenté comme un [arbre](/pages/algo/structure/arbre.html) créé à partir du tableau. L’algorithme parcourt le chemin lui permettant d’arriver à l’élément recherché :
+La dichotomie peut être représenté comme un [arbre](/algo/structure/arbre.html) créé à partir du tableau. L’algorithme parcourt le chemin lui permettant d’arriver à l’élément recherché :
 
 1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304, 7662
 

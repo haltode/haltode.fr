@@ -132,7 +132,7 @@ struct Noeud
 typedef Noeud *Liste;
 ```
 
-La liste doublement chaînée est notamment la base de la [file](/pages/algo/structure/file.html) et permet une implémentation efficace de cette structure.
+La liste doublement chaînée est notamment la base de la [file](/algo/structure/file.html) et permet une implémentation efficace de cette structure.
 
 ### Liste chaînée circulaire
 
@@ -159,6 +159,6 @@ En plus de ces variantes assez "courantes", on peut retrouver d'autres variantes
 
 ## Conclusion
 
-La liste chaînée est donc une structure de données très souple, et efficace pour insérer et supprimer des éléments simplement. De plus, on peut la modifier afin de créer de nouvelles structures de données différentes comme la liste doublement chaînée, la liste chaînée circulaire, mais aussi pour créer une [pile](/pages/algo/structure/pile.html) ou encore une [file](/pages/algo/structure/file.html).
+La liste chaînée est donc une structure de données très souple, et efficace pour insérer et supprimer des éléments simplement. De plus, on peut la modifier afin de créer de nouvelles structures de données différentes comme la liste doublement chaînée, la liste chaînée circulaire, mais aussi pour créer une [pile](/algo/structure/pile.html) ou encore une [file](/algo/structure/file.html).
 
-Les listes chaînées sont aussi la base de structures de données plus complexes comme les [arbres](/pages/algo/structure/arbre.html), les [graphes](/pages/algo/structure/graphe.html), les [tables de hachage](/pages/algo/structure/table_hachage.html) et de nombreuses variantes de listes chaînées existent.
+Les listes chaînées sont aussi la base de structures de données plus complexes comme les [arbres](/algo/structure/arbre.html), les [graphes](/algo/structure/graphe.html), les [tables de hachage](/algo/structure/table_hachage.html) et de nombreuses variantes de listes chaînées existent.
