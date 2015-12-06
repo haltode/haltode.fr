@@ -3,7 +3,7 @@ Parcours d'un graphe
 algo/structure/graphe/
 
 Publié le :  
-*Modifié le : 05/12/2015*
+*Modifié le : 06/12/2015*
 
 ## Introduction
 
@@ -65,22 +65,22 @@ dfs_recursif.cpp
 Si en entrée on donne notre graphe (celui de l'exemple et sous forme d'une liste d'arcs) :
 
 [INSERT]
-test01.in
+dfs_test01.in
 
 On obtient bien en sortie :
 
 [INSERT]
-test01_recursif.out
+dfs_test01_recursif.out
 
 Et pour vous montrer que l'ordre d'un parcours en profondeur peut changer selon l'ordre des voisins visités, prenons le même graphe mais avec un ordre différent dans sa description (l'ordre inverse) :
 
 [INSERT]
-test02.in
+dfs_test02.in
 
 En sortie cette fois on a :
 
 [INSERT]
-test02_recursif.out
+dfs_test02_recursif.out
 
 #### Itératif
 
@@ -94,22 +94,22 @@ dfs_iteratif.cpp
 En entrée :
 
 [INSERT]
-test01.in
+dfs_test01.in
 
 Et la sortie affichée :
 
 [INSERT]
-test01_iteratif.out
+dfs_test01_iteratif.out
 
 Et si on donne notre entrée modifiée (à l'envers) :
 
 [INSERT]
-test02.in
+dfs_test02.in
 
 On a en sortie cette fois :
 
 [INSERT]
-test02_iteratif.out
+dfs_test02_iteratif.out
 
 Vous constatez donc que la pile "inverse" l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin dès qu'on en a trouvé un non visité (comme le fait la version récursive), mais on les empile tous, et ils vont donc se superposer (ce qui va "inverser" l'ordre car c'est le principe d'une pile : le dernier arrivé, le premier sorti).
 
@@ -117,15 +117,65 @@ Vous constatez donc que la pile "inverse" l'ordre, tout simplement car lorsqu'on
 
 ## Le parcours en largeur
 
+Vous vous retrouvez face à l'entrée du labyrinthe, mais cette fois ci vous cherchez le nombre de pas minimum que vous devez faire pour atteindre la sortie. Je rappelle que le graphe implicite est **non pondéré**, contrairement aux autres algorithmes de [plus court chemins](/algo/structure/graphe/plus_court_chemin.html) où le graphe est pondéré. Si on reprend notre graphe, cela revient à trouver un chemin entre l'entrée et la sortie comportant le minimum de nœuds possibles. Mais de nouveau, nous n'avons aucunes informations sur le labyrinthe, et la sortie pourrait se trouver n'importe où. 
+
+Essayons tout d'abord de voir si on peut réutiliser un algorithme de parcours en profondeur pour résoudre notre problème :
+
+![Exemple de labyrinthe](//static.napnac.ga/img/algo/structure/graphe/bfs/dfs_vs_bfs.png)
+
+Dans cet exemple, on fait un DFS sur notre graphe et à cause de l'ordre de parcours des voisins on arrive à la sortie (le nœud vert) en passant par les nœuds 2, 3 et 4 alors qu'on peut y accéder en passant uniquement par le nœud 6. Le problème du DFS est donc l'ordre de parcours des voisins qui peut changer en fonction de l'implémentation mais aussi du graphe, il nous faut donc un nouvel algorithme de parcours de graphe : le parcours en largeur.
+
 ### Principe
+
+Le parcours en largeur (ou *BFS* pour *Breadth First Search*), visite les nœuds du graphe par ordre de profondeur. C'est-à-dire que l'algorithme va d'abord visiter les nœuds à une profondeur de 1 par rapport au nœud de départ, puis à une profondeur de 2, de 3, etc. On parcourt le graphe "couche par couche" contrairement au parcours en profondeur qui lui va chercher à aller le plus loin possible d'abord pour ensuite remonter.
+
+Cela permet de résoudre notre problème car dans notre graphe, on regarde si on peut atteindre la sortie en explorant 1 nœud de distance par rapport à celui de départ, si ce n'est pas le cas, on continue de chercher la sortie à 2 nœuds de distance, et on continue d'augmenter cette distance tant qu'on a pas trouvé la sortie. Au final, on trouvera forcément le plus court chemin (qui est le nombre de nœuds minimum entre l'entrée et la sortie) grâce à cette méthode.
 
 ### Exemple
 
+Avec le même graphe que pour le DFS, mais en appliquant un BFS dessus :
+
+![Exemple de BFS sur un graphe](//static.napnac.ga/img/algo/structure/graphe/bfs/exemple_bfs.png)
+
+De même, chaque nœud représente l'ordre de parcours dans le graphe, et on retrouve bien cette idée de parcours par couche.
+
 ### Pseudo-code
+
+Pour implémenter ce système de parcours par niveau, on va utiliser une [file](/algo/structure/file.html). En effet, lorsqu'on parcours une "couche" de notre graphe, on veut d'abord parcourir cette couche avant de visiter les voisins des nœuds de la couche actuelle. Cet ordre respecte le principe de premier entré, premier sorti qui est une file.
+
+```nohighlight
+BFS (depart) :
+
+   Enfiler le nœud de départ
+   
+   Tant que la file n'est pas vide
+      Défiler le nœud au début de la file
+
+      Marquer le nœud comme visité
+      Pour chaque voisin du nœud
+         Si le voisin n'est pas visité
+            Enfiler le voisin
+```
 
 ### Complexité
 
+Comme pour le parcours en profondeur, si notre sortie est le dernier nœud que l'on visite on aura une complexité en *O(M)* avec *M* le nombre d'arcs du graphe.
+
 ### Implémentation
+
+L'implémentation du parcours en largeur en C++ (afin d'avoir le type `queue` et `vector`) :
+
+[INSERT]
+bfs.cpp
+
+Notre graphe :
+
+[INSERT]
+bfs_test01.in
+
+La sortie
+[INSERT]
+bfs_test01.out
 
 ### Utilisation
 

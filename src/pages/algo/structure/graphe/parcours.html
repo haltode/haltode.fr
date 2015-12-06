@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="parcours-dun-graphe">Parcours d'un graphe</h1></a>
 <p>Publi&#233; le :<br />
-<em>Modifi&#233; le : 05/12/2015</em></p>
+<em>Modifi&#233; le : 06/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#le-parcours-en-profondeur">Le parcours en profondeur</a></li>
@@ -362,11 +362,103 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 <p>Vous constatez donc que la pile &quot;inverse&quot; l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin d&#232;s qu'on en a trouv&#233; un non visit&#233; (comme le fait la version r&#233;cursive), mais on les empile tous, et ils vont donc se superposer (ce qui va &quot;inverser&quot; l'ordre car c'est le principe d'une pile : le dernier arriv&#233;, le premier sorti).</p>
 <h3 id="utilisation">Utilisation</h3>
 <h2 id="le-parcours-en-largeur">Le parcours en largeur</h2>
+<p>Vous vous retrouvez face &#224; l'entr&#233;e du labyrinthe, mais cette fois ci vous cherchez le nombre de pas minimum que vous devez faire pour atteindre la sortie. Je rappelle que le graphe implicite est <strong>non pond&#233;r&#233;</strong>, contrairement aux autres algorithmes de <a href="/algo/structure/graphe/plus_court_chemin.html">plus court chemins</a> o&#249; le graphe est pond&#233;r&#233;. Si on reprend notre graphe, cela revient &#224; trouver un chemin entre l'entr&#233;e et la sortie comportant le minimum de n&#339;uds possibles. Mais de nouveau, nous n'avons aucunes informations sur le labyrinthe, et la sortie pourrait se trouver n'importe o&#249;.</p>
+<p>Essayons tout d'abord de voir si on peut r&#233;utiliser un algorithme de parcours en profondeur pour r&#233;soudre notre probl&#232;me :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/bfs/dfs_vs_bfs.png" alt="Exemple de labyrinthe" />
+<p class="caption">Exemple de labyrinthe</p>
+</div>
+<p>Dans cet exemple, on fait un DFS sur notre graphe et &#224; cause de l'ordre de parcours des voisins on arrive &#224; la sortie (le n&#339;ud vert) en passant par les n&#339;uds 2, 3 et 4 alors qu'on peut y acc&#233;der en passant uniquement par le n&#339;ud 6. Le probl&#232;me du DFS est donc l'ordre de parcours des voisins qui peut changer en fonction de l'impl&#233;mentation mais aussi du graphe, il nous faut donc un nouvel algorithme de parcours de graphe : le parcours en largeur.</p>
 <h3 id="principe-1">Principe</h3>
+<p>Le parcours en largeur (ou <em>BFS</em> pour <em>Breadth First Search</em>), visite les n&#339;uds du graphe par ordre de profondeur. C'est-&#224;-dire que l'algorithme va d'abord visiter les n&#339;uds &#224; une profondeur de 1 par rapport au n&#339;ud de d&#233;part, puis &#224; une profondeur de 2, de 3, etc. On parcourt le graphe &quot;couche par couche&quot; contrairement au parcours en profondeur qui lui va chercher &#224; aller le plus loin possible d'abord pour ensuite remonter.</p>
+<p>Cela permet de r&#233;soudre notre probl&#232;me car dans notre graphe, on regarde si on peut atteindre la sortie en explorant 1 n&#339;ud de distance par rapport &#224; celui de d&#233;part, si ce n'est pas le cas, on continue de chercher la sortie &#224; 2 n&#339;uds de distance, et on continue d'augmenter cette distance tant qu'on a pas trouv&#233; la sortie. Au final, on trouvera forc&#233;ment le plus court chemin (qui est le nombre de n&#339;uds minimum entre l'entr&#233;e et la sortie) gr&#226;ce &#224; cette m&#233;thode.</p>
 <h3 id="exemple-1">Exemple</h3>
+<p>Avec le m&#234;me graphe que pour le DFS, mais en appliquant un BFS dessus :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/bfs/exemple_bfs.png" alt="Exemple de BFS sur un graphe" />
+<p class="caption">Exemple de BFS sur un graphe</p>
+</div>
+<p>De m&#234;me, chaque n&#339;ud repr&#233;sente l'ordre de parcours dans le graphe, et on retrouve bien cette id&#233;e de parcours par couche.</p>
 <h3 id="pseudo-code-1">Pseudo-code</h3>
+<p>Pour impl&#233;menter ce syst&#232;me de parcours par niveau, on va utiliser une <a href="/algo/structure/file.html">file</a>. En effet, lorsqu'on parcours une &quot;couche&quot; de notre graphe, on veut d'abord parcourir cette couche avant de visiter les voisins des n&#339;uds de la couche actuelle. Cet ordre respecte le principe de premier entr&#233;, premier sorti qui est une file.</p>
+<pre class="nohighlight"><code>BFS (depart) :
+
+   Enfiler le n&#339;ud de d&#233;part
+   
+   Tant que la file n&#39;est pas vide
+      D&#233;filer le n&#339;ud au d&#233;but de la file
+
+      Marquer le n&#339;ud comme visit&#233;
+      Pour chaque voisin du n&#339;ud
+         Si le voisin n&#39;est pas visit&#233;
+            Enfiler le voisin</code></pre>
 <h3 id="complexit&#233;-1">Complexit&#233;</h3>
+<p>Comme pour le parcours en profondeur, si notre sortie est le dernier n&#339;ud que l'on visite on aura une complexit&#233; en <em>O(M)</em> avec <em>M</em> le nombre d'arcs du graphe.</p>
 <h3 id="impl&#233;mentation-1">Impl&#233;mentation</h3>
+<p>L'impl&#233;mentation du parcours en largeur en C++ (afin d'avoir le type <code>queue</code> et <code>vector</code>) :</p>
+<a href="javascript:toggle_visibility('bfs.cpp');">bfs.cpp</a>
+<div id="bfs.cpp" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
+<span class="ot">#include &lt;vector&gt;</span>
+<span class="ot">#include &lt;queue&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="dt">const</span> <span class="dt">int</span> NB_NOEUD_MAX = <span class="dv">1000</span>;
+
+vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
+<span class="dt">bool</span> dejaVu[NB_NOEUD_MAX];
+
+<span class="dt">void</span> BFS(<span class="dt">int</span> debut)
+{
+   queue &lt;<span class="dt">int</span>&gt; file;
+   <span class="dt">int</span> actuel;
+   <span class="dt">int</span> iVoisin;
+
+   file.push(debut);
+
+   <span class="kw">while</span>(!file.empty()) {
+      actuel = file.front();
+      file.pop();
+
+      printf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, actuel);
+
+      dejaVu[actuel] = <span class="kw">true</span>;
+
+      <span class="kw">for</span>(iVoisin = <span class="dv">0</span>; iVoisin &lt; graphe[actuel].size(); ++iVoisin)
+         <span class="kw">if</span>(!dejaVu[graphe[actuel][iVoisin]])
+            file.push(graphe[actuel][iVoisin]);
+   }
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> nbArc;
+   <span class="dt">int</span> iArc;
+
+   scanf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;nbArc);
+   <span class="kw">for</span>(iArc = <span class="dv">0</span>; iArc &lt; nbArc; ++iArc) {
+      <span class="dt">int</span> noeud1, noeud2;       
+      scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;noeud1, &amp;noeud2);
+      graphe[noeud1].push_back(noeud2);
+   }
+
+   BFS(<span class="dv">1</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Notre graphe :</p>
+<pre class="in"><code>8
+1 2
+1 3
+1 4
+2 5
+2 6
+4 7
+4 8
+6 9</code></pre>
+<p>La sortie</p>
+<pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <h3 id="utilisation-1">Utilisation</h3>
 <h2 id="conclusion">Conclusion</h2>
  
