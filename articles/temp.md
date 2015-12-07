@@ -22,7 +22,7 @@ La liste des articles publiés :
 
     - Tri :
 
-         - Tri en *O(N²)* : <p class="relire"><span>tri à bulles</span></p>, <p class="relire"><span>tri par sélection</span></p>, <p class="relire"><span>tri par insertion</br></span></p>
+         - Tri en *O(N²)* : <p class="pret"><span>tri à bulles</span></p>, <p class="relire"><span>tri par sélection</span></p>, <p class="relire"><span>tri par insertion</br></span></p>
          - Tri en *O(N \* log N)* : <p class="relire"><span>tri fusion</span></p>, <p class="relire"><span>tri rapide</span></p>, <p class="relire"><span>tri par tas</br></span></p>
          - Tri en *O(N)* : <p class="relire"><span>tri par dénombrement</span></p>, <p class="faire"><span>tri par base</span></p>, <p class="faire"><span>tri par paquets</br></span></p>
 

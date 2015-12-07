@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tri-&#224;-bulles">Tri &#224; bulles</h1></a>
 <p>Publi&#233; le : 29/04/2014<br />
-<em>Modifi&#233; le : 13/11/2015</em></p>
+<em>Modifi&#233; le : 07/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -190,9 +190,9 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri &#224; bulles (<em>bubble sort</em> en anglais) est un algorithme de tri par comparaison tr&#232;s simple &#224; comprendre et &#224; impl&#233;menter, cependant c&#8217;est l&#8217;un des algorithmes de tri les plus inefficaces. En effet, il a une complexit&#233; quadratique : <em>O(N&#178;)</em>. Cet algorithme est tr&#232;s peu utilis&#233; &#224; cause de sa complexit&#233; en temps trop lente, mais c&#8217;est un bon exemple pour commencer &#224; travailler sur des algorithmes de tri. Il faut noter que le tri &#224; bulles est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> et <a href="https://en.wikipedia.org/wiki/In-place_algorithm">sur place</a>.</p>
+<p>Le tri &#224; bulles (<em>bubble sort</em> en anglais) est un algorithme de tri par comparaison tr&#232;s simple &#224; comprendre et &#224; impl&#233;menter, cependant c&#8217;est l&#8217;un des algorithmes de tri les plus inefficaces. En effet, il a une complexit&#233; en temps quadratique : <em>O(N&#178;)</em>. Cet algorithme est tr&#232;s peu utilis&#233; &#224; cause de sa complexit&#233; trop lente, mais c&#8217;est un bon exemple pour commencer &#224; travailler sur des algorithmes de tri. Il faut noter que le tri &#224; bulles est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> et <a href="https://en.wikipedia.org/wiki/In-place_algorithm">sur place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
-<p>Le tri &#224; bulles consiste &#224; <em>remonter</em> les &#233;l&#233;ments du tableau &#224; trier jusqu&#8217;&#224; leurs places d&#233;finitives, comme des bulles qui remontent dans un liquide (d&#8217;o&#249; son nom de tri &#224; bulles). L&#8217;algorithme compare chaque paire d&#8217;&#233;l&#233;ment du tableau, et les &#233;change si besoin en fonction du tri (croissant ou d&#233;croissant).</p>
+<p>Le tri &#224; bulles consiste &#224; <em>remonter</em> les &#233;l&#233;ments du tableau &#224; trier jusqu&#8217;&#224; leurs places d&#233;finitives, comme des bulles qui remontent d'un liquide (d&#8217;o&#249; son nom de tri &#224; bulles). L&#8217;algorithme compare chaque paire d&#8217;&#233;l&#233;ment du tableau, et les &#233;change si besoin en fonction du tri (croissant ou d&#233;croissant).</p>
 <h2 id="exemple">Exemple</h2>
 <p>Si l&#8217;on prend 8, 7, 1, 4, 6 comme suite de nombres, et que l&#8217;on utilise l&#8217;algorithme du tri &#224; bulles pour trier cette suite dans l&#8217;ordre croissant, voici comment l&#8217;algorithme fonctionne :</p>
 <p><em>1er tour</em> :</p>
@@ -238,7 +238,57 @@ function toggle_visibility(id) {
 <p>On se retrouve donc avec <em>N * N</em> tours, soit une complexit&#233; finale en <em>O(N&#178;)</em>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L&#8217;impl&#233;mentation est aussi simple que le pseudo-code :</p>
-<p>main.c :</p>
+<a href="javascript:toggle_visibility('tri_bulles.c');">tri_bulles.c</a>
+<div id="tri_bulles.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">int</span> tableau[TAILLE_MAX];
+<span class="dt">int</span> taille;
+
+<span class="dt">void</span> echanger(<span class="dt">int</span> index1, <span class="dt">int</span> index2)
+{
+   <span class="dt">int</span> temp;
+
+   temp = tableau[index1];
+   tableau[index1] = tableau[index2];
+   tableau[index2] = temp;
+}
+
+<span class="dt">void</span> triBulles(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iElement, iTab;
+
+   <span class="kw">for</span>(iElement = <span class="dv">0</span>; iElement &lt; taille; ++iElement)
+      <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille - <span class="dv">1</span>; ++iTab)
+         <span class="kw">if</span>(tableau[iTab] &gt; tableau[iTab + <span class="dv">1</span>])
+            echanger(iTab, iTab + <span class="dv">1</span>);
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab;
+
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;taille);
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      scanf(<span class="st">&quot;%d &quot;</span>, &amp;tableau[iTab]);
+
+   triBulles();
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      printf(<span class="st">&quot;%d &quot;</span>, tableau[iTab]);
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>En entr&#233;e notre tableau :</p>
+<pre class="in"><code>5
+8 7 1 4 6</code></pre>
+<p>Et on obtient bien en sortie le tableau tri&#233; :</p>
+<pre class="out"><code>1 4 6 7 8</code></pre>
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
 <h3 id="arr&#234;ter-le-tri-quand-cest-possible">Arr&#234;ter le tri quand c'est possible</h3>
 <p>On peut am&#233;liorer le tri &#224; bulles en faisant en sorte qu&#8217;il s&#8217;arr&#234;te lorsque le tableau est tri&#233;, et qu&#8217;il ne parcourt pas d&#8217;autres tours inutilement. Pour cela, il suffit de v&#233;rifier si l&#8217;on effectue un &#233;change ou pas dans le tour de boucle actuel, si ce n&#8217;est pas le cas le tableau est donc tri&#233;, on peut alors sortir de la boucle.</p>
@@ -253,7 +303,7 @@ function toggle_visibility(id) {
 Tant que tableauPasTri&#233; est vrai</code></pre>
 <p>La complexit&#233; reste en <em>O(N&#178;)</em>, puisque les quelques tours de boucle que l'on a gagn&#233;s dans certains cas ne vont pas &#234;tre assez cons&#233;quents pour influer sur la complexit&#233; en temps de l'algorithme.</p>
 <h3 id="tri-&#224;-bulles-bidirectionnel">Tri &#224; bulles bidirectionnel</h3>
-<p>Le tri &#224; bulles bidirectionnel (<em>bidirectional bubble sort</em>) est une variante qui consiste &#224; trier dans les deux directions (d&#8217;o&#249; son nom). L&#224; o&#249; le tri &#224; bulles parcourt seulement de gauche &#224; droite (ou de droite &#224; gauche, &#231;a n&#8217;importe pas), le tri &#224; bulles bidirectionnel parcourt de gauche &#224; droite et de droite &#224; gauche. Cela permet d&#8217;optimiser le tri de certains &#233;l&#233;ments comme les petits &#233;l&#233;ments situ&#233;s en fin de tableau, le tri &#224; bulles les ram&#232;ne d&#8217;un seul emplacement &#224; chaque tour de boucle, alors que le tri &#224; bulles bidirectionnel les ram&#232;ne en un seul tour.</p>
+<p>Le tri &#224; bulles bidirectionnel (<em>bidirectional bubble sort</em>) est une variante qui consiste &#224; trier dans les deux directions (d&#8217;o&#249; son nom). L&#224; o&#249; le tri &#224; bulles parcourt seulement de gauche &#224; droite (ou de droite &#224; gauche, &#231;a n&#8217;importe pas), le tri &#224; bulles bidirectionnel parcourt de gauche &#224; droite <strong>et</strong> de droite &#224; gauche. Cela permet d&#8217;optimiser le tri de certains &#233;l&#233;ments comme les petits &#233;l&#233;ments situ&#233;s en fin de tableau, le tri &#224; bulles les ram&#232;ne d&#8217;un seul emplacement &#224; chaque tour de boucle, alors que le tri &#224; bulles bidirectionnel les ram&#232;ne en un seul tour.</p>
 <p>Par exemple avec la suite de nombres suivante : 2, 3, 4, 5, 1. On voit que tous les &#233;l&#233;ments sont tri&#233;s sauf le dernier, on va donc se concentrer dessus pour comparer les deux tris :</p>
 <p><em>Tri &#224; bulles</em></p>
 <table>

@@ -3,15 +3,15 @@ Tri à bulles
 algo/tri
 
 Publié le : 29/04/2014  
-*Modifié le : 13/11/2015*
+*Modifié le : 07/12/2015*
 
 ## Introduction
 
-Le tri à bulles (*bubble sort* en anglais) est un algorithme de tri par comparaison très simple à comprendre et à implémenter, cependant c’est l’un des algorithmes de tri les plus inefficaces. En effet, il a une complexité quadratique : *O(N²)*. Cet algorithme est très peu utilisé à cause de sa complexité en temps trop lente, mais c’est un bon exemple pour commencer à travailler sur des algorithmes de tri. Il faut noter que le tri à bulles est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) et [sur place](https://en.wikipedia.org/wiki/In-place_algorithm).
+Le tri à bulles (*bubble sort* en anglais) est un algorithme de tri par comparaison très simple à comprendre et à implémenter, cependant c’est l’un des algorithmes de tri les plus inefficaces. En effet, il a une complexité en temps quadratique : *O(N²)*. Cet algorithme est très peu utilisé à cause de sa complexité trop lente, mais c’est un bon exemple pour commencer à travailler sur des algorithmes de tri. Il faut noter que le tri à bulles est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) et [sur place](https://en.wikipedia.org/wiki/In-place_algorithm).
 
 ## Principe de l’algorithme
 
-Le tri à bulles consiste à *remonter* les éléments du tableau à trier jusqu’à leurs places définitives, comme des bulles qui remontent dans un liquide (d’où son nom de tri à bulles). L’algorithme compare chaque paire d’élément du tableau, et les échange si besoin en fonction du tri (croissant ou décroissant).
+Le tri à bulles consiste à *remonter* les éléments du tableau à trier jusqu’à leurs places définitives, comme des bulles qui remontent d'un liquide (d’où son nom de tri à bulles). L’algorithme compare chaque paire d’élément du tableau, et les échange si besoin en fonction du tri (croissant ou décroissant).
 
 ## Exemple
 
@@ -76,7 +76,18 @@ On se retrouve donc avec *N \* N* tours, soit une complexité finale en *O(N²)*
 
 L’implémentation est aussi simple que le pseudo-code :
 
-main.c : 
+[INSERT]
+tri_bulles.c
+
+En entrée notre tableau :
+
+[INSERT]
+test01.in
+
+Et on obtient bien en sortie le tableau trié :
+
+[INSERT]
+test01.out
 
 ## Améliorations et variantes
 
@@ -100,7 +111,7 @@ La complexité reste en *O(N²)*, puisque les quelques tours de boucle que l'on 
 
 ### Tri à bulles bidirectionnel
 
-Le tri à bulles bidirectionnel (*bidirectional bubble sort*) est une variante qui consiste à trier dans les deux directions (d’où son nom). Là où le tri à bulles parcourt seulement de gauche à droite (ou de droite à gauche, ça n’importe pas), le tri à bulles bidirectionnel parcourt de gauche à droite et de droite à gauche. Cela permet d’optimiser le tri de certains éléments comme les petits éléments situés en fin de tableau, le tri à bulles les ramène d’un seul emplacement à chaque tour de boucle, alors que le tri à bulles bidirectionnel les ramène en un seul tour.
+Le tri à bulles bidirectionnel (*bidirectional bubble sort*) est une variante qui consiste à trier dans les deux directions (d’où son nom). Là où le tri à bulles parcourt seulement de gauche à droite (ou de droite à gauche, ça n’importe pas), le tri à bulles bidirectionnel parcourt de gauche à droite **et** de droite à gauche. Cela permet d’optimiser le tri de certains éléments comme les petits éléments situés en fin de tableau, le tri à bulles les ramène d’un seul emplacement à chaque tour de boucle, alors que le tri à bulles bidirectionnel les ramène en un seul tour.
 
 Par exemple avec la suite de nombres suivante : 2, 3, 4, 5, 1. On voit que tous les éléments sont triés sauf le dernier, on va donc se concentrer dessus pour comparer les deux tris :
 

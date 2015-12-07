@@ -3,11 +3,9 @@
 - README complet
 - Flux rss
 - Originalité du site ? Qu'est-ce qui le démarque ?
-
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 - Supprimer temp.html (temp.md, temp.html, modif css) : commit 92
 - Pouvoir cliquer sur les images pour agrandir
-
 - Retravailler pseudo-code (compromis entre une version très "française" et une
 version "code source")
 - Faire une meilleure analyse de la complexité algorithmique
