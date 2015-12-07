@@ -30,6 +30,7 @@ version "code source")
 ### Graphe
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
+- Parcours : lien conclusion
 
 ## Tri
 ### Tri rapide

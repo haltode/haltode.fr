@@ -2,8 +2,8 @@ Parcours d'un graphe
 ====================
 algo/structure/graphe/
 
-Publié le :  
-*Modifié le : 06/12/2015*
+Publié le : 07/12/2015  
+*Modifié le : 07/12/2015*
 
 ## Introduction
 
@@ -47,6 +47,8 @@ DFS (noeud) :
          DFS(voisin)
 ```
 
+Si par exemple on cherche un nœud de sortie dans notre graphe, on pourrait rajouter une condition qui arrêtera le DFS lorsqu'on a visité ce nœud. Cependant ici, le DFS parcourt tout le graphe à titre d'exemple.
+
 ### Complexité
 
 Dans le pire des cas, si notre sortie est le dernier nœud que l'on visite, notre algorithme va devoir parcourir les *M* arcs du graphe, on a donc une complexité en temps linéaire de *O(M)*.
@@ -86,7 +88,7 @@ dfs_test02_recursif.out
 
 Il est rare d'implémenter de façon itérative un parcours en profondeur, mais cela peut être utile pour ne pas faire exploser la [pile d'appels](https://en.wikipedia.org/wiki/Call_stack) à cause des nombreux appels récursifs imbriqués provoqués par notre dernière implémentation.
 
-Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel. En effet, si on empile les voisins du nœud actuel au lieu de faire un appel récursif dessus, on gardera un parcours en profondeur car la pile d'appel reste néanmoins une pile avec quelques informations supplémentaires. Pour vous convaincre je vous invite à essayer de faire un exemple, en empilant les voisins au lieu de faire un appel récursif, vous verrez que le principe du parcours en profondeur est bien le même avec une pile.
+Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel. En effet lorsqu'on visite un nœud, on veut visiter tout de suite ses voisins, il faut donc les placer dans l'ordre de visite avant les autres nœuds, on va donc les empiler afin de les parcourir d'abord.
 
 [INSERT]
 dfs_iteratif.cpp
@@ -113,23 +115,21 @@ dfs_test02_iteratif.out
 
 Vous constatez donc que la pile "inverse" l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin dès qu'on en a trouvé un non visité (comme le fait la version récursive), mais on les empile tous, et ils vont donc se superposer (ce qui va "inverser" l'ordre car c'est le principe d'une pile : le dernier arrivé, le premier sorti).
 
-### Utilisation
-
 ## Le parcours en largeur
 
-Vous vous retrouvez face à l'entrée du labyrinthe, mais cette fois ci vous cherchez le nombre de pas minimum que vous devez faire pour atteindre la sortie. Je rappelle que le graphe implicite est **non pondéré**, contrairement aux autres algorithmes de [plus court chemins](/algo/structure/graphe/plus_court_chemin.html) où le graphe est pondéré. Si on reprend notre graphe, cela revient à trouver un chemin entre l'entrée et la sortie comportant le minimum de nœuds possibles. Mais de nouveau, nous n'avons aucunes informations sur le labyrinthe, et la sortie pourrait se trouver n'importe où. 
+Vous vous retrouvez face à l'entrée du labyrinthe, mais cette fois ci vous cherchez le nombre de pas minimum que vous devez faire pour atteindre la sortie. Ce problème peut être vu comme un plus court chemin, mais notre graphe implicite est **non pondéré** contrairement aux autres algorithmes "classiques" de [plus court chemin](/algo/structure/graphe/plus_court_chemin.html) où le graphe est pondéré (positivement ou négativement). Cela revient donc à trouver un chemin entre l'entrée et la sortie comportant un minimum de nœuds possible (vu que les arcs ont chacun une distance de *1* unité). Mais de nouveau nous n'avons aucunes informations sur le labyrinthe, et la sortie pourrait se trouver n'importe où.
 
 Essayons tout d'abord de voir si on peut réutiliser un algorithme de parcours en profondeur pour résoudre notre problème :
 
 ![Exemple de labyrinthe](//static.napnac.ga/img/algo/structure/graphe/bfs/dfs_vs_bfs.png)
 
-Dans cet exemple, on fait un DFS sur notre graphe et à cause de l'ordre de parcours des voisins on arrive à la sortie (le nœud vert) en passant par les nœuds 2, 3 et 4 alors qu'on peut y accéder en passant uniquement par le nœud 6. Le problème du DFS est donc l'ordre de parcours des voisins qui peut changer en fonction de l'implémentation mais aussi du graphe, il nous faut donc un nouvel algorithme de parcours de graphe : le parcours en largeur.
+Dans cet exemple, on fait un DFS sur notre graphe et à cause de l'ordre de parcours des voisins on arrive à la sortie (le nœud vert) en passant par les nœuds 2, 3 et 4 alors qu'on peut y accéder en passant uniquement par le nœud 6. Bien sûr notre DFS aurait pu passer par le nœud 6 en premier et ainsi atteindre la sortie le plus rapidement possible, mais cet exemple montre l'un des problèmes du DFS pour ce genre d'exercice, c'est que le résultat de l'algorithme dépend de l'ordre de parcours des voisins qui peut totalement changer en fonction de l'implémentation mais aussi en fonction du graphe. Il nous faut donc un algorithme de parcours qui ne dépend d'aucuns de ces facteurs, et qui nous permet de trouver le chemin le plus court sur un graphe non pondéré : le parcours en largeur.
 
 ### Principe
 
 Le parcours en largeur (ou *BFS* pour *Breadth First Search*), visite les nœuds du graphe par ordre de profondeur. C'est-à-dire que l'algorithme va d'abord visiter les nœuds à une profondeur de 1 par rapport au nœud de départ, puis à une profondeur de 2, de 3, etc. On parcourt le graphe "couche par couche" contrairement au parcours en profondeur qui lui va chercher à aller le plus loin possible d'abord pour ensuite remonter.
 
-Cela permet de résoudre notre problème car dans notre graphe, on regarde si on peut atteindre la sortie en explorant 1 nœud de distance par rapport à celui de départ, si ce n'est pas le cas, on continue de chercher la sortie à 2 nœuds de distance, et on continue d'augmenter cette distance tant qu'on a pas trouvé la sortie. Au final, on trouvera forcément le plus court chemin (qui est le nombre de nœuds minimum entre l'entrée et la sortie) grâce à cette méthode.
+Cela permet donc de trouver le plus court chemin sur un graphe **non pondéré**, car l'algorithme va regarder si on peut atteindre la sortie en parcourant 1 nœud de distance par rapport à l'entrée, puis deux nœuds, puis trois, etc. jusqu'à trouver la sortie. Finalement, on est sûr d'avoir trouvé le plus court chemin car il n'y a pas d'autres chemins comportant moins de nœuds pour accéder à la sortie.
 
 ### Exemple
 
@@ -141,7 +141,7 @@ De même, chaque nœud représente l'ordre de parcours dans le graphe, et on ret
 
 ### Pseudo-code
 
-Pour implémenter ce système de parcours par niveau, on va utiliser une [file](/algo/structure/file.html). En effet, lorsqu'on parcours une "couche" de notre graphe, on veut d'abord parcourir cette couche avant de visiter les voisins des nœuds de la couche actuelle. Cet ordre respecte le principe de premier entré, premier sorti qui est une file.
+Pour implémenter ce système de parcours par niveau, on va utiliser une [file](/algo/structure/file.html). En effet, quand on est sur une couche *N*, on veut que les voisins qu'on va parcourir lors de la couche *N + 1* soient tous situés après les nœuds de la couche *N* que l'on visite actuellement, on veut donc qu'ils arrivent à la fin et ce principe respecte l'ordre du premier entré, premier sorti qu'on appelle aussi une file.
 
 ```nohighlight
 BFS (depart) :
@@ -177,6 +177,9 @@ La sortie
 [INSERT]
 bfs_test01.out
 
-### Utilisation
-
 ## Conclusion
+
+Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe, et il existe deux types de parcours qu'il faut connaître et maitriser pour les utiliser au bon moment :
+
+- **Parcours en profondeur** : on l'utilisera pour trouver un chemin quelconque entre deux nœuds du graphe (par exemple entre l'entrée et la sortie d'un labyrinthe), pour détecter des cycles dans un graphe, pour en trouver ses composantes fortement connexes, afin de créer un tri topologique, ou encore un circuit eulérien, mais cette idée de parcourir en profondeur sert aussi pour les algorithmes dynamiques ou encore pour le backtracking.
+- **Parcours en largeur** : comme nous l'avons vu, le BFS sert afin de trouver le plus court chemin dans un graphe non pondéré, mais il nous sert aussi pour l'algorithme de flot maximum d'un graphe, enfin le BFS peut être préféré face au DFS en fonction du graphe (par rapport à sa densité notamment, et aux nombres de fils d'un nœud).
