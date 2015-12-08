@@ -55,7 +55,7 @@ La liste des articles publiés :
    <p class="relire"><span>- napnac.ga</br></span></p>
    <p class="relire"><span>- IOI</br></span></p>
    <p class="relire"><span>- NandToTetris</br></span></p>
-   <p class="relire"><span>- Rhyddid</br></span></p>
+   <p class="pret"><span>- Rhyddid</br></span></p>
    <p class="pret"><span>- ASCII Funfair</br></span></p>
    <p class="pret"><span>- Pseudo-C</br></span></p>
 

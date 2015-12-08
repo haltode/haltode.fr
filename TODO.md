@@ -13,10 +13,6 @@ version "code source")
 # Algorithme
 ## Structure de données
 
-### Tableau cumulatif
-
-- Pseudo-code (1D et 2D)
-
 ### Liste chaînée
 
 - Rajouter d'autres variantes
