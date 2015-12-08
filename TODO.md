@@ -60,7 +60,3 @@ version "code source")
 # Programmation
 
 - C : Rajouter ressources "Apprendre et s'entraîner"
-
-# Projets
-
-- Rhyddid : images plus petites

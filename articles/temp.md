@@ -28,7 +28,7 @@ La liste des articles publiés :
 
     - Recherche :
 
-         <p class="faire"><span>- Dichotomie</br></span></p>
+         <p class="encours"><span>- Dichotomie</br></span></p>
          <p class="faire"><span>- Union-find</br></span></p>
 
     - Chiffrement :
