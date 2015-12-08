@@ -3,7 +3,7 @@ Tri par insertion
 algo/tri
 
 Publié le : 01/05/2014  
-*Modifié le : 15/11/2015*
+*Modifié le : 08/12/2015*
 
 ## Introduction
 
@@ -68,7 +68,18 @@ Dans le pire des cas on parcourt *N \* N* tours, donc le tri par insertion a une
 
 L’implémentation en C du tri par insertion :
 
-main.c : 
+[INSERT]
+tri_insertion.c
+
+L'entrée du tri :
+
+[INSERT]
+test01.in
+
+Et en sortie, notre tableau trié :
+
+[INSERT]
+test01.out
 
 ## Améliorations et variantes
 
@@ -78,7 +89,7 @@ Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer u
 
 ### Tri Shell
 
-Le tri par insertion est un algorithme de tri très efficace sur des entrées quasi trié, et on peut utiliser cette propriété intéressante du tri pour l'améliorer. En effet, le tri Shell (*Shell sort* en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu'on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.
+Le tri par insertion est un algorithme de tri très efficace sur des entrées quasiment triéés, et on peut utiliser cette propriété intéressante du tri pour l'améliorer. En effet, le tri Shell (*Shell sort* en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu'on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.
 
 Pour calculer cet écart, on utilise cette formule :
 
@@ -122,4 +133,4 @@ Une fois que l’intervalle ne contient plus qu’un seul élément, on a trouv�
 
 ## Conclusion
 
-L'algorithme du tri par insertion est simple et relativement intuitif, même s'il a une complexité en temps quadratique. Cet algorithme de tri reste très utilisé à cause de ses facultés à s'exécuter en temps quasi linéaire sur des entrées déjà triée, et de manière très efficace sur de petites entrées en général (souvent plus performant, dans ce cas, que des algorithmes de tri en *O(N \* log N)*).
+L'algorithme du tri par insertion est simple et relativement intuitif, même s'il a une complexité en temps quadratique. Cet algorithme de tri reste très utilisé à cause de ses facultés à s'exécuter en temps quasi linéaire sur des entrées déjà triées, et de manière très efficace sur de petites entrées en général (souvent plus performant, dans ce cas, que des algorithmes de tri en *O(N \* log N)*).

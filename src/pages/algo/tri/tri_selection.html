@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tri-par-s&#233;lection">Tri par s&#233;lection</h1></a>
 <p>Publi&#233; le : 30/04/2014<br />
-<em>Modifi&#233; le : 14/11/2015</em></p>
+<em>Modifi&#233; le : 08/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -231,8 +231,65 @@ function toggle_visibility(id) {
 </ul>
 <p>Sa complexit&#233; est donc l&#233;g&#232;rement inf&#233;rieure &#224; <em>N&#178;</em>, cependant cette diff&#233;rence est mineure et sa complexit&#233; est consid&#233;r&#233;e comme &#233;tant en <em>O(N&#178;)</em>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>Le lien vers une impl&#233;mentation en C de l&#8217;algorithme du tri par s&#233;lection :</p>
-<p>main.c :</p>
+<p>Une impl&#233;mentation en C de l'algorithme du tri par s&#233;lection :</p>
+<a href="javascript:toggle_visibility('tri_selection.c');">tri_selection.c</a>
+<div id="tri_selection.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">int</span> tableau[TAILLE_MAX];
+<span class="dt">int</span> taille;
+
+<span class="dt">void</span> echanger(<span class="dt">int</span> index1, <span class="dt">int</span> index2)
+{
+   <span class="dt">int</span> temp;
+
+   temp = tableau[index1];
+   tableau[index1] = tableau[index2];
+   tableau[index2] = temp;
+}
+
+<span class="dt">void</span> triSelection(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iElement, iTab;
+   <span class="dt">int</span> min;
+
+   <span class="kw">for</span>(iElement = <span class="dv">0</span>; iElement &lt; taille; ++iElement) {
+      min = iElement;
+
+      <span class="kw">for</span>(iTab = iElement + <span class="dv">1</span>; iTab &lt; taille; ++iTab)
+         <span class="kw">if</span>(tableau[iTab] &lt; tableau[min])
+            min = iTab;
+
+      <span class="kw">if</span>(min != iElement)
+         echanger(iElement, min);
+   }
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab;
+
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;taille);
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      scanf(<span class="st">&quot;%d &quot;</span>, &amp;tableau[iTab]);
+
+   triSelection();
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      printf(<span class="st">&quot;%d &quot;</span>, tableau[iTab]);
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>L'entr&#233;e du programme :</p>
+<pre class="in"><code>4
+6 1 9 3</code></pre>
+<p>Et la sortie attendue :</p>
+<pre class="out"><code>1 3 6 9</code></pre>
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
 <h3 id="tri-par-s&#233;lection-bidirectionnel">Tri par s&#233;lection bidirectionnel</h3>
 <p>Tout comme pour le tri &#224; bulles, on peut am&#233;liorer l&#233;g&#232;rement le tri par s&#233;lection pour qu'il effectue moins d'op&#233;rations. Dans notre boucle qui cherche le <em>i&#232;me</em> plus petit &#233;l&#233;ment, on peut aussi en profiter pour chercher le <em>j&#232;me</em> plus grand. Gr&#226;ce &#224; cela, on divise par deux le nombre de tours que l'on r&#233;alise pour trier notre tableau, cependant, diviser par deux ne change pas la complexit&#233; finale car 2 est un facteur assez petit pour ne pas en prendre compte dans de tr&#232;s larges entr&#233;es. La complexit&#233; du tri reste donc quadratique.</p>

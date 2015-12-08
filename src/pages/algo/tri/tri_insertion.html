@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tri-par-insertion">Tri par insertion</h1></a>
 <p>Publi&#233; le : 01/05/2014<br />
-<em>Modifi&#233; le : 15/11/2015</em></p>
+<em>Modifi&#233; le : 08/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -231,12 +231,63 @@ function toggle_visibility(id) {
 <p>Dans le pire des cas on parcourt <em>N * N</em> tours, donc le tri par insertion a une complexit&#233; en temps de <em>O(N&#178;)</em>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L&#8217;impl&#233;mentation en C du tri par insertion :</p>
-<p>main.c :</p>
+<a href="javascript:toggle_visibility('tri_insertion.c');">tri_insertion.c</a>
+<div id="tri_insertion.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">int</span> tableau[TAILLE_MAX];
+<span class="dt">int</span> taille;
+
+<span class="dt">void</span> triInsertion(<span class="dt">void</span>)
+{
+    <span class="dt">int</span> iTab;
+
+    <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab) {
+      <span class="dt">int</span> aInserer;
+        <span class="dt">int</span> position;
+
+      aInserer = tableau[iTab];
+
+      position = iTab;
+      <span class="kw">while</span>(position &gt; <span class="dv">0</span> &amp;&amp; aInserer &lt; tableau[position - <span class="dv">1</span>]) {
+         tableau[position] = tableau[position - <span class="dv">1</span>];
+         --position;
+      }
+
+        tableau[position] = aInserer;
+    }
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+    <span class="dt">int</span> iTab;
+
+    scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;taille);
+
+    <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+        scanf(<span class="st">&quot;%d &quot;</span>, &amp;tableau[iTab]);
+
+    triInsertion();
+
+    <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+        printf(<span class="st">&quot;%d &quot;</span>, tableau[iTab]);
+    printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>L'entr&#233;e du tri :</p>
+<pre class="in"><code>4
+9 2 7 1</code></pre>
+<p>Et en sortie, notre tableau tri&#233; :</p>
+<pre class="out"><code>1 2 7 9</code></pre>
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
 <h3 id="utiliser-des-listes-cha&#238;n&#233;es">Utiliser des listes cha&#238;n&#233;es</h3>
 <p>Le tri par insertion doit d&#233;caler de nombreuses fois le tableau pour ins&#233;rer un &#233;l&#233;ment, ce qui est une op&#233;ration lourde et inutile puisqu'on peut utiliser des <a href="/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a> afin de contrer ce probl&#232;me. Les listes cha&#238;n&#233;es permettent d'ins&#233;rer notre &#233;l&#233;ment de fa&#231;on simple et plus rapide, cependant comme il faut toujours calculer o&#249; placer cet &#233;l&#233;ment, la complexit&#233; reste quadratique.</p>
 <h3 id="tri-shell">Tri Shell</h3>
-<p>Le tri par insertion est un algorithme de tri tr&#232;s efficace sur des entr&#233;es quasi tri&#233;, et on peut utiliser cette propri&#233;t&#233; int&#233;ressante du tri pour l'am&#233;liorer. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va &#233;changer certaines valeurs du tableau &#224; un &#233;cart bien pr&#233;cis afin de le rendre dans la plupart des cas presque tri&#233;. Une fois qu'on a ce tableau r&#233;-arrang&#233;, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide gr&#226;ce &#224; notre premi&#232;re &#233;tape.</p>
+<p>Le tri par insertion est un algorithme de tri tr&#232;s efficace sur des entr&#233;es quasiment tri&#233;&#233;s, et on peut utiliser cette propri&#233;t&#233; int&#233;ressante du tri pour l'am&#233;liorer. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va &#233;changer certaines valeurs du tableau &#224; un &#233;cart bien pr&#233;cis afin de le rendre dans la plupart des cas presque tri&#233;. Une fois qu'on a ce tableau r&#233;-arrang&#233;, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide gr&#226;ce &#224; notre premi&#232;re &#233;tape.</p>
 <p>Pour calculer cet &#233;cart, on utilise cette formule :</p>
 <p><em>Ecart(N) = 3 * Ecart(N - 1) + 1</em><br />
 avec <em>Ecart(0) = 0</em></p>
@@ -264,7 +315,7 @@ avec <em>Ecart(0) = 0</em></p>
 <p>Une fois que l&#8217;intervalle ne contient plus qu&#8217;un seul &#233;l&#233;ment, on a trouv&#233; l&#8217;emplacement o&#249; ins&#233;rer l'&#233;l&#233;ment &#224; sa place. Gr&#226;ce &#224; cette am&#233;lioration, l&#8217;algorithme du tri par insertion a pour complexit&#233; <em>O(N * log N)</em>.</p>
 <p><em>J'ai expliqu&#233; ici tr&#232;s rapidement le principe de la dichotomie, j'en parle plus longuement dans mon article &#224; ce propos donc si vous n'avez pas tout suivi, je vous conseille d'aller le lire pour bien saisir ce concept fondamental en algorithmie.</em></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>L'algorithme du tri par insertion est simple et relativement intuitif, m&#234;me s'il a une complexit&#233; en temps quadratique. Cet algorithme de tri reste tr&#232;s utilis&#233; &#224; cause de ses facult&#233;s &#224; s'ex&#233;cuter en temps quasi lin&#233;aire sur des entr&#233;es d&#233;j&#224; tri&#233;e, et de mani&#232;re tr&#232;s efficace sur de petites entr&#233;es en g&#233;n&#233;ral (souvent plus performant, dans ce cas, que des algorithmes de tri en <em>O(N * log N)</em>).</p>
+<p>L'algorithme du tri par insertion est simple et relativement intuitif, m&#234;me s'il a une complexit&#233; en temps quadratique. Cet algorithme de tri reste tr&#232;s utilis&#233; &#224; cause de ses facult&#233;s &#224; s'ex&#233;cuter en temps quasi lin&#233;aire sur des entr&#233;es d&#233;j&#224; tri&#233;es, et de mani&#232;re tr&#232;s efficace sur de petites entr&#233;es en g&#233;n&#233;ral (souvent plus performant, dans ce cas, que des algorithmes de tri en <em>O(N * log N)</em>).</p>
  
       <!-- ------------ -->
 

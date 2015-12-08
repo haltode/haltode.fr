@@ -3,7 +3,7 @@ Tri par sélection
 algo/tri
 
 Publié le : 30/04/2014  
-*Modifié le : 14/11/2015*
+*Modifié le : 08/12/2015*
 
 ## Introduction
 
@@ -70,9 +70,20 @@ Sa complexité est donc légèrement inférieure à *N²*, cependant cette diff�
 
 ## Implémentation
 
-Le lien vers une implémentation en C de l’algorithme du tri par sélection :
+Une implémentation en C de l'algorithme du tri par sélection :
 
-main.c : 
+[INSERT]
+tri_selection.c
+
+L'entrée du programme :
+
+[INSERT]
+test01.in
+
+Et la sortie attendue :
+
+[INSERT]
+test01.out
 
 ## Améliorations et variantes
 
