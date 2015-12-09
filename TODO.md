@@ -5,10 +5,7 @@
 - Originalité du site ? Qu'est-ce qui le démarque ?
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 - Supprimer temp.html (temp.md, temp.html, modif css) : commit 92
-- Pouvoir cliquer sur les images pour agrandir
-- Retravailler pseudo-code (compromis entre une version très "française" et une
-version "code source")
-- Faire une meilleure analyse de la complexité algorithmique
+- Faire une meilleure analyse de la complexité
 
 # Algorithme
 ## Structure de données
@@ -24,6 +21,7 @@ version "code source")
 ### Graphe
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
+- Parcours : ajouter une image de vrai labyrinthe pour montrer le graphe implicite (juste après l'intro du dfs)
 - Parcours : refaire conclusion (+ ajouter liens)
 
 ## Tri
@@ -37,6 +35,11 @@ version "code source")
 ### Tri par tas
 
 - Code du smoothsort + exemple (images)
+
+### Tri par dénombrement
+
+- Améliorations/variantes ?
+- Utilisation possible du tri (ex : utiliser comme un "sous-tri" dans le tri par base)
 
 ### Autre
 
