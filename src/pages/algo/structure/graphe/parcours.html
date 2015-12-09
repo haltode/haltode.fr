@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="parcours-dun-graphe">Parcours d'un graphe</h1></a>
 <p>Publi&#233; le : 07/12/2015<br />
-<em>Modifi&#233; le : 07/12/2015</em></p>
+<em>Modifi&#233; le : 09/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#le-parcours-en-profondeur">Le parcours en profondeur</a></li>
@@ -371,7 +371,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 <p>Dans cet exemple, on fait un DFS sur notre graphe et &#224; cause de l'ordre de parcours des voisins on arrive &#224; la sortie (le n&#339;ud vert) en passant par les n&#339;uds 2, 3 et 4 alors qu'on peut y acc&#233;der en passant uniquement par le n&#339;ud 6. Bien s&#251;r notre DFS aurait pu passer par le n&#339;ud 6 en premier et ainsi atteindre la sortie le plus rapidement possible, mais cet exemple montre l'un des probl&#232;mes du DFS pour ce genre d'exercice, c'est que le r&#233;sultat de l'algorithme d&#233;pend de l'ordre de parcours des voisins qui peut totalement changer en fonction de l'impl&#233;mentation mais aussi en fonction du graphe. Il nous faut donc un algorithme de parcours qui ne d&#233;pend d'aucuns de ces facteurs, et qui nous permet de trouver le chemin le plus court sur un graphe non pond&#233;r&#233; : le parcours en largeur.</p>
 <h3 id="principe-1">Principe</h3>
 <p>Le parcours en largeur (ou <em>BFS</em> pour <em>Breadth First Search</em>), visite les n&#339;uds du graphe par ordre de profondeur. C'est-&#224;-dire que l'algorithme va d'abord visiter les n&#339;uds &#224; une profondeur de 1 par rapport au n&#339;ud de d&#233;part, puis &#224; une profondeur de 2, de 3, etc. On parcourt le graphe &quot;couche par couche&quot; contrairement au parcours en profondeur qui lui va chercher &#224; aller le plus loin possible d'abord pour ensuite remonter.</p>
-<p>Cela permet donc de trouver le plus court chemin sur un graphe <strong>non pond&#233;r&#233;</strong>, car l'algorithme va regarder si on peut atteindre la sortie en parcourant 1 n&#339;ud de distance par rapport &#224; l'entr&#233;e, puis deux n&#339;uds, puis trois, etc. jusqu'&#224; trouver la sortie. Finalement, on est s&#251;r d'avoir trouv&#233; le plus court chemin car il n'y a pas d'autres chemins comportant moins de n&#339;uds pour acc&#233;der &#224; la sortie.</p>
+<p>Cela permet donc de trouver le plus court chemin sur un graphe <strong>non pond&#233;r&#233;</strong>, car l'algorithme va regarder si on peut atteindre la sortie en parcourant un n&#339;ud de distance par rapport &#224; l'entr&#233;e, puis deux n&#339;uds, puis trois, etc. jusqu'&#224; trouver la sortie. Finalement, on est s&#251;r d'avoir trouv&#233; le plus court chemin car il n'y a pas d'autres chemins comportant moins de n&#339;uds pour acc&#233;der &#224; la sortie.</p>
 <h3 id="exemple-1">Exemple</h3>
 <p>Avec le m&#234;me graphe que pour le DFS, mais en appliquant un BFS dessus :</p>
 <div class="figure">
@@ -457,7 +457,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 4 7
 4 8
 6 9</code></pre>
-<p>La sortie</p>
+<p>La sortie :</p>
 <pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <h2 id="conclusion">Conclusion</h2>
 <p>Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe, et il existe deux types de parcours qu'il faut conna&#238;tre et maitriser pour les utiliser au bon moment :</p>

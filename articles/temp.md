@@ -17,13 +17,13 @@ La liste des articles publiés :
          <p class="pret"><span>- Pile</br></span></p>
          <p class="pret"><span>- File</br></span></p>
          <p class="pret"><span>- Arbre</span></p> <p class="faire"><span>Arbre binaire</span></p> / <p class="faire"><span>Tas</span></p> / <p class="faire"><span>Arbre de recherche</span></p> / <p class="faire"><span>Trie</br></span></p>
-         <p class="pret"><span>- Graphe</span></p> <p class="relire"><span>Parcours</span></p> / <p class="faire"><span>Plus court chemin</br></span></p>
+         <p class="pret"><span>- Graphe</span></p> <p class="pret"><span>Parcours</span></p> / <p class="faire"><span>Plus court chemin</br></span></p>
          <p class="faire"><span>- Table de hachage </br></span></p>
 
     - Tri :
 
          - Tri en *O(N²)* : <p class="pret"><span>tri à bulles</span></p>, <p class="pret"><span>tri par sélection</span></p>, <p class="pret"><span>tri par insertion</br></span></p>
-         - Tri en *O(N \* log N)* : <p class="relire"><span>tri fusion</span></p>, <p class="relire"><span>tri rapide</span></p>, <p class="relire"><span>tri par tas</br></span></p>
+         - Tri en *O(N \* log N)* : <p class="pret"><span>tri fusion</span></p>, <p class="pret"><span>tri rapide</span></p>, <p class="relire"><span>tri par tas</br></span></p>
          - Tri en *O(N)* : <p class="relire"><span>tri par dénombrement</span></p>, <p class="faire"><span>tri par base</span></p>, <p class="faire"><span>tri par paquets</br></span></p>
 
     - Recherche :
@@ -54,7 +54,7 @@ La liste des articles publiés :
 
    <p class="relire"><span>- napnac.ga</br></span></p>
    <p class="relire"><span>- IOI</br></span></p>
-   <p class="relire"><span>- NandToTetris</br></span></p>
+   <p class="pret"><span>- NandToTetris</br></span></p>
    <p class="pret"><span>- Rhyddid</br></span></p>
    <p class="pret"><span>- ASCII Funfair</br></span></p>
    <p class="pret"><span>- Pseudo-C</br></span></p>

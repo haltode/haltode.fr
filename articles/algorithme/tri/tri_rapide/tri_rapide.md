@@ -3,7 +3,7 @@ Tri rapide
 algo/tri
 
 Publié le : 10/05/2014  
-*Modifié le : 16/11/2015*
+*Modifié le : 09/12/2015*
 
 ## Introduction
 
@@ -11,7 +11,7 @@ Le tri rapide (*quicksort* en anglais) est un algorithme de tri par comparaison,
 
 ## Principe de l’algorithme
 
-Le tri rapide utilise le principe de [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), c’est-à-dire que l’on va choisir un élément du tableau (que l’on appelle **pivot**), puis l’on réorganise le tableau initial en deux sous tableaux :
+Le tri rapide utilise le principe de [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), c’est-à-dire que l’on va choisir un élément du tableau (qu’on appelle **pivot**), puis l’on réorganise le tableau initial en deux sous tableaux :
 
 - L’un contenant les éléments inférieurs au pivot.
 - L’autre contenant les éléments supérieurs au pivot.
@@ -24,9 +24,9 @@ Prenons 5, 9, 7, 3, 8 comme suite de nombres, et trions la dans l'ordre croissan
 
 5, 9, **7**, 3, 8 -> on choisit le pivot, dans notre cas je choisis l'élément du milieu, 7.
 
-5, 3 | **7** | 9, 8 -> on découpe le tableau en trois parties, une partie avec des éléments inférieurs au pivot (5 et 3), la partie contenant le pivot (7), et une partie avec les éléments supérieurs au pivot (9 et 8). On peut déjà dire qu'on a forcément placé le pivot à sa place définitive dans le tableau.
+5, 3 | **7** | 9, 8 -> on découpe le tableau en trois parties, une partie avec des éléments inférieurs au pivot (5 et 3), la partie contenant le pivot (7), et une partie avec les éléments supérieurs au pivot (9 et 8). On peut déjà dire qu'on a placé le pivot à sa place définitive dans le tableau, puisque les autres éléments sont soit supérieurs soit inférieurs à lui.
 
-**5**, 3 | 7 | **9**, 8 -> on recommence en choisissant de nouveau un pivot pour chaque sous tableaux qu'on a créés.
+**5**, 3 | 7 | **9**, 8 -> on recommence en choisissant de nouveau un pivot pour chaque sous tableaux créés.
 
 3 | **5** | 7 | 8 | **9** -> dernière étape du partitionnement, désormais aucuns sous tableaux ne contient plus d'un élément, le tri est donc terminé.
 
@@ -65,7 +65,18 @@ Il faut savoir que le tri rapide peut s'exécuter deux fois plus vite que le [tr
 
 L’implémentation en C du tri rapide :
 
-main.c : 
+[INSERT]
+tri_rapide.c
+
+L'entrée :
+
+[INSERT]
+test01.in
+
+Notre tableau trié en sortie :
+
+[INSERT]
+test01.out
 
 En C, [qsort](http://www.cplusplus.com/reference/cstdlib/qsort/) est une implémentation du tri rapide définie dans `stdlib.h`. En C++, il vous suffit d'inclure `cstdlib` pour pouvoir l'utiliser.
 
@@ -73,11 +84,11 @@ En C, [qsort](http://www.cplusplus.com/reference/cstdlib/qsort/) est une implém
 
 ### Choix du pivot
 
-Le pivot est l'élément central du tri rapide et le choix de ce dernier peut faire la différence entre une bonne et une mauvaise implémentation. Le choix optimal de pivot serait la [médiane](https://en.wikipedia.org/wiki/Median) du tableau car cette dernière permettrait de couper de manière égale le tableau, surtout qu'il est possible de trouver cette médiane en temps linéaire grâce à l'algorithme [médiane des médianes](https://en.wikipedia.org/wiki/Median_of_medians).
+Le pivot est l'élément central du tri rapide, et le choix de ce dernier peut faire la différence entre une bonne et une mauvaise implémentation. Le choix optimal de pivot serait la [médiane](https://en.wikipedia.org/wiki/Median) du tableau car cette dernière permettrait de couper de manière égale le tableau, surtout qu'il est possible de trouver cette médiane en temps linéaire grâce à l'algorithme [médiane des médianes](https://en.wikipedia.org/wiki/Median_of_medians).
 
-Par exemple avec ce tableau de nombres : 3, 9, 7, 5, 1 si l’on prend comme dans les exemples notre pivot au milieu (soit 7), on se retrouve donc avec les deux sous tableaux suivants : 1, 3, 5 et 9 qui ne sont pas de la même taille. En revanche si l’on prend 5 (la valeur médiane du tableau) comme pivot on se retrouve avec les deux sous tableaux : 1, 3 et 7, 9 qui contiennent deux éléments chacun.
+Par exemple avec ce tableau : 3, 9, 7, 5, 1 si l’on prend comme dans les exemples notre pivot au milieu (soit 7), on se retrouve avec les deux sous tableaux suivants : 1, 3, 5 et 9 qui ne sont pas de la même taille. En revanche, si l’on prend 5 comme pivot (la médiane du tableau), on se retrouve avec les deux sous tableaux : 1, 3 et 7, 9 qui contiennent deux éléments chacun.
 
-Le fait que nos sous tableaux soient de la même taille (ou environ de la même taille), permettrait de diminuer le nombre d'appels récursifs de la fonction et améliorer ainsi notre complexité en temps. Cette économie d'appels récursifs peut paraitre mineure sur de petites entrées, mais peut vraiment faire une grosse différence sur d'importants tableaux. Techniquement, avec cette amélioration, notre implémentation du tri rapide aurait une complexité dans le pire des cas en *O(N \* log N)*.
+Le fait que nos sous tableaux soient de la même taille (ou environ de la même taille), permettrait de diminuer le nombre d'appels récursifs de la fonction et améliorer ainsi notre complexité en temps. Cette économie d'appels récursifs peut paraitre mineure sur de petites entrées, mais peut vraiment faire une grosse différence sur d'importants tableaux. Techniquement, avec cette amélioration, notre implémentation du tri rapide a une complexité dans le pire des cas en *O(N \* log N)*.
 
 ### Mélange d'algorithme
 
@@ -87,8 +98,8 @@ On peut donc combiner les deux tris, et faire en sorte d’utiliser le tri par i
 
 ### Introsort
 
-Dans le même genre que d'utiliser un algorithme quadratique sur de petites entrées, l'introsort utilise un mix de tri rapide et de [tri par tas](/algo/tri/tri_tas.html) afin de palier un problème de lenteur dû au nombre d'appels récursifs importants du tri rapide. Une fois que ce nombre a dépassé une certaine limite, le travail est assuré par le tri par tas pour améliorer le temps d'exécution et ne pas exploser la [pile d'appel](https://en.wikipedia.org/wiki/Call_stack). Grâce à cela, notre temps d'exécution dans le pire des cas est de *O(N \* log N)*.
+Dans le même genre que d'utiliser un algorithme quadratique sur de petites entrées, l'introsort utilise un mix de tri rapide et de [tri par tas](/algo/tri/tri_tas.html) afin de contrer un problème de lenteur dû au nombre d'appels récursifs importants du tri rapide. Une fois que ce nombre a dépassé une certaine limite, le travail est assuré par le tri par tas pour améliorer le temps d'exécution et ne pas exploser la [pile d'appel](https://en.wikipedia.org/wiki/Call_stack). Grâce à cela, notre temps d'exécution dans le pire des cas est de *O(N \* log N)*.
 
 ## Conclusion
 
-Le tri rapide est donc un algorithme de tri efficace, qui a une complexité en *O(N \* log N)* et *O(N²)* dans le pire des cas (ce qui est assez rare en pratique et peut être amélioré). Cependant, cet algorithme est très utilisé de nos jours grâce à sa rapidité (jusqu'à deux fois plus rapide que le tri par tas pour des raisons de cache, et dans la plupart du temps plus efficace que le tri fusion grâce à ses améliorations). Cet algorithme est aussi utilisé comme fonction de tri de base dans les librairies standards (comme en C et en C++).
+Le tri rapide est donc un algorithme de tri efficace, qui a une complexité en *O(N \* log N)* et *O(N²)* dans le pire des cas (ce qui est assez rare en pratique, et peut être amélioré). Cependant, cet algorithme est très utilisé de nos jours grâce à sa rapidité (jusqu'à deux fois plus rapide que le tri par tas pour des raisons de cache, et dans la plupart du temps plus efficace que le tri fusion grâce à ses améliorations). Cet algorithme est aussi utilisé comme fonction de tri de base dans les librairies standards (comme en C ou en C++).

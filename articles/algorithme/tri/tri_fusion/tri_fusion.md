@@ -3,7 +3,7 @@ Tri fusion
 algo/tri
 
 Publié le : 10/05/2014  
-*Modifié le : 15/11/2015*
+*Modifié le : 09/12/2015*
 
 ## Introduction
 
@@ -66,7 +66,7 @@ fusionner (début, milieu, fin) :
    A -> éléments du tableau de début à milieu
    B -> éléments du tableau de milieu + 1 à fin
 
-   Pour i = début, allant jusqu'à fin à pas de 1
+   Pour i allant de début à fin
       Si A[indexA] <= B[indexB]
          Tableau[i] = A[indexA]
          Incrémenter indexA 
@@ -86,9 +86,22 @@ La complexité du tri fusion est de *O(N \* log N)*, puisque notre fonction `tri
 
 ## Implémentation
 
-Le lien vers l’implémentation du tri fusion :
+Une implémentation en C du tri fusion :
 
-main.c : 
+[INSERT]
+tri_fusion.c
+
+Il faut faire attention dans notre fonction `fusion` à bien vérifier qu'on a encore des éléments dans les tableaux A et B avant de les copier (si on arrive à la fin d'un des deux tableaux, on remplit le reste avec l'autre).
+
+L'entrée du programme :
+
+[INSERT]
+test01.in
+
+Et en sortie, notre tableau trié :
+
+[INSERT]
+test01.out
 
 ## Améliorations et variantes
 

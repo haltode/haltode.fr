@@ -1,20 +1,22 @@
 #include <stdio.h>
 
-int tableau[] = {5, 9, 7, 3, 8};
-int taille = 5;
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
 
 void echanger(int index1, int index2)
 {
-   int temporaire;
+   int temp;
 
-   temporaire = tableau[index1];
+   temp = tableau[index1];
    tableau[index1] = tableau[index2];
-   tableau[index2] = temporaire;
+   tableau[index2] = temp;
 }
 
 void triRapide(int debut, int fin)
 {
-   int indexTab;
+   int iTab;
    int dernierEmplacement;
 
    if(debut >= fin)
@@ -23,12 +25,10 @@ void triRapide(int debut, int fin)
    echanger(debut, (debut + fin) / 2);
    dernierEmplacement = debut;
 
-   for(indexTab = debut + 1; indexTab <= fin; ++indexTab)
-   {
-      if(tableau[indexTab] < tableau[debut])
-      {
+   for(iTab = debut + 1; iTab <= fin; ++iTab) {
+      if(tableau[iTab] < tableau[debut]) {
          ++dernierEmplacement;
-         echanger(dernierEmplacement, indexTab);
+         echanger(dernierEmplacement, iTab);
       }
    }
 
@@ -40,17 +40,18 @@ void triRapide(int debut, int fin)
 
 int main(void)
 {
-   int index;
+   int iTab;
 
-   for(index = 0; index < taille; ++index)
-      printf("%d ", tableau[index]);
+   scanf("%d\n", &taille);
 
-   printf("\n\n");
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
 
    triRapide(0, taille - 1);
 
-   for(index = 0; index < taille; ++index)
-      printf("%d ", tableau[index]);
+   for(iTab = 0; iTab < taille; ++iTab)
+      printf("%d ", tableau[iTab]);
+   printf("\n");
 
    return 0;
 }

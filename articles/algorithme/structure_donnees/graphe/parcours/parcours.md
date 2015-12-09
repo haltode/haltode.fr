@@ -3,7 +3,7 @@ Parcours d'un graphe
 algo/structure/graphe/
 
 Publié le : 07/12/2015  
-*Modifié le : 07/12/2015*
+*Modifié le : 09/12/2015*
 
 ## Introduction
 
@@ -129,7 +129,7 @@ Dans cet exemple, on fait un DFS sur notre graphe et à cause de l'ordre de parc
 
 Le parcours en largeur (ou *BFS* pour *Breadth First Search*), visite les nœuds du graphe par ordre de profondeur. C'est-à-dire que l'algorithme va d'abord visiter les nœuds à une profondeur de 1 par rapport au nœud de départ, puis à une profondeur de 2, de 3, etc. On parcourt le graphe "couche par couche" contrairement au parcours en profondeur qui lui va chercher à aller le plus loin possible d'abord pour ensuite remonter.
 
-Cela permet donc de trouver le plus court chemin sur un graphe **non pondéré**, car l'algorithme va regarder si on peut atteindre la sortie en parcourant 1 nœud de distance par rapport à l'entrée, puis deux nœuds, puis trois, etc. jusqu'à trouver la sortie. Finalement, on est sûr d'avoir trouvé le plus court chemin car il n'y a pas d'autres chemins comportant moins de nœuds pour accéder à la sortie.
+Cela permet donc de trouver le plus court chemin sur un graphe **non pondéré**, car l'algorithme va regarder si on peut atteindre la sortie en parcourant un nœud de distance par rapport à l'entrée, puis deux nœuds, puis trois, etc. jusqu'à trouver la sortie. Finalement, on est sûr d'avoir trouvé le plus court chemin car il n'y a pas d'autres chemins comportant moins de nœuds pour accéder à la sortie.
 
 ### Exemple
 
@@ -173,7 +173,8 @@ Notre graphe :
 [INSERT]
 bfs_test01.in
 
-La sortie
+La sortie :
+
 [INSERT]
 bfs_test01.out
 

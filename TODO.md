@@ -24,12 +24,15 @@ version "code source")
 ### Graphe
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
-- Parcours : lien conclusion
+- Parcours : refaire conclusion (+ ajouter liens)
 
 ## Tri
+
+- Améliorer analyse complexité : tri fusion, tri rapide
+
 ### Tri rapide
 
-- Code hackerrank
+- Code hackerrank (refaire le code + explications plus détaillées)
 
 ### Tri par tas
 
