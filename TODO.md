@@ -21,7 +21,6 @@
 ### Graphe
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
-- Parcours : ajouter une image de vrai labyrinthe pour montrer le graphe implicite (juste après l'intro du dfs)
 - Parcours : refaire conclusion (+ ajouter liens)
 
 ## Tri

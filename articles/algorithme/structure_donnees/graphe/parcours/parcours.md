@@ -3,7 +3,7 @@ Parcours d'un graphe
 algo/structure/graphe/
 
 Publié le : 07/12/2015  
-*Modifié le : 09/12/2015*
+*Modifié le : 10/12/2015*
 
 ## Introduction
 
@@ -12,6 +12,8 @@ Le parcours d'un [graphe](/algo/structure/graphe.html) est une opération essent
 ## Le parcours en profondeur
 
 Vous vous trouvez dans un labyrinthe contenant de nombreux chemins possibles, et vous cherchez la sortie alors que vous ne connaissez aucunes indications sur ce labyrinthe. Tout d'abord, on peut représenter notre labyrinthe comme un graphe dit *implicite*, qui sera non pondéré (chaque arc aura alors une distance de *1* unité). En effet, chaque intersection sera représentée par un nœud du graphe, et chaque chemin par un arc. L'entrée et la sortie du labyrinthe sont juste de simples nœuds distincts du graphe, et le fait de trouver la sortie du labyrinthe, revient à trouver un chemin reliant le nœud d'entrée au nœud de sortie.
+
+![Exemple de représentation d'un labyrinthe sous forme de graphe](//static.napnac.ga/img/algo/structure/graphe/dfs/labyrinthe_graphe.png)
 
 Vu qu'on ne connait rien sur ce labyrinthe, il est impossible de deviner le chemin nous permettant d'arriver à la sortie puisque ça pourrait être n'importe lequel du graphe. On peut donc tout simplement essayer chacun des chemins jusqu'à trouver le bon. Ce parcours est alors qualifié de : parcours en profondeur.
 
