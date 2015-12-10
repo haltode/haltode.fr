@@ -1,27 +1,37 @@
 #include <stdio.h>
 
-int tableau[] = {1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304, 7662};
-int taille = 12;
+#define TAILLE_MAX 1000
 
-int dichotomie(int debut, int milieu, int fin, int recherche)
+int tableau[TAILLE_MAX];
+int taille;
+int recherche;
+
+int dichotomie(int debut, int fin)
 {
+   int milieu;
    milieu = (debut + fin) / 2;
 
-   if(tableau[milieu] < recherche)
-      dichotomie(milieu + 1, milieu, fin, recherche);
-   else if(tableau[milieu] > recherche)
-      dichotomie(debut, milieu, milieu - 1, recherche);
+   if(recherche > tableau[milieu])
+      return dichotomie(milieu + 1, fin);
+   else if(recherche < tableau[milieu])
+      return dichotomie(debut, milieu - 1);
    else
       return milieu;
 }
 
 int main(void)
 {
-   int emplacement;
+   int iTab;
 
-   emplacement = dichotomie(0, taille / 2, taille - 1, 512);
+   scanf("%d\n", &taille);
 
-   printf("Emplacement : %d\n", emplacement + 1);
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
+   scanf("\n");
+
+   scanf("%d\n", &recherche);
+
+   printf("%d\n", dichotomie(0, taille - 1) + 1);
 
    return 0;
 }

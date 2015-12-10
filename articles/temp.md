@@ -28,7 +28,7 @@ La liste des articles publiés :
 
     - Recherche :
 
-         <p class="encours"><span>- Dichotomie</br></span></p>
+         <p class="relire"><span>- Dichotomie</br></span></p>
          <p class="faire"><span>- Union-find</br></span></p>
 
     - Chiffrement :
@@ -53,7 +53,7 @@ La liste des articles publiés :
 - Projets :
 
    <p class="relire"><span>- napnac.ga</br></span></p>
-   <p class="relire"><span>- IOI</br></span></p>
+   <p class="pret"><span>- IOI</br></span></p>
    <p class="pret"><span>- NandToTetris</br></span></p>
    <p class="pret"><span>- Rhyddid</br></span></p>
    <p class="pret"><span>- ASCII Funfair</br></span></p>

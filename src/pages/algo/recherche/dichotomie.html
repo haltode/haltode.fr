@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="dichotomie">Dichotomie</h1></a>
 <p>Publi&#233; le : 28/06/2014<br />
-<em>Modifi&#233; le : 08/12/2015</em></p>
+<em>Modifi&#233; le : 10/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-dichotomie">Principe de la dichotomie</a></li>
@@ -189,8 +189,8 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Jouons &#224; un petit jeu appel&#233; le plus ou moins. Je choisis un nombre entre 1 et 100 et vous devez le deviner en le moins de coup possible. A chaque fois que vous me dites un nombre, je vous dis si ce dernier est sup&#233;rieur ou inf&#233;rieur &#224; celui que j'ai choisis (ou &#233;gal si vous avez trouv&#233;).</p>
-<p>Vu comme &#231;a, on pourrait se dire qu'on a 1 chance sur 100 de tomber sur le bon nombre, et qu'il faut juste avoir de la chance, mais en r&#233;fl&#233;chissant bien on peut am&#233;liorer nos chances en s'aidant de la r&#233;ponse que je donne &#224; chaque fois (si c'est plus ou moins). Je choisis donc mon nombre, et au premier tour vous dites 50, si je vous dis plus vous savez que mon nombre sera forc&#233;ment dans l'intervalle de 51 &#224; 100, si je vous dis moins il sera dans l'intervalle 1 &#224; 49, et si je vous dis &#233;gal vous avez trouv&#233; le nombre. On peut continuer d'utiliser ce principe pour diviser par deux &#224; chaque fois notre intervalle de recherche jusqu'&#224; avoir un seul &#233;l&#233;ment dans notre intervalle, qui est forc&#233;ment celui que j'ai choisis au d&#233;but du jeu. Cette m&#233;thode s'appelle la dichotomie, et s'applique dans bien d'autres domaines que dans ce jeu.</p>
+<p>Jouons &#224; un petit jeu appel&#233; <em>le plus ou moins</em>. Je choisis un nombre entre 1 et 100 et vous devez le deviner en moins de coup possible. A chaque fois que vous me dites un nombre, je vous dis si ce dernier est sup&#233;rieur ou inf&#233;rieur &#224; celui que j'ai choisis (ou &#233;gal si vous avez trouv&#233;).</p>
+<p>Vu comme &#231;a, on pourrait se dire qu'on a 1 chance sur 100 de tomber sur le bon nombre, et qu'il faut juste avoir de la chance, mais en r&#233;fl&#233;chissant bien on peut am&#233;liorer nos chances en s'aidant de la r&#233;ponse que je donne &#224; chaque fois (si c'est plus ou moins). Je choisis donc mon nombre, et au premier tour vous dites 50, si je vous dis &#171; plus &#187; vous savez que mon nombre sera forc&#233;ment dans l'intervalle de 51 &#224; 100, si je vous dis &#171; moins &#187; il sera dans l'intervalle 1 &#224; 49, et si je vous dis &#233;gal vous avez trouv&#233; le nombre. On peut continuer d'utiliser ce principe pour diviser par deux &#224; chaque fois notre intervalle de recherche jusqu'&#224; avoir un seul &#233;l&#233;ment dans notre intervalle, qui est forc&#233;ment celui que j'ai choisis au d&#233;but du jeu. Cette m&#233;thode s'appelle la dichotomie, et s'applique dans bien d'autres domaines que dans ce jeu.</p>
 <h2 id="principe-de-la-dichotomie">Principe de la dichotomie</h2>
 <p>La dichotomie (<em>binary search</em> en anglais), est un algorithme de recherche efficace pour trouver un nombre dans un ensemble <strong>tri&#233;</strong> (ce point est tr&#232;s important puisque l'algorithme repose dessus). La dichotomie utilise le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour r&#233;gner</a> afin de d&#233;couper notre probl&#232;me initiale en un sous probl&#232;me plus petit.</p>
 <p>On commence toujours la dichotomie dans un intervalle de recherche, puis &#224; chaque &#233;tape on compare notre &#233;l&#233;ment qu'on cherche &#224; l'&#233;l&#233;ment central de l'intervalle :</p>
@@ -201,8 +201,17 @@ function toggle_visibility(id) {
 </ul>
 <p>A chaque tour, on actualise notre intervalle de recherche et on recommence les op&#233;rations tant qu'on n'a pas trouv&#233; notre &#233;l&#233;ment.</p>
 <h2 id="exemple">Exemple</h2>
-<p>Prenons un tableau tri&#233; : 1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304, 7662. Nous cherchons dans ce tableau l'emplacement de l'&#233;l&#233;ment 512 et nous allons utiliser le principe de la dichotomie pour le trouver :</p>
-<p>TODO : image exemple dichotomie</p>
+<p>Prenons un tableau tri&#233; : 1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304. Nous cherchons dans ce tableau l'emplacement de l'&#233;l&#233;ment 512 et nous allons utiliser le principe de la dichotomie pour le trouver :</p>
+<p>1, 8, 15, 42, 99, <strong>160</strong>, 380, 512, 678, 952, 1304 : on compare l'&#233;l&#233;ment du milieu de l'intervalle (c'est le premier tour, on commence donc par un intervalle contenant tout le tableau) avec l'&#233;l&#233;ment qu'on cherche. 512 &gt; 160, donc on peut oublier les &#233;l&#233;ments avant 160 (compris), pour se concentrer sur la partie sup&#233;rieure de l'intervalle.</p>
+<p>380, 512, <strong>678</strong>, 952, 1304 : notre intervalle est donc divis&#233; en deux, et on continue nos op&#233;rations. 512 &lt; 678 donc on continue notre recherche dans la partie inf&#233;rieure de l'intervalle.</p>
+<p><strong>380</strong>, 512 : 512 &gt; 380, on continue dans la partie sup&#233;rieure de l'intervalle.</p>
+<p>512 : notre intervalle ne contient plus qu'un seul &#233;l&#233;ment, c'est donc forc&#233;ment celui qu'on recherche.</p>
+<p>Pour r&#233;sum&#233; le principe :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/recherche/dichotomie/exemple_dichotomie.png" alt="Exemple de dichotomie" />
+<p class="caption">Exemple de dichotomie</p>
+</div>
+<p>L'&#233;l&#233;ment en bleu est celui du milieu que l'on compare, et ensuite on choisit la bonne portion du tableau (en vert) en fonction de cette comparaison pour couper notre intervalle en deux &#224; chaque tour.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>On peut faire le pseudo-code suivant d'un algorithme de la dichotomie :</p>
 <pre class="nohighlight"><code>dichotomie :
@@ -214,15 +223,142 @@ function toggle_visibility(id) {
          R&#233;duire l&#39;intervalle &#224; la partie inf&#233;rieure
       Sinon
          Arreter la recherche</code></pre>
+<p>Et il est tout &#224; fait possible d'&#233;crire cet algorithme sous forme <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursive</a> :</p>
+<pre class="nohighlight"><code>dichotomie (d&#233;but, fin) :
+
+   Si la recherche est sup&#233;rieure au milieu
+      Retourner dichotomie(milieu + 1, fin)
+   Si la recherche est inf&#233;rieure au milieu
+      Retourner dichotomie(debut, milieu - 1)
+   Sinon
+      Retourner l&#39;&#233;l&#233;ment au milieu</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>Pour calculer la complexit&#233; en temps de la recherche dichotomique, on peut visualiser la d&#233;composition des intervalles gr&#226;ce &#224; un <a href="/algo/structure/arbre.html">arbre</a> :</p>
-<p>TODO : image arbre d&#233;composition tableau</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png" alt="Calcul de la complexit&#233;" />
+<p class="caption">Calcul de la complexit&#233;</p>
+</div>
+<p>Chaque op&#233;ration possible est repr&#233;sent&#233;e dans notre arbre, c'est-&#224;-dire qu'&#224; chaque tour on coupe notre tableau (qu'on note <em>n</em>) en deux. On voit qu'on arrive &#224; une profondeur maximale de l'arbre en <em>log N</em> avec <em>N</em> la taille de notre tableau, la complexit&#233; de la recherche dichotomique est donc dans le pire des cas en <em>O(log N)</em>.</p>
+<p><em>Pour comprendre (ou en savoir plus) sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikip&#233;dia</a></em></p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Dans ces impl&#233;mentations, je suppose que l'&#233;l&#233;ment appartient bien au tableau afin de simplifier le code et de se concentrer sur la recherche dichotomique.</p>
 <h3 id="r&#233;cursif">R&#233;cursif</h3>
+<p>L'impl&#233;mentation r&#233;cursive en C de la recherche :</p>
+<a href="javascript:toggle_visibility('dichotomie_recursif.c');">dichotomie_recursif.c</a>
+<div id="dichotomie_recursif.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">int</span> tableau[TAILLE_MAX];
+<span class="dt">int</span> taille;
+<span class="dt">int</span> recherche;
+
+<span class="dt">int</span> dichotomie(<span class="dt">int</span> debut, <span class="dt">int</span> fin)
+{
+   <span class="dt">int</span> milieu;
+   milieu = (debut + fin) / <span class="dv">2</span>;
+
+   <span class="kw">if</span>(recherche &gt; tableau[milieu])
+      <span class="kw">return</span> dichotomie(milieu + <span class="dv">1</span>, fin);
+   <span class="kw">else</span> <span class="kw">if</span>(recherche &lt; tableau[milieu])
+      <span class="kw">return</span> dichotomie(debut, milieu - <span class="dv">1</span>);
+   <span class="kw">else</span>
+      <span class="kw">return</span> milieu;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab;
+
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;taille);
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      scanf(<span class="st">&quot;%d &quot;</span>, &amp;tableau[iTab]);
+   scanf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;recherche);
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, dichotomie(<span class="dv">0</span>, taille - <span class="dv">1</span>) + <span class="dv">1</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Si on donne notre tableau en entr&#233;e, ainsi que l'&#233;l&#233;ment qu'on recherche :</p>
+<pre class="in"><code>11
+1 8 15 42 99 160 380 512 678 952 1304
+512</code></pre>
+<p>On obtient bien en sortie :</p>
+<pre class="out"><code>8</code></pre>
 <h3 id="it&#233;ratif">It&#233;ratif</h3>
-<h3 id="stl">STL</h3>
+<p>La version it&#233;rative en C :</p>
+<a href="javascript:toggle_visibility('dichotomie_iteratif.c');">dichotomie_iteratif.c</a>
+<div id="dichotomie_iteratif.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">int</span> tableau[TAILLE_MAX];
+<span class="dt">int</span> taille;
+<span class="dt">int</span> recherche;
+
+<span class="dt">int</span> dichotomie(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> debut, milieu, fin;
+
+   debut = <span class="dv">0</span>;
+   fin = taille - <span class="dv">1</span>;
+
+   <span class="kw">do</span>
+   {
+      milieu = (debut + fin) / <span class="dv">2</span>;
+
+      <span class="kw">if</span>(recherche &gt; tableau[milieu])
+         debut = milieu + <span class="dv">1</span>;
+      <span class="kw">else</span> <span class="kw">if</span>(recherche &lt; tableau[milieu])
+         fin = milieu - <span class="dv">1</span>;
+      <span class="kw">else</span>
+         <span class="kw">return</span> milieu;
+
+   } <span class="kw">while</span>(tableau[milieu] != recherche);
+
+   <span class="kw">return</span> -<span class="dv">1</span>;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab;
+
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;taille);
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      scanf(<span class="st">&quot;%d &quot;</span>, &amp;tableau[iTab]);
+   scanf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;recherche);
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, dichotomie() + <span class="dv">1</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Le tableau et l'&#233;l&#233;ment recherch&#233; :</p>
+<pre class="in"><code>11
+1 8 15 42 99 160 380 512 678 952 1304
+512</code></pre>
+<p>Et la sortie obtenue :</p>
+<pre class="out"><code>8</code></pre>
+<h3 id="cc">C/C++</h3>
+<p>En C, il existe une fonction <a href="http://www.cplusplus.com/reference/cstdlib/bsearch/"><code>bsearch</code></a> permettant de r&#233;aliser une dichotomie.</p>
+<p>De m&#234;me, en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) impl&#233;mente des fonctions de recherche dichotomique :</p>
+<ul>
+<li><a href="http://www.cplusplus.com/reference/algorithm/lower_bound/"><code>lower_bound</code></a></li>
+<li><a href="http://www.cplusplus.com/reference/algorithm/upper_bound/"><code>upper_bound</code></a></li>
+<li><a href="http://www.cplusplus.com/reference/algorithm/equal_range/"><code>equal_range</code></a></li>
+<li><a href="http://www.cplusplus.com/reference/algorithm/binary_search/"><code>binary_search</code></a></li>
+</ul>
 <h2 id="conclusion">Conclusion</h2>
-<p>Nous avons donc vu que notre dichotomie permet de chercher de mani&#232;re g&#233;n&#233;rale, un &#233;l&#233;ment dans un ensemble d'&#233;l&#233;ment tri&#233; en <em>O(log N)</em>.</p>
+<p>Nous avons donc vu que notre dichotomie permet de chercher, de mani&#232;re g&#233;n&#233;rale, un &#233;l&#233;ment dans un ensemble d'&#233;l&#233;ment tri&#233; en <em>O(log N)</em>.</p>
 <p>TODO : autres applications plus concr&#232;tes + ex d'ensemble : tableau, dictionnaire + d&#233;bugger un code ? + nombre d'occurrences d'un nombre N dans un tableau tri&#233; + am&#233;lioration tri par insertion</p>
  
       <!-- ------------ -->

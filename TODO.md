@@ -45,6 +45,12 @@
 
 - Comparison-based Lower Bounds for Sorting : article
 
+## Recherche
+
+### Dichotomie
+
+- Faire la conclusion
+
 ## Chiffrement
 ### Chiffre de César
 
