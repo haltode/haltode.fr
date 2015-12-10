@@ -34,10 +34,10 @@ Blablabla
 
 Chaque page est ensuite convertie via un script que j'ai écrit en [Bash](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29) qui permet alors de créer une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -> HTML), le footer, et sera déplacée à la fin du script dans sa catégorie correspondante.
 
-Pour les articles contenant du code, je place ceci dans ma page Markdown :
+Pour les articles contenant du code, je place ceci dans ma page Markdown (sans les espaces autour de `INSERT`) :
 
 ```markdown
-[INSERT]
+[ INSERT ]
 fichier.extension
 ```
 
@@ -63,8 +63,10 @@ Pour rendre mon site accessible depuis l'extérieur (et non uniquement en résea
 
 Enfin, ma livebox possède une adresse IP dynamique, j'ai donc choisi d'utiliser [CloudFlare](https://www.cloudflare.com/) afin de gérer le [DNS](https://en.wikipedia.org/wiki/Domain_Name_System). J'ai aussi trouvé un petit [script](https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/) permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications nécessaires lors d'un changement d'IP de ma livebox. Ce script est exécuté toutes les 5 minutes sur mon serveur.
 
+## Lien
+
+Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <https://github.com/iTech-/NapNac>
+
 ## Conclusion
 
 Le site est désormais comme je le souhaite, et j'ai la possibilité de le changer à n'importe quel moment vu que je contrôle la plupart de son fonctionnement (hébergement, création de pages, etc.). A travers ce projet j'ai appris beaucoup sur le fonctionnement de réseaux (comment configurer un serveur, le rendre accessible depuis l'extérieur, y accéder en SSH, gérer le DNS, etc.) et j'ai enfin un endroit que j'apprécie à 100% et où je peux poster mes articles.
-
-Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <https://github.com/iTech-/NapNac>

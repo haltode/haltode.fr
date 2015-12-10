@@ -198,9 +198,9 @@ Je suis un paragraphe
 
 Blablabla</code></pre></div>
 <p>Chaque page est ensuite convertie via un script que j'ai &#233;crit en <a href="https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29">Bash</a> qui permet alors de cr&#233;er une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -&gt; HTML), le footer, et sera d&#233;plac&#233;e &#224; la fin du script dans sa cat&#233;gorie correspondante.</p>
-<p>Pour les articles contenant du code, je place ceci dans ma page Markdown :</p>
-<p><code>markdown</code>extension</p>
-<pre><code></code></pre>
+<p>Pour les articles contenant du code, je place ceci dans ma page Markdown (sans les espaces autour de <code>INSERT</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">[ INSERT ]
+fichier.extension</code></pre></div>
 <p>Cette notation n'est pas officielle dans le langage Markdown, mais puisque j'ai mon propre script de conversion, je peux cr&#233;er des comportements sp&#233;cifiques en fonction de mes besoins. Lorsque le script est ex&#233;cut&#233;, mon fichier est int&#233;gr&#233; dans l'article avec la bonne coloration syntaxique (en fonction de l'extension), et avec une possibilit&#233; de s'afficher/cacher si le code est trop long.</p>
 <p>Le lien vers le script (contenant des informations plus d&#233;taill&#233;es &#224; ce propos) : <a href="https://github.com/iTech-/NapNac/blob/master/conversion.sh" class="uri">https://github.com/iTech-/NapNac/blob/master/conversion.sh</a></p>
 <p>Toutes les pages sont stock&#233;es dans le dossier <code>articles</code> et converties en HTML dans le dossier <code>src/pages</code>.</p>
@@ -215,9 +215,10 @@ Blablabla</code></pre></div>
 <p class="caption">Configuration des ports de la livebox</p>
 </div>
 <p>Enfin, ma livebox poss&#232;de une adresse IP dynamique, j'ai donc choisi d'utiliser <a href="https://www.cloudflare.com/">CloudFlare</a> afin de g&#233;rer le <a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS</a>. J'ai aussi trouv&#233; un petit <a href="https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/">script</a> permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications n&#233;cessaires lors d'un changement d'IP de ma livebox. Ce script est ex&#233;cut&#233; toutes les 5 minutes sur mon serveur.</p>
+<h2 id="lien">Lien</h2>
+<p>Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <a href="https://github.com/iTech-/NapNac" class="uri">https://github.com/iTech-/NapNac</a></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Le site est d&#233;sormais comme je le souhaite, et j'ai la possibilit&#233; de le changer &#224; n'importe quel moment vu que je contr&#244;le la plupart de son fonctionnement (h&#233;bergement, cr&#233;ation de pages, etc.). A travers ce projet j'ai appris beaucoup sur le fonctionnement de r&#233;seaux (comment configurer un serveur, le rendre accessible depuis l'ext&#233;rieur, y acc&#233;der en SSH, g&#233;rer le DNS, etc.) et j'ai enfin un endroit que j'appr&#233;cie &#224; 100% et o&#249; je peux poster mes articles.</p>
-<p>Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <a href="https://github.com/iTech-/NapNac" class="uri">https://github.com/iTech-/NapNac</a></p>
  
       <!-- ------------ -->
 
