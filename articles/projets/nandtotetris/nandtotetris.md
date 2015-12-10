@@ -3,11 +3,11 @@ NandToTetris
 projets/
 
 Date du projet : février 2014 à avril 2014  
-*Modifié le : 09/12/2015*
+*Modifié le : 10/12/2015*
 
 ## Introduction
 
-Ce projet est celui que je considère comme étant mon premier gros projet puisqu'il m’aura fallu plusieurs mois pour le finir.
+Ce projet est celui que je considère comme étant mon premier gros projet, puisqu'il m’aura fallu plusieurs mois pour le finir et il m'aura posé bien plus de problèmes que mes précédents projets.
 
 ## Qu'est-ce que NandToTetris ?
 

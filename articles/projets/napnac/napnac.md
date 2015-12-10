@@ -1,9 +1,9 @@
-Napnac.ga
+napnac.ga
 =========
 projets/
 
-Publié le :  
-*Modifié le : 11/11/2015*
+Publié le : 10/12/2015  
+*Modifié le : 10/12/2015*
 
 ## Introduction
 
@@ -15,7 +15,7 @@ Avant ce site, mes articles étaient postés sur [Wordpress](https://en.wikipedi
 
 La particularité de ce site est que toutes les pages que vous voyez sont en réalité rédigées en Markdown et non en [HTML](https://en.wikipedia.org/wiki/HTML) (le langage de base pour la création de site web). La raison est que je n'apprécie pas du tout le HTML, et que je me suis fixé comme objectif d'en écrire le moins possible, afin de pouvoir modifier n'importe quelle page facilement car le Markdown est tout de même bien plus agréable à lire et à écrire que le HTML.
 
-Les deux seules choses nécessaires qui sont écrites en HTML sont le *header* et le *footer* de la page. Le *header* est simplement le logo et le menu principal du site, et le *footer* est le bas de la page composé d'une image. Le reste de la page est écrite en Markdown et suit ce format :
+Les deux seuls éléments qui sont écrits en HTML sont le *header* et le *footer* de la page. Le header est simplement le logo ainsi que le menu principal du site, et le footer est le bas de la page composé d'une image. Le reste de la page est écrite en Markdown et suit ce format :
 
 ```markdown
 Titre de la page
@@ -34,9 +34,18 @@ Blablabla
 
 Chaque page est ensuite convertie via un script que j'ai écrit en [Bash](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29) qui permet alors de créer une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -> HTML), le footer, et sera déplacée à la fin du script dans sa catégorie correspondante.
 
+Pour les articles contenant du code, je place ceci dans ma page Markdown :
+
+```markdown
+[INSERT]
+fichier.extension
+```
+
+Cette notation n'est pas officielle dans le langage Markdown, mais puisque j'ai mon propre script de conversion, je peux créer des comportements spécifiques en fonction de mes besoins. Lorsque le script est exécuté, mon fichier est intégré dans l'article avec la bonne coloration syntaxique (en fonction de l'extension), et avec une possibilité de s'afficher/cacher si le code est trop long.
+
 Le lien vers le script (contenant des informations plus détaillées à ce propos) : <https://github.com/iTech-/NapNac/blob/master/conversion.sh>
 
-Toutes les pages sont stockées dans le dossier `pages` et converties en HTML dans le dossier `src`.
+Toutes les pages sont stockées dans le dossier `articles` et converties en HTML dans le dossier `src/pages`.
 
 ### Le nom de domaine
 
@@ -48,11 +57,11 @@ Pour héberger mon site, encore une fois je n'ai pas envie de payer pour un héb
 
 J'ai installé [Raspbian](https://www.raspberrypi.org/downloads/) (l'OS officiel de la Raspberry Pi), et après avoir configuré un accès [SSH](https://en.wikipedia.org/wiki/Secure_Shell) pour accéder à mon serveur depuis mon pc principal, j'ai commencé la configuration dudit serveur. Il y a de nombreux tutoriels sur comment transformer sa Raspberry Pi en serveur, je passerai donc les détails. Le serveur que j'ai choisi d'installer est [nginx](http://nginx.org/), son installation et sa configuration sont très simples et je n'ai quasiment rien eu à faire.
 
-Pour rendre mon site accessible depuis l'extérieur, il me faut configurer plusieurs choses. Tout d'abord des ports spécifiques de ma livebox doivent être redirigés vers ma Raspberry Pi afin de répondre aux requêtes du client en lui renvoyant les pages HTML stockées sur mon serveur. De même, plusieurs tutoriels existent déjà à ce sujet, mais voici à quoi ressemble les modifications faites à ma livebox :
+Pour rendre mon site accessible depuis l'extérieur (et non uniquement en réseau local), il faut configurer plusieurs choses. Tout d'abord, des ports spécifiques de ma livebox doivent être redirigés vers ma Raspberry Pi afin de répondre aux requêtes du client en lui renvoyant les pages HTML stockées sur mon serveur. De même, plusieurs tutoriels existent déjà à ce sujet, mais voici à quoi ressemble les modifications faites à ma livebox :
 
 ![Configuration des ports de la livebox](//static.napnac.ga/img/projets/napnac.ga/config_livebox_rpi.png)
 
-Enfin, ma livebox possède une adresse IP dynamique, j'ai donc choisi d'utiliser [CloudFlare](https://www.cloudflare.com/) afin de gérer le [DNS](https://en.wikipedia.org/wiki/Domain_Name_System). De plus, j'ai trouvé un petit [script](https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/) permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications nécessaires lors d'un changement d'IP de ma livebox. Ce script est exécuté toutes les 5 minutes sur mon serveur.
+Enfin, ma livebox possède une adresse IP dynamique, j'ai donc choisi d'utiliser [CloudFlare](https://www.cloudflare.com/) afin de gérer le [DNS](https://en.wikipedia.org/wiki/Domain_Name_System). J'ai aussi trouvé un petit [script](https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/) permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications nécessaires lors d'un changement d'IP de ma livebox. Ce script est exécuté toutes les 5 minutes sur mon serveur.
 
 ## Conclusion
 

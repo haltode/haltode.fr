@@ -52,7 +52,7 @@ La liste des articles publiés :
 
 - Projets :
 
-   <p class="relire"><span>- napnac.ga</br></span></p>
+   <p class="pret"><span>- napnac.ga</br></span></p>
    <p class="pret"><span>- IOI</br></span></p>
    <p class="pret"><span>- NandToTetris</br></span></p>
    <p class="pret"><span>- Rhyddid</br></span></p>

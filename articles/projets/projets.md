@@ -6,7 +6,7 @@ Liste de mes différents projets personnels :
 
 | Date                      | Projet                                                        | Description                                                             |
 | ------------------------- | :------------------------------------------------------------ | :---------------------------------------------------------------------- |
-| **10/2015**               | [Napnac.ga](/projets/napnac.html)             | Mon site personnel où je poste mes articles et je parle de mes projets  |
+| **10/2015**               | [napnac.ga](/projets/napnac.html)             | Mon site personnel où je poste mes articles et je parle de mes projets  |
 | **09/2014** - **09/2015** | [IOI](/projets/ioi.html)                      | Mon entraînement et mon parcours pour les IOI                           |
 | **02/2014** - **04/2014** | [NandToTetris](/projets/nandtotetris.html)    | Un ordinateur émulé accompagné d'un compilateur et d'un mini-OS         |
 | **10/2013** - **01/2014** | [Rhyddid](/projets/rhyddid.html)              | Rogue-like construit entièrement en console                             |
