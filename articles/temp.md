@@ -42,14 +42,6 @@ La liste des articles publiés :
 
          <p class="faire"><span>- Algorithme min-max</br></span></p>
 
-- Programmation :
-
-    - C :
-
-         <p class="relire"><span>- Apprendre et s'entraîner</br></span></p>
-         <p class="faire"><span>- Utiliser des makefiles</br></span></p>
-         <p class="faire"><span>- Débugger ses programmes</br></span></p>
-
 - Projets :
 
    <p class="pret"><span>- napnac.ga</br></span></p>

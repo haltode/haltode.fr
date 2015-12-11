@@ -37,11 +37,3 @@ La liste des articles publiés :
     - IA :
 
          - [Algorithme min-max](/algo/ia/minmax.html)
-
-- Programmation :
-
-    - C :
-
-         - [Apprendre et s'entraîner](/prog/c/apprendre_entrainer.html)
-         - [Utiliser des makefiles](/prog/c/makefiles.html)
-         - [Débugger ses programmes](/prog/c/debugger.html)

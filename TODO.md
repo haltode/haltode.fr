@@ -67,7 +67,3 @@
 
 - Refaire article algo min max en se basant sur l'article du morpion
 - Amélioration algo min max : <http://www.ffothello.org/informatique/algorithmes/>
-
-# Programmation
-
-- C : Rajouter ressources "Apprendre et s'entraîner"
