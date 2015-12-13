@@ -2,37 +2,41 @@
 #include <string.h>
 #include <ctype.h>
 
-#define TAILLE_MAX 500
+#define TAILLE_MAX 1000
 
-const char message[] = "Nkpwz";
+char message[TAILLE_MAX];
 char copie[TAILLE_MAX];
-int cle;
 
-void dechiffrement(void)
+void dechiffrement(int cle)
 {
-   int indexTab;
+   int iTab;
 
-   for(indexTab = 0; copie[indexTab] != '\0'; ++indexTab)
-   {
-      if(isupper(copie[indexTab]))
-         copie[indexTab] = ((copie[indexTab] - 'A' - cle) % 26 + 26) % 26 + 'A';
-      else if(islower(copie[indexTab]))
-         copie[indexTab] = ((copie[indexTab] - 'a' - cle) % 26 + 26) % 26 + 'a';
+   for(iTab = 0; copie[iTab] != '\0'; ++iTab) {
+      if(isalpha(copie[iTab])) {
+         char typo;
+         typo = (isupper(copie[iTab])) ? 'A' : 'a';
+
+         copie[iTab] -= typo;
+         copie[iTab] = ((copie[iTab] - cle) % 26 + 26) % 26;
+         copie[iTab] += typo;
+      }
    }
 }
 
 void forceBrute(void)
 {
-   for(cle = 1; cle < 26; ++cle)
-   {
+   int iCle;
+   for(iCle = 1; iCle < 26; ++iCle) {
       strcpy(copie, message);
-      dechiffrement();
-      printf("Pour une cle de %d : %s\n", cle, copie);
+      dechiffrement(iCle);
+      printf("Cle de %d : %s\n", iCle, copie);
    }
 }
 
 int main(void)
 {
+   scanf("%[^\n]s\n", message);
+
    forceBrute();
 
    return 0;

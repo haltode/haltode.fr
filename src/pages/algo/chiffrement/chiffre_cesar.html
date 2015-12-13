@@ -227,58 +227,51 @@ d&#233;chiffrer :
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 <span class="ot">#include &lt;ctype.h&gt;</span>
 
-<span class="dt">char</span> message[] = <span class="st">&quot;Linux&quot;</span>;
-<span class="dt">int</span> cle = <span class="dv">2</span>;
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">char</span> message[TAILLE_MAX];
+<span class="dt">int</span> cle;
 
 <span class="dt">void</span> chiffrement(<span class="dt">void</span>)
 {
-   <span class="dt">int</span> indexTab;
+   <span class="dt">int</span> iTab;
 
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; message[indexTab] != &#39;\<span class="dv">0</span>&#39;; ++indexTab)
-   {
-      <span class="kw">if</span>(isupper(message[indexTab]))
-      {
-         message[indexTab] -= &#39;A&#39;;
-         message[indexTab] = ((message[indexTab] + cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
-         message[indexTab] += &#39;A&#39;;
-      }
-      <span class="kw">else</span> <span class="kw">if</span>(islower(message[indexTab]))
-      {
-         message[indexTab] -= &#39;a&#39;;
-         message[indexTab] = ((message[indexTab] + cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
-         message[indexTab] += &#39;a&#39;;
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; message[iTab] != &#39;\<span class="dv">0</span>&#39;; ++iTab) {
+      <span class="kw">if</span>(isalpha(message[iTab])) {
+         <span class="dt">char</span> typo;
+         typo = (isupper(message[iTab])) ? &#39;A&#39; : &#39;a&#39;;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] + cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
+         message[iTab] += typo;
       }
    }
 }
 
 <span class="dt">void</span> dechiffrement(<span class="dt">void</span>)
 {
-   <span class="dt">int</span> indexTab;
+   <span class="dt">int</span> iTab;
 
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; message[indexTab] != &#39;\<span class="dv">0</span>&#39;; ++indexTab)
-   {
-      <span class="kw">if</span>(isupper(message[indexTab]))
-      {
-         message[indexTab] -= &#39;A&#39;;
-         message[indexTab] = ((message[indexTab] - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
-         message[indexTab] += &#39;A&#39;;
-      }
-      <span class="kw">else</span> <span class="kw">if</span>(islower(message[indexTab]))
-      {
-         message[indexTab] -= &#39;a&#39;;
-         message[indexTab] = ((message[indexTab] - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
-         message[indexTab] += &#39;a&#39;;
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; message[iTab] != &#39;\<span class="dv">0</span>&#39;; ++iTab) {
+      <span class="kw">if</span>(isalpha(message[iTab])) {
+         <span class="dt">char</span> typo;
+         typo = (isupper(message[iTab])) ? &#39;A&#39; : &#39;a&#39;;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
+         message[iTab] += typo;
       }
    }
 }
 
 <span class="dt">int</span> main(<span class="dt">void</span>)
 {
-   printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+   scanf(<span class="st">&quot;%[^</span><span class="ch">\n</span><span class="st">]s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;cle);
 
+   printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
    chiffrement();
    printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
-
    dechiffrement();
    printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
 
@@ -304,37 +297,41 @@ d&#233;chiffrer :
 <span class="ot">#include &lt;string.h&gt;</span>
 <span class="ot">#include &lt;ctype.h&gt;</span>
 
-<span class="ot">#define TAILLE_MAX 500</span>
+<span class="ot">#define TAILLE_MAX 1000</span>
 
-<span class="dt">const</span> <span class="dt">char</span> message[] = <span class="st">&quot;Nkpwz&quot;</span>;
+<span class="dt">char</span> message[TAILLE_MAX];
 <span class="dt">char</span> copie[TAILLE_MAX];
-<span class="dt">int</span> cle;
 
-<span class="dt">void</span> dechiffrement(<span class="dt">void</span>)
+<span class="dt">void</span> dechiffrement(<span class="dt">int</span> cle)
 {
-   <span class="dt">int</span> indexTab;
+   <span class="dt">int</span> iTab;
 
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; copie[indexTab] != &#39;\<span class="dv">0</span>&#39;; ++indexTab)
-   {
-      <span class="kw">if</span>(isupper(copie[indexTab]))
-         copie[indexTab] = ((copie[indexTab] - &#39;A&#39; - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span> + &#39;A&#39;;
-      <span class="kw">else</span> <span class="kw">if</span>(islower(copie[indexTab]))
-         copie[indexTab] = ((copie[indexTab] - &#39;a&#39; - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span> + &#39;a&#39;;
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; copie[iTab] != &#39;\<span class="dv">0</span>&#39;; ++iTab) {
+      <span class="kw">if</span>(isalpha(copie[iTab])) {
+         <span class="dt">char</span> typo;
+         typo = (isupper(copie[iTab])) ? &#39;A&#39; : &#39;a&#39;;
+
+         copie[iTab] -= typo;
+         copie[iTab] = ((copie[iTab] - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
+         copie[iTab] += typo;
+      }
    }
 }
 
 <span class="dt">void</span> forceBrute(<span class="dt">void</span>)
 {
-   <span class="kw">for</span>(cle = <span class="dv">1</span>; cle &lt; <span class="dv">26</span>; ++cle)
-   {
+   <span class="dt">int</span> iCle;
+   <span class="kw">for</span>(iCle = <span class="dv">1</span>; iCle &lt; <span class="dv">26</span>; ++iCle) {
       strcpy(copie, message);
-      dechiffrement();
-      printf(<span class="st">&quot;Pour une cle de %d : %s</span><span class="ch">\n</span><span class="st">&quot;</span>, cle, copie);
+      dechiffrement(iCle);
+      printf(<span class="st">&quot;Cle de %d : %s</span><span class="ch">\n</span><span class="st">&quot;</span>, iCle, copie);
    }
 }
 
 <span class="dt">int</span> main(<span class="dt">void</span>)
 {
+   scanf(<span class="st">&quot;%[^</span><span class="ch">\n</span><span class="st">]s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+
    forceBrute();
 
    <span class="kw">return</span> <span class="dv">0</span>;
@@ -362,110 +359,62 @@ d&#233;chiffrer :
 <div id="analyse_frequentielle.c" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 <span class="ot">#include &lt;ctype.h&gt;</span>
-<span class="ot">#include &lt;string.h&gt;</span>
 
-<span class="ot">#define NB_LETTRE_ALPHABET 26</span>
-<span class="ot">#define TAILLE_MAX 500</span>
+<span class="ot">#define TAILLE_MAX 1000</span>
+<span class="ot">#define NB_LETTRE 26</span>
 
-<span class="dt">const</span> <span class="dt">char</span> baseLettrePlusUtilisee[NB_LETTRE_ALPHABET] =
-{
-   &#39;e&#39;, &#39;a&#39;, &#39;i&#39;, &#39;s&#39;, &#39;t&#39;, &#39;n&#39;, &#39;r&#39;, &#39;u&#39;, &#39;l&#39;, &#39;o&#39;, &#39;d&#39;, &#39;m&#39;, &#39;p&#39;,&#39;c&#39;, &#39;v&#39;, &#39;q&#39;, 
-   &#39;g&#39;, &#39;b&#39;, &#39;f&#39;, &#39;j&#39;, &#39;h&#39;, &#39;z&#39;, &#39;x&#39;, &#39;y&#39;, &#39;k&#39;, &#39;w&#39;
-};
-
-<span class="dt">char</span> message[] = <span class="st">&quot;Hj yjcyj jxy ozxyj qf utzw atzx rtsywjw vzj q&#39;fsfqdxj kwjvzjsynjqqj jxy ywjx zynqj xzw ij qtslx yjcyjx jy wjxyj knfgqj, atzx utzaje qj atnw js yjxyfsy hj uwtlwfrrj !&quot;</span>;
-<span class="dt">char</span> messageDechiffre[TAILLE_MAX];
-<span class="dt">int</span> cleSupposee[NB_LETTRE_ALPHABET];
+<span class="dt">char</span> message[TAILLE_MAX];
 <span class="dt">int</span> cle;
 
 <span class="dt">void</span> dechiffrement(<span class="dt">void</span>)
 {
-   <span class="dt">int</span> indexTab;
+   <span class="dt">int</span> iTab;
 
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; messageDechiffre[indexTab] != &#39;\<span class="dv">0</span>&#39;; ++indexTab)
-   {
-      <span class="kw">if</span>(isupper(messageDechiffre[indexTab]))
-         messageDechiffre[indexTab] = ((messageDechiffre[indexTab] - &#39;A&#39; - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span> + &#39;A&#39;;
-      <span class="kw">else</span> <span class="kw">if</span>(islower(messageDechiffre[indexTab]))
-         messageDechiffre[indexTab] = ((messageDechiffre[indexTab] - &#39;a&#39; - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span> + &#39;a&#39;;
-   }
-}
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; message[iTab] != &#39;\<span class="dv">0</span>&#39;; ++iTab) {
+      <span class="kw">if</span>(isalpha(message[iTab])) {
+         <span class="dt">char</span> typo;
+         typo = (isupper(message[iTab])) ? &#39;A&#39; : &#39;a&#39;;
 
-<span class="dt">void</span> preparerMessage(<span class="dt">void</span>)
-{
-   <span class="dt">int</span> indexTab;
-
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; message[indexTab] != &#39;\<span class="dv">0</span>&#39;; ++indexTab)
-      message[indexTab] = tolower(message[indexTab]);
-}
-
-<span class="dt">void</span> determinerOccurrenceMot(<span class="dt">int</span> occurrence[NB_LETTRE_ALPHABET])
-{
-   <span class="dt">int</span> indexTab;
-
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; indexTab &lt; NB_LETTRE_ALPHABET; ++indexTab)
-      occurrence[indexTab] = <span class="dv">0</span>;
-
-   preparerMessage();
-
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; message[indexTab] != &#39;\<span class="dv">0</span>&#39;; ++indexTab)
-      <span class="kw">if</span>(islower(message[indexTab]))
-         ++occurrence[message[indexTab] - &#39;a&#39;];
-}
-
-<span class="dt">void</span> determinerClePossible(<span class="dt">int</span> occurrence[NB_LETTRE_ALPHABET])
-{
-   <span class="dt">int</span> indexBase;
-
-   <span class="kw">for</span>(indexBase = <span class="dv">0</span>; indexBase &lt; NB_LETTRE_ALPHABET; ++indexBase)
-   {
-      <span class="dt">int</span> indexTab;
-      <span class="dt">int</span> indexMax, maximum;
-
-      maximum = -<span class="dv">1</span>;
-
-      <span class="kw">for</span>(indexTab = <span class="dv">0</span>; indexTab &lt; NB_LETTRE_ALPHABET; ++indexTab)
-      {
-         <span class="kw">if</span>(occurrence[indexTab] &gt; maximum)
-         {
-            maximum = occurrence[indexTab];
-            indexMax = indexTab;
-         }  
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - cle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
+         message[iTab] += typo;
       }
-
-      occurrence[indexMax] = -<span class="dv">1</span>;
-
-      cleSupposee[indexBase] = baseLettrePlusUtilisee[indexBase] - (indexMax + &#39;a&#39;);
-
-      <span class="kw">if</span>(cleSupposee[indexBase] &lt; <span class="dv">0</span>)
-         cleSupposee[indexBase] = -cleSupposee[indexBase];
    }
 }
 
 <span class="dt">void</span> analyseFrequentielle(<span class="dt">void</span>)
 {
-   <span class="dt">int</span> occurrence[NB_LETTRE_ALPHABET];
+   <span class="dt">int</span> occurrence[NB_LETTRE];
+   <span class="dt">int</span> iLettre, iMax;
 
-   determinerOccurrenceMot(occurrence);
-   determinerClePossible(occurrence);
+   <span class="kw">for</span>(iLettre = <span class="dv">0</span>; iLettre &lt; NB_LETTRE; ++iLettre)
+      occurrence[iLettre] = <span class="dv">0</span>;
+   <span class="kw">for</span>(iLettre = <span class="dv">0</span>; message[iLettre] != &#39;\<span class="dv">0</span>&#39;; ++iLettre) {
+      <span class="kw">if</span>(isalpha(message[iLettre])) {
+         <span class="dt">char</span> typo;
+         typo = (isupper(message[iLettre])) ? &#39;A&#39; : &#39;a&#39;;
+         ++occurrence[message[iLettre] - typo];
+      }
+   }
+
+
+   iMax = <span class="dv">0</span>;
+   <span class="kw">for</span>(iLettre = <span class="dv">0</span>; iLettre &lt; NB_LETTRE; ++iLettre)
+      <span class="kw">if</span>(occurrence[iLettre] &gt; occurrence[iMax])
+         iMax = iLettre;
+
+   cle = &#39;e&#39; - (iMax + &#39;a&#39;);
+   <span class="kw">if</span>(cle &lt; <span class="dv">0</span>)
+      cle = -cle;
 }
 
 <span class="dt">int</span> main(<span class="dt">void</span>)
 {
-   <span class="dt">int</span> indexTab;
-
-   strcpy(messageDechiffre, message);
+   scanf(<span class="st">&quot;%[^</span><span class="ch">\n</span><span class="st">]s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
 
    analyseFrequentielle();
-
-   <span class="kw">for</span>(indexTab = <span class="dv">0</span>; indexTab &lt; NB_LETTRE_ALPHABET; ++indexTab)
-      printf(<span class="st">&quot;%d &quot;</span>, cleSupposee[indexTab]);
-
-   printf(<span class="st">&quot;</span><span class="ch">\n\n</span><span class="st">&quot;</span>);
-
-   cle = cleSupposee[<span class="dv">0</span>];
    dechiffrement();
-   printf(<span class="st">&quot;Message dechiffre avec la 1ere proposition de cle (%d) : </span><span class="ch">\n\n</span><span class="st">%s</span><span class="ch">\n</span><span class="st">&quot;</span>, cleSupposee[<span class="dv">0</span>], messageDechiffre);
+   printf(<span class="st">&quot;Cle de %d : </span><span class="ch">\n\n</span><span class="st">%s</span><span class="ch">\n</span><span class="st">&quot;</span>, cle, message);
 
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>

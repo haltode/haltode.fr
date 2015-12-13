@@ -1,0 +1,3 @@
+Cle de 19 : 
+
+Si le texte est ecrit en francais, et qu'il contient assez de caracteres, l'analyse frequentielle est assez fiable et donne en general la bonne cle du premier coup. Le programme ne teste que le premier resultat de cle (qui est la plus probable), mais on pourrait par exemple ameliorer l'analyse en s'appuyant sur plusieurs resultats de cles et si ces derniers correspondent alors il y aura bien plus de chances que ce soit la bonne cle.

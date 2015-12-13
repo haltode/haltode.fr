@@ -1,58 +1,51 @@
 #include <stdio.h>
 #include <ctype.h>
 
-char message[] = "Linux";
-int cle = 2;
+#define TAILLE_MAX 1000
+
+char message[TAILLE_MAX];
+int cle;
 
 void chiffrement(void)
 {
-   int indexTab;
+   int iTab;
 
-   for(indexTab = 0; message[indexTab] != '\0'; ++indexTab)
-   {
-      if(isupper(message[indexTab]))
-      {
-         message[indexTab] -= 'A';
-         message[indexTab] = ((message[indexTab] + cle) % 26 + 26) % 26;
-         message[indexTab] += 'A';
-      }
-      else if(islower(message[indexTab]))
-      {
-         message[indexTab] -= 'a';
-         message[indexTab] = ((message[indexTab] + cle) % 26 + 26) % 26;
-         message[indexTab] += 'a';
+   for(iTab = 0; message[iTab] != '\0'; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo;
+         typo = (isupper(message[iTab])) ? 'A' : 'a';
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] + cle) % 26 + 26) % 26;
+         message[iTab] += typo;
       }
    }
 }
 
 void dechiffrement(void)
 {
-   int indexTab;
+   int iTab;
 
-   for(indexTab = 0; message[indexTab] != '\0'; ++indexTab)
-   {
-      if(isupper(message[indexTab]))
-      {
-         message[indexTab] -= 'A';
-         message[indexTab] = ((message[indexTab] - cle) % 26 + 26) % 26;
-         message[indexTab] += 'A';
-      }
-      else if(islower(message[indexTab]))
-      {
-         message[indexTab] -= 'a';
-         message[indexTab] = ((message[indexTab] - cle) % 26 + 26) % 26;
-         message[indexTab] += 'a';
+   for(iTab = 0; message[iTab] != '\0'; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo;
+         typo = (isupper(message[iTab])) ? 'A' : 'a';
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - cle) % 26 + 26) % 26;
+         message[iTab] += typo;
       }
    }
 }
 
 int main(void)
 {
-   printf("%s\n", message);
+   scanf("%[^\n]s\n", message);
+   scanf("%d\n", &cle);
 
+   printf("%s\n", message);
    chiffrement();
    printf("%s\n", message);
-
    dechiffrement();
    printf("%s\n", message);
 
