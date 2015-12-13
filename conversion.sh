@@ -52,7 +52,7 @@ function insert_code {
 
 # List of article that don't need a summary
 declare -a no_summary=("accueil" "a_propos" "pseudo-c" "ascii_funfair" "rhyddid"
-"nandtotetris" "ioi" "napnac" "custom_404" "custom_50x")
+"nandtotetris" "ioi" "napnac" "custom_404" "custom_50x" "tpe")
 
 # Insert summary of the article (h2 links)
 function insert_summary {

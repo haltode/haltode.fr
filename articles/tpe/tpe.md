@@ -1,14 +1,14 @@
 TPE
 ===
 
-Publié le :  
-*Modifié le : 04/12/2015*
+Publié le : 11/12/2015  
+*Modifié le : 11/12/2015*
 
 ## Introduction
 
 Après la Seconde Guerre mondiale, des tensions se forment entre les deux blocs militaires et économiques du monde, et notamment entre les Etats-Unis et l'Union Soviétique devenus les deux superpuissances mondiales à cause du déclin des pays européens pendant la guerre. De véritables courses sont ensuite lancées dans plusieurs domaines comme le domaine militaire (avec les avancées dans le nucléaire), le domaine spatiale (course vers l'espace), et dans le développement des nouvelles technologies (surveillance entre les pays et surveillance de masse). L'idée de surveillance peut se définir comme étant une observation attentive de quelqu'un ou quelque chose dans le but de le contrôler. Avec les tensions créées lors de la guerre, chaque pays se tournera rapidement vers la surveillance afin d'anticiper les déplacements et les actions de ses adversaires. La Guerre froide sera alors un point de départ essentiel de la surveillance moderne, et permettra l'apparition de nombreux systèmes de surveillance encore utilisés aujourd'hui. Mais on peut se demander comment la surveillance a changé le cours de la Guerre froide ? Et jusqu'à quel point ?
 
-[TODO : annonce du plan] 
+[TODO : annonce du plan]
 
 ## L'origine des tensions
 
@@ -30,9 +30,10 @@ A cause des tensions, des centaines de projets secrets sont financés et même s
 
 Dans les années 60, le projet Echelon est officieusement créé suite à l'accord en 1943 lors de la Seconde Guerre mondiale entre les Etats-Unis et le Royaume-Uni afin de se partager les données collectées par les services de renseignement des deux pays. L'objectif du projet est de surveiller entièrement le bloc soviétique et ses alliés grâce à un réseau important de satellites et de centres de traitement automatisés.Pour cela, le réseau intercepte toutes les communications passant par des satellites commerciaux afin de collecter les appels téléphoniques, les mails, et les fax qui seront ensuite traitées dans des centres à l'aide d'ordinateurs.
 
-Les signaux interceptés par l'ensemble du projet peuvent être répartis en deux principales catégories :
+Les signaux interceptés par l'ensemble du projet peuvent être répartis en trois principales catégories :
 
 - Les **ondes radio** : c'est ce qui est le plus utilisé à l'époque pour établir des communications militaires ou diplomatiques.
+- Les **câbles sous-marin** : 
 - Les **émissions électromagnétiques** : un appareil électronique (par exemple un radar) émet des données permettant d'en déduire sa localisation, sa portée, sa longueur d'onde etc.
 
 #### Les ondes radio
@@ -55,26 +56,32 @@ Son fonctionnement se base sur trois éléments principaux :
 
 [TODO : mettre les fréquences dans un schéma et montrer les utilisations spécifiques]
 
+[
 Chacune des trois couches va intercepter des ondes radio entre des fréquences spécifiques :
 
 - Couche A : 2 à 6 MHz
 - Couche B : 6 à 18 MHz
 - Couche C : 18 à 30 MHz
-
-[TODO : interception cable sous-marin]
+]
 
 #### Emissions électromagnétiques
+#### Câble sous-marin
+
+La communication par câble sous-marin est la seule solution fiable à l'époque aux ondes radios qui parfois ne sont pas de grandes qualités. Intercepter ces communications est donc un enjeu majeur pour les deux pays adverses.
+
 #### Analyse des données récoltées
+
+[TODO : parler du projet west ford]
 
 #### Le projet Echelon aujourd'hui
 
 Le projet de renseignement s'est développé mondialement, et de nombreux pays ont rejoins le programme. C'est le plus grand et le plus puissant réseau de renseignement à ce jour, avec un budget de plusieurs dizaines de milliards de dollars par an rien que pour les Etats-Unis qui sont l'acteur principal du projet.
 
-### Projet West-Ford ?
 ### Projet soviétique ? Satellite espion ?
 
 
 [TODO : dissuasion nucléaire]
+[TODO : lien historique -> crise de cuba]
 
 ## Conclusion
 
