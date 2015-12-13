@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="parcours-dun-graphe">Parcours d'un graphe</h1></a>
 <p>Publi&#233; le : 07/12/2015<br />
-<em>Modifi&#233; le : 12/12/2015</em></p>
+<em>Modifi&#233; le : 13/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#le-parcours-en-profondeur">Le parcours en profondeur</a></li>
@@ -464,11 +464,12 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 <p>La sortie :</p>
 <pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <h2 id="conclusion">Conclusion</h2>
-<p>Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe, et il existe deux types de parcours qu'il faut conna&#238;tre et maitriser pour les utiliser au bon moment :</p>
+<p>Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe plus complexes, et il existe deux types de parcours qu'il faut conna&#238;tre et maitriser pour les utiliser au bon moment :</p>
 <ul>
-<li><strong>Parcours en profondeur</strong> : on l'utilisera pour trouver un chemin quelconque entre deux n&#339;uds du graphe (par exemple entre l'entr&#233;e et la sortie d'un labyrinthe), pour d&#233;tecter des cycles dans un graphe, pour en trouver ses composantes fortement connexes, afin de cr&#233;er un tri topologique, ou encore un circuit eul&#233;rien, mais cette id&#233;e de parcourir en profondeur sert aussi pour les algorithmes dynamiques ou encore pour le backtracking.</li>
-<li><strong>Parcours en largeur</strong> : comme nous l'avons vu, le BFS sert afin de trouver le plus court chemin dans un graphe non pond&#233;r&#233;, mais il nous sert aussi pour l'algorithme de flot maximum d'un graphe, enfin le BFS peut &#234;tre pr&#233;f&#233;r&#233; face au DFS en fonction du graphe (par rapport &#224; sa densit&#233; notamment, et aux nombres de fils d'un n&#339;ud).</li>
+<li><strong>Parcours en profondeur</strong> : on l'utilisera pour trouver un chemin quelconque entre deux n&#339;uds du graphe (par exemple entre l'entr&#233;e et la sortie d'un labyrinthe), pour d&#233;tecter des cycles dans un graphe, pour en trouver ses composantes fortement connexes, afin de cr&#233;er un tri topologique, ou encore un circuit eul&#233;rien, mais cette id&#233;e de parcourir en profondeur sert aussi pour le backtracking.</li>
+<li><strong>Parcours en largeur</strong> : comme nous l'avons vu, le BFS sert &#224; trouver le plus court chemin dans un graphe non pond&#233;r&#233;, mais on l'utilise aussi pour l'algorithme de flot maximum d'un graphe, et pour tester si un graphe est biparti ou non.</li>
 </ul>
+<p>Toutes ces applications des deux algorithmes ne sont que des exemples, et le parcours choisi d&#233;pendra &#233;norm&#233;ment du graphe en entr&#233;e. Il faut toujours r&#233;fl&#233;chir au probl&#232;me donn&#233; avant d'utiliser un parcours (par exemple si on cherche un n&#339;ud pr&#233;cis et que ce dernier se situe proche du n&#339;ud de d&#233;part, un DFS sera un mauvais choix face au BFS). Il n'y a pas de mani&#232;re de savoir quand utiliser l'un pas rapport &#224; l'autre, &#224; part en pratiquant le plus possible les deux types de parcours pour maitriser les avantages/d&#233;savantages et leurs utilisations.</p>
  
       <!-- ------------ -->
 

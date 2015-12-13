@@ -3,7 +3,7 @@ Dichotomie
 algo/recherche
 
 Publié le : 28/06/2014  
-*Modifié le : 10/12/2015*
+*Modifié le : 13/12/2015*
 
 ## Introduction
 
@@ -76,9 +76,9 @@ Pour calculer la complexité en temps de la recherche dichotomique, on peut visu
 
 ![Calcul de la complexité](//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png)
 
-Chaque opération possible est représentée dans notre arbre, c'est-à-dire qu'à chaque tour on coupe notre tableau (qu'on note *n*) en deux. On voit qu'on arrive à une profondeur maximale de l'arbre en *log N* avec *N* la taille de notre tableau, la complexité de la recherche dichotomique est donc dans le pire des cas en *O(log N)*.
+Chaque opération possible est représentée dans notre arbre, c'est-à-dire qu'à chaque tour on coupe notre tableau (qu'on note *n*) en deux. On voit qu'on arrive à une profondeur maximale de l'arbre en *log N* avec *N* la taille de notre tableau (pour en savoir plus sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)), la complexité de la recherche dichotomique est donc dans le pire des cas en *O(log N)*.
 
-*Pour comprendre (ou en savoir plus) sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)*
+Pour vous faire comprendre à quel point cette recherche est efficace, imaginons que vous possédez une bibliothèque numérique de *N* livres tous triés en fonction du titre par ordre alphabétique. Votre machine sur laquelle vous faites vos recherches de livres est très lente, et peut effectuer uniquement 2000 opérations à la seconde (aujourd'hui les ordinateurs classiques peuvent en effectuer plusieurs milliards...). Si vous implémentez une recherche dichotomique, il vous faudra environ plus de livres qu'il n'y a de particules dans un billion d'univers pour que votre machine prenne plus de temps qu'un clignement d'œil.
 
 ## Implémentation
 
@@ -131,6 +131,8 @@ De même, en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Template_Libra
 
 ## Conclusion
 
-Nous avons donc vu que notre dichotomie permet de chercher, de manière générale, un élément dans un ensemble d'élément trié en *O(log N)*.
+Nous avons donc vu que notre dichotomie permet de chercher, de manière générale, un élément dans un ensemble d'élément trié extrêmement rapidement en *O(log N)*. Cet algorithme s'applique très bien à des tableaux pouvant contenir différents types de données (entiers, flottants, chaînes de caractères, etc.), mais on le retrouve aussi dans plusieurs autres applications :
 
-TODO : autres applications plus concrètes + ex d'ensemble : tableau, dictionnaire + débugger un code ? + nombre d'occurrences d'un nombre N dans un tableau trié + amélioration tri par insertion
+- L'optimisation : on utilise la dichotomie dans plusieurs optimisations d'algorithmes, comme avec le [tri par insertion](/algo/tri/tri_insertion.html) où la recherche dichotomique améliore grandement la complexité en temps.
+- L'étude de fonction monotone : si on connait une fonction mathématique respectant *f(x) <= f(y)* avec *x < y*, on peut appliquer une recherche dichotomique (pour l'intervalle *[x ; y]*) sur les éléments de cette fonction puisqu'elle respecte le principe de l'algorithme.
+- Trouver un bug dans son programme : ça peut paraitre surprenant, mais il m'arrive d'utiliser l'idée de la recherche dichotomique pour situer un bug dans mon programme. Notre intervalle de recherche au début est le code entier (on peut commencer par un plus petit intervalle si notre code est très long), et on va chercher à le réduire petit à petit en éliminant des parties que l'on considère justes. Finalement, on se retrouve avec un intervalle assez restreint pour trouver l'origine du bug et pouvoir ainsi le fixer.

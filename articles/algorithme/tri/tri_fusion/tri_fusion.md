@@ -3,7 +3,7 @@ Tri fusion
 algo/tri
 
 Publié le : 10/05/2014  
-*Modifié le : 09/12/2015*
+*Modifié le : 13/12/2015*
 
 ## Introduction
 
@@ -82,7 +82,11 @@ Ce pseudo-code est relativement simple :
 
 ## Complexité
 
-La complexité du tri fusion est de *O(N \* log N)*, puisque notre fonction `triFusion` contient deux appels récursifs (complexité logarithmique en *O(log N)*) et la fonction `fusionner` s'exécute en temps linéaire, *O(N)*.
+Pour démontrer la complexité du tri fusion, visualisons la découpe du tableau réalisée dans la fonction `triFusion` lors des appels récursifs :
+
+![Calcul de la complexité](//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png)
+
+Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une même profondeur formeront toujours un unique tableau contenant *N* éléments (*N* étant la taille du tableau de départ), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C'est très important car on appelle notre fonction `fusionner` à chaque nœud, or cette fonction s'exécute en temps linéaire de *O(N)* avec *N* la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu'à chaque profondeur on aura appelé notre fonction `fusionner` sur *N* éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède *log N* profondeurs (pour en savoir plus sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)), ce qui nous donne finalement une complexité en *O(N \* log N)*.
 
 ## Implémentation
 

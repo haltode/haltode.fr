@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="dichotomie">Dichotomie</h1></a>
 <p>Publi&#233; le : 28/06/2014<br />
-<em>Modifi&#233; le : 10/12/2015</em></p>
+<em>Modifi&#233; le : 13/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-dichotomie">Principe de la dichotomie</a></li>
@@ -238,8 +238,8 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png" alt="Calcul de la complexit&#233;" />
 <p class="caption">Calcul de la complexit&#233;</p>
 </div>
-<p>Chaque op&#233;ration possible est repr&#233;sent&#233;e dans notre arbre, c'est-&#224;-dire qu'&#224; chaque tour on coupe notre tableau (qu'on note <em>n</em>) en deux. On voit qu'on arrive &#224; une profondeur maximale de l'arbre en <em>log N</em> avec <em>N</em> la taille de notre tableau, la complexit&#233; de la recherche dichotomique est donc dans le pire des cas en <em>O(log N)</em>.</p>
-<p><em>Pour comprendre (ou en savoir plus) sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikip&#233;dia</a></em></p>
+<p>Chaque op&#233;ration possible est repr&#233;sent&#233;e dans notre arbre, c'est-&#224;-dire qu'&#224; chaque tour on coupe notre tableau (qu'on note <em>n</em>) en deux. On voit qu'on arrive &#224; une profondeur maximale de l'arbre en <em>log N</em> avec <em>N</em> la taille de notre tableau (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikip&#233;dia</a>), la complexit&#233; de la recherche dichotomique est donc dans le pire des cas en <em>O(log N)</em>.</p>
+<p>Pour vous faire comprendre &#224; quel point cette recherche est efficace, imaginons que vous poss&#233;dez une biblioth&#232;que num&#233;rique de <em>N</em> livres tous tri&#233;s en fonction du titre par ordre alphab&#233;tique. Votre machine sur laquelle vous faites vos recherches de livres est tr&#232;s lente, et peut effectuer uniquement 2000 op&#233;rations &#224; la seconde (aujourd'hui les ordinateurs classiques peuvent en effectuer plusieurs milliards...). Si vous impl&#233;mentez une recherche dichotomique, il vous faudra environ plus de livres qu'il n'y a de particules dans un billion d'univers pour que votre machine prenne plus de temps qu'un clignement d'&#339;il.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Dans ces impl&#233;mentations, je suppose que l'&#233;l&#233;ment appartient bien au tableau afin de simplifier le code et de se concentrer sur la recherche dichotomique.</p>
 <h3 id="r&#233;cursif">R&#233;cursif</h3>
@@ -358,8 +358,12 @@ function toggle_visibility(id) {
 <li><a href="http://www.cplusplus.com/reference/algorithm/binary_search/"><code>binary_search</code></a></li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
-<p>Nous avons donc vu que notre dichotomie permet de chercher, de mani&#232;re g&#233;n&#233;rale, un &#233;l&#233;ment dans un ensemble d'&#233;l&#233;ment tri&#233; en <em>O(log N)</em>.</p>
-<p>TODO : autres applications plus concr&#232;tes + ex d'ensemble : tableau, dictionnaire + d&#233;bugger un code ? + nombre d'occurrences d'un nombre N dans un tableau tri&#233; + am&#233;lioration tri par insertion</p>
+<p>Nous avons donc vu que notre dichotomie permet de chercher, de mani&#232;re g&#233;n&#233;rale, un &#233;l&#233;ment dans un ensemble d'&#233;l&#233;ment tri&#233; extr&#234;mement rapidement en <em>O(log N)</em>. Cet algorithme s'applique tr&#232;s bien &#224; des tableaux pouvant contenir diff&#233;rents types de donn&#233;es (entiers, flottants, cha&#238;nes de caract&#232;res, etc.), mais on le retrouve aussi dans plusieurs autres applications :</p>
+<ul>
+<li>L'optimisation : on utilise la dichotomie dans plusieurs optimisations d'algorithmes, comme avec le <a href="/algo/tri/tri_insertion.html">tri par insertion</a> o&#249; la recherche dichotomique am&#233;liore grandement la complexit&#233; en temps.</li>
+<li>L'&#233;tude de fonction monotone : si on connait une fonction math&#233;matique respectant <em>f(x) &lt;= f(y)</em> avec <em>x &lt; y</em>, on peut appliquer une recherche dichotomique (pour l'intervalle <em>[x ; y]</em>) sur les &#233;l&#233;ments de cette fonction puisqu'elle respecte le principe de l'algorithme.</li>
+<li>Trouver un bug dans son programme : &#231;a peut paraitre surprenant, mais il m'arrive d'utiliser l'id&#233;e de la recherche dichotomique pour situer un bug dans mon programme. Notre intervalle de recherche au d&#233;but est le code entier (on peut commencer par un plus petit intervalle si notre code est tr&#232;s long), et on va chercher &#224; le r&#233;duire petit &#224; petit en &#233;liminant des parties que l'on consid&#232;re justes. Finalement, on se retrouve avec un intervalle assez restreint pour trouver l'origine du bug et pouvoir ainsi le fixer.</li>
+</ul>
  
       <!-- ------------ -->
 

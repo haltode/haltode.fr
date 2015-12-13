@@ -3,7 +3,7 @@ Parcours d'un graphe
 algo/structure/graphe/
 
 Publié le : 07/12/2015  
-*Modifié le : 12/12/2015*
+*Modifié le : 13/12/2015*
 
 ## Introduction
 
@@ -182,7 +182,9 @@ bfs_test01.out
 
 ## Conclusion
 
-Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe, et il existe deux types de parcours qu'il faut connaître et maitriser pour les utiliser au bon moment :
+Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe plus complexes, et il existe deux types de parcours qu'il faut connaître et maitriser pour les utiliser au bon moment :
 
-- **Parcours en profondeur** : on l'utilisera pour trouver un chemin quelconque entre deux nœuds du graphe (par exemple entre l'entrée et la sortie d'un labyrinthe), pour détecter des cycles dans un graphe, pour en trouver ses composantes fortement connexes, afin de créer un tri topologique, ou encore un circuit eulérien, mais cette idée de parcourir en profondeur sert aussi pour les algorithmes dynamiques ou encore pour le backtracking.
-- **Parcours en largeur** : comme nous l'avons vu, le BFS sert afin de trouver le plus court chemin dans un graphe non pondéré, mais il nous sert aussi pour l'algorithme de flot maximum d'un graphe, enfin le BFS peut être préféré face au DFS en fonction du graphe (par rapport à sa densité notamment, et aux nombres de fils d'un nœud).
+- **Parcours en profondeur** : on l'utilisera pour trouver un chemin quelconque entre deux nœuds du graphe (par exemple entre l'entrée et la sortie d'un labyrinthe), pour détecter des cycles dans un graphe, pour en trouver ses composantes fortement connexes, afin de créer un tri topologique, ou encore un circuit eulérien, mais cette idée de parcourir en profondeur sert aussi pour le backtracking.
+- **Parcours en largeur** : comme nous l'avons vu, le BFS sert à trouver le plus court chemin dans un graphe non pondéré, mais on l'utilise aussi pour l'algorithme de flot maximum d'un graphe, et pour tester si un graphe est biparti ou non.
+
+Toutes ces applications des deux algorithmes ne sont que des exemples, et le parcours choisi dépendra énormément du graphe en entrée. Il faut toujours réfléchir au problème donné avant d'utiliser un parcours (par exemple si on cherche un nœud précis et que ce dernier se situe proche du nœud de départ, un DFS sera un mauvais choix face au BFS). Il n'y a pas de manière de savoir quand utiliser l'un pas rapport à l'autre, à part en pratiquant le plus possible les deux types de parcours pour maitriser les avantages/désavantages et leurs utilisations.

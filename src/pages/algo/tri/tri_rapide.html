@@ -178,7 +178,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tri-rapide">Tri rapide</h1></a>
 <p>Publi&#233; le : 10/05/2014<br />
-<em>Modifi&#233; le : 09/12/2015</em></p>
+<em>Modifi&#233; le : 13/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -224,7 +224,7 @@ function toggle_visibility(id) {
       triRapide(pivot + 1, fin)</code></pre>
 <p>On utilise le principe de <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursivit&#233;</a> pour impl&#233;menter notre tri rapide (comme pour le <a href="/algo/tri/tri_fusion.html">tri fusion</a>). Les appels r&#233;cursifs s'arr&#234;tent quand le sous tableau actuel n'a plus qu'un seul &#233;l&#233;ment, sinon on partitionne notre tableau (choix du pivot et r&#233;organisation), puis on recommence l'op&#233;ration sur les deux parties du tableau ne contenant pas le pivot (la partie o&#249; les &#233;l&#233;ments lui sont inf&#233;rieurs, et la partie o&#249; ils sont sup&#233;rieurs).</p>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>Le tri rapide a une complexit&#233; moyenne de <em>O(N * log N)</em>, en effet notre fonction utilise deux appels r&#233;cursifs ayant une complexit&#233; logarithmique, et le partitionnement du tableau peut se faire en temps lin&#233;aire.</p>
+<p>Le calcul de la complexit&#233; du tri rapide est tr&#232;s semblable &#224; celui du <a href="/algo/tri/tri_fusion.html#complexit&#233;">tri par fusion</a>, sauf qu'au lieu de fusionner nos sous tableaux, on les r&#233;organise (mais cette op&#233;ration est de nouveau en temps lin&#233;aire, comme pour la fusion de deux sous tableaux), on retrouve aussi les deux appels r&#233;cursifs qui divisent par deux notre tableau actuel. La complexit&#233; est donc calcul&#233;e de la m&#234;me fa&#231;on, et on se retrouve bien avec un r&#233;sultat en <em>O(N * log N)</em>.</p>
 <p>Il faut savoir que le tri rapide peut s'ex&#233;cuter deux fois plus vite que le <a href="/algo/tri/tri_tas.html">tri par tas</a> pour des raisons de <a href="https://en.wikipedia.org/wiki/Cache_%28computing%29">m&#233;moire cache</a>. Les deux algorithmes ont la m&#234;me complexit&#233; en moyenne, mais le tri par tas compare en g&#233;n&#233;ral des &#233;l&#233;ments du tableau qui sont assez &#233;loign&#233;s contrairement au tri rapide. Or, quand vous acc&#233;dez &#224; un tableau, votre ordinateur place une certaine partie de ce tableau (ou la totalit&#233;) dans une m&#233;moire cache pour que l'acc&#232;s &#224; ce dernier se fasse plus rapidement. Dans le cas de tr&#232;s grandes entr&#233;es, le tri par tas va obliger la m&#233;moire &#224; charger et d&#233;charger successivement des parties du tableau (trop grand pour &#234;tre enti&#232;rement stock&#233; dans la m&#233;moire cache), ce qui ralentira l'ex&#233;cution du programme.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L&#8217;impl&#233;mentation en C du tri rapide :</p>

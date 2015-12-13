@@ -3,7 +3,7 @@ Tri rapide
 algo/tri
 
 Publié le : 10/05/2014  
-*Modifié le : 09/12/2015*
+*Modifié le : 13/12/2015*
 
 ## Introduction
 
@@ -57,7 +57,7 @@ On utilise le principe de [récursivité](https://en.wikipedia.org/wiki/Recursio
 
 ## Complexité
 
-Le tri rapide a une complexité moyenne de *O(N \* log N)*, en effet notre fonction utilise deux appels récursifs ayant une complexité logarithmique, et le partitionnement du tableau peut se faire en temps linéaire.
+Le calcul de la complexité du tri rapide est très semblable à celui du [tri par fusion](/algo/tri/tri_fusion.html#complexité), sauf qu'au lieu de fusionner nos sous tableaux, on les réorganise (mais cette opération est de nouveau en temps linéaire, comme pour la fusion de deux sous tableaux), on retrouve aussi les deux appels récursifs qui divisent par deux notre tableau actuel. La complexité est donc calculée de la même façon, et on se retrouve bien avec un résultat en *O(N \* log N)*.
 
 Il faut savoir que le tri rapide peut s'exécuter deux fois plus vite que le [tri par tas](/algo/tri/tri_tas.html) pour des raisons de [mémoire cache](https://en.wikipedia.org/wiki/Cache_%28computing%29). Les deux algorithmes ont la même complexité en moyenne, mais le tri par tas compare en général des éléments du tableau qui sont assez éloignés contrairement au tri rapide. Or, quand vous accédez à un tableau, votre ordinateur place une certaine partie de ce tableau (ou la totalité) dans une mémoire cache pour que l'accès à ce dernier se fasse plus rapidement. Dans le cas de très grandes entrées, le tri par tas va obliger la mémoire à charger et décharger successivement des parties du tableau (trop grand pour être entièrement stocké dans la mémoire cache), ce qui ralentira l'exécution du programme.
 
