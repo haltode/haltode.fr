@@ -105,6 +105,12 @@ table tr:nth-child(2n) {
    line-height: 1.6;
 }
 
+/* ---- Code ---- */
+pre {
+   width: 90%;
+   white-space: pre-wrap;
+}
+
 /* ---- Temporary css ---- */
 
 .pret {

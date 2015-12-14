@@ -117,6 +117,12 @@ table tr:nth-child(2n) {
    line-height: 1.6;
 }
 
+/* ---- Code ---- */
+pre {
+   width: 90%;
+   white-space: pre-wrap;
+}
+
 /* ---- Temporary css ---- */
 
 .pret {
@@ -217,7 +223,7 @@ d&#233;chiffrer :
    Pour chaque caract&#232;re du message
       Si c&#39;est une lettre
          D&#233;caler cette lettre de x rangs vers la gauche </code></pre>
-<p>Il faut cependant faire attention &#224; une chose, lorsqu'on d&#233;passe la lettre Z pendant le chiffrement, il faut pouvoir revenir au d&#233;but de l'alphabet, comme une sorte de boucle et inversement avec la lettre A lors du d&#233;chiffrement.</p>
+<p>Il faut cependant faire attention &#224; une chose, lorsqu'on d&#233;passe la lettre Z pendant le chiffrement, il faut pouvoir revenir au d&#233;but de l'alphabet, comme une sorte de boucle, et inversement avec la lettre A lors du d&#233;chiffrement.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C du chiffre de C&#233;sar :</p>
 <a href="javascript:toggle_visibility('chiffre_cesar.c');">chiffre_cesar.c</a>
@@ -280,12 +286,12 @@ d&#233;chiffrer :
 <pre class="in"><code>Linux
 2</code></pre>
 <p>Et la sortie :</p>
-<pre class="out"><code>Nkpwz
+<pre class="nohighlight"><code>Nkpwz
 Linux</code></pre>
 <h2 id="cassage">Cassage</h2>
-<p>Cet algorithme de chiffrement poss&#232;de cependant des failles, et il est tout &#224; fait possible de le &quot;casser&quot;, c'est-&#224;-dire d'obtenir le message original sans poss&#233;der la cl&#233; de chiffrement.</p>
+<p>Cet algorithme de chiffrement poss&#232;de cependant des failles, et il est tout &#224; fait possible de le <strong>casser</strong>, c'est-&#224;-dire d'obtenir le message original sans poss&#233;der la cl&#233; de chiffrement.</p>
 <h3 id="force-brute">Force brute</h3>
-<p>L'attaque par force brute (<em>brute force attack</em> en anglais), consiste simplement &#224; tester toutes les possibilit&#233;s de cl&#233; de chiffrement une par une, jusqu'&#224; trouver la bonne.</p>
+<p>L'attaque par force brute (<em>brute force attack</em> en anglais) consiste simplement &#224; tester toutes les possibilit&#233;s de cl&#233; de chiffrement une par une, jusqu'&#224; trouver la bonne.</p>
 <p>Le probl&#232;me avec le chiffre de C&#233;sar est qu'il n'existe en r&#233;alit&#233; que 26 uniques possibilit&#233;s de cl&#233; de chiffrement. En effet, si l'on utilise une cl&#233; sup&#233;rieure &#224; 26 cela revient &#224; utiliser une cl&#233; de <em>x mod 26</em>, par exemple si je chiffre le mot &quot;Linux&quot; avec une cl&#233; de chiffrement de 28 j'obtiens exactement le m&#234;me r&#233;sultat qu'avec ma cl&#233; de 2 car <em>28 mod 26 = 2</em>. Il est de m&#234;me pour les cl&#233;s n&#233;gatives, si j'utilise une cl&#233; de -1 cela revient &#224; utiliser une cl&#233; de 25.</p>
 <p>Notre attaque n&#233;cessite donc l'analyse d'uniquement 26 cl&#233;s de chiffrement, ce qui n'est rien pour un ordinateur qui peut faire des milliards d'op&#233;rations &#224; la seconde :</p>
 <pre class="nohighlight"><code>forceBrute :
@@ -377,14 +383,13 @@ Cle de 25 : Olqxa</code></pre>
 <p>L'analyse fr&#233;quentielle (<em>frequency analysis</em> en anglais) examine la fr&#233;quence d'apparition des lettres employ&#233;es dans le message chiffr&#233; afin d'en deviner la cl&#233; pour le d&#233;chiffrer ensuite.</p>
 <p>Cette attaque est possible sur le chiffre de C&#233;sar car c'est un syst&#232;me de chiffrement &#224; <strong>substitution mono-alphab&#233;tique</strong> ce qui signifie que si l&#8217;on chiffre plusieurs fois la lettre A avec une m&#234;me cl&#233; de chiffrement <em>x</em>, alors la lettre chiffr&#233;e sera toujours la m&#234;me. Ce type de syst&#232;me s&#8217;oppose donc &#224; la <strong>substitution poly-alphab&#233;tique</strong> utilis&#233;e par le <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigen&#232;re</a> par exemple. De plus, l'analyse fr&#233;quentielle repose sur le fait que chaque langue poss&#232;de des lettres plus utilis&#233;es que d'autres (en fran&#231;ais par exemple la lettre E est plus utilis&#233;e que la lettre D, la lettre H l'est moins que la lettre O, etc.).</p>
 <p>On peut donc analyser la fr&#233;quence d'apparition de chaque lettre dans notre message chiffr&#233;, et en d&#233;duire la lettre correspondante dans le message clair en &#233;tablissant un lien avec les lettres les plus utilis&#233;es en fran&#231;ais (on suppose ici que notre message a &#233;t&#233; &#233;crit en fran&#231;ais avant d'&#234;tre chiffr&#233;).</p>
-<p>Par exemple, si dans notre message chiffr&#233; on remarque que la lettre M est la plus utilis&#233;e, on peut en d&#233;duire que c'est la lettre E dans notre message clair. Ce qui signifie que l'on peut calculer la diff&#233;rence de rangs entre les deux lettres pour avoir la cl&#233; de chiffrement (si M correspond effectivement &#224; E). Pour confirmer notre hypoth&#232;se, on peut continuer en cherchant la diff&#233;rence de rangs entre la deuxi&#232;me lettre la plus utilis&#233;e en fran&#231;ais (le A) et la deuxi&#232;me lettre la plus employ&#233;e dans notre message chiffr&#233;. Si les deux cl&#233;s correspondent, il y a alors de forte chances que ce soit la bonne cl&#233; de chiffrement.</p>
+<p>Par exemple, si dans notre message chiffr&#233; on remarque que la lettre M est la plus utilis&#233;e, on peut en d&#233;duire que c'est la lettre E dans notre message clair. Ce qui signifie que l'on peut calculer la diff&#233;rence de rangs entre les deux lettres pour avoir la cl&#233; de chiffrement (si M correspond effectivement &#224; E). Pour confirmer notre hypoth&#232;se, on peut continuer en cherchant la diff&#233;rence de rangs entre la deuxi&#232;me lettre la plus utilis&#233;e en fran&#231;ais (le A) et la deuxi&#232;me lettre la plus employ&#233;e dans notre message chiffr&#233;. Si les deux cl&#233;s correspondent, il y a alors de fortes chances que ce soit la bonne cl&#233; de chiffrement.</p>
 <p>Le pseudo-code de l&#8217;attaque par analyse fr&#233;quentielle :</p>
 <pre class="nohighlight"><code>analyseFr&#233;quentielle :
 
    D&#233;terminer le nombre d&#8217;occurrence de chaque lettre
    D&#233;duire la cl&#233; de chiffrement la plus probable
    D&#233;chiffrer le message avec la cl&#233; trouv&#233;e</code></pre>
-<p>Dans ce pseudo-code on se contente d'afficher par ordre de pertinence nos possibilit&#233;s de cl&#233;s pour chaque lettre.</p>
 <p>Sur de petits textes, cette attaque risque de ne pas bien fonctionner car notre m&#233;thode repose sur des statistiques et si on n'a pas assez de donn&#233;es, on ne devinera pas forc&#233;ment la cl&#233; du premier coup, alors que sur un long texte la premi&#232;re cl&#233; affich&#233;e est tr&#232;s souvent la bonne.</p>
 <p>L'attaque cod&#233;e en C :</p>
 <a href="javascript:toggle_visibility('analyse_frequentielle.c');">analyse_frequentielle.c</a>
@@ -452,14 +457,14 @@ Cle de 25 : Olqxa</code></pre>
 }</code></pre></div>
 </div>
 <p>Un texte chiffr&#233; en entr&#233;e :</p>
-<pre class="in"><code>Lb ex mxqmx xlm xvkbm xg yktgvtbl, xm jn&#39;be vhgmbxgm tllxs wx vtktvmxkxl, e&#39;tgterlx ykxjnxgmbxeex xlm tllxs ybtuex xm whggx xg zxgxkte et uhggx vex wn ikxfbxk vhni. Ex ikhzktffx gx mxlmx jnx ex ikxfbxk kxlnemtm wx vex (jnb xlm et ienl ikhutuex), ftbl hg ihnkktbm itk xqxfiex tfxebhkxk e&#39;tgterlx xg l&#39;tiinrtgm lnk ienlbxnkl kxlnemtml wx vexl xm lb vxl wxkgbxkl vhkkxlihgwxgm tehkl be r tnkt ubxg ienl wx vatgvxl jnx vx lhbm et uhggx vex.</code></pre>
+<pre class="nohighlight"><code>Lb ex mxqmx xlm xvkbm xg yktgvtbl, xm jn&#39;be vhgmbxgm tllxs wx vtktvmxkxl, e&#39;tgterlx ykxjnxgmbxeex xlm tllxs ybtuex xm whggx xg zxgxkte et uhggx vex wn ikxfbxk vhni. Ex ikhzktffx gx mxlmx jnx ex ikxfbxk kxlnemtm wx vex (jnb xlm et ienl ikhutuex), ftbl hg ihnkktbm itk xqxfiex tfxebhkxk e&#39;tgterlx xg l&#39;tiinrtgm lnk ienlbxnkl kxlnemtml wx vexl xm lb vxl wxkgbxkl vhkkxlihgwxgm tehkl be r tnkt ubxg ienl wx vatgvxl jnx vx lhbm et uhggx vex.</code></pre>
 <p>Le texte d&#233;chiffr&#233; :</p>
-<pre class="out"><code>Cle de 19 : 
+<pre class="nohighlight"><code>Cle de 19 :
 
 Si le texte est ecrit en francais, et qu&#39;il contient assez de caracteres, l&#39;analyse frequentielle est assez fiable et donne en general la bonne cle du premier coup. Le programme ne teste que le premier resultat de cle (qui est la plus probable), mais on pourrait par exemple ameliorer l&#39;analyse en s&#39;appuyant sur plusieurs resultats de cles et si ces derniers correspondent alors il y aura bien plus de chances que ce soit la bonne cle.</code></pre>
 <p>Cette m&#233;thode d'attaque n'est pas r&#233;ellement adapt&#233;e au chiffre de C&#233;sar puisqu'on peut simplement utiliser l'attaque par force brute, cependant d'autres algorithmes de chiffrement n'ont pas aussi peu de possibilit&#233;s de cl&#233;s que le chiffre de C&#233;sar, et casser ces derniers n&#233;cessite donc une attaque plus r&#233;fl&#233;chie et plus intelligente comme l'analyse fr&#233;quentielle.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>La cryptanalyse n'existait pas encore &#224; l'&#233;poque de Jules C&#233;sar, et ce dernier pouvait donc &#234;tre serein en utilisant un syst&#232;me aussi simple et peu s&#233;curis&#233; qu'est le chiffre de C&#233;sar. Cet algorithme n'est plus utilis&#233; depuis bien longtemps, mais &#224; permis de base de r&#233;flexion &#224; d'autres algorithmes plus efficaces comme le <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigen&#232;re</a>.</p>
+<p>La cryptanalyse n'existait pas encore &#224; l'&#233;poque de Jules C&#233;sar, et ce dernier pouvait donc &#234;tre serein en utilisant un syst&#232;me aussi simple et peu s&#233;curis&#233; qu'est le chiffre de C&#233;sar. Cet algorithme n'est plus utilis&#233; depuis bien longtemps, mais a permis de base de r&#233;flexion &#224; d'autres algorithmes plus efficaces comme le <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigen&#232;re</a>.</p>
  
       <!-- ------------ -->
 
