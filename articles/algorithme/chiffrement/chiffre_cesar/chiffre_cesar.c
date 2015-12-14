@@ -43,7 +43,6 @@ int main(void)
    scanf("%[^\n]s\n", message);
    scanf("%d\n", &cle);
 
-   printf("%s\n", message);
    chiffrement();
    printf("%s\n", message);
    dechiffrement();

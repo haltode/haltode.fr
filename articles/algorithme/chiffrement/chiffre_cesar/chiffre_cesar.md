@@ -3,15 +3,11 @@ Chiffre de César
 algo/chiffrement
 
 Publié le : 21/05/2014  
-*Modifié le : 12/12/2015*
+*Modifié le : 14/12/2015*
 
 ## Introduction
 
-TODO : faire intro
-
-Les premiers algorithmes de chiffrement ne datent pas de Jules César, mais ce dernier 
-
-Le chiffre de César (aussi appelé *chiffrement par décalage*) est un algorithme de chiffrement **symétrique** très simple utilisé par Jules César pour communiquer des messages secrets. Cet algorithme n’est pas du tout sécurisé pour deux raisons que nous aborderons après avoir vu le chiffrement et le déchiffrement.
+Les premiers algorithmes de chiffrement ne datent pas de Jules César, mais ce dernier va instaurer un système au sein de son empire, afin de communiquer sans que personnes ne puissent intercepter ses messages secrets. Pour cela, il utilisait une méthode très simple qui consistait à décaler chaque lettre de trois rangs vers la droite dans l'alphabet pour que le message paraisse alors incompréhensible, à part pour la personne connaissant l'astuce. L'empereur a ainsi donné le nom à l'un des premiers algorithmes de chiffrement : le chiffre de César.
 
 ## Principe de l’algorithme
 
@@ -56,7 +52,17 @@ Une implémentation en C du chiffre de César :
 [INSERT]
 chiffre_cesar.c
 
-TODO : explication code
+Pour décaler notre lettre, on récupère déjà son rang dans l'alphabet pour simplifier les calculs (d'où le `- typo` et le `+ typo`), puis on ajoute (pour le chiffrement) ou on enlève (pour le déchiffrement) la valeur de la clé, et ensuite on applique un [modulo](https://en.wikipedia.org/wiki/Modulo_operation) 26 pour ne pas dépasser le Z et revenir au début dans ce cas. Cependant, en C, le modulo négatif est particulier, par exemple *-3 mod 2 = -1*, il faut donc rajouter 26 au cas où le résultat est négatif (pour le rendre positif), et ensuite on applique de nouveau notre modulo 26.
+
+En entrée de notre programme :
+
+[INSERT]
+test01.in
+
+Et la sortie :
+
+[INSERT]
+test01.out
 
 ## Cassage
 
@@ -83,6 +89,16 @@ Une implémentation en C de cette attaque :
 [INSERT]
 force_brute.c
 
+Un exemple de message chiffré en entrée :
+
+[INSERT]
+test02.in
+
+Et la sortie obtenue :
+
+[INSERT]
+test02.out
+
 Ici vu qu'il n'y a que 26 possibilités, on se contente d'afficher tous les messages déchiffrés pour que l'utilisateur voit directement lequel ressemble à du français (on pourrait aussi implémenter un système qui différencie des phrases en français de phrases sans aucuns sens, mais l'implémentation se focalise uniquement sur l'attaque).
 
 Cette méthode est assez bourrin, car tester toutes les combinaisons possibles est souvent une mauvaise idée, cependant dans notre cas où on sait qu’il n’y a que 26 possibilités à tester, cette méthode devient tout de suite le choix parfait pour casser le chiffre de César. En plus d’être extrêmement rapide, elle est aussi très simple à mettre en place car une simple boucle suffit.
@@ -103,10 +119,8 @@ Le pseudo-code de l’attaque par analyse fréquentielle :
 analyseFréquentielle :
 
    Déterminer le nombre d’occurrence de chaque lettre
-
-   Pour chaque lettre possible
-      Déduire la lettre correspondante dans le message clair
-   Afficher les possibilités de clés de chiffrement (dans l'ordre de pertinence)
+   Déduire la clé de chiffrement la plus probable
+   Déchiffrer le message avec la clé trouvée
 ```
 
 Dans ce pseudo-code on se contente d'afficher par ordre de pertinence nos possibilités de clés pour chaque lettre.
@@ -118,10 +132,18 @@ L'attaque codée en C :
 [INSERT]
 analyse_frequentielle.c
 
+Un texte chiffré en entrée :
+
+[INSERT]
+test03.in
+
+Le texte déchiffré :
+
+[INSERT]
+test03.out
+
 Cette méthode d'attaque n'est pas réellement adaptée au chiffre de César puisqu'on peut simplement utiliser l'attaque par force brute, cependant d'autres algorithmes de chiffrement n'ont pas aussi peu de possibilités de clés que le chiffre de César, et casser ces derniers nécessite donc une attaque plus réfléchie et plus intelligente comme l'analyse fréquentielle.
 
 ## Conclusion
 
-TODO : faire conclusion
-
-Le chiffre de César est donc un algorithme de chiffrement symétrique ancien, et très simple. Cependant, il est vulnérable à plusieurs attaques comme celle de la force brute ou celle de l’analyse fréquentielle ce qui le rend inutile de nos jours.
+La cryptanalyse n'existait pas encore à l'époque de Jules César, et ce dernier pouvait donc être serein en utilisant un système aussi simple et peu sécurisé qu'est le chiffre de César. Cet algorithme n'est plus utilisé depuis bien longtemps, mais à permis de base de réflexion à d'autres algorithmes plus efficaces comme le [chiffre de Vigenère](/algo/chiffrement/chiffre_vigenere.html).

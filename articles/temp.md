@@ -33,7 +33,7 @@ La liste des articles publiés :
 
     - Chiffrement :
 
-         <p class="relire"><span>- Chiffre de César</br></span></p>
+         <p class="pret"><span>- Chiffre de César</br></span></p>
          <p class="faire"><span>- Chiffre de Vigenère</br></span></p>
          <p class="faire"><span>- Chiffre de Vernam</br></span></p>
          <p class="faire"><span>- RSA</br></span></p>

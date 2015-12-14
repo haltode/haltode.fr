@@ -40,10 +40,6 @@
 - Comparison-based Lower Bounds for Sorting : article
 
 ## Chiffrement
-### Chiffre de César
-
-- Intro + Conclusion + Codes
-
 ### Chiffre de Vigenère
 
 - Programme pour trouver la longueur de la clé de chiffrement 
