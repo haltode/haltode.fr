@@ -184,9 +184,151 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="chiffre-de-vigen&#232;re">Chiffre de Vigen&#232;re</h1></a>
 <p>Publi&#233; le : 28/05/2014<br />
-<em>Modifi&#233; le :</em></p>
+<em>Modifi&#233; le : 15/12/2015</em></p>
 <ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#cassage">Cassage</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>TODO : faire intro</p>
+<h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
+<p>Le chiffre de Vigen&#232;re est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a> pour chiffrer et d&#233;chiffrer le message secret. Ce qui signifie que la cl&#233; de chiffrement n'est plus un nombre (comme avec le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de C&#233;sar</a>), mais une cha&#238;ne de caract&#232;res enti&#232;re. L'algorithme repose sur ce principe, pour offrir plus de s&#233;curit&#233; car une m&#234;me lettre ne sera alors pas forc&#233;ment chiffr&#233;e de la m&#234;me fa&#231;on (elle d&#233;pendra de sa place dans le message, mais aussi de la cl&#233; utilis&#233;e).</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons comme message secret le mot &quot;Programmation&quot;, et comme cl&#233; de chiffrement &quot;Linux&quot;. La premi&#232;re &#233;tape &#224; faire est de rendre notre cl&#233; aussi longue que notre message &#224; chiffrer, pour cela, on r&#233;p&#232;te simplement autant de fois la cl&#233; que n&#233;cessaire :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png" alt="Visualisation de la cl&#233; de chiffrement compl&#232;te" />
+<p class="caption">Visualisation de la cl&#233; de chiffrement compl&#232;te</p>
+</div>
+<p>D&#233;sormais on peut chiffrer notre message :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png" alt="Exemple de chiffrement" />
+<p class="caption">Exemple de chiffrement</p>
+</div>
+<p>Le rang dans l'alphabet commence &#224; 0 car <em>26 mod 26 = 0</em>, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l'additionne &#224; la lettre correspondante de la cl&#233;. On n'oublie pas d'appliquer notre <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour revenir au d&#233;but de l'alphabet si on d&#233;passe Z.</p>
+<p>Et pour le d&#233;chiffrement du message :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png" alt="Exemple de d&#233;chiffrement" />
+<p class="caption">Exemple de d&#233;chiffrement</p>
+</div>
+<p>L'id&#233;e est la m&#234;me sauf qu'on soustrait au lieu d'ajouter le rang de la lettre de la cl&#233;.</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du chiffre de Vigen&#232;re :</p>
+<pre class="nohighlight"><code>Modifier la cl&#233; pour qu&#39;elle soit de la m&#234;me taille que le message
+
+chiffrer : 
+
+   Pour chaque caract&#232;re du message
+      Si c&#39;est une lettre
+         D&#233;caler cette lettre de cle[iCle] rangs vers la droite
+         Incrementer iCle
+
+d&#233;chiffrer :
+
+   Pour chaque caract&#232;re du message
+      Si c&#39;est une lettre
+         D&#233;caler cette lettre de cle[iCle] rangs vers la gauche 
+         Incrementer iCle</code></pre>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Une impl&#233;mentation en C du chiffre de Vigen&#232;re :</p>
+<a href="javascript:toggle_visibility('chiffre_vigenere.c');">chiffre_vigenere.c</a>
+<div id="chiffre_vigenere.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="ot">#include &lt;ctype.h&gt;</span>
+<span class="ot">#include &lt;string.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">char</span> message[TAILLE_MAX];
+<span class="dt">char</span> cle[TAILLE_MAX];
+<span class="dt">int</span> tailleCle;
+
+<span class="dt">void</span> chiffrement(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab, iCle;
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>, iCle = <span class="dv">0</span>; message[iTab] != &#39;\<span class="dv">0</span>&#39;; ++iTab) {
+      <span class="kw">if</span>(isalpha(message[iTab])) {
+         <span class="dt">char</span> typo, lettreCle;
+         typo = (isupper(message[iTab])) ? &#39;A&#39; : &#39;a&#39;;
+         lettreCle = tolower(cle[iCle]) - &#39;a&#39;;
+         iCle = (iCle + <span class="dv">1</span>) % tailleCle;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] + lettreCle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
+         message[iTab] += typo;
+      }
+   }
+}
+
+<span class="dt">void</span> dechiffrement(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab, iCle;
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>, iCle = <span class="dv">0</span>; message[iTab] != &#39;\<span class="dv">0</span>&#39;; ++iTab) {
+      <span class="kw">if</span>(isalpha(message[iTab])) {
+         <span class="dt">char</span> typo, lettreCle;
+         typo = (isupper(message[iTab])) ? &#39;A&#39; : &#39;a&#39;;
+         lettreCle = tolower(cle[iCle]) - &#39;a&#39;;
+         iCle = (iCle + <span class="dv">1</span>) % tailleCle;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - lettreCle) % <span class="dv">26</span> + <span class="dv">26</span>) % <span class="dv">26</span>;
+         message[iTab] += typo;
+      }
+   }
+
+}
+
+<span class="dt">void</span> viderBuffer(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> c;
+   c = <span class="dv">0</span>;
+   <span class="kw">while</span>(c != <span class="ch">&#39;\n&#39;</span> &amp;&amp; c != EOF)
+      c = getchar();
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   scanf(<span class="st">&quot;%[^</span><span class="ch">\n</span><span class="st">]s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+   viderBuffer();
+   scanf(<span class="st">&quot;%[^</span><span class="ch">\n</span><span class="st">]s</span><span class="ch">\n</span><span class="st">&quot;</span>, cle);
+   tailleCle = strlen(cle);
+
+   chiffrement();
+   printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+   dechiffrement();
+   printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Notez qu'on doit vider le buffer, car notre message et notre cl&#233; sont deux cha&#238;nes de caract&#232;res (pouvant donc contenir des espaces) et s&#233;par&#233;es par un retour &#224; la ligne. Ensuite, au lieu de cr&#233;er une seconde cl&#233; de chiffrement de la taille du message, on peut tout simplement utiliser un index que l'on r&#233;initialise &#224; 0 &#224; chaque fois qu'il a atteint le bout de la cl&#233; (gr&#226;ce &#224; <code>% tailleCle</code>).</p>
+<p>Notre message et notre cl&#233; :</p>
+<pre class="in"><code>Programmation
+Linux</code></pre>
+<p>Le chiffrement et le d&#233;chiffrement :</p>
+<pre class="out"><code>Azbaoluzuqtwa
+Programmation</code></pre>
+<h2 id="cassage">Cassage</h2>
+<p>Les attaques du chiffre de C&#233;sar ne fonctionnent pas sur le chiffre de Vigen&#232;re pour plusieurs raisons :</p>
+<ul>
+<li>La cl&#233; est une cha&#238;ne de caract&#232;res de taille variable, ce qui signifie que le nombre de possibilit&#233;s de cl&#233;s de chiffrement est &#233;norme, et une attaque par force brute n'est tout simplement pas envisageable.</li>
+<li>L'algorithme utilise une substitution poly-alphab&#233;tique, rendant ainsi une analyse fr&#233;quentielle impossible car une lettre ne sera pas forc&#233;ment chiffr&#233;e de la m&#234;me mani&#232;re dans un texte.</li>
+</ul>
+<p>Il nous faut donc de nouvelles m&#233;thodes, afin de casser cet algorithme r&#233;put&#233; incassable jusqu'&#224; la fin du XIXe si&#232;cle o&#249; une m&#233;thode fut officiellement d&#233;couverte.</p>
+<p>TODO : faire cassage</p>
+<h3 id="trouver-la-longueur-de-la-cl&#233;-de-chiffrement">Trouver la longueur de la cl&#233; de chiffrement</h3>
+<h4 id="test-de-kasiski">Test de Kasiski</h4>
+<h4 id="indice-de-co&#239;cidence">Indice de co&#239;cidence</h4>
+<h3 id="d&#233;duire-la-cl&#233;">D&#233;duire la cl&#233;</h3>
+<h4 id="analyse-fr&#233;quentielle">Analyse fr&#233;quentielle</h4>
+<h2 id="conclusion">Conclusion</h2>
+<p>TODO : faire conclusion</p>
  
       <!-- ------------ -->
 
