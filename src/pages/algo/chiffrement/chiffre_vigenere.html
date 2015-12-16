@@ -121,6 +121,8 @@ table tr:nth-child(2n) {
 pre {
    width: 90%;
    white-space: pre-wrap;
+   word-break: break-all;
+   word-wrap: break-word;
 }
 
 /* ---- Temporary css ---- */
@@ -195,9 +197,9 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>TODO : faire intro</p>
+<p>Avec l'apparition des premiers syst&#232;mes de cryptanalyses, le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de C&#233;sar</a> n'est plus un algorithme s&#251;r pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : le chiffre de Vigen&#232;re. Ce dernier est immunis&#233; aux attaques du chiffre de C&#233;sar, car sa cl&#233; est une cha&#238;ne de caract&#232;res et non plus un simple nombre, cependant quelques si&#232;cles apr&#232;s les premi&#232;res utilisations de ce syst&#232;me, des techniques permettant de casser le chiffre de Vigen&#232;re sont d&#233;couvertes le rendant alors vuln&#233;rable et inutile.</p>
 <h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
-<p>Le chiffre de Vigen&#232;re est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a> pour chiffrer et d&#233;chiffrer le message secret. Ce qui signifie que la cl&#233; de chiffrement n'est plus un nombre (comme avec le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de C&#233;sar</a>), mais une cha&#238;ne de caract&#232;res enti&#232;re. L'algorithme repose sur ce principe, pour offrir plus de s&#233;curit&#233; car une m&#234;me lettre ne sera alors pas forc&#233;ment chiffr&#233;e de la m&#234;me fa&#231;on (elle d&#233;pendra de sa place dans le message, mais aussi de la cl&#233; utilis&#233;e).</p>
+<p>Le chiffre de Vigen&#232;re est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a> pour chiffrer et d&#233;chiffrer le message secret. Ce qui signifie que la cl&#233; de chiffrement n'est plus un nombre (comme avec le chiffre de C&#233;sar), mais une cha&#238;ne de caract&#232;res enti&#232;re. L'algorithme repose sur ce principe, pour offrir plus de s&#233;curit&#233; car une m&#234;me lettre ne sera alors pas forc&#233;ment chiffr&#233;e de la m&#234;me fa&#231;on (elle d&#233;pendra de sa place dans le message, mais aussi de la cl&#233; utilis&#233;e).</p>
 <h2 id="exemple">Exemple</h2>
 <p>Prenons comme message secret le mot &quot;Programmation&quot;, et comme cl&#233; de chiffrement &quot;Linux&quot;. La premi&#232;re &#233;tape &#224; faire est de rendre notre cl&#233; aussi longue que notre message &#224; chiffrer, pour cela, on r&#233;p&#232;te simplement autant de fois la cl&#233; que n&#233;cessaire :</p>
 <div class="figure">
@@ -321,14 +323,12 @@ Programmation</code></pre>
 <li>L'algorithme utilise une substitution poly-alphab&#233;tique, rendant ainsi une analyse fr&#233;quentielle impossible car une lettre ne sera pas forc&#233;ment chiffr&#233;e de la m&#234;me mani&#232;re dans un texte.</li>
 </ul>
 <p>Il nous faut donc de nouvelles m&#233;thodes, afin de casser cet algorithme r&#233;put&#233; incassable jusqu'&#224; la fin du XIXe si&#232;cle o&#249; une m&#233;thode fut officiellement d&#233;couverte.</p>
-<p>L'objectif est de d&#233;chiffrer le message ci-dessus qui a &#233;t&#233; chiffr&#233; avec le chiffre de Vigen&#232;re et une cl&#233; de chiffrement inconnue :</p>
+<p>Notre objectif est de d&#233;chiffrer le message ci-dessus qui a &#233;t&#233; chiffr&#233; en utilisant le chiffre de Vigen&#232;re :</p>
 <pre class="nohighlight"><code>wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqlnsczsmnsxybfofgqyumamyxrucvhxqnvwepxyuzlzqyblcyykomzufylrfxaxrfafrhckwiszfnpruqzcffbdneuknivmmwipuoomrmrctrmjfzfxbwwaxopapyoemfhlfanplyarnbywhmpzuzypdcogbcormmlzyuczzpyjpknhfbcrnbczrmqcmrnxpzvykymqyipvayjtqazfyqzykexyopbcrfbfzaijmzrwbdwanipapbxcayypldvikdtnnxnbvkrplrmxwtrgxylfkrtvbopqwanopkhfbckrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhclybfooazvmkzapbbqanomzqanaptrmxxmayowibofwarhpzvguruwhlascvgxtayyapzacbcubnbdbvfatbyypameuknmqifemyfboqfjxcifnoptnxbqivnbpagyiwmqyctvvnfgmaiknzbsbkubcjzqdofgwhmmlzyybykbhklqfmxykrxbnihmbpbiirdlvmnfmecbyvrmqamexrawhlilneuknmyypxmzypxwlykdyhckzcfikednckncfjbfdrhqqivlbgmacofvwirctnpfnbbcopknlilneuknmaypexnmppcyybwtrhbdbcupdmhfbptyykpagjxdaroipmyfblcapxdbryjaqeyapzecbcmrfipmyfbamhnclqeyywwpuspkyyjaqeyycqgukyqdobbcvnfpvgfxxmeyqnwanfycrfxwcgnbptyympcgwlxurfxyoyyqpzeyreqycppzfukdtvgfemfffxurhppqaxrdbecbomfyqlbfoktapyqemtobczrhbdbcupwqzcqpmnoqpzecqzqeyjltuyrcmhrapvbnopxnspnmgnbrcrlopvrmqaifnolvpbbpxnliljnnxttyyapneuknmpyqemtobczrypecaydfmelbxwaxfltrnlfbrmipasuremfnlfayypcmguooagiremffbdabocqznhzpaayjampbbybcupbcvfvllnhpwcacspzfnlfayypxwlykdvrwbdancopacircmplxdmeokuwhlkzarhkpuvmczcqlljmfuruwhlascvjxctnzlckrgbniacnfmairdxboocwamslqawoplnhpwiiyktzcuofvrzlckrgbniacnfmfompzvyrcmyyapagckoczikomrmqwizifrmayoltqydlcyfblkgobwtrgbybnflyleypuqapfemyypznscztmembetrmpztquqdneuknivmnfqfyqcwhpbybrhqpzecqzqeyycqgukyqdobzcdofgqrhacivykeifsqcwhpbciiyzwmhlplzzypzcfukdtroodiegbdrvhstbrfbdqaabyqroodmgfbdwhpotmempampcxwqfnbdlrmfylhmqcqrmalzzyjpvgkrtarnozciykemanbczvnltzrvotbnhktyhylfyhcstmaxolqrhqlalnozciyolargbebeybyznjmzzguspkzifbcbcnfqyuocqiyilnyujxmqyilzrmfdbnhzpneuknivmbymqifexnmppbrckozryqymfyqpqaxolxnmapuncknwzgblcwircluofumcuowmeufltnlxoqbxbwwaxopa</code></pre>
-<p>Toutes les majuscules ont &#233;t&#233; transform&#233; en minuscules, tous les accents par des lettres non accentu&#233;es, et les espaces et signes de ponctuations ont &#233;t&#233; enlev&#233;.</p>
+<p>Les seules informations que l'on a sont que toutes les majuscules ont &#233;t&#233; transform&#233; en minuscules, tous les accents par des lettres non accentu&#233;es, et les espaces et signes de ponctuations ont &#233;t&#233; enlev&#233;.</p>
 <h3 id="trouver-la-longueur-de-la-cl&#233;-de-chiffrement">Trouver la longueur de la cl&#233; de chiffrement</h3>
-<p>Pour casser le chiffre de Vigen&#232;re, il faut proc&#233;der par &#233;tape, et la premi&#232;re est de d&#233;terminer la longueur de la cl&#233; de chiffrement employ&#233;e pour chiffrer le message.</p>
-<p>TODO : expliquer pourquoi c'est la premi&#232;re &#233;tape + &#224; quoi &#231;a sert</p>
-<p>Test de Kasiski</p>
-<p>Le but ici est de rep&#233;rer des sous cha&#238;nes qui se r&#233;p&#232;tent dans le texte, car c'est derni&#232;res sont probablement des m&#234;mes portions du textes clairs cod&#233;es avec la m&#234;me partie de cl&#233;. Si c'est bien le cas, on peut d&#233;duire la longueur de la cl&#233; gr&#226;ce &#224; l'espacement de ces r&#233;p&#233;titions, mais pour cela notre texte doit &#234;tre suffisamment long pour avoir une analyse efficace des sous cha&#238;nes (notre m&#233;thode &#233;tant bas&#233;e sur des statistiques, si on a trop peu de donn&#233;es notre r&#233;sultat ne sera pas forc&#233;ment correcte et repr&#233;sentatif de la r&#233;alit&#233;).</p>
+<p>Pour casser le chiffre de Vigen&#232;re, il faut proc&#233;der par &#233;tape, et la premi&#232;re est de d&#233;terminer la longueur de la cl&#233; de chiffrement employ&#233;e pour chiffrer le message. Vous verrez qu'une cette longueur connue, on peut savoir quelle lettre sont alors chiffr&#233;e avec la m&#234;me portion de cl&#233;, rendant la cryptanalyse du message bien plus facile.</p>
+<p>Un des moyens de trouver la longueur de cl&#233; est d'utiliser le <strong>test de Kasiski</strong>. Le but est de rep&#233;rer dans le message chiffr&#233; des sous cha&#238;nes qui se r&#233;p&#232;tent, car c'est derni&#232;res sont sans doute des m&#234;mes portions du textes clairs cod&#233;es avec la m&#234;me partie de cl&#233;. Une fois qu'on connait les r&#233;p&#233;titions, on peut gr&#226;ce &#224; l'espacement de ces derni&#232;res en d&#233;duire les cl&#233;s possibles et en combinant plusieurs analyses on peut voir qu'une cl&#233; ressortira plus souvent que les autres. Mais pour cela notre texte doit &#234;tre suffisamment long pour avoir un traitement efficace des sous cha&#238;nes (notre m&#233;thode &#233;tant bas&#233;e sur des statistiques, si on a trop peu de donn&#233;es notre r&#233;sultat ne sera pas forc&#233;ment correcte et repr&#233;sentatif de la r&#233;alit&#233;). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se r&#233;p&#233;tant (de diff&#233;rentes tailles allant de 3 caract&#232;res &#224; 14), en voici une courte partie :</p>
 <table>
 <thead>
 <tr class="header">
@@ -881,6 +881,8 @@ Programmation</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Pour chaque sous chaine, on note l'&#233;cart jusqu'&#224; la prochaine occurrence de ladite chaine, puis on peut en d&#233;duire que la taille de notre cl&#233; est un multiple de cet espace (en effet, il y a une r&#233;p&#233;tition en g&#233;n&#233;ral quand une m&#234;me portion du message est chiffr&#233;e avec une m&#234;me portion de la cl&#233;). On marque alors pour chaque sous chaine les diviseurs de notre &#233;cart, et lorsqu'on additionne tous les r&#233;sultats on voit que le nombre 5 est celui qui apparait le plus de fois. Ce test nous apprend donc que la cl&#233; de chiffrement que l'on cherche a de tr&#232;s fortes chances de poss&#233;der 5 caract&#232;res.</p>
+<p>Une impl&#233;mentation en C du test de Kasiski :</p>
 <a href="javascript:toggle_visibility('test_kasiski.c');">test_kasiski.c</a>
 <div id="test_kasiski.c" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
@@ -987,6 +989,8 @@ Programmation</code></pre>
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
+<p>Tout d'abord, on commence &#224; chercher des sous chaines d'une taille de trois caract&#232;res minimum car les sous chaines de deux caract&#232;res ne sont pas r&#233;ellement efficaces et repr&#233;sentatives (&#231;a peut simplement &#234;tre un coup de chance). Ensuite, la recherche de sous chaine n'est pas optimis&#233;e car le but de cette impl&#233;mentation est de montrer comment appliquer le test de Kasiski. Si vous voulez casser un texte plus grand, je vous conseille de revoir la recherche de sous chaine en vous aidant d'algorithmes plus efficaces comme <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">KMP</a>, <a href="https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm">Rabin-Karp</a>, ou encore <a href="http://codeforces.com/blog/entry/3107">Z</a>. Le code s'ex&#233;cute instantan&#233;ment dans notre exemple, mais sur des textes aussi grands que des livres, il risque de prendre plus de temps s'il n'est pas optimis&#233;.</p>
+<p>La sortie de l'impl&#233;mentation (j'ai comment&#233; l'affichage des sous chaines/&#233;cart, et celui du tableau des possibilit&#233;s car sinon plus de 1000 lignes sont affich&#233;es en sortie) :</p>
 <pre class="nohighlight"><code>5</code></pre>
 <h3 id="d&#233;duire-la-cl&#233;">D&#233;duire la cl&#233;</h3>
 <p>Analyse fr&#233;quentielle</p>

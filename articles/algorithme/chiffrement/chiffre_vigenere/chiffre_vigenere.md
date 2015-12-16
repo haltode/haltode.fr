@@ -7,11 +7,11 @@ Publié le : 28/05/2014
 
 ## Introduction
 
-TODO : faire intro
+Avec l'apparition des premiers systèmes de cryptanalyses, le [chiffre de César](/algo/chiffrement/chiffre_cesar.html) n'est plus un algorithme sûr pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : le chiffre de Vigenère. Ce dernier est immunisé aux attaques du chiffre de César, car sa clé est une chaîne de caractères et non plus un simple nombre, cependant quelques siècles après les premières utilisations de ce système, des techniques permettant de casser le chiffre de Vigenère sont découvertes le rendant alors vulnérable et inutile.
 
 ## Principe de l'algorithme
 
-Le chiffre de Vigenère est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) utilisant une [substitution poly-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution) pour chiffrer et déchiffrer le message secret. Ce qui signifie que la clé de chiffrement n'est plus un nombre (comme avec le [chiffre de César](/algo/chiffrement/chiffre_cesar.html)), mais une chaîne de caractères entière. L'algorithme repose sur ce principe, pour offrir plus de sécurité car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).
+Le chiffre de Vigenère est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) utilisant une [substitution poly-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution) pour chiffrer et déchiffrer le message secret. Ce qui signifie que la clé de chiffrement n'est plus un nombre (comme avec le chiffre de César), mais une chaîne de caractères entière. L'algorithme repose sur ce principe, pour offrir plus de sécurité car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).
 
 ## Exemple
 
@@ -81,22 +81,18 @@ Les attaques du chiffre de César ne fonctionnent pas sur le chiffre de Vigenèr
 
 Il nous faut donc de nouvelles méthodes, afin de casser cet algorithme réputé incassable jusqu'à la fin du XIXe siècle où une méthode fut officiellement découverte.
 
-L'objectif est de déchiffrer le message ci-dessus qui a été chiffré avec le chiffre de Vigenère et une clé de chiffrement inconnue :
+Notre objectif est de déchiffrer le message ci-dessus qui a été chiffré en utilisant le chiffre de Vigenère :
 
 [INSERT]
 test02.in
 
-Toutes les majuscules ont été transformé en minuscules, tous les accents par des lettres non accentuées, et les espaces et signes de ponctuations ont été enlevé.
+Les seules informations que l'on a sont que toutes les majuscules ont été transformé en minuscules, tous les accents par des lettres non accentuées, et les espaces et signes de ponctuations ont été enlevé.
 
 ### Trouver la longueur de la clé de chiffrement
 
-Pour casser le chiffre de Vigenère, il faut procéder par étape, et la première est de déterminer la longueur de la clé de chiffrement employée pour chiffrer le message.
+Pour casser le chiffre de Vigenère, il faut procéder par étape, et la première est de déterminer la longueur de la clé de chiffrement employée pour chiffrer le message. Vous verrez qu'une cette longueur connue, on peut savoir quelle lettre sont alors chiffrée avec la même portion de clé, rendant la cryptanalyse du message bien plus facile.
 
-TODO : expliquer pourquoi c'est la première étape + à quoi ça sert
-
-Test de Kasiski
-
-Le but ici est de repérer des sous chaînes qui se répètent dans le texte, car c'est dernières sont probablement des mêmes portions du textes clairs codées avec la même partie de clé. Si c'est bien le cas, on peut déduire la longueur de la clé grâce à l'espacement de ces répétitions, mais pour cela notre texte doit être suffisamment long pour avoir une analyse efficace des sous chaînes (notre méthode étant basée sur des statistiques, si on a trop peu de données notre résultat ne sera pas forcément correcte et représentatif de la réalité).
+Un des moyens de trouver la longueur de clé est d'utiliser le **test de Kasiski**. Le but est de repérer dans le message chiffré des sous chaînes qui se répètent, car c'est dernières sont sans doute des mêmes portions du textes clairs codées avec la même partie de clé. Une fois qu'on connait les répétitions, on peut grâce à l'espacement de ces dernières en déduire les clés possibles et en combinant plusieurs analyses on peut voir qu'une clé ressortira plus souvent que les autres. Mais pour cela notre texte doit être suffisamment long pour avoir un traitement efficace des sous chaînes (notre méthode étant basée sur des statistiques, si on a trop peu de données notre résultat ne sera pas forcément correcte et représentatif de la réalité). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se répétant (de différentes tailles allant de 3 caractères à 14), en voici une courte partie :
 
 | Chaine | Ecart | 2   | 3   | 4   | 5       | 6   | 7   | 8   | 9   | 10  | ... |
 | :-     | -     | :-: | :-: | :-: | :-:     | :-: | :-: | :-: | :-: | :-: | -   |
@@ -139,8 +135,16 @@ Le but ici est de repérer des sous chaînes qui se répètent dans le texte, ca
 | ...    | ...   | ... | ... | ... | ...     | ... | ... | ... | ... | ... | ... |
 | Total  |       | 568 | 417 | 270 | **932** | 243 | 146 | 172 | 87  | 543 | ... |
 
+Pour chaque sous chaine, on note l'écart jusqu'à la prochaine occurrence de ladite chaine, puis on peut en déduire que la taille de notre clé est un multiple de cet espace (en effet, il y a une répétition en général quand une même portion du message est chiffrée avec une même portion de la clé). On marque alors pour chaque sous chaine les diviseurs de notre écart, et lorsqu'on additionne tous les résultats on voit que le nombre 5 est celui qui apparait le plus de fois. Ce test nous apprend donc que la clé de chiffrement que l'on cherche a de très fortes chances de posséder 5 caractères.
+
+Une implémentation en C du test de Kasiski :
+
 [INSERT]
 test_kasiski.c
+
+Tout d'abord, on commence à chercher des sous chaines d'une taille de trois caractères minimum car les sous chaines de deux caractères ne sont pas réellement efficaces et représentatives (ça peut simplement être un coup de chance). Ensuite, la recherche de sous chaine n'est pas optimisée car le but de cette implémentation est de montrer comment appliquer le test de Kasiski. Si vous voulez casser un texte plus grand, je vous conseille de revoir la recherche de sous chaine en vous aidant d'algorithmes plus efficaces comme [KMP](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm), [Rabin-Karp](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm), ou encore [Z](http://codeforces.com/blog/entry/3107). Le code s'exécute instantanément dans notre exemple, mais sur des textes aussi grands que des livres, il risque de prendre plus de temps s'il n'est pas optimisé.
+
+La sortie de l'implémentation (j'ai commenté l'affichage des sous chaines/écart, et celui du tableau des possibilités car sinon plus de 1000 lignes sont affichées en sortie) :
 
 [INSERT]
 test02.out

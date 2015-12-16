@@ -2,7 +2,10 @@
 
 - README complet
 - Flux rss
-- Originalité du site ? Qu'est-ce qui le démarque ?
+- Page d'accueil
+   - Uniquement articles sur des algos
+   - A qui s'adresse ce site ?
+   - Originalité du site ? Qu'est-ce qui le démarque ?
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 - Supprimer temp.html (temp.md, temp.html, modif css) : commit 92
 
@@ -40,13 +43,12 @@
 - Comparison-based Lower Bounds for Sorting : article
 
 ## Chiffrement
+
+- Rajouter des attaques aux algos de chiffrement
+
 ### Chiffre de Vigenère
 
-- Programme pour trouver la longueur de la clé de chiffrement 
-
-### RSA
-
-- Rajouter descriptions attaques
+- Evoquer utilisation table de Vigenère
 
 ## IA
 
