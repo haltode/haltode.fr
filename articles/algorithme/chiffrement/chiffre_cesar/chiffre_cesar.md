@@ -61,10 +61,8 @@ test01.in
 
 Et la sortie :
 
-```nohighlight
-Nkpwz
-Linux
-```
+[INSERT]
+test01.out
 
 ## Cassage
 
@@ -134,17 +132,13 @@ analyse_frequentielle.c
 
 Un texte chiffré en entrée :
 
-```nohighlight
-Lb ex mxqmx xlm xvkbm xg yktgvtbl, xm jn'be vhgmbxgm tllxs wx vtktvmxkxl, e'tgterlx ykxjnxgmbxeex xlm tllxs ybtuex xm whggx xg zxgxkte et uhggx vex wn ikxfbxk vhni. Ex ikhzktffx gx mxlmx jnx ex ikxfbxk kxlnemtm wx vex (jnb xlm et ienl ikhutuex), ftbl hg ihnkktbm itk xqxfiex tfxebhkxk e'tgterlx xg l'tiinrtgm lnk ienlbxnkl kxlnemtml wx vexl xm lb vxl wxkgbxkl vhkkxlihgwxgm tehkl be r tnkt ubxg ienl wx vatgvxl jnx vx lhbm et uhggx vex.
-```
+[INSERT]
+test03.in
 
 Le texte déchiffré :
 
-```nohighlight
-Cle de 19 :
-
-Si le texte est ecrit en francais, et qu'il contient assez de caracteres, l'analyse frequentielle est assez fiable et donne en general la bonne cle du premier coup. Le programme ne teste que le premier resultat de cle (qui est la plus probable), mais on pourrait par exemple ameliorer l'analyse en s'appuyant sur plusieurs resultats de cles et si ces derniers correspondent alors il y aura bien plus de chances que ce soit la bonne cle.
-```
+[INSERT]
+test03.out
 
 Cette méthode d'attaque n'est pas réellement adaptée au chiffre de César puisqu'on peut simplement utiliser l'attaque par force brute, cependant d'autres algorithmes de chiffrement n'ont pas aussi peu de possibilités de clés que le chiffre de César, et casser ces derniers nécessite donc une attaque plus réfléchie et plus intelligente comme l'analyse fréquentielle.
 

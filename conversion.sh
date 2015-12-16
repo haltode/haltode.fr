@@ -29,6 +29,12 @@ function insert_code {
       filename=`sed "$line_number q;d" copy.md`
       extension="${filename##*.}"
 
+      # If the source code is in fact a test file (input or output),
+      # then disable highlighting
+      if [ \( "$extension" == "in" \) -o \( "$extension" == "out" \) ]; then
+         extension="nohighlight"
+      fi
+
       # If the source code file is more than 20 lines, hide it (with js function)
       lenght=`cat $(dirname $1)/$filename | wc -l`
       if [ $lenght -gt 20 ]; then

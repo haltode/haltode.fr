@@ -3,7 +3,7 @@ Chiffre de Vigenère
 algo/chiffrement
 
 Publié le : 28/05/2014  
-*Modifié le : 15/12/2015*
+*Modifié le : 16/12/2015*
 
 ## Introduction
 
@@ -81,17 +81,77 @@ Les attaques du chiffre de César ne fonctionnent pas sur le chiffre de Vigenèr
 
 Il nous faut donc de nouvelles méthodes, afin de casser cet algorithme réputé incassable jusqu'à la fin du XIXe siècle où une méthode fut officiellement découverte.
 
-TODO : faire cassage
+L'objectif est de déchiffrer le message ci-dessus qui a été chiffré avec le chiffre de Vigenère et une clé de chiffrement inconnue :
+
+[INSERT]
+test02.in
+
+Toutes les majuscules ont été transformé en minuscules, tous les accents par des lettres non accentuées, et les espaces et signes de ponctuations ont été enlevé.
 
 ### Trouver la longueur de la clé de chiffrement
 
-#### Test de Kasiski
+Pour casser le chiffre de Vigenère, il faut procéder par étape, et la première est de déterminer la longueur de la clé de chiffrement employée pour chiffrer le message.
 
-#### Indice de coïcidence
+TODO : expliquer pourquoi c'est la première étape + à quoi ça sert
+
+Test de Kasiski
+
+Le but ici est de repérer des sous chaînes qui se répètent dans le texte, car c'est dernières sont probablement des mêmes portions du textes clairs codées avec la même partie de clé. Si c'est bien le cas, on peut déduire la longueur de la clé grâce à l'espacement de ces répétitions, mais pour cela notre texte doit être suffisamment long pour avoir une analyse efficace des sous chaînes (notre méthode étant basée sur des statistiques, si on a trop peu de données notre résultat ne sera pas forcément correcte et représentatif de la réalité).
+
+| Chaine | Ecart | 2   | 3   | 4   | 5       | 6   | 7   | 8   | 9   | 10  | ... |
+| :-     | -     | :-: | :-: | :-: | :-:     | :-: | :-: | :-: | :-: | :-: | -   |
+| wmf    | 485   |     |     |     | X       |     |     |     |     |     | ... |
+| wep    | 205   |     |     |     | X       |     |     |     |     |     | ... |
+| rta    | 1640  | X   |     | X   | X       |     |     | X   |     | X   | ... |
+| zuo    | 150   | X   | X   |     | X       | X   |     |     |     | X   | ... |
+| lbf    | 1002  | X   | X   |     |         | X   |     |     |     |     | ... |
+| rmx    | 20    | X   |     | X   | X       |     |     |     |     | X   | ... |
+| mxy    | 665   |     |     |     | X       |     | X   |     |     |     | ... |
+| yvr    | 690   | X   | X   |     | X       | X   |     |     |     | X   | ... |
+| ryp    | 20    | X   |     | X   | X       |     |     |     |     | X   | ... |
+| ypd    | 95    |     |     |     | X       |     |     |     |     |     | ... |
+| dwa    | 375   |     | X   |     | X       |     |     |     |     |     | ... |
+| yqp    | 935   |     |     |     | X       |     |     |     |     |     | ... |
+| lrm    | 395   |     |     |     | X       |     |     |     |     |     | ... |
+| cur    | 20    | X   |     | X   | X       |     |     |     |     | X   | ... |
+| ury    | 75    |     | X   |     | X       |     |     |     |     |     | ... |
+| ryp    | 75    |     | X   |     | X       |     |     |     |     |     | ... |
+| nhz    | 1155  |     | X   |     | X       |     | X   |     |     |     | ... |
+| lqf    | 630   | X   | X   |     | X       | X   | X   |     | X   | X   | ... |
+| qfy    | 1435  |     |     |     | X       |     | X   |     |     |     | ... |
+| ypz    | 1400  | X   |     | X   | X       |     | X   | X   |     | X   | ... |
+| pzv    | 301   |     |     |     |         |     | X   |     |     |     | ... |
+| zvg    | 500   | X   |     | X   | X       |     |     |     |     | X   | ... |
+| hpb    | 1425  |     | X   |     | X       |     |     |     |     |     | ... |
+| bczr   | 105   |     | X   |     | X       |     | X   |     |     |     | ... |
+| bcup   | 180   | X   | X   | X   | X       | X   |     |     | X   | X   | ... |
+| qpze   | 450   | X   | X   |     | X       | X   |     |     | X   | X   | ... |
+| pzec   | 450   | X   | X   |     | X       | X   |     |     | X   | X   | ... |
+| qzqe   | 450   | X   | X   |     | X       | X   |     |     | X   | X   | ... |
+| zqey   | 450   | X   | X   |     | X       | X   |     |     | X   | X   | ... |
+| yrcm   | 320   | X   |     | X   | X       |     |     | X   |     | X   | ... |
+| yyap   | 270   | X   | X   |     | X       | X   |     |     | X   | X   | ... |
+| pneu   | 645   |     | X   |     | X       |     |     |     |     |     | ... |
+| iiyzwm | 1410  | X   | X   |     | X       | X   |     |     |     | X   | ... |
+| dneukn | 1225  |     |     |     | X       |     | X   |     |     |     | ... |
+| ruwhla | 740   | X   |     | X   | X       |     |     |     |     | X   | ... |
+| uwhlas | 740   | X   |     | X   | X       |     |     |     |     | X   | ... |
+| ...    | ...   | ... | ... | ... | ...     | ... | ... | ... | ... | ... | ... |
+| Total  |       | 568 | 417 | 270 | **932** | 243 | 146 | 172 | 87  | 543 | ... |
+
+[INSERT]
+test_kasiski.c
+
+[INSERT]
+test02.out
 
 ### Déduire la clé
 
-#### Analyse fréquentielle
+Analyse fréquentielle
+
+### Variantes
+
+#### Indice de coïncidence
 
 ## Conclusion
 

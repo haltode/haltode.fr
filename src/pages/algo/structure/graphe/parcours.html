@@ -269,7 +269,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 }</code></pre></div>
 </div>
 <p>Si en entr&#233;e on donne notre graphe (celui de l'exemple et sous forme d'une liste d'arcs) :</p>
-<pre class="in"><code>8
+<pre class="nohighlight"><code>8
 1 2
 1 6
 1 7
@@ -279,9 +279,9 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 7 8
 7 9</code></pre>
 <p>On obtient bien en sortie :</p>
-<pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
+<pre class="nohighlight"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <p>Et pour vous montrer que l'ordre d'un parcours en profondeur peut changer selon l'ordre des voisins visit&#233;s, prenons le m&#234;me graphe mais avec un ordre diff&#233;rent dans sa description (l'ordre inverse) :</p>
-<pre class="in"><code>8
+<pre class="nohighlight"><code>8
 1 7
 1 6
 1 2
@@ -291,7 +291,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 2 3
 4 5</code></pre>
 <p>En sortie cette fois on a :</p>
-<pre class="out"><code>1 7 9 8 6 2 4 5 3</code></pre>
+<pre class="nohighlight"><code>1 7 9 8 6 2 4 5 3</code></pre>
 <h4 id="it&#233;ratif">It&#233;ratif</h4>
 <p>Il est rare d'impl&#233;menter de fa&#231;on it&#233;rative un parcours en profondeur, mais cela peut &#234;tre utile pour ne pas faire exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appels</a> &#224; cause des nombreux appels r&#233;cursifs imbriqu&#233;s provoqu&#233;s par notre derni&#232;re impl&#233;mentation.</p>
 <p>Pour passer de la version r&#233;cursive &#224; la version it&#233;rative, on utilise simplement une <a href="/algo/structure/pile.html">pile</a> afin de &quot;simuler&quot; la pile d'appel. En effet lorsqu'on visite un n&#339;ud, on veut visiter tout de suite ses voisins, il faut donc les placer dans l'ordre de visite avant les autres n&#339;uds, on va donc les empiler afin de les parcourir d'abord.</p>
@@ -347,7 +347,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 }</code></pre></div>
 </div>
 <p>En entr&#233;e :</p>
-<pre class="in"><code>8
+<pre class="nohighlight"><code>8
 1 2
 1 6
 1 7
@@ -357,9 +357,9 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 7 8
 7 9</code></pre>
 <p>Et la sortie affich&#233;e :</p>
-<pre class="out"><code>1 7 9 8 6 2 4 5 3</code></pre>
+<pre class="nohighlight"><code>1 7 9 8 6 2 4 5 3</code></pre>
 <p>Et si on donne notre entr&#233;e modifi&#233;e (&#224; l'envers) :</p>
-<pre class="in"><code>8
+<pre class="nohighlight"><code>8
 1 7
 1 6
 1 2
@@ -369,7 +369,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 2 3
 4 5</code></pre>
 <p>On a en sortie cette fois :</p>
-<pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
+<pre class="nohighlight"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <p>Vous constatez donc que la pile &quot;inverse&quot; l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin d&#232;s qu'on en a trouv&#233; un non visit&#233; (comme le fait la version r&#233;cursive), mais on les empile tous, et ils vont donc se superposer (ce qui va &quot;inverser&quot; l'ordre car c'est le principe d'une pile : le dernier arriv&#233;, le premier sorti).</p>
 <h2 id="le-parcours-en-largeur">Le parcours en largeur</h2>
 <p>Vous vous retrouvez face &#224; l'entr&#233;e du labyrinthe, mais cette fois ci vous cherchez le nombre de pas minimum que vous devez faire pour atteindre la sortie. Ce probl&#232;me peut &#234;tre vu comme un plus court chemin, mais notre graphe implicite est <strong>non pond&#233;r&#233;</strong> contrairement aux autres algorithmes &quot;classiques&quot; de <a href="/algo/structure/graphe/plus_court_chemin.html">plus court chemin</a> o&#249; le graphe est pond&#233;r&#233; (positivement ou n&#233;gativement). Cela revient donc &#224; trouver un chemin entre l'entr&#233;e et la sortie comportant un minimum de n&#339;uds possible (vu que les arcs ont chacun une distance de <em>1</em> unit&#233;). Mais de nouveau nous n'avons aucunes informations sur le labyrinthe, et la sortie pourrait se trouver n'importe o&#249;.</p>
@@ -458,7 +458,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 }</code></pre></div>
 </div>
 <p>Notre graphe :</p>
-<pre class="in"><code>8
+<pre class="nohighlight"><code>8
 1 2
 1 3
 1 4
@@ -468,7 +468,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 4 8
 6 9</code></pre>
 <p>La sortie :</p>
-<pre class="out"><code>1 2 3 4 5 6 7 8 9</code></pre>
+<pre class="nohighlight"><code>1 2 3 4 5 6 7 8 9</code></pre>
 <h2 id="conclusion">Conclusion</h2>
 <p>Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe plus complexes, et il existe deux types de parcours qu'il faut conna&#238;tre et maitriser pour les utiliser au bon moment :</p>
 <ul>

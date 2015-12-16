@@ -184,7 +184,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="chiffre-de-vigen&#232;re">Chiffre de Vigen&#232;re</h1></a>
 <p>Publi&#233; le : 28/05/2014<br />
-<em>Modifi&#233; le : 15/12/2015</em></p>
+<em>Modifi&#233; le : 16/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -309,10 +309,10 @@ d&#233;chiffrer :
 </div>
 <p>Notez qu'on doit vider le buffer, car notre message et notre cl&#233; sont deux cha&#238;nes de caract&#232;res (pouvant donc contenir des espaces) et s&#233;par&#233;es par un retour &#224; la ligne. Ensuite, au lieu de cr&#233;er une seconde cl&#233; de chiffrement de la taille du message, on peut tout simplement utiliser un index que l'on r&#233;initialise &#224; 0 &#224; chaque fois qu'il a atteint le bout de la cl&#233; (gr&#226;ce &#224; <code>% tailleCle</code>).</p>
 <p>Notre message et notre cl&#233; :</p>
-<pre class="in"><code>Programmation
+<pre class="nohighlight"><code>Programmation
 Linux</code></pre>
 <p>Le chiffrement et le d&#233;chiffrement :</p>
-<pre class="out"><code>Azbaoluzuqtwa
+<pre class="nohighlight"><code>Azbaoluzuqtwa
 Programmation</code></pre>
 <h2 id="cassage">Cassage</h2>
 <p>Les attaques du chiffre de C&#233;sar ne fonctionnent pas sur le chiffre de Vigen&#232;re pour plusieurs raisons :</p>
@@ -321,12 +321,677 @@ Programmation</code></pre>
 <li>L'algorithme utilise une substitution poly-alphab&#233;tique, rendant ainsi une analyse fr&#233;quentielle impossible car une lettre ne sera pas forc&#233;ment chiffr&#233;e de la m&#234;me mani&#232;re dans un texte.</li>
 </ul>
 <p>Il nous faut donc de nouvelles m&#233;thodes, afin de casser cet algorithme r&#233;put&#233; incassable jusqu'&#224; la fin du XIXe si&#232;cle o&#249; une m&#233;thode fut officiellement d&#233;couverte.</p>
-<p>TODO : faire cassage</p>
+<p>L'objectif est de d&#233;chiffrer le message ci-dessus qui a &#233;t&#233; chiffr&#233; avec le chiffre de Vigen&#232;re et une cl&#233; de chiffrement inconnue :</p>
+<pre class="nohighlight"><code>wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqlnsczsmnsxybfofgqyumamyxrucvhxqnvwepxyuzlzqyblcyykomzufylrfxaxrfafrhckwiszfnpruqzcffbdneuknivmmwipuoomrmrctrmjfzfxbwwaxopapyoemfhlfanplyarnbywhmpzuzypdcogbcormmlzyuczzpyjpknhfbcrnbczrmqcmrnxpzvykymqyipvayjtqazfyqzykexyopbcrfbfzaijmzrwbdwanipapbxcayypldvikdtnnxnbvkrplrmxwtrgxylfkrtvbopqwanopkhfbckrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhclybfooazvmkzapbbqanomzqanaptrmxxmayowibofwarhpzvguruwhlascvgxtayyapzacbcubnbdbvfatbyypameuknmqifemyfboqfjxcifnoptnxbqivnbpagyiwmqyctvvnfgmaiknzbsbkubcjzqdofgwhmmlzyybykbhklqfmxykrxbnihmbpbiirdlvmnfmecbyvrmqamexrawhlilneuknmyypxmzypxwlykdyhckzcfikednckncfjbfdrhqqivlbgmacofvwirctnpfnbbcopknlilneuknmaypexnmppcyybwtrhbdbcupdmhfbptyykpagjxdaroipmyfblcapxdbryjaqeyapzecbcmrfipmyfbamhnclqeyywwpuspkyyjaqeyycqgukyqdobbcvnfpvgfxxmeyqnwanfycrfxwcgnbptyympcgwlxurfxyoyyqpzeyreqycppzfukdtvgfemfffxurhppqaxrdbecbomfyqlbfoktapyqemtobczrhbdbcupwqzcqpmnoqpzecqzqeyjltuyrcmhrapvbnopxnspnmgnbrcrlopvrmqaifnolvpbbpxnliljnnxttyyapneuknmpyqemtobczrypecaydfmelbxwaxfltrnlfbrmipasuremfnlfayypcmguooagiremffbdabocqznhzpaayjampbbybcupbcvfvllnhpwcacspzfnlfayypxwlykdvrwbdancopacircmplxdmeokuwhlkzarhkpuvmczcqlljmfuruwhlascvjxctnzlckrgbniacnfmairdxboocwamslqawoplnhpwiiyktzcuofvrzlckrgbniacnfmfompzvyrcmyyapagckoczikomrmqwizifrmayoltqydlcyfblkgobwtrgbybnflyleypuqapfemyypznscztmembetrmpztquqdneuknivmnfqfyqcwhpbybrhqpzecqzqeyycqgukyqdobzcdofgqrhacivykeifsqcwhpbciiyzwmhlplzzypzcfukdtroodiegbdrvhstbrfbdqaabyqroodmgfbdwhpotmempampcxwqfnbdlrmfylhmqcqrmalzzyjpvgkrtarnozciykemanbczvnltzrvotbnhktyhylfyhcstmaxolqrhqlalnozciyolargbebeybyznjmzzguspkzifbcbcnfqyuocqiyilnyujxmqyilzrmfdbnhzpneuknivmbymqifexnmppbrckozryqymfyqpqaxolxnmapuncknwzgblcwircluofumcuowmeufltnlxoqbxbwwaxopa</code></pre>
+<p>Toutes les majuscules ont &#233;t&#233; transform&#233; en minuscules, tous les accents par des lettres non accentu&#233;es, et les espaces et signes de ponctuations ont &#233;t&#233; enlev&#233;.</p>
 <h3 id="trouver-la-longueur-de-la-cl&#233;-de-chiffrement">Trouver la longueur de la cl&#233; de chiffrement</h3>
-<h4 id="test-de-kasiski">Test de Kasiski</h4>
-<h4 id="indice-de-co&#239;cidence">Indice de co&#239;cidence</h4>
+<p>Pour casser le chiffre de Vigen&#232;re, il faut proc&#233;der par &#233;tape, et la premi&#232;re est de d&#233;terminer la longueur de la cl&#233; de chiffrement employ&#233;e pour chiffrer le message.</p>
+<p>TODO : expliquer pourquoi c'est la premi&#232;re &#233;tape + &#224; quoi &#231;a sert</p>
+<p>Test de Kasiski</p>
+<p>Le but ici est de rep&#233;rer des sous cha&#238;nes qui se r&#233;p&#232;tent dans le texte, car c'est derni&#232;res sont probablement des m&#234;mes portions du textes clairs cod&#233;es avec la m&#234;me partie de cl&#233;. Si c'est bien le cas, on peut d&#233;duire la longueur de la cl&#233; gr&#226;ce &#224; l'espacement de ces r&#233;p&#233;titions, mais pour cela notre texte doit &#234;tre suffisamment long pour avoir une analyse efficace des sous cha&#238;nes (notre m&#233;thode &#233;tant bas&#233;e sur des statistiques, si on a trop peu de donn&#233;es notre r&#233;sultat ne sera pas forc&#233;ment correcte et repr&#233;sentatif de la r&#233;alit&#233;).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Chaine</th>
+<th align="left">Ecart</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="left">...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">wmf</td>
+<td align="left">485</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">wep</td>
+<td align="left">205</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">rta</td>
+<td align="left">1640</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">zuo</td>
+<td align="left">150</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">lbf</td>
+<td align="left">1002</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">rmx</td>
+<td align="left">20</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">mxy</td>
+<td align="left">665</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">yvr</td>
+<td align="left">690</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">ryp</td>
+<td align="left">20</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">ypd</td>
+<td align="left">95</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">dwa</td>
+<td align="left">375</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">yqp</td>
+<td align="left">935</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">lrm</td>
+<td align="left">395</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">cur</td>
+<td align="left">20</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">ury</td>
+<td align="left">75</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">ryp</td>
+<td align="left">75</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">nhz</td>
+<td align="left">1155</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">lqf</td>
+<td align="left">630</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">qfy</td>
+<td align="left">1435</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">ypz</td>
+<td align="left">1400</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">pzv</td>
+<td align="left">301</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">zvg</td>
+<td align="left">500</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">hpb</td>
+<td align="left">1425</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">bczr</td>
+<td align="left">105</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">bcup</td>
+<td align="left">180</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">qpze</td>
+<td align="left">450</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">pzec</td>
+<td align="left">450</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">qzqe</td>
+<td align="left">450</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">zqey</td>
+<td align="left">450</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">yrcm</td>
+<td align="left">320</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">yyap</td>
+<td align="left">270</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">pneu</td>
+<td align="left">645</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">iiyzwm</td>
+<td align="left">1410</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">dneukn</td>
+<td align="left">1225</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">ruwhla</td>
+<td align="left">740</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">uwhlas</td>
+<td align="left">740</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="left"></td>
+<td align="center">568</td>
+<td align="center">417</td>
+<td align="center">270</td>
+<td align="center"><strong>932</strong></td>
+<td align="center">243</td>
+<td align="center">146</td>
+<td align="center">172</td>
+<td align="center">87</td>
+<td align="center">543</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<a href="javascript:toggle_visibility('test_kasiski.c');">test_kasiski.c</a>
+<div id="test_kasiski.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="ot">#include &lt;ctype.h&gt;</span>
+<span class="ot">#include &lt;stdbool.h&gt;</span>
+<span class="ot">#include &lt;string.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 10000</span>
+<span class="ot">#define NB_POSSIBILITE_MAX 10000</span>
+
+<span class="dt">char</span> message[TAILLE_MAX];
+<span class="dt">int</span> tailleMessage;
+
+<span class="dt">int</span> nbPossibilite[NB_POSSIBILITE_MAX];
+<span class="dt">int</span> possibiliteMax;
+
+<span class="dt">int</span> chercherOccurrence(<span class="dt">char</span> chaine[], <span class="dt">int</span> taille, <span class="dt">int</span> debut)
+{
+   <span class="dt">int</span> iDebut;
+
+   <span class="kw">for</span>(iDebut = debut; iDebut &lt; tailleMessage - taille + <span class="dv">1</span>; ++iDebut) {
+      <span class="dt">int</span> iTab, iChaine;
+
+      iTab = iDebut;
+      iChaine = <span class="dv">0</span>;
+      <span class="kw">while</span>(iTab &lt; tailleMessage - taille + <span class="dv">1</span> &amp;&amp;
+            chaine[iChaine] == message[iTab]) {
+         ++iTab;
+         ++iChaine;
+      }
+
+      <span class="kw">if</span>(iChaine == taille)
+         <span class="kw">return</span> iDebut;
+   }
+
+   <span class="kw">return</span> -<span class="dv">1</span>;
+}
+
+<span class="dt">void</span> ajouterTaillePossible(<span class="dt">int</span> ecart)
+{
+   <span class="dt">int</span> iDiv;
+
+   <span class="kw">for</span>(iDiv = <span class="dv">2</span>; iDiv &lt;= ecart; ++iDiv) {
+      <span class="kw">if</span>(ecart % iDiv == <span class="dv">0</span>) {
+         ++nbPossibilite[iDiv];
+         <span class="kw">if</span>(nbPossibilite[iDiv] &gt; nbPossibilite[possibiliteMax])
+            possibiliteMax = iDiv;
+      }
+   }
+}
+
+<span class="dt">void</span> testKasiski(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTaille, iDebut;
+   bool trouve;
+
+   iTaille = <span class="dv">3</span>;
+   trouve = true;
+
+   <span class="kw">while</span>(trouve) {
+      trouve = false;
+
+      <span class="kw">for</span>(iDebut = <span class="dv">0</span>; iDebut &lt; tailleMessage - iTaille + <span class="dv">1</span>; ++iDebut) {
+         <span class="dt">char</span> chaine[iTaille + <span class="dv">1</span>];
+         <span class="dt">int</span> iTab;
+         <span class="dt">int</span> occurrence;
+
+         <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; iTaille; ++iTab)
+            chaine[iTab] = message[iDebut + iTab];
+         chaine[iTab] = &#39;\<span class="dv">0</span>&#39;;
+
+         occurrence = chercherOccurrence(chaine, iTaille, iDebut + iTaille);
+         <span class="kw">if</span>(occurrence != -<span class="dv">1</span>) {
+            <span class="dt">int</span> ecart;
+
+            ecart =  occurrence - iDebut;
+            trouve = true;
+
+            <span class="co">//printf(&quot;%s %d\n&quot;, chaine, ecart);</span>
+
+            ajouterTaillePossible(ecart);
+         }
+      }
+
+      ++iTaille;
+   }
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   scanf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+   tailleMessage = strlen(message);
+
+   possibiliteMax = <span class="dv">0</span>;
+   testKasiski();
+
+   <span class="co">/*int iDiv;</span>
+<span class="co">   for(iDiv = 0; iDiv &lt; NB_POSSIBILITE_MAX; ++iDiv)</span>
+<span class="co">      if(nbPossibilite[iDiv] != 0)</span>
+<span class="co">         printf(&quot;%d : %d\n&quot;, iDiv, nbPossibilite[iDiv]);*/</span>
+
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, possibiliteMax);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<pre class="nohighlight"><code>5</code></pre>
 <h3 id="d&#233;duire-la-cl&#233;">D&#233;duire la cl&#233;</h3>
-<h4 id="analyse-fr&#233;quentielle">Analyse fr&#233;quentielle</h4>
+<p>Analyse fr&#233;quentielle</p>
+<h3 id="variantes">Variantes</h3>
+<h4 id="indice-de-co&#239;ncidence">Indice de co&#239;ncidence</h4>
 <h2 id="conclusion">Conclusion</h2>
 <p>TODO : faire conclusion</p>
  
