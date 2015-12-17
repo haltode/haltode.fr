@@ -172,11 +172,11 @@ On cherche pour chaque ligne, la lettre apparaissant le plus, puis l'on déduit 
 
 La lettre la plus utilisée ici est le P, on peut donc faire une correspondance entre l'alphabet normal et l'alphabet chiffré :
 
-![Exemple de correspondance](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenre/exemple_ligne.png)
+![Exemple de correspondance](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png)
 
 Si on applique ce principe à chacune de nos lignes on obtient :
 
-![Recherche de clé de chiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenre/exemple_trouver_cle.png)
+![Recherche de clé de chiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png)
 
 TODO : mieux expliquer les images ?
 
