@@ -186,9 +186,42 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="chiffre-de-vernam">Chiffre de Vernam</h1></a>
 <p>Publi&#233; le : 29/05/2014<br />
-<em>Modifi&#233; le :</em></p>
+<em>Modifi&#233; le : 17/12/2015</em></p>
 <ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#cassage">Cassage ?</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>Le chiffre de Vernam est consid&#233;r&#233; comme une am&#233;lioration significative du <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigen&#232;re</a> car cet algorithme de chiffrement est th&#233;oriquement impossible &#224; casser. Cependant, aucuns syst&#232;mes de chiffrement n'est parfait, et m&#234;me si ce dernier semble s&#233;curis&#233;, il n'est pas toujours facile de remplir les conditions pour avoir un message chiffr&#233; totalement s&#251;r.</p>
+<p>TODO : bosser intro</p>
+<h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
+<p>Le chiffre de Vernam (ou <em>masque jetable</em>) est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant, comme le chiffre de Vigen&#232;re, une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a>. Son efficacit&#233; r&#233;side dans le choix de la cl&#233; de chiffrement, qui doit respecter plusieurs r&#232;gles fondamentales :</p>
+<ul>
+<li>Chaque cl&#233; est <strong>unique</strong>, et cette derni&#232;re ne doit pas &#234;tre r&#233;utilis&#233;e (d'o&#249; le nom de masque jetable).</li>
+<li>La cl&#233; doit avoir au moins autant de caract&#232;res que le message que l'on veut chiffrer.</li>
+<li>Chacun des caract&#232;res de la cl&#233; doit &#234;tre choisi totalement al&#233;atoirement.</li>
+</ul>
+<h2 id="exemple">Exemple</h2>
+<p>Le mot que l'on va chiffrer est &quot;Algorithme&quot;, et la premi&#232;re &#233;tape du chiffre de Vernam est donc de cr&#233;er notre cl&#233; en respectant les trois contraintes. J'ai donc cr&#233;&#233; de mon c&#244;t&#233; une cl&#233; de chiffrement (que je n'ai jamais utilis&#233; avant, qui fait la m&#234;me taille que le message et que j'ai choisi al&#233;atoirement) : &quot;shrtvsgviw&quot;.</p>
+<p>Le mode de fonctionnement du chiffrement et du d&#233;chiffrement est exactement le m&#234;me que pour le chiffre de Vigen&#232;re, je vous invite donc &#224; la lire la partie <a href="/algo/chiffrement/chiffre_vigenere.html#exemple">exemple</a> &#224; ce propos.</p>
+<p>J'obtiens donc finalement comme texte chiffr&#233; &quot;Ssxhmazcua&quot;.</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>La seule partie &#224; modifier du pseudo-code du chiffre de Vigen&#232;re est la cr&#233;ation de la cl&#233; :</p>
+<pre class="nohighlight"><code>creerCle :
+
+   Tant que la cl&#233; g&#233;n&#233;r&#233;e a d&#233;j&#224; &#233;t&#233; utilis&#233;
+
+      Pour chaque lettre du message 
+         Generer une lettre al&#233;atoire pour notre cl&#233;</code></pre>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>TODO : impl&#233; g&#233;n&#233;ration + &#233;voquer solution pour v&#233;rifier si d&#233;j&#224; utilis&#233; ou non (dichotomie, table de hachage, etc.).</p>
+<h2 id="cassage">Cassage ?</h2>
+<h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
 
