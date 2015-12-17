@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#define TAILLE_MAX 1000
+#define TAILLE_MAX 10000
 
 char message[TAILLE_MAX];
 char cle[TAILLE_MAX];
@@ -42,7 +42,6 @@ void dechiffrement(void)
          message[iTab] += typo;
       }
    }
-
 }
 
 void viderBuffer(void)

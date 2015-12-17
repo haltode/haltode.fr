@@ -49,6 +49,7 @@
 ### Chiffre de Vigenère
 
 - Evoquer utilisation table de Vigenère
+- Faire partie indice de coïncidence
 
 ## IA
 

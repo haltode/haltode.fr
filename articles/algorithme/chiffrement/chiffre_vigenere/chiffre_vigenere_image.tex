@@ -247,4 +247,331 @@
 \node [minimum size = 0.5cm, inner sep = 0pt, right = 0cm of twelfth] (thirteenth) {N};
 \end{tikzpicture}
 
+% Cassage
+
+\newpage
+
+% Ligne 1
+\begin{tikzpicture}
+\foreach \i in {0,...,3} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {4,...,4} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = green!20]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {5,...,25} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+
+\foreach \i in {0,...,0} {
+	\foreach \j in {11,...,11} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = red!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {1,...,3} {
+	\foreach \j in {11,...,11} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {4,...,4} {
+	\foreach \j in {11,...,11} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = blue!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {5,...,25} {
+	\foreach \j in {11,...,11} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+% Ligne 2
+\begin{tikzpicture}
+\foreach \i in {0,...,3} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {4,...,4} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = green!20]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {5,...,25} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+
+\foreach \i in {0,...,0} {
+	\foreach \j in {8,...,8} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = red!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {1,...,3} {
+	\foreach \j in {8,...,8} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {4,...,4} {
+	\foreach \j in {8,...,8} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = blue!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {5,...,25} {
+	\foreach \j in {8,...,8} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+% Ligne 3
+\begin{tikzpicture}
+\foreach \i in {0,...,3} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {4,...,4} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = green!20]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {5,...,25} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+
+\foreach \i in {0,...,0} {
+	\foreach \j in {13,...,13} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = red!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {1,...,3} {
+	\foreach \j in {13,...,13} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {4,...,4} {
+	\foreach \j in {13,...,13} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = blue!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {5,...,25} {
+	\foreach \j in {13,...,13} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+% Ligne 4
+\begin{tikzpicture}
+\foreach \i in {0,...,3} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {4,...,4} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = green!20]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {5,...,25} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+
+\foreach \i in {0,...,0} {
+	\foreach \j in {20,...,20} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = red!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {1,...,3} {
+	\foreach \j in {20,...,20} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {4,...,4} {
+	\foreach \j in {20,...,20} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = blue!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {5,...,25} {
+	\foreach \j in {20,...,20} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+% Ligne 5
+\begin{tikzpicture}
+\foreach \i in {0,...,3} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {4,...,4} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = green!20]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+\foreach \i in {5,...,25} {
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,0) {\strut\symbol{\numexpr`A+\i\relax}};
+}
+
+\foreach \i in {0,...,0} {
+	\foreach \j in {23,...,23} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = red!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {1,...,3} {
+	\foreach \j in {23,...,23} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {4,...,4} {
+	\foreach \j in {23,...,23} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt, fill = blue!20]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\foreach \i in {5,...,25} {
+	\foreach \j in {23,...,23} {
+		\edef\k{\ifnum\numexpr\i+\j\relax>25
+			\the\numexpr\i+\j-26\relax
+		\else
+			\the\numexpr\i+\j\relax
+		\fi}
+	\node[draw, minimum size = 0.5cm, inner sep = 0pt]
+		at (\i*0.5,-0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+	}
+}
+\end{tikzpicture}
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+\node [anchor = center] (first) {L};
+\node [anchor = center, right = 0cm of first] (second) {I};
+\node [anchor = center, right = 0cm of second] (third) {N};
+\node [anchor = center, right = 0cm of third] (fourth) {U};
+\node [anchor = center, right = 0cm of fourth] (fifth) {X};
+\end{tikzpicture}
+
 \end{document}

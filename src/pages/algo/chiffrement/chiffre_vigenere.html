@@ -186,7 +186,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="chiffre-de-vigen&#232;re">Chiffre de Vigen&#232;re</h1></a>
 <p>Publi&#233; le : 28/05/2014<br />
-<em>Modifi&#233; le : 16/12/2015</em></p>
+<em>Modifi&#233; le : 17/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -197,7 +197,7 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Avec l'apparition des premiers syst&#232;mes de cryptanalyses, le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de C&#233;sar</a> n'est plus un algorithme s&#251;r pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : le chiffre de Vigen&#232;re. Ce dernier est immunis&#233; aux attaques du chiffre de C&#233;sar, car sa cl&#233; est une cha&#238;ne de caract&#232;res et non plus un simple nombre, cependant quelques si&#232;cles apr&#232;s les premi&#232;res utilisations de ce syst&#232;me, des techniques permettant de casser le chiffre de Vigen&#232;re sont d&#233;couvertes le rendant alors vuln&#233;rable et inutile.</p>
+<p>Avec l'apparition des premiers syst&#232;mes de cryptanalyses, le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de C&#233;sar</a> n'est plus un algorithme s&#251;r pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : <strong>le chiffre de Vigen&#232;re</strong>. Ce dernier est immunis&#233; aux attaques du chiffre de C&#233;sar, car sa cl&#233; est une cha&#238;ne de caract&#232;res et non plus un simple nombre, cependant quelques si&#232;cles apr&#232;s les premi&#232;res utilisations de ce syst&#232;me, des techniques permettant de casser le chiffre de Vigen&#232;re sont d&#233;couvertes le rendant alors vuln&#233;rable et inutile.</p>
 <h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
 <p>Le chiffre de Vigen&#232;re est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a> pour chiffrer et d&#233;chiffrer le message secret. Ce qui signifie que la cl&#233; de chiffrement n'est plus un nombre (comme avec le chiffre de C&#233;sar), mais une cha&#238;ne de caract&#232;res enti&#232;re. L'algorithme repose sur ce principe, pour offrir plus de s&#233;curit&#233; car une m&#234;me lettre ne sera alors pas forc&#233;ment chiffr&#233;e de la m&#234;me fa&#231;on (elle d&#233;pendra de sa place dans le message, mais aussi de la cl&#233; utilis&#233;e).</p>
 <h2 id="exemple">Exemple</h2>
@@ -206,18 +206,17 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png" alt="Visualisation de la cl&#233; de chiffrement compl&#232;te" />
 <p class="caption">Visualisation de la cl&#233; de chiffrement compl&#232;te</p>
 </div>
-<p>D&#233;sormais on peut chiffrer notre message :</p>
+<p>D&#233;sormais on peut chiffrer chaque lettre de notre message :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png" alt="Exemple de chiffrement" />
 <p class="caption">Exemple de chiffrement</p>
 </div>
-<p>Le rang dans l'alphabet commence &#224; 0 car <em>26 mod 26 = 0</em>, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l'additionne &#224; la lettre correspondante de la cl&#233;. On n'oublie pas d'appliquer notre <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour revenir au d&#233;but de l'alphabet si on d&#233;passe Z.</p>
-<p>Et pour le d&#233;chiffrement du message :</p>
+<p>Le rang dans l'alphabet commence &#224; 0 (et non 1) car <em>26 mod 26 = 0</em>, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l'additionne &#224; la lettre correspondante de la cl&#233;. On n'oublie pas d'appliquer notre <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour revenir au d&#233;but de l'alphabet si on d&#233;passe Z.</p>
+<p>Pour le d&#233;chiffrement, l'id&#233;e est la m&#234;me sauf qu'on soustrait au lieu d'ajouter le rang de la lettre de la cl&#233; :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png" alt="Exemple de d&#233;chiffrement" />
 <p class="caption">Exemple de d&#233;chiffrement</p>
 </div>
-<p>L'id&#233;e est la m&#234;me sauf qu'on soustrait au lieu d'ajouter le rang de la lettre de la cl&#233;.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code du chiffre de Vigen&#232;re :</p>
 <pre class="nohighlight"><code>Modifier la cl&#233; pour qu&#39;elle soit de la m&#234;me taille que le message
@@ -243,7 +242,7 @@ d&#233;chiffrer :
 <span class="ot">#include &lt;ctype.h&gt;</span>
 <span class="ot">#include &lt;string.h&gt;</span>
 
-<span class="ot">#define TAILLE_MAX 1000</span>
+<span class="ot">#define TAILLE_MAX 10000</span>
 
 <span class="dt">char</span> message[TAILLE_MAX];
 <span class="dt">char</span> cle[TAILLE_MAX];
@@ -283,7 +282,6 @@ d&#233;chiffrer :
          message[iTab] += typo;
       }
    }
-
 }
 
 <span class="dt">void</span> viderBuffer(<span class="dt">void</span>)
@@ -309,7 +307,7 @@ d&#233;chiffrer :
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
-<p>Notez qu'on doit vider le buffer, car notre message et notre cl&#233; sont deux cha&#238;nes de caract&#232;res (pouvant donc contenir des espaces) et s&#233;par&#233;es par un retour &#224; la ligne. Ensuite, au lieu de cr&#233;er une seconde cl&#233; de chiffrement de la taille du message, on peut tout simplement utiliser un index que l'on r&#233;initialise &#224; 0 &#224; chaque fois qu'il a atteint le bout de la cl&#233; (gr&#226;ce &#224; <code>% tailleCle</code>).</p>
+<p>Notez qu'au lieu de cr&#233;er une seconde cl&#233; de chiffrement de la taille du message, on peut tout simplement utiliser un indice que l'on r&#233;initialise &#224; 0 &#224; chaque fois qu'il a atteint le bout de la cl&#233; (gr&#226;ce &#224; <code>% tailleCle</code>).</p>
 <p>Notre message et notre cl&#233; :</p>
 <pre class="nohighlight"><code>Programmation
 Linux</code></pre>
@@ -323,12 +321,12 @@ Programmation</code></pre>
 <li>L'algorithme utilise une substitution poly-alphab&#233;tique, rendant ainsi une analyse fr&#233;quentielle impossible car une lettre ne sera pas forc&#233;ment chiffr&#233;e de la m&#234;me mani&#232;re dans un texte.</li>
 </ul>
 <p>Il nous faut donc de nouvelles m&#233;thodes, afin de casser cet algorithme r&#233;put&#233; incassable jusqu'&#224; la fin du XIXe si&#232;cle o&#249; une m&#233;thode fut officiellement d&#233;couverte.</p>
-<p>Notre objectif est de d&#233;chiffrer le message ci-dessus qui a &#233;t&#233; chiffr&#233; en utilisant le chiffre de Vigen&#232;re :</p>
-<pre class="nohighlight"><code>wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqlnsczsmnsxybfofgqyumamyxrucvhxqnvwepxyuzlzqyblcyykomzufylrfxaxrfafrhckwiszfnpruqzcffbdneuknivmmwipuoomrmrctrmjfzfxbwwaxopapyoemfhlfanplyarnbywhmpzuzypdcogbcormmlzyuczzpyjpknhfbcrnbczrmqcmrnxpzvykymqyipvayjtqazfyqzykexyopbcrfbfzaijmzrwbdwanipapbxcayypldvikdtnnxnbvkrplrmxwtrgxylfkrtvbopqwanopkhfbckrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhclybfooazvmkzapbbqanomzqanaptrmxxmayowibofwarhpzvguruwhlascvgxtayyapzacbcubnbdbvfatbyypameuknmqifemyfboqfjxcifnoptnxbqivnbpagyiwmqyctvvnfgmaiknzbsbkubcjzqdofgwhmmlzyybykbhklqfmxykrxbnihmbpbiirdlvmnfmecbyvrmqamexrawhlilneuknmyypxmzypxwlykdyhckzcfikednckncfjbfdrhqqivlbgmacofvwirctnpfnbbcopknlilneuknmaypexnmppcyybwtrhbdbcupdmhfbptyykpagjxdaroipmyfblcapxdbryjaqeyapzecbcmrfipmyfbamhnclqeyywwpuspkyyjaqeyycqgukyqdobbcvnfpvgfxxmeyqnwanfycrfxwcgnbptyympcgwlxurfxyoyyqpzeyreqycppzfukdtvgfemfffxurhppqaxrdbecbomfyqlbfoktapyqemtobczrhbdbcupwqzcqpmnoqpzecqzqeyjltuyrcmhrapvbnopxnspnmgnbrcrlopvrmqaifnolvpbbpxnliljnnxttyyapneuknmpyqemtobczrypecaydfmelbxwaxfltrnlfbrmipasuremfnlfayypcmguooagiremffbdabocqznhzpaayjampbbybcupbcvfvllnhpwcacspzfnlfayypxwlykdvrwbdancopacircmplxdmeokuwhlkzarhkpuvmczcqlljmfuruwhlascvjxctnzlckrgbniacnfmairdxboocwamslqawoplnhpwiiyktzcuofvrzlckrgbniacnfmfompzvyrcmyyapagckoczikomrmqwizifrmayoltqydlcyfblkgobwtrgbybnflyleypuqapfemyypznscztmembetrmpztquqdneuknivmnfqfyqcwhpbybrhqpzecqzqeyycqgukyqdobzcdofgqrhacivykeifsqcwhpbciiyzwmhlplzzypzcfukdtroodiegbdrvhstbrfbdqaabyqroodmgfbdwhpotmempampcxwqfnbdlrmfylhmqcqrmalzzyjpvgkrtarnozciykemanbczvnltzrvotbnhktyhylfyhcstmaxolqrhqlalnozciyolargbebeybyznjmzzguspkzifbcbcnfqyuocqiyilnyujxmqyilzrmfdbnhzpneuknivmbymqifexnmppbrckozryqymfyqpqaxolxnmapuncknwzgblcwircluofumcuowmeufltnlxoqbxbwwaxopa</code></pre>
+<p>Notre objectif est de casser le message ci-dessus qui a &#233;t&#233; chiffr&#233; en utilisant le chiffre de Vigen&#232;re :</p>
+<pre class="nohighlight"><code>wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp</code></pre>
 <p>Les seules informations que l'on a sont que toutes les majuscules ont &#233;t&#233; transform&#233; en minuscules, tous les accents par des lettres non accentu&#233;es, et les espaces et signes de ponctuations ont &#233;t&#233; enlev&#233;.</p>
 <h3 id="trouver-la-longueur-de-la-cl&#233;-de-chiffrement">Trouver la longueur de la cl&#233; de chiffrement</h3>
-<p>Pour casser le chiffre de Vigen&#232;re, il faut proc&#233;der par &#233;tape, et la premi&#232;re est de d&#233;terminer la longueur de la cl&#233; de chiffrement employ&#233;e pour chiffrer le message. Vous verrez qu'une cette longueur connue, on peut savoir quelle lettre sont alors chiffr&#233;e avec la m&#234;me portion de cl&#233;, rendant la cryptanalyse du message bien plus facile.</p>
-<p>Un des moyens de trouver la longueur de cl&#233; est d'utiliser le <strong>test de Kasiski</strong>. Le but est de rep&#233;rer dans le message chiffr&#233; des sous cha&#238;nes qui se r&#233;p&#232;tent, car c'est derni&#232;res sont sans doute des m&#234;mes portions du textes clairs cod&#233;es avec la m&#234;me partie de cl&#233;. Une fois qu'on connait les r&#233;p&#233;titions, on peut gr&#226;ce &#224; l'espacement de ces derni&#232;res en d&#233;duire les cl&#233;s possibles et en combinant plusieurs analyses on peut voir qu'une cl&#233; ressortira plus souvent que les autres. Mais pour cela notre texte doit &#234;tre suffisamment long pour avoir un traitement efficace des sous cha&#238;nes (notre m&#233;thode &#233;tant bas&#233;e sur des statistiques, si on a trop peu de donn&#233;es notre r&#233;sultat ne sera pas forc&#233;ment correcte et repr&#233;sentatif de la r&#233;alit&#233;). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se r&#233;p&#233;tant (de diff&#233;rentes tailles allant de 3 caract&#232;res &#224; 14), en voici une courte partie :</p>
+<p>Pour casser le chiffre de Vigen&#232;re, il faut proc&#233;der par &#233;tape, et la premi&#232;re est de d&#233;terminer la longueur de la cl&#233; de chiffrement employ&#233;e pour chiffrer le message. Vous verrez qu'une fois cette longueur connue, on peut savoir quelles lettres sont chiffr&#233;es avec la m&#234;me portion de cl&#233;, rendant alors la cryptanalyse du message bien plus facile.</p>
+<p>Un des moyens de trouver la longueur de cl&#233; est d'utiliser le <strong>test de Kasiski</strong>. Le but est de rep&#233;rer dans le message chiffr&#233; des sous cha&#238;nes qui se r&#233;p&#232;tent, car ces derni&#232;res sont sans doute des m&#234;mes portions du texte clair, cod&#233;es avec la m&#234;me partie de cl&#233;. Une fois qu'on connait suffisamment de r&#233;p&#233;titions, on peut gr&#226;ce &#224; l'espacement de ces derni&#232;res en d&#233;duire les cl&#233;s possibles et en combinant plusieurs analyses on peut voir qu'une cl&#233; ressortira plus souvent que les autres. Mais pour cela notre texte doit &#234;tre suffisamment long pour avoir un traitement efficace des sous cha&#238;nes (notre m&#233;thode &#233;tant bas&#233;e sur des statistiques, si on a peu de donn&#233;es notre r&#233;sultat ne sera pas forc&#233;ment correcte et repr&#233;sentatif de la r&#233;alit&#233;). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se r&#233;p&#233;tant (de diff&#233;rentes tailles allant de 3 caract&#232;res &#224; 14), et en voici une courte partie :</p>
 <table>
 <thead>
 <tr class="header">
@@ -348,69 +346,13 @@ Programmation</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">wmf</td>
-<td align="left">485</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
-<td align="left">wep</td>
-<td align="left">205</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left">...</td>
-</tr>
-<tr class="odd">
-<td align="left">rta</td>
-<td align="left">1640</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
+<td align="left">far</td>
+<td align="left">555</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
-<td align="left">zuo</td>
-<td align="left">150</td>
-<td align="center">X</td>
-<td align="center">X</td>
 <td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="odd">
-<td align="left">lbf</td>
-<td align="left">1002</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -425,34 +367,6 @@ Programmation</code></pre>
 <td align="center">X</td>
 <td align="center">X</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="odd">
-<td align="left">mxy</td>
-<td align="left">665</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
-<td align="left">yvr</td>
-<td align="left">690</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -489,9 +403,9 @@ Programmation</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">dwa</td>
-<td align="left">375</td>
+<td align="left">605</td>
 <td align="center"></td>
-<td align="center">X</td>
+<td align="center"></td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
@@ -502,8 +416,8 @@ Programmation</code></pre>
 <td align="left">...</td>
 </tr>
 <tr class="even">
-<td align="left">yqp</td>
-<td align="left">935</td>
+<td align="left">wan</td>
+<td align="left">605</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -516,10 +430,66 @@ Programmation</code></pre>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">lrm</td>
-<td align="left">395</td>
+<td align="left">anx</td>
+<td align="left">1385</td>
 <td align="center"></td>
 <td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">yqp</td>
+<td align="left">1630</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">plr</td>
+<td align="left">530</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">mxc</td>
+<td align="left">75</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">xcu</td>
+<td align="left">75</td>
+<td align="center"></td>
+<td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
@@ -572,83 +542,83 @@ Programmation</code></pre>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">nhz</td>
-<td align="left">1155</td>
+<td align="left">ypq</td>
+<td align="left">1000</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
 <td align="left">...</td>
 </tr>
 <tr class="even">
-<td align="left">lqf</td>
-<td align="left">630</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="odd">
-<td align="left">qfy</td>
-<td align="left">1435</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
-<td align="left">ypz</td>
-<td align="left">1400</td>
+<td align="left">yzwm</td>
+<td align="left">640</td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center">X</td>
 <td align="center"></td>
-<td align="center">X</td>
+<td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">pzv</td>
-<td align="left">301</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left">mahb</td>
+<td align="left">95</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="left">...</td>
 </tr>
 <tr class="even">
-<td align="left">zvg</td>
-<td align="left">500</td>
+<td align="left">krmp</td>
+<td align="left">980</td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center">X</td>
 <td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">mnfq</td>
+<td align="left">240</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">byme</td>
+<td align="left">870</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -656,10 +626,10 @@ Programmation</code></pre>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">hpb</td>
-<td align="left">1425</td>
+<td align="left">eiiyz</td>
+<td align="left">1465</td>
 <td align="center"></td>
-<td align="center">X</td>
+<td align="center"></td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
@@ -670,35 +640,63 @@ Programmation</code></pre>
 <td align="left">...</td>
 </tr>
 <tr class="even">
-<td align="left">bczr</td>
-<td align="left">105</td>
+<td align="left">iiyzw</td>
+<td align="left">640</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">iyzwm</td>
+<td align="left">640</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">acuow</td>
+<td align="left">345</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
-<td align="center">X</td>
+<td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">bcup</td>
-<td align="left">180</td>
+<td align="left">ihdlf</td>
+<td align="left">740</td>
 <td align="center">X</td>
-<td align="center">X</td>
-<td align="center">X</td>
+<td align="center"></td>
 <td align="center">X</td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
 <td align="center">X</td>
 <td align="left">...</td>
 </tr>
 <tr class="even">
-<td align="left">qpze</td>
+<td align="left">gifcm</td>
 <td align="left">450</td>
 <td align="center">X</td>
 <td align="center">X</td>
@@ -712,77 +710,7 @@ Programmation</code></pre>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">pzec</td>
-<td align="left">450</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
-<td align="left">qzqe</td>
-<td align="left">450</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="odd">
-<td align="left">zqey</td>
-<td align="left">450</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
-<td align="left">yrcm</td>
-<td align="left">320</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="odd">
-<td align="left">yyap</td>
-<td align="left">270</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
-<td align="left">pneu</td>
+<td align="left">yccia</td>
 <td align="left">645</td>
 <td align="center"></td>
 <td align="center">X</td>
@@ -795,36 +723,92 @@ Programmation</code></pre>
 <td align="center"></td>
 <td align="left">...</td>
 </tr>
+<tr class="even">
+<td align="left">cciaw</td>
+<td align="left">355</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
 <tr class="odd">
-<td align="left">iiyzwm</td>
-<td align="left">1410</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
+<td align="left">dbbop</td>
+<td align="left">65</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 <td align="left">...</td>
 </tr>
 <tr class="even">
-<td align="left">dneukn</td>
-<td align="left">1225</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left">mxcuryp</td>
+<td align="left">75</td>
 <td align="center"></td>
 <td align="center">X</td>
 <td align="center"></td>
 <td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">ruwhla</td>
+<td align="left">rholxci</td>
+<td align="left">1465</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">purwxyqdo</td>
+<td align="left">50</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">rholxcioei</td>
+<td align="left">1465</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">ihdlfzqbrt</td>
 <td align="left">740</td>
 <td align="center">X</td>
 <td align="center"></td>
@@ -837,46 +821,46 @@ Programmation</code></pre>
 <td align="center">X</td>
 <td align="left">...</td>
 </tr>
+<tr class="odd">
+<td align="left">fcmolfeiah</td>
+<td align="left">600</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="left">...</td>
+</tr>
 <tr class="even">
-<td align="left">uwhlas</td>
-<td align="left">740</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">X</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
+<td align="center">...</td>
 <td align="left">...</td>
 </tr>
 <tr class="odd">
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="center">...</td>
-<td align="left">...</td>
-</tr>
-<tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="center">568</td>
-<td align="center">417</td>
-<td align="center">270</td>
-<td align="center"><strong>932</strong></td>
-<td align="center">243</td>
-<td align="center">146</td>
-<td align="center">172</td>
-<td align="center">87</td>
-<td align="center">543</td>
+<td align="center">537</td>
+<td align="center">371</td>
+<td align="center">268</td>
+<td align="center"><strong>916</strong></td>
+<td align="center">215</td>
+<td align="center">101</td>
+<td align="center">174</td>
+<td align="center">71</td>
+<td align="center">528</td>
 <td align="left">...</td>
 </tr>
 </tbody>
@@ -989,15 +973,171 @@ Programmation</code></pre>
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
-<p>Tout d'abord, on commence &#224; chercher des sous chaines d'une taille de trois caract&#232;res minimum car les sous chaines de deux caract&#232;res ne sont pas r&#233;ellement efficaces et repr&#233;sentatives (&#231;a peut simplement &#234;tre un coup de chance). Ensuite, la recherche de sous chaine n'est pas optimis&#233;e car le but de cette impl&#233;mentation est de montrer comment appliquer le test de Kasiski. Si vous voulez casser un texte plus grand, je vous conseille de revoir la recherche de sous chaine en vous aidant d'algorithmes plus efficaces comme <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">KMP</a>, <a href="https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm">Rabin-Karp</a>, ou encore <a href="http://codeforces.com/blog/entry/3107">Z</a>. Le code s'ex&#233;cute instantan&#233;ment dans notre exemple, mais sur des textes aussi grands que des livres, il risque de prendre plus de temps s'il n'est pas optimis&#233;.</p>
+<p>Tout d'abord, on commence &#224; chercher des sous chaines d'une taille de trois caract&#232;res minimum car les sous chaines de deux caract&#232;res ne sont pas r&#233;ellement efficaces et repr&#233;sentatives (&#231;a peut simplement &#234;tre un coup de chance). Ensuite, la recherche de sous chaine n'est pas optimis&#233;e car le but de cette impl&#233;mentation est de montrer comment appliquer le test de Kasiski. Si vous voulez casser un texte plus important, je vous conseille de revoir la recherche de sous chaine en vous aidant d'algorithmes plus efficaces comme <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">KMP</a>, <a href="https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm">Rabin-Karp</a>, ou encore <a href="http://codeforces.com/blog/entry/3107">Z</a>. Le code s'ex&#233;cute instantan&#233;ment dans notre exemple, mais sur des textes aussi grands que des livres, il risque de prendre plus de temps s'il n'est pas optimis&#233;.</p>
 <p>La sortie de l'impl&#233;mentation (j'ai comment&#233; l'affichage des sous chaines/&#233;cart, et celui du tableau des possibilit&#233;s car sinon plus de 1000 lignes sont affich&#233;es en sortie) :</p>
 <pre class="nohighlight"><code>5</code></pre>
 <h3 id="d&#233;duire-la-cl&#233;">D&#233;duire la cl&#233;</h3>
-<p>Analyse fr&#233;quentielle</p>
+<p>Une fois qu'on a notre longueur de cl&#233;, on peut savoir quelles lettres du message ont &#233;t&#233; chiffr&#233; avec les m&#234;mes lettres de la cl&#233; (puisqu'on connait sa longueur, on sait donc o&#249; se r&#233;p&#232;te la cl&#233;).</p>
+<p>On va alors d&#233;couper le message chiffr&#233; en plusieurs cat&#233;gories de lettres :</p>
+<ul>
+<li>Celles chiffr&#233;es avec la 1&#232;re lettre de la cl&#233; (soit la 1&#232;re, la 6&#232;me, la 11&#232;me, etc.)</li>
+<li>Celles chiffr&#233;es avec la 2&#232;me lettre de la cl&#233; (soit la 2&#232;me, la 7&#232;me, la 12&#232;me, etc.)</li>
+<li>...</li>
+<li>Celles chiffr&#233;es avec la 5&#232;me lettre de la cl&#233; (soit la 5&#232;me, la 10&#232;me, la 15&#232;me, etc.)</li>
+</ul>
+<p>Notre message d&#233;coup&#233; en 5 lignes :</p>
+<pre class="nohighlight"><code>1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy
+2 : mnlauavwiluzqvuwvbcmiciqvumaximqkzumvdbamuaimvbabmmmnmctwkbpmwbyauycbtamziakmtvqcapcbamcvizumqbtmiwtxblbmmbwgqcamvalawaqalzimmmqwqxvzqwdqzimamvitmxctdmmqttbmimmicbtmbtbmktmmqiutvlqmcmcviqcqmmfbgbzabpzbmimcmmzlbaibmiwtcvmpitvqbmmkqwzczvazizxnuqwcakvminuqcmmqwawmmtcutmdmqaaiiamdvqmiccvmgdmzmicuvtoctdaqbaaamybmbbjvmqlvbmumxiwqimimaviawaqmmlaquwciizll
+3 : ffrqorragrrnfgrhrpizynqgbrfrciacryoebbrffrcszvrgnayzvafrzrynfanhnnhferbffiygqyqbearcqnevfhqnqrrqfavrnerrysvarzvcranrrhdrghyaffaaaargrehveyaffrrfranyrnzqryrsoizoarvngvnrcbnghfavvfhrgagrrfgggzhqefregerynqagrftrvbyhbfehrspzrflfibfarehnaaasbhqnbrdheiefaebrdchqaagvetrrrbfvfprfgadgrggoarvqagrpffaerirrerefnrvgqzhearbeabiegeerrcivdeyzyvparvfaggeqarhvevnre
+4 : wkjylmynymyhyzopgyyyfhyymynhiyhimyunohhimluiykllyhychnkovmylumwyfhczylhwfcucyymhjiziygffidbcylmcjwnxlyzyfcpwtipuhuhwymohjjuwggminwozpolwyuwnyfmmyymyumjylyjufyjlhkygwhfyyghynymngymxucnlmfyyiulyywayjuyucywnlnoguoynolxnmzyjhkufyogmmylmdiyisdbllwomluyfcolwoylyxxfauuufhhdnicnimwolhyilhiplnllfuimmmcmhmmcjfmhluycinlcccocuuiunhiykolugumywhnyxhyuywuldfuxfy
+5 : errkbxpxqxpzplkbbdokbqcaxpjoozbrpzqbppljrdoozrobobkffmroolppsiqaiaklzzqeblqnpjnqoppfibxpklrpojqqbbbfxixpbkbojflozfzxqabkblcbblnrsrsxbkiqzcbmriqbippbrqfobbbflzfffrkblrrirjdofoibjfqbqpboqfbofibkmbrkxkmyicbborbliqpbpbpbpopbqraroplkppbblpjrblrizxbmlfaxokzxbobprbxbirziqafbcbiicxflqofffrfxxlxborixgqffblbbfaafokprbooqnnbfprpqoozrffcboqcxbmqobfmjlrabbiflp</code></pre>
+<p>Finalement, on peut dire que chaque ligne a &#233;t&#233; chiffr&#233; &#224; l'aide d'un simple chiffre de C&#233;sar, puisque toutes les lettres d'une m&#234;me ligne sont chiffr&#233;es avec la m&#234;me lettre de la cl&#233;, et cette lettre peut &#234;tre vue comme un simple nombre. Une fois que l'on sait cela, on peut effectuer une analyse fr&#233;quentielle pour trouver la cl&#233; de chiffrement, comme pour le chiffre de C&#233;sar, sur chacune des lignes d&#233;coup&#233;es.</p>
+<p>On cherche pour chaque ligne, la lettre apparaissant le plus, puis l'on d&#233;duit que cette lettre repr&#233;sente la lettre E dans l'alphabet normal, on peut donc facilement retrouver l'alphabet chiffr&#233; utilis&#233; avec cette lettre. Prenons l'exemple de la premi&#232;re ligne :</p>
+<pre class="nohighlight"><code>1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy</code></pre>
+<p>La lettre la plus utilis&#233;e ici est le P, on peut donc faire une correspondance entre l'alphabet normal et l'alphabet chiffr&#233; :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenre/exemple_ligne.png" alt="Exemple de correspondance" />
+<p class="caption">Exemple de correspondance</p>
+</div>
+<p>Si on applique ce principe &#224; chacune de nos lignes on obtient :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenre/exemple_trouver_cle.png" alt="Recherche de cl&#233; de chiffrement" />
+<p class="caption">Recherche de cl&#233; de chiffrement</p>
+</div>
+<p>TODO : mieux expliquer les images ?</p>
+<p>La cl&#233; apparait alors &#224; la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffr&#233;. En effet la lettre A repr&#233;sente la lettre 0, et donc la lettre de la cl&#233; utilis&#233;e pour chiffrer une portion du message (et si l'on ajoute toutes les portions, on retrouve notre cl&#233; en entier).</p>
+<p>L'impl&#233;mentation en C de l'analyse fr&#233;quentielle :</p>
+<a href="javascript:toggle_visibility('trouver_cle.c');">trouver_cle.c</a>
+<div id="trouver_cle.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 10000</span>
+<span class="ot">#define LONG_CLE_MAX 100</span>
+
+<span class="dt">char</span> message[TAILLE_MAX];
+<span class="dt">int</span> longueurCle;
+
+<span class="dt">char</span> decoupe[LONG_CLE_MAX][TAILLE_MAX];
+<span class="dt">int</span> iDecoupe[LONG_CLE_MAX];
+
+<span class="dt">int</span> frequence[LONG_CLE_MAX][<span class="dv">26</span>];
+<span class="dt">int</span> frequenceMax[LONG_CLE_MAX];
+
+<span class="dt">char</span> cle[LONG_CLE_MAX];
+
+<span class="dt">void</span> decouperMessage(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab, iLettre, iCle;
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; message[iTab] != &#39;\<span class="dv">0</span>&#39;; ++iTab) {
+      iLettre = iTab % longueurCle;
+      decoupe[iLettre][iDecoupe[iLettre]] = message[iTab];
+      ++iDecoupe[iLettre];
+   }
+
+   <span class="kw">for</span>(iCle = <span class="dv">0</span>; iCle &lt; longueurCle; ++iCle) {
+      printf(<span class="st">&quot;%d : &quot;</span>, iCle + <span class="dv">1</span>);
+      <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; iDecoupe[iCle]; ++iTab)
+         printf(<span class="st">&quot;%c&quot;</span>, decoupe[iCle][iTab]);
+      printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+   }
+
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+}
+
+<span class="dt">void</span> analyseFreq(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iCle, iTab, iLettre;
+
+   <span class="kw">for</span>(iCle = <span class="dv">0</span>; iCle &lt; longueurCle; ++iCle) {
+      <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; iDecoupe[iCle]; ++iTab) {
+         iLettre = decoupe[iCle][iTab] - &#39;a&#39;;
+
+         ++frequence[iCle][iLettre];
+         <span class="kw">if</span>(frequence[iCle][iLettre] &gt; frequence[iCle][frequenceMax[iCle]])
+            frequenceMax[iCle] = iLettre;
+      }
+   }
+
+   <span class="kw">for</span>(iCle = <span class="dv">0</span>; iCle &lt; longueurCle; ++iCle)
+      printf(<span class="st">&quot;%d : %c</span><span class="ch">\n</span><span class="st">&quot;</span>, iCle + <span class="dv">1</span>, frequenceMax[iCle] + &#39;a&#39;);
+
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+}
+
+<span class="dt">void</span> deduireCle(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iCle;
+
+   <span class="kw">for</span>(iCle = <span class="dv">0</span>; iCle &lt; longueurCle; ++iCle) {
+      cle[iCle] = (frequenceMax[iCle] + &#39;a&#39;) - (&#39;e&#39; - &#39;a&#39;);
+      <span class="kw">if</span>(cle[iCle] &lt; &#39;a&#39;)
+         cle[iCle] += <span class="dv">26</span>;
+   }
+
+   cle[iCle] = &#39;\<span class="dv">0</span>&#39;;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   scanf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;longueurCle);
+
+   decouperMessage();
+   analyseFreq();
+   deduireCle();
+
+   printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, cle);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Le programme prend en entr&#233;e le message chiffr&#233; et la longueur de cl&#233; pr&#233;c&#233;demment trouv&#233;e, et retourne en sortie la d&#233;coupe du message, les lettres les plus utilis&#233;es pour chaque ligne, et la cl&#233; de chiffrement :</p>
+<pre class="nohighlight"><code>1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy
+2 : mnlauavwiluzqvuwvbcmiciqvumaximqkzumvdbamuaimvbabmmmnmctwkbpmwbyauycbtamziakmtvqcapcbamcvizumqbtmiwtxblbmmbwgqcamvalawaqalzimmmqwqxvzqwdqzimamvitmxctdmmqttbmimmicbtmbtbmktmmqiutvlqmcmcviqcqmmfbgbzabpzbmimcmmzlbaibmiwtcvmpitvqbmmkqwzczvazizxnuqwcakvminuqcmmqwawmmtcutmdmqaaiiamdvqmiccvmgdmzmicuvtoctdaqbaaamybmbbjvmqlvbmumxiwqimimaviawaqmmlaquwciizll
+3 : ffrqorragrrnfgrhrpizynqgbrfrciacryoebbrffrcszvrgnayzvafrzrynfanhnnhferbffiygqyqbearcqnevfhqnqrrqfavrnerrysvarzvcranrrhdrghyaffaaaargrehveyaffrrfranyrnzqryrsoizoarvngvnrcbnghfavvfhrgagrrfgggzhqefregerynqagrftrvbyhbfehrspzrflfibfarehnaaasbhqnbrdheiefaebrdchqaagvetrrrbfvfprfgadgrggoarvqagrpffaerirrerefnrvgqzhearbeabiegeerrcivdeyzyvparvfaggeqarhvevnre
+4 : wkjylmynymyhyzopgyyyfhyymynhiyhimyunohhimluiykllyhychnkovmylumwyfhczylhwfcucyymhjiziygffidbcylmcjwnxlyzyfcpwtipuhuhwymohjjuwggminwozpolwyuwnyfmmyymyumjylyjufyjlhkygwhfyyghynymngymxucnlmfyyiulyywayjuyucywnlnoguoynolxnmzyjhkufyogmmylmdiyisdbllwomluyfcolwoylyxxfauuufhhdnicnimwolhyilhiplnllfuimmmcmhmmcjfmhluycinlcccocuuiunhiykolugumywhnyxhyuywuldfuxfy
+5 : errkbxpxqxpzplkbbdokbqcaxpjoozbrpzqbppljrdoozrobobkffmroolppsiqaiaklzzqeblqnpjnqoppfibxpklrpojqqbbbfxixpbkbojflozfzxqabkblcbblnrsrsxbkiqzcbmriqbippbrqfobbbflzfffrkblrrirjdofoibjfqbqpboqfbofibkmbrkxkmyicbborbliqpbpbpbpopbqraroplkppbblpjrblrizxbmlfaxokzxbobprbxbirziqafbcbiicxflqofffrfxxlxborixgqffblbbfaafokprbooqnnbfprpqoozrffcboqcxbmqobfmjlrabbiflp
+
+1 : p
+2 : m
+3 : r
+4 : y
+5 : b
+
+linux</code></pre>
+<h3 id="d&#233;chiffrer-le-message">D&#233;chiffrer le message</h3>
+<p>D&#233;sormais, on connait la cl&#233; de chiffrement que l'auteur du message a employ&#233;e pour chiffrer ce texte :</p>
+<pre class="nohighlight"><code>wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp</code></pre>
+<p>On d&#233;chiffre le message :</p>
+<pre class="nohighlight"><code>leschefsquidepuisdenombreusesanneessontalatetedesarmeesfrancaisesontformeungouvernementcegouvernementalleguantladefaitedenosarmeessestmisenrapportaveclennemipourcesserlecombatafficheayantsuivilappeldujuinafficheplacardeeaulendemaindelappeldujuinlafficheatouslesfrancaisplacardeesurlesmursdelondrescertesnousavonsetenoussommessubmergesparlaforcemecaniqueterrestreetaeriennedelennemiinfinimentplusqueleurnombrecesontlescharslesavionslatactiquedesallemandsquinousfontreculercesontlescharslesavionslatactiquedesallemandsquiontsurprisnoschefsaupointdelesamenerlaouilsensontaujourdhuimaislederniermotestilditlesperancedoitelledisparastreladefaiteestelledefinitivenoncroyezmoimoiquivousparleenconnaissancedecauseetvousdisqueriennestperdupourlafrancelesmemesmoyensquinousontvaincuspeuventfairevenirunjourlavictoirecarlafrancenestpasseuleellenestpasseuleellenestpasseuleelleaunvasteempirederriereelleellepeutfaireblocaveclempirebritanniquequitientlameretcontinuelalutteellepeutcommelangleterreutilisersanslimiteslimmenseindustriedesetatsuniscetteguerrenestpaslimiteeauterritoiremalheureuxdenotrepayscetteguerrenestpastrancheeparlabatailledefrancecetteguerreestuneguerremondialetouteslesfautestouslesretardstouteslessouffrancesnempechentpasquilyadansluniverstouslesmoyensnecessairespourecraserunjournosennemisfoudroyesaujourdhuiparlaforcemecaniquenouspourronsvaincredanslavenirparuneforcemecaniquesuperieureledestindumondeestlamoigeneraldegaulleactuellementalondresjinvitelesofficiersetlessoldatsfrancaisquisetrouvententerritoirebritanniqueouquiviendraientasytrouveravecleursarmesousansleursarmesjinvitelesingenieursetlesouvriersspecialistesdesindustriesdarmementquisetrouvententerritoirebritanniqueouquiviendraientasytrouverasemettreenrapportavecmoiquoiquilarrivelaflammedelaresistancefrancaisenedoitpasseteindreetneseteindrapasdemaincommeaujourdhuijeparleraialaradiodelondres</code></pre>
+<p>On rajoute les majuscules, les accents, puis la ponctuation et notre texte apparait :</p>
+<pre class="nohighlight"><code>Les chefs qui, depuis de nombreuses ann&#233;es, sont &#224; la t&#234;te des arm&#233;es fran&#231;aises, ont form&#233; un gouvernement.
+
+Ce gouvernement, all&#233;guant la d&#233;faite de nos arm&#233;es, s&#39;est mis en rapport avec l&#39;ennemi pour cesser le combat.
+ 
+Certes, nous avons &#233;t&#233;, nous sommes, submerg&#233;s par la force m&#233;canique, terrestre et a&#233;rienne, de l&#39;ennemi.
+
+Infiniment plus que leur nombre, ce sont les chars, les avions, la tactique des Allemands qui nous font reculer. Ce sont les chars, les avions, la tactique des Allemands qui ont surpris nos chefs au point de les amener l&#224; o&#249; ils en sont aujourd&#39;hui.
+
+Mais le dernier mot est-il dit ? L&#39;esp&#233;rance doit-elle dispara&#238;tre ? La d&#233;faite est-elle d&#233;finitive ? Non !
+
+Croyez-moi, moi qui vous parle en connaissance de cause et vous dis que rien n&#39;est perdu pour la France. Les m&#234;mes moyens qui nous ont vaincus peuvent faire venir un jour la victoire.
+
+Car la France n&#39;est pas seule ! Elle n&#39;est pas seule ! Elle n&#39;est pas seule ! Elle a un vaste Empire derri&#232;re elle. Elle peut faire bloc avec l&#39;Empire britannique qui tient la mer et continue la lutte. Elle peut, comme l&#39;Angleterre, utiliser sans limites l&#39;immense industrie des Etats-Unis.
+
+Cette guerre n&#39;est pas limit&#233;e au territoire malheureux de notre pays. Cette guerre n&#39;est pas tranch&#233;e par la bataille de France. Cette guerre est une guerre mondiale. Toutes les fautes, tous les retards, toutes les souffrances, n&#39;emp&#234;chent pas qu&#39;il y a, dans l&#39;univers, tous les moyens n&#233;cessaires pour &#233;craser un jour nos ennemis. Foudroy&#233;s aujourd&#39;hui par la force m&#233;canique, nous pourrons vaincre dans l&#39;avenir par une force m&#233;canique sup&#233;rieure. Le destin du monde est l&#224;.
+
+Moi, G&#233;n&#233;ral de Gaulle, actuellement &#224; Londres, j&#39;invite les officiers et les soldats fran&#231;ais qui se trouvent en territoire britannique ou qui viendraient &#224; s&#39;y trouver, avec leurs armes ou sans leurs armes, j&#39;invite les ing&#233;nieurs et les ouvriers sp&#233;cialistes des industries d&#39;armement qui se trouvent en territoire britannique ou qui viendraient &#224; s&#39;y trouver, &#224; se mettre en rapport avec moi.
+
+Quoi qu&#39;il arrive, la flamme de la r&#233;sistance fran&#231;aise ne doit pas s&#39;&#233;teindre et ne s&#39;&#233;teindra pas.
+
+Demain, comme aujourd&#39;hui, je parlerai &#224; la Radio de Londres.</code></pre>
+<p><em>Ce message est le discours du G&#233;n&#233;ral de Gaulle prononc&#233; le 18 juin 1940.</em></p>
 <h3 id="variantes">Variantes</h3>
 <h4 id="indice-de-co&#239;ncidence">Indice de co&#239;ncidence</h4>
 <h2 id="conclusion">Conclusion</h2>
-<p>TODO : faire conclusion</p>
+<p>Le chiffre de Vigen&#232;re offre donc plus de s&#233;curit&#233; que le chiffre de C&#233;sar, gr&#226;ce &#224; une cl&#233; plus complexe. Cependant, ce dernier n'est pas infaillible, et il est assez facile de trouver la cl&#233; de chiffrement &#224; partir du simple texte chiffr&#233;. Cet algorithme n'est donc plus utilis&#233; depuis qu'il a &#233;t&#233; cass&#233;, mais il existe une am&#233;lioration &#224; ce syst&#232;me qui est techniquement incassable : le <a href="/algo/chiffrement/chiffre_vernam.html">chiffre de Vernam</a>.</p>
  
       <!-- ------------ -->
 
