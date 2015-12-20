@@ -186,19 +186,19 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="chiffre-de-vernam">Chiffre de Vernam</h1></a>
 <p>Publi&#233; le : 29/05/2014<br />
-<em>Modifi&#233; le : 17/12/2015</em></p>
+<em>Modifi&#233; le : 20/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
-<li><a href="#cassage">Cassage ?</a></li>
+<li><a href="#cassage">Cassage</a></li>
+<li><a href="#d&#233;fauts">D&#233;fauts</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
 <p>Le chiffre de Vernam est consid&#233;r&#233; comme une am&#233;lioration significative du <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigen&#232;re</a> car cet algorithme de chiffrement est th&#233;oriquement impossible &#224; casser. Cependant, aucuns syst&#232;mes de chiffrement n'est parfait, et m&#234;me si ce dernier semble s&#233;curis&#233;, il n'est pas toujours facile de remplir les conditions pour avoir un message chiffr&#233; totalement s&#251;r.</p>
-<p>TODO : bosser intro</p>
 <h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
 <p>Le chiffre de Vernam (ou <em>masque jetable</em>) est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant, comme le chiffre de Vigen&#232;re, une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a>. Son efficacit&#233; r&#233;side dans le choix de la cl&#233; de chiffrement, qui doit respecter plusieurs r&#232;gles fondamentales :</p>
 <ul>
@@ -207,21 +207,144 @@ function toggle_visibility(id) {
 <li>Chacun des caract&#232;res de la cl&#233; doit &#234;tre choisi totalement al&#233;atoirement.</li>
 </ul>
 <h2 id="exemple">Exemple</h2>
-<p>Le mot que l'on va chiffrer est &quot;Algorithme&quot;, et la premi&#232;re &#233;tape du chiffre de Vernam est donc de cr&#233;er notre cl&#233; en respectant les trois contraintes. J'ai donc cr&#233;&#233; de mon c&#244;t&#233; une cl&#233; de chiffrement (que je n'ai jamais utilis&#233; avant, qui fait la m&#234;me taille que le message et que j'ai choisi al&#233;atoirement) : &quot;shrtvsgviw&quot;.</p>
+<p>Le mot que l'on va chiffrer est &quot;Algorithme&quot;, et la premi&#232;re &#233;tape du chiffre de Vernam est de cr&#233;er notre cl&#233; en respectant les trois contraintes. J'ai donc g&#233;n&#233;r&#233; de mon c&#244;t&#233; une cl&#233; de chiffrement (que je n'ai jamais utilis&#233; avant, qui fait la m&#234;me taille que le message et que j'ai choisi al&#233;atoirement) : &quot;shrtvsgviw&quot;.</p>
 <p>Le mode de fonctionnement du chiffrement et du d&#233;chiffrement est exactement le m&#234;me que pour le chiffre de Vigen&#232;re, je vous invite donc &#224; la lire la partie <a href="/algo/chiffrement/chiffre_vigenere.html#exemple">exemple</a> &#224; ce propos.</p>
-<p>J'obtiens donc finalement comme texte chiffr&#233; &quot;Ssxhmazcua&quot;.</p>
+<p>Finalement, j'obtiens comme texte chiffr&#233; &quot;Ssxhmazcua&quot;.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
-<p>La seule partie &#224; modifier du pseudo-code du chiffre de Vigen&#232;re est la cr&#233;ation de la cl&#233; :</p>
+<p>On peut tout &#224; fait reprendre le m&#234;me pseudo-code que le chiffre de Vigen&#232;re pour la partie chiffrement/d&#233;chiffrement, en revanche, il nous faut une nouvelle fonction permettant de g&#233;n&#233;rer notre cl&#233; :</p>
 <pre class="nohighlight"><code>creerCle :
 
    Tant que la cl&#233; g&#233;n&#233;r&#233;e a d&#233;j&#224; &#233;t&#233; utilis&#233;
 
       Pour chaque lettre du message 
          Generer une lettre al&#233;atoire pour notre cl&#233;</code></pre>
+<p>Pour savoir si on a d&#233;j&#224; utilis&#233; une cl&#233;, plusieurs solutions s'offrent &#224; nous. On peut tout d'abord utiliser un simple tableau qui stockera toutes les cl&#233;s utilis&#233;es, et &#224; chaque fois que l'on en g&#233;n&#232;re une nouvelle, on v&#233;rifie qu'elle n'est pas dans notre tableau avant de l'ajouter. Il est aussi possible d'am&#233;liorer cette solution en utilisant une <a href="/algo/recherche/dichotomie.html">recherche dichotomique</a>, nous permettant dans notre tableau (tri&#233; par ordre alphab&#233;tique) de chercher rapidement si une cl&#233; a d&#233;j&#224; &#233;t&#233; g&#233;n&#233;r&#233; ou non.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>TODO : impl&#233; g&#233;n&#233;ration + &#233;voquer solution pour v&#233;rifier si d&#233;j&#224; utilis&#233; ou non (dichotomie, table de hachage, etc.).</p>
-<h2 id="cassage">Cassage ?</h2>
+<p>L'impl&#233;mentation en C d'un programme g&#233;n&#233;rant une cl&#233; de chiffrement pour le chiffre de Vernam :</p>
+<a href="javascript:toggle_visibility('generer_cle.c');">generer_cle.c</a>
+<div id="generer_cle.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="ot">#include &lt;ctype.h&gt;</span>
+<span class="ot">#include &lt;time.h&gt;</span>
+<span class="ot">#include &lt;stdlib.h&gt;</span>
+<span class="ot">#include &lt;string.h&gt;</span>
+<span class="ot">#include &lt;stdbool.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+<span class="ot">#define NB_CLE_MAX 1000</span>
+
+<span class="dt">char</span> message[TAILLE_MAX];
+<span class="dt">char</span> cle[TAILLE_MAX];
+
+<span class="dt">char</span> utilisee[NB_CLE_MAX][TAILLE_MAX];
+<span class="dt">int</span> nbCle;
+
+<span class="dt">void</span> initCleUtilisee(<span class="dt">void</span>)
+{
+   FILE *fichierCle;
+
+   fichierCle = fopen(<span class="st">&quot;cle_utilisee.txt&quot;</span>, <span class="st">&quot;r&quot;</span>);
+
+   nbCle = <span class="dv">0</span>;
+   <span class="kw">while</span>(fscanf(fichierCle, <span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, utilisee[nbCle]) != EOF)
+      ++nbCle;
+
+   fclose(fichierCle);
+}
+
+bool estDejaUtilisee(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iCle;
+
+   <span class="kw">for</span>(iCle = <span class="dv">0</span>; iCle &lt; nbCle; ++iCle)
+      <span class="kw">if</span>(strcmp(cle, utilisee[iCle]) == <span class="dv">0</span>)
+         <span class="kw">return</span> true;
+
+   <span class="kw">return</span> false;
+}
+
+<span class="dt">void</span> creerCle(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iCle, iLettre;
+
+   <span class="kw">do</span>
+   {
+      iCle = <span class="dv">0</span>;
+
+      <span class="kw">for</span>(iLettre = <span class="dv">0</span>; message[iLettre] != &#39;\<span class="dv">0</span>&#39;; ++iLettre) {
+         <span class="kw">if</span>(isalpha(message[iLettre])) {
+            cle[iCle] = (rand() % <span class="dv">26</span>) + &#39;a&#39;;
+            ++iCle;
+         }
+      } 
+
+      cle[iCle] = &#39;\<span class="dv">0</span>&#39;;
+
+   } <span class="kw">while</span>(estDejaUtilisee());
+}
+
+<span class="dt">void</span> ajouterCle(<span class="dt">void</span>)
+{
+   FILE *fichierCle;
+
+   fichierCle = fopen(<span class="st">&quot;cle_utilisee.txt&quot;</span>, <span class="st">&quot;a&quot;</span>);
+   fprintf(fichierCle, <span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, cle);
+   fclose(fichierCle);
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   scanf(<span class="st">&quot;%[^</span><span class="ch">\n</span><span class="st">]s</span><span class="ch">\n</span><span class="st">&quot;</span>, message);
+
+   srand(time(NULL));
+
+   initCleUtilisee();
+   creerCle();
+
+   printf(<span class="st">&quot;%s</span><span class="ch">\n</span><span class="st">&quot;</span>, cle);
+   ajouterCle();
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>En entr&#233;e :</p>
+<pre class="nohighlight"><code>Algorithme</code></pre>
+<p>La sortie que j'ai obtenue (elle change &#224; chaque fois) :</p>
+<pre class="nohighlight"><code>shrtvsgviw</code></pre>
+<p>Le fichier de cl&#233; qui ont d&#233;j&#224; &#233;t&#233; g&#233;n&#233;r&#233; (et donc inutilisable maintenant) :</p>
+<pre class="txt"><code>dovcexdoba
+ckdexeiezr
+zmagzxogpx
+unrhlaiurn
+imizbftejl
+ewqeuyhcro
+concvckybe
+oplngklamk
+mwesglgezw
+ervpcfgzqj
+jyivvrlokb
+duunlvvlkt
+amyopgkotw
+wfwwnvpjvn
+qssplvtpkj
+shrtvsgviw</code></pre>
+<p>J'utilise une simple recherche (et non une recherche dichotomique) car le nombre de cl&#233;s que je vais manipuler est assez faible (j'ai fix&#233; une limite virtuelle &#224; 1000 cl&#233;s).</p>
+<h2 id="cassage">Cassage</h2>
+<p>Les attaques du chiffre de Vigen&#232;re (ou du chiffre de C&#233;sar) ne sont plus possibles sur le chiffre de Vernam, et c'est ce qui le rend incassable :</p>
+<ul>
+<li>Le test de Kasiski ne fonctionne plus car notre cl&#233; doit &#234;tre au moins aussi longue que notre message, donc il n'y aura pas de r&#233;p&#233;tition de ladite cl&#233;.</li>
+<li>Il est impossible de deviner la cl&#233; de chiffrement, car elle est totalement al&#233;atoire et n'importe quelle lettre du message peut &#234;tre chiffr&#233;e avec n'importe quelle autre lettre de l'alphabet.</li>
+<li>Une analyse fr&#233;quentielle ne peut pas marcher car le texte ne nous donne aucunes indications &#224; cause de la cl&#233; al&#233;atoire employ&#233;e.</li>
+<li>Une attaque par force brute ne serait pas envisageable non plus, vu le nombre de possibilit&#233;s.</li>
+</ul>
+<h2 id="d&#233;fauts">D&#233;fauts</h2>
+<p>Notre algorithme de chiffrement est donc techniquement impossible &#224; casser si les r&#232;gles permettant de choisir une cl&#233; de chiffrement sont respect&#233;es. Cependant, suivre les contraintes peut parfois &#234;tre difficile :</p>
+<ul>
+<li>La cr&#233;ation de cl&#233;s uniques demande une grande organisation et beaucoup de coordination pour mettre &#224; jour une base de donn&#233;es (secr&#232;te de pr&#233;f&#233;rence) qui contient les cl&#233;s d&#233;j&#224; utilis&#233;es, et qui est accessible et commune aux personnes autoris&#233;es.</li>
+<li>Cr&#233;er une cl&#233; parfaitement al&#233;atoire est <strong>difficile</strong>, en effet nos ordinateurs ne font que simuler l'al&#233;atoire gr&#226;ce &#224; des calculs math&#233;matiques et g&#233;n&#232;rent donc des cl&#233;s <em>pseudo-al&#233;atoires</em>. Il est possible de savoir &#224; l'avance la cl&#233; g&#233;n&#233;r&#233;e par l'ordinateur si l'on connait suffisamment d'informations dessus (algorithme utilis&#233;, graine d'initialisation, etc.). Par exemple en C, la fonction <code>rand</code> utilise un <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">algorithme de g&#233;n&#233;ration de nombre pseudo-al&#233;atoire</a> bas&#233; sur des congruences et une fonction lin&#233;aire, et il est possible de deviner le r&#233;sultat si l'on connait la graine initialis&#233;e avec <code>srand</code>. Une solution permettant de g&#233;n&#233;rer une cl&#233; totalement al&#233;atoire serait d'utiliser des ph&#233;nom&#232;nes physiques dont le r&#233;sultat ne peut &#234;tre d&#233;termin&#233; &#224; l'avance comme des <a href="https://en.wikipedia.org/wiki/Thermal_fluctuations">bruits thermiques</a>, des <a href="https://en.wikipedia.org/wiki/Atmospheric_noise">bruits atmosph&#233;riques</a> ou encore une <a href="https://en.wikipedia.org/wiki/Radioactive_decay">r&#233;action radioactive</a>.</li>
+</ul>
 <h2 id="conclusion">Conclusion</h2>
+<p>Le chiffre de Vernam est donc un algorithme de chiffrement sym&#233;trique offrant une s&#233;curit&#233; optimale si les contraintes de cet algorithme sont respect&#233;es. Mais pour que son efficacit&#233; soit &#224; son maximum, il faut disposer d'importantes ressources afin de cr&#233;er un g&#233;n&#233;rateur totalement al&#233;atoire, mais aussi un syst&#232;me assurant une utilisation unique des cl&#233;s de chiffrement g&#233;n&#233;r&#233;es. Cependant, m&#234;me avec un algorithme de chiffrement incassable, un probl&#232;me persiste au niveau de l'&#233;change de cl&#233;. En effet, tous les algorithmes de chiffrement sym&#233;triques n&#233;cessitent un &#233;change de cl&#233; entre les deux personnes souhaitant communiquer afin de pouvoir chiffrer et d&#233;chiffrer les messages &#233;chang&#233;s. Mais c'est justement cet &#233;change qui pose probl&#232;me, car comment &#234;tre s&#251;r que personne d'autre ne connait la cl&#233; ? Comment la transmettre en toute s&#233;curit&#233; ? L'int&#233;r&#234;t d'un algorithme de chiffrement sym&#233;trique est donc limit&#233;, car si notre adversaire connait la cl&#233; de chiffrement, on aura beau mettre en place un algorithme de chiffrement incassable comme le chiffre de Vernam, il pourra sans aucunes difficult&#233;s comprendre les messages secrets. C'est pourquoi des math&#233;maticiens ont travaill&#233; sur de nouveaux algorithmes dit <strong>asym&#233;triques</strong> (comme le <a href="/algo/chiffrement/rsa.html">RSA</a>), ne n&#233;cessitant alors aucun &#233;change de cl&#233; et rendant les communications secr&#232;tes bien plus s&#251;res.</p>
  
       <!-- ------------ -->
 
