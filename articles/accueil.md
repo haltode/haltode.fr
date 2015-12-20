@@ -25,3 +25,6 @@ Vous retrouverez des articles divers concernant :
 
 Bonne visite !  
 NapNac
+
+<br>
+<p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" src="//static.napnac.ga/img/PJL_banner.png" alt="Non à la loi renseignement" title="Non à la loi renseignement" height="60" width="468"/></a></p>

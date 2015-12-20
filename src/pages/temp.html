@@ -125,6 +125,13 @@ pre {
    word-wrap: break-word;
 }
 
+/* ---- Articles ---- */
+
+.non_publie {
+   font-style: italic;
+   display: inline;
+}
+
 /* ---- Temporary css ---- */
 
 .pret {
@@ -134,11 +141,6 @@ pre {
 
 .relire {
    background-color: #FF9900;
-   display: inline;
-}
-
-.encours {
-   background-color: #3366CC;
    display: inline;
 }
 
@@ -188,16 +190,13 @@ function toggle_visibility(id) {
 <ul id="summary">
 </ul>
 <p class="pret">
-<span>Pr&#234;t</br></span>
+<span>Pr&#234;t<br></span>
 </p>
 <p class="relire">
-<span>A relire</br></span>
-</p>
-<p class="encours">
-<span>En cours</br></span>
+<span>A relire<br></span>
 </p>
 <p class="faire">
-<span>A faire</br></span>
+<span>A faire<br></span>
 </p>
 <p>La liste des articles publi&#233;s :</p>
 <ul>
@@ -205,16 +204,16 @@ function toggle_visibility(id) {
 <ul>
 <li><p>Structure de donn&#233;es :</p>
 <p class="pret">
-<span>- Tableau cumulatif</br></span>
+<span>- Tableau cumulatif<br></span>
 </p>
 <p class="pret">
-<span>- Liste cha&#238;n&#233;e</br></span>
+<span>- Liste cha&#238;n&#233;e<br></span>
 </p>
 <p class="pret">
-<span>- Pile</br></span>
+<span>- Pile<br></span>
 </p>
 <p class="pret">
-<span>- File</br></span>
+<span>- File<br></span>
 </p>
 <p class="pret">
 <span>- Arbre</span>
@@ -232,7 +231,7 @@ function toggle_visibility(id) {
 </p>
 /
 <p class="faire">
-<span>Trie</br></span>
+<span>Trie<br></span>
 </p>
 <p class="pret">
 <span>- Graphe</span>
@@ -242,10 +241,10 @@ function toggle_visibility(id) {
 </p>
 /
 <p class="faire">
-<span>Plus court chemin</br></span>
+<span>Plus court chemin<br></span>
 </p>
 <p class="faire">
-<span>- Table de hachage </br></span>
+<span>- Table de hachage <br></span>
 </p></li>
 <li><p>Tri :</p>
 <ul>
@@ -259,7 +258,7 @@ function toggle_visibility(id) {
 </p>
 ,
 <p class="pret">
-<span>tri par insertion</br></span>
+<span>tri par insertion<br></span>
 </p></li>
 <li>Tri en <em>O(N * log N)</em> :
 <p class="pret">
@@ -271,7 +270,7 @@ function toggle_visibility(id) {
 </p>
 ,
 <p class="relire">
-<span>tri par tas</br></span>
+<span>tri par tas<br></span>
 </p></li>
 <li>Tri en <em>O(N)</em> :
 <p class="pret">
@@ -283,62 +282,60 @@ function toggle_visibility(id) {
 </p>
 ,
 <p class="faire">
-<span>tri par paquets</br></span>
+<span>tri par paquets<br></span>
 </p></li>
 </ul></li>
 <li><p>Recherche :</p>
 <p class="pret">
-<span>- Dichotomie</br></span>
+<span>- Dichotomie<br></span>
 </p>
 <p class="faire">
-<span>- Union-find</br></span>
+<span>- Union-find<br></span>
 </p></li>
 <li><p>Chiffrement :</p>
 <p class="pret">
-<span>- Chiffre de C&#233;sar</br></span>
+<span>- Chiffre de C&#233;sar<br></span>
 </p>
 <p class="pret">
-<span>- Chiffre de Vigen&#232;re</br></span>
+<span>- Chiffre de Vigen&#232;re<br></span>
 </p>
 <p class="pret">
-<span>- Chiffre de Vernam</br></span>
+<span>- Chiffre de Vernam<br></span>
 </p>
 <p class="faire">
-<span>- RSA</br></span>
+<span>- RSA<br></span>
 </p></li>
 <li><p>IA :</p>
 <p class="faire">
-<span>- Algorithme min-max</br></span>
+<span>- Algorithme min-max<br></span>
 </p></li>
 </ul></li>
 <li><p>Projets :</p></li>
 </ul>
 <p class="pret">
-<span>- napnac.ga</br></span>
+<span>- napnac.ga<br></span>
 </p>
 <p class="pret">
-<span>- IOI</br></span>
+<span>- IOI<br></span>
 </p>
 <p class="pret">
-<span>- NandToTetris</br></span>
+<span>- NandToTetris<br></span>
 </p>
 <p class="pret">
-<span>- Rhyddid</br></span>
+<span>- Rhyddid<br></span>
 </p>
 <p class="pret">
-<span>- ASCII Funfair</br></span>
+<span>- ASCII Funfair<br></span>
 </p>
 <p class="pret">
-<span>- Pseudo-C</br></span>
+<span>- Pseudo-C<br></span>
 </p>
  
       <!-- ------------ -->
 
       <footer>
          <br>
-         <p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" 
-         src="//static.napnac.ga/img/PJL_banner.png" alt="Non à la loi renseignement" 
-         title="Non à la loi renseignement" height="60" width="468" /></a></p>
       </footer>
+
    </body>
 </html>

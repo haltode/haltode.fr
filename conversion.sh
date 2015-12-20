@@ -31,7 +31,8 @@ function insert_code {
 
       # If the source code is in fact a test file (input or output),
       # then disable highlighting
-      if [ \( "$extension" == "in" \) -o \( "$extension" == "out" \) ]; then
+      if [  \( "$extension" == "in" \) -o \( "$extension" == "out" \) -o \
+            \( "$extension" == "txt" \) ]; then
          extension="nohighlight"
       fi
 
