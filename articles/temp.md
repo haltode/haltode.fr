@@ -9,6 +9,11 @@ La liste des articles publiés :
 
 - Algorithme :
 
+    - Général :
+
+         <p class="faire"><span>- Introduction aux algorithmes<br></span></p>
+         <p class="faire"><span>- Comment et où s'entraîner ?<br></span></p>
+
     - Structure de données :
 
          <p class="pret"><span>- Tableau cumulatif<br></span></p>

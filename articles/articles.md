@@ -6,6 +6,11 @@ La liste des articles publiés :
 
 - Algorithme :
 
+    - Général :
+
+         - [Introduction aux algorithmes](/algo/general/introduction.html)
+         - [Comment et où s'entraîner ?](/algo/general/entrainement.html)
+
     - Structure de données :
 
          - [Tableau cumulatif](/algo/structure/tableau_cumulatif.html)

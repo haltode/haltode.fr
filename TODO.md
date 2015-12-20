@@ -3,8 +3,6 @@
 - README complet
 - Flux rss
 - Page d'accueil
-   - Uniquement articles sur des algos
-   - A qui s'adresse ce site ?
    - Originalité du site ? Qu'est-ce qui le démarque ?
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 - Supprimer temp.html (temp.md, temp.html, modif css) : commit 92
