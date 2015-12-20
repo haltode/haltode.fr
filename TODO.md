@@ -43,11 +43,6 @@
 - Comparison-based Lower Bounds for Sorting : article
 
 ## Chiffrement
-### Chiffre de Vigenère
-
-- Evoquer utilisation table de Vigenère
-- Faire partie indice de coïncidence
-
 ### RSA
 
 - Rajouter attaques

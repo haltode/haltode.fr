@@ -186,7 +186,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="chiffre-de-vigen&#232;re">Chiffre de Vigen&#232;re</h1></a>
 <p>Publi&#233; le : 28/05/2014<br />
-<em>Modifi&#233; le : 17/12/2015</em></p>
+<em>Modifi&#233; le : 20/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -199,7 +199,7 @@ function toggle_visibility(id) {
 <h2 id="introduction">Introduction</h2>
 <p>Avec l'apparition des premiers syst&#232;mes de cryptanalyses, le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de C&#233;sar</a> n'est plus un algorithme s&#251;r pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : <strong>le chiffre de Vigen&#232;re</strong>. Ce dernier est immunis&#233; aux attaques du chiffre de C&#233;sar, car sa cl&#233; est une cha&#238;ne de caract&#232;res et non plus un simple nombre, cependant quelques si&#232;cles apr&#232;s les premi&#232;res utilisations de ce syst&#232;me, des techniques permettant de casser le chiffre de Vigen&#232;re sont d&#233;couvertes le rendant alors vuln&#233;rable et inutile.</p>
 <h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
-<p>Le chiffre de Vigen&#232;re est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a> pour chiffrer et d&#233;chiffrer le message secret. Ce qui signifie que la cl&#233; de chiffrement n'est plus un nombre (comme avec le chiffre de C&#233;sar), mais une cha&#238;ne de caract&#232;res enti&#232;re. L'algorithme repose sur ce principe, pour offrir plus de s&#233;curit&#233; car une m&#234;me lettre ne sera alors pas forc&#233;ment chiffr&#233;e de la m&#234;me fa&#231;on (elle d&#233;pendra de sa place dans le message, mais aussi de la cl&#233; utilis&#233;e).</p>
+<p>Le chiffre de Vigen&#232;re est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement sym&#233;trique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphab&#233;tique</a> pour chiffrer et d&#233;chiffrer le message secret. Ceci signifie que la cl&#233; de chiffrement est une cha&#238;ne de caract&#232;res, et c'est l&#224; dessus que repose la s&#233;curit&#233; de l'algorithme, car une m&#234;me lettre ne sera alors pas forc&#233;ment chiffr&#233;e de la m&#234;me fa&#231;on (elle d&#233;pendra de sa place dans le message, mais aussi de la cl&#233; utilis&#233;e).</p>
 <h2 id="exemple">Exemple</h2>
 <p>Prenons comme message secret le mot &quot;Programmation&quot;, et comme cl&#233; de chiffrement &quot;Linux&quot;. La premi&#232;re &#233;tape &#224; faire est de rendre notre cl&#233; aussi longue que notre message &#224; chiffrer, pour cela, on r&#233;p&#232;te simplement autant de fois la cl&#233; que n&#233;cessaire :</p>
 <div class="figure">
@@ -217,6 +217,12 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png" alt="Exemple de d&#233;chiffrement" />
 <p class="caption">Exemple de d&#233;chiffrement</p>
 </div>
+<p>On peut utiliser cette m&#233;thode mais de mani&#232;re plus visuelle afin de chiffrer et d&#233;chiffrer nos messages :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png" alt="Table de Vigen&#232;re" />
+<p class="caption">Table de Vigen&#232;re</p>
+</div>
+<p>La <strong>table de Vigen&#232;re</strong> consiste &#224; &#233;num&#233;rer toutes les possibilit&#233;s de d&#233;calage lors du chiffrement et du d&#233;chiffrement. Les lettres du message clair sont repr&#233;sent&#233;es par les colonnes, tandis que celles de la cl&#233; sont repr&#233;sent&#233;es par les lignes. Pour chiffrer une lettre, on regarde l'intersection de la colonne correspondante &#224; la lettre du message clair, et de la ligne correspondante &#224; lettre de la cl&#233;. Pour d&#233;chiffrer une lettre, on regarde sur la ligne correspondante de la cl&#233; jusqu'&#224; trouver la lettre chiffr&#233;e qui se trouvera sur la colonne de la lettre d&#233;chiffr&#233;e.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code du chiffre de Vigen&#232;re :</p>
 <pre class="nohighlight"><code>Modifier la cl&#233; pour qu&#39;elle soit de la m&#234;me taille que le message
@@ -315,7 +321,7 @@ Linux</code></pre>
 <pre class="nohighlight"><code>Azbaoluzuqtwa
 Programmation</code></pre>
 <h2 id="cassage">Cassage</h2>
-<p>Les attaques du chiffre de C&#233;sar ne fonctionnent pas sur le chiffre de Vigen&#232;re pour plusieurs raisons :</p>
+<p>Les <a href="/algo/chiffrement/chiffre_cesar.html#cassage">attaques du chiffre de C&#233;sar</a> ne fonctionnent pas sur le chiffre de Vigen&#232;re pour plusieurs raisons :</p>
 <ul>
 <li>La cl&#233; est une cha&#238;ne de caract&#232;res de taille variable, ce qui signifie que le nombre de possibilit&#233;s de cl&#233;s de chiffrement est &#233;norme, et une attaque par force brute n'est tout simplement pas envisageable.</li>
 <li>L'algorithme utilise une substitution poly-alphab&#233;tique, rendant ainsi une analyse fr&#233;quentielle impossible car une lettre ne sera pas forc&#233;ment chiffr&#233;e de la m&#234;me mani&#232;re dans un texte.</li>
@@ -325,8 +331,8 @@ Programmation</code></pre>
 <pre class="nohighlight"><code>wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp</code></pre>
 <p>Les seules informations que l'on a sont que toutes les majuscules ont &#233;t&#233; transform&#233; en minuscules, tous les accents par des lettres non accentu&#233;es, et les espaces et signes de ponctuations ont &#233;t&#233; enlev&#233;.</p>
 <h3 id="trouver-la-longueur-de-la-cl&#233;-de-chiffrement">Trouver la longueur de la cl&#233; de chiffrement</h3>
-<p>Pour casser le chiffre de Vigen&#232;re, il faut proc&#233;der par &#233;tape, et la premi&#232;re est de d&#233;terminer la longueur de la cl&#233; de chiffrement employ&#233;e pour chiffrer le message. Vous verrez qu'une fois cette longueur connue, on peut savoir quelles lettres sont chiffr&#233;es avec la m&#234;me portion de cl&#233;, rendant alors la cryptanalyse du message bien plus facile.</p>
-<p>Un des moyens de trouver la longueur de cl&#233; est d'utiliser le <strong>test de Kasiski</strong>. Le but est de rep&#233;rer dans le message chiffr&#233; des sous cha&#238;nes qui se r&#233;p&#232;tent, car ces derni&#232;res sont sans doute des m&#234;mes portions du texte clair, cod&#233;es avec la m&#234;me partie de cl&#233;. Une fois qu'on connait suffisamment de r&#233;p&#233;titions, on peut gr&#226;ce &#224; l'espacement de ces derni&#232;res en d&#233;duire les cl&#233;s possibles et en combinant plusieurs analyses on peut voir qu'une cl&#233; ressortira plus souvent que les autres. Mais pour cela notre texte doit &#234;tre suffisamment long pour avoir un traitement efficace des sous cha&#238;nes (notre m&#233;thode &#233;tant bas&#233;e sur des statistiques, si on a peu de donn&#233;es notre r&#233;sultat ne sera pas forc&#233;ment correcte et repr&#233;sentatif de la r&#233;alit&#233;). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se r&#233;p&#233;tant (de diff&#233;rentes tailles allant de 3 caract&#232;res &#224; 14), et en voici une courte partie :</p>
+<p>Pour casser le chiffre de Vigen&#232;re, il faut proc&#233;der par &#233;tape, et la premi&#232;re est de d&#233;terminer la longueur de la cl&#233; de chiffrement employ&#233;e pour chiffrer le message. Une fois cette longueur connue, on peut savoir quelles lettres sont chiffr&#233;es avec la m&#234;me portion de cl&#233;, rendant alors la cryptanalyse du message bien plus facile.</p>
+<p>Un des moyens de trouver la longueur de cl&#233; est d'utiliser le <strong>test de Kasiski</strong>. Le but est de rep&#233;rer dans le message chiffr&#233; des sous cha&#238;nes qui se r&#233;p&#232;tent, car ces derni&#232;res sont sans doute des m&#234;mes portions du texte clair, cod&#233;es avec la m&#234;me partie de cl&#233;. Une fois qu'on connait suffisamment de r&#233;p&#233;titions, on peut gr&#226;ce &#224; l'espacement de ces derni&#232;res en d&#233;duire les tailles de cl&#233;s possibles et en combinant plusieurs analyses on peut voir qu'une taille ressortira plus souvent que les autres. Mais pour cela notre texte doit &#234;tre suffisamment long afin d'avoir un traitement efficace des sous cha&#238;nes (notre m&#233;thode &#233;tant bas&#233;e sur des statistiques, si on a peu de donn&#233;es notre r&#233;sultat ne sera pas forc&#233;ment correcte et repr&#233;sentatif de la r&#233;alit&#233;). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se r&#233;p&#233;tant (de diff&#233;rentes tailles allant de trois caract&#232;res &#224; quatorze), et en voici une courte partie :</p>
 <table>
 <thead>
 <tr class="header">
@@ -994,7 +1000,7 @@ Programmation</code></pre>
 <p>Finalement, on peut dire que chaque ligne a &#233;t&#233; chiffr&#233; &#224; l'aide d'un simple chiffre de C&#233;sar, puisque toutes les lettres d'une m&#234;me ligne sont chiffr&#233;es avec la m&#234;me lettre de la cl&#233;, et cette lettre peut &#234;tre vue comme un simple nombre. Une fois que l'on sait cela, on peut effectuer une analyse fr&#233;quentielle pour trouver la cl&#233; de chiffrement, comme pour le chiffre de C&#233;sar, sur chacune des lignes d&#233;coup&#233;es.</p>
 <p>On cherche pour chaque ligne, la lettre apparaissant le plus, puis l'on d&#233;duit que cette lettre repr&#233;sente la lettre E dans l'alphabet normal, on peut donc facilement retrouver l'alphabet chiffr&#233; utilis&#233; avec cette lettre. Prenons l'exemple de la premi&#232;re ligne :</p>
 <pre class="nohighlight"><code>1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy</code></pre>
-<p>La lettre la plus utilis&#233;e ici est le P, on peut donc faire une correspondance entre l'alphabet normal et l'alphabet chiffr&#233; :</p>
+<p>La lettre la plus utilis&#233;e ici est le P, on peut donc faire une correspondance entre l'alphabet normal et l'alphabet chiffr&#233;, nous permettant de trouver la premi&#232;re lettre de la cl&#233; de chiffrement, le L :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png" alt="Exemple de correspondance" />
 <p class="caption">Exemple de correspondance</p>
@@ -1004,8 +1010,7 @@ Programmation</code></pre>
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png" alt="Recherche de cl&#233; de chiffrement" />
 <p class="caption">Recherche de cl&#233; de chiffrement</p>
 </div>
-<p>TODO : mieux expliquer les images ?</p>
-<p>La cl&#233; apparait alors &#224; la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffr&#233;. En effet la lettre A repr&#233;sente la lettre 0, et donc la lettre de la cl&#233; utilis&#233;e pour chiffrer une portion du message (et si l'on ajoute toutes les portions, on retrouve notre cl&#233; en entier).</p>
+<p>La cl&#233; apparait alors &#224; la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffr&#233;. En effet la lettre A repr&#233;sente la lettre 0 de l'alphabet et donc la correspondance repr&#233;sente le d&#233;calage utilis&#233; (c'est-&#224;-dire la cl&#233;) pour cr&#233;er l'alphabet chiffr&#233;.</p>
 <p>L'impl&#233;mentation en C de l'analyse fr&#233;quentielle :</p>
 <a href="javascript:toggle_visibility('trouver_cle.c');">trouver_cle.c</a>
 <div id="trouver_cle.c" style="display: none;">
@@ -1134,8 +1139,6 @@ Quoi qu&#39;il arrive, la flamme de la r&#233;sistance fran&#231;aise ne doit pa
 
 Demain, comme aujourd&#39;hui, je parlerai &#224; la Radio de Londres.</code></pre>
 <p><em>Ce message est le discours du G&#233;n&#233;ral de Gaulle prononc&#233; le 18 juin 1940.</em></p>
-<h3 id="variantes">Variantes</h3>
-<h4 id="indice-de-co&#239;ncidence">Indice de co&#239;ncidence</h4>
 <h2 id="conclusion">Conclusion</h2>
 <p>Le chiffre de Vigen&#232;re offre donc plus de s&#233;curit&#233; que le chiffre de C&#233;sar, gr&#226;ce &#224; une cl&#233; plus complexe. Cependant, ce dernier n'est pas infaillible, et il est assez facile de trouver la cl&#233; de chiffrement &#224; partir du simple texte chiffr&#233;. Cet algorithme n'est donc plus utilis&#233; depuis qu'il a &#233;t&#233; cass&#233;, mais il existe une am&#233;lioration &#224; ce syst&#232;me qui est techniquement incassable : le <a href="/algo/chiffrement/chiffre_vernam.html">chiffre de Vernam</a>.</p>
  

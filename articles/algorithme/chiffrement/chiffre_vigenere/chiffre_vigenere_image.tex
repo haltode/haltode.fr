@@ -247,6 +247,26 @@
 \node [minimum size = 0.5cm, inner sep = 0pt, right = 0cm of twelfth] (thirteenth) {N};
 \end{tikzpicture}
 
+% Table de Vigenère
+
+\newpage
+
+\begin{tikzpicture}
+\foreach \i in {0,...,25} {
+  \foreach \j in {0,...,25} {
+    \edef\k{\ifnum\numexpr\i+\j\relax>25
+        \the\numexpr\i+\j-26\relax
+      \else
+        \the\numexpr\i+\j\relax
+      \fi}
+  \node[draw,minimum size=0.5cm,inner sep=0pt]
+    at (\i*0.5,-\j*0.5) {\strut\symbol{\numexpr`A+\k\relax}};
+  }
+  \node [font = \bf] at (-0.5,-\i*0.5) {\strut\symbol{\numexpr`A+\i}};
+  \node [font = \bf] at (\i*0.5,0.5)   {\strut\symbol{\numexpr`A+\i}};
+}
+\end{tikzpicture}
+
 % Cassage
 
 \newpage

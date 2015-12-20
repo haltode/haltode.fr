@@ -3,7 +3,7 @@ Chiffre de Vigenère
 algo/chiffrement
 
 Publié le : 28/05/2014  
-*Modifié le : 17/12/2015*
+*Modifié le : 20/12/2015*
 
 ## Introduction
 
@@ -11,7 +11,7 @@ Avec l'apparition des premiers systèmes de cryptanalyses, le [chiffre de César
 
 ## Principe de l'algorithme
 
-Le chiffre de Vigenère est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) utilisant une [substitution poly-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution) pour chiffrer et déchiffrer le message secret. Ce qui signifie que la clé de chiffrement n'est plus un nombre (comme avec le chiffre de César), mais une chaîne de caractères entière. L'algorithme repose sur ce principe, pour offrir plus de sécurité car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).
+Le chiffre de Vigenère est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) utilisant une [substitution poly-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution) pour chiffrer et déchiffrer le message secret. Ceci signifie que la clé de chiffrement est une chaîne de caractères, et c'est là dessus que repose la sécurité de l'algorithme, car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).
 
 ## Exemple
 
@@ -28,6 +28,12 @@ Le rang dans l'alphabet commence à 0 (et non 1) car *26 mod 26 = 0*, il faut do
 Pour le déchiffrement, l'idée est la même sauf qu'on soustrait au lieu d'ajouter le rang de la lettre de la clé :
 
 ![Exemple de déchiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png)
+
+On peut utiliser cette méthode mais de manière plus visuelle afin de chiffrer et déchiffrer nos messages :
+
+![Table de Vigenère](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png)
+
+La **table de Vigenère** consiste à énumérer toutes les possibilités de décalage lors du chiffrement et du déchiffrement. Les lettres du message clair sont représentées par les colonnes, tandis que celles de la clé sont représentées par les lignes. Pour chiffrer une lettre, on regarde l'intersection de la colonne correspondante à la lettre du message clair, et de la ligne correspondante à lettre de la clé. Pour déchiffrer une lettre, on regarde sur la ligne correspondante de la clé jusqu'à trouver la lettre chiffrée qui se trouvera sur la colonne de la lettre déchiffrée.
 
 ## Pseudo-code
 
@@ -72,7 +78,7 @@ test01.out
 
 ## Cassage
 
-Les attaques du chiffre de César ne fonctionnent pas sur le chiffre de Vigenère pour plusieurs raisons :
+Les [attaques du chiffre de César](/algo/chiffrement/chiffre_cesar.html#cassage) ne fonctionnent pas sur le chiffre de Vigenère pour plusieurs raisons :
 
 - La clé est une chaîne de caractères de taille variable, ce qui signifie que le nombre de possibilités de clés de chiffrement est énorme, et une attaque par force brute n'est tout simplement pas envisageable.
 - L'algorithme utilise une substitution poly-alphabétique, rendant ainsi une analyse fréquentielle impossible car une lettre ne sera pas forcément chiffrée de la même manière dans un texte.
@@ -88,9 +94,9 @@ Les seules informations que l'on a sont que toutes les majuscules ont été tran
 
 ### Trouver la longueur de la clé de chiffrement
 
-Pour casser le chiffre de Vigenère, il faut procéder par étape, et la première est de déterminer la longueur de la clé de chiffrement employée pour chiffrer le message. Vous verrez qu'une fois cette longueur connue, on peut savoir quelles lettres sont chiffrées avec la même portion de clé, rendant alors la cryptanalyse du message bien plus facile.
+Pour casser le chiffre de Vigenère, il faut procéder par étape, et la première est de déterminer la longueur de la clé de chiffrement employée pour chiffrer le message. Une fois cette longueur connue, on peut savoir quelles lettres sont chiffrées avec la même portion de clé, rendant alors la cryptanalyse du message bien plus facile.
 
-Un des moyens de trouver la longueur de clé est d'utiliser le **test de Kasiski**. Le but est de repérer dans le message chiffré des sous chaînes qui se répètent, car ces dernières sont sans doute des mêmes portions du texte clair, codées avec la même partie de clé. Une fois qu'on connait suffisamment de répétitions, on peut grâce à l'espacement de ces dernières en déduire les clés possibles et en combinant plusieurs analyses on peut voir qu'une clé ressortira plus souvent que les autres. Mais pour cela notre texte doit être suffisamment long pour avoir un traitement efficace des sous chaînes (notre méthode étant basée sur des statistiques, si on a peu de données notre résultat ne sera pas forcément correcte et représentatif de la réalité). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se répétant (de différentes tailles allant de 3 caractères à 14), et en voici une courte partie :
+Un des moyens de trouver la longueur de clé est d'utiliser le **test de Kasiski**. Le but est de repérer dans le message chiffré des sous chaînes qui se répètent, car ces dernières sont sans doute des mêmes portions du texte clair, codées avec la même partie de clé. Une fois qu'on connait suffisamment de répétitions, on peut grâce à l'espacement de ces dernières en déduire les tailles de clés possibles et en combinant plusieurs analyses on peut voir qu'une taille ressortira plus souvent que les autres. Mais pour cela notre texte doit être suffisamment long afin d'avoir un traitement efficace des sous chaînes (notre méthode étant basée sur des statistiques, si on a peu de données notre résultat ne sera pas forcément correcte et représentatif de la réalité). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se répétant (de différentes tailles allant de trois caractères à quatorze), et en voici une courte partie :
 
 | Chaine     | Ecart | 2   | 3   | 4   | 5       | 6   | 7   | 8   | 9   | 10  | ... |
 | :-         | -     | :-: | :-: | :-: | :-:     | :-: | :-: | :-: | :-: | :-: | -   |
@@ -170,7 +176,7 @@ On cherche pour chaque ligne, la lettre apparaissant le plus, puis l'on déduit 
 1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy
 ```
 
-La lettre la plus utilisée ici est le P, on peut donc faire une correspondance entre l'alphabet normal et l'alphabet chiffré :
+La lettre la plus utilisée ici est le P, on peut donc faire une correspondance entre l'alphabet normal et l'alphabet chiffré, nous permettant de trouver la première lettre de la clé de chiffrement, le L :
 
 ![Exemple de correspondance](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png)
 
@@ -178,9 +184,7 @@ Si on applique ce principe à chacune de nos lignes on obtient :
 
 ![Recherche de clé de chiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png)
 
-TODO : mieux expliquer les images ?
-
-La clé apparait alors à la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffré. En effet la lettre A représente la lettre 0, et donc la lettre de la clé utilisée pour chiffrer une portion du message (et si l'on ajoute toutes les portions, on retrouve notre clé en entier).
+La clé apparait alors à la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffré. En effet la lettre A représente la lettre 0 de l'alphabet et donc la correspondance représente le décalage utilisé (c'est-à-dire la clé) pour créer l'alphabet chiffré.
 
 L'implémentation en C de l'analyse fréquentielle :
 
@@ -231,10 +235,6 @@ Demain, comme aujourd'hui, je parlerai à la Radio de Londres.
 ```
 
 *Ce message est le discours du Général de Gaulle prononcé le 18 juin 1940.*
-
-### Variantes
-
-#### Indice de coïncidence
 
 ## Conclusion
 
