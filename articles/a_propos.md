@@ -12,7 +12,7 @@ Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à <napnac.ga@gmai
 
 ## Site
 
-Les pages de ce site sont écrites en [Markdown](https://en.wikipedia.org/wiki/Markdown), et converties grâce à un script fait maison en [Bash](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29). Les images et les schémas sont créés grâce à [LaTeX](https://en.wikipedia.org/wiki/LaTeX) et notamment grâce au package [tikz](http://www.texample.net/tikz/examples/).
+Les pages de ce site sont écrites en [Markdown](https://en.wikipedia.org/wiki/Markdown), et converties grâce à un script fait maison en [sh](https://en.wikipedia.org/wiki/Bourne_shell). Les images et les schémas sont créés grâce à [LaTeX](https://en.wikipedia.org/wiki/LaTeX) et notamment grâce au package [tikz](http://www.texample.net/tikz/examples/).
 
 Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à lire mon [article dédié](/projets/napnac.html) à ce sujet, ou bien à consulter les sources du projet sur la page Github : <https://github.com/iTech-/NapNac>.
 

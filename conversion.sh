@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 function remove_old_files {
    find src/pages -name "*.html" -type f -delete

@@ -3,7 +3,7 @@ napnac.ga
 projets/
 
 Publié le : 10/12/2015  
-*Modifié le : 10/12/2015*
+*Modifié le : 24/12/2015*
 
 ## Introduction
 
@@ -15,7 +15,7 @@ Avant ce site, mes articles étaient postés sur [Wordpress](https://en.wikipedi
 
 La particularité de ce site est que toutes les pages que vous voyez sont en réalité rédigées en Markdown et non en [HTML](https://en.wikipedia.org/wiki/HTML) (le langage de base pour la création de site web). La raison est que je n'apprécie pas du tout le HTML, et que je me suis fixé comme objectif d'en écrire le moins possible, afin de pouvoir modifier n'importe quelle page facilement car le Markdown est tout de même bien plus agréable à lire et à écrire que le HTML.
 
-Les deux seuls éléments qui sont écrits en HTML sont le *header* et le *footer* de la page. Le header est simplement le logo ainsi que le menu principal du site, et le footer est le bas de la page composé d'une image. Le reste de la page est écrite en Markdown et suit ce format :
+Les deux seuls éléments qui sont écrits en HTML sont le *header* et le *footer* de la page. Le header est simplement le logo ainsi que le menu principal du site, et le footer est le bas de la page. Le reste de la page est écrite en Markdown et suit ce format :
 
 ```markdown
 Titre de la page
@@ -32,7 +32,7 @@ Je suis un paragraphe
 Blablabla
 ```
 
-Chaque page est ensuite convertie via un script que j'ai écrit en [Bash](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29) qui permet alors de créer une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -> HTML), le footer, et sera déplacée à la fin du script dans sa catégorie correspondante.
+Chaque page est ensuite convertie via un script que j'ai écrit en [sh](https://en.wikipedia.org/wiki/Bourne_shell) qui permet alors de créer une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -> HTML), le footer, et sera déplacée à la fin du script dans sa catégorie correspondante.
 
 Pour les articles contenant du code, je place ceci dans ma page Markdown (sans les espaces autour de `INSERT`) :
 
