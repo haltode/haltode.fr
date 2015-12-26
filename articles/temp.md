@@ -11,8 +11,8 @@ La liste des articles publiés :
 
     - Général :
 
-         <p class="faire"><span>- Introduction aux algorithmes<br></span></p>
-         <p class="faire"><span>- Comment et où s'entraîner ?<br></span></p>
+         <p class="relire"><span>- Introduction aux algorithmes<br></span></p>
+         <p class="relire"><span>- Comment et où s'entraîner ?<br></span></p>
 
     - Structure de données :
 

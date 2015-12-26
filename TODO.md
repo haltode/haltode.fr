@@ -40,6 +40,10 @@
 
 - Comparison-based Lower Bounds for Sorting : article
 
+## Recherche
+
+- Chaîne de caractères
+
 ## Chiffrement
 ### RSA
 
