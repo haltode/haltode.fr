@@ -3,7 +3,7 @@ Tri par tas
 algo/tri
 
 Publié le : 14/05/2014  
-*Modifié le : 16/11/2015*
+*Modifié le : 26/12/2015*
 
 ## Introduction
 
@@ -11,7 +11,7 @@ Le tri par tas (*heapsort* en anglais) est un algorithme de tri par comparaison,
 
 ## Principe de l’algorithme
 
-L'algorithme du tri par tas repose sur un élément fondamental : le [tas](/algo/structure/arbre/tas.html) (d'où son nom). En effet, ce tri crée un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre décroissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs triées dans notre tableau.
+L'algorithme du tri par tas repose sur un élément fondamental : le [tas](/algo/structure/arbre/tas.html) (d'où son nom). En effet, ce tri crée un tas max du tableau donné en entrée, et le parcourt afin de reconstituer les valeurs triées dans notre tableau.
 
 ## Exemple
 
@@ -23,7 +23,7 @@ On prend la suite de nombres suivante que l’on va trier dans l’ordre croissa
 
 *2ème étape* : parcourir le tas pour trier les éléments
 
-Pour trier les éléments grâce à notre tas, on retire la racine à chaque tour (l'élément le plus grand de notre tas, et de notre tableau), on le range à sa place définitive, et on entasse le dernier élément du tas pour combler le trou de la racine et respecter les règles d'un tas.
+Pour trier les éléments grâce à notre tas, on retire la racine à chaque tour (l'élément le plus grand de notre tas, et donc de notre tableau), on le range à sa place définitive, et on entasse le dernier élément du tas pour combler le trou de la racine mais aussi respecter les règles d'un tas.
 
 ![1er tour](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour1.png)
 
@@ -31,7 +31,7 @@ La racine du tas (en vert) est placée dans le tableau *(1)* et le dernier élé
 
 On continue ces opérations tant que le tas contient des éléments :
 
-![Fin du tri par tas](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour2.png)
+![Exemple de tri par tas](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour2.png)
 
 ## Pseudo-code
 
@@ -43,14 +43,9 @@ triTas :
    Contruire le tas max du tableau
 
    Pour chaque élément du tableau (en partant de la fin)
-      Echanger l'élément avec la racine
-      Décrémenter la taille du tas
-      Entasser l'élément placé à la racine
+      Placer la racine du tas dans le tableau
+      Entasser le dernier élément du tas à la place de la racine
 ```
-
-En réalité, nous ne créons pas de tas à part, on réarrange simplement les éléments du tableau pour qu'il fonctionne comme un tas max car c'est plus simple pour le manipuler. On parcourt donc notre tableau dans le sens inverse, pour toujours avoir comme élément actuel le dernier élément du tas, que l'on va échanger avec la racine qui désormais est bien placée, on n'oublie pas de diminuer la taille du tas pour ne plus prendre en compte notre élément que l'on vient de placer, et on finit par entasser la nouvelle racine pour continuer à respecter les règles d'un tas.
-
-*Toutes les fonctions relatives à un tas (`construire`, `entasser`, etc.) sont décrites dans mon article à ce propos, je n'en reparlerai donc pas ici.*
 
 ## Complexité
 
@@ -60,11 +55,41 @@ La complexité de l’algorithme du tri par tas est en *O(N \* log N)*. En effet
 
 ## Implémentation
 
-Voici le lien vers une implémentation en C de l’algorithme du tri pas tas :
+Une implémentation en C++ (afin d'avoir le type `priority_queue`) du tri par tas :
 
-main.c : 
+[INSERT]
+tri_tas.cpp
+
+On utilise la [`priority_queue`](http://www.cplusplus.com/reference/queue/priority_queue/) de la STL afin d'avoir un tas max facilement dans notre implémentation.
+
+Notre tableau d'entrée :
+
+[INSERT]
+test01.in
+
+La sortie du programme :
+
+[INSERT]
+test01.out
 
 ## Améliorations et variantes
+
+### Optimisation de la mémoire
+
+On peut économiser de la mémoire en évitant de créer un tas à part entière du tableau. En effet, on peut tout simplement réorganiser notre tableau afin de le parcourir comme un tas max, et ensuite il suffit de recréer les fonctions du tas à la main (`construireTasMax`, `entasser`, etc.) pour faire nos opérations dessus. Le tas aura une taille virtuelle qui occupe initialement toute la place du tableau, mais diminue progressivement au fur et à mesure que les racines du tas sont fixées à leurs places définitives dans le tableau trié.
+
+```nohighlight
+triTas :
+
+   Contruire le tas max dans le tableau
+
+   Pour chaque élément du tableau (en partant de la fin)
+      Echanger l'élément actuel avec la racine
+      Décrémenter la taille du tas
+      Entasser l'élément placé à la racine
+```
+
+On parcourt le tableau à l'envers afin d'échanger la racine actuelle avec l'élément occupant sa place définitive.
 
 ### Mélange d'algorithme
 
@@ -72,7 +97,9 @@ Comme pour le tri rapide, le tri par tas peut être mélangé avec un autre algo
 
 ### Smoothsort
 
-Le Smoothsort est une variante du tri par tas permettant d'améliorer la complexité en temps dans le meilleur des cas en *O(N)* (le cas où les nombres en entrée sont déjà triés par exemple). Le principe de ce tri se base non plus sur un seul tas, mais sur plusieurs ayant un comportement différent et s'appuyant sur la [suite de Léonard](https://en.wikipedia.org/wiki/Leonardo_number).
+TODO : pourquoi suite de léonard ? image + pseudo-code + meilleures explications
+
+Le Smoothsort est une variante du tri par tas permettant d'améliorer la complexité en temps dans le meilleur des cas en *O(N)* (le cas où les nombres en entrée sont déjà triés ou quasi triés par exemple). Le principe de ce tri se base non plus sur un seul tas, mais sur plusieurs ayant un comportement différent et s'appuyant sur la [suite de Léonard](https://en.wikipedia.org/wiki/Leonardo_number).
 
 Cette suite se définit comme ceci :
 

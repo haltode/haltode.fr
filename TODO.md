@@ -22,6 +22,10 @@
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
 
+### Tas
+
+- Code tri par tas
+
 ## Tri
 ### Tri rapide
 

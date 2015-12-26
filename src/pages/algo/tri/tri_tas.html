@@ -188,7 +188,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tri-par-tas">Tri par tas</h1></a>
 <p>Publi&#233; le : 14/05/2014<br />
-<em>Modifi&#233; le : 16/11/2015</em></p>
+<em>Modifi&#233; le : 26/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -202,7 +202,7 @@ function toggle_visibility(id) {
 <h2 id="introduction">Introduction</h2>
 <p>Le tri par tas (<em>heapsort</em> en anglais) est un algorithme de tri par comparaison, plut&#244;t efficace et qui a une complexit&#233; en <em>O(N * log N)</em>. C&#8217;est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non stable</a> mais <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
-<p>L'algorithme du tri par tas repose sur un &#233;l&#233;ment fondamental : le <a href="/algo/structure/arbre/tas.html">tas</a> (d'o&#249; son nom). En effet, ce tri cr&#233;e un tas du tableau que l'on souhaite trier (un tas max si on trie dans l'ordre croissant et un tas min dans l'ordre d&#233;croissant). Une fois qu'on a ce tas, on peut le parcourir pour reconstituer les valeurs tri&#233;es dans notre tableau.</p>
+<p>L'algorithme du tri par tas repose sur un &#233;l&#233;ment fondamental : le <a href="/algo/structure/arbre/tas.html">tas</a> (d'o&#249; son nom). En effet, ce tri cr&#233;e un tas max du tableau donn&#233; en entr&#233;e, et le parcourt afin de reconstituer les valeurs tri&#233;es dans notre tableau.</p>
 <h2 id="exemple">Exemple</h2>
 <p>On prend la suite de nombres suivante que l&#8217;on va trier dans l&#8217;ordre croissant avec le tri par tas : 1, 9, 3, 7, 6, 1, 4.</p>
 <p><em>1&#232;re &#233;tape</em> : cr&#233;er le tas (max dans notre cas)</p>
@@ -211,7 +211,7 @@ function toggle_visibility(id) {
 <p class="caption">Tas max correspondant au tableau</p>
 </div>
 <p><em>2&#232;me &#233;tape</em> : parcourir le tas pour trier les &#233;l&#233;ments</p>
-<p>Pour trier les &#233;l&#233;ments gr&#226;ce &#224; notre tas, on retire la racine &#224; chaque tour (l'&#233;l&#233;ment le plus grand de notre tas, et de notre tableau), on le range &#224; sa place d&#233;finitive, et on entasse le dernier &#233;l&#233;ment du tas pour combler le trou de la racine et respecter les r&#232;gles d'un tas.</p>
+<p>Pour trier les &#233;l&#233;ments gr&#226;ce &#224; notre tas, on retire la racine &#224; chaque tour (l'&#233;l&#233;ment le plus grand de notre tas, et donc de notre tableau), on le range &#224; sa place d&#233;finitive, et on entasse le dernier &#233;l&#233;ment du tas pour combler le trou de la racine mais aussi respecter les r&#232;gles d'un tas.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour1.png" alt="1er tour" />
 <p class="caption">1er tour</p>
@@ -219,8 +219,8 @@ function toggle_visibility(id) {
 <p>La racine du tas (en vert) est plac&#233;e dans le tableau <em>(1)</em> et le dernier &#233;l&#233;ment (en bleu) va remplacer la racine <em>(2)</em>, mais il ne faut pas oublier de l'entasser pour respecter les r&#232;gles du tas max <em>(3)</em>.</p>
 <p>On continue ces op&#233;rations tant que le tas contient des &#233;l&#233;ments :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour2.png" alt="Fin du tri par tas" />
-<p class="caption">Fin du tri par tas</p>
+<img src="//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour2.png" alt="Exemple de tri par tas" />
+<p class="caption">Exemple de tri par tas</p>
 </div>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Voici le pseudo-code du tri par tas :</p>
@@ -229,22 +229,86 @@ function toggle_visibility(id) {
    Contruire le tas max du tableau
 
    Pour chaque &#233;l&#233;ment du tableau (en partant de la fin)
-      Echanger l&#39;&#233;l&#233;ment avec la racine
-      D&#233;cr&#233;menter la taille du tas
-      Entasser l&#39;&#233;l&#233;ment plac&#233; &#224; la racine</code></pre>
-<p>En r&#233;alit&#233;, nous ne cr&#233;ons pas de tas &#224; part, on r&#233;arrange simplement les &#233;l&#233;ments du tableau pour qu'il fonctionne comme un tas max car c'est plus simple pour le manipuler. On parcourt donc notre tableau dans le sens inverse, pour toujours avoir comme &#233;l&#233;ment actuel le dernier &#233;l&#233;ment du tas, que l'on va &#233;changer avec la racine qui d&#233;sormais est bien plac&#233;e, on n'oublie pas de diminuer la taille du tas pour ne plus prendre en compte notre &#233;l&#233;ment que l'on vient de placer, et on finit par entasser la nouvelle racine pour continuer &#224; respecter les r&#232;gles d'un tas.</p>
-<p><em>Toutes les fonctions relatives &#224; un tas (<code>construire</code>, <code>entasser</code>, etc.) sont d&#233;crites dans mon article &#224; ce propos, je n'en reparlerai donc pas ici.</em></p>
+      Placer la racine du tas dans le tableau
+      Entasser le dernier &#233;l&#233;ment du tas &#224; la place de la racine</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <em>O(N * log N)</em>. En effet, la boucle principale parcourt <em>N</em> tours (<em>N</em> &#233;tant la taille du tableau), et appelle &#224; chaque tour une fonction pour entasser qui a une complexit&#233; logarithmique.</p>
 <p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie <a href="/algo/tri/tri_rapide.html#complexit&#233;">complexit&#233;</a> dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>Voici le lien vers une impl&#233;mentation en C de l&#8217;algorithme du tri pas tas :</p>
-<p>main.c :</p>
+<p>Une impl&#233;mentation en C++ (afin d'avoir le type <code>priority_queue</code>) du tri par tas :</p>
+<a href="javascript:toggle_visibility('tri_tas.cpp');">tri_tas.cpp</a>
+<div id="tri_tas.cpp" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
+<span class="ot">#include &lt;queue&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="dt">const</span> <span class="dt">int</span> TAILLE_MAX = <span class="dv">1000</span>;
+
+<span class="dt">int</span> tableau[TAILLE_MAX];
+<span class="dt">int</span> taille;
+
+priority_queue &lt;<span class="dt">int</span>&gt; tas;
+
+<span class="dt">void</span> construireTasMax(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab;
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      tas.push(tableau[iTab]);
+}
+
+<span class="dt">void</span> triTas(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab;
+
+   construireTasMax();
+
+   <span class="kw">for</span>(iTab = taille - <span class="dv">1</span>; iTab != <span class="dv">0</span>; --iTab) {
+      tableau[iTab] = tas.top();
+      tas.pop();
+   }
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iTab;
+
+   scanf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;taille);
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> &quot;</span>, &amp;tableau[iTab]);
+
+   triTas();
+
+   <span class="kw">for</span>(iTab = <span class="dv">0</span>; iTab &lt; taille; ++iTab)
+      printf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> &quot;</span>, tableau[iTab]);
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>On utilise la <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a> de la STL afin d'avoir un tas max facilement dans notre impl&#233;mentation.</p>
+<p>Notre tableau d'entr&#233;e :</p>
+<pre class="nohighlight"><code>7
+1 9 3 7 6 1 4</code></pre>
+<p>La sortie du programme :</p>
+<pre class="nohighlight"><code>1 1 3 4 6 7 9</code></pre>
 <h2 id="am&#233;liorations-et-variantes">Am&#233;liorations et variantes</h2>
+<h3 id="optimisation-de-la-m&#233;moire">Optimisation de la m&#233;moire</h3>
+<p>On peut &#233;conomiser de la m&#233;moire en &#233;vitant de cr&#233;er un tas &#224; part enti&#232;re du tableau. En effet, on peut tout simplement r&#233;organiser notre tableau afin de le parcourir comme un tas max, et ensuite il suffit de recr&#233;er les fonctions du tas &#224; la main (<code>construireTasMax</code>, <code>entasser</code>, etc.) pour faire nos op&#233;rations dessus. Le tas aura une taille virtuelle qui occupe initialement toute la place du tableau, mais diminue progressivement au fur et &#224; mesure que les racines du tas sont fix&#233;es &#224; leurs places d&#233;finitives dans le tableau tri&#233;.</p>
+<pre class="nohighlight"><code>triTas :
+
+   Contruire le tas max dans le tableau
+
+   Pour chaque &#233;l&#233;ment du tableau (en partant de la fin)
+      Echanger l&#39;&#233;l&#233;ment actuel avec la racine
+      D&#233;cr&#233;menter la taille du tas
+      Entasser l&#39;&#233;l&#233;ment plac&#233; &#224; la racine</code></pre>
+<p>On parcourt le tableau &#224; l'envers afin d'&#233;changer la racine actuelle avec l'&#233;l&#233;ment occupant sa place d&#233;finitive.</p>
 <h3 id="m&#233;lange-dalgorithme">M&#233;lange d'algorithme</h3>
 <p>Comme pour le tri rapide, le tri par tas peut &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ments afin de le rendre plus efficace. Pour en savoir plus &#224; ce sujet, je vous invite &#224; lire la partie <a href="/algo/tri/tri_rapide.html#m&#233;lange-dalgorithme">m&#233;lange d'algorithme</a> de mon article sur le tri rapide.</p>
 <h3 id="smoothsort">Smoothsort</h3>
-<p>Le Smoothsort est une variante du tri par tas permettant d'am&#233;liorer la complexit&#233; en temps dans le meilleur des cas en <em>O(N)</em> (le cas o&#249; les nombres en entr&#233;e sont d&#233;j&#224; tri&#233;s par exemple). Le principe de ce tri se base non plus sur un seul tas, mais sur plusieurs ayant un comportement diff&#233;rent et s'appuyant sur la <a href="https://en.wikipedia.org/wiki/Leonardo_number">suite de L&#233;onard</a>.</p>
+<p>TODO : pourquoi suite de l&#233;onard ? image + pseudo-code + meilleures explications</p>
+<p>Le Smoothsort est une variante du tri par tas permettant d'am&#233;liorer la complexit&#233; en temps dans le meilleur des cas en <em>O(N)</em> (le cas o&#249; les nombres en entr&#233;e sont d&#233;j&#224; tri&#233;s ou quasi tri&#233;s par exemple). Le principe de ce tri se base non plus sur un seul tas, mais sur plusieurs ayant un comportement diff&#233;rent et s'appuyant sur la <a href="https://en.wikipedia.org/wiki/Leonardo_number">suite de L&#233;onard</a>.</p>
 <p>Cette suite se d&#233;finit comme ceci :</p>
 <p><em>L(0) = 1</em><br />
 <em>L(1) = 1</em><br />
