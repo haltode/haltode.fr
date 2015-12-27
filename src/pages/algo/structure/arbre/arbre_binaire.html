@@ -187,9 +187,59 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="arbre-binaire">Arbre binaire</h1></a>
-<p>Publi&#233; le :<br />
-<em>Modifi&#233; le :</em></p>
+<p>Publi&#233; le : 27/12/2015<br />
+<em>Modifi&#233; le : 27/12/2015</em></p>
 <ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-dun-arbre-binaire">Principe d'un arbre binaire</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<h2 id="principe-dun-arbre-binaire">Principe d'un arbre binaire</h2>
+<p>Un arbre binaire est un type d'<a href="/algo/structure/arbre.html">arbre</a> sp&#233;cifique avec comme contrainte de ne pas avoir plus de deux fils par n&#339;uds. On appelle alors les deux fils d'un n&#339;ud le <em>fils gauche</em> et le <em>fils droit</em>.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_arbre_binaire.png" alt="Exemple d&#39;arbre binaire" />
+<p class="caption">Exemple d'arbre binaire</p>
+</div>
+<p>Cette d&#233;finition est assez simple, mais cette structure de donn&#233;es est la base de nombreuses autres plus complexes, et on retrouve son utilisation dans plusieurs domaines tr&#232;s vari&#233;s.</p>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>Un arbre binaire reste un arbre, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on que ce dernier, mais vu les propri&#233;t&#233;s de cette structure de donn&#233;es, il est possible de l'impl&#233;menter de diff&#233;rentes fa&#231;ons.</p>
+<h3 id="recoder-&#224;-la-main">Recoder &#224; la main</h3>
+<p>Les possibilit&#233;s d'impl&#233;mentation d'un arbre ne s'applique pas forc&#233;ment bien pour un arbre binaire, en effet, on sait qu'il n'aura qu'au maximum deux fils, on peut donc simplement utiliser une structure auto r&#233;f&#233;rentielle :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> Noeud Noeud;
+<span class="kw">struct</span> Noeud 
+{
+   Noeud *gauche;
+   Noeud *droit;
+   <span class="dt">int</span> donnee;
+};
+
+<span class="kw">typedef</span> Noeud *ArbreBinaire;</code></pre></div>
+<p>Chaque &#233;l&#233;ment pointe alors vers ses deux fils, reliant ainsi les n&#339;uds entre eux pour former notre arbre binaire. Cette solution permet un stockage optimal en m&#233;moire, n'occupant rien de plus que n&#233;cessaire, mais peut &#234;tre un inconv&#233;nient lorsqu'on a besoin d'acc&#233;der rapidement &#224; des &#233;l&#233;ments (en effet, il faut parcourir l'arbre jusqu'&#224; cet &#233;l&#233;ment pour r&#233;cup&#233;rer ses donn&#233;es).</p>
+<h3 id="tableau">Tableau</h3>
+<p>Une autre impl&#233;mentation consiste &#224; utiliser un simple tableau, permettant un acc&#232;s rapide (en <em>O(1)</em>) &#224; n'importe quel &#233;l&#233;ment, mais peut parfois &#234;tre une perte de m&#233;moire.</p>
+<p>Pour stocker notre arbre binaire, il faut cependant respecter quelques r&#232;gles :</p>
+<ul>
+<li>La racine sera l'&#233;l&#233;ment 1 du tableau.</li>
+<li>Chaque n&#339;ud d'indice <em>N</em> a son fils gauche stock&#233; en indice <em>2 * N</em>, et son fils droit en indice <em>2 * N + 1</em>.</li>
+<li>Chaque n&#339;ud d'indice <em>N</em> (except&#233; pour la racine de l'arbre) a son p&#232;re dans le tableau en indice <em>N / 2</em>.</li>
+</ul>
+<p>La taille du tableau doit &#234;tre de <em>2^(H + 1)</em> avec <em>H</em> la hauteur de notre arbre binaire.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_imple_tab.png" alt="Exemple de repr&#233;sentation d&#39;un arbre binaire dans un tableau" />
+<p class="caption">Exemple de repr&#233;sentation d'un arbre binaire dans un tableau</p>
+</div>
+<p>Une impl&#233;mentation en C d'un arbre binaire stock&#233; dans un tableau :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div>
+<h2 id="conclusion">Conclusion</h2>
+<p>Application :</p>
+<ul>
+<li><p>Recherche + tri</p></li>
+<li><p>Tri par tas + smoothsort</p></li>
+<li>Arbre de recherche : arbre binaire min/max + arbre binaire de recherche, arbre rouge et noir</li>
+<li>Tas : tas binaire + file &#224; priorit&#233;</li>
+<li><p>Trie : trie binaire</p></li>
 </ul>
  
       <!-- ------------ -->

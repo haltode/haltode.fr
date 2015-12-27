@@ -1,6 +1,5 @@
 # Général
 
-- README complet
 - Flux rss
 - Page d'accueil
    - Originalité du site ? Qu'est-ce qui le démarque ?
@@ -33,7 +32,7 @@
 
 ### Tri par tas
 
-- Image smoothsort + exemple + pseudo-code ?
+- Smoothsort
 
 ### Tri par dénombrement
 
@@ -42,7 +41,7 @@
 
 ### Autre
 
-- Comparison-based Lower Bounds for Sorting : article
+- Comparison-based Lower Bounds for Sorting
 
 ## Recherche
 
