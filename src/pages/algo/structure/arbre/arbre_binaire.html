@@ -188,21 +188,34 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="arbre-binaire">Arbre binaire</h1></a>
 <p>Publi&#233; le : 27/12/2015<br />
-<em>Modifi&#233; le : 27/12/2015</em></p>
+<em>Modifi&#233; le : 28/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#principe-dun-arbre-binaire">Principe d'un arbre binaire</a></li>
+<li><a href="#d&#233;finition">D&#233;finition</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<h2 id="principe-dun-arbre-binaire">Principe d'un arbre binaire</h2>
-<p>Un arbre binaire est un type d'<a href="/algo/structure/arbre.html">arbre</a> sp&#233;cifique avec comme contrainte de ne pas avoir plus de deux fils par n&#339;uds. On appelle alors les deux fils d'un n&#339;ud le <em>fils gauche</em> et le <em>fils droit</em>.</p>
+<p>Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir notre tableau et comparer chaque &#233;l&#233;ment afin de trouver le maximum, cet algorithme a une complexit&#233; lin&#233;aire en <em>O(N)</em> avec <em>N</em> la taille du tableau. Mais maintenant, je d&#233;cide de changer quelques valeurs dans le tableau et je vous repose la question. On peut &#224; nouveau parcourir tout le tableau, et comparer nos <em>N</em> &#233;l&#233;ments pour chercher le maximum, mais peut-on faire mieux ? Comment trouver rapidement le maximum d'un tableau dynamique ?</p>
+<p>Une id&#233;e serait de diviser notre gros probl&#232;me en plus petits sous probl&#232;mes. Au lieu de se demander quel est le maximum de tout le tableau, on peut commencer par se demander quel est le maximum entre les deux premiers &#233;l&#233;ments du tableau, puis entre les deux suivants, etc. Une fois qu'on a tous ces maximum, on a divis&#233; le nombre d'&#233;l&#233;ments &#224; visiter par deux pour r&#233;pondre &#224; notre probl&#232;me initial puisque d&#233;sormais on peut simplement parcourir les maximums locaux pour trouver le maximum du tableau. Mais on peut continuer de diviser notre probl&#232;me, en trouvant les maximums des maximums, etc. jusqu'&#224; arriver &#224; la valeur maximale contenue dans le tableau.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png" alt="Repr&#233;sentation des sous probl&#232;mes" />
+<p class="caption">Repr&#233;sentation des sous probl&#232;mes</p>
+</div>
+<p>Les &#233;l&#233;ments en bleus repr&#233;sentent notre tableau initial, et l'&#233;l&#233;ment en vert est le maximum du tableau trouv&#233; gr&#226;ce &#224; notre m&#233;thode. Cette structure s'apparente &#224; un <a href="/algo/structure/arbre.html">arbre</a>, mais a la particularit&#233; de ne pas poss&#233;der plus de deux fils par n&#339;ud (car on compare les &#233;l&#233;ments deux &#224; deux &#224; chaque fois). Cette propri&#233;t&#233; nous permet de d&#233;montrer qu'il suffit dans le pire des cas <em>log N</em> changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-&#224;-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les p&#232;res des n&#339;uds affect&#233;s, et de simplement remonter petit &#224; petit &#224; la racine en recalculant uniquement les maximums locaux n&#233;cessaires. Or, la hauteur de cet arbre est dans le pire des cas de <em>log N</em>, notre algorithme a donc une complexit&#233; en <em>O(log N)</em> pour trouver le maximum d'un tableau dynamique.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/changement_valeur_intro.png" alt="Changement d&#39;une valeur dans notre tableau" />
+<p class="caption">Changement d'une valeur dans notre tableau</p>
+</div>
+<p>Pour changer une valeur dans notre tableau (ici le 1 devient un 11), on change aussi les n&#339;uds de l'arbre en remontant tant que le maximum local a chang&#233;.</p>
+<p>Cette structure de donn&#233;es porte un nom : un arbre binaire (et plus particuli&#232;rement un arbre binaire maximal dans notre cas), et elle est tr&#232;s utile dans le domaine de la recherche, mais nous verrons que son utilisation ne se limite pas &#224; cette cat&#233;gorie d'algorithme et qu'elle est pr&#233;sente dans de nombreux autres structures de donn&#233;es plus complexes.</p>
+<h2 id="d&#233;finition">D&#233;finition</h2>
+<p>Un arbre binaire (ou <em>binary tree</em> en anglais) est un type d'<a href="/algo/structure/arbre.html">arbre</a> sp&#233;cifique avec comme contrainte de ne pas avoir plus de deux fils par n&#339;uds. On appelle alors les deux fils d'un n&#339;ud le <em>fils gauche</em> et le <em>fils droit</em>.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_arbre_binaire.png" alt="Exemple d&#39;arbre binaire" />
 <p class="caption">Exemple d'arbre binaire</p>
 </div>
-<p>Cette d&#233;finition est assez simple, mais cette structure de donn&#233;es est la base de nombreuses autres plus complexes, et on retrouve son utilisation dans plusieurs domaines tr&#232;s vari&#233;s.</p>
+<p>Notre arbre binaire ici n'a aucune propri&#233;t&#233; sp&#233;cifique, mais sachez qu'il peut &#234;tre <strong>maximal</strong> (comme dans l'exemple de l'introduction), ou bien <strong>minimal</strong>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Un arbre binaire reste un arbre, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on que ce dernier, mais vu les propri&#233;t&#233;s de cette structure de donn&#233;es, il est possible de l'impl&#233;menter de diff&#233;rentes fa&#231;ons.</p>
 <h3 id="recoder-&#224;-la-main">Recoder &#224; la main</h3>
@@ -216,22 +229,23 @@ function toggle_visibility(id) {
 };
 
 <span class="kw">typedef</span> Noeud *ArbreBinaire;</code></pre></div>
-<p>Chaque &#233;l&#233;ment pointe alors vers ses deux fils, reliant ainsi les n&#339;uds entre eux pour former notre arbre binaire. Cette solution permet un stockage optimal en m&#233;moire, n'occupant rien de plus que n&#233;cessaire, mais peut &#234;tre un inconv&#233;nient lorsqu'on a besoin d'acc&#233;der rapidement &#224; des &#233;l&#233;ments (en effet, il faut parcourir l'arbre jusqu'&#224; cet &#233;l&#233;ment pour r&#233;cup&#233;rer ses donn&#233;es).</p>
+<p>Chaque &#233;l&#233;ment pointe alors vers ses deux fils, reliant ainsi les n&#339;uds entre eux pour former notre arbre binaire. Cette solution permet un stockage optimal en m&#233;moire, n'occupant rien de plus que n&#233;cessaire, mais peut &#234;tre un inconv&#233;nient lorsqu'on a besoin d'acc&#233;der rapidement &#224; des &#233;l&#233;ments (en effet, il faut parcourir l'arbre jusqu'&#224; un &#233;l&#233;ment particulier pour r&#233;cup&#233;rer ses donn&#233;es).</p>
 <h3 id="tableau">Tableau</h3>
-<p>Une autre impl&#233;mentation consiste &#224; utiliser un simple tableau, permettant un acc&#232;s rapide (en <em>O(1)</em>) &#224; n'importe quel &#233;l&#233;ment, mais peut parfois &#234;tre une perte de m&#233;moire.</p>
-<p>Pour stocker notre arbre binaire, il faut cependant respecter quelques r&#232;gles :</p>
+<p>Une autre impl&#233;mentation consiste &#224; utiliser un simple tableau, permettant un acc&#232;s rapide (en <em>O(1)</em>) &#224; n'importe quel &#233;l&#233;ment, mais pouvant parfois &#234;tre une perte de m&#233;moire.</p>
+<p>Pour stocker notre arbre binaire, on va prendre chaque &#233;l&#233;ment de l'arbre profondeur par profondeur (de gauche &#224; droite), et les placer dans le tableau dans cet ordre.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_imple_tableau.png" alt="Exemple de repr&#233;sentation d&#39;un arbre binaire dans un tableau" />
+<p class="caption">Exemple de repr&#233;sentation d'un arbre binaire dans un tableau</p>
+</div>
+<p>Ce tableau permet notamment un acc&#232;s rapide, et un parcours facile gr&#226;ce &#224; sa mani&#232;re de stocker les n&#339;uds qui nous renseigne sur qui est le p&#232;re/fils gauche/fils droit d'un n&#339;ud :</p>
 <ul>
 <li>La racine sera l'&#233;l&#233;ment 1 du tableau.</li>
 <li>Chaque n&#339;ud d'indice <em>N</em> a son fils gauche stock&#233; en indice <em>2 * N</em>, et son fils droit en indice <em>2 * N + 1</em>.</li>
-<li>Chaque n&#339;ud d'indice <em>N</em> (except&#233; pour la racine de l'arbre) a son p&#232;re dans le tableau en indice <em>N / 2</em>.</li>
+<li>Chaque n&#339;ud d'indice <em>N</em> (except&#233; pour la racine de l'arbre) a son p&#232;re dans le tableau en indice <em>N / 2</em> (la partie enti&#232;re).</li>
 </ul>
-<p>La taille du tableau doit &#234;tre de <em>2^(H + 1)</em> avec <em>H</em> la hauteur de notre arbre binaire.</p>
-<div class="figure">
-<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_imple_tab.png" alt="Exemple de repr&#233;sentation d&#39;un arbre binaire dans un tableau" />
-<p class="caption">Exemple de repr&#233;sentation d'un arbre binaire dans un tableau</p>
-</div>
-<p>Une impl&#233;mentation en C d'un arbre binaire stock&#233; dans un tableau :</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div>
+<p>Ce tableau suffit donc a stocker un arbre binaire :</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> arbreBinaire[NB_NOEUD_ARBRE + <span class="dv">1</span>];</code></pre></div>
+<p>On oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement &#234;tre l'&#233;l&#233;ment d'indice 1 du tableau pour satisfaire les propri&#233;t&#233;s des n&#339;uds (le fils gauche est stock&#233; en indice <em>2 * N</em> et le fils droit en <em>2 * N + 1</em>).</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Application :</p>
 <ul>
