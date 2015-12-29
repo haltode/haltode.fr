@@ -27,6 +27,9 @@
 - Code tri par tas
 
 ## Tri
+
+- Comparison-based Lower Bounds for Sorting
+
 ### Tri rapide
 
 - Code hackerrank (refaire le code + explications plus détaillées)
@@ -40,20 +43,18 @@
 - Améliorations/variantes ?
 - Utilisation possible du tri (ex : utiliser comme un "sous-tri" dans le tri par base)
 
-### Autre
-
-- Comparison-based Lower Bounds for Sorting
-
-## Recherche
-
-- Chaîne de caractères
-
-## Chiffrement
-### RSA
-
-- Rajouter attaques
-
-## IA
+# IA
 
 - Refaire article algo min max en se basant sur l'article du morpion
 - Amélioration algo min max : <http://www.ffothello.org/informatique/algorithmes/>
+
+# Liste de futurs possibles articles
+
+- Introduction à la complexité algorithmique (temps + mémoire)
+- Recherche : chaîne de caractères
+- Compression de données : codage de huffman
+- IA : apprentissage artificiel
+- Algorithmes quantiques
+- Cryptographie quantique
+- Optimisation
+- N = NP ?
