@@ -3,7 +3,7 @@ Arbre binaire
 algo/structure/arbre/
 
 Publié le : 27/12/2015  
-*Modifié le : 28/12/2015*
+*Modifié le : 29/12/2015*
 
 ## Introduction
 
@@ -13,7 +13,7 @@ Une idée serait de diviser notre gros problème en plus petits sous problèmes.
 
 ![Représentation des sous problèmes](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png)
 
-Les éléments en bleus représentent notre tableau initial, et l'élément en vert est le maximum du tableau trouvé grâce à notre méthode. Cette structure s'apparente à un [arbre](/algo/structure/arbre.html), mais a la particularité de ne pas posséder plus de deux fils par nœud (car on compare les éléments deux à deux à chaque fois). Cette propriété nous permet de démontrer qu'il suffit dans le pire des cas *log N* changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-à-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les pères des nœuds affectés, et de simplement remonter petit à petit à la racine en recalculant uniquement les maximums locaux nécessaires. Or, la hauteur de cet arbre est dans le pire des cas de *log N*, notre algorithme a donc une complexité en *O(log N)* pour trouver le maximum d'un tableau dynamique.
+Les éléments en bleus représentent notre tableau initial, et l'élément en vert est le maximum du tableau trouvé grâce à notre méthode. On commence en bas avec notre tableau, et on monte progressivement en prenant à chaque fois les maximums deux à deux. Cette structure s'apparente à un [arbre](/algo/structure/arbre.html), mais a la particularité de ne pas posséder plus de deux fils par nœud (car on compare les éléments deux à deux à chaque fois). Cette propriété nous permet de démontrer qu'il suffit dans le pire des cas *log N* changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-à-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les pères des nœuds affectés, et de simplement remonter petit à petit à la racine en recalculant uniquement les maximums locaux nécessaires. Or, la hauteur de cet arbre est dans le pire des cas de *log N*, notre algorithme a donc une complexité en *O(log N)* pour trouver le maximum d'un tableau dynamique.
 
 ![Changement d'une valeur dans notre tableau](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/changement_valeur_intro.png)
 
@@ -63,24 +63,46 @@ Ce tableau permet notamment un accès rapide, et un parcours facile grâce à sa
 
 - La racine sera l'élément 1 du tableau.
 - Chaque nœud d'indice *N* a son fils gauche stocké en indice *2 \* N*, et son fils droit en indice *2 \* N + 1*.
-- Chaque nœud d'indice *N* (excepté pour la racine de l'arbre) a son père dans le tableau en indice *N / 2* (la partie entière).
+- Chaque nœud d'indice *N* (excepté pour la racine de l'arbre) a son père dans le tableau en indice *N / 2* (on gardera juste la partie entière du résultat).
 
-Ce tableau suffit donc a stocker un arbre binaire :
+Ce tableau suffit donc à stocker un arbre binaire :
 
 ```c
 int arbreBinaire[NB_NOEUD_ARBRE + 1];
 ```
 
-On oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement être l'élément d'indice 1 du tableau pour satisfaire les propriétés des nœuds (le fils gauche est stocké en indice *2 \* N* et le fils droit en *2 \* N + 1*).
+On n'oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement être l'élément d'indice 1 du tableau pour satisfaire les propriétés de placement des nœuds.
+
+## Application
+
+Cela peut paraitre étrange de penser qu'un simple arbre avec une contrainte sur le nombre de nœuds de ses fils peut être extrêmement utile. Et pourtant, les arbres binaires sont présents dans énormément d'algorithmes et de structures de données, et en voici une courte liste :
+
+- **Recherche** :
+
+      - Comme vu dans l'introduction, un arbre binaire peut être maximal ou minimal, facilitant la recherche du maximum/minimum dans un tableau dynamique.
+      - Certains [arbres de recherche](/algo/structure/arbre/arbre_recherche.html) sont des arbres binaires, comme l'arbre rouge et noir ou encore l'arbre binaire de recherche.
+
+- **Structure de données** :
+
+      - Le [tas](/algo/structure/arbre/tas.html) est sans doute la structure de données basée sur un arbre binaire la plus utilisée. Le tas est très efficace pour chercher mais aussi trier des éléments, et cette structure a, comme l'arbre binaire, un champ d'application très large.
+      - Le [T-tree](https://en.wikipedia.org/wiki/T-tree) est un arbre binaire modifié permettant de grandes optimisations de mémoire.
+
+- **Tri** :
+
+      - Le [tri par tas](/algo/tri/tri_tas.html) basé donc sur un tas, est un algorithme de tri rapide avec une complexité en temps de *O(N \* log N)*. De plus, son amélioration le smoothsort fondée elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexité en temps linéaire.
+
+- **Compression** :
+
+      - Le [codage de Huffman](https://en.wikipedia.org/wiki/Huffman_coding) est un célèbre algorithme de compression des données sans perte, utilisant en partie des arbres binaires pour fonctionner.
+
+- **Syntaxe** :
+
+      - Les [arbres syntaxiques](https://en.wikipedia.org/wiki/Abstract_syntax_tree) sont eux aussi créés à partir d'arbre binaire, et sont le cœur du fonctionnement d'un compilateur ou tout autre parseur d'expression.
+
+- **Géométrie/Graphique** :
+
+      - La plupart des jeux 3D utilisent des [arbres binaires spécifiques](https://en.wikipedia.org/wiki/Binary_space_partitioning) afin de savoir quel objet a besoin d'être affiché ou non à l'écran.
 
 ## Conclusion
 
-Application :
-
-- Recherche + tri
-
-   - Tri par tas + smoothsort
-
-   - Arbre de recherche : arbre binaire min/max +  arbre binaire de recherche, arbre rouge et noir
-   - Tas : tas binaire + file à priorité
-   - Trie : trie binaire
+La liste des applications d'un arbre binaire peut continuer longtemps, car cette structure de données est fondamentale en algorithmique. Son principe est simple, et son implémentation aussi, mais ses applications peuvent être très complexes.

@@ -188,11 +188,12 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="arbre-binaire">Arbre binaire</h1></a>
 <p>Publi&#233; le : 27/12/2015<br />
-<em>Modifi&#233; le : 28/12/2015</em></p>
+<em>Modifi&#233; le : 29/12/2015</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#d&#233;finition">D&#233;finition</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#application">Application</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
@@ -202,7 +203,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png" alt="Repr&#233;sentation des sous probl&#232;mes" />
 <p class="caption">Repr&#233;sentation des sous probl&#232;mes</p>
 </div>
-<p>Les &#233;l&#233;ments en bleus repr&#233;sentent notre tableau initial, et l'&#233;l&#233;ment en vert est le maximum du tableau trouv&#233; gr&#226;ce &#224; notre m&#233;thode. Cette structure s'apparente &#224; un <a href="/algo/structure/arbre.html">arbre</a>, mais a la particularit&#233; de ne pas poss&#233;der plus de deux fils par n&#339;ud (car on compare les &#233;l&#233;ments deux &#224; deux &#224; chaque fois). Cette propri&#233;t&#233; nous permet de d&#233;montrer qu'il suffit dans le pire des cas <em>log N</em> changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-&#224;-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les p&#232;res des n&#339;uds affect&#233;s, et de simplement remonter petit &#224; petit &#224; la racine en recalculant uniquement les maximums locaux n&#233;cessaires. Or, la hauteur de cet arbre est dans le pire des cas de <em>log N</em>, notre algorithme a donc une complexit&#233; en <em>O(log N)</em> pour trouver le maximum d'un tableau dynamique.</p>
+<p>Les &#233;l&#233;ments en bleus repr&#233;sentent notre tableau initial, et l'&#233;l&#233;ment en vert est le maximum du tableau trouv&#233; gr&#226;ce &#224; notre m&#233;thode. On commence en bas avec notre tableau, et on monte progressivement en prenant &#224; chaque fois les maximums deux &#224; deux. Cette structure s'apparente &#224; un <a href="/algo/structure/arbre.html">arbre</a>, mais a la particularit&#233; de ne pas poss&#233;der plus de deux fils par n&#339;ud (car on compare les &#233;l&#233;ments deux &#224; deux &#224; chaque fois). Cette propri&#233;t&#233; nous permet de d&#233;montrer qu'il suffit dans le pire des cas <em>log N</em> changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-&#224;-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les p&#232;res des n&#339;uds affect&#233;s, et de simplement remonter petit &#224; petit &#224; la racine en recalculant uniquement les maximums locaux n&#233;cessaires. Or, la hauteur de cet arbre est dans le pire des cas de <em>log N</em>, notre algorithme a donc une complexit&#233; en <em>O(log N)</em> pour trouver le maximum d'un tableau dynamique.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/changement_valeur_intro.png" alt="Changement d&#39;une valeur dans notre tableau" />
 <p class="caption">Changement d'une valeur dans notre tableau</p>
@@ -241,20 +242,43 @@ function toggle_visibility(id) {
 <ul>
 <li>La racine sera l'&#233;l&#233;ment 1 du tableau.</li>
 <li>Chaque n&#339;ud d'indice <em>N</em> a son fils gauche stock&#233; en indice <em>2 * N</em>, et son fils droit en indice <em>2 * N + 1</em>.</li>
-<li>Chaque n&#339;ud d'indice <em>N</em> (except&#233; pour la racine de l'arbre) a son p&#232;re dans le tableau en indice <em>N / 2</em> (la partie enti&#232;re).</li>
+<li>Chaque n&#339;ud d'indice <em>N</em> (except&#233; pour la racine de l'arbre) a son p&#232;re dans le tableau en indice <em>N / 2</em> (on gardera juste la partie enti&#232;re du r&#233;sultat).</li>
 </ul>
-<p>Ce tableau suffit donc a stocker un arbre binaire :</p>
+<p>Ce tableau suffit donc &#224; stocker un arbre binaire :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> arbreBinaire[NB_NOEUD_ARBRE + <span class="dv">1</span>];</code></pre></div>
-<p>On oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement &#234;tre l'&#233;l&#233;ment d'indice 1 du tableau pour satisfaire les propri&#233;t&#233;s des n&#339;uds (le fils gauche est stock&#233; en indice <em>2 * N</em> et le fils droit en <em>2 * N + 1</em>).</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>Application :</p>
+<p>On n'oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement &#234;tre l'&#233;l&#233;ment d'indice 1 du tableau pour satisfaire les propri&#233;t&#233;s de placement des n&#339;uds.</p>
+<h2 id="application">Application</h2>
+<p>Cela peut paraitre &#233;trange de penser qu'un simple arbre avec une contrainte sur le nombre de n&#339;uds de ses fils peut &#234;tre extr&#234;mement utile. Et pourtant, les arbres binaires sont pr&#233;sents dans &#233;norm&#233;ment d'algorithmes et de structures de donn&#233;es, et en voici une courte liste :</p>
 <ul>
-<li><p>Recherche + tri</p></li>
-<li><p>Tri par tas + smoothsort</p></li>
-<li>Arbre de recherche : arbre binaire min/max + arbre binaire de recherche, arbre rouge et noir</li>
-<li>Tas : tas binaire + file &#224; priorit&#233;</li>
-<li><p>Trie : trie binaire</p></li>
+<li><p><strong>Recherche</strong> :</p>
+<ul>
+<li>Comme vu dans l'introduction, un arbre binaire peut &#234;tre maximal ou minimal, facilitant la recherche du maximum/minimum dans un tableau dynamique.</li>
+<li>Certains <a href="/algo/structure/arbre/arbre_recherche.html">arbres de recherche</a> sont des arbres binaires, comme l'arbre rouge et noir ou encore l'arbre binaire de recherche.</li>
+</ul></li>
+<li><p><strong>Structure de donn&#233;es</strong> :</p>
+<ul>
+<li>Le <a href="/algo/structure/arbre/tas.html">tas</a> est sans doute la structure de donn&#233;es bas&#233;e sur un arbre binaire la plus utilis&#233;e. Le tas est tr&#232;s efficace pour chercher mais aussi trier des &#233;l&#233;ments, et cette structure a, comme l'arbre binaire, un champ d'application tr&#232;s large.</li>
+<li>Le <a href="https://en.wikipedia.org/wiki/T-tree">T-tree</a> est un arbre binaire modifi&#233; permettant de grandes optimisations de m&#233;moire.</li>
+</ul></li>
+<li><p><strong>Tri</strong> :</p>
+<ul>
+<li>Le <a href="/algo/tri/tri_tas.html">tri par tas</a> bas&#233; donc sur un tas, est un algorithme de tri rapide avec une complexit&#233; en temps de <em>O(N * log N)</em>. De plus, son am&#233;lioration le smoothsort fond&#233;e elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexit&#233; en temps lin&#233;aire.</li>
+</ul></li>
+<li><p><strong>Compression</strong> :</p>
+<ul>
+<li>Le <a href="https://en.wikipedia.org/wiki/Huffman_coding">codage de Huffman</a> est un c&#233;l&#232;bre algorithme de compression des donn&#233;es sans perte, utilisant en partie des arbres binaires pour fonctionner.</li>
+</ul></li>
+<li><p><strong>Syntaxe</strong> :</p>
+<ul>
+<li>Les <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">arbres syntaxiques</a> sont eux aussi cr&#233;&#233;s &#224; partir d'arbre binaire, et sont le c&#339;ur du fonctionnement d'un compilateur ou tout autre parseur d'expression.</li>
+</ul></li>
+<li><p><strong>G&#233;om&#233;trie/Graphique</strong> :</p>
+<ul>
+<li>La plupart des jeux 3D utilisent des <a href="https://en.wikipedia.org/wiki/Binary_space_partitioning">arbres binaires sp&#233;cifiques</a> afin de savoir quel objet a besoin d'&#234;tre affich&#233; ou non &#224; l'&#233;cran.</li>
+</ul></li>
 </ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>La liste des applications d'un arbre binaire peut continuer longtemps, car cette structure de donn&#233;es est fondamentale en algorithmique. Son principe est simple, et son impl&#233;mentation aussi, mais ses applications peuvent &#234;tre tr&#232;s complexes.</p>
  
       <!-- ------------ -->
 
