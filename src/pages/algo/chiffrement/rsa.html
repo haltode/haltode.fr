@@ -188,9 +188,145 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="rsa">RSA</h1></a>
 <p>Publi&#233; le : 31/05/2014<br />
-<em>Modifi&#233; le :</em></p>
+<em>Modifi&#233; le : 30/12/2015</em></p>
 <ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#cassage">Cassage</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>Tous les algorithmes de chiffrement <strong>sym&#233;triques</strong> ont un probl&#232;me commun : la transmission de cl&#233;. Quelque soit l'algorithme utilis&#233;, si la cl&#233; est intercept&#233;e par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce probl&#232;me est fondamental car transmettre une cl&#233; de chiffrement est tr&#232;s d&#233;licat, il &#233;tait donc n&#233;cessaire de trouver une autre solution face &#224; ce probl&#232;me : les chiffrements <strong>asym&#233;triques</strong>.</p>
+<p>TODO : approfondir intro (survoler les caract&#233;ristiques, s&#233;curit&#233;, application, etc.).</p>
+<h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
+<p>L'id&#233;e d'un algorithme de chiffrement asym&#233;trique est d'attribuer &#224; chaque personne un <strong>couple de cl&#233;s</strong> :</p>
+<ul>
+<li>Une cl&#233; <strong>publique</strong> qu'on peut diffuser, transmettre et montrer &#224; absolument tout le monde sans que cela pose un probl&#232;me de s&#233;curit&#233;. On imagine souvent un grand annuaire contenant pour chaque personne sa cl&#233; publique correspondante pour simplifier les communications.</li>
+<li>Une cl&#233; <strong>priv&#233;e</strong> qu'il ne faut en aucun cas &#233;voquer, cette cl&#233; doit rester secr&#232;te et vous ne devez la communiquer &#224; personne.</li>
+</ul>
+<p>Une fois que chaque personne a ses deux cl&#233;s, on peut proc&#233;der au chiffrement et au d&#233;chiffrement de message. Imaginons qu'Alice et Bob souhaitent communiquer entre eux, et Alice veut envoyer un premier message &#224; Bob. Pour cela, Alice va chercher la cl&#233; publique de Bob (que n'importe qui peut acc&#233;der gr&#226;ce &#224; l'annuaire), et elle va chiffrer son message avec cette cl&#233;. Ensuite le message chiffr&#233; est transmis &#224; Bob, et il va le d&#233;chiffrer gr&#226;ce &#224; sa cl&#233; priv&#233;e (qu'il n'a communiqu&#233; &#224; personne). Aucun &#233;change de cl&#233; n'est n&#233;cessaire, et seule la cl&#233; priv&#233;e de Bob peut d&#233;chiffrer le message.</p>
+<p>L'algorithme RSA est &#224; l'origine de ce syst&#232;me de cl&#233;, et propose une approche math&#233;matique afin de produire lesdits couples de cl&#233;s :</p>
+<p>TODO : v&#233;rifier les noms utilis&#233;s + pourquoi &#231;a marche ? (fonction a un seul sens) TODO : lien wiki modulo ?</p>
+<ul>
+<li>Choisir deux <a href="https://en.wikipedia.org/wiki/Prime_number">nombres premiers</a> distincts <em>p</em> et <em>q</em>.</li>
+<li>Calculer le produit <em>p * q</em> appel&#233; <strong>module de chiffrement</strong> et abr&#233;g&#233; <em>n</em>.</li>
+<li>Calculer l'<a href="https://en.wikipedia.org/wiki/Euler&#39;s_totient_function">indicatrice d'Euler</a> de <em>n</em>, qu'on notera <em>m = (p - 1) * (q - 1)</em>.</li>
+<li>Choisir un <strong>exposant de chiffrement</strong> not&#233; <em>e</em>, qui soit premier avec <em>m</em> et strictement inf&#233;rieur &#224; ce dernier.</li>
+<li>Calculer l'<strong>exposant de d&#233;chiffrement</strong> not&#233; <em>d</em>, qui est l'<a href="https://en.wikipedia.org/wiki/Modular_multiplicative_inverse">inverse modulaire</a> de <em>e mod m</em>.</li>
+</ul>
+<p>La cl&#233; publique correspond au couple (<em>n</em>, <em>e</em>) et la cl&#233; priv&#233;e au couple (<em>n</em>, <em>d</em>).</p>
+<p>Pour chiffre notre message, on utilisera alors cette relation :</p>
+<p><em>Lettre chiffr&#233;e = lettre du message ^ e mod n</em></p>
+<p>Et pour le d&#233;chiffrement :</p>
+<p><em>Lettre d&#233;chiffr&#233;e = lettre chiffr&#233;e ^ d mod n</em></p>
+<h2 id="exemple">Exemple</h2>
+<p>Choisissons comme message &quot;Bienvenue&quot;, et chiffrons-le avec l'algorithme RSA :</p>
+<h3 id="g&#233;n&#233;ration-des-cl&#233;s">G&#233;n&#233;ration des cl&#233;s</h3>
+<p>La premi&#232;re &#233;tape est de g&#233;n&#233;rer nos cl&#233;s publiques et priv&#233;s car je n'en poss&#232;de pas encore. On applique donc notre algorithme de cr&#233;ation de cl&#233;s. Soit <em>p</em> et <em>q</em> deux nombres premiers que je choisis al&#233;atoirement :</p>
+<p><em>p = 61</em> et <em>q = 137</em></p>
+<p>A partir de cela, on peut calculer notre module de chiffrement :</p>
+<p><em>n = p * q</em><br />
+<em>n = 8357</em></p>
+<p>L'indicatrice d'Euler de n est calcul&#233; ensuite :</p>
+<p><em>m = (p - 1) * (q - 1)</em><br />
+<em>m = 8160</em></p>
+<p>Ensuite, il faut choisir notre exposant de chiffrement <em>e</em> qui doit &#234;tre premier avec <em>m</em> et strictement inf&#233;rieur &#224; ce dernier, je choisis donc 7 :</p>
+<p><em>e = 7</em></p>
+<p>D&#233;sormais nous devons trouver notre exposant de d&#233;chiffrement. Cette partie est un peu plus compliqu&#233;e, car elle n&#233;cessite quelques notions de maths.</p>
+<p>On cherche donc <em>d</em> qui est l'inverse modulaire de <em>e mod m</em>, on a :</p>
+<p><em>d &#8801; e-&#185; (mod m)</em></p>
+<p>Ce qui est &#233;quivalent &#224; :</p>
+<p><em>de &#8801; 1 (mod m)</em></p>
+<p>Et par d&#233;finition de la <a href="">congruence</a>, on a :</p>
+<p><em>de - qm = 1</em></p>
+<p>On connait <em>e</em> et <em>m</em>, et on cherche <em>d</em>, <em>q</em> ici n'est qu'un nombre entier inutile &#224; l'algorithme RSA. Cette expression est de la forme de l'<a href="">identit&#233; de B&#233;zout</a> <em>ax + by = pgcd(a, b)</em> avec <em>a = e</em>, <em>b = m</em>, <em>x = d</em>, <em>y = -q</em>, or <em>e</em> et <em>m</em> sont premiers entre eux donc <em>pgcd(a, b) = 1</em>. Or on peut trouver les coefficients <em>x</em> et <em>y</em> (et donc <em>d</em> qui nous int&#233;resse) gr&#226;ce &#224; l'<a href="">algorithme d'Euclide &#233;tendu</a>. Une impl&#233;mentation de cet algorithme pour ceux que &#231;a int&#233;resse :</p>
+<a href="javascript:toggle_visibility('algo_euclide_etendu.c');">algo_euclide_etendu.c</a>
+<div id="algo_euclide_etendu.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">void</span> euclideEtendu(<span class="dt">int</span> a, <span class="dt">int</span> b)
+{
+   <span class="dt">int</span> r0, r1;
+   <span class="dt">int</span> s0, s1;
+   <span class="dt">int</span> t0, t1;
+   <span class="dt">int</span> i;
+   <span class="dt">int</span> q, r, s, t;
+
+   r0 = a;
+   s0 = <span class="dv">1</span>;
+   t0 = <span class="dv">0</span>;
+
+   r1 = b;
+   s1 = <span class="dv">0</span>;
+   t1 = <span class="dv">1</span>;
+
+   r = <span class="dv">42</span>;
+   <span class="kw">for</span>(i = <span class="dv">2</span>; r != <span class="dv">0</span>; ++i) {
+      q = r0 / r1;
+      r = r0 - q * r1;
+      s = s0 - q * s1;
+      t = t0 - q * t1;
+
+      r0 = r1;
+      r1 = r;
+      s0 = s1;
+      s1 = s;
+      t0 = t1;
+      t1 = t;
+   }
+
+   printf(<span class="st">&quot;x = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, s0);
+   printf(<span class="st">&quot;y = %d</span><span class="ch">\n</span><span class="st">&quot;</span>, t0);
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> a, b;
+   scanf(<span class="st">&quot;%d %d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;a, &amp;b);
+
+   euclideEtendu(a, b);   
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>L'entr&#233;e :</p>
+<pre class="nohighlight"><code>7
+8160</code></pre>
+<p>La sortie :</p>
+<pre class="nohighlight"><code>x = -3497
+y = 3</code></pre>
+<p>TODO : possibilit&#233; d'utiliser un algo bourrin qui teste toutes les valeurs de d entre 1 et m (d&#233;montrer qu'il existe forc&#233;ment un d compris entre 1 et m) + comparer les complexit&#233;s de l'algo bourrin et de l'algo d'euclide &#233;tendu.</p>
+<p>On trouve donc gr&#226;ce au dernier programme :</p>
+<p><em>d = -3497</em></p>
+<p>On a d&#233;sormais trouv&#233; <em>d</em> v&#233;rifiant l'&#233;quation <em>de &#8801; 1 (mod m)</em>. Cependant, on pr&#233;f&#232;rera travailler avec des nombres positifs, et notre nombre v&#233;rifie la propri&#233;t&#233; suivante :</p>
+<p><em>de &#8801; 1 (mod m)</em> avec <em>d = -3497 + km</em> et <em>k</em> un nombre entier relatif.</p>
+<p>Je rends donc <em>d</em> positif en appliquant notre formule pour <em>k = 1</em> :</p>
+<p><em>d = -3497 + m</em> <em>d = 4663</em></p>
+<p>Notre couple de cl&#233; publique/priv&#233;e est d&#233;sormais g&#233;n&#233;r&#233; :</p>
+<ul>
+<li>Cl&#233; publique de la forme (<em>n</em>, <em>e</em>) : (8357, 7)</li>
+<li>Cl&#233; priv&#233;e de la forme (<em>n</em>, <em>d</em>) : (8357, 4663)</li>
+</ul>
+<h3 id="chiffrementd&#233;chiffrement">Chiffrement/D&#233;chiffrement</h3>
+<p>On peut maintenant chiffrer et d&#233;chiffrer notre message avec nos cl&#233;s en appliquant les relations :</p>
+<p><em>Lettre chiffr&#233;e = lettre du message ^ e mod n</em><br />
+<em>Lettre d&#233;chiffr&#233;e = lettre chiffr&#233;e ^ d mod n</em></p>
+<p>Les lettres seront repr&#233;sent&#233;es par des nombres gr&#226;ce &#224; la <a href="">table ASCII</a> permettant de r&#233;soudre les relations math&#233;matiques.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_chiffrement.png" alt="Exemple de chiffrement" />
+<p class="caption">Exemple de chiffrement</p>
+</div>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_dechiffrement.png" alt="Exemple de d&#233;chiffrement" />
+<p class="caption">Exemple de d&#233;chiffrement</p>
+</div>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<h2 id="cassage">Cassage</h2>
+<h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
 
