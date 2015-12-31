@@ -32,7 +32,7 @@ Je suis un paragraphe
 Blablabla
 ```
 
-Chaque page est ensuite convertie via un script que j'ai écrit en [sh](https://en.wikipedia.org/wiki/Bourne_shell) qui permet alors de créer une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -> HTML), le footer, et sera déplacée à la fin du script dans sa catégorie correspondante.
+Chaque page est ensuite convertie via un script que j'ai écrit en [sh](https://en.wikipedia.org/wiki/Bourne_shell) qui permet alors de créer une page HTML correspondante. Cette page HTML contient finalement le header, l'article converti (Markdown -> HTML, grâce à [pandoc](http://pandoc.org/)), le footer, et sera déplacée à la fin du script dans sa catégorie correspondante.
 
 Pour les articles contenant du code, je place ceci dans ma page Markdown (sans les espaces autour de `INSERT`) :
 

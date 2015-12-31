@@ -11,7 +11,7 @@ Les premiers algorithmes de chiffrement ne datent pas de Jules César, mais ce d
 
 ## Principe de l’algorithme
 
-Le chiffre de César (aussi appelé *chiffrement par décalage*) utilise une [substitution mono-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher) pour chiffrer et déchiffrer un message, c’est-à-dire que l’on décale de *x* rangs vers la droite dans l’alphabet la lettre du message lors du chiffrement, et de *x* rangs vers la gauche lors du déchiffrement. On appelle *x* la **clé de chiffrement**, et cette dernière doit être la même pour le chiffrement et le déchiffrement car le chiffre de César est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm).
+Le chiffre de César (aussi appelé *chiffrement par décalage*) utilise une [substitution mono-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher) pour chiffrer et déchiffrer un message, c’est-à-dire que l’on décale de $x$ rangs vers la droite dans l’alphabet la lettre du message lors du chiffrement, et de $x$ rangs vers la gauche lors du déchiffrement. On appelle $x$ la **clé de chiffrement**, et cette dernière doit être la même pour le chiffrement et le déchiffrement car le chiffre de César est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm).
 
 ## Exemple
 
@@ -52,7 +52,7 @@ Une implémentation en C du chiffre de César :
 [INSERT]
 chiffre_cesar.c
 
-Pour décaler notre lettre, on récupère déjà son rang dans l'alphabet pour simplifier les calculs (d'où le `- typo` et le `+ typo`), puis on ajoute (pour le chiffrement) ou on enlève (pour le déchiffrement) la valeur de la clé, et ensuite on applique un [modulo](https://en.wikipedia.org/wiki/Modulo_operation) 26 pour ne pas dépasser le Z et revenir au début dans ce cas. Cependant, en C, le modulo négatif est particulier, par exemple *-3 mod 2 = -1*, il faut donc rajouter 26 au cas où le résultat est négatif (pour le rendre positif), et ensuite on applique de nouveau notre modulo 26.
+Pour décaler notre lettre, on récupère déjà son rang dans l'alphabet pour simplifier les calculs (d'où le `- typo` et le `+ typo`), puis on ajoute (pour le chiffrement) ou on enlève (pour le déchiffrement) la valeur de la clé, et ensuite on applique un [modulo](https://en.wikipedia.org/wiki/Modulo_operation) 26 pour ne pas dépasser le Z et revenir au début dans ce cas. Cependant, en C, le modulo négatif est particulier, par exemple $-3 \mod 2 = -1$, il faut donc rajouter 26 au cas où le résultat est négatif (pour le rendre positif), et ensuite on applique de nouveau notre modulo 26.
 
 En entrée de notre programme :
 
@@ -72,7 +72,7 @@ Cet algorithme de chiffrement possède cependant des failles, et il est tout à 
 
 L'attaque par force brute (*brute force attack* en anglais) consiste simplement à tester toutes les possibilités de clé de chiffrement une par une, jusqu'à trouver la bonne.
 
-Le problème avec le chiffre de César est qu'il n'existe en réalité que 26 uniques possibilités de clé de chiffrement. En effet, si l'on utilise une clé supérieure à 26 cela revient à utiliser une clé de *x mod 26*, par exemple si je chiffre le mot "Linux" avec une clé de chiffrement de 28 j'obtiens exactement le même résultat qu'avec ma clé de 2 car *28 mod 26 = 2*. Il est de même pour les clés négatives, si j'utilise une clé de -1 cela revient à utiliser une clé de 25.
+Le problème avec le chiffre de César est qu'il n'existe en réalité que 26 uniques possibilités de clé de chiffrement. En effet, si l'on utilise une clé supérieure à 26 cela revient à utiliser une clé de $x mod 26$, par exemple si je chiffre le mot "Linux" avec une clé de chiffrement de 28 j'obtiens exactement le même résultat qu'avec ma clé de 2 car $28 \mod 26 = 2$. Il est de même pour les clés négatives, si j'utilise une clé de -1 cela revient à utiliser une clé de 25.
 
 Notre attaque nécessite donc l'analyse d'uniquement 26 clés de chiffrement, ce qui n'est rien pour un ordinateur qui peut faire des milliards d'opérations à la seconde :
 
@@ -107,7 +107,7 @@ Cette méthode est assez bourrin, car tester toutes les combinaisons possibles e
 
 L'analyse fréquentielle (*frequency analysis* en anglais) examine la fréquence d'apparition des lettres employées dans le message chiffré afin d'en deviner la clé pour le déchiffrer ensuite.
 
-Cette attaque est possible sur le chiffre de César car c'est un système de chiffrement à **substitution mono-alphabétique** ce qui signifie que si l’on chiffre plusieurs fois la lettre A avec une même clé de chiffrement *x*, alors la lettre chiffrée sera toujours la même. Ce type de système s’oppose donc à la **substitution poly-alphabétique** utilisée par le [chiffre de Vigenère](/algo/chiffrement/chiffre_vigenere.html) par exemple. De plus, l'analyse fréquentielle repose sur le fait que chaque langue possède des lettres plus utilisées que d'autres (en français par exemple la lettre E est plus utilisée que la lettre D, la lettre H l'est moins que la lettre O, etc.).
+Cette attaque est possible sur le chiffre de César car c'est un système de chiffrement à **substitution mono-alphabétique** ce qui signifie que si l’on chiffre plusieurs fois la lettre A avec une même clé de chiffrement $x$, alors la lettre chiffrée sera toujours la même. Ce type de système s’oppose donc à la **substitution poly-alphabétique** utilisée par le [chiffre de Vigenère](/algo/chiffrement/chiffre_vigenere.html) par exemple. De plus, l'analyse fréquentielle repose sur le fait que chaque langue possède des lettres plus utilisées que d'autres (en français par exemple la lettre E est plus utilisée que la lettre D, la lettre H l'est moins que la lettre O, etc.).
 
 On peut donc analyser la fréquence d'apparition de chaque lettre dans notre message chiffré, et en déduire la lettre correspondante dans le message clair en établissant un lien avec les lettres les plus utilisées en français (on suppose ici que notre message a été écrit en français avant d'être chiffré).
 
