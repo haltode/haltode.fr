@@ -7,7 +7,7 @@ Publié le : 29/04/2014
 
 ## Introduction
 
-Le tri à bulles (*bubble sort* en anglais) est un algorithme de tri par comparaison très simple à comprendre et à implémenter, cependant c’est l’un des algorithmes de tri les plus inefficaces. En effet, il a une complexité en temps quadratique : *O(N²)*. Cet algorithme est très peu utilisé à cause de sa complexité trop lente, mais c’est un bon exemple pour commencer à travailler sur des algorithmes de tri. Il faut noter que le tri à bulles est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) et [sur place](https://en.wikipedia.org/wiki/In-place_algorithm).
+Le tri à bulles (*bubble sort* en anglais) est un algorithme de tri par comparaison très simple à comprendre et à implémenter, cependant c’est l’un des algorithmes de tri les plus inefficaces. En effet, il a une complexité en temps quadratique : $O(N^2)$. Cet algorithme est très peu utilisé à cause de sa complexité trop lente, mais c’est un bon exemple pour commencer à travailler sur des algorithmes de tri. Il faut noter que le tri à bulles est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) et [sur place](https://en.wikipedia.org/wiki/In-place_algorithm).
 
 ## Principe de l’algorithme
 
@@ -43,7 +43,7 @@ Si l’on prend 8, 7, 1, 4, 6 comme suite de nombres, et que l’on utilise l’
 
 1, 4, 6, 7, 8  
 
-Notre algorithme va en réalité effectuer *N* tours de boucle (avec *N* étant la taille du tableau), sauf qu'ici au bout de deux tours notre tableau est déjà trié, l'algorithme va donc continuer de parcourir mais en ne changeant rien puisque chaque paire de nombre est bien placée.
+Notre algorithme va en réalité effectuer $N$ tours de boucle (avec $N$ étant la taille du tableau), sauf qu'ici au bout de deux tours notre tableau est déjà trié, l'algorithme va donc continuer de parcourir mais en ne changeant rien puisque chaque paire de nombre est bien placée.
 
 Pour résumer l'idée de l'algorithme :
 
@@ -65,12 +65,12 @@ triBulles :
 
 ## Complexité
 
-Comme dit dans l’introduction, la complexité en temps de l’algorithme du tri à bulles est de *O(N²)*, et on peut le démontrer simplement par le fait qu’il y a deux boucles imbriquées dans le pseudo-code :
+Comme dit dans l’introduction, la complexité en temps de l’algorithme du tri à bulles est de $O(N^2)$, et on peut le démontrer simplement par le fait qu’il y a deux boucles imbriquées dans le pseudo-code :
 
-- La première boucle parcourt *N* tours.
-- La deuxième boucle parcourt *N* tours aussi.
+- La première boucle parcourt $N$ tours.
+- La deuxième boucle parcourt $N$ tours aussi.
 
-On se retrouve donc avec *N \* N* tours, soit une complexité finale en *O(N²)*.
+On se retrouve donc avec $N^2$ tours, soit une complexité finale en $O(N^2)$.
 
 ## Implémentation
 
@@ -107,7 +107,7 @@ Faire
 Tant que tableauPasTrié est vrai
 ```
 
-La complexité reste en *O(N²)*, puisque les quelques tours de boucle que l'on a gagnés dans certains cas ne vont pas être assez conséquents pour influer sur la complexité en temps de l'algorithme.
+La complexité reste en $O(N^2)$, puisque les quelques tours de boucle que l'on a gagnés dans certains cas ne vont pas être assez conséquents pour influer sur la complexité en temps de l'algorithme.
 
 ### Tri à bulles bidirectionnel
 
@@ -156,11 +156,11 @@ Faire
 Tant que tableauPasTrié est vrai
 ```
 
-Cette variante peut être encore optimisée, en retenant l’endroit où le dernier échange s’est effectué pour ne pas aller plus loin (car c’est inutile), cependant cet algorithme a toujours pour complexité *O(N²)*.
+Cette variante peut être encore optimisée, en retenant l’endroit où le dernier échange s’est effectué pour ne pas aller plus loin (car c’est inutile), cependant cet algorithme a toujours pour complexité $O(N^2)$.
 
 ### Tri à peigne
 
-Une autre variante du tri à bulles appelée le tri à peigne (*comb sort* en anglais), permet à l’algorithme du tri à bulles d’être bien plus efficace et ainsi rivaliser avec des algorithmes plus performants comme le [tri rapide](/algo/tri/tri_rapide.html), le [tri fusion](/algo/tri/tri_fusion.html), ou encore le [tri par tas](/algo/tri/tri_tas.html). Cet algorithme va comparer des éléments du tableau à un certain intervalle au lieu de comparer les éléments voisins. En effet, cette technique permet d’éliminer le problème du petit élément situé à la fin du tableau qui remonte lentement jusqu’à sa place initiale, et souvent rend les comparaisons entre éléments plus judicieuses. Un intervalle optimal est initialisé avec une valeur de *N / 1.3* (cette valeur est reconnue comme étant une des plus optimales pour ce tri), et à chaque tour on divise de nouveau par 1.3 l'intervalle tant qu'il est supérieur à 1.
+Une autre variante du tri à bulles appelée le tri à peigne (*comb sort* en anglais), permet à l’algorithme du tri à bulles d’être bien plus efficace et ainsi rivaliser avec des algorithmes plus performants comme le [tri rapide](/algo/tri/tri_rapide.html), le [tri fusion](/algo/tri/tri_fusion.html), ou encore le [tri par tas](/algo/tri/tri_tas.html). Cet algorithme va comparer des éléments du tableau à un certain intervalle au lieu de comparer les éléments voisins. En effet, cette technique permet d’éliminer le problème du petit élément situé à la fin du tableau qui remonte lentement jusqu’à sa place initiale, et souvent rend les comparaisons entre éléments plus judicieuses. Un intervalle optimal est initialisé avec une valeur de $N / 1.3$ (cette valeur est reconnue comme étant une des plus optimales pour ce tri), et à chaque tour on divise de nouveau par 1.3 l'intervalle tant qu'il est supérieur à 1.
 
 ```nohighlight
 Faire
@@ -178,8 +178,8 @@ Faire
 Tant que tableauPasTrié est vrai OU intervalle est supérieur à 1
 ```
 
-La complexité moyenne de ce tri est *O(N \* log N)*, mais peut-être dans le pire des cas en *O(N²)* bien qu’en pratique c’est peu probable.
+La complexité moyenne de ce tri est $O(N \log _2 N)$, mais peut-être dans le pire des cas en $O(N^2)$ bien qu’en pratique c’est peu probable.
 
 ## Conclusion
 
-Le tri à bulles est certes un algorithme de tri assez lent (complexité en *O(N²)*), mais reste une idée facile à comprendre et à implémenter. De plus, quelques améliorations le rendent plus rapide jusqu'à même avoir une complexité en *O(N log N)*. Cependant en pratique, ce tri est très peu employé à cause de ses utilisations trop précises et qui sont uniquement sur des données spécifiques, que vous ne rencontrerez sans doute jamais.
+Le tri à bulles est certes un algorithme de tri assez lent (complexité en $O(N^2)$), mais reste une idée facile à comprendre et à implémenter. De plus, quelques améliorations le rendent plus rapide jusqu'à même avoir une complexité en $O(N \log _2 N)$. Cependant en pratique, ce tri est très peu employé à cause de ses utilisations trop précises et qui sont uniquement sur des données spécifiques, que vous ne rencontrerez sans doute jamais.

@@ -7,14 +7,14 @@ Publié le : 10/05/2014
 
 ## Introduction
 
-Le tri fusion (*merge sort* en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité *O(N \* log N)*, il se base sur le principe du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms). Cet algorithme est [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais ne s’exécute pas [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
+Le tri fusion (*merge sort* en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité $O(N \log _2 N)$, il se base sur le principe du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms). Cet algorithme est [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais ne s’exécute pas [en place](https://en.wikipedia.org/wiki/In-place_algorithm).
 
 ## Principe de l’algorithme
 
 L'algorithme se compose de deux parties distinctes :
 
 - **Diviser** : on divise récursivement le tableau, c'est-à-dire qu'on va couper le tableau en deux sous tableaux et recommencer cette opération sur ces derniers jusqu'à ce que chaque sous tableau ne contienne plus qu'un seul élément.
-- **Fusionner** : une fois notre tableau divisé en *N* sous tableaux (*N* étant le nombre d'éléments), on fusionne deux à deux les tableaux en réorganisant les éléments dans l'ordre du tri (croissant ou décroissant).
+- **Fusionner** : une fois notre tableau divisé en $N$ sous tableaux ($N$ étant le nombre d'éléments), on fusionne deux à deux les tableaux en réorganisant les éléments dans l'ordre du tri (croissant ou décroissant).
 
 L'intérêt de diviser pour ensuite fusionner est que créer un tableau trié à partir de deux sous tableaux peut s'effectuer en temps linéaire. C'est ce point en particulier qui fait la rapidité du tri fusion.
 
@@ -86,7 +86,7 @@ Pour démontrer la complexité du tri fusion, visualisons la découpe du tableau
 
 ![Calcul de la complexité](//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png)
 
-Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une même profondeur formeront toujours un unique tableau contenant *N* éléments (*N* étant la taille du tableau de départ), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C'est très important car on appelle notre fonction `fusionner` à chaque nœud, or cette fonction s'exécute en temps linéaire de *O(N)* avec *N* la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu'à chaque profondeur on aura appelé notre fonction `fusionner` sur *N* éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède *log N* profondeurs (pour en savoir plus sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)), ce qui nous donne finalement une complexité en *O(N \* log N)*.
+Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une même profondeur formeront toujours un unique tableau contenant $N$ éléments ($N$ étant la taille du tableau de départ), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C'est très important car on appelle notre fonction `fusionner` à chaque nœud, or cette fonction s'exécute en temps linéaire de $O(N)$ avec $N$ la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu'à chaque profondeur on aura appelé notre fonction `fusionner` sur $N$ éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède $\log _2 N$ profondeurs (pour en savoir plus sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)), ce qui nous donne finalement une complexité en $O(N \log _2 N)$.
 
 ## Implémentation
 
@@ -117,4 +117,4 @@ La complexité en temps reste la même, mais la complexité en mémoire est amé
 
 ## Conclusion
 
-Le tri fusion est donc un algorithme de tri efficace, qui a pour complexité *O(N \* log N)*. Cependant, cet algorithme est finalement peu utilisé en pratique à cause du [tri rapide](/algo/tri/tri_rapide.html) qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilité d'améliorations, etc.).
+Le tri fusion est donc un algorithme de tri efficace, qui a pour complexité $O(N \log _2 N)$. Cependant, cet algorithme est finalement peu utilisé en pratique à cause du [tri rapide](/algo/tri/tri_rapide.html) qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilité d'améliorations, etc.).

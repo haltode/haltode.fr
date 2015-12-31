@@ -63,13 +63,13 @@ estVide :
 
 ## Complexité
 
-Soit *N* le nombre d'éléments de la file.
+Soit $N$ le nombre d'éléments de la file.
 
-- `créerFile` : *O(1)*
-- `supprimerFile` : *O(N)*
-- `enfiler` : *O(1)*
-- `défiler` : *O(1)*
-- `estVide` : *O(1)*
+- `créerFile` : $O(1)$
+- `supprimerFile` : $O(N)$
+- `enfiler` : $O(1)$
+- `défiler` : $O(1)$
+- `estVide` : $O(1)$
 
 ## Implémentation
 

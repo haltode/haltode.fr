@@ -5,8 +5,17 @@
       <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
 
+      <!-- Syntax highlighting -->
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
 
       <!-- CSS -->
 <style>
@@ -268,17 +277,17 @@ estVide :
    Sinon
       Retourner faux</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>Soit <em>N</em> le nombre d'&#233;l&#233;ments de la liste cha&#238;n&#233;e.</p>
+<p>Soit <span class="math inline">\(N\)</span> le nombre d'&#233;l&#233;ments de la liste cha&#238;n&#233;e.</p>
 <ul>
-<li><code>cr&#233;erListe</code> : <em>O(1)</em></li>
-<li><code>supprimerListe</code> : <em>O(N)</em></li>
-<li><code>ajoutT&#234;te</code> : <em>O(1)</em></li>
-<li><code>ajoutFin</code> : <em>O(N)</em></li>
-<li><code>ajoutEl&#233;ment</code> : <em>O(N)</em></li>
-<li><code>supprimerT&#234;te</code> : <em>O(1)</em></li>
-<li><code>supprimerFin</code> : <em>O(N)</em></li>
-<li><code>supprimerEl&#233;ment</code> : <em>O(N)</em></li>
-<li><code>estVide</code> : <em>O(1)</em></li>
+<li><code>cr&#233;erListe</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>supprimerListe</code> : <span class="math inline">\(O(N)\)</span></li>
+<li><code>ajoutT&#234;te</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>ajoutFin</code> : <span class="math inline">\(O(N)\)</span></li>
+<li><code>ajoutEl&#233;ment</code> : <span class="math inline">\(O(N)\)</span></li>
+<li><code>supprimerT&#234;te</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>supprimerFin</code> : <span class="math inline">\(O(N)\)</span></li>
+<li><code>supprimerEl&#233;ment</code> : <span class="math inline">\(O(N)\)</span></li>
+<li><code>estVide</code> : <span class="math inline">\(O(1)\)</span></li>
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C des fonctions pr&#233;sent&#233;es au-dessus :</p>

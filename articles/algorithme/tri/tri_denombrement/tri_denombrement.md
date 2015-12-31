@@ -63,9 +63,9 @@ triDénombrement :
 
 ## Complexité
 
-La complexité en temps de cet algorithme se calcule assez facilement. En effet, les seules opérations que l'on effectue dans notre fonction se font en temps linéaire. L'initialisation du tableau des effectifs se fait en *O(N)* (avec *N* la taille du tableau en entrée), et la copie des éléments dans notre tableau trié en *O(M)* (avec *M* correspondant à `Max`).
+La complexité en temps de cet algorithme se calcule assez facilement. En effet, les seules opérations que l'on effectue dans notre fonction se font en temps linéaire. L'initialisation du tableau des effectifs se fait en $O(N)$ (avec $N$ la taille du tableau en entrée), et la copie des éléments dans notre tableau trié en $O(M)$ (avec $M$ correspondant à `Max`).
 
-La complexité finale de notre algorithme est donc *O(N + M)*, soit une complexité en temps linéaire.
+La complexité finale de notre algorithme est donc $O(N + M)$, soit une complexité en temps linéaire.
 
 ## Implémentation
 

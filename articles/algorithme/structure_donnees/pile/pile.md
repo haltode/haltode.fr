@@ -88,13 +88,13 @@ estVide :
 
 ## Complexité
 
-Soit *N* le nombre d'éléments de la pile.
+Soit $N$ le nombre d'éléments de la pile.
 
-- `créerPile` : *O(1)*
-- `supprimerPile` : *O(N)*
-- `empiler` : *O(1)*
-- `dépiler` : *O(1)*
-- `estVide` : *O(1)*
+- `créerPile` : $O(1)$
+- `supprimerPile` : $O(N)$
+- `empiler` : $O(1)$
+- `dépiler` : $O(1)$
+- `estVide` : $O(1)$
 
 ## Implémentation
 

@@ -7,7 +7,7 @@ Publié le : 30/04/2014
 
 ## Introduction
 
-Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entrée trop importante, c’est un algorithme non [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais qui trie [en place](https://en.wikipedia.org/wiki/In-place_algorithm). Il a pour complexité algorithmique *O(N²)* comme le [tri à bulles](/algo/tri/tri_bulles.html).
+Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entrée trop importante, c’est un algorithme non [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais qui trie [en place](https://en.wikipedia.org/wiki/In-place_algorithm). Il a pour complexité algorithmique $O(N^2)$ comme le [tri à bulles](/algo/tri/tri_bulles.html).
 
 ## Principe de l’algorithme
 
@@ -44,7 +44,7 @@ Ce tri se décompose réellement en deux étapes distinctes :
 
 ![Exemple de tri par sélection](//static.napnac.ga/img/algo/tri/tri_selection/exemple_tri.png)
 
-A chaque tour, on cherche le minimum dans l'espace non trié du tableau (le minimum est représenté en bleu, et la partie non triée en blanc), ensuite on déplace cet élément à sa place définitive (représentée en vert). En faisant cela pour chaque élément du tableau, ce dernier se retrouve trié au bout de *N* tours maximum (*N* étant la taille du tableau).
+A chaque tour, on cherche le minimum dans l'espace non trié du tableau (le minimum est représenté en bleu, et la partie non triée en blanc), ensuite on déplace cet élément à sa place définitive (représentée en vert). En faisant cela pour chaque élément du tableau, ce dernier se retrouve trié au bout de $N$ tours maximum ($N$ étant la taille du tableau).
 
 ## Pseudo-code
 
@@ -61,12 +61,12 @@ triSelection :
 
 ## Complexité
 
-Comme pour le tri à bulles, le tri par sélection a une complexité en *O(N²)* :
+Comme pour le tri à bulles, le tri par sélection a une complexité en $O(N^2)$ :
 
-- La première boucle parcourt *N* tours.
-- La deuxième boucle parcourt *N – i* tours (*i* variant de 0 à *N*).
+- La première boucle parcourt $N$ tours.
+- La deuxième boucle parcourt $N – i$ tours ($i$ variant de 0 à $N$).
 
-Sa complexité est donc légèrement inférieure à *N²*, cependant cette différence est mineure et sa complexité est considérée comme étant en *O(N²)*.
+Sa complexité est donc légèrement inférieure à $N^2$, cependant cette différence est mineure et sa complexité est considérée comme étant en $O(N^2)$.
 
 ## Implémentation
 
@@ -102,7 +102,7 @@ Pour chaque élément restant
 
 ### Le cas des doublons
 
-Dans le cas où notre tableau contient de nombreux doublons, l'algorithme de tri par sélection va effectuer plusieurs recherches de plus petits éléments sur le même élément qui n'est rien d'autre qu'un doublon. Le *bingo sort* permet de palier ce problème, en proposant de placer tous les éléments ayant la même valeur en même temps, sans faire de nouvelles recherches à chaque tour. Encore une fois, notre algorithme sera plus rapide en général mais pas assez pour que la complexité change, elle restera donc en *O(N²)*.
+Dans le cas où notre tableau contient de nombreux doublons, l'algorithme de tri par sélection va effectuer plusieurs recherches de plus petits éléments sur le même élément qui n'est rien d'autre qu'un doublon. Le *bingo sort* permet de palier ce problème, en proposant de placer tous les éléments ayant la même valeur en même temps, sans faire de nouvelles recherches à chaque tour. Encore une fois, notre algorithme sera plus rapide en général mais pas assez pour que la complexité change, elle restera donc en $O(N^2)$.
 
 ```nohighlight
 Pour chaque élément
@@ -116,8 +116,8 @@ Pour chaque élément
 
 ### Tri par tas
 
-On peut voir le [tri par tas](/algo/tri/tri_tas.html) comme une amélioration directe du tri par sélection. En effet, si l'on utilise un [tas](/algo/structure/arbre/tas.html) pour permettre de trouver les plus petits éléments rapidement, on obtient une complexité en *O(N \* log N)* et un tri qu'on appelle tri par tas.
+On peut voir le [tri par tas](/algo/tri/tri_tas.html) comme une amélioration directe du tri par sélection. En effet, si l'on utilise un [tas](/algo/structure/arbre/tas.html) pour permettre de trouver les plus petits éléments rapidement, on obtient une complexité en $O(N \log _2 N)$ et un tri qu'on appelle tri par tas.
 
 ## Conclusion
 
-Le tri par sélection est donc un algorithme assez simple, mais peu efficace à cause de sa complexité en *O(N²)*. Cependant des améliorations et des variantes permettent de le rendre plus rapide, et le tri par sélection sert de base au tri par tas, un autre algorithme de tri bien plus efficace avec une complexité en *O(N log N)*. Même avec une complexité quadratique, ce tri reste en pratique utilisé sur de petites entrées, mais aussi lorsqu'on a besoin d'un nombre d'échanges faible au sein du tableau (contrairement au [tri par insertion](/algo/tri/tri_insertion.html) qui peut être plus rapide, mais réalise plus d'échanges).
+Le tri par sélection est donc un algorithme assez simple, mais peu efficace à cause de sa complexité en $O(N^2)$. Cependant des améliorations et des variantes permettent de le rendre plus rapide, et le tri par sélection sert de base au tri par tas, un autre algorithme de tri bien plus efficace avec une complexité en $O(N \log _2 N)$. Même avec une complexité quadratique, ce tri reste en pratique utilisé sur de petites entrées, mais aussi lorsqu'on a besoin d'un nombre d'échanges faible au sein du tableau (contrairement au [tri par insertion](/algo/tri/tri_insertion.html) qui peut être plus rapide, mais réalise plus d'échanges).

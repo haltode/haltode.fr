@@ -80,17 +80,17 @@ estVide :
 
 ## Complexité
 
-Soit *N* le nombre d'éléments de la liste chaînée.
+Soit $N$ le nombre d'éléments de la liste chaînée.
 
-- `créerListe` : *O(1)*
-- `supprimerListe` : *O(N)*
-- `ajoutTête` : *O(1)*
-- `ajoutFin` : *O(N)*
-- `ajoutElément` : *O(N)*
-- `supprimerTête` : *O(1)*
-- `supprimerFin` : *O(N)*
-- `supprimerElément` : *O(N)*
-- `estVide` : *O(1)*
+- `créerListe` : $O(1)$
+- `supprimerListe` : $O(N)$
+- `ajoutTête` : $O(1)$
+- `ajoutFin` : $O(N)$
+- `ajoutElément` : $O(N)$
+- `supprimerTête` : $O(1)$
+- `supprimerFin` : $O(N)$
+- `supprimerElément` : $O(N)$
+- `estVide` : $O(1)$
 
 ## Implémentation
 

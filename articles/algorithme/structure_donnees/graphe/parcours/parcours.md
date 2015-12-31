@@ -53,7 +53,7 @@ Si par exemple on cherche un nœud de sortie dans notre graphe, on pourrait rajo
 
 ### Complexité
 
-Dans le pire des cas, si notre sortie est le dernier nœud que l'on visite, notre algorithme va devoir parcourir les *M* arcs du graphe, on a donc une complexité en temps linéaire de *O(M)*.
+Dans le pire des cas, si notre sortie est le dernier nœud que l'on visite, notre algorithme va devoir parcourir les $M$ arcs du graphe, on a donc une complexité en temps linéaire de $O(M)$.
 
 ### Implémentation
 
@@ -143,7 +143,7 @@ De même, chaque nœud représente l'ordre de parcours dans le graphe, et on ret
 
 ### Pseudo-code
 
-Pour implémenter ce système de parcours par niveau, on va utiliser une [file](/algo/structure/file.html). En effet, quand on est sur une couche *N*, on veut que les voisins qu'on va parcourir lors de la couche *N + 1* soient tous situés après les nœuds de la couche *N* que l'on visite actuellement, on veut donc qu'ils arrivent à la fin et ce principe respecte l'ordre du premier entré, premier sorti qu'on appelle aussi une file.
+Pour implémenter ce système de parcours par niveau, on va utiliser une [file](/algo/structure/file.html). En effet, quand on est sur une couche $N$, on veut que les voisins qu'on va parcourir lors de la couche $N + 1$ soient tous situés après les nœuds de la couche $N$ que l'on visite actuellement, on veut donc qu'ils arrivent à la fin et ce principe respecte l'ordre du premier entré, premier sorti qu'on appelle aussi une file.
 
 ```nohighlight
 BFS (depart) :
@@ -161,7 +161,7 @@ BFS (depart) :
 
 ### Complexité
 
-Comme pour le parcours en profondeur, si notre sortie est le dernier nœud que l'on visite on aura une complexité en *O(M)* avec *M* le nombre d'arcs du graphe.
+Comme pour le parcours en profondeur, si notre sortie est le dernier nœud que l'on visite on aura une complexité en $O(M)$ avec $M$ le nombre d'arcs du graphe.
 
 ### Implémentation
 

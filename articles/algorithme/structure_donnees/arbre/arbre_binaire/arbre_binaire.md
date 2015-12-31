@@ -7,13 +7,13 @@ Publié le : 27/12/2015
 
 ## Introduction
 
-Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir notre tableau et comparer chaque élément afin de trouver le maximum, cet algorithme a une complexité linéaire en *O(N)* avec *N* la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos *N* éléments pour chercher le maximum, mais peut-on faire mieux ? Comment trouver rapidement le maximum d'un tableau dynamique ?
+Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir notre tableau et comparer chaque élément afin de trouver le maximum, cet algorithme a une complexité linéaire en $O(N)$ avec $N$ la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos $N$ éléments pour chercher le maximum, mais peut-on faire mieux ? Comment trouver rapidement le maximum d'un tableau dynamique ?
 
 Une idée serait de diviser notre gros problème en plus petits sous problèmes. Au lieu de se demander quel est le maximum de tout le tableau, on peut commencer par se demander quel est le maximum entre les deux premiers éléments du tableau, puis entre les deux suivants, etc. Une fois qu'on a tous ces maximum, on a divisé le nombre d'éléments à visiter par deux pour répondre à notre problème initial puisque désormais on peut simplement parcourir les maximums locaux pour trouver le maximum du tableau. Mais on peut continuer de diviser notre problème, en trouvant les maximums des maximums, etc. jusqu'à arriver à la valeur maximale contenue dans le tableau.
 
 ![Représentation des sous problèmes](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png)
 
-Les éléments en bleus représentent notre tableau initial, et l'élément en vert est le maximum du tableau trouvé grâce à notre méthode. On commence en bas avec notre tableau, et on monte progressivement en prenant à chaque fois les maximums deux à deux. Cette structure s'apparente à un [arbre](/algo/structure/arbre.html), mais a la particularité de ne pas posséder plus de deux fils par nœud (car on compare les éléments deux à deux à chaque fois). Cette propriété nous permet de démontrer qu'il suffit dans le pire des cas *log N* changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-à-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les pères des nœuds affectés, et de simplement remonter petit à petit à la racine en recalculant uniquement les maximums locaux nécessaires. Or, la hauteur de cet arbre est dans le pire des cas de *log N*, notre algorithme a donc une complexité en *O(log N)* pour trouver le maximum d'un tableau dynamique.
+Les éléments en bleus représentent notre tableau initial, et l'élément en vert est le maximum du tableau trouvé grâce à notre méthode. On commence en bas avec notre tableau, et on monte progressivement en prenant à chaque fois les maximums deux à deux. Cette structure s'apparente à un [arbre](/algo/structure/arbre.html), mais a la particularité de ne pas posséder plus de deux fils par nœud (car on compare les éléments deux à deux à chaque fois). Cette propriété nous permet de démontrer qu'il suffit dans le pire des cas $log _2 N$ changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-à-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les pères des nœuds affectés, et de simplement remonter petit à petit à la racine en recalculant uniquement les maximums locaux nécessaires. Or, la hauteur de cet arbre est dans le pire des cas de $log _2 N$, notre algorithme a donc une complexité en $O(\log _2 N)$ pour trouver le maximum d'un tableau dynamique.
 
 ![Changement d'une valeur dans notre tableau](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/changement_valeur_intro.png)
 
@@ -53,7 +53,7 @@ Chaque élément pointe alors vers ses deux fils, reliant ainsi les nœuds entre
 
 ### Tableau
 
-Une autre implémentation consiste à utiliser un simple tableau, permettant un accès rapide (en *O(1)*) à n'importe quel élément, mais pouvant parfois être une perte de mémoire.
+Une autre implémentation consiste à utiliser un simple tableau, permettant un accès rapide (en $O(1)$) à n'importe quel élément, mais pouvant parfois être une perte de mémoire.
 
 Pour stocker notre arbre binaire, on va prendre chaque élément de l'arbre profondeur par profondeur (de gauche à droite), et les placer dans le tableau dans cet ordre. 
 
@@ -62,8 +62,8 @@ Pour stocker notre arbre binaire, on va prendre chaque élément de l'arbre prof
 Ce tableau permet notamment un accès rapide, et un parcours facile grâce à sa manière de stocker les nœuds qui nous renseigne sur qui est le père/fils gauche/fils droit d'un nœud :
 
 - La racine sera l'élément 1 du tableau.
-- Chaque nœud d'indice *N* a son fils gauche stocké en indice *2 \* N*, et son fils droit en indice *2 \* N + 1*.
-- Chaque nœud d'indice *N* (excepté pour la racine de l'arbre) a son père dans le tableau en indice *N / 2* (on gardera juste la partie entière du résultat).
+- Chaque nœud d'indice $N$ a son fils gauche stocké en indice $2N$, et son fils droit en indice $2N + 1$.
+- Chaque nœud d'indice $N$ (excepté pour la racine de l'arbre) a son père dans le tableau en indice $N / 2$ (on gardera juste la partie entière du résultat).
 
 Ce tableau suffit donc à stocker un arbre binaire :
 
@@ -89,7 +89,7 @@ Cela peut paraitre étrange de penser qu'un simple arbre avec une contrainte sur
 
 - **Tri** :
 
-      - Le [tri par tas](/algo/tri/tri_tas.html) basé donc sur un tas, est un algorithme de tri rapide avec une complexité en temps de *O(N \* log N)*. De plus, son amélioration le smoothsort fondée elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexité en temps linéaire.
+      - Le [tri par tas](/algo/tri/tri_tas.html) basé donc sur un tas, est un algorithme de tri rapide avec une complexité en temps de $O(N \log _2 N)$. De plus, son amélioration le smoothsort fondée elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexité en temps linéaire.
 
 - **Compression** :
 

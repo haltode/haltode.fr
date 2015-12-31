@@ -5,8 +5,17 @@
       <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
 
+      <!-- Syntax highlighting -->
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
 
       <!-- CSS -->
 <style>
@@ -294,8 +303,8 @@ function toggle_visibility(id) {
    Pour chaque &#233;l&#233;ment de E
       Recopier E[i] fois le nombre i dans le tableau tri&#233;</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>La complexit&#233; en temps de cet algorithme se calcule assez facilement. En effet, les seules op&#233;rations que l'on effectue dans notre fonction se font en temps lin&#233;aire. L'initialisation du tableau des effectifs se fait en <em>O(N)</em> (avec <em>N</em> la taille du tableau en entr&#233;e), et la copie des &#233;l&#233;ments dans notre tableau tri&#233; en <em>O(M)</em> (avec <em>M</em> correspondant &#224; <code>Max</code>).</p>
-<p>La complexit&#233; finale de notre algorithme est donc <em>O(N + M)</em>, soit une complexit&#233; en temps lin&#233;aire.</p>
+<p>La complexit&#233; en temps de cet algorithme se calcule assez facilement. En effet, les seules op&#233;rations que l'on effectue dans notre fonction se font en temps lin&#233;aire. L'initialisation du tableau des effectifs se fait en <span class="math inline">\(O(N)\)</span> (avec <span class="math inline">\(N\)</span> la taille du tableau en entr&#233;e), et la copie des &#233;l&#233;ments dans notre tableau tri&#233; en <span class="math inline">\(O(M)\)</span> (avec <span class="math inline">\(M\)</span> correspondant &#224; <code>Max</code>).</p>
+<p>La complexit&#233; finale de notre algorithme est donc <span class="math inline">\(O(N + M)\)</span>, soit une complexit&#233; en temps lin&#233;aire.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L'impl&#233;mentation en C du tri par d&#233;nombrement :</p>
 <a href="javascript:toggle_visibility('tri_denombrement.c');">tri_denombrement.c</a>

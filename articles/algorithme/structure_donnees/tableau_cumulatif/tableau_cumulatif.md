@@ -7,7 +7,7 @@ Publié le : 21/11/2015
 
 ## Introduction
 
-Je vous donne un tableau possédant des trilliards d'éléments, et je vous pose des milliards de questions de la forme : Quelle est la somme des éléments compris entre l'indice *i* et *j* du tableau (avec *i < j*) ? La première idée d'algorithme naïf que l'on peut avoir, est de parcourir pour chaque question les éléments situés entre les indices donnés, et d'augmenter une variable `somme` au fur et à mesure du parcours.
+Je vous donne un tableau possédant des trilliards d'éléments, et je vous pose des milliards de questions de la forme : Quelle est la somme des éléments compris entre l'indice $i$ et $j$ du tableau (avec $i < j$) ? La première idée d'algorithme naïf que l'on peut avoir, est de parcourir pour chaque question les éléments situés entre les indices donnés, et d'augmenter une variable `somme` au fur et à mesure du parcours.
 
 Cependant notre solution est bien trop longue pour le cas extrême donné en entrée, à cause des nombreux parcours que l'on réalise. Il nous faut donc une solution plus efficace, et une structure adaptée nous permettant de faire moins de parcours inutiles et ainsi raccourcir notre temps d'exécution : le tableau cumulatif.
 
@@ -21,7 +21,7 @@ On peut très simplement expliquer son principe grâce à la géométrie et aux 
 
 ![Explication géométrique du tableau cumulatif](//static.napnac.ga/img/algo/structure/tableau_cumulatif/explication_geo.png)
 
-La partie verte dans le premier rectangle représente la question posée, et on voit qu'on peut retrouver exactement la même partie en utilisant deux sous parties du rectangle commençant toutes les deux au même endroit. L'avantage de pouvoir décomposer n'importe quelle sous partie du rectangle en deux autres ayant un début commun, est qu'on réduit alors le nombre de possibilités de sous parties. En effet, avec un début et une fin variable le nombre d'intervalles possibles est d'environ *N²* (avec *N* la taille du rectangle), alors qu'avec un début d'intervalle fixe et uniquement une fin variable on arrive à *N* possibilités de sous parties.
+La partie verte dans le premier rectangle représente la question posée, et on voit qu'on peut retrouver exactement la même partie en utilisant deux sous parties du rectangle commençant toutes les deux au même endroit. L'avantage de pouvoir décomposer n'importe quelle sous partie du rectangle en deux autres ayant un début commun, est qu'on réduit alors le nombre de possibilités de sous parties. En effet, avec un début et une fin variable le nombre d'intervalles possibles est d'environ $N^2$ (avec $N$ la taille du rectangle), alors qu'avec un début d'intervalle fixe et uniquement une fin variable on arrive à $N$ possibilités de sous parties.
 
 Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un début fixe et une fin variable, afin de pouvoir connaitre rapidement n'importe quelle sous partie de notre tableau d'éléments.
 
@@ -46,12 +46,12 @@ A partir de la suite de nombres, on va créer un tableau cumulatif qui contiendr
 
 *2ème étape* : répondre aux questions grâce au tableau cumulatif
 
-On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l'on va utiliser pour répondre à des questions du type quelle est la somme des éléments du tableau original entre deux indices *i* et *j* donnés. Il faut juste faire attention à une chose, c'est d'utiliser comme indice de début d'intervalle *i - 1* et non *i* car sinon notre premier élément ne sera pas inclus.
+On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l'on va utiliser pour répondre à des questions du type quelle est la somme des éléments du tableau original entre deux indices $i$ et $j$ donnés. Il faut juste faire attention à une chose, c'est d'utiliser comme indice de début d'intervalle $i - 1$ et non $i$ car sinon notre premier élément ne sera pas inclus.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Début (*i*)     Fin (*j*)       Tableau                             Tableau cumulatif                            Réponse
+ Début ($i$)     Fin ($j$)       Tableau                             Tableau cumulatif                            Réponse
 -------------- --------------    ----------------------------------- -------------------------------------------  ------------------------------------------------------------------
-      3              6           26, 42, **1**, **89**, **3**, **7** 26, **68**, 69, 158, 161, **168**            On soustrait l'élément *j* (6ème) et l'élément *i - 1* (2ème) soit 
+      3              6           26, 42, **1**, **89**, **3**, **7** 26, **68**, 69, 158, 161, **168**            On soustrait l'élément $j$ (6ème) et l'élément $i - 1$ (2ème) soit 
                                                                                                                   168 - 68 = 100 (or 1 + 89 + 3 + 7 = 100) 
 
       1              4           **26**, **42**, **1**, **89**, 3, 7 26, 68, 69, **158**, 161, 168                Ici l'indice 0 correspond à un résultat de 0, on a donc 158 - 0 =
@@ -66,7 +66,7 @@ On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l'on va ut
 
 ## Complexité
 
-Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de taille *N*, et *M* questions du type : Quelle est la somme des éléments de *i* à *j* dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en *O(N \* M)* (lorsqu'on parcourt à chaque fois le tableau en entier, soit quand *i* = 0 et *j* = *N* pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en *O(N + M)* car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d'accéder au tableau cumulatif (donc opération en *O(1)*).
+Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de taille $N$, et $M$ questions du type : Quelle est la somme des éléments de $i$ à $j$ dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en $O(N \cdot M)$ (lorsqu'on parcourt à chaque fois le tableau en entier, soit quand $i = 0$ et $j = N$ pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en $O(N + M)$ car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d'accéder au tableau cumulatif (donc opération en $O(1)$).
 
 ## Implémentation
 
@@ -131,13 +131,13 @@ Le tableau cumulatif 2D ressemble à cela pour l'entrée :
 18 35 55 83
 ```
 
-Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en *O(N²)* pour l'initialisation et *O(M)* pour la réponse, contre une complexité pour la réponse de *O(N² \* M)* pour l'algorithme naïf.
+Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en $O(N^2)$ pour l'initialisation et $O(M)$ pour la réponse, contre une complexité pour la réponse de $O(N^2 \cdot M)$ pour l'algorithme naïf.
 
 
 ### Tableau cumulatif à N dimensions ?
 
-Nous avons vu qu'il était possible de créer un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur *N* dimensions ? Techniquement, cela est possible, mais la représentation de *N* dimensions risque d'être très complexe et il sera alors difficile de visualiser le comportement de notre tableau cumulatif (initialisation et accès pour répondre aux questions). De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-delà de 3 dimensions, vu que nous ne percevons pas la 4ème.
+Nous avons vu qu'il était possible de créer un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur $N$ dimensions ? Techniquement, cela est possible, mais la représentation de $N$ dimensions risque d'être très complexe et il sera alors difficile de visualiser le comportement de notre tableau cumulatif (initialisation et accès pour répondre aux questions). De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-delà de 3 dimensions, vu que nous ne percevons pas la 4ème.
 
 ## Conclusion
 
-Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour d'autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (voir même *N*) dimensions.
+Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour d'autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (voir même $N$) dimensions.

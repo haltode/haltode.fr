@@ -5,8 +5,17 @@
       <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
 
+      <!-- Syntax highlighting -->
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
 
       <!-- CSS -->
 <style>
@@ -268,13 +277,13 @@ estVide :
    Sinon 
       Retourner faux</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>Soit <em>N</em> le nombre d'&#233;l&#233;ments de la pile.</p>
+<p>Soit <span class="math inline">\(N\)</span> le nombre d'&#233;l&#233;ments de la pile.</p>
 <ul>
-<li><code>cr&#233;erPile</code> : <em>O(1)</em></li>
-<li><code>supprimerPile</code> : <em>O(N)</em></li>
-<li><code>empiler</code> : <em>O(1)</em></li>
-<li><code>d&#233;piler</code> : <em>O(1)</em></li>
-<li><code>estVide</code> : <em>O(1)</em></li>
+<li><code>cr&#233;erPile</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>supprimerPile</code> : <span class="math inline">\(O(N)\)</span></li>
+<li><code>empiler</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>d&#233;piler</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>estVide</code> : <span class="math inline">\(O(1)\)</span></li>
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <h3 id="liste-cha&#238;n&#233;e">Liste cha&#238;n&#233;e</h3>

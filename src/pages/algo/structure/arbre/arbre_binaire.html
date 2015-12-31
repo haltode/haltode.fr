@@ -5,8 +5,17 @@
       <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
 
+      <!-- Syntax highlighting -->
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
 
       <!-- CSS -->
 <style>
@@ -197,13 +206,13 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir notre tableau et comparer chaque &#233;l&#233;ment afin de trouver le maximum, cet algorithme a une complexit&#233; lin&#233;aire en <em>O(N)</em> avec <em>N</em> la taille du tableau. Mais maintenant, je d&#233;cide de changer quelques valeurs dans le tableau et je vous repose la question. On peut &#224; nouveau parcourir tout le tableau, et comparer nos <em>N</em> &#233;l&#233;ments pour chercher le maximum, mais peut-on faire mieux ? Comment trouver rapidement le maximum d'un tableau dynamique ?</p>
+<p>Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir notre tableau et comparer chaque &#233;l&#233;ment afin de trouver le maximum, cet algorithme a une complexit&#233; lin&#233;aire en <span class="math inline">\(O(N)\)</span> avec <span class="math inline">\(N\)</span> la taille du tableau. Mais maintenant, je d&#233;cide de changer quelques valeurs dans le tableau et je vous repose la question. On peut &#224; nouveau parcourir tout le tableau, et comparer nos <span class="math inline">\(N\)</span> &#233;l&#233;ments pour chercher le maximum, mais peut-on faire mieux ? Comment trouver rapidement le maximum d'un tableau dynamique ?</p>
 <p>Une id&#233;e serait de diviser notre gros probl&#232;me en plus petits sous probl&#232;mes. Au lieu de se demander quel est le maximum de tout le tableau, on peut commencer par se demander quel est le maximum entre les deux premiers &#233;l&#233;ments du tableau, puis entre les deux suivants, etc. Une fois qu'on a tous ces maximum, on a divis&#233; le nombre d'&#233;l&#233;ments &#224; visiter par deux pour r&#233;pondre &#224; notre probl&#232;me initial puisque d&#233;sormais on peut simplement parcourir les maximums locaux pour trouver le maximum du tableau. Mais on peut continuer de diviser notre probl&#232;me, en trouvant les maximums des maximums, etc. jusqu'&#224; arriver &#224; la valeur maximale contenue dans le tableau.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png" alt="Repr&#233;sentation des sous probl&#232;mes" />
 <p class="caption">Repr&#233;sentation des sous probl&#232;mes</p>
 </div>
-<p>Les &#233;l&#233;ments en bleus repr&#233;sentent notre tableau initial, et l'&#233;l&#233;ment en vert est le maximum du tableau trouv&#233; gr&#226;ce &#224; notre m&#233;thode. On commence en bas avec notre tableau, et on monte progressivement en prenant &#224; chaque fois les maximums deux &#224; deux. Cette structure s'apparente &#224; un <a href="/algo/structure/arbre.html">arbre</a>, mais a la particularit&#233; de ne pas poss&#233;der plus de deux fils par n&#339;ud (car on compare les &#233;l&#233;ments deux &#224; deux &#224; chaque fois). Cette propri&#233;t&#233; nous permet de d&#233;montrer qu'il suffit dans le pire des cas <em>log N</em> changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-&#224;-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les p&#232;res des n&#339;uds affect&#233;s, et de simplement remonter petit &#224; petit &#224; la racine en recalculant uniquement les maximums locaux n&#233;cessaires. Or, la hauteur de cet arbre est dans le pire des cas de <em>log N</em>, notre algorithme a donc une complexit&#233; en <em>O(log N)</em> pour trouver le maximum d'un tableau dynamique.</p>
+<p>Les &#233;l&#233;ments en bleus repr&#233;sentent notre tableau initial, et l'&#233;l&#233;ment en vert est le maximum du tableau trouv&#233; gr&#226;ce &#224; notre m&#233;thode. On commence en bas avec notre tableau, et on monte progressivement en prenant &#224; chaque fois les maximums deux &#224; deux. Cette structure s'apparente &#224; un <a href="/algo/structure/arbre.html">arbre</a>, mais a la particularit&#233; de ne pas poss&#233;der plus de deux fils par n&#339;ud (car on compare les &#233;l&#233;ments deux &#224; deux &#224; chaque fois). Cette propri&#233;t&#233; nous permet de d&#233;montrer qu'il suffit dans le pire des cas <span class="math inline">\(log _2 N\)</span> changements pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-&#224;-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les p&#232;res des n&#339;uds affect&#233;s, et de simplement remonter petit &#224; petit &#224; la racine en recalculant uniquement les maximums locaux n&#233;cessaires. Or, la hauteur de cet arbre est dans le pire des cas de <span class="math inline">\(log _2 N\)</span>, notre algorithme a donc une complexit&#233; en <span class="math inline">\(O(\log _2 N)\)</span> pour trouver le maximum d'un tableau dynamique.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/changement_valeur_intro.png" alt="Changement d&#39;une valeur dans notre tableau" />
 <p class="caption">Changement d'une valeur dans notre tableau</p>
@@ -232,7 +241,7 @@ function toggle_visibility(id) {
 <span class="kw">typedef</span> Noeud *ArbreBinaire;</code></pre></div>
 <p>Chaque &#233;l&#233;ment pointe alors vers ses deux fils, reliant ainsi les n&#339;uds entre eux pour former notre arbre binaire. Cette solution permet un stockage optimal en m&#233;moire, n'occupant rien de plus que n&#233;cessaire, mais peut &#234;tre un inconv&#233;nient lorsqu'on a besoin d'acc&#233;der rapidement &#224; des &#233;l&#233;ments (en effet, il faut parcourir l'arbre jusqu'&#224; un &#233;l&#233;ment particulier pour r&#233;cup&#233;rer ses donn&#233;es).</p>
 <h3 id="tableau">Tableau</h3>
-<p>Une autre impl&#233;mentation consiste &#224; utiliser un simple tableau, permettant un acc&#232;s rapide (en <em>O(1)</em>) &#224; n'importe quel &#233;l&#233;ment, mais pouvant parfois &#234;tre une perte de m&#233;moire.</p>
+<p>Une autre impl&#233;mentation consiste &#224; utiliser un simple tableau, permettant un acc&#232;s rapide (en <span class="math inline">\(O(1)\)</span>) &#224; n'importe quel &#233;l&#233;ment, mais pouvant parfois &#234;tre une perte de m&#233;moire.</p>
 <p>Pour stocker notre arbre binaire, on va prendre chaque &#233;l&#233;ment de l'arbre profondeur par profondeur (de gauche &#224; droite), et les placer dans le tableau dans cet ordre.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_imple_tableau.png" alt="Exemple de repr&#233;sentation d&#39;un arbre binaire dans un tableau" />
@@ -241,8 +250,8 @@ function toggle_visibility(id) {
 <p>Ce tableau permet notamment un acc&#232;s rapide, et un parcours facile gr&#226;ce &#224; sa mani&#232;re de stocker les n&#339;uds qui nous renseigne sur qui est le p&#232;re/fils gauche/fils droit d'un n&#339;ud :</p>
 <ul>
 <li>La racine sera l'&#233;l&#233;ment 1 du tableau.</li>
-<li>Chaque n&#339;ud d'indice <em>N</em> a son fils gauche stock&#233; en indice <em>2 * N</em>, et son fils droit en indice <em>2 * N + 1</em>.</li>
-<li>Chaque n&#339;ud d'indice <em>N</em> (except&#233; pour la racine de l'arbre) a son p&#232;re dans le tableau en indice <em>N / 2</em> (on gardera juste la partie enti&#232;re du r&#233;sultat).</li>
+<li>Chaque n&#339;ud d'indice <span class="math inline">\(N\)</span> a son fils gauche stock&#233; en indice <span class="math inline">\(2N\)</span>, et son fils droit en indice <span class="math inline">\(2N + 1\)</span>.</li>
+<li>Chaque n&#339;ud d'indice <span class="math inline">\(N\)</span> (except&#233; pour la racine de l'arbre) a son p&#232;re dans le tableau en indice <span class="math inline">\(N / 2\)</span> (on gardera juste la partie enti&#232;re du r&#233;sultat).</li>
 </ul>
 <p>Ce tableau suffit donc &#224; stocker un arbre binaire :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> arbreBinaire[NB_NOEUD_ARBRE + <span class="dv">1</span>];</code></pre></div>
@@ -262,7 +271,7 @@ function toggle_visibility(id) {
 </ul></li>
 <li><p><strong>Tri</strong> :</p>
 <ul>
-<li>Le <a href="/algo/tri/tri_tas.html">tri par tas</a> bas&#233; donc sur un tas, est un algorithme de tri rapide avec une complexit&#233; en temps de <em>O(N * log N)</em>. De plus, son am&#233;lioration le smoothsort fond&#233;e elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexit&#233; en temps lin&#233;aire.</li>
+<li>Le <a href="/algo/tri/tri_tas.html">tri par tas</a> bas&#233; donc sur un tas, est un algorithme de tri rapide avec une complexit&#233; en temps de <span class="math inline">\(O(N \log _2 N)\)</span>. De plus, son am&#233;lioration le smoothsort fond&#233;e elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexit&#233; en temps lin&#233;aire.</li>
 </ul></li>
 <li><p><strong>Compression</strong> :</p>
 <ul>

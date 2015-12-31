@@ -5,8 +5,17 @@
       <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
 
+      <!-- Syntax highlighting -->
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
 
       <!-- CSS -->
 <style>
@@ -200,7 +209,7 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri par s&#233;lection (<em>selection sort</em> en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entr&#233;e trop importante, c&#8217;est un algorithme non <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais qui trie <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>. Il a pour complexit&#233; algorithmique <em>O(N&#178;)</em> comme le <a href="/algo/tri/tri_bulles.html">tri &#224; bulles</a>.</p>
+<p>Le tri par s&#233;lection (<em>selection sort</em> en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entr&#233;e trop importante, c&#8217;est un algorithme non <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais qui trie <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>. Il a pour complexit&#233; algorithmique <span class="math inline">\(O(N^2)\)</span> comme le <a href="/algo/tri/tri_bulles.html">tri &#224; bulles</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
 <p>Le tri par s&#233;lection se d&#233;compose en deux &#233;tapes :</p>
 <ul>
@@ -224,7 +233,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/tri/tri_selection/exemple_tri.png" alt="Exemple de tri par s&#233;lection" />
 <p class="caption">Exemple de tri par s&#233;lection</p>
 </div>
-<p>A chaque tour, on cherche le minimum dans l'espace non tri&#233; du tableau (le minimum est repr&#233;sent&#233; en bleu, et la partie non tri&#233;e en blanc), ensuite on d&#233;place cet &#233;l&#233;ment &#224; sa place d&#233;finitive (repr&#233;sent&#233;e en vert). En faisant cela pour chaque &#233;l&#233;ment du tableau, ce dernier se retrouve tri&#233; au bout de <em>N</em> tours maximum (<em>N</em> &#233;tant la taille du tableau).</p>
+<p>A chaque tour, on cherche le minimum dans l'espace non tri&#233; du tableau (le minimum est repr&#233;sent&#233; en bleu, et la partie non tri&#233;e en blanc), ensuite on d&#233;place cet &#233;l&#233;ment &#224; sa place d&#233;finitive (repr&#233;sent&#233;e en vert). En faisant cela pour chaque &#233;l&#233;ment du tableau, ce dernier se retrouve tri&#233; au bout de <span class="math inline">\(N\)</span> tours maximum (<span class="math inline">\(N\)</span> &#233;tant la taille du tableau).</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code du tri par s&#233;lection est simple :</p>
 <pre class="nohighlight"><code>triSelection :
@@ -234,12 +243,12 @@ function toggle_visibility(id) {
          Mettre &#224; jour le minimum du tableau rencontr&#233; jusqu&#39;ici
       Echanger l&#39;&#233;l&#233;ment actuel avec le minimum</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>Comme pour le tri &#224; bulles, le tri par s&#233;lection a une complexit&#233; en <em>O(N&#178;)</em> :</p>
+<p>Comme pour le tri &#224; bulles, le tri par s&#233;lection a une complexit&#233; en <span class="math inline">\(O(N^2)\)</span> :</p>
 <ul>
-<li>La premi&#232;re boucle parcourt <em>N</em> tours.</li>
-<li>La deuxi&#232;me boucle parcourt <em>N &#8211; i</em> tours (<em>i</em> variant de 0 &#224; <em>N</em>).</li>
+<li>La premi&#232;re boucle parcourt <span class="math inline">\(N\)</span> tours.</li>
+<li>La deuxi&#232;me boucle parcourt <span class="math inline">\(N &#8211; i\)</span> tours (<span class="math inline">\(i\)</span> variant de 0 &#224; <span class="math inline">\(N\)</span>).</li>
 </ul>
-<p>Sa complexit&#233; est donc l&#233;g&#232;rement inf&#233;rieure &#224; <em>N&#178;</em>, cependant cette diff&#233;rence est mineure et sa complexit&#233; est consid&#233;r&#233;e comme &#233;tant en <em>O(N&#178;)</em>.</p>
+<p>Sa complexit&#233; est donc l&#233;g&#232;rement inf&#233;rieure &#224; <span class="math inline">\(N^2\)</span>, cependant cette diff&#233;rence est mineure et sa complexit&#233; est consid&#233;r&#233;e comme &#233;tant en <span class="math inline">\(O(N^2)\)</span>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C de l'algorithme du tri par s&#233;lection :</p>
 <a href="javascript:toggle_visibility('tri_selection.c');">tri_selection.c</a>
@@ -310,7 +319,7 @@ function toggle_visibility(id) {
    Echanger l&#39;&#233;l&#233;ment i (variant de 0 &#224; N / 2 ) avec le minimum
    Echanger l&#39;&#233;l&#233;ment j (variant de N &#224; N / 2 ) avec le maximum</code></pre>
 <h3 id="le-cas-des-doublons">Le cas des doublons</h3>
-<p>Dans le cas o&#249; notre tableau contient de nombreux doublons, l'algorithme de tri par s&#233;lection va effectuer plusieurs recherches de plus petits &#233;l&#233;ments sur le m&#234;me &#233;l&#233;ment qui n'est rien d'autre qu'un doublon. Le <em>bingo sort</em> permet de palier ce probl&#232;me, en proposant de placer tous les &#233;l&#233;ments ayant la m&#234;me valeur en m&#234;me temps, sans faire de nouvelles recherches &#224; chaque tour. Encore une fois, notre algorithme sera plus rapide en g&#233;n&#233;ral mais pas assez pour que la complexit&#233; change, elle restera donc en <em>O(N&#178;)</em>.</p>
+<p>Dans le cas o&#249; notre tableau contient de nombreux doublons, l'algorithme de tri par s&#233;lection va effectuer plusieurs recherches de plus petits &#233;l&#233;ments sur le m&#234;me &#233;l&#233;ment qui n'est rien d'autre qu'un doublon. Le <em>bingo sort</em> permet de palier ce probl&#232;me, en proposant de placer tous les &#233;l&#233;ments ayant la m&#234;me valeur en m&#234;me temps, sans faire de nouvelles recherches &#224; chaque tour. Encore une fois, notre algorithme sera plus rapide en g&#233;n&#233;ral mais pas assez pour que la complexit&#233; change, elle restera donc en <span class="math inline">\(O(N^2)\)</span>.</p>
 <pre class="nohighlight"><code>Pour chaque &#233;l&#233;ment
    Pour chaque &#233;l&#233;ment de la partie non tri&#233;e
       Mettre &#224; jour le minimum du tableau rencontr&#233; jusqu&#39;ici
@@ -319,9 +328,9 @@ function toggle_visibility(id) {
       Echanger avec l&#39;&#233;l&#233;ment actuel
       Augmenter l&#39;indice de l&#39;&#233;l&#233;ment actuel</code></pre>
 <h3 id="tri-par-tas">Tri par tas</h3>
-<p>On peut voir le <a href="/algo/tri/tri_tas.html">tri par tas</a> comme une am&#233;lioration directe du tri par s&#233;lection. En effet, si l'on utilise un <a href="/algo/structure/arbre/tas.html">tas</a> pour permettre de trouver les plus petits &#233;l&#233;ments rapidement, on obtient une complexit&#233; en <em>O(N * log N)</em> et un tri qu'on appelle tri par tas.</p>
+<p>On peut voir le <a href="/algo/tri/tri_tas.html">tri par tas</a> comme une am&#233;lioration directe du tri par s&#233;lection. En effet, si l'on utilise un <a href="/algo/structure/arbre/tas.html">tas</a> pour permettre de trouver les plus petits &#233;l&#233;ments rapidement, on obtient une complexit&#233; en <span class="math inline">\(O(N \log _2 N)\)</span> et un tri qu'on appelle tri par tas.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri par s&#233;lection est donc un algorithme assez simple, mais peu efficace &#224; cause de sa complexit&#233; en <em>O(N&#178;)</em>. Cependant des am&#233;liorations et des variantes permettent de le rendre plus rapide, et le tri par s&#233;lection sert de base au tri par tas, un autre algorithme de tri bien plus efficace avec une complexit&#233; en <em>O(N log N)</em>. M&#234;me avec une complexit&#233; quadratique, ce tri reste en pratique utilis&#233; sur de petites entr&#233;es, mais aussi lorsqu'on a besoin d'un nombre d'&#233;changes faible au sein du tableau (contrairement au <a href="/algo/tri/tri_insertion.html">tri par insertion</a> qui peut &#234;tre plus rapide, mais r&#233;alise plus d'&#233;changes).</p>
+<p>Le tri par s&#233;lection est donc un algorithme assez simple, mais peu efficace &#224; cause de sa complexit&#233; en <span class="math inline">\(O(N^2)\)</span>. Cependant des am&#233;liorations et des variantes permettent de le rendre plus rapide, et le tri par s&#233;lection sert de base au tri par tas, un autre algorithme de tri bien plus efficace avec une complexit&#233; en <span class="math inline">\(O(N \log _2 N)\)</span>. M&#234;me avec une complexit&#233; quadratique, ce tri reste en pratique utilis&#233; sur de petites entr&#233;es, mais aussi lorsqu'on a besoin d'un nombre d'&#233;changes faible au sein du tableau (contrairement au <a href="/algo/tri/tri_insertion.html">tri par insertion</a> qui peut &#234;tre plus rapide, mais r&#233;alise plus d'&#233;changes).</p>
  
       <!-- ------------ -->
 

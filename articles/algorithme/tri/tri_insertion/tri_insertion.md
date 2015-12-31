@@ -7,7 +7,7 @@ Publié le : 01/05/2014
 
 ## Introduction
 
-Le tri par insertion (*insertion sort* en anglais) est un algorithme de tri par comparaison simple, et intuitif mais toujours avec une complexité en *O(N²)*. Vous l’avez sans doute déjà utilisé sans même vous en rendre compte : lorsque vous triez des cartes par exemple. C’est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), [en place](https://en.wikipedia.org/wiki/In-place_algorithm), et le plus rapide en pratique sur une entrée de petite taille.
+Le tri par insertion (*insertion sort* en anglais) est un algorithme de tri par comparaison simple, et intuitif mais toujours avec une complexité en $O(N^2)$. Vous l’avez sans doute déjà utilisé sans même vous en rendre compte : lorsque vous triez des cartes par exemple. C’est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), [en place](https://en.wikipedia.org/wiki/In-place_algorithm), et le plus rapide en pratique sur une entrée de petite taille.
 
 ## Principe de l’algorithme
 
@@ -57,12 +57,12 @@ triInsertion :
 
 ## Complexité
 
-L’algorithme du tri par insertion a une complexité de *O(N²)* :
+L’algorithme du tri par insertion a une complexité de $O(N^2)$ :
 
-- La première boucle parcourt *N – 1* tours, ici on notera plutôt *N* tours car le *– 1* n’est pas très important.
-- Décaler les éléments de la partie triée prend *i* tours (avec *i* variant de 0 à *N*).
+- La première boucle parcourt $N – 1$ tours, ici on notera plutôt $N$ tours car le $– 1$ n’est pas très important.
+- Décaler les éléments de la partie triée prend $i$ tours (avec $i$ variant de 0 à $N$).
 
-Dans le pire des cas on parcourt *N \* N* tours, donc le tri par insertion a une complexité en temps de *O(N²)*.
+Dans le pire des cas on parcourt $N^2$ tours, donc le tri par insertion a une complexité en temps de $O(N^2)$.
 
 ## Implémentation
 
@@ -93,17 +93,17 @@ Le tri par insertion est un algorithme de tri très efficace sur des entrées qu
 
 Pour calculer cet écart, on utilise cette formule :
 
-*Ecart(N) = 3 \* Ecart(N - 1) + 1*  
-avec *Ecart(0) = 0*
+$Ecart(N) = 3 \cdot Ecart(N - 1) + 1$  
+avec $Ecart(0) = 0$
 
 Par exemple, on souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l'ordre croissant :
 
 On calcule les écarts tant que le résultat est inférieur à la taille du tableau.
 
-*Ecart(0) = 0*  
-*Ecart(1) = 3 \* Ecart(0) + 1 = 3 \* 0 + 1 = 1*  
-*Ecart(2) = 3 \* Ecart(1) + 1 = 3 \* 1 + 1 = 4*  
-*Ecart(3) = 3 \* Ecart(2) + 1 = 3 \* 4 + 1 = 13*
+$Ecart(0) = 0$  
+$Ecart(1) = 3 \cdot Ecart(0) + 1 = 3 \cdot 0 + 1 = 1$  
+$Ecart(2) = 3 \cdot Ecart(1) + 1 = 3 \cdot 1 + 1 = 4$  
+$Ecart(3) = 3 \cdot Ecart(2) + 1 = 3 \cdot 4 + 1 = 13$
 
 On a donc deux écarts que l'on peut utiliser : 1 et 4 (13 étant supérieur au nombre d'éléments du tableau). Cependant appliquer un écart de 1 revient à faire un tri par insertion normal, on utilisera donc uniquement l'écart de 4 dans cet exemple.
 
@@ -127,10 +127,10 @@ Cette recherche consiste à utiliser la méthode du [diviser pour régner](https
 - Si c’est le cas on recommence l’opération mais cette fois ci avec cet intervalle : *milieu ancien inter* -> *fin ancien inter*.
 - Sinon on recommence mais avec l’intervalle suivant : *début ancien inter* -> *milieu ancien inter*.
 
-Une fois que l’intervalle ne contient plus qu’un seul élément, on a trouvé l’emplacement où insérer l'élément à sa place. Grâce à cette amélioration, l’algorithme du tri par insertion a pour complexité *O(N \* log N)*.
+Une fois que l’intervalle ne contient plus qu’un seul élément, on a trouvé l’emplacement où insérer l'élément à sa place. Grâce à cette amélioration, l’algorithme du tri par insertion a pour complexité $O(N \log _2 N)$.
 
 *J'ai expliqué ici très rapidement le principe de la dichotomie, j'en parle plus longuement dans mon article à ce propos donc si vous n'avez pas tout suivi, je vous conseille d'aller le lire pour bien saisir ce concept fondamental en algorithmie.*
 
 ## Conclusion
 
-L'algorithme du tri par insertion est simple et relativement intuitif, même s'il a une complexité en temps quadratique. Cet algorithme de tri reste très utilisé à cause de ses facultés à s'exécuter en temps quasi linéaire sur des entrées déjà triées, et de manière très efficace sur de petites entrées en général (souvent plus performant, dans ce cas, que des algorithmes de tri en *O(N \* log N)*).
+L'algorithme du tri par insertion est simple et relativement intuitif, même s'il a une complexité en temps quadratique. Cet algorithme de tri reste très utilisé à cause de ses facultés à s'exécuter en temps quasi linéaire sur des entrées déjà triées, et de manière très efficace sur de petites entrées en général (souvent plus performant, dans ce cas, que des algorithmes de tri en $O(N \log _2 N)$).
