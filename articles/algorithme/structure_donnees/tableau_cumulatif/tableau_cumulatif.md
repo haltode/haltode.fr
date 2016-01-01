@@ -66,7 +66,7 @@ On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l'on va ut
 
 ## Complexité
 
-Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de taille $N$, et $M$ questions du type : Quelle est la somme des éléments de $i$ à $j$ dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en $O(N \cdot M)$ (lorsqu'on parcourt à chaque fois le tableau en entier, soit quand $i = 0$ et $j = N$ pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en $O(N + M)$ car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d'accéder au tableau cumulatif (donc opération en $O(1)$).
+Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de taille $N$, et $M$ questions du type : Quelle est la somme des éléments de $i$ à $j$ dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en $O(N \times M)$ (lorsqu'on parcourt à chaque fois le tableau en entier, soit quand $i = 0$ et $j = N$ pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en $O(N + M)$ car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d'accéder au tableau cumulatif (donc opération en $O(1)$).
 
 ## Implémentation
 
@@ -131,7 +131,7 @@ Le tableau cumulatif 2D ressemble à cela pour l'entrée :
 18 35 55 83
 ```
 
-Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en $O(N^2)$ pour l'initialisation et $O(M)$ pour la réponse, contre une complexité pour la réponse de $O(N^2 \cdot M)$ pour l'algorithme naïf.
+Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en $O(N^2)$ pour l'initialisation et $O(M)$ pour la réponse, contre une complexité pour la réponse de $O(N^2 \times M)$ pour l'algorithme naïf.
 
 
 ### Tableau cumulatif à N dimensions ?

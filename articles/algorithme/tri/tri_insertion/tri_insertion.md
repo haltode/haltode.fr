@@ -93,7 +93,7 @@ Le tri par insertion est un algorithme de tri très efficace sur des entrées qu
 
 Pour calculer cet écart, on utilise cette formule :
 
-$Ecart(N) = 3 \cdot Ecart(N - 1) + 1$  
+$Ecart(N) = 3 \times Ecart(N - 1) + 1$  
 avec $Ecart(0) = 0$
 
 Par exemple, on souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l'ordre croissant :
@@ -101,9 +101,9 @@ Par exemple, on souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l'ord
 On calcule les écarts tant que le résultat est inférieur à la taille du tableau.
 
 $Ecart(0) = 0$  
-$Ecart(1) = 3 \cdot Ecart(0) + 1 = 3 \cdot 0 + 1 = 1$  
-$Ecart(2) = 3 \cdot Ecart(1) + 1 = 3 \cdot 1 + 1 = 4$  
-$Ecart(3) = 3 \cdot Ecart(2) + 1 = 3 \cdot 4 + 1 = 13$
+$Ecart(1) = 3 \times Ecart(0) + 1 = 3 \times 0 + 1 = 1$  
+$Ecart(2) = 3 \times Ecart(1) + 1 = 3 \times 1 + 1 = 4$  
+$Ecart(3) = 3 \times Ecart(2) + 1 = 3 \times 4 + 1 = 13$
 
 On a donc deux écarts que l'on peut utiliser : 1 et 4 (13 étant supérieur au nombre d'éléments du tableau). Cependant appliquer un écart de 1 revient à faire un tri par insertion normal, on utilisera donc uniquement l'écart de 4 dans cet exemple.
 
