@@ -3,24 +3,20 @@ RSA
 algo/chiffrement
 
 Publié le : 31/05/2014  
-*Modifié le : 01/01/2016*
+*Modifié le : 02/01/2016*
 
 ## Introduction
 
-Tous les algorithmes de chiffrement **symétriques** ont un problème commun : la transmission de clé. Quelque soit l'algorithme utilisé, si la clé est interceptée par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements **asymétriques**.
-
-TODO : évoquer Diffie et Hellman (supplément conférence ccc ?)
+Tous les algorithmes de chiffrement **symétriques** ont un problème commun : la transmission de clé. Quelque soit l'algorithme utilisé, si la clé est interceptée par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, voir même impossible dans certains cas (par exemple avec Internet, c'est compliqué d'aller voir le responsable de chaque serveur physiquement pour qu'il vous transmette une clé), il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements **asymétriques**.
 
 L'idée du chiffrement asymétrique est d'utiliser deux clés au lieu d'une, et que l'on va attribuer à chaque personne :
 
 - Une clé **publique** qu'on peut diffuser, transmettre et montrer à absolument tout le monde sans que cela pose un problème de sécurité (c'est d'ailleurs conseillé de la rendre la plus accessible possible).
 - Une clé **privée** qu'il ne faut en aucun cas évoquer, cette clé doit rester secrète et vous ne devez la communiquer à personne.
 
-Les bases du chiffrement asymétrique furent introduites grâce à Whitfiled Diffie et Martin Hellman quelques années avant l'algorithme RSA, et ils montrent comment résoudre le problème d'échange de clés de manière sécurisé. La particularité est qu'il est simple de générer des couples de clés, mais quasiment impossible de retrouver la clé privée à partir de la clé publique.
+Les bases du chiffrement asymétrique furent introduites grâce à Whitfield Diffie et Martin Hellman quelques années avant l'algorithme RSA, et ils montrent comment résoudre le problème d'échange de clés de manière sécurisé. La particularité est qu'il est simple de générer des couples de clés, mais quasiment impossible de retrouver la clé privée à partir de la clé publique (que n'importe qui peut en théorie voir).
 
-L'algorithme RSA sera l'un des premiers algorithmes de chiffrement asymétriques utilisant ce concept à en faire une implémentation possible pour la communication de messages grâce à des principes mathématiques. Cet algorithme est encore très utilisé de nos jours, surtout sur Internet (où l'échange de clé symétrique est physiquement impossible), dans le commerce en ligne, les transactions sécurisées, etc.
-
-TODO : approfondir intro (survoler les caractéristiques, sécurité, application, etc.).
+L'algorithme RSA sera l'un des premiers algorithmes de chiffrement asymétriques utilisant ce concept et à en faire une implémentation possible pour la communication de messages grâce à des principes mathématiques. Cet algorithme est encore très utilisé de nos jours, surtout sur Internet (dans le commerce en ligne, les transactions sécurisées, etc.).
 
 ## Principe de l'algorithme
 
@@ -52,7 +48,7 @@ Avec cette fois $x$ la lettre chiffrée et $f'(x)$ la lettre déchiffrée.
 
 ## Exemple
 
-Choisissons comme message "Bienvenue", et chiffrons-le avec l'algorithme RSA :
+Choisissons comme message "Bienvenue", et chiffrons-le avec l'algorithme RSA.
 
 ### Génération des clés
 
@@ -67,7 +63,7 @@ A partir de cela, on peut calculer notre module de chiffrement :
 $n = p \times q$  
 $n = 8357$
 
-Ainsi que l'indicatrice d'Euler de n :
+Ainsi que l'indicatrice d'Euler de $n$ :
 
 $m = (p - 1) \times (q - 1)$  
 $m = 8160$
@@ -84,15 +80,15 @@ $d \equiv e^{-1} \pmod m$
 
 Ce qui est équivalent à :
 
-$d \times e \equiv 1 \pmod m$
+$de \equiv 1 \pmod m$
 
-Par définition de la [congruence](https://en.wikipedia.org/wiki/Congruence_relation), $m$ est un diviseur de $d \times e - 1$, ce que l'on peut donc écrire comme ceci :
+Par définition de la [congruence](https://en.wikipedia.org/wiki/Congruence_relation), $m$ est un diviseur de $d e - 1$, ce qu'on peut écrire comme ceci :
 
-$d \times e - 1 = q \times m$ avec $q$ le quotient de $(d \times e - 1) / m$
+$de - 1 = qm$ avec $q$ le quotient de $(de - 1) / m$
 
 On a finalement :
 
-$d \times e - q \times m = 1$
+$de - qm = 1$
 
 On connait $e$, $m$, et on cherche $d$ :
 
@@ -115,21 +111,24 @@ On trouve grâce au dernier programme :
 
 $d = -3497$
 
-On a désormais trouvé $d$ vérifiant l'équation $d \times e \equiv 1 \pmod m$. Cependant, on préfèrera travailler avec des nombres positifs, et selon Wikipédia les coefficients $x$ et $y$ ne sont pas uniques et on peut en trouver une infinité qui respectent la relation suivante :
+On a désormais $d$ vérifiant l'équation $de \equiv 1 \pmod m$. Cependant, on préfèrera travailler avec des nombres positifs, et selon Wikipédia le coefficient $x$ n'est pas unique ($y$ non plus mais c'est $x$ qui nous intéresse), et on peut en trouver une infinité qui respectent la relation suivante :
 
-$x + k \times \frac{b}{pgcd(a, b)}$ avec $k$ un nombre entier relatif
+$x + k\frac{b}{pgcd(a, b)}$ avec $k$ un nombre entier relatif
 
 Si on remplace par nos valeurs ($x = d$, $b = m$, $pgcd(a, b) = 1$), on obtient :
 
-$d + k \times m$  
-$-3497 + k \times 8160$
+$d + km$
+
+Et avec les valeurs numériques :
+
+$-3497 + 8160k$
 
 On veut donc trouver un nombre $d$ positif :
 
-$-3497 + k \times 8160 > 0$  
-$k > 3497 / 8160$  
+$-3497 + 8160k > 0$  
+$k > 0,429$ (arrondi)
 
-Or $k$ est un nombre entier et $3497 / 8160 \approx 0,429$, je vais donc arrondir à l'entier supérieur $k = 1$ pour avoir une valeur de $d$ positive :
+Or $k$ est un nombre entier, je vais donc arrondir à l'entier supérieur $k = 1$ pour avoir une valeur de $d$ positive :
 
 $d = -3497 + m$  
 $d = 4663$
@@ -143,14 +142,30 @@ Notre couple de clé publique/privée est désormais généré :
 
 On peut maintenant chiffrer et déchiffrer notre message avec nos clés en appliquant les fonctions :
 
-$f(x) = x^{e} \mod n$
+$f(x) = x^{e} \mod n$  
 $f'(x) = x^{d} \mod n$
 
-Les lettres seront représentées par des nombres grâce à la [table ASCII]() permettant de résoudre les relations mathématiques.
+Les caractères seront représentés par des nombres grâce à la [table ASCII](https://en.wikipedia.org/wiki/ASCII) permettant de résoudre les relations mathématiques (on imagine dans notre cas que les caractères du message sont tous présent dans la table ASCII pour simplifier le problème).
+
+Notre message correspond donc à ceci selon la table ASCII :
+
+![Transformation du message en nombre](//static.napnac.ga/img/algo/chiffrement/rsa/exemple_message_ascii.png)
+
+Le message chiffré :
 
 ![Exemple de chiffrement](//static.napnac.ga/img/algo/chiffrement/rsa/exemple_chiffrement.png)
 
+On se retrouve avec un message ressemblant à ceci 
+
+```nohighlight
+2546 824 4962 8071 2160 4962 8071 5933 4962 
+```
+
+Que l'on peut déchiffrer :
+
 ![Exemple de déchiffrement](//static.napnac.ga/img/algo/chiffrement/rsa/exemple_dechiffrement.png)
+
+Pour retrouver notre message (composé de nombre), qui est facilement transformable en chaîne.
 
 ## Pseudo-code
 
@@ -169,7 +184,7 @@ cléPublique(p, q) :
 cléPrivée(e, m, n) :
 
    Algorithme d'Euclide étendu pour calculer d (l'inverse de la multiplication
-   de e modulo m)
+   de e mod m)
 
    Retourner couple (n, d)
 
@@ -184,7 +199,17 @@ déchiffrer :
       lettreClaire = lettreChiffrée ^ d mod n 
 ```
 
-Une dernière question se pose cependant face à ce pseudo-code... Comment calculer des nombres à des puissances aussi énormes ? En effet, $d = 4663$ dans notre exemple et élever un nombre à la puissance 4663 est tout simplement fou (surtout qu'en situation réelle, notre $e$ et $d$ peuvent comporter plusieurs centaines de chiffres chacun). Heureusement un algorithme nous permet de calculer facilement le résultat d'une opération du style $x^a \mod b$, c'est l'[exponentiation modulaire](https://en.wikipedia.org/wiki/Modular_exponentiation) ce qui est parfait dans notre cas car on ne veut pas calculer la puissance puis lui appliquer le modulo séparément car ça serait trop lent et compliqué à faire sur de grands nombres.
+Une dernière question se pose cependant face à ce pseudo-code... Comment calculer des nombres à des puissances aussi énormes ? En effet, $d = 4663$ dans notre exemple et élever un nombre à la puissance 4663 est tout simplement fou (surtout qu'en situation réelle, notre $e$ et $d$ peuvent comporter plusieurs centaines de chiffres chacun). Si on calcule séparément $a^b$ puis on applique le modulo $c$ on sera confronté à un problème de stockage car quand b est grand le résultat $a^b$ sera tellement gigantesque que notre programme ne pourra pas stocker ce nombre. Heureusement un algorithme nous permet de calculer facilement le résultat d'une opération du style $a^b \mod c$, c'est l'[exponentiation modulaire](https://en.wikipedia.org/wiki/Modular_exponentiation). 
+
+Soit $x = a^b \mod c$, on peut trouver $x$ facilement grâce à notre nouvel algorithme :
+
+```nohighlight
+x = 1
+Pour chaque exposant allant de 1 à b inclus
+   x = (x * a) mod c
+```
+
+Cet algorithme nous permet donc de travailler avec des nombres bien plus petits qui ne dépasseront jamais $c$ car à chaque multiplication on effectue un modulo dessus.
 
 ## Implémentation
 
@@ -192,6 +217,22 @@ Une implémentation en C de l'algorithme de RSA :
 
 [INSERT]
 rsa.c
+
+Le message d'entrée :
+
+[INSERT]
+test02.in
+
+La sortie :
+
+[INSERT]
+test02.out
+
+Quelques remarques sur le code :
+
+- Le type du message est `unsigned long long` qui est le type le plus grand en C (il stocke des nombres allant de 0 à $2^64 - 1$), car un `int` ne sera pas toujours suffisant, on prend donc des précautions en utilisant un type de données très grand pour ne pas avoir de problèmes.
+- Dans la fonction `clePublique`, j'utilise un tableau statique contenant tous les nombres premiers de 1 à 100 et je tire au sort pour déterminer $p$ et $q$ (j'ai rentré directement `p = 61` et `q = 137` pour que les résultats concordent avec notre exemple, mais la partie tirage au sort est commentée).
+- Pour lire notre message, on va directement stocker les caractères sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on converti en `char` après le déchiffrement pour afficher une chaîne de caractères.
 
 ## Sécurité
 

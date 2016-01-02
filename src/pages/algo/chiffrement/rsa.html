@@ -197,7 +197,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="rsa">RSA</h1></a>
 <p>Publi&#233; le : 31/05/2014<br />
-<em>Modifi&#233; le : 01/01/2016</em></p>
+<em>Modifi&#233; le : 02/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -209,16 +209,14 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Tous les algorithmes de chiffrement <strong>sym&#233;triques</strong> ont un probl&#232;me commun : la transmission de cl&#233;. Quelque soit l'algorithme utilis&#233;, si la cl&#233; est intercept&#233;e par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce probl&#232;me est fondamental car transmettre une cl&#233; de chiffrement est tr&#232;s d&#233;licat, il &#233;tait donc n&#233;cessaire de trouver une autre solution face &#224; ce probl&#232;me : les chiffrements <strong>asym&#233;triques</strong>.</p>
-<p>TODO : &#233;voquer Diffie et Hellman (suppl&#233;ment conf&#233;rence ccc ?)</p>
+<p>Tous les algorithmes de chiffrement <strong>sym&#233;triques</strong> ont un probl&#232;me commun : la transmission de cl&#233;. Quelque soit l'algorithme utilis&#233;, si la cl&#233; est intercept&#233;e par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce probl&#232;me est fondamental car transmettre une cl&#233; de chiffrement est tr&#232;s d&#233;licat, voir m&#234;me impossible dans certains cas (par exemple avec Internet, c'est compliqu&#233; d'aller voir le responsable de chaque serveur physiquement pour qu'il vous transmette une cl&#233;), il &#233;tait donc n&#233;cessaire de trouver une autre solution face &#224; ce probl&#232;me : les chiffrements <strong>asym&#233;triques</strong>.</p>
 <p>L'id&#233;e du chiffrement asym&#233;trique est d'utiliser deux cl&#233;s au lieu d'une, et que l'on va attribuer &#224; chaque personne :</p>
 <ul>
 <li>Une cl&#233; <strong>publique</strong> qu'on peut diffuser, transmettre et montrer &#224; absolument tout le monde sans que cela pose un probl&#232;me de s&#233;curit&#233; (c'est d'ailleurs conseill&#233; de la rendre la plus accessible possible).</li>
 <li>Une cl&#233; <strong>priv&#233;e</strong> qu'il ne faut en aucun cas &#233;voquer, cette cl&#233; doit rester secr&#232;te et vous ne devez la communiquer &#224; personne.</li>
 </ul>
-<p>Les bases du chiffrement asym&#233;trique furent introduites gr&#226;ce &#224; Whitfiled Diffie et Martin Hellman quelques ann&#233;es avant l'algorithme RSA, et ils montrent comment r&#233;soudre le probl&#232;me d'&#233;change de cl&#233;s de mani&#232;re s&#233;curis&#233;. La particularit&#233; est qu'il est simple de g&#233;n&#233;rer des couples de cl&#233;s, mais quasiment impossible de retrouver la cl&#233; priv&#233;e &#224; partir de la cl&#233; publique.</p>
-<p>L'algorithme RSA sera l'un des premiers algorithmes de chiffrement asym&#233;triques utilisant ce concept &#224; en faire une impl&#233;mentation possible pour la communication de messages gr&#226;ce &#224; des principes math&#233;matiques. Cet algorithme est encore tr&#232;s utilis&#233; de nos jours, surtout sur Internet (o&#249; l'&#233;change de cl&#233; sym&#233;trique est physiquement impossible), dans le commerce en ligne, les transactions s&#233;curis&#233;es, etc.</p>
-<p>TODO : approfondir intro (survoler les caract&#233;ristiques, s&#233;curit&#233;, application, etc.).</p>
+<p>Les bases du chiffrement asym&#233;trique furent introduites gr&#226;ce &#224; Whitfield Diffie et Martin Hellman quelques ann&#233;es avant l'algorithme RSA, et ils montrent comment r&#233;soudre le probl&#232;me d'&#233;change de cl&#233;s de mani&#232;re s&#233;curis&#233;. La particularit&#233; est qu'il est simple de g&#233;n&#233;rer des couples de cl&#233;s, mais quasiment impossible de retrouver la cl&#233; priv&#233;e &#224; partir de la cl&#233; publique (que n'importe qui peut en th&#233;orie voir).</p>
+<p>L'algorithme RSA sera l'un des premiers algorithmes de chiffrement asym&#233;triques utilisant ce concept et &#224; en faire une impl&#233;mentation possible pour la communication de messages gr&#226;ce &#224; des principes math&#233;matiques. Cet algorithme est encore tr&#232;s utilis&#233; de nos jours, surtout sur Internet (dans le commerce en ligne, les transactions s&#233;curis&#233;es, etc.).</p>
 <h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
 <p>L'algorithme du RSA va dans un premier temps g&#233;n&#233;rer deux couples de cl&#233;s asym&#233;triques, l'un pour l'&#233;metteur qu'on appellera <em>Alice</em>, et l'autre pour le destinataire qu'on appellera <em>Bob</em>. Une fois que chaque personne a ses deux cl&#233;s, on peut proc&#233;der &#224; une communication s&#233;curis&#233;e. Alice va chercher la cl&#233; publique de Bob (soit en lui demandant, soit en la trouvant dans un annuaire contenant les cl&#233;s publiques de tout le monde, etc.), et elle va chiffrer son message avec cette cl&#233;. Ensuite le message chiffr&#233; est transmis &#224; Bob, et il va le d&#233;chiffrer gr&#226;ce &#224; sa cl&#233; priv&#233;e (qu'il n'a communiqu&#233; &#224; personne). Aucun &#233;change de cl&#233; n'est n&#233;cessaire, et seule la cl&#233; priv&#233;e de Bob peut d&#233;chiffrer le message, la communication est alors s&#233;curis&#233;e.</p>
 <p>La s&#233;curit&#233; du chiffrement se trouve dans l'utilisation d'une fonction de chiffrement et de d&#233;chiffrement <strong><a href="https://en.wikipedia.org/wiki/One-way_function">&#224; sens unique</a></strong>. Cette fonction est, comme pour la g&#233;n&#233;ration de cl&#233;, tr&#232;s simple &#224; appliquer dans un sens (chiffrement/d&#233;chiffrement avec la cl&#233;), mais extr&#234;mement complexe dans l'autre (chiffrement/d&#233;chiffrement sans la cl&#233;).</p>
@@ -238,7 +236,7 @@ function toggle_visibility(id) {
 <p><span class="math inline">\(f&#39;(x) = x^{d} \mod n\)</span></p>
 <p>Avec cette fois <span class="math inline">\(x\)</span> la lettre chiffr&#233;e et <span class="math inline">\(f&#39;(x)\)</span> la lettre d&#233;chiffr&#233;e.</p>
 <h2 id="exemple">Exemple</h2>
-<p>Choisissons comme message &quot;Bienvenue&quot;, et chiffrons-le avec l'algorithme RSA :</p>
+<p>Choisissons comme message &quot;Bienvenue&quot;, et chiffrons-le avec l'algorithme RSA.</p>
 <h3 id="g&#233;n&#233;ration-des-cl&#233;s">G&#233;n&#233;ration des cl&#233;s</h3>
 <p>La premi&#232;re &#233;tape est de g&#233;n&#233;rer notre cl&#233; publique et priv&#233;e car je n'en poss&#232;de pas encore, et comme je n'ai pas d'ami nomm&#233; Bob &#224; qui envoyer des messages secrets, je vais m'envoyer le message chiffr&#233; &#224; moi m&#234;me (pour simplifier les explications et ne pas &#234;tre embrouill&#233; dans toutes les valeurs num&#233;riques). On applique donc notre algorithme de cr&#233;ation de cl&#233;s :</p>
 <p>Soit <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> deux nombres premiers que je choisis al&#233;atoirement :</p>
@@ -246,7 +244,7 @@ function toggle_visibility(id) {
 <p>A partir de cela, on peut calculer notre module de chiffrement :</p>
 <p><span class="math inline">\(n = p \times q\)</span><br />
 <span class="math inline">\(n = 8357\)</span></p>
-<p>Ainsi que l'indicatrice d'Euler de n :</p>
+<p>Ainsi que l'indicatrice d'Euler de <span class="math inline">\(n\)</span> :</p>
 <p><span class="math inline">\(m = (p - 1) \times (q - 1)\)</span><br />
 <span class="math inline">\(m = 8160\)</span></p>
 <p>Ensuite, il faut choisir notre exposant de chiffrement <span class="math inline">\(e\)</span> qui doit &#234;tre premier avec <span class="math inline">\(m\)</span> et strictement inf&#233;rieur &#224; ce dernier, je choisis donc 7 :</p>
@@ -255,11 +253,11 @@ function toggle_visibility(id) {
 <p>On cherche donc <span class="math inline">\(d\)</span> qui est l'inverse modulaire de <span class="math inline">\(e \mod m\)</span>, on a :</p>
 <p><span class="math inline">\(d \equiv e^{-1} \pmod m\)</span></p>
 <p>Ce qui est &#233;quivalent &#224; :</p>
-<p><span class="math inline">\(d \times e \equiv 1 \pmod m\)</span></p>
-<p>Par d&#233;finition de la <a href="https://en.wikipedia.org/wiki/Congruence_relation">congruence</a>, <span class="math inline">\(m\)</span> est un diviseur de <span class="math inline">\(d \times e - 1\)</span>, ce que l'on peut donc &#233;crire comme ceci :</p>
-<p><span class="math inline">\(d \times e - 1 = q \times m\)</span> avec <span class="math inline">\(q\)</span> le quotient de <span class="math inline">\((d \times e - 1) / m\)</span></p>
+<p><span class="math inline">\(de \equiv 1 \pmod m\)</span></p>
+<p>Par d&#233;finition de la <a href="https://en.wikipedia.org/wiki/Congruence_relation">congruence</a>, <span class="math inline">\(m\)</span> est un diviseur de <span class="math inline">\(d e - 1\)</span>, ce qu'on peut &#233;crire comme ceci :</p>
+<p><span class="math inline">\(de - 1 = qm\)</span> avec <span class="math inline">\(q\)</span> le quotient de <span class="math inline">\((de - 1) / m\)</span></p>
 <p>On a finalement :</p>
-<p><span class="math inline">\(d \times e - q \times m = 1\)</span></p>
+<p><span class="math inline">\(de - qm = 1\)</span></p>
 <p>On connait <span class="math inline">\(e\)</span>, <span class="math inline">\(m\)</span>, et on cherche <span class="math inline">\(d\)</span> :</p>
 <p>On remarque que cette expression est de la forme de l'<a href="https://en.wikipedia.org/wiki/B%C3%A9zout&#39;s_identity">identit&#233; de B&#233;zout</a> <span class="math inline">\(ax + by = pgcd(a, b)\)</span> avec <span class="math inline">\(a = e\)</span>, <span class="math inline">\(b = m\)</span>, <span class="math inline">\(x = d\)</span>, <span class="math inline">\(y = -q\)</span>, or <span class="math inline">\(e\)</span> et <span class="math inline">\(m\)</span> sont premiers entre eux donc <span class="math inline">\(pgcd(a, b) = 1\)</span>. Or on peut trouver les coefficients <span class="math inline">\(x\)</span> et <span class="math inline">\(y\)</span> (et donc <span class="math inline">\(d\)</span>, qui nous int&#233;resse) gr&#226;ce &#224; l'<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">algorithme d'Euclide &#233;tendu</a>. Une impl&#233;mentation de cet algorithme pour ceux que &#231;a int&#233;resse :</p>
 <a href="javascript:toggle_visibility('algo_euclide_etendu.c');">algo_euclide_etendu.c</a>
@@ -319,15 +317,16 @@ function toggle_visibility(id) {
 y = 3</code></pre>
 <p>On trouve gr&#226;ce au dernier programme :</p>
 <p><span class="math inline">\(d = -3497\)</span></p>
-<p>On a d&#233;sormais trouv&#233; <span class="math inline">\(d\)</span> v&#233;rifiant l'&#233;quation <span class="math inline">\(d \times e \equiv 1 \pmod m\)</span>. Cependant, on pr&#233;f&#232;rera travailler avec des nombres positifs, et selon Wikip&#233;dia les coefficients <span class="math inline">\(x\)</span> et <span class="math inline">\(y\)</span> ne sont pas uniques et on peut en trouver une infinit&#233; qui respectent la relation suivante :</p>
-<p><span class="math inline">\(x + k \times \frac{b}{pgcd(a, b)}\)</span> avec <span class="math inline">\(k\)</span> un nombre entier relatif</p>
+<p>On a d&#233;sormais <span class="math inline">\(d\)</span> v&#233;rifiant l'&#233;quation <span class="math inline">\(de \equiv 1 \pmod m\)</span>. Cependant, on pr&#233;f&#232;rera travailler avec des nombres positifs, et selon Wikip&#233;dia le coefficient <span class="math inline">\(x\)</span> n'est pas unique (<span class="math inline">\(y\)</span> non plus mais c'est <span class="math inline">\(x\)</span> qui nous int&#233;resse), et on peut en trouver une infinit&#233; qui respectent la relation suivante :</p>
+<p><span class="math inline">\(x + k\frac{b}{pgcd(a, b)}\)</span> avec <span class="math inline">\(k\)</span> un nombre entier relatif</p>
 <p>Si on remplace par nos valeurs (<span class="math inline">\(x = d\)</span>, <span class="math inline">\(b = m\)</span>, <span class="math inline">\(pgcd(a, b) = 1\)</span>), on obtient :</p>
-<p><span class="math inline">\(d + k \times m\)</span><br />
-<span class="math inline">\(-3497 + k \times 8160\)</span></p>
+<p><span class="math inline">\(d + km\)</span></p>
+<p>Et avec les valeurs num&#233;riques :</p>
+<p><span class="math inline">\(-3497 + 8160k\)</span></p>
 <p>On veut donc trouver un nombre <span class="math inline">\(d\)</span> positif :</p>
-<p><span class="math inline">\(-3497 + k \times 8160 &gt; 0\)</span><br />
-<span class="math inline">\(k &gt; 3497 / 8160\)</span></p>
-<p>Or <span class="math inline">\(k\)</span> est un nombre entier et <span class="math inline">\(3497 / 8160 \approx 0,429\)</span>, je vais donc arrondir &#224; l'entier sup&#233;rieur <span class="math inline">\(k = 1\)</span> pour avoir une valeur de <span class="math inline">\(d\)</span> positive :</p>
+<p><span class="math inline">\(-3497 + 8160k &gt; 0\)</span><br />
+<span class="math inline">\(k &gt; 0,429\)</span> (arrondi)</p>
+<p>Or <span class="math inline">\(k\)</span> est un nombre entier, je vais donc arrondir &#224; l'entier sup&#233;rieur <span class="math inline">\(k = 1\)</span> pour avoir une valeur de <span class="math inline">\(d\)</span> positive :</p>
 <p><span class="math inline">\(d = -3497 + m\)</span><br />
 <span class="math inline">\(d = 4663\)</span></p>
 <p>Notre couple de cl&#233; publique/priv&#233;e est d&#233;sormais g&#233;n&#233;r&#233; :</p>
@@ -337,16 +336,27 @@ y = 3</code></pre>
 </ul>
 <h3 id="chiffrementd&#233;chiffrement">Chiffrement/D&#233;chiffrement</h3>
 <p>On peut maintenant chiffrer et d&#233;chiffrer notre message avec nos cl&#233;s en appliquant les fonctions :</p>
-<p><span class="math inline">\(f(x) = x^{e} \mod n\)</span> <span class="math inline">\(f&#39;(x) = x^{d} \mod n\)</span></p>
-<p>Les lettres seront repr&#233;sent&#233;es par des nombres gr&#226;ce &#224; la <a href="">table ASCII</a> permettant de r&#233;soudre les relations math&#233;matiques.</p>
+<p><span class="math inline">\(f(x) = x^{e} \mod n\)</span><br />
+<span class="math inline">\(f&#39;(x) = x^{d} \mod n\)</span></p>
+<p>Les caract&#232;res seront repr&#233;sent&#233;s par des nombres gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/ASCII">table ASCII</a> permettant de r&#233;soudre les relations math&#233;matiques (on imagine dans notre cas que les caract&#232;res du message sont tous pr&#233;sent dans la table ASCII pour simplifier le probl&#232;me).</p>
+<p>Notre message correspond donc &#224; ceci selon la table ASCII :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_message_ascii.png" alt="Transformation du message en nombre" />
+<p class="caption">Transformation du message en nombre</p>
+</div>
+<p>Le message chiffr&#233; :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_chiffrement.png" alt="Exemple de chiffrement" />
 <p class="caption">Exemple de chiffrement</p>
 </div>
+<p>On se retrouve avec un message ressemblant &#224; ceci</p>
+<pre class="nohighlight"><code>2546 824 4962 8071 2160 4962 8071 5933 4962 </code></pre>
+<p>Que l'on peut d&#233;chiffrer :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_dechiffrement.png" alt="Exemple de d&#233;chiffrement" />
 <p class="caption">Exemple de d&#233;chiffrement</p>
 </div>
+<p>Pour retrouver notre message (compos&#233; de nombre), qui est facilement transformable en cha&#238;ne.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code du fonctionnement de l'algorithme RSA :</p>
 <pre class="nohighlight"><code>cl&#233;Publique(p, q) :
@@ -361,7 +371,7 @@ y = 3</code></pre>
 cl&#233;Priv&#233;e(e, m, n) :
 
    Algorithme d&#39;Euclide &#233;tendu pour calculer d (l&#39;inverse de la multiplication
-   de e modulo m)
+   de e mod m)
 
    Retourner couple (n, d)
 
@@ -374,10 +384,192 @@ d&#233;chiffrer :
 
    Pour chaque caract&#232;re du message
       lettreClaire = lettreChiffr&#233;e ^ d mod n </code></pre>
-<p>Une derni&#232;re question se pose cependant face &#224; ce pseudo-code... Comment calculer des nombres &#224; des puissances aussi &#233;normes ? En effet, <span class="math inline">\(d = 4663\)</span> dans notre exemple et &#233;lever un nombre &#224; la puissance 4663 est tout simplement fou (surtout qu'en situation r&#233;elle, notre <span class="math inline">\(e\)</span> et <span class="math inline">\(d\)</span> peuvent comporter plusieurs centaines de chiffres chacun). Heureusement un algorithme nous permet de calculer facilement le r&#233;sultat d'une op&#233;ration du style <span class="math inline">\(x^a \mod b\)</span>, c'est l'<a href="https://en.wikipedia.org/wiki/Modular_exponentiation">exponentiation modulaire</a> ce qui est parfait dans notre cas car on ne veut pas calculer la puissance puis lui appliquer le modulo s&#233;par&#233;ment car &#231;a serait trop lent et compliqu&#233; &#224; faire sur de grands nombres.</p>
+<p>Une derni&#232;re question se pose cependant face &#224; ce pseudo-code... Comment calculer des nombres &#224; des puissances aussi &#233;normes ? En effet, <span class="math inline">\(d = 4663\)</span> dans notre exemple et &#233;lever un nombre &#224; la puissance 4663 est tout simplement fou (surtout qu'en situation r&#233;elle, notre <span class="math inline">\(e\)</span> et <span class="math inline">\(d\)</span> peuvent comporter plusieurs centaines de chiffres chacun). Si on calcule s&#233;par&#233;ment <span class="math inline">\(a^b\)</span> puis on applique le modulo <span class="math inline">\(c\)</span> on sera confront&#233; &#224; un probl&#232;me de stockage car quand b est grand le r&#233;sultat <span class="math inline">\(a^b\)</span> sera tellement gigantesque que notre programme ne pourra pas stocker ce nombre. Heureusement un algorithme nous permet de calculer facilement le r&#233;sultat d'une op&#233;ration du style <span class="math inline">\(a^b \mod c\)</span>, c'est l'<a href="https://en.wikipedia.org/wiki/Modular_exponentiation">exponentiation modulaire</a>.</p>
+<p>Soit <span class="math inline">\(x = a^b \mod c\)</span>, on peut trouver <span class="math inline">\(x\)</span> facilement gr&#226;ce &#224; notre nouvel algorithme :</p>
+<pre class="nohighlight"><code>x = 1
+Pour chaque exposant allant de 1 &#224; b inclus
+   x = (x * a) mod c</code></pre>
+<p>Cet algorithme nous permet donc de travailler avec des nombres bien plus petits qui ne d&#233;passeront jamais <span class="math inline">\(c\)</span> car &#224; chaque multiplication on effectue un modulo dessus.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C de l'algorithme de RSA :</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div>
+<a href="javascript:toggle_visibility('rsa.c');">rsa.c</a>
+<div id="rsa.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+<span class="ot">#include &lt;time.h&gt;</span>
+<span class="ot">#include &lt;stdlib.h&gt;</span>
+
+<span class="ot">#define TAILLE_MAX 1000</span>
+
+<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> message[TAILLE_MAX];
+<span class="dt">int</span> taille;
+<span class="co">// Cl&#233;</span>
+<span class="dt">int</span> p, q;
+<span class="dt">int</span> n;
+<span class="dt">int</span> m;
+<span class="dt">int</span> e, d;
+
+<span class="dt">int</span> PGCD(<span class="dt">int</span> a, <span class="dt">int</span> b)
+{
+   <span class="dt">int</span> r;
+
+   <span class="kw">while</span>(b != <span class="dv">0</span>) {
+      r = a % b;
+      a = b;
+      b = r;
+   }
+
+   <span class="kw">return</span> a;
+}
+
+<span class="dt">int</span> euclideEtendu(<span class="dt">int</span> a, <span class="dt">int</span> b)
+{
+   <span class="dt">int</span> r0, r1;
+   <span class="dt">int</span> s0, s1;
+   <span class="dt">int</span> t0, t1;
+   <span class="dt">int</span> i;
+   <span class="dt">int</span> q, r, s, t;
+
+   r0 = a;
+   s0 = <span class="dv">1</span>;
+   t0 = <span class="dv">0</span>;
+
+   r1 = b;
+   s1 = <span class="dv">0</span>;
+   t1 = <span class="dv">1</span>;
+
+   r = <span class="dv">42</span>;
+   <span class="kw">for</span>(i = <span class="dv">2</span>; r != <span class="dv">0</span>; ++i) {
+      q = r0 / r1;
+      r = r0 - q * r1;
+      s = s0 - q * s1;
+      t = t0 - q * t1;
+
+      r0 = r1;
+      r1 = r;
+      s0 = s1;
+      s1 = s;
+      t0 = t1;
+      t1 = t;
+   }
+
+   <span class="kw">return</span> s0;
+}
+
+<span class="dt">void</span> clePublique(<span class="dt">void</span>)
+{
+   <span class="dt">static</span> <span class="dt">int</span> premier[] = {<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">31</span>, <span class="dv">37</span>, <span class="dv">41</span>, <span class="dv">43</span>, 
+      <span class="dv">47</span>, <span class="dv">53</span>, <span class="dv">59</span>, <span class="dv">61</span>, <span class="dv">67</span>, <span class="dv">71</span>, <span class="dv">73</span>, <span class="dv">79</span>, <span class="dv">83</span>, <span class="dv">89</span>, <span class="dv">97</span>, <span class="dv">101</span>, <span class="dv">103</span>, <span class="dv">107</span>, <span class="dv">109</span>, <span class="dv">113</span>, <span class="dv">127</span>, 
+      <span class="dv">131</span>, <span class="dv">137</span>, <span class="dv">139</span>, <span class="dv">149</span>, <span class="dv">151</span>, <span class="dv">157</span>, <span class="dv">163</span>, <span class="dv">167</span>, <span class="dv">173</span>, <span class="dv">179</span>, <span class="dv">181</span>, <span class="dv">191</span>, <span class="dv">193</span>, <span class="dv">197</span>, <span class="dv">199</span>,
+      <span class="dv">211</span>, <span class="dv">223</span>, <span class="dv">227</span>, <span class="dv">229</span>, <span class="dv">233</span>, <span class="dv">239</span>, <span class="dv">241</span>, <span class="dv">251</span>, <span class="dv">257</span>, <span class="dv">263</span>, <span class="dv">269</span>, <span class="dv">271</span>, <span class="dv">277</span>, <span class="dv">281</span>, <span class="dv">283</span>,
+      <span class="dv">293</span>, <span class="dv">307</span>, <span class="dv">311</span>, <span class="dv">313</span>, <span class="dv">317</span>, <span class="dv">331</span>, <span class="dv">337</span>, <span class="dv">347</span>, <span class="dv">349</span>, <span class="dv">353</span>, <span class="dv">359</span>, <span class="dv">367</span>, <span class="dv">373</span>, <span class="dv">379</span>, <span class="dv">383</span>,
+      <span class="dv">389</span>, <span class="dv">397</span>, <span class="dv">401</span>, <span class="dv">409</span>, <span class="dv">419</span>, <span class="dv">421</span>, <span class="dv">431</span>, <span class="dv">433</span>, <span class="dv">439</span>, <span class="dv">443</span>, <span class="dv">449</span>, <span class="dv">457</span>, <span class="dv">461</span>, <span class="dv">463</span>, <span class="dv">467</span>,
+      <span class="dv">479</span>, <span class="dv">487</span>, <span class="dv">491</span>, <span class="dv">499</span>, <span class="dv">503</span>, <span class="dv">509</span>, <span class="dv">521</span>, <span class="dv">523</span>, <span class="dv">541</span>};
+
+   <span class="co">/*do</span>
+<span class="co">     {</span>
+<span class="co">     p = premier[rand() % 100];</span>
+<span class="co">     q = premier[rand() % 100];</span>
+
+<span class="co">     } while(p == q);*/</span>
+
+   p = <span class="dv">61</span>;
+   q = <span class="dv">137</span>;
+
+   n = p * q;
+   m = (p - <span class="dv">1</span>) * (q - <span class="dv">1</span>);
+
+   <span class="kw">for</span>(e = <span class="dv">2</span>; PGCD(e, m) != <span class="dv">1</span>; ++e)
+      ;
+}
+
+<span class="dt">void</span> clePrivee(<span class="dt">void</span>)
+{
+   d = euclideEtendu(e, m);
+   <span class="kw">while</span>(d &lt; <span class="dv">0</span>)
+      d += m;
+}
+
+<span class="dt">void</span> chiffrement(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iMessage, iExp;
+   <span class="dt">int</span> lettre;
+
+   <span class="kw">for</span>(iMessage = <span class="dv">0</span>; iMessage &lt; taille; ++iMessage) {
+      <span class="co">// Exponentiation modulaire</span>
+      lettre = message[iMessage];
+      message[iMessage] = <span class="dv">1</span>;
+      <span class="kw">for</span>(iExp = <span class="dv">1</span>; iExp &lt;= e; ++iExp)
+         message[iMessage] = (message[iMessage] * lettre) % n;
+   }
+}
+
+<span class="dt">void</span> dechiffrement(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iMessage, iExp;
+   <span class="dt">int</span> lettre;
+
+   <span class="kw">for</span>(iMessage = <span class="dv">0</span>; iMessage &lt; taille; ++iMessage) {
+      <span class="co">// Exponentiation modulaire</span>
+      lettre = message[iMessage];
+      message[iMessage] = <span class="dv">1</span>;
+      <span class="kw">for</span>(iExp = <span class="dv">1</span>; iExp &lt;= d; ++iExp)
+         message[iMessage] = (message[iMessage] * lettre) % n;
+   }
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">char</span> iCar;
+   <span class="dt">int</span> iMessage;
+
+   <span class="co">// Lit le message et le transforme en nombre </span>
+   iMessage = <span class="dv">0</span>;
+   <span class="kw">do</span>
+   {
+      scanf(<span class="st">&quot;%c&quot;</span>, &amp;iCar);
+      <span class="kw">if</span>(iCar != <span class="ch">&#39;\n&#39;</span>) {
+         message[iMessage] = (<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span>)iCar;
+         ++iMessage;
+      }
+   } <span class="kw">while</span>(iCar != <span class="ch">&#39;\n&#39;</span>);
+   taille = iMessage;
+
+   <span class="co">// G&#233;n&#232;re le couple de cl&#233;</span>
+   srand(time(NULL));
+   clePublique();
+   clePrivee();
+
+   printf(<span class="st">&quot;Cle publique : %d %d</span><span class="ch">\n</span><span class="st">&quot;</span>, n, e);
+   printf(<span class="st">&quot;Cle privee : %d %d</span><span class="ch">\n</span><span class="st">&quot;</span>, n, d);
+
+   <span class="co">// Chiffre le message et l&#39;affiche comme une suite de nombre</span>
+   chiffrement();
+   <span class="kw">for</span>(iMessage = <span class="dv">0</span>; iMessage &lt; taille; ++iMessage)
+      printf(<span class="st">&quot;%llu &quot;</span>, message[iMessage]);
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+   <span class="co">// D&#233;chiffre le message et l&#39;affiche comme une cha&#238;ne</span>
+   dechiffrement();
+   <span class="kw">for</span>(iMessage = <span class="dv">0</span>; iMessage &lt; taille; ++iMessage)
+      printf(<span class="st">&quot;%c&quot;</span>, (<span class="dt">char</span>)message[iMessage]);
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Le message d'entr&#233;e :</p>
+<pre class="nohighlight"><code>Bienvenue</code></pre>
+<p>La sortie :</p>
+<pre class="nohighlight"><code>Cle publique : 8357 7
+Cle privee : 8357 4663
+2546 824 4962 8071 2160 4962 8071 5933 4962 
+Bienvenue</code></pre>
+<p>Quelques remarques sur le code :</p>
+<ul>
+<li>Le type du message est <code>unsigned long long</code> qui est le type le plus grand en C (il stocke des nombres allant de 0 &#224; <span class="math inline">\(2^64 - 1\)</span>), car un <code>int</code> ne sera pas toujours suffisant, on prend donc des pr&#233;cautions en utilisant un type de donn&#233;es tr&#232;s grand pour ne pas avoir de probl&#232;mes.</li>
+<li>Dans la fonction <code>clePublique</code>, j'utilise un tableau statique contenant tous les nombres premiers de 1 &#224; 100 et je tire au sort pour d&#233;terminer <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> (j'ai rentr&#233; directement <code>p = 61</code> et <code>q = 137</code> pour que les r&#233;sultats concordent avec notre exemple, mais la partie tirage au sort est comment&#233;e).</li>
+<li>Pour lire notre message, on va directement stocker les caract&#232;res sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on converti en <code>char</code> apr&#232;s le d&#233;chiffrement pour afficher une cha&#238;ne de caract&#232;res.</li>
+</ul>
 <h2 id="s&#233;curit&#233;">S&#233;curit&#233;</h2>
 <h2 id="cassage">Cassage</h2>
 <h2 id="conclusion">Conclusion</h2>
