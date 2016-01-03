@@ -3,11 +3,11 @@ RSA
 algo/chiffrement
 
 Publié le : 31/05/2014  
-*Modifié le : 02/01/2016*
+*Modifié le : 03/01/2016*
 
 ## Introduction
 
-Tous les algorithmes de chiffrement **symétriques** ont un problème commun : la transmission de clé. Quelque soit l'algorithme utilisé, si la clé est interceptée par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, voir même impossible dans certains cas (par exemple avec Internet, c'est compliqué d'aller voir le responsable de chaque serveur physiquement pour qu'il vous transmette une clé), il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements **asymétriques**.
+Tous les algorithmes de chiffrement **symétriques** ont un problème commun : la transmission de clé. Quelque soit l'algorithme utilisé, si la clé est interceptée par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, et même impossible dans certains cas (par exemple avec Internet, c'est compliqué d'aller voir le responsable de chaque serveur physiquement pour qu'il vous transmette une clé), il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements **asymétriques**.
 
 L'idée du chiffrement asymétrique est d'utiliser deux clés au lieu d'une, et que l'on va attribuer à chaque personne :
 
@@ -36,13 +36,13 @@ La clé publique correspond au couple ($n$, $e$) et la clé privée au couple ($
 
 Pour chiffrer notre message, on utilisera alors cette relation :
 
-$f(x) = x^{e} \mod n$
+$f(x) = x^e \mod n$
 
 Avec $x$ la lettre du message en clair, et $f(x)$ la lettre chiffrée.
 
 Et pour le déchiffrement, on utilise la fonction suivante :
 
-$f'(x) = x^{d} \mod n$
+$f'(x) = x^d \mod n$
 
 Avec cette fois $x$ la lettre chiffrée et $f'(x)$ la lettre déchiffrée.
 
@@ -52,7 +52,7 @@ Choisissons comme message "Bienvenue", et chiffrons-le avec l'algorithme RSA.
 
 ### Génération des clés
 
-La première étape est de générer notre clé publique et privée car je n'en possède pas encore, et comme je n'ai pas d'ami nommé Bob à qui envoyer des messages secrets, je vais m'envoyer le message chiffré à moi même (pour simplifier les explications et ne pas être embrouillé dans toutes les valeurs numériques). On applique donc notre algorithme de création de clés :
+La première étape est de générer notre clé publique et privée car je n'en possède pas encore, et comme je n'ai pas d'ami nommé Bob à qui envoyer des messages secrets, je vais m'envoyer le message chiffré à moi-même (pour simplifier les explications et ne pas être embrouillé dans toutes les valeurs numériques). On applique donc notre algorithme de création de clés :
 
 Soit $p$ et $q$ deux nombres premiers que je choisis aléatoirement :
 
@@ -142,10 +142,10 @@ Notre couple de clé publique/privée est désormais généré :
 
 On peut maintenant chiffrer et déchiffrer notre message avec nos clés en appliquant les fonctions :
 
-$f(x) = x^{e} \mod n$  
-$f'(x) = x^{d} \mod n$
+$f(x) = x^e \mod n$  
+$f'(x) = x^d \mod n$
 
-Les caractères seront représentés par des nombres grâce à la [table ASCII](https://en.wikipedia.org/wiki/ASCII) permettant de résoudre les relations mathématiques (on imagine dans notre cas que les caractères du message sont tous présent dans la table ASCII pour simplifier le problème).
+Les caractères seront représentés par des nombres grâce à la [table ASCII](https://en.wikipedia.org/wiki/ASCII) permettant de résoudre les relations mathématiques (on imagine dans notre cas que les caractères du message sont tous présents dans la table ASCII pour simplifier le problème).
 
 Notre message correspond donc à ceci selon la table ASCII :
 
@@ -232,9 +232,65 @@ Quelques remarques sur le code :
 
 - Le type du message est `unsigned long long` qui est le type le plus grand en C (il stocke des nombres allant de 0 à $2^64 - 1$), car un `int` ne sera pas toujours suffisant, on prend donc des précautions en utilisant un type de données très grand pour ne pas avoir de problèmes.
 - Dans la fonction `clePublique`, j'utilise un tableau statique contenant tous les nombres premiers de 1 à 100 et je tire au sort pour déterminer $p$ et $q$ (j'ai rentré directement `p = 61` et `q = 137` pour que les résultats concordent avec notre exemple, mais la partie tirage au sort est commentée).
-- Pour lire notre message, on va directement stocker les caractères sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on converti en `char` après le déchiffrement pour afficher une chaîne de caractères.
+- Pour lire notre message, on va directement stocker les caractères sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on convertit en `char` après le déchiffrement pour afficher une chaîne de caractères.
+
+## Démonstration
+
+*Cette partie n'est pas essentielle pour comprendre le fonctionnement de l'algorithme, mais permet aux curieux de voir comment démontrer que notre système marche. Plusieurs notions mathématiques sont nécessaires pour la compréhension de la démonstration, mais sachez que j'ai appris au fur et à mesure en rédigeant cette partie sans connaitre à l'avance les outils mathématiques utilisés, donc il est tout à fait possible qu'un lecteur fasse de même s'il est intéressé.*
+
+C'est bien beau toutes ces explications, mais mathématiquement comme être sûr que notre algorithme marche à tous les coups ? Comment savoir si notre message original une fois chiffré sera le même quand il est déchiffré ?
+
+Pour cela il faut prouver que l'algorithme RSA est valide, on part donc des deux fonctions de chiffrement et de déchiffrement :
+
+$f(x) = x^e \mod n$  
+$f'(x) = x^d \mod n$
+
+Dire que notre algorithme est valide revient à prouver que :
+
+$f(f'(x)) = f'(f(x)) = x \mod n$
+
+Cependant on remarque que :
+
+$f(f'(x)) = (x^d \mod n)^e \mod n$  
+$f(f'(x)) = x^{ed} \mod n$
+
+Et :
+
+$f'(f(x)) = (x^e \mod n)^d \mod n$  
+$f'(f(x)) = x^{ed} \mod n$
+
+On a $f(f'(x)) = f'(f(x)) = x^{ed} \mod n$, et on cherche donc à démontrer que $x^{ed} \equiv x \pmod pq$ (car $n = pq$). Or d'après le [théorème des restes chinois](https://en.wikipedia.org/wiki/Chinese_remainder_theorem), pour démontrer la congruence $pq$, il suffit de démontrer les congruences $p$ et $q$ séparées. Démontrons d'abord que $x^{ed} \equiv x \pmod p$ :
+
+On va diviser le problème en deux cas, soit $x$ est divisible par $p$, soit il ne l'est pas, donc soit $x \equiv 0 \pmod p$, soit $x \not\equiv 0 \pmod p$, commençons par le premier cas (qui est le plus simple) :
+
+$x$ est un multiple de $p$, donc $x^{ed} \equiv 0 \pmod p$, or $x \equiv 0 \pmod p$, donc $x^{ed} \equiv x \pmod p$.
+
+On continue avec notre deuxième cas où $x$ n'est pas divisible par $p$ :
+
+Tout d'abord, par définition de $e$, $d$ et $m$ :
+
+$ed \equiv 1 \pmod m$  
+$ed \equiv 1 \pmod{(p - 1)(q - 1)}$
+
+Ceci signifie que $(p - 1)(q - 1)$ est un diviseur de $ed - 1$, on a :
+
+$ed = 1 + k(p - 1)(q - 1)$ avec $k$ un nombre entier représentant le quotient de $(ed - 1)/(p - 1)(q - 1)$
+
+Donc :
+
+$x^{ed} = x^{1 + k(p - 1)(q -1)}$  
+$x^{ed} = x(x^{p - 1})^{k(q -1)}$
+
+Et d'après le [théorème de Fermat](https://en.wikipedia.org/wiki/Fermat's_little_theorem) $x^{p - 1} \equiv 1 \pmod p$ :
+
+$x^{ed} \equiv x(1)^{k(q - 1)} \pmod p$  
+$x^{ed} \equiv x \pmod p$
+
+Donc pour tout $x$, on a $x^{ed} \equiv x \pmod p$. La démonstration pour la congruence de $q$ est exactement la même. On a démontré que $x^{eq} \equiv x \pmod{pq}$, et donc que $x^{eq} \equiv x \pmod n$, donc notre algorithme vérifie l'équation au départ confirmant la validité de RSA.
 
 ## Sécurité
+
+
 
 ## Cassage
 

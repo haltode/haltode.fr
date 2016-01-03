@@ -197,19 +197,20 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="rsa">RSA</h1></a>
 <p>Publi&#233; le : 31/05/2014<br />
-<em>Modifi&#233; le : 02/01/2016</em></p>
+<em>Modifi&#233; le : 03/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#d&#233;monstration">D&#233;monstration</a></li>
 <li><a href="#s&#233;curit&#233;">S&#233;curit&#233;</a></li>
 <li><a href="#cassage">Cassage</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Tous les algorithmes de chiffrement <strong>sym&#233;triques</strong> ont un probl&#232;me commun : la transmission de cl&#233;. Quelque soit l'algorithme utilis&#233;, si la cl&#233; est intercept&#233;e par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce probl&#232;me est fondamental car transmettre une cl&#233; de chiffrement est tr&#232;s d&#233;licat, voir m&#234;me impossible dans certains cas (par exemple avec Internet, c'est compliqu&#233; d'aller voir le responsable de chaque serveur physiquement pour qu'il vous transmette une cl&#233;), il &#233;tait donc n&#233;cessaire de trouver une autre solution face &#224; ce probl&#232;me : les chiffrements <strong>asym&#233;triques</strong>.</p>
+<p>Tous les algorithmes de chiffrement <strong>sym&#233;triques</strong> ont un probl&#232;me commun : la transmission de cl&#233;. Quelque soit l'algorithme utilis&#233;, si la cl&#233; est intercept&#233;e par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire du message. Ce probl&#232;me est fondamental car transmettre une cl&#233; de chiffrement est tr&#232;s d&#233;licat, et m&#234;me impossible dans certains cas (par exemple avec Internet, c'est compliqu&#233; d'aller voir le responsable de chaque serveur physiquement pour qu'il vous transmette une cl&#233;), il &#233;tait donc n&#233;cessaire de trouver une autre solution face &#224; ce probl&#232;me : les chiffrements <strong>asym&#233;triques</strong>.</p>
 <p>L'id&#233;e du chiffrement asym&#233;trique est d'utiliser deux cl&#233;s au lieu d'une, et que l'on va attribuer &#224; chaque personne :</p>
 <ul>
 <li>Une cl&#233; <strong>publique</strong> qu'on peut diffuser, transmettre et montrer &#224; absolument tout le monde sans que cela pose un probl&#232;me de s&#233;curit&#233; (c'est d'ailleurs conseill&#233; de la rendre la plus accessible possible).</li>
@@ -230,15 +231,15 @@ function toggle_visibility(id) {
 </ul>
 <p>La cl&#233; publique correspond au couple (<span class="math inline">\(n\)</span>, <span class="math inline">\(e\)</span>) et la cl&#233; priv&#233;e au couple (<span class="math inline">\(n\)</span>, <span class="math inline">\(d\)</span>).</p>
 <p>Pour chiffrer notre message, on utilisera alors cette relation :</p>
-<p><span class="math inline">\(f(x) = x^{e} \mod n\)</span></p>
+<p><span class="math inline">\(f(x) = x^e \mod n\)</span></p>
 <p>Avec <span class="math inline">\(x\)</span> la lettre du message en clair, et <span class="math inline">\(f(x)\)</span> la lettre chiffr&#233;e.</p>
 <p>Et pour le d&#233;chiffrement, on utilise la fonction suivante :</p>
-<p><span class="math inline">\(f&#39;(x) = x^{d} \mod n\)</span></p>
+<p><span class="math inline">\(f&#39;(x) = x^d \mod n\)</span></p>
 <p>Avec cette fois <span class="math inline">\(x\)</span> la lettre chiffr&#233;e et <span class="math inline">\(f&#39;(x)\)</span> la lettre d&#233;chiffr&#233;e.</p>
 <h2 id="exemple">Exemple</h2>
 <p>Choisissons comme message &quot;Bienvenue&quot;, et chiffrons-le avec l'algorithme RSA.</p>
 <h3 id="g&#233;n&#233;ration-des-cl&#233;s">G&#233;n&#233;ration des cl&#233;s</h3>
-<p>La premi&#232;re &#233;tape est de g&#233;n&#233;rer notre cl&#233; publique et priv&#233;e car je n'en poss&#232;de pas encore, et comme je n'ai pas d'ami nomm&#233; Bob &#224; qui envoyer des messages secrets, je vais m'envoyer le message chiffr&#233; &#224; moi m&#234;me (pour simplifier les explications et ne pas &#234;tre embrouill&#233; dans toutes les valeurs num&#233;riques). On applique donc notre algorithme de cr&#233;ation de cl&#233;s :</p>
+<p>La premi&#232;re &#233;tape est de g&#233;n&#233;rer notre cl&#233; publique et priv&#233;e car je n'en poss&#232;de pas encore, et comme je n'ai pas d'ami nomm&#233; Bob &#224; qui envoyer des messages secrets, je vais m'envoyer le message chiffr&#233; &#224; moi-m&#234;me (pour simplifier les explications et ne pas &#234;tre embrouill&#233; dans toutes les valeurs num&#233;riques). On applique donc notre algorithme de cr&#233;ation de cl&#233;s :</p>
 <p>Soit <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> deux nombres premiers que je choisis al&#233;atoirement :</p>
 <p><span class="math inline">\(p = 61\)</span> et <span class="math inline">\(q = 137\)</span></p>
 <p>A partir de cela, on peut calculer notre module de chiffrement :</p>
@@ -336,9 +337,9 @@ y = 3</code></pre>
 </ul>
 <h3 id="chiffrementd&#233;chiffrement">Chiffrement/D&#233;chiffrement</h3>
 <p>On peut maintenant chiffrer et d&#233;chiffrer notre message avec nos cl&#233;s en appliquant les fonctions :</p>
-<p><span class="math inline">\(f(x) = x^{e} \mod n\)</span><br />
-<span class="math inline">\(f&#39;(x) = x^{d} \mod n\)</span></p>
-<p>Les caract&#232;res seront repr&#233;sent&#233;s par des nombres gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/ASCII">table ASCII</a> permettant de r&#233;soudre les relations math&#233;matiques (on imagine dans notre cas que les caract&#232;res du message sont tous pr&#233;sent dans la table ASCII pour simplifier le probl&#232;me).</p>
+<p><span class="math inline">\(f(x) = x^e \mod n\)</span><br />
+<span class="math inline">\(f&#39;(x) = x^d \mod n\)</span></p>
+<p>Les caract&#232;res seront repr&#233;sent&#233;s par des nombres gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/ASCII">table ASCII</a> permettant de r&#233;soudre les relations math&#233;matiques (on imagine dans notre cas que les caract&#232;res du message sont tous pr&#233;sents dans la table ASCII pour simplifier le probl&#232;me).</p>
 <p>Notre message correspond donc &#224; ceci selon la table ASCII :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_message_ascii.png" alt="Transformation du message en nombre" />
@@ -568,8 +569,38 @@ Bienvenue</code></pre>
 <ul>
 <li>Le type du message est <code>unsigned long long</code> qui est le type le plus grand en C (il stocke des nombres allant de 0 &#224; <span class="math inline">\(2^64 - 1\)</span>), car un <code>int</code> ne sera pas toujours suffisant, on prend donc des pr&#233;cautions en utilisant un type de donn&#233;es tr&#232;s grand pour ne pas avoir de probl&#232;mes.</li>
 <li>Dans la fonction <code>clePublique</code>, j'utilise un tableau statique contenant tous les nombres premiers de 1 &#224; 100 et je tire au sort pour d&#233;terminer <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> (j'ai rentr&#233; directement <code>p = 61</code> et <code>q = 137</code> pour que les r&#233;sultats concordent avec notre exemple, mais la partie tirage au sort est comment&#233;e).</li>
-<li>Pour lire notre message, on va directement stocker les caract&#232;res sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on converti en <code>char</code> apr&#232;s le d&#233;chiffrement pour afficher une cha&#238;ne de caract&#232;res.</li>
+<li>Pour lire notre message, on va directement stocker les caract&#232;res sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on convertit en <code>char</code> apr&#232;s le d&#233;chiffrement pour afficher une cha&#238;ne de caract&#232;res.</li>
 </ul>
+<h2 id="d&#233;monstration">D&#233;monstration</h2>
+<p><em>Cette partie n'est pas essentielle pour comprendre le fonctionnement de l'algorithme, mais permet aux curieux de voir comment d&#233;montrer que notre syst&#232;me marche. Plusieurs notions math&#233;matiques sont n&#233;cessaires pour la compr&#233;hension de la d&#233;monstration, mais sachez que j'ai appris au fur et &#224; mesure en r&#233;digeant cette partie sans connaitre &#224; l'avance les outils math&#233;matiques utilis&#233;s, donc il est tout &#224; fait possible qu'un lecteur fasse de m&#234;me s'il est int&#233;ress&#233;.</em></p>
+<p>C'est bien beau toutes ces explications, mais math&#233;matiquement comme &#234;tre s&#251;r que notre algorithme marche &#224; tous les coups ? Comment savoir si notre message original une fois chiffr&#233; sera le m&#234;me quand il est d&#233;chiffr&#233; ?</p>
+<p>Pour cela il faut prouver que l'algorithme RSA est valide, on part donc des deux fonctions de chiffrement et de d&#233;chiffrement :</p>
+<p><span class="math inline">\(f(x) = x^e \mod n\)</span><br />
+<span class="math inline">\(f&#39;(x) = x^d \mod n\)</span></p>
+<p>Dire que notre algorithme est valide revient &#224; prouver que :</p>
+<p><span class="math inline">\(f(f&#39;(x)) = f&#39;(f(x)) = x \mod n\)</span></p>
+<p>Cependant on remarque que :</p>
+<p><span class="math inline">\(f(f&#39;(x)) = (x^d \mod n)^e \mod n\)</span><br />
+<span class="math inline">\(f(f&#39;(x)) = x^{ed} \mod n\)</span></p>
+<p>Et :</p>
+<p><span class="math inline">\(f&#39;(f(x)) = (x^e \mod n)^d \mod n\)</span><br />
+<span class="math inline">\(f&#39;(f(x)) = x^{ed} \mod n\)</span></p>
+<p>On a <span class="math inline">\(f(f&#39;(x)) = f&#39;(f(x)) = x^{ed} \mod n\)</span>, et on cherche donc &#224; d&#233;montrer que <span class="math inline">\(x^{ed} \equiv x \pmod pq\)</span> (car <span class="math inline">\(n = pq\)</span>). Or d'apr&#232;s le <a href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem">th&#233;or&#232;me des restes chinois</a>, pour d&#233;montrer la congruence <span class="math inline">\(pq\)</span>, il suffit de d&#233;montrer les congruences <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> s&#233;par&#233;es. D&#233;montrons d'abord que <span class="math inline">\(x^{ed} \equiv x \pmod p\)</span> :</p>
+<p>On va diviser le probl&#232;me en deux cas, soit <span class="math inline">\(x\)</span> est divisible par <span class="math inline">\(p\)</span>, soit il ne l'est pas, donc soit <span class="math inline">\(x \equiv 0 \pmod p\)</span>, soit <span class="math inline">\(x \not\equiv 0 \pmod p\)</span>, commen&#231;ons par le premier cas (qui est le plus simple) :</p>
+<p><span class="math inline">\(x\)</span> est un multiple de <span class="math inline">\(p\)</span>, donc <span class="math inline">\(x^{ed} \equiv 0 \pmod p\)</span>, or <span class="math inline">\(x \equiv 0 \pmod p\)</span>, donc <span class="math inline">\(x^{ed} \equiv x \pmod p\)</span>.</p>
+<p>On continue avec notre deuxi&#232;me cas o&#249; <span class="math inline">\(x\)</span> n'est pas divisible par <span class="math inline">\(p\)</span> :</p>
+<p>Tout d'abord, par d&#233;finition de <span class="math inline">\(e\)</span>, <span class="math inline">\(d\)</span> et <span class="math inline">\(m\)</span> :</p>
+<p><span class="math inline">\(ed \equiv 1 \pmod m\)</span><br />
+<span class="math inline">\(ed \equiv 1 \pmod{(p - 1)(q - 1)}\)</span></p>
+<p>Ceci signifie que <span class="math inline">\((p - 1)(q - 1)\)</span> est un diviseur de <span class="math inline">\(ed - 1\)</span>, on a :</p>
+<p><span class="math inline">\(ed = 1 + k(p - 1)(q - 1)\)</span> avec <span class="math inline">\(k\)</span> un nombre entier repr&#233;sentant le quotient de <span class="math inline">\((ed - 1)/(p - 1)(q - 1)\)</span></p>
+<p>Donc :</p>
+<p><span class="math inline">\(x^{ed} = x^{1 + k(p - 1)(q -1)}\)</span><br />
+<span class="math inline">\(x^{ed} = x(x^{p - 1})^{k(q -1)}\)</span></p>
+<p>Et d'apr&#232;s le <a href="https://en.wikipedia.org/wiki/Fermat&#39;s_little_theorem">th&#233;or&#232;me de Fermat</a> <span class="math inline">\(x^{p - 1} \equiv 1 \pmod p\)</span> :</p>
+<p><span class="math inline">\(x^{ed} \equiv x(1)^{k(q - 1)} \pmod p\)</span><br />
+<span class="math inline">\(x^{ed} \equiv x \pmod p\)</span></p>
+<p>Donc pour tout <span class="math inline">\(x\)</span>, on a <span class="math inline">\(x^{ed} \equiv x \pmod p\)</span>. La d&#233;monstration pour la congruence de <span class="math inline">\(q\)</span> est exactement la m&#234;me. On a d&#233;montr&#233; que <span class="math inline">\(x^{eq} \equiv x \pmod{pq}\)</span>, et donc que <span class="math inline">\(x^{eq} \equiv x \pmod n\)</span>, donc notre algorithme v&#233;rifie l'&#233;quation au d&#233;part confirmant la validit&#233; de RSA.</p>
 <h2 id="s&#233;curit&#233;">S&#233;curit&#233;</h2>
 <h2 id="cassage">Cassage</h2>
 <h2 id="conclusion">Conclusion</h2>
