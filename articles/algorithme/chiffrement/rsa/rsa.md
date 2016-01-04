@@ -3,7 +3,7 @@ RSA
 algo/chiffrement
 
 Publié le : 31/05/2014  
-*Modifié le : 03/01/2016*
+*Modifié le : 04/01/2016*
 
 ## Introduction
 
@@ -17,6 +17,8 @@ L'idée du chiffrement asymétrique est d'utiliser deux clés au lieu d'une, et 
 Les bases du chiffrement asymétrique furent introduites grâce à Whitfield Diffie et Martin Hellman quelques années avant l'algorithme RSA, et ils montrent comment résoudre le problème d'échange de clés de manière sécurisé. La particularité est qu'il est simple de générer des couples de clés, mais quasiment impossible de retrouver la clé privée à partir de la clé publique (que n'importe qui peut en théorie voir).
 
 L'algorithme RSA sera l'un des premiers algorithmes de chiffrement asymétriques utilisant ce concept et à en faire une implémentation possible pour la communication de messages grâce à des principes mathématiques. Cet algorithme est encore très utilisé de nos jours, surtout sur Internet (dans le commerce en ligne, les transactions sécurisées, etc.).
+
+TODO : retravailler intro
 
 ## Principe de l'algorithme
 
@@ -213,6 +215,8 @@ Cet algorithme nous permet donc de travailler avec des nombres bien plus petits 
 
 ## Implémentation
 
+TODO : parler des libs externes de cryptographie
+
 Une implémentation en C de l'algorithme de RSA :
 
 [INSERT]
@@ -290,8 +294,32 @@ Donc pour tout $x$, on a $x^{ed} \equiv x \pmod p$. La démonstration pour la co
 
 ## Sécurité
 
+### Le message
 
+Si vous êtes observateur, vous avez peut être remarqué que finalement le message chiffré obtenu est le résultat d'une simple substitution mono-alphabétique et que par conséquent chaque lettre sera toujours chiffré de la même façon. Ceci est grave car notre message ne va pas résister longtemps à une cryptanalyse basique (en effet il suffit de chiffrer les lettres de l'alphabet avec la clé publique pour voir à quelle lettre dans le message correspondent à celles de notre nouvel alphabet). Il est donc nécessaire de procéder autrement afin de sécuriser le message en lui même et en rendant impossible tout cryptanalyse dessus. Sur un ordinateur tout est stocké à l'aide de [bit]() (une simple unité valant soit 0 soit 1, nos ordinateurs travaillent donc grâce à la [base binaire]()), un groupe de 8 bits est appelé un [octet](). Quand votre ordinateur stocke une chaîne de caractère, il stocke en réalité une succession d'octets formant chaque lettre, par exemple dans la table ASCII on peut utiliser un seul octet pour représenter les 128 valeurs car elles ne nécessitent que 7 bits pour être stockées. En sachant cela, on sait qu'une suite d'octet peut être interprété comme une chaîne car pour notre ordinateur tout est un nombre, c'est nous qui lui disons que tel caractère correspond à tel octet avec des tables comme celle ASCII. On pourrait donc représenter notre message non plus comme une suite d'octet mais comme un groupe d'octet, ce qui fait qu'au lieu de chiffrer chaque octet on chiffre le tout, rendant alors la cryptanalyse impossible (car avant un octet pouvait valoir une des 128 valeurs, mais désormais notre groupe d'octet réuni peut prendre un nombre considérable de valeur différente qui augmente avec sa taille). Il n'y a aucun moyen de trouver des informations à cause de ce groupement, et la seule solution est d'essayer toutes les combinaisons, mais vu le nombre de possibilité, on se rend compte vite que c'est impossible. Prenons par exemple le message "Code" :
+
+| Lettre      | C    | o    | d    | e    |
+| -----       | -    | -    | -    | -    |
+| Hexadécimal | 0x43 | 0x6F | 0x64 | 0x65 |
+
+J'utilise la notation [hexadécimale]() car cette dernière permet de stocker un octet plus simplement qu'en décimale. Notre message devient alors la suite d'octet `436F6465` que notre ordinateur peut tout à fait comprendre si on lui indique d'afficher cette suite comme une chaîne. On va donc appliquer notre chiffrement sur ce bloc, puis on obtiendra d'autres valeurs qu'on ne peut donc pas analysées car on a chiffré notre message comme un tout et non plus comme un ensemble de caractères et on a utilisé des fonctions à sens uniques.
+
+TODO : découper en plusieurs blocs quand c'est trop important + code d'ex en C
+
+### Les clés
+
+Désormais qu'on sait que notre message peut être sécurisé en créant un ou plusieurs blocs d'octets consécutifs, il ne nous reste plus qu'à prouver que notre système de clé asymétrique est fiable car si l'ennemi arrive à calculer la clé privée, il peut déchiffrer le message simplement sans avoir à le casser.
+
+En effet, tout le monde peut théoriquement accéder à la clé publique d'une personne et donc peut connaître $n$ et $e$, mais cela est-il réellement un problème ? Car pour trouver la clé privée il ne nous reste plus qu'à trouver $d$ car on connait déjà $n$, or pour trouver $d$, il nous faut $e$ (que l'on a), mais surtout $m$. Pour rappel $m = (p - 1) \times (q - 1)$, et les seules informations qu'on pourrait avoir sur $p$ et $q$ peuvent venir de $n$ car $n = p \times q$. Il faudrait donc décomposer $n$ en ses deux facteurs premiers $p$ et $q$. Et c'est là que l'histoire se complique, car s'il est facile de trouver et de multiplier de nombres premiers entre eux, il l'est beaucoup moins pour factoriser le résultat de la multiplication. Autrement dit, dans un sens c'est simple mais dans l'autre c'est quasiment impossible (c'est le but du RSA). Aujourd'hui, personne n'a trouvé d'algorithme qui s'exécute en [temps polynomial](), et le meilleur algorithme qu'on connaisse a une complexité exponentielle . Cependant, la question de l'existence d'un algorithme de décomposition d'un nombre en ses facteurs premiers restent encore ouverte et pourrait jouer un rôle majeur en cryptographie si la réponse était découverte.
+
+### La taille de la clé
+
+Depuis que cet algorithme de chiffrement existe, la plupart des personnes malveillantes se tournent vers la décomposition de $n$ pour retrouver $p$ et $q$ et ainsi en déduire la clé privée afin de déchiffrer un message. La seule façon de rendre cette décomposition plus lourde et plus compliquée est tout simplement d'utiliser des nombres $p$ et $q$ extrêmement grand. Le problème c'est qu'on ne connait pas forcément ce que possède notre adversaire (matériel utilisé, argent investi, algorithme mis en place, etc.) il faut donc essayer de toujours utiliser les plus grandes clés recommandées (aujourd'hui ça serait entre une clé de 2048bits et une clé de 4096bits pour être sûr). Le problème c'est que plus la clé est importante plus il faut du temps pour l'utilisateur afin de chiffrer et déchiffrer le message, il faut donc trouver un juste milieu entre rapidité et sécurité.
 
 ## Cassage
+
+Signature
+
+Attaques
 
 ## Conclusion

@@ -197,7 +197,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="rsa">RSA</h1></a>
 <p>Publi&#233; le : 31/05/2014<br />
-<em>Modifi&#233; le : 03/01/2016</em></p>
+<em>Modifi&#233; le : 04/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -218,6 +218,7 @@ function toggle_visibility(id) {
 </ul>
 <p>Les bases du chiffrement asym&#233;trique furent introduites gr&#226;ce &#224; Whitfield Diffie et Martin Hellman quelques ann&#233;es avant l'algorithme RSA, et ils montrent comment r&#233;soudre le probl&#232;me d'&#233;change de cl&#233;s de mani&#232;re s&#233;curis&#233;. La particularit&#233; est qu'il est simple de g&#233;n&#233;rer des couples de cl&#233;s, mais quasiment impossible de retrouver la cl&#233; priv&#233;e &#224; partir de la cl&#233; publique (que n'importe qui peut en th&#233;orie voir).</p>
 <p>L'algorithme RSA sera l'un des premiers algorithmes de chiffrement asym&#233;triques utilisant ce concept et &#224; en faire une impl&#233;mentation possible pour la communication de messages gr&#226;ce &#224; des principes math&#233;matiques. Cet algorithme est encore tr&#232;s utilis&#233; de nos jours, surtout sur Internet (dans le commerce en ligne, les transactions s&#233;curis&#233;es, etc.).</p>
+<p>TODO : retravailler intro</p>
 <h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
 <p>L'algorithme du RSA va dans un premier temps g&#233;n&#233;rer deux couples de cl&#233;s asym&#233;triques, l'un pour l'&#233;metteur qu'on appellera <em>Alice</em>, et l'autre pour le destinataire qu'on appellera <em>Bob</em>. Une fois que chaque personne a ses deux cl&#233;s, on peut proc&#233;der &#224; une communication s&#233;curis&#233;e. Alice va chercher la cl&#233; publique de Bob (soit en lui demandant, soit en la trouvant dans un annuaire contenant les cl&#233;s publiques de tout le monde, etc.), et elle va chiffrer son message avec cette cl&#233;. Ensuite le message chiffr&#233; est transmis &#224; Bob, et il va le d&#233;chiffrer gr&#226;ce &#224; sa cl&#233; priv&#233;e (qu'il n'a communiqu&#233; &#224; personne). Aucun &#233;change de cl&#233; n'est n&#233;cessaire, et seule la cl&#233; priv&#233;e de Bob peut d&#233;chiffrer le message, la communication est alors s&#233;curis&#233;e.</p>
 <p>La s&#233;curit&#233; du chiffrement se trouve dans l'utilisation d'une fonction de chiffrement et de d&#233;chiffrement <strong><a href="https://en.wikipedia.org/wiki/One-way_function">&#224; sens unique</a></strong>. Cette fonction est, comme pour la g&#233;n&#233;ration de cl&#233;, tr&#232;s simple &#224; appliquer dans un sens (chiffrement/d&#233;chiffrement avec la cl&#233;), mais extr&#234;mement complexe dans l'autre (chiffrement/d&#233;chiffrement sans la cl&#233;).</p>
@@ -392,6 +393,7 @@ Pour chaque exposant allant de 1 &#224; b inclus
    x = (x * a) mod c</code></pre>
 <p>Cet algorithme nous permet donc de travailler avec des nombres bien plus petits qui ne d&#233;passeront jamais <span class="math inline">\(c\)</span> car &#224; chaque multiplication on effectue un modulo dessus.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<p>TODO : parler des libs externes de cryptographie</p>
 <p>Une impl&#233;mentation en C de l'algorithme de RSA :</p>
 <a href="javascript:toggle_visibility('rsa.c');">rsa.c</a>
 <div id="rsa.c" style="display: none;">
@@ -602,7 +604,38 @@ Bienvenue</code></pre>
 <span class="math inline">\(x^{ed} \equiv x \pmod p\)</span></p>
 <p>Donc pour tout <span class="math inline">\(x\)</span>, on a <span class="math inline">\(x^{ed} \equiv x \pmod p\)</span>. La d&#233;monstration pour la congruence de <span class="math inline">\(q\)</span> est exactement la m&#234;me. On a d&#233;montr&#233; que <span class="math inline">\(x^{eq} \equiv x \pmod{pq}\)</span>, et donc que <span class="math inline">\(x^{eq} \equiv x \pmod n\)</span>, donc notre algorithme v&#233;rifie l'&#233;quation au d&#233;part confirmant la validit&#233; de RSA.</p>
 <h2 id="s&#233;curit&#233;">S&#233;curit&#233;</h2>
+<h3 id="le-message">Le message</h3>
+<p>Si vous &#234;tes observateur, vous avez peut &#234;tre remarqu&#233; que finalement le message chiffr&#233; obtenu est le r&#233;sultat d'une simple substitution mono-alphab&#233;tique et que par cons&#233;quent chaque lettre sera toujours chiffr&#233; de la m&#234;me fa&#231;on. Ceci est grave car notre message ne va pas r&#233;sister longtemps &#224; une cryptanalyse basique (en effet il suffit de chiffrer les lettres de l'alphabet avec la cl&#233; publique pour voir &#224; quelle lettre dans le message correspondent &#224; celles de notre nouvel alphabet). Il est donc n&#233;cessaire de proc&#233;der autrement afin de s&#233;curiser le message en lui m&#234;me et en rendant impossible tout cryptanalyse dessus. Sur un ordinateur tout est stock&#233; &#224; l'aide de <a href="">bit</a> (une simple unit&#233; valant soit 0 soit 1, nos ordinateurs travaillent donc gr&#226;ce &#224; la <a href="">base binaire</a>), un groupe de 8 bits est appel&#233; un <a href="">octet</a>. Quand votre ordinateur stocke une cha&#238;ne de caract&#232;re, il stocke en r&#233;alit&#233; une succession d'octets formant chaque lettre, par exemple dans la table ASCII on peut utiliser un seul octet pour repr&#233;senter les 128 valeurs car elles ne n&#233;cessitent que 7 bits pour &#234;tre stock&#233;es. En sachant cela, on sait qu'une suite d'octet peut &#234;tre interpr&#233;t&#233; comme une cha&#238;ne car pour notre ordinateur tout est un nombre, c'est nous qui lui disons que tel caract&#232;re correspond &#224; tel octet avec des tables comme celle ASCII. On pourrait donc repr&#233;senter notre message non plus comme une suite d'octet mais comme un groupe d'octet, ce qui fait qu'au lieu de chiffrer chaque octet on chiffre le tout, rendant alors la cryptanalyse impossible (car avant un octet pouvait valoir une des 128 valeurs, mais d&#233;sormais notre groupe d'octet r&#233;uni peut prendre un nombre consid&#233;rable de valeur diff&#233;rente qui augmente avec sa taille). Il n'y a aucun moyen de trouver des informations &#224; cause de ce groupement, et la seule solution est d'essayer toutes les combinaisons, mais vu le nombre de possibilit&#233;, on se rend compte vite que c'est impossible. Prenons par exemple le message &quot;Code&quot; :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Lettre</th>
+<th align="left">C</th>
+<th align="left">o</th>
+<th align="left">d</th>
+<th align="left">e</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hexad&#233;cimal</td>
+<td align="left">0x43</td>
+<td align="left">0x6F</td>
+<td align="left">0x64</td>
+<td align="left">0x65</td>
+</tr>
+</tbody>
+</table>
+<p>J'utilise la notation <a href="">hexad&#233;cimale</a> car cette derni&#232;re permet de stocker un octet plus simplement qu'en d&#233;cimale. Notre message devient alors la suite d'octet <code>436F6465</code> que notre ordinateur peut tout &#224; fait comprendre si on lui indique d'afficher cette suite comme une cha&#238;ne. On va donc appliquer notre chiffrement sur ce bloc, puis on obtiendra d'autres valeurs qu'on ne peut donc pas analys&#233;es car on a chiffr&#233; notre message comme un tout et non plus comme un ensemble de caract&#232;res et on a utilis&#233; des fonctions &#224; sens uniques.</p>
+<p>TODO : d&#233;couper en plusieurs blocs quand c'est trop important + code d'ex en C</p>
+<h3 id="les-cl&#233;s">Les cl&#233;s</h3>
+<p>D&#233;sormais qu'on sait que notre message peut &#234;tre s&#233;curis&#233; en cr&#233;ant un ou plusieurs blocs d'octets cons&#233;cutifs, il ne nous reste plus qu'&#224; prouver que notre syst&#232;me de cl&#233; asym&#233;trique est fiable car si l'ennemi arrive &#224; calculer la cl&#233; priv&#233;e, il peut d&#233;chiffrer le message simplement sans avoir &#224; le casser.</p>
+<p>En effet, tout le monde peut th&#233;oriquement acc&#233;der &#224; la cl&#233; publique d'une personne et donc peut conna&#238;tre <span class="math inline">\(n\)</span> et <span class="math inline">\(e\)</span>, mais cela est-il r&#233;ellement un probl&#232;me ? Car pour trouver la cl&#233; priv&#233;e il ne nous reste plus qu'&#224; trouver <span class="math inline">\(d\)</span> car on connait d&#233;j&#224; <span class="math inline">\(n\)</span>, or pour trouver <span class="math inline">\(d\)</span>, il nous faut <span class="math inline">\(e\)</span> (que l'on a), mais surtout <span class="math inline">\(m\)</span>. Pour rappel <span class="math inline">\(m = (p - 1) \times (q - 1)\)</span>, et les seules informations qu'on pourrait avoir sur <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> peuvent venir de <span class="math inline">\(n\)</span> car <span class="math inline">\(n = p \times q\)</span>. Il faudrait donc d&#233;composer <span class="math inline">\(n\)</span> en ses deux facteurs premiers <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span>. Et c'est l&#224; que l'histoire se complique, car s'il est facile de trouver et de multiplier de nombres premiers entre eux, il l'est beaucoup moins pour factoriser le r&#233;sultat de la multiplication. Autrement dit, dans un sens c'est simple mais dans l'autre c'est quasiment impossible (c'est le but du RSA). Aujourd'hui, personne n'a trouv&#233; d'algorithme qui s'ex&#233;cute en <a href="">temps polynomial</a>, et le meilleur algorithme qu'on connaisse a une complexit&#233; exponentielle . Cependant, la question de l'existence d'un algorithme de d&#233;composition d'un nombre en ses facteurs premiers restent encore ouverte et pourrait jouer un r&#244;le majeur en cryptographie si la r&#233;ponse &#233;tait d&#233;couverte.</p>
+<h3 id="la-taille-de-la-cl&#233;">La taille de la cl&#233;</h3>
+<p>Depuis que cet algorithme de chiffrement existe, la plupart des personnes malveillantes se tournent vers la d&#233;composition de <span class="math inline">\(n\)</span> pour retrouver <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> et ainsi en d&#233;duire la cl&#233; priv&#233;e afin de d&#233;chiffrer un message. La seule fa&#231;on de rendre cette d&#233;composition plus lourde et plus compliqu&#233;e est tout simplement d'utiliser des nombres <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> extr&#234;mement grand. Le probl&#232;me c'est qu'on ne connait pas forc&#233;ment ce que poss&#232;de notre adversaire (mat&#233;riel utilis&#233;, argent investi, algorithme mis en place, etc.) il faut donc essayer de toujours utiliser les plus grandes cl&#233;s recommand&#233;es (aujourd'hui &#231;a serait entre une cl&#233; de 2048bits et une cl&#233; de 4096bits pour &#234;tre s&#251;r). Le probl&#232;me c'est que plus la cl&#233; est importante plus il faut du temps pour l'utilisateur afin de chiffrer et d&#233;chiffrer le message, il faut donc trouver un juste milieu entre rapidit&#233; et s&#233;curit&#233;.</p>
 <h2 id="cassage">Cassage</h2>
+<p>Signature</p>
+<p>Attaques</p>
 <h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
