@@ -3,7 +3,7 @@ RSA
 algo/chiffrement
 
 Publié le : 31/05/2014  
-*Modifié le : 06/01/2016*
+*Modifié le : 07/01/2016*
 
 ## Introduction
 
@@ -19,10 +19,11 @@ Les bases du chiffrement asymétrique furent introduites grâce à Whitfield Dif
 L'algorithme RSA sera l'un des premiers algorithmes de chiffrement asymétriques utilisant ce concept et à en faire une implémentation possible pour la communication de messages grâce à des principes mathématiques. Cet algorithme est encore très utilisé de nos jours, surtout sur Internet (dans le commerce en ligne, les transactions sécurisées, etc.).
 
 TODO : retravailler intro une fois l'article fini
+TODO : pas forcément le plus efficace
 
 ## Principe de l'algorithme
 
-L'algorithme du RSA va dans un premier temps générer deux couples de clés asymétriques, l'un pour l'émetteur qu'on appellera *Alice*, et l'autre pour le destinataire qu'on appellera *Bob*. Une fois que chaque personne a ses deux clés, on peut procéder à une communication sécurisée. Alice va chercher la clé publique de Bob (soit en lui demandant, soit en la trouvant dans un annuaire contenant les clés publiques de tout le monde, etc.), et elle va chiffrer son message avec cette clé. Ensuite le message chiffré est transmis à Bob, et il va le déchiffrer grâce à sa clé privée (qu'il n'a communiqué à personne). Aucun échange de clé n'est nécessaire, et seule la clé privée de Bob peut déchiffrer le message, la communication est alors sécurisée.
+L'algorithme du RSA va dans un premier temps générer deux couples de clés asymétriques, l'un pour l'émetteur qu'on appellera *Alice*, et l'autre pour le destinataire qu'on appellera *Bob*. Une fois que chaque personne a ses deux clés, on peut procéder à une communication sécurisée. Alice va chercher la clé publique de Bob (en général on pratique à un échange des clés publiques avant de communiquer, ou alors on les diffuse publiquement), et elle va chiffrer son message avec. Ensuite le message chiffré est transmis à Bob, et il va le déchiffrer grâce à sa clé privée (qu'il n'a communiqué à personne). Aucun échange de clé sensible n'est nécessaire, et seule la clé privée de Bob peut déchiffrer le message, la communication est alors sécurisée.
 
 La sécurité du chiffrement se trouve dans l'utilisation d'une fonction de chiffrement et de déchiffrement **[à sens unique](https://en.wikipedia.org/wiki/One-way_function)**. Cette fonction est, comme pour la génération de clé, très simple à appliquer dans un sens (chiffrement/déchiffrement avec la clé), mais extrêmement complexe dans l'autre (chiffrement/déchiffrement sans la clé).
 
@@ -334,18 +335,17 @@ Tout le monde peut théoriquement accéder à la clé publique d'une personne et
 
 Aujourd'hui une clé est "sécurisée" si elle contient entre 2048 et 4096 bits, mais "sécurisé" n'est pas entre guillemets pour rien car certes votre voisin sera incapable de casser votre clé, certes votre groupe de hacker préféré non plus (à part s'ils ont des moyens colossaux à leur disposition), mais par contre une agence gouvernementale pourrait éventuellement y arriver. En effet des agences comme la NSA ont d'énorme moyens techniques mis en œuvre (qui évoluent, mais on a une petite idée grâce aux révélations de [Snowden](https://en.wikipedia.org/wiki/Edward_Snowden) en 2013), et même si sur une grande échelle ils ne peuvent pas casser toutes les clés aussi importantes que cela, il est possible pour eux de casser quelques-unes en particulier si elles sont d'un très haut niveau d'importance pour eux. Pour cela, l'agence utilise des [superordinateurs](https://en.wikipedia.org/wiki/Supercomputer) qui souvent sont construits et optimisés spécifiquement dans le but de casser telle ou telle clé, et ils investissent des millions (voir des milliards selon leur budget annuel) dans la recherche afin de trouver une factorisation en un temps raisonnable (d'environ un an). En plus de cela, l'agence peut faire des pressions sur des organisations contenant des données sensibles, on retiendra notamment l'affaire [lavabit](https://en.wikipedia.org/wiki/Lavabit) où la NSA a obligé le créateur de ce service de mail chiffré à divulguer des informations secrètes à propos d'Edward Snowden, le créateur ne pouvait en aucun cas parler de cette affaire au grand public sous peine d'emprisonnement et d'amende considérable, et fut finalement forcé de fermer son système de communication afin de ne pas coopérer avec la NSA. De nombreuses autres affaires de pression de la part de la NSA ou de gouvernements en général existent, et elles montrent bien la détermination de certaines agences dans le but de trouver les clés privées de certains individus.
 
-TODO : renseigner sur le temps nécessaire pour la factorisation
-
 ### Transmission de la clé
 
-TODO : refaire la partie signature numérique pour résoudre le problème d'usurpation d'identité
+La transmission de votre clé publique peut être compromis si quelqu'un se fait passer pour vous, cette usurpation d'identité est résolue grâce à une **signature numérique** (comme lorsque vous signez un papier administratif dans la vraie vie pour montrer que c'est bien vous).
 
 Le principe est plutôt simple, on a vu que pour un message $x$, on a $f(f'(x)) = f'(f(x)) = x \mod n$. Lorsqu'on veut signer notre message et certifier que c'est nous qu'il l'avons envoyé, on va dans un premier temps chiffré notre message avec notre clé privée, puis on le chiffre de nouveau avec la clé publique de la personne à qui on souhaite envoyer le message. Une fois que la personne le reçoit, elle va déchiffrer avec sa clé privée le message puis, elle va le déchiffrer avec votre clé publique (car on a chiffré dans un premier temps avec notre propre clé privée). Comme vous êtes le seul à connaitre votre clé privée, le destinataire est sûr que vous êtes l'auteur de ce message.
 
 Malheureusement, sur de grands messages, ça prend beaucoup de temps de chiffrer et déchiffrer deux fois au lieu d'une. On a donc eu l'idée d'utiliser une [fonction de hachage](https://en.wikipedia.org/wiki/Hash_function), cette fonction prend en entrée un message, un nombre, une image, n'importe et lui associe une **empreinte** unique de taille fixe (il suffit de changer une partie minime du message pour avoir une empreinte totalement différente), et cette empreinte ne permet en aucun cas de retrouver l'entrée de la fonction de hachage. Il est possible que vous en ayez déjà entendu parler ou même utiliser si par exemple vous utilisez Linux car lorsque vous téléchargez l'image d'une distribution, il est souvent possible de vérifier l'intégrité et la validité de l'image grâce à un programme utilisant une fonction de hachage comme [SHA-1](https://en.wikipedia.org/wiki/SHA-1) ou encore [MD5](https://en.wikipedia.org/wiki/MD5). On va donc donner à notre fonction de hachage notre message en clair, et c'est l'empreinte que l'on va chiffrer avec notre clé privée, on la joint au message que l'on veut transmettre on chiffre le tout avec la clé publique du destinataire et on l'envoie. Une fois que la personne reçoit le message, elle le déchiffre avec sa clé privée et déchiffre l'empreinte jointe avec la clé publique de l'émetteur, elle va ensuite vérifier l'empreinte et en réalisant une de son côté (avec la même fonction de hachage que celle utilisée par l'émetteur) et va donner le message déchiffré à cette fonction, si l'empreinte est la même alors on est sûr que le message est complet, non modifié et provient bien du destinataire. Cette méthode est bien plus courte et rapide car on chiffre/déchiffre uniquement deux fois l'empreinte et non pas le message entier.
 
-TODO : AES (cryptographie hybride)
-TODO : transmission physique pour plus de sécurité (valise diplomatique)
+Cependant, chiffrer un long message avec un algorithme asymétrique peut aussi être très lent, on a donc eu l'idée de combiner les avantages des deux familles d'algorithmes de chiffrement (symétrique et asymétrique) afin de contrer leurs inconvénients, c'est le **cryptographie hybride**. On sait que chiffrer un énorme message avec RSA (ou un autre algorithme de chiffrement asymétrique) est long, et on a vu que la transmission de clé dans un algorithme de chiffrement symétrique était l'une des plus grosses failles de ce système (qui offre une rapidité de chiffrement et de déchiffrement). La cryptographie hybride consiste à chiffrer notre clé avec notre algorithme asymétrique (en plus d'une signature pour plus de sécurité), puis de chiffrer notre message secret avec un algorithme de chiffrement symétrique assez solide. De ce fait, on a une opération rapide pour chiffrer et déchiffrer notre message, et on est sûr que la transmission de clé se ferra de manière sécurisée. L'un des premiers système à cryptographie hybride était [l'échange de clés Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) ceux qui je vous le rappelle sont à l'origine de l'utilisation d'algorithme de chiffrement asymétrique.
+TODO : ouverture AES (aujourd'hui) + comparaison à RSA + application (pgp, etc.)
+TODO : déplacer partie (dans la conclusion ?)
 
 ## Cassage
 
@@ -355,13 +355,8 @@ Notre système est donc théoriquement sécurisé, et le seul moyen que l'on con
 
 Imaginons que Alice souhaite communiquer avec Bob, pour cela ils s'échangent leurs clés publiques. Cependant, Carole qui est une méchante personne, intercepte la clé publique de Bob qu'il a envoyé à Alice, et Carole va envoyer sa propre clé publique. Désormais, lorsqu'Alice va chiffrer son message avec la soi-disant clé de Bob, elle le chiffre en réalité avec celle de Carole, ce qui signifie que lorsque Alice envoie un message chiffré à Bob, si Carole l'intercepte elle va déchiffrer le message, le lire, potentiellement le modifier, et le chiffrer avec la clé publique de Bob avant de lui renvoyer. Ainsi, Alice et Bob ne se doutent de rien et pensent que leur communication est sécurisée, mais Carole a pu lire et modifier leurs messages.
 
-Cette attaque peut être extrêmement gênante, et avec Internet c'est encore plus simple de la réaliser car vous n'êtes jamais réellement sûr que votre communication va directement à un autre serveur sans passer par un ordinateur d'un ennemi. Mais on peut contrer cette attaque grâce à plusieurs techniques, tout d'abord l'utilisation d'un annuaire contenant toutes les clés publiques de chaque personne ne nécessiterait plus la communication de clés. Cependant, il est possible que Carole soit très puissante et soit capable de modifier cet annuaire. 
-
-TODO : solution :
-   - intermédiaire de confiance
-   - identification biologique
-   - transmission physique
-   - autorité de certification
+Cette attaque peut être extrêmement gênante, et avec Internet c'est encore plus simple de la réaliser car vous n'êtes jamais réellement sûr que votre communication va directement à un autre serveur sans passer par un ordinateur ennemi. Mais on peut contrer cette attaque grâce à plusieurs techniques, tout d'abord l'utilisation d'un annuaire contenant toutes les clés publiques de chaque personne ne nécessiterait plus la communication de clés. Cependant, il est possible que Carole soit très puissante et soit capable de modifier cet annuaire, on pourrait alors penser à plusieurs solutions comme l'utilisation d'un intermédiaire de confiance qui se chargerait de faire l'échange de clé, ou encore un système d'identification physique (empreinte digitale, reconnaissance faciale, reconnaissance de l'iris, authentification par biométrie, etc.), une transmission manuelle dans une valise diplomatique par exemple est aussi possible. Mais toutes ces propositions ne sont pas applicables dans tous les domaines, sur Internet encore une fois on ne peut pas se permettre de se baser sur une identification physique d'un serveur, c'est alors qu'apparait les **autorités de certifications**.
+TODO : autorité de certification
 
 ### L'attaque d'Håstad
 
