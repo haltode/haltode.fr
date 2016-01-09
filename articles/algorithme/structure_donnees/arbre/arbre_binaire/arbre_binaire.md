@@ -9,7 +9,7 @@ Publié le : 27/12/2015
 
 Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir notre tableau et comparer chaque élément afin de trouver le maximum, cet algorithme a une complexité linéaire en $O(N)$ avec $N$ la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos $N$ éléments pour chercher le maximum, mais peut-on faire mieux ? Comment trouver rapidement le maximum d'un tableau dynamique ?
 
-Une idée serait de diviser notre gros problème en plus petits sous problèmes. Au lieu de se demander quel est le maximum de tout le tableau, on peut commencer par se demander quel est le maximum entre les deux premiers éléments du tableau, puis entre les deux suivants, etc. Une fois qu'on a tous ces maximum, on a divisé le nombre d'éléments à visiter par deux pour répondre à notre problème initial puisque désormais on peut simplement parcourir les maximums locaux pour trouver le maximum du tableau. Mais on peut continuer de diviser notre problème, en trouvant les maximums des maximums, etc. jusqu'à arriver à la valeur maximale contenue dans le tableau.
+Une idée serait de diviser notre gros problème en plus petits sous problèmes. Au lieu de se demander quel est le maximum de tout le tableau, on peut commencer par se demander quel est le maximum entre les deux premiers éléments du tableau, puis entre les deux suivants, etc. Une fois qu'on a tous ces maximums, on a divisé le nombre d'éléments à visiter par deux pour répondre à notre problème initial puisque désormais on peut simplement parcourir les maximums locaux pour trouver le maximum du tableau. Mais on peut continuer de diviser notre problème, en trouvant les maximums des maximums, etc. jusqu'à arriver à la valeur maximale contenue dans le tableau.
 
 ![Représentation des sous problèmes](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png)
 
@@ -84,12 +84,12 @@ Cela peut paraitre étrange de penser qu'un simple arbre avec une contrainte sur
 
 - **Structure de données** :
 
-      - Le [tas](/algo/structure/arbre/tas.html) est sans doute la structure de données basée sur un arbre binaire la plus utilisée. Le tas est très efficace pour chercher mais aussi trier des éléments, et cette structure a, comme l'arbre binaire, un champ d'application très large.
-      - Le [T-tree](https://en.wikipedia.org/wiki/T-tree) est un arbre binaire modifié permettant de grandes optimisations de mémoire.
+      - Le [tas](/algo/structure/arbre/tas.html) est sans doute la structure de données basée sur un arbre binaire la plus utilisée. Elle est très efficace pour chercher mais aussi trier des éléments, et cette structure a comme l'arbre binaire, un champ d'application très large.
+      - Le [T-tree](https://en.wikipedia.org/wiki/T-tree) est un arbre binaire modifié permettant de grandes optimisations de mémoire, souvent utilisé dans de grosses bases de données.
 
 - **Tri** :
 
-      - Le [tri par tas](/algo/tri/tri_tas.html) basé donc sur un tas, est un algorithme de tri rapide avec une complexité en temps de $O(N \log _2 N)$. De plus, son amélioration le smoothsort fondée elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexité en temps linéaire.
+      - Le [tri par tas](/algo/tri/tri_tas.html) basé donc sur un tas, est un algorithme de tri efficace avec une complexité en temps de $O(N \log _2 N)$. De plus, son amélioration le smoothsort fondée elle aussi sur des arbres binaires, permet dans le meilleur des cas une complexité en temps linéaire.
 
 - **Compression** :
 
@@ -105,4 +105,4 @@ Cela peut paraitre étrange de penser qu'un simple arbre avec une contrainte sur
 
 ## Conclusion
 
-La liste des applications d'un arbre binaire peut continuer longtemps, car cette structure de données est fondamentale en algorithmique. Son principe est simple, et son implémentation aussi, mais ses applications peuvent être très complexes.
+La liste des applications d'un arbre binaire peut continuer longtemps, car cette structure de données est fondamentale en algorithmique. Son principe est simple, son implémentation aussi, mais ses applications peuvent être très complexes.

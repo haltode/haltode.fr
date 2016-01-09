@@ -11,7 +11,7 @@ La liste des articles publiés :
 
     - Général :
 
-         <p class="relire"><span>- Introduction aux algorithmes<br></span></p>
+         <p class="pret"><span>- Introduction aux algorithmes<br></span></p>
          <p class="pret"><span>- Comment et où s'entraîner ?<br></span></p>
 
     - Structure de données :
@@ -20,7 +20,7 @@ La liste des articles publiés :
          <p class="pret"><span>- Liste chaînée<br></span></p>
          <p class="pret"><span>- Pile<br></span></p>
          <p class="pret"><span>- File<br></span></p>
-         <p class="pret"><span>- Arbre</span></p> <p class="relire"><span>Arbre binaire</span></p> / <p class="faire"><span>Tas</span></p> / <p class="faire"><span>Arbre de recherche</span></p> / <p class="faire"><span>Trie<br></span></p>
+         <p class="pret"><span>- Arbre</span></p> <p class="pret"><span>Arbre binaire</span></p> / <p class="faire"><span>Tas</span></p> / <p class="faire"><span>Arbre de recherche</span></p> / <p class="faire"><span>Trie<br></span></p>
          <p class="pret"><span>- Graphe</span></p> <p class="pret"><span>Parcours</span></p> / <p class="faire"><span>Plus court chemin<br></span></p>
          <p class="faire"><span>- Table de hachage <br></span></p>
 

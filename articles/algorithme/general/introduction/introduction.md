@@ -3,7 +3,7 @@ Introduction aux algorithmes
 algo/general
 
 Publié le : 26/12/2015  
-*Modifié le : 26/12/2015*
+*Modifié le : 09/01/2016*
 
 ## Introduction
 
@@ -27,18 +27,20 @@ De manière générale, on peut dire qu'un algorithme est un outil qui résout u
 
 - Tracer un itinéraire entre un point A et un point B, permettant à un GPS de fonctionner.
 - Analyser des données médicales pour détecter une maladie potentielle.
-- Faire atterrir un robot sur Mars
-- TODO : plus d'exemples
+- Faire atterrir un robot sur Mars.
+- Chiffrer une connexion afin d'effectuer un achat en ligne sans qu'un individu puisse récupérer vos données bancaires.
+- Réaliser des prédictions financières pour investir en bourse.
+- Améliorer le trafic routier d'une ville, et le trajet des transports en communs.
+- Définir un agenda des tâches à effectuer dans un ordre optimal pour perdre le moins de temps possible.
+- Relier deux personnes qui souhaitent communiquer grâce à Internet.
 - etc.
 
 Tous ces problèmes nécessitent des algorithmes plus ou moins complexes pour fonctionner, cela peut aller d'un simple message "Bonjour" sur un écran à la création d'un jeu vidéo en ligne multijoueur contenant un environnement 3D par exemple.
 
 ## Utilité pour un programmeur
 
-Un programmeur est une personne qui résout des problèmes à l'aide de programmes informatiques. Cependant différentes manières existent pour résoudre un problème, et on cherche souvent celle qui prendra le moins de place en mémoire, ou qui sera la plus rapide en temps. Il est donc nécessaire pour un programmeur d'avoir un minimum de notions en algorithmie afin de produire un code de qualité (en terme d'efficacité).
-
-TODO : développer plus
+Un programmeur est une personne qui résout des problèmes à l'aide de programmes informatiques. Cependant différentes manières existent pour résoudre un problème, et on cherche souvent celle qui prendra le moins de place en mémoire, ou qui sera la plus rapide en temps. Il est donc nécessaire pour un programmeur d'avoir un minimum de notions en algorithmie afin de produire un code de qualité (en terme d'efficacité). Les algorithmes sont des outils comme un autre et il est fondamental de savoir les utiliser correctement lorsque vous programmez.
 
 ## Conclusion
 
-TODO : faire conclusion
+Les algorithmes sont donc un domaine incontournable aujourd'hui, et encore plus si vous programmez. Connaître une base en algorithmie, savoir comment les algorithmes fonctionnent, comment les analyser vont vous permettre de devenir un meilleur programmeur. Cette série d'articles sur les algorithmes peut vous servir de base afin de vous donner une idée concrète sur le sujet, mais si vous souhaitez réellement progresser dans cette discipline il faudra [s'entraîner et pratiquer](/algo/general/entrainement.html) régulièrement.
