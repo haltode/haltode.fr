@@ -3,7 +3,7 @@ napnac.ga
 projets/
 
 Publié le : 10/12/2015  
-*Modifié le : 24/12/2015*
+*Modifié le : 09/01/2016*
 
 ## Introduction
 
@@ -43,7 +43,7 @@ fichier.extension
 
 Cette notation n'est pas officielle dans le langage Markdown, mais puisque j'ai mon propre script de conversion, je peux créer des comportements spécifiques en fonction de mes besoins. Lorsque le script est exécuté, mon fichier est intégré dans l'article avec la bonne coloration syntaxique (en fonction de l'extension), et avec une possibilité de s'afficher/cacher si le code est trop long.
 
-Le lien vers le script (contenant des informations plus détaillées à ce propos) : <https://github.com/iTech-/NapNac/blob/master/conversion.sh>
+Le lien vers le script (contenant des informations plus détaillées à ce propos) : <https://github.com/iTech-/napnac.ga/blob/master/conversion.sh>
 
 Toutes les pages sont stockées dans le dossier `articles` et converties en HTML dans le dossier `src/pages`.
 
@@ -63,9 +63,13 @@ Pour rendre mon site accessible depuis l'extérieur (et non uniquement en résea
 
 Enfin, ma livebox possède une adresse IP dynamique, j'ai donc choisi d'utiliser [CloudFlare](https://www.cloudflare.com/) afin de gérer le [DNS](https://en.wikipedia.org/wiki/Domain_Name_System). J'ai aussi trouvé un petit [script](https://techjourney.net/update-cloudflare-as-dynamic-dns-ddns/) permettant d'utiliser l'API de CloudFlare pour avoir un DNS dynamique et faire les modifications nécessaires lors d'un changement d'IP de ma livebox. Ce script est exécuté toutes les 5 minutes sur mon serveur.
 
+## Les articles
+
+Une fois le site mis en place, il m'a fallu réécrire la totalité de mes anciens articles que je trouvais dépassé, voir de mauvaise qualité pour certains, une grande mise à jour a donc été faite pendant plusieurs mois (d'octobre 2015 à janvier 2016). Durant ce temps, j'ai aussi écrit de nouveaux articles, et j'ai planifié ceux dont je souhaite parler dans le futur. Cela aura été une tâche très longue (article, image, et code à refaire à chaque fois), mais qui valait le coup selon moi pour avoir des articles plus intéressants désormais.
+
 ## Lien
 
-Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <https://github.com/iTech-/NapNac>
+Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <https://github.com/iTech-/napnac.ga>
 
 ## Conclusion
 

@@ -11,7 +11,7 @@ Les premiers algorithmes de chiffrement ne datent pas de Jules César, mais ce d
 
 ## Principe de l’algorithme
 
-Le chiffre de César (aussi appelé *chiffrement par décalage*) utilise une [substitution mono-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher) pour chiffrer et déchiffrer un message, c’est-à-dire que l’on décale de $x$ rangs vers la droite dans l’alphabet la lettre du message lors du chiffrement, et de $x$ rangs vers la gauche lors du déchiffrement. On appelle $x$ la **clé de chiffrement**, et cette dernière doit être la même pour le chiffrement et le déchiffrement car le chiffre de César est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm).
+Le chiffre de César (aussi appelé *chiffrement par décalage*) utilise une [substitution mono-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher) pour chiffrer et déchiffrer un message, c’est-à-dire que l’on décale de $x$ rangs vers la droite dans l’alphabet la lettre du **message en clair** (= non chiffré) lors du chiffrement, et de $x$ rangs vers la gauche lors du déchiffrement. On appelle $x$ la **clé de chiffrement**, et cette dernière doit être la même pour le chiffrement et le déchiffrement car le chiffre de César est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm).
 
 ## Exemple
 

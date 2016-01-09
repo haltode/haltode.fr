@@ -7,7 +7,7 @@ server {
    ssl_certificate /etc/nginx/ssl/nginx.crt;
    ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
-   root /home/pi/NapNac/napnac.ga/src/pages/;
+   root /home/pi/napnac/napnac.ga/src/pages/;
    index accueil.html;
    charset utf-8;
    
@@ -44,7 +44,7 @@ server {
    ssl_certificate /etc/nginx/ssl/nginx.crt;
    ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
-   root /home/pi/NapNac/napnac.ga/src/static/;
+   root /home/pi/napnac/napnac.ga/src/static/;
    charset utf-8;
    
    # First attempt to serve request as file, then
