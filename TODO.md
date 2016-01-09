@@ -14,10 +14,6 @@
 
 - Rajouter d'autres variantes
 
-### File
-
-- Lien algo plus court chemin (dijkstra)
-
 ### Graphe
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
