@@ -91,7 +91,7 @@ function insert_summary {
 # "Real articles" are the one like algorithm articles or projects, 
 # not home or about pages for example
 function real_article {
-   if [[ "$1" =~ "algorithme" ]] || [[ "$1" =~ "projets" ]]
+   if [[ "$1" =~ "algorithme/" ]] || [[ "$1" =~ "projets/" ]]
    then
       # Unix convention is to return zero in case of success, and
       # another value for failure
