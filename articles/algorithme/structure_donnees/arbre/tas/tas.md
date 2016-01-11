@@ -19,6 +19,10 @@ Ce tas max, peut représenter le tableau situé en dessous, et le fait qu'il soi
 
 ## Opérations sur un tas
 
+Cependant, dans notre problème original, le tableau est dynamique, ce qui signifie qu'on peut lui rajouter ou enlever des éléments quand on le veut et toujours faire des opérations du style : Quel est l'élément max (ou min) du tableau ? Pour insérer un élément, on va tout d'abord le placer à la première place disponible dans le tas (pour conserver cette idée d'une structure qui ne prend pas de place supplémentaire pour stocker les éléments), ensuite on va progressivement remonter dans le tas afin de conserver les propriétés du tas (comme pour l'arbre binaire maximal) :
+
+![Exemple d'ajout d'un élément dans notre tas max](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png)
+
 Ajout d'un élément
 
 Suppression d'un élément

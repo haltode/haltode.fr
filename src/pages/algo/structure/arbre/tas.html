@@ -217,6 +217,11 @@ function toggle_visibility(id) {
 </div>
 <p>Ce tas max, peut repr&#233;senter le tableau situ&#233; en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'&#233;l&#233;ment maximum du tableau (de m&#234;me un tas min aura &#224; la racine l'&#233;l&#233;ment minimum du tableau). Cette propri&#233;t&#233; est tr&#232;s int&#233;ressante car on a r&#233;ussi &#224; avoir le m&#234;me r&#233;sultat qu'avec un arbre binaire maximal, mais sans utiliser de doublons, on peut alors stocker des tableaux bien plus grand sans avoir besoin de m&#233;moire suppl&#233;mentaire.</p>
 <h2 id="op&#233;rations-sur-un-tas">Op&#233;rations sur un tas</h2>
+<p>Cependant, dans notre probl&#232;me original, le tableau est dynamique, ce qui signifie qu'on peut lui rajouter ou enlever des &#233;l&#233;ments quand on le veut et toujours faire des op&#233;rations du style : Quel est l'&#233;l&#233;ment max (ou min) du tableau ? Pour ins&#233;rer un &#233;l&#233;ment, on va tout d'abord le placer &#224; la premi&#232;re place disponible dans le tas (pour conserver cette id&#233;e d'une structure qui ne prend pas de place suppl&#233;mentaire pour stocker les &#233;l&#233;ments), ensuite on va progressivement remonter dans le tas afin de conserver les propri&#233;t&#233;s du tas (comme pour l'arbre binaire maximal) :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png" alt="Exemple d&#39;ajout d&#39;un &#233;l&#233;ment dans notre tas max" />
+<p class="caption">Exemple d'ajout d'un &#233;l&#233;ment dans notre tas max</p>
+</div>
 <p>Ajout d'un &#233;l&#233;ment</p>
 <p>Suppression d'un &#233;l&#233;ment</p>
 <p>Construction d'un tas</p>
