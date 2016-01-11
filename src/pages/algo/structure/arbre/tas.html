@@ -196,10 +196,34 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="tas">Tas</h1></a>
-<p>Publi&#233; le :<br />
-<em>Modifi&#233; le :</em></p>
+<p>Publi&#233; le : 11/01/2016<br />
+<em>Modifi&#233; le : 11/01/2016</em></p>
 <ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-du-tas">Principe du tas</a></li>
+<li><a href="#op&#233;rations-sur-un-tas">Op&#233;rations sur un tas</a></li>
+<li><a href="#complexit&#233;">Complexit&#233;</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#variantes">Variantes</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>Dans l'introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, on a vu une m&#233;thode permettant de trouver le maximum dans un tableau dynamique avec une complexit&#233; en temps rapide (<span class="math inline">\(O(\log _2 N)\)</span>). Cependant, qu'en est-il de la complexit&#233; en m&#233;moire ? En effet, on cr&#233;e de nombreuses fois de m&#234;me n&#339;uds afin d'avoir notre arbre binaire maximal final, mais peut-on faire mieux ? C'est l&#224; qu'on d&#233;couvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec ces caract&#233;ristiques, le tas est une structure de donn&#233;e &#233;norm&#233;ment utilis&#233;e, et important &#224; conna&#238;tre.</p>
+<h2 id="principe-du-tas">Principe du tas</h2>
+<p>Dans notre arbre binaire maximal, le p&#232;re d'un n&#339;ud est le maximum des deux n&#339;uds (autrement dit, c'est soit l'un soit l'autre), dans un tas, le p&#232;re d'un n&#339;ud n'est pas un double de ses enfants, mais au contraire un autre n&#339;ud ind&#233;pendant qui respecte une propri&#233;t&#233; sp&#233;cifique au tas (<strong>minimal</strong> : alors le p&#232;re a une valeur inf&#233;rieure ou &#233;gale &#224; celles de ses fils, et <strong>maximal</strong> : le p&#232;re a une valeur sup&#233;rieure ou &#233;gale &#224; celles de ses fils).</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_tas_max.png" alt="Exemple de tas maximal" />
+<p class="caption">Exemple de tas maximal</p>
+</div>
+<p>Ce tas max, peut repr&#233;senter le tableau situ&#233; en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'&#233;l&#233;ment maximum du tableau (de m&#234;me un tas min aura &#224; la racine l'&#233;l&#233;ment minimum du tableau). Cette propri&#233;t&#233; est tr&#232;s int&#233;ressante car on a r&#233;ussi &#224; avoir le m&#234;me r&#233;sultat qu'avec un arbre binaire maximal, mais sans utiliser de doublons, on peut alors stocker des tableaux bien plus grand sans avoir besoin de m&#233;moire suppl&#233;mentaire.</p>
+<h2 id="op&#233;rations-sur-un-tas">Op&#233;rations sur un tas</h2>
+<p>Ajout d'un &#233;l&#233;ment</p>
+<p>Suppression d'un &#233;l&#233;ment</p>
+<p>Construction d'un tas</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<h2 id="variantes">Variantes</h2>
+<h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
 
