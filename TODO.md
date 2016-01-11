@@ -46,11 +46,18 @@
 
 # Liste de futurs possibles articles
 
+- Arbre : Arbre de recherche + Trie
+- Structure de données : Table de hachage
+- Tri en O(N) : tri par base, tri par paquets
+- Recherche : union-find
+- IA : algo min-max
+
 - Introduction à la complexité algorithmique (temps + mémoire)
 - Recherche : chaîne de caractères
 - Compression de données : codage de huffman
 - IA : apprentissage artificiel
 - Algorithmes quantiques
 - Cryptographie quantique
+- AES
 - Optimisation
 - N = NP ?
