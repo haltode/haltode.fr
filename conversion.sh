@@ -88,6 +88,19 @@ function insert_summary {
    fi
 }
 
+# "Real articles" are the one like algorithm articles or projects, 
+# not home or about pages for example
+function real_article {
+   if [[ "$1" =~ "algorithme" ]] || [[ "$1" =~ "projets" ]]
+   then
+      # Unix convention is to return zero in case of success, and
+      # another value for failure
+      return 0
+   else
+      return 1
+   fi
+}
+
 # Take an article (in markdown) and convert it into an .html file
 function convert {
 
@@ -100,7 +113,11 @@ function convert {
    # This will be the core file, but we need to add the header and the footer to
    # it so it can be the entire .html file
    sed "3d" copy.md | pandoc --ascii --mathjax -o "$(basename ${1%.md}.tmp.html)"
-   cat src/templates/header.html $(basename ${1%.md}.tmp.html) src/templates/footer.html > src/pages/$(basename ${1%.md}.html)
+   if real_article $1; then
+      cat src/templates/header.html $(basename ${1%.md}.tmp.html) src/templates/footer_article.html > src/pages/$(basename ${1%.md}.html)
+   else
+      cat src/templates/header.html $(basename ${1%.md}.tmp.html) src/templates/footer.html > src/pages/$(basename ${1%.md}.html)
+   fi
    rm $(basename ${1%.md}.tmp.html)
 
    # Insert the page's title
