@@ -1,64 +1,238 @@
-% inspired from http://tex.stackexchange.com/questions/47469/how-do-i-make-an-unbalanced-binary-tree
+% inspired from http://tex.stackexchange.com/questions/47469/how-do-i-make-an-unbalanced-binary-tree and
+% http://tex.stackexchange.com/questions/268128/how-to-nicely-place-two-heaps-next-to-each-other
 \documentclass{article}
+\usepackage[top=0.5in, bottom=1.25in, left=0.5in, right=0.5in]{geometry}
 
 \usepackage{tikz}
-\usepackage{tikz-qtree}
 \usetikzlibrary{trees}
 \usetikzlibrary{shapes, positioning, arrows, calc}
 
 \begin{document}
 
 % Intro : représentation des sous problèmes
-         
-\begin{tikzpicture}[every tree node/.style = {minimum width = 0.5cm, draw, circle},
-style = {->, >=stealth},
-edge from parent/.style = {draw, edge from parent path = {(\tikzparentnode) -- (\tikzchildnode)}},
-level distance = 1.5cm, sibling distance = 0.5cm,
-font = \sffamily\bfseries,
-every leaf node/.style = {fill = blue!20}]
-\node[fill = green!20, circle] {10};
-\Tree
-[.10
-	[.9
-		[.7 4 7 ]
-		[.9 1 9 ]
-	]
-	[.10 
-		[.10 3 10 ]
-	]
-]
+
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=35mm},
+    level 2/.style={->, >=stealth, sibling distance=20mm},
+    level 3/.style={->, >=stealth, sibling distance=10mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node[fill = green!20] {10}
+        child {
+	        node {9}
+	        child { 
+	        	node{7}
+	        	child{node[fill=blue!20]{4}}
+	        	child{node[fill=blue!20]{7}}
+	        }
+	        child {
+	        	node {9}
+	        	child{node[fill=blue!20]{1}}
+	        	child{node[fill=blue!20]{9}}
+	        }
+    }
+    child {
+        node {10}
+        child {
+        	node{10}
+        	child{node[fill=blue!20]{3}}
+        	child{node[fill=blue!20]{10}}
+        }
+    };
+
 \end{tikzpicture}
 
 % Exemple arbre binaire
 
 \vspace{2cm}
 
-\begin{tikzpicture}[every tree node/.style = {minimum width = 0.5cm, draw, circle},
-style = {->, >=stealth},
-edge from parent/.style = {draw, edge from parent path = {(\tikzparentnode) -- (\tikzchildnode)}},
-level distance = 1.5cm, sibling distance = 0.5cm,
-font = \sffamily\bfseries]
-\Tree
-[.3
-	[.9 2 3 ]
-	[.21 6 7 ]
-]
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{3}
+        child {
+	        node {9}
+	        child{node{2}}
+	        child{node{3}}
+	    }
+	    child {
+	        node {21}
+	        child{node{6}}
+	        child{node{7}}
+	    };
+
+\end{tikzpicture}
+
+% Exemple arbre binaire max/min
+
+\vspace{2cm}
+
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{7}
+        child {
+	        node {3}
+	        child{node{2}}
+	        child{node{3}}
+	    }
+	    child {
+	        node {7}
+	        child{node{6}}
+	        child{node{7}}
+	    };
+
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{2}
+        child {
+	        node {2}
+	        child{node{2}}
+	        child{node{3}}
+	    }
+	    child {
+	        node {6}
+	        child{node{6}}
+	        child{node{7}}
+	    };
+
+\end{tikzpicture}
+
+% Exemple d'insertion de nœud dans un arbre binaire normal
+
+\vspace{2cm}
+
+\begin{tikzpicture}
+\node[draw, circle] {A};
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{node[fill=green!20]{B}};
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{node{B}}
+        child{node[fill=green!20]{C}};
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{
+        	node{B}
+        	child{node[fill=green!20]{D}}
+        }
+        child{node{C}};
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{
+        	node{B}
+        	child{node{D}}
+        	child{node[fill=green!20]{E}}
+        }
+        child{node{C}};
+\end{tikzpicture}
+
+% Exemple de suppression de nœuds (3 cas) dans un arbre binaire normal
+
+\newpage
+
+% Cas 1 : pas d'enfant
+
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{node{B}}
+        child{node[fill=red!30]{C}};
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{node{B}};
+\end{tikzpicture}
+
+% Cas 2 : un seul enfant
+
+\vspace{2cm}
+
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{
+        	node[fill=red!30]{B}
+        	child{node{D}}
+        }
+        child{node{C}};
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw]
+    \node{A}
+        child{node{D}}
+        child{node{C}};
 \end{tikzpicture}
 
 % Implémentation d'un arbre binaire dans un tableau
 
 \vspace{2cm}
 
-\begin{tikzpicture}[every tree node/.style = {minimum width = 0.5cm, draw, circle},
-style = {->, >=stealth},
-edge from parent/.style = {draw, edge from parent path = {(\tikzparentnode) -- (\tikzchildnode)}},
-level distance = 1.5cm, sibling distance = 0.5cm,
-font = \sffamily\bfseries]
-\Tree
-[.3$_1$
-	[.9$_2$ 2$_4$ 3$_5$ ]
-	[.21$_3$ 6$_6$ 7$_7$ ]
-]
+\begin{tikzpicture}[level distance = 1.5cm,
+    level 1/.style={->, >=stealth, sibling distance=20mm},
+    level 2/.style={->, >=stealth, sibling distance=10mm},
+    level 3/.style={->, >=stealth, sibling distance=5mm}]
+\tikzstyle{every node} = [circle, draw, font=\bfseries]
+    \node{3$_1$}
+        child {
+	        node {9$_2$}
+	        child{node{2$_4$}}
+	        child{node{3$_5$}}
+	    }
+	    child {
+	        node {21$_3$}
+	        child{node{6$_6$}}
+	        child{node{7$_7$}}
+	    };
+
 \end{tikzpicture}
 
 \vspace{0.5cm}

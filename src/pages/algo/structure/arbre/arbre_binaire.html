@@ -190,10 +190,11 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="arbre-binaire">Arbre binaire</h1></a>
 <p>Publi&#233; le : 27/12/2015<br />
-<em>Modifi&#233; le : 29/12/2015</em></p>
+<em>Modifi&#233; le : 12/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#d&#233;finition">D&#233;finition</a></li>
+<li><a href="#op&#233;rations">Op&#233;rations</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
 <li><a href="#application">Application</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
@@ -218,9 +219,37 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_arbre_binaire.png" alt="Exemple d&#39;arbre binaire" />
 <p class="caption">Exemple d'arbre binaire</p>
 </div>
-<p>Notre arbre binaire ici n'a aucune propri&#233;t&#233; sp&#233;cifique, mais sachez qu'il peut &#234;tre <strong>maximal</strong> (comme dans l'exemple de l'introduction), ou bien <strong>minimal</strong>.</p>
+<p>Cette structure de donn&#233;es a l'avantage d'&#234;tre tr&#232;s modulable et on peut lui appliquer diff&#233;rentes propri&#233;t&#233;s afin d'en changer son comportement, en voici quelques-unes :</p>
+<ul>
+<li>L'arbre binaire <strong>maximal</strong> a la particularit&#233; d'avoir chaque n&#339;ud parent comme &#233;tant le maximum de ses deux fils. C'est la structure utilis&#233;e dans l'exemple de l'introduction.</li>
+<li>L'arbre binaire <strong>minimal</strong> repose sur le m&#234;me principe que le pr&#233;c&#233;dent, sauf que chaque parent repr&#233;sente le minimum de ses fils.</li>
+<li>Un <strong>tas binaire</strong> permet un stockage plus efficace qu'avec un arbre binaire max/min tout en &#233;vitant de cr&#233;er des doubles dans l'arbre binaire.</li>
+<li>Un <strong>arbre binaire de recherche</strong> attribue &#224; chaque n&#339;ud une <em>cl&#233;</em> qui va organiser l'arbre. Tous les n&#339;uds &#224; gauche d'un n&#339;ud p&#232;re auront tous des cl&#233;s inf&#233;rieures &#224; celle du p&#232;re, et tous les n&#339;uds &#224; droite auront une cl&#233; sup&#233;rieure au p&#232;re.</li>
+<li>Un <strong>arbre rouge et noir</strong> est la m&#234;me id&#233;e qu'un arbre binaire de recherche, except&#233; que chaque n&#339;ud a une <em>couleur</em> qui permet d'organiser l'arbre mais aussi de l'&#233;quilibrer pour ne pas avoir un c&#244;t&#233; bien plus grand que l'autre &#224; cause de l'ordre des cl&#233;s.</li>
+</ul>
+<p>TODO : lien variantes arbre binaire</p>
+<h2 id="op&#233;rations">Op&#233;rations</h2>
+<p>Dans un arbre binaire, ajouter et supprimer un &#233;l&#233;ment est relativement simple, il suffit uniquement de respecter les propri&#233;t&#233;s de l'arbre utilis&#233;. Dans notre cas, on utilise un arbre binaire normal :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_insertion_noeud.png" alt="Exemple d&#39;insertion de n&#339;uds dans un arbre binaire" />
+<p class="caption">Exemple d'insertion de n&#339;uds dans un arbre binaire</p>
+</div>
+<p>Ajouter un n&#339;ud suit une logique, on cherche &#224; ne pas faire de &quot;trous&quot; dans notre arbre binaire, et on va donc combler tant que possible les espaces vides dans l'ordre (les n&#339;uds en verts repr&#233;sentent le nouveau n&#339;ud &#224; chaque &#233;tape).</p>
+<p>Pour la suppression d'un n&#339;ud, il y a trois cas possibles :</p>
+<ul>
+<li>Soit le n&#339;ud &#224; supprimer ne poss&#232;de pas de fils, dans ce cas rien de plus simple on le supprime simplement.</li>
+<li>Soit le n&#339;ud poss&#232;de un fils, on supprime alors le n&#339;ud et on le remplace par son fils.</li>
+<li>Soit le n&#339;ud a deux fils, et il faut alors d&#233;cider de quel n&#339;ud va remplacer le p&#232;re, c'est assez ambig&#252;e car on ne peut pas r&#233;ellement choisir dans un arbre binaire normal puisque les deux fils peuvent tous les deux remplacer le n&#339;ud parent, il faut donc choisir &#224; l'avance (ce n'est pas toujours le cas, notamment avec des arbres binaires sp&#233;cifiques).</li>
+</ul>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_suppression_noeud.png" alt="Diff&#233;rents cas de suppression de n&#339;uds dans un arbre binaire" />
+<p class="caption">Diff&#233;rents cas de suppression de n&#339;uds dans un arbre binaire</p>
+</div>
+<p>Dans le premier cas, <em>C</em> est une feuille, il n'y a donc aucuns soucis pour le supprimer. Dans le deuxi&#232;me cas, <em>B</em> a un fils <em>D</em>, lorsqu'on supprime <em>B</em> on le remplace donc par <em>D</em>.</p>
+<h3 id="arbres-binaires-sp&#233;cifiques">Arbres binaires sp&#233;cifiques</h3>
+<p>D&#232;s qu'un arbre binaire poss&#232;de des propri&#233;t&#233;s, les op&#233;rations d'insertion et de suppression sont diff&#233;rentes. Elles peuvent &#234;tre plus ou moins complexes en fonction des propri&#233;t&#233;s ajout&#233;es &#224; l'arbre binaire, mais doivent &#234;tre bien d&#233;finies pour avoir une structure op&#233;rationnelle.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>Un arbre binaire reste un arbre, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on que ce dernier, mais vu les propri&#233;t&#233;s de cette structure de donn&#233;es, il est possible de l'impl&#233;menter de diff&#233;rentes fa&#231;ons.</p>
+<p>Un arbre binaire reste un arbre, on peut donc l'impl&#233;menter de la m&#234;me fa&#231;on que ce dernier, mais vu les contraintes de cette structure de donn&#233;es, il est possible de l'impl&#233;menter de diff&#233;rentes fa&#231;ons.</p>
 <h3 id="recoder-&#224;-la-main">Recoder &#224; la main</h3>
 <p>Les possibilit&#233;s d'impl&#233;mentation d'un arbre ne s'applique pas forc&#233;ment bien pour un arbre binaire, en effet, on sait qu'il n'aura qu'au maximum deux fils, on peut donc simplement utiliser une structure auto r&#233;f&#233;rentielle :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> Noeud Noeud;

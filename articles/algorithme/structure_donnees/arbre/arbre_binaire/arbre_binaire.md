@@ -3,7 +3,7 @@ Arbre binaire
 algo/structure/arbre/
 
 Publié le : 27/12/2015  
-*Modifié le : 29/12/2015*
+*Modifié le : 12/01/2016*
 
 ## Introduction
 
@@ -27,11 +27,41 @@ Un arbre binaire (ou *binary tree* en anglais) est un type d'[arbre](/algo/struc
 
 ![Exemple d'arbre binaire](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_arbre_binaire.png)
 
-Notre arbre binaire ici n'a aucune propriété spécifique, mais sachez qu'il peut être **maximal** (comme dans l'exemple de l'introduction), ou bien **minimal**. 
+Cette structure de données a l'avantage d'être très modulable et on peut lui appliquer différentes propriétés afin d'en changer son comportement, en voici quelques-unes :
+
+- L'arbre binaire **maximal** a la particularité d'avoir chaque nœud parent comme étant le maximum de ses deux fils. C'est la structure utilisée dans l'exemple de l'introduction.
+- L'arbre binaire **minimal** repose sur le même principe que le précédent, sauf que chaque parent représente le minimum de ses fils.
+- Un **tas binaire** permet un stockage plus efficace qu'avec un arbre binaire max/min tout en évitant de créer des doubles dans l'arbre binaire.
+- Un **arbre binaire de recherche** attribue à chaque nœud une *clé* qui va organiser l'arbre. Tous les nœuds à gauche d'un nœud père auront tous des clés inférieures à celle du père, et tous les nœuds à droite auront une clé supérieure au père.
+- Un **arbre rouge et noir** est la même idée qu'un arbre binaire de recherche, excepté que chaque nœud a une *couleur* qui permet d'organiser l'arbre mais aussi de l'équilibrer pour ne pas avoir un côté bien plus grand que l'autre à cause de l'ordre des clés.
+
+TODO : lien variantes arbre binaire
+
+## Opérations
+
+Dans un arbre binaire, ajouter et supprimer un élément est relativement simple, il suffit uniquement de respecter les propriétés de l'arbre utilisé. Dans notre cas, on utilise un arbre binaire normal :
+
+![Exemple d'insertion de nœuds dans un arbre binaire](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_insertion_noeud.png)
+
+Ajouter un nœud suit une logique, on cherche à ne pas faire de "trous" dans notre arbre binaire, et on va donc combler tant que possible les espaces vides dans l'ordre (les nœuds en verts représentent le nouveau nœud à chaque étape).
+
+Pour la suppression d'un nœud, il y a trois cas possibles :
+
+- Soit le nœud à supprimer ne possède pas de fils, dans ce cas rien de plus simple on le supprime simplement.
+- Soit le nœud possède un fils, on supprime alors le nœud et on le remplace par son fils.
+- Soit le nœud a deux fils, et il faut alors décider de quel nœud va remplacer le père, c'est assez ambigüe car on ne peut pas réellement choisir dans un arbre binaire normal puisque les deux fils peuvent tous les deux remplacer le nœud parent, il faut donc choisir à l'avance (ce n'est pas toujours le cas, notamment avec des arbres binaires spécifiques).
+
+![Différents cas de suppression de nœuds dans un arbre binaire](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_suppression_noeud.png)
+
+Dans le premier cas, *C* est une feuille, il n'y a donc aucuns soucis pour le supprimer. Dans le deuxième cas, *B* a un fils *D*, lorsqu'on supprime *B* on le remplace donc par *D*.
+
+### Arbres binaires spécifiques
+
+Dès qu'un arbre binaire possède des propriétés, les opérations d'insertion et de suppression sont différentes. Elles peuvent être plus ou moins complexes en fonction des propriétés ajoutées à l'arbre binaire, mais doivent être bien définies pour avoir une structure opérationnelle.
 
 ## Implémentation
 
-Un arbre binaire reste un arbre, on peut donc l'implémenter de la même façon que ce dernier, mais vu les propriétés de cette structure de données, il est possible de l'implémenter de différentes façons.
+Un arbre binaire reste un arbre, on peut donc l'implémenter de la même façon que ce dernier, mais vu les contraintes de cette structure de données, il est possible de l'implémenter de différentes façons.
 
 ### Recoder à la main
 

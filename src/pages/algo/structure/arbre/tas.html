@@ -190,7 +190,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tas">Tas</h1></a>
 <p>Publi&#233; le : 11/01/2016<br />
-<em>Modifi&#233; le : 11/01/2016</em></p>
+<em>Modifi&#233; le : 12/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tas">Principe du tas</a></li>
@@ -201,6 +201,7 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
+<p>TODO : refaire intro : peut on faire mieux qu'avec un arbre binaire min/max (utiliser les images) -&gt; oui tas binaire, mais ce n'est qu'une partie de la structure de donn&#233;es : le tas.</p>
 <p>Dans l'introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, on a vu une m&#233;thode permettant de trouver le maximum dans un tableau dynamique avec une complexit&#233; en temps rapide (<span class="math inline">\(O(\log _2 N)\)</span>). Cependant, qu'en est-il de la complexit&#233; en m&#233;moire ? En effet, on cr&#233;e de nombreuses fois de m&#234;me n&#339;uds afin d'avoir notre arbre binaire maximal final, mais peut-on faire mieux ? C'est l&#224; qu'on d&#233;couvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec ces caract&#233;ristiques, le tas est une structure de donn&#233;e &#233;norm&#233;ment utilis&#233;e, et important &#224; conna&#238;tre.</p>
 <h2 id="principe-du-tas">Principe du tas</h2>
 <p>Dans notre arbre binaire maximal, le p&#232;re d'un n&#339;ud est le maximum des deux n&#339;uds (autrement dit, c'est soit l'un soit l'autre), dans un tas, le p&#232;re d'un n&#339;ud n'est pas un double de ses enfants, mais au contraire un autre n&#339;ud ind&#233;pendant qui respecte une propri&#233;t&#233; sp&#233;cifique au tas (<strong>minimal</strong> : alors le p&#232;re a une valeur inf&#233;rieure ou &#233;gale &#224; celles de ses fils, et <strong>maximal</strong> : le p&#232;re a une valeur sup&#233;rieure ou &#233;gale &#224; celles de ses fils).</p>
