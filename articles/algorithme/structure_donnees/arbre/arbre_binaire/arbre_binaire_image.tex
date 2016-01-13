@@ -64,48 +64,6 @@
 
 \end{tikzpicture}
 
-% Exemple arbre binaire max/min
-
-\vspace{2cm}
-
-\begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{7}
-        child {
-	        node {3}
-	        child{node{2}}
-	        child{node{3}}
-	    }
-	    child {
-	        node {7}
-	        child{node{6}}
-	        child{node{7}}
-	    };
-
-\end{tikzpicture}
-\hspace{2cm}
-\begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{2}
-        child {
-	        node {2}
-	        child{node{2}}
-	        child{node{3}}
-	    }
-	    child {
-	        node {6}
-	        child{node{6}}
-	        child{node{7}}
-	    };
-
-\end{tikzpicture}
-
 % Exemple d'insertion de nœud dans un arbre binaire normal
 
 \vspace{2cm}
