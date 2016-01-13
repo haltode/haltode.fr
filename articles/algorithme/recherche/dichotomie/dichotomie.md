@@ -3,13 +3,15 @@ Dichotomie
 algo/recherche
 
 Publié le : 28/06/2014  
-*Modifié le : 13/12/2015*
+*Modifié le : 13/01/2016*
 
 ## Introduction
 
-Jouons à un petit jeu appelé *le plus ou moins*. Je choisis un nombre entre 1 et 100 et vous devez le deviner en moins de coup possible. A chaque fois que vous me dites un nombre, je vous dis si ce dernier est supérieur ou inférieur à celui que j'ai choisis (ou égal si vous avez trouvé).
+Si je vous donne un annuaire téléphonique contenant plusieurs milliers de coordonnées, et que je vous demande de trouver une personne, normalement en quelques secondes vous y arrivez. Même si je rajoute plusieurs millions de personnes dans l'annuaire, vous devriez toujours êtres capable de repérer n'importe qui en moins d'une minute. Mais comment faire pour qu'un ordinateur nous remplace pour effectuer cette tâche ? Comment concrétiser l'algorithme que vous utilisez (sans le savoir) pour qu'un ordinateur le comprenne ? Votre cerveau est un outil incroyable qui n'aime pas faire des actions répétitives, et il essaiera naturellement de trouver une façon plus rapide de résoudre un problème. Vous n'auriez pas idée de commencer par regarder toutes les personnes avec un prénom en "A" si vous savez que la personne que vous cherchez est "Jean". Ce que vous faites plutôt, c'est que vous divisez l'intervalle de recherche à partir d'un résultat, vous ouvrez par exemple une page au hasard qui devrait correspondre à peu près à la lettre que vous cherchez, et vous affinez au fur et à mesure en fonction du mot de la page.
 
-Vu comme ça, on pourrait se dire qu'on a 1 chance sur 100 de tomber sur le bon nombre, et qu'il faut juste avoir de la chance, mais en réfléchissant bien on peut améliorer nos chances en s'aidant de la réponse que je donne à chaque fois (si c'est plus ou moins). Je choisis donc mon nombre, et au premier tour vous dites 50, si je vous dis « plus » vous savez que mon nombre sera forcément dans l'intervalle de 51 à 100, si je vous dis « moins » il sera dans l'intervalle 1 à 49, et si je vous dis égal vous avez trouvé le nombre. On peut continuer d'utiliser ce principe pour diviser par deux à chaque fois notre intervalle de recherche jusqu'à avoir un seul élément dans notre intervalle, qui est forcément celui que j'ai choisis au début du jeu. Cette méthode s'appelle la dichotomie, et s'applique dans bien d'autres domaines que dans ce jeu.
+Jouons à un petit jeu appelé *le plus ou moins*. Je choisis un nombre entre 1 et 100 et vous devez le deviner en moins de coup possible. A chaque fois que vous me dites un nombre, je vous dis si ce dernier est supérieur ou inférieur à celui que j'ai choisi (ou égal si vous avez trouvé).
+
+Vu comme ça, on pourrait se dire qu'on a 1 chance sur 100 de tomber sur le bon nombre, mais en réfléchissant bien on peut améliorer nos chances en s'aidant de la réponse que je donne à chaque fois (si c'est plus ou moins). Je choisis donc mon nombre, et au premier tour vous dites 50, si je vous dis « plus » vous savez que mon nombre sera forcément dans l'intervalle de 51 à 100, si je vous dis « moins » il sera dans l'intervalle 1 à 49, et si je vous dis égal vous avez trouvé le nombre. On peut continuer d'utiliser ce principe pour diviser par deux à chaque fois notre intervalle de recherche jusqu'à avoir un seul élément dans notre intervalle, qui est forcément celui que j'ai choisi au début du jeu. Cette méthode s'appelle la dichotomie, et vous utilisez un algorithme très similaire lorsque vous recherchez une personne dans un annuaire, mais elle ne s'applique pas qu'à cela, et on la retrouve dans bien d'autres domaines.
 
 ## Principe de la dichotomie
 
@@ -78,7 +80,7 @@ Pour calculer la complexité en temps de la recherche dichotomique, on peut visu
 
 Chaque opération possible est représentée dans notre arbre, c'est-à-dire qu'à chaque tour on coupe notre tableau (qu'on note $n$) en deux. On voit qu'on arrive à une profondeur maximale de l'arbre en $\log _2 N$ avec $N$ la taille de notre tableau (pour en savoir plus sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)), la complexité de la recherche dichotomique est donc dans le pire des cas en $O(\log _2 N)$.
 
-Pour vous faire comprendre à quel point cette recherche est efficace, imaginons que vous possédez une bibliothèque numérique de $N$ livres tous triés en fonction du titre par ordre alphabétique. Votre machine sur laquelle vous faites vos recherches de livres est très lente, et peut effectuer uniquement 2000 opérations à la seconde (aujourd'hui les ordinateurs classiques peuvent en effectuer plusieurs milliards...). Si vous implémentez une recherche dichotomique, il vous faudra environ plus de livres qu'il n'y a de particules dans un billion d'univers pour que votre machine prenne plus de temps qu'un clignement d'œil.
+Pour vous faire comprendre à quel point cette recherche est efficace, imaginons que vous possédez une bibliothèque numérique de $N$ livres tous triés en fonction du titre par ordre alphabétique. Votre machine sur laquelle vous faites vos recherches de livres est très lente, et peut effectuer uniquement 2000 opérations à la seconde (aujourd'hui les ordinateurs classiques peuvent en effectuer plusieurs milliards...). Si vous implémentez une recherche dichotomique, il vous faudra environ plus de livres qu'il n'y a de particules dans un billion d'univers visible pour que votre machine prenne plus de temps qu'un clignement d'œil.
 
 ## Implémentation
 
