@@ -18,6 +18,10 @@
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)
 
+### Arbre
+
+- Arbre binaire : lien des variantes dans "Définition"
+
 ### Tas
 
 - Code tri par tas
