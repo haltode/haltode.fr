@@ -9,7 +9,38 @@
 
 \begin{document}
 
+% Intro : contre exemple de l'algorithme proposé
+
+\begin{tikzpicture}
+\node [draw, anchor=center] (first) {$8$};
+\node [draw, anchor=center, right=0cm of first] (second) {$3$};
+\node [draw, anchor=center, right=0cm of second] (third) {$14$};
+\node [draw, anchor=center, right=0cm of third, fill=green!20] (fourth) {$42$};
+\node [draw, anchor=center, right=0cm of fourth] (fifth) {$2$};
+\node [draw, anchor=center, right=0cm of fifth] (sixth) {$0$};
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}
+\node [draw] {$42$};
+\end{tikzpicture}
+
+\vspace{1cm}
+\begin{tikzpicture}
+\node [draw, anchor=center] (first) {$8$};
+\node [draw, anchor=center, right=0cm of first] (second) {$3$};
+\node [draw, anchor=center, right=0cm of second, fill=green!20] (third) {$14$};
+\node [draw, anchor=center, right=0cm of third, fill=red!20] (fourth) {$7$};
+\node [draw, anchor=center, right=0cm of fourth] (fifth) {$2$};
+\node [draw, anchor=center, right=0cm of fifth] (sixth) {$0$};
+\end{tikzpicture}
+\hspace{2.2cm}
+\begin{tikzpicture}
+\node [draw] {$42$};
+\end{tikzpicture}
+
 % Intro : représentation des sous problèmes
+
+\vspace{2cm}
 
 \begin{tikzpicture}[level distance = 1.5cm,
     level 1/.style={->, >=stealth, sibling distance=35mm},
