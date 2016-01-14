@@ -190,35 +190,48 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tas">Tas</h1></a>
 <p>Publi&#233; le : 11/01/2016<br />
-<em>Modifi&#233; le : 13/01/2016</em></p>
+<em>Modifi&#233; le : 14/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tas">Principe du tas</a></li>
 <li><a href="#op&#233;rations-sur-un-tas">Op&#233;rations sur un tas</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#complexit&#233;">Complexit&#233;</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
-<li><a href="#variantes">Variantes</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Dans l'introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, on a vu une m&#233;thode permettant de trouver le maximum dans un tableau dynamique avec une complexit&#233; en temps efficace de <span class="math inline">\(O(\log _2 N)\)</span>. Cependant, qu'en est-il de la complexit&#233; en m&#233;moire ? En effet, on cr&#233;e de nombreuses fois de m&#234;me n&#339;uds afin d'avoir notre arbre binaire maximal final, mais peut-on faire mieux ? C'est l&#224; qu'on d&#233;couvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec tous ces avantages, le tas est une structure de donn&#233;es &#233;norm&#233;ment utilis&#233;e, et importante &#224; conna&#238;tre.</p>
+<p>TODO : refaire intro : probl&#232;me de base 2 op&#233;rations -extraire min/max -ins&#233;rer valeur</p>
+<p>Dans l'introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, on a vu une m&#233;thode permettant de trouver le maximum dans un tableau dynamique avec une complexit&#233; en temps efficace de <span class="math inline">\(O(\log _2 N)\)</span>. Cependant, qu'en est-il de la complexit&#233; en m&#233;moire ? En effet, on cr&#233;e de nombreuses fois des doublons afin d'avoir notre arbre binaire maximal final, mais peut-on faire autrement ? C'est l&#224; qu'on d&#233;couvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec tous ces avantages, le tas est une structure de donn&#233;es &#233;norm&#233;ment utilis&#233;e, et importante &#224; conna&#238;tre.</p>
 <h2 id="principe-du-tas">Principe du tas</h2>
-<p>Le tas (ou <em>heap</em> en anglais), sera la plupart du temps impl&#233;ment&#233; comme un <strong>tas binaire</strong>, c'est-&#224;-dire qu'il est construit sur la forme d'un arbre binaire. C'est sur cette structure que l'on va donc ce concentrer dans cet article, mais sachez qu'il est possible de cr&#233;er des tas bas&#233;s sur des arbres autres que binaires.</p>
+<p>Le tas (ou <em>heap</em> en anglais), sera la plupart du temps impl&#233;ment&#233; comme un <strong>tas binaire</strong>, c'est-&#224;-dire qu'il est construit sur la forme d'un arbre binaire. C'est sur cette structure que l'on va donc se concentrer dans cet article, mais sachez qu'il est possible de cr&#233;er des tas bas&#233;s sur des arbres autres que binaires.</p>
 <p>Dans notre arbre binaire maximal, le p&#232;re d'un n&#339;ud est le maximum des deux n&#339;uds (autrement dit, c'est soit l'un soit l'autre), dans un tas binaire, le p&#232;re d'un n&#339;ud n'est pas un double de ses enfants, mais au contraire un autre n&#339;ud ind&#233;pendant qui respecte une propri&#233;t&#233; sp&#233;cifique au tas (<strong>tas minimal</strong> : alors le p&#232;re a une valeur inf&#233;rieure ou &#233;gale &#224; celles de ses fils, et <strong>tas maximal</strong> : le p&#232;re a une valeur sup&#233;rieure ou &#233;gale &#224; celles de ses fils).</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_tas_max.png" alt="Exemple de tas maximal" />
 <p class="caption">Exemple de tas maximal</p>
 </div>
-<p>Ce tas max peut repr&#233;senter le tableau situ&#233; en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'&#233;l&#233;ment maximum du tableau (de m&#234;me un tas min aura &#224; la racine l'&#233;l&#233;ment minimum du tableau). Cette propri&#233;t&#233; est tr&#232;s int&#233;ressante car on a r&#233;ussi &#224; avoir le m&#234;me r&#233;sultat qu'avec un arbre binaire maximal, mais sans utiliser de doublons, on peut alors stocker des tableaux bien plus grands sans avoir besoin de m&#233;moire suppl&#233;mentaire.</p>
+<p>Ce tas max peut repr&#233;senter le tableau situ&#233; en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'&#233;l&#233;ment maximum du tableau (de m&#234;me un tas min aura &#224; la racine l'&#233;l&#233;ment minimum du tableau).</p>
 <h2 id="op&#233;rations-sur-un-tas">Op&#233;rations sur un tas</h2>
-<p>Ajout d'un &#233;l&#233;ment</p>
-<p>Suppression d'un &#233;l&#233;ment</p>
-<p>Changer un &#233;l&#233;ment</p>
+<p>Un tas ne peut pas avoir de &quot;trous&quot; dedans, seul le dernier &#233;tage de l'arbre peut ne pas &#234;tre rempli en entier. Lorsqu'on veut ins&#233;rer un nouvel &#233;l&#233;ment, on a donc pas d'autres choix que de le placer &#224; la premi&#232;re place libre que l'on trouve dans le tas. Cependant, ce nouvel &#233;l&#233;ment ne respecte pas les propri&#233;t&#233;s du tas, et il va falloir &#233;changer des &#233;l&#233;ments afin d'avoir une structure coh&#233;rente. Pour cela, on applique le m&#234;me principe que lors d'un changement d'une valeur dans un arbre binaire maximal, c'est-&#224;-dire que l'on va modifier tous les n&#339;uds parents tant que les propri&#233;t&#233;s du tas ne sont pas respect&#233;es.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png" alt="Exemple d&#39;insertion d&#39;un nouvel &#233;l&#233;ment dans un tas maximal" />
+<p class="caption">Exemple d'insertion d'un nouvel &#233;l&#233;ment dans un tas maximal</p>
+</div>
+<p>La deuxi&#232;me op&#233;ration principale d'un tas est l'extraction de son minimum/maximum (en fonction des propri&#233;t&#233;s du tas). On a vu que cette valeur se trouve forc&#233;ment &#224; la racine, mais comment reboucher le trou qu'on vient de faire ? Une solution consiste &#224; prendre le dernier &#233;l&#233;ment du tas (sur le dernier &#233;tage), et de le d&#233;placer &#224; la racine. Vu que c'est une feuille, on peut tr&#232;s bien le bouger de place sans inconv&#233;nient, cependant on ne respecte plus les propri&#233;t&#233;s du tas. On va donc <strong>entasser</strong> cet &#233;l&#233;ment pour qu'il se retrouve &#224; sa bonne place :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_extraction_tas_max.png" alt="Exemple d&#39;extraction du maximum dans un tas" />
+<p class="caption">Exemple d'extraction du maximum dans un tas</p>
+</div>
+<p>Suppression d'un &#233;l&#233;ment + Changer un &#233;l&#233;ment (&#233;voquer)</p>
 <p>Construction d'un tas</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>Notre tas binaire est bas&#233; sur un arbre binaire, il a donc une hauteur maximale de <span class="math inline">\(O(\log _2 N)\)</span> avec <span class="math inline">\(N\)</span> le nombre d'&#233;l&#233;ments du tas. Pour l'insertion d'un &#233;l&#233;ment, on fait dans le pire des cas remonter le n&#339;ud jusqu'&#224; la racine et donc on effectue <span class="math inline">\(\log _2 N\)</span> op&#233;rations. Pareil pour l'extraction du min/max, on fait dans le pire des cas <span class="math inline">\(\log _2 N\)</span> &#233;changes, r&#233;sultant dans les deux cas en une complexit&#233; en <span class="math inline">\(O(\log _2 N)\)</span>.</p>
+<p>TODO : rajouter complexit&#233; des autres op&#233;rations</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<h2 id="variantes">Variantes</h2>
+<p>TODO : impl&#233;mentation en C (&#224; la main) + C++ priority_queue STL</p>
 <h2 id="conclusion">Conclusion</h2>
+<p>TODO : variantes + applications</p>
  
       <!-- ------------ -->
 

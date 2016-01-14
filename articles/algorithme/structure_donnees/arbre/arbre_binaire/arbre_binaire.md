@@ -35,7 +35,7 @@ Cette structure de données a l'avantage d'être très modulable et on peut lui 
 
 - L'arbre binaire **maximal** a la particularité d'avoir chaque nœud parent comme étant le maximum de ses deux fils. C'est la structure utilisée dans l'exemple de l'introduction, on part d'un tableau initial et on crée l'arbre en prenant deux à deux les maximums en remontant jusqu'à avoir une racine.
 - L'arbre binaire **minimal** repose sur le même principe que le précédent, sauf que chaque parent représente le minimum de ses fils.
-- Un **tas** (et plus particulièrement un tas binaire) permet un stockage plus efficace qu'avec un arbre binaire max/min en évitant de créer des doublons des différents nœuds dans l'arbre.
+- Un **tas** (et plus particulièrement un tas binaire) permet un stockage plus efficace qu'avec un arbre binaire max/min en évitant de créer des doublons des différents nœuds dans l'arbre, et répond rapidement à des questions de maximum/minimum dynamiques.
 - Un **arbre binaire de recherche** attribue à chaque nœud une *clé* qui va organiser l'arbre. Tous les nœuds à gauche d'un nœud père auront tous des clés inférieures à ce dernier, et tous les nœuds à droite auront une clé supérieure.
 - Un **arbre rouge et noir** est la même idée qu'un arbre binaire de recherche, excepté que chaque nœud a une *couleur* qui permet d'organiser l'arbre mais aussi de l'équilibrer pour ne pas avoir un côté bien plus grand que l'autre à cause de l'ordre des clés.
 
@@ -105,7 +105,7 @@ int arbreBinaire[NB_NOEUD_ARBRE + 1];
 
 On n'oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement être l'élément d'indice 1 du tableau pour satisfaire les propriétés de placement des nœuds.
 
-## Application
+## Conclusion
 
 Cela peut paraitre étrange de penser qu'un simple arbre avec une contrainte sur le nombre de nœuds de ses fils peut être extrêmement utile. Et pourtant, les arbres binaires sont présents dans énormément d'algorithmes et de structures de données, et en voici une courte liste :
 
@@ -134,7 +134,5 @@ Cela peut paraitre étrange de penser qu'un simple arbre avec une contrainte sur
 - **Géométrie/Graphique** :
 
       - La plupart des jeux 3D utilisent des [arbres binaires spécifiques](https://en.wikipedia.org/wiki/Binary_space_partitioning) afin de savoir quel objet a besoin d'être affiché ou non à l'écran.
-
-## Conclusion
 
 La liste des applications d'un arbre binaire peut continuer longtemps, car cette structure de données est fondamentale en algorithmique. Son principe est simple, son implémentation aussi, mais ses applications peuvent être très complexes.

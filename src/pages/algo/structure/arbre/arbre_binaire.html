@@ -196,7 +196,6 @@ function toggle_visibility(id) {
 <li><a href="#d&#233;finition">D&#233;finition</a></li>
 <li><a href="#op&#233;rations">Op&#233;rations</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
-<li><a href="#application">Application</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
@@ -228,7 +227,7 @@ function toggle_visibility(id) {
 <ul>
 <li>L'arbre binaire <strong>maximal</strong> a la particularit&#233; d'avoir chaque n&#339;ud parent comme &#233;tant le maximum de ses deux fils. C'est la structure utilis&#233;e dans l'exemple de l'introduction, on part d'un tableau initial et on cr&#233;e l'arbre en prenant deux &#224; deux les maximums en remontant jusqu'&#224; avoir une racine.</li>
 <li>L'arbre binaire <strong>minimal</strong> repose sur le m&#234;me principe que le pr&#233;c&#233;dent, sauf que chaque parent repr&#233;sente le minimum de ses fils.</li>
-<li>Un <strong>tas</strong> (et plus particuli&#232;rement un tas binaire) permet un stockage plus efficace qu'avec un arbre binaire max/min en &#233;vitant de cr&#233;er des doublons des diff&#233;rents n&#339;uds dans l'arbre.</li>
+<li>Un <strong>tas</strong> (et plus particuli&#232;rement un tas binaire) permet un stockage plus efficace qu'avec un arbre binaire max/min en &#233;vitant de cr&#233;er des doublons des diff&#233;rents n&#339;uds dans l'arbre, et r&#233;pond rapidement &#224; des questions de maximum/minimum dynamiques.</li>
 <li>Un <strong>arbre binaire de recherche</strong> attribue &#224; chaque n&#339;ud une <em>cl&#233;</em> qui va organiser l'arbre. Tous les n&#339;uds &#224; gauche d'un n&#339;ud p&#232;re auront tous des cl&#233;s inf&#233;rieures &#224; ce dernier, et tous les n&#339;uds &#224; droite auront une cl&#233; sup&#233;rieure.</li>
 <li>Un <strong>arbre rouge et noir</strong> est la m&#234;me id&#233;e qu'un arbre binaire de recherche, except&#233; que chaque n&#339;ud a une <em>couleur</em> qui permet d'organiser l'arbre mais aussi de l'&#233;quilibrer pour ne pas avoir un c&#244;t&#233; bien plus grand que l'autre &#224; cause de l'ordre des cl&#233;s.</li>
 </ul>
@@ -282,7 +281,7 @@ function toggle_visibility(id) {
 <p>Ce tableau suffit donc &#224; stocker un arbre binaire :</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> arbreBinaire[NB_NOEUD_ARBRE + <span class="dv">1</span>];</code></pre></div>
 <p>On n'oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement &#234;tre l'&#233;l&#233;ment d'indice 1 du tableau pour satisfaire les propri&#233;t&#233;s de placement des n&#339;uds.</p>
-<h2 id="application">Application</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>Cela peut paraitre &#233;trange de penser qu'un simple arbre avec une contrainte sur le nombre de n&#339;uds de ses fils peut &#234;tre extr&#234;mement utile. Et pourtant, les arbres binaires sont pr&#233;sents dans &#233;norm&#233;ment d'algorithmes et de structures de donn&#233;es, et en voici une courte liste :</p>
 <ul>
 <li><p><strong>Recherche</strong> :</p>
@@ -312,7 +311,6 @@ function toggle_visibility(id) {
 <li>La plupart des jeux 3D utilisent des <a href="https://en.wikipedia.org/wiki/Binary_space_partitioning">arbres binaires sp&#233;cifiques</a> afin de savoir quel objet a besoin d'&#234;tre affich&#233; ou non &#224; l'&#233;cran.</li>
 </ul></li>
 </ul>
-<h2 id="conclusion">Conclusion</h2>
 <p>La liste des applications d'un arbre binaire peut continuer longtemps, car cette structure de donn&#233;es est fondamentale en algorithmique. Son principe est simple, son impl&#233;mentation aussi, mais ses applications peuvent &#234;tre tr&#232;s complexes.</p>
  
       <!-- ------------ -->
