@@ -124,7 +124,7 @@ test02.out
 
 Le tableau cumulatif 2D ressemble à cela pour l'entrée :
 
-```in
+```nohighlight
 4 10 18 27
 5 19 32 50
 12 28 44 65
