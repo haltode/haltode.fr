@@ -13,7 +13,7 @@ Cependant notre solution est bien trop longue pour le cas extrême donné en ent
 
 ## Principe du tableau cumulatif
 
-Dans notre algorithme naïf, on n'utilise lors de nos parcours les informations récoltées uniquement pour répondre à une seule question parmi des milliards. Ceci nous oblige à repasser sur des parties du tableau déjà parcourue (voir le tableau en entier), résultant en un temps d'exécution trop élevé.
+Dans notre algorithme naïf, on utilise lors de nos parcours les informations récoltées uniquement pour répondre à une seule question parmi des milliards. Ceci nous oblige à repasser sur des parties du tableau déjà parcourue (voir le tableau en entier), résultant en un temps d'exécution trop élevé.
 
 L'idée du tableau cumulatif (*summed area table* en anglais) est de parcourir une seule fois notre tableau entièrement, et d'utiliser les données récoltées pour ensuite répondre à n'importe quel type de question à propos de somme d'éléments contigus.
 
@@ -21,7 +21,7 @@ On peut très simplement expliquer son principe grâce à la géométrie et aux 
 
 ![Explication géométrique du tableau cumulatif](//static.napnac.ga/img/algo/structure/tableau_cumulatif/explication_geo.png)
 
-La partie verte dans le premier rectangle représente la question posée, et on voit qu'on peut retrouver exactement la même partie en utilisant deux sous parties du rectangle commençant toutes les deux au même endroit. L'avantage de pouvoir décomposer n'importe quelle sous partie du rectangle en deux autres ayant un début commun, est qu'on réduit alors le nombre de possibilités de sous parties. En effet, avec un début et une fin variable le nombre d'intervalles possibles est d'environ $N^2$ (avec $N$ la taille du rectangle), alors qu'avec un début d'intervalle fixe et uniquement une fin variable on arrive à $N$ possibilités de sous parties.
+La partie verte dans le premier rectangle représente la question posée, et on voit qu'on peut retrouver exactement la même partie en utilisant deux sous parties du rectangle commençant toutes les deux au même endroit. L'avantage de pouvoir décomposer n'importe quelle sous partie du rectangle en deux autres ayant un début commun, est qu'on réduit alors le nombre de possibilités de sous parties. En effet, avec un début et une fin variables le nombre d'intervalles possibles est d'environ $N^2$ (avec $N$ le nombre d'éléments du rectangle), alors qu'avec un début d'intervalle fixe et uniquement une fin variable on arrive à $N$ possibilités de sous parties.
 
 Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un début fixe et une fin variable, afin de pouvoir connaitre rapidement n'importe quelle sous partie de notre tableau d'éléments.
 
@@ -88,7 +88,7 @@ test01.out
 Quelques remarques sur le code :
 
 - Il faut faire attention avec les indices des tableaux qui commencent à 0 en C.
-- Pour initialiser le tableau cumulatif, je réutilise les sommes d'éléments précédentes que j'ai calculées pour créer les prochaines afin d'avoir une complexité linéaire dans ma fonction `initCumulatif`.
+- Pour initialiser le tableau cumulatif, je réutilise les sommes d'éléments précédents que j'ai déjà calculées pour créer les prochaines afin d'avoir une complexité linéaire dans ma fonction `initCumulatif`.
 - Dans la fonction `somme`, j'admets que `debut` est inférieur à `fin` et que les indices ne sont pas en dehors du tableau pour simplifier le code.
 
 ## Variantes
@@ -124,7 +124,7 @@ test02.out
 
 Le tableau cumulatif 2D ressemble à cela pour l'entrée :
 
-```
+```in
 4 10 18 27
 5 19 32 50
 12 28 44 65
@@ -140,4 +140,4 @@ Nous avons vu qu'il était possible de créer un tableau cumulatif sur une mais 
 
 ## Conclusion
 
-Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour d'autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (voir même $N$) dimensions.
+Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour d'autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (ou même $N$) dimensions.

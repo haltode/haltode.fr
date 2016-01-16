@@ -10,10 +10,6 @@
 # Algorithme
 
 ## Structure de données
-### Liste chaînée
-
-- Rajouter d'autres variantes
-
 ### Graphe
 
 - Lien opérations utiles ? (faire un article regroupant le reste ?)

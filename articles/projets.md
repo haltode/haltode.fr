@@ -12,3 +12,5 @@ Liste de mes différents projets personnels :
 | **10/2013** - **01/2014** | [Rhyddid](/projets/rhyddid.html)              | Rogue-like construit entièrement en console                             |
 | **06/2013** - **09/2013** | [ASCII Funfair](/projets/ascii_funfair.html)  | Programme regroupant différents jeux connus, en solo et en multijoueur  |
 | **04/2013**               | [Pseudo-C](/projets/pseudo-c.html)            | Traducteur et interpréteur de pseudo-code en langage C                  |
+
+Vous pouvez aussi retrouver mes plus petits projets sur Github : <https://github.com/iTech->.
