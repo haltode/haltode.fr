@@ -10,7 +10,7 @@
     every node/.style={circle, draw, fill=blue!20},
     level 1/.style={sibling distance=35mm},
     level 2/.style={sibling distance=20mm},
-    level 3/.style={sibling distance=9mm}
+    level 3/.style={sibling distance=8mm}
   }
 }
 
@@ -55,6 +55,161 @@
 	\nodepart{eleven}3
 	\nodepart{twelve}8
 };
+\end{tikzpicture}
+
+% Exemple insertion dans un tas max
+
+\newpage
+
+\begin{tikzpicture}[heap]
+  \node {42}
+  child{node{27}
+    child{
+    	node{12}
+    		child{node{8}}
+    		child{node{9}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node{10}
+  	child{node{4}
+  		child{node{1}}
+  		child{node[fill=green!20]{11}}}
+  	child{node{3}}}
+  ;
+\end{tikzpicture}
+\hspace{1.5cm}
+\begin{tikzpicture}[heap]
+  \node {42}
+  child{node{27}
+    child{
+    	node{12}
+    		child{node{8}}
+    		child{node{9}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node{10}
+  	child{node[fill=green!20]{11}
+  		child{node{1}}
+  		child{node{4}}}
+  	child{node{3}}}
+  ;
+\end{tikzpicture}
+
+\vspace{1cm}
+\begin{tikzpicture}[heap]
+  \node {42}
+  child{node{27}
+    child{
+    	node{12}
+    		child{node{8}}
+    		child{node{9}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node[fill=green!20]{11}
+  	child{node{10}
+  		child{node{1}}
+  		child{node{4}}}
+  	child{node{3}}}
+  ;
+\end{tikzpicture}
+
+% Exemple extraction dans un tas max
+
+\newpage
+
+\begin{tikzpicture}[heap]
+  \node[fill=white, draw=white]{}
+  child{node{27}
+    child{
+    	node{12}
+    		child{node{8}}
+    		child{node{9}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node{11}
+  	child{node{10}
+  		child{node{1}}
+  		child{node{4}}}
+  	child{node{3}}}
+  ;
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\node[draw, circle, fill=green!20]{42};
+\end{tikzpicture}
+
+\vspace{1cm}
+\begin{tikzpicture}[heap]
+  \node[fill=green!20]{4}
+  child{node{27}
+    child{
+    	node{12}
+    		child{node{8}}
+    		child{node{9}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node{11}
+  	child{node{10}
+  		child{node{1}}}
+  	child{node{3}}}
+  ;
+\end{tikzpicture}
+\hspace{1.5cm}
+\begin{tikzpicture}[heap]
+  \node{27}
+  child{node[fill=green!20]{4}
+    child{
+    	node{12}
+    		child{node{8}}
+    		child{node{9}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node{11}
+  	child{node{10}
+  		child{node{1}}}
+  	child{node{3}}}
+  ;
+\end{tikzpicture}
+
+\vspace{1cm}
+\begin{tikzpicture}[heap]
+  \node{27}
+  child{node{12}
+    child{
+    	node[fill=green!20]{4}
+    		child{node{8}}
+    		child{node{9}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node{11}
+  	child{node{10}
+  		child{node{1}}}
+  	child{node{3}}}
+  ;
+\end{tikzpicture}
+\hspace{1.5cm}
+\begin{tikzpicture}[heap]
+  \node{27}
+  child{node{12}
+    child{
+    	node{9}
+    		child{node{8}}
+    		child{node[fill=green!20]{4}}}
+    	child{node{6}
+    		child{node{3}}
+    		child{node{5}}}}
+  child{node{11}
+  	child{node{10}
+  		child{node{1}}}
+  	child{node{3}}}
+  ;
 \end{tikzpicture}
 
 \end{document}
