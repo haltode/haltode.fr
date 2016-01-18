@@ -190,7 +190,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tas">Tas</h1></a>
 <p>Publi&#233; le : 11/01/2016<br />
-<em>Modifi&#233; le : 17/01/2016</em></p>
+<em>Modifi&#233; le : 18/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tas">Principe du tas</a></li>
@@ -201,7 +201,8 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>TODO : refaire intro : probl&#232;me de base 2 op&#233;rations -extraire min/max -ins&#233;rer valeur</p>
+<p>TODO : refaire intro : probl&#232;me de base 2 op&#233;rations -extraire min/max -ins&#233;rer valeur<br />
+TODO : changer entr&#233;e/sortie de l'impl&#233; en fonction du probl&#232;me pos&#233; en intro</p>
 <p>Dans l'introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, on a vu une m&#233;thode permettant de trouver le maximum dans un tableau dynamique avec une complexit&#233; en temps efficace de <span class="math inline">\(O(\log _2 N)\)</span>. Cependant, qu'en est-il de la complexit&#233; en m&#233;moire ? En effet, on cr&#233;e de nombreuses fois des doublons afin d'avoir notre arbre binaire maximal final, mais peut-on faire autrement ? C'est l&#224; qu'on d&#233;couvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec tous ces avantages, le tas est une structure de donn&#233;es &#233;norm&#233;ment utilis&#233;e, et importante &#224; conna&#238;tre.</p>
 <h2 id="principe-du-tas">Principe du tas</h2>
 <p>Le tas (ou <em>heap</em> en anglais), sera la plupart du temps impl&#233;ment&#233; comme un <strong>tas binaire</strong>, c'est-&#224;-dire qu'il est construit sur la forme d'un arbre binaire. C'est sur cette structure que l'on va donc se concentrer dans cet article, mais sachez qu'il est possible de cr&#233;er des tas bas&#233;s sur des arbres autres que binaires.</p>
@@ -263,8 +264,116 @@ extraction :
 <p>Notre tas binaire est bas&#233; sur un arbre binaire, il a donc une hauteur maximale de <span class="math inline">\(O(\log _2 N)\)</span> avec <span class="math inline">\(N\)</span> le nombre d'&#233;l&#233;ments du tas. Pour l'insertion d'un &#233;l&#233;ment, on fait dans le pire des cas remonter le n&#339;ud jusqu'&#224; la racine et donc on effectue <span class="math inline">\(\log _2 N\)</span> op&#233;rations. Pareil pour l'extraction du min/max, on fait dans le pire des cas <span class="math inline">\(\log _2 N\)</span> &#233;changes, r&#233;sultant dans les deux cas en une complexit&#233; en <span class="math inline">\(O(\log _2 N)\)</span>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C d'un tas max :</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"></code></pre></div>
-<p>TODO : tas min</p>
+<a href="javascript:toggle_visibility('tas_max.c');">tas_max.c</a>
+<div id="tas_max.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define NB_NOEUD_MAX 1000</span>
+
+<span class="dt">int</span> tas[NB_NOEUD_MAX];
+<span class="dt">int</span> nbElement;
+
+<span class="dt">void</span> echanger(<span class="dt">int</span> a, <span class="dt">int</span> b)
+{
+   <span class="dt">int</span> c;
+
+   c = tas[a];
+   tas[a] = tas[b];
+   tas[b] = c;
+}
+
+<span class="dt">int</span> max(<span class="dt">int</span> a, <span class="dt">int</span> b)
+{
+   <span class="kw">if</span>(tas[a] &gt; tas[b])
+      <span class="kw">return</span> a;
+   <span class="kw">else</span>
+      <span class="kw">return</span> b;
+}
+
+<span class="dt">void</span> inserer(<span class="dt">int</span> valeur)
+{
+   <span class="dt">int</span> noeud, pere;
+
+   ++nbElement;
+   noeud = nbElement;
+   tas[nbElement] = valeur;
+
+   pere = noeud / <span class="dv">2</span>;
+   <span class="kw">while</span>(pere != <span class="dv">0</span> &amp;&amp; 
+         tas[noeud] &gt; tas[pere]) {
+      echanger(noeud, pere);
+
+      noeud = pere;
+      pere = noeud / <span class="dv">2</span>;
+   }
+}
+
+<span class="dt">int</span> extraire(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> racine;
+   <span class="dt">int</span> noeud, gauche, droit, fils;
+
+   racine = tas[<span class="dv">1</span>];
+
+   tas[<span class="dv">1</span>] = tas[nbElement];
+   --nbElement;
+
+   noeud = <span class="dv">1</span>;
+   gauche = <span class="dv">2</span>;
+   droit = <span class="dv">3</span>;
+
+   <span class="kw">while</span>(gauche &lt;= nbElement &amp;&amp;
+         (tas[noeud] &lt; tas[gauche] || tas[noeud] &lt; tas[droit])) {
+      fils = max(gauche, droit);
+      echanger(noeud, fils);
+
+      noeud = fils;
+      gauche = <span class="dv">2</span> * noeud;
+      droit = <span class="dv">2</span> * noeud + <span class="dv">1</span>;
+   }
+
+   <span class="kw">return</span> racine;
+}
+
+<span class="dt">int</span> estPuissanceDeux(<span class="dt">int</span> x)
+{
+   <span class="kw">return</span> (x &amp; (x - <span class="dv">1</span>)) == <span class="dv">0</span>;
+}
+
+<span class="dt">void</span> afficher(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> iEle;
+   <span class="kw">for</span>(iEle = <span class="dv">1</span>; iEle &lt;= nbElement; ++iEle) {
+      printf(<span class="st">&quot;%d &quot;</span>, tas[iEle]);
+      <span class="kw">if</span>(estPuissanceDeux(iEle + <span class="dv">1</span>))
+         printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+   }
+   
+   printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   inserer(<span class="dv">12</span>);
+   inserer(<span class="dv">9</span>);
+   inserer(<span class="dv">1</span>);
+   inserer(<span class="dv">42</span>);
+   inserer(<span class="dv">10</span>);
+   inserer(<span class="dv">27</span>);
+   inserer(<span class="dv">3</span>);
+   inserer(<span class="dv">5</span>);
+   inserer(<span class="dv">4</span>);
+   inserer(<span class="dv">6</span>);
+   inserer(<span class="dv">3</span>);
+   inserer(<span class="dv">8</span>);
+   afficher();
+   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, extraire());
+   afficher();
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>J'impl&#233;mente un tas maximal, mais la version minimale du tas est quasiment la m&#234;me, il suffit de changer <code>tas[noeud] &gt; tas[pere]</code>, <code>tas[noeud] &lt; tas[gauche] || tas[noeud] &lt; tas[droit]</code> ainsi que la fonction <code>max</code>. Le code est plut&#244;t simple, mais j'utilise une petite astuce pour afficher le tas (la fonction <code>afficher</code> est juste l&#224; pour d&#233;bugger en g&#233;n&#233;ral, et voir si le tas est bien celui attendu). Pour afficher mon tas, il faut que j'effectue un retour &#224; la ligne lorsque le n&#339;ud est le 1er, le 3&#232;me, le 7&#232;me, 15&#232;me, etc. et tous ces nombres sont des puissances de 2 si l'on rajoute 1. De ce fait, on peut utiliser des <a href="https://en.wikipedia.org/wiki/Bitwise_operation">op&#233;rations bit &#224; bit</a> afin de v&#233;rifier si <code>noeud + 1</code> est une puissance de 2, et si c'est le cas, on a termin&#233; l'&#233;tage actuel du tas. C'est loin d'&#234;tre indispensable &#224; la compr&#233;hension du code, mais c'est toujours int&#233;ressant &#224; savoir.</p>
 <p>En C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) a une impl&#233;mentation d'une <a href="/algo/structure/file.html#file-&#224;-priorit&#233;">file &#224; priorit&#233;</a> utilisant un tas max : <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>. Il est possible d'utiliser cette structure afin d'avoir un tas min, en red&#233;finissant l'op&#233;rateur <code>&lt;</code> nous permettant de changer l'ordre de priorit&#233; dans le tas :</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;queue&gt;</span>
 
