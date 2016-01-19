@@ -40,7 +40,7 @@ Cependant sur un graphe, on peut effectuer un DFS de différentes façons en fon
 On utilise le principe de la récursivité pour définir notre parcours en profondeur :
 
 ```nohighlight
-DFS (noeud) :
+DFS (nœud) :
   
    Marquer le nœud comme visité
 

@@ -37,12 +37,12 @@ Dijkstra (depart) :
       Défiler le nœud au début de la file
 
       Si c'est le nœud d'arrivée
-         Retourner noeud.distance
+         Retourner nœud.distance
 
       Marquer le nœud comme visité
       Pour chaque voisin du nœud
          Si le voisin n'est pas visité
-            voisin.distance = noeud.distance + arc
+            voisin.distance = nœud.distance + arc
             Enfiler le voisin
 ```
 
