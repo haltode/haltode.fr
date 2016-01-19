@@ -3,14 +3,16 @@ Tas
 algo/structure/arbre/
 
 Publié le : 11/01/2016  
-*Modifié le : 18/01/2016*
+*Modifié le : 19/01/2016*
 
 ## Introduction
 
-TODO : refaire intro : problème de base 2 opérations -extraire min/max -insérer valeur  
-TODO : changer entrée/sortie de l'implé en fonction du problème posé en intro
+Vous avez une liste d'élément qui est vide au départ, et deux types d'opérations sont possibles dessus :
 
-Dans l'introduction de mon article sur les [arbres binaires](/algo/structure/arbre/arbre_binaire.html), on a vu une méthode permettant de trouver le maximum dans un tableau dynamique avec une complexité en temps efficace de $O(\log _2 N)$. Cependant, qu'en est-il de la complexité en mémoire ? En effet, on crée de nombreuses fois des doublons afin d'avoir notre arbre binaire maximal final, mais peut-on faire autrement ? C'est là qu'on découvre le **tas**, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec tous ces avantages, le tas est une structure de données énormément utilisée, et importante à connaître.
+- Insérer une valeur dans la liste.
+- Extraire le maximum (ou le minimum, le problème reste le même) de la liste.
+
+On a vu dans l'introduction de mon article sur les [arbres binaires](/algo/structure/arbre/arbre_binaire.html), comment trouver le maximum dans un tableau dynamique. On pourrait utiliser la même méthode (que l'on change légèrement), et la même structure, afin d'avoir une complexité en temps efficace de $O(\log _2 N)$. Cependant, qu'en est-il de la complexité en mémoire ? Que se passe-t-il si j'ai des milliards de milliards d'opérations ? En effet, on crée de nombreuses fois des doublons afin d'avoir notre arbre binaire maximal final, mais peut-on faire autrement ? C'est là qu'on découvre le **tas**, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec tous ces avantages, le tas est une structure de données énormément utilisée, importante à connaître et qui peut s'avérer très utile quand on arrive aux limites des arbres binaires max/min (ce qui est notre cas dans cet exemple).
 
 ## Principe du tas
 
@@ -20,11 +22,11 @@ Dans notre arbre binaire maximal, le père d'un nœud est le maximum des deux n�
 
 ![Exemple de tas maximal](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_tas_max.png)
 
-Ce tas max peut représenter le tableau situé en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'élément maximum du tableau (de même un tas min aura à la racine l'élément minimum du tableau).
+Ce tas max peut par exemple représenter le tableau situé en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'élément maximum du tableau (de même un tas min aura à la racine l'élément minimum du tableau).
 
 ## Opérations sur un tas
 
-Un tas ne peut pas avoir de "trous" dedans, seul le dernier étage de l'arbre peut ne pas être rempli en entier. Lorsqu'on veut insérer un nouvel élément, on a donc pas d'autres choix que de le placer à la première place libre que l'on trouve dans le tas. Cependant, ce nouvel élément ne respecte pas les propriétés du tas, et il va falloir échanger des éléments afin d'avoir une structure cohérente. Pour cela, on applique le même principe que lors d'un changement d'une valeur dans un arbre binaire maximal, c'est-à-dire que l'on va modifier tous les nœuds parents tant que les propriétés du tas ne sont pas respectées.
+Un tas ne peut pas avoir de "trous" dedans, seul le dernier étage de l'arbre peut ne pas être rempli en entier. Lorsqu'on veut insérer un nouvel élément, on a donc pas d'autres choix que de le placer à la première place libre que l'on trouve dans le tas. Cependant, ce nouvel élément ne respecte pas les propriétés du tas, et il va falloir effectuer des modifications afin d'avoir une structure cohérente. Pour cela, on applique le même principe que lors d'un changement d'une valeur dans un arbre binaire maximal, c'est-à-dire que l'on va modifier tous les nœuds parents tant que les propriétés du tas ne sont pas respectées.
 
 ![Exemple d'insertion d'un nouvel élément dans un tas maximal](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png)
 
@@ -34,7 +36,7 @@ La deuxième opération principale d'un tas est l'extraction de son minimum/maxi
 
 ![Exemple d'extraction du maximum dans un tas](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_extraction_tas_max.png)
 
-On extrait 42 qui est le maximum de notre tas, et on insère la dernière valeur du tas à la place de la racine pour boucher le trou (4 en vert). Pour entasser notre élément et respecter les caractéristiques d'un tas max, on échange le nœud avec le maximum de ses deux fils tant qu'on peut (pour un tas min, on échange avec le minimum de ses deux fils). Grâce à cela, on a reconstitué notre tas maximum, car le 4 est de nouveau a une place qui respecte le tas max.
+On extrait 42 qui est le maximum de notre tas, et on insère la dernière valeur à la place de la racine pour boucher le trou (c'est le 4 en vert). Pour entasser notre élément et respecter les caractéristiques d'un tas max, on échange le nœud avec le maximum de ses deux fils tant qu'on peut (pour un tas min, on échange avec le minimum de ses deux fils). Grâce à cela, on a reconstitué notre tas maximum, car le 4 est de nouveau a une place qui respecte les propriétés.
 
 ## Pseudo-code
 
@@ -84,6 +86,8 @@ extraction :
 
 Notre tas binaire est basé sur un arbre binaire, il a donc une hauteur maximale de $O(\log _2 N)$ avec $N$ le nombre d'éléments du tas. Pour l'insertion d'un élément, on fait dans le pire des cas remonter le nœud jusqu'à la racine et donc on effectue $\log _2 N$ opérations. Pareil pour l'extraction du min/max, on fait dans le pire des cas $\log _2 N$ échanges, résultant dans les deux cas en une complexité en $O(\log _2 N)$.
 
+Pour ce qui est de la complexité en mémoire, il n'y a aucuns doublons, on occupe donc uniquement l'espace nécessaire pour stocker $N$ éléments.
+
 ## Implémentation
 
 Une implémentation en C d'un tas max :
@@ -91,7 +95,9 @@ Une implémentation en C d'un tas max :
 [INSERT]
 tas_max.c
 
-J'implémente un tas maximal, mais la version minimale du tas est quasiment la même, il suffit de changer `tas[noeud] > tas[pere]`, `tas[noeud] < tas[gauche] || tas[noeud] < tas[droit]` ainsi que la fonction `max`. Le code est plutôt simple, mais j'utilise une petite astuce pour afficher le tas (la fonction `afficher` est juste là pour débugger en général, et voir si le tas est bien celui attendu). Pour afficher mon tas, il faut que j'effectue un retour à la ligne lorsque le nœud est le 1er, le 3ème, le 7ème, 15ème, etc. et tous ces nombres sont des puissances de 2 si l'on rajoute 1. De ce fait, on peut utiliser des [opérations bit à bit](https://en.wikipedia.org/wiki/Bitwise_operation) afin de vérifier si `noeud + 1` est une puissance de 2, et si c'est le cas, on a terminé l'étage actuel du tas. C'est loin d'être indispensable à la compréhension du code, mais c'est toujours intéressant à savoir.
+*Pour représenter mon tas, j'utilise un simple tableau comme vu dans les implémentations d'arbre binaire ([lien](/algo/structure/arbre/arbre_binaire.html#tableau)).*
+
+J'implémente un tas maximal, mais la version minimale du tas est quasiment la même, il suffit de changer `tas[noeud] > tas[pere]`, `tas[noeud] < tas[gauche] || tas[noeud] < tas[droit]` ainsi que la fonction `max`. Le code est plutôt simple, mais j'utilise une petite astuce pour afficher le tas (la fonction `afficher` est juste là pour débugger en général, et voir si le tas est bien celui attendu). Pour afficher mon tas, je sais qu'il faut effectuer un retour à la ligne lorsque le nœud est le 1er, le 3ème, le 7ème, 15ème, etc. et tous ces nombres sont des puissances de 2 si l'on rajoute 1. De ce fait, on peut utiliser des [opérations bit à bit](https://en.wikipedia.org/wiki/Bitwise_operation) afin de vérifier si `noeud + 1` est une puissance de 2, et si c'est le cas, on a terminé l'étage actuel du tas. C'est loin d'être indispensable à la compréhension du code, mais c'est toujours intéressant à savoir.
 
 En C++, la [STL](https://en.wikipedia.org/wiki/Standard_Template_Library) (*Standard Template Library*) a une implémentation d'une [file à priorité](/algo/structure/file.html#file-à-priorité) utilisant un tas max : [`priority_queue`](http://www.cplusplus.com/reference/queue/priority_queue/). Il est possible d'utiliser cette structure afin d'avoir un tas min, en redéfinissant l'opérateur `<` nous permettant de changer l'ordre de priorité dans le tas :
 

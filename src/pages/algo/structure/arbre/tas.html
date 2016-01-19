@@ -190,7 +190,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tas">Tas</h1></a>
 <p>Publi&#233; le : 11/01/2016<br />
-<em>Modifi&#233; le : 18/01/2016</em></p>
+<em>Modifi&#233; le : 19/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tas">Principe du tas</a></li>
@@ -201,9 +201,12 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>TODO : refaire intro : probl&#232;me de base 2 op&#233;rations -extraire min/max -ins&#233;rer valeur<br />
-TODO : changer entr&#233;e/sortie de l'impl&#233; en fonction du probl&#232;me pos&#233; en intro</p>
-<p>Dans l'introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, on a vu une m&#233;thode permettant de trouver le maximum dans un tableau dynamique avec une complexit&#233; en temps efficace de <span class="math inline">\(O(\log _2 N)\)</span>. Cependant, qu'en est-il de la complexit&#233; en m&#233;moire ? En effet, on cr&#233;e de nombreuses fois des doublons afin d'avoir notre arbre binaire maximal final, mais peut-on faire autrement ? C'est l&#224; qu'on d&#233;couvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec tous ces avantages, le tas est une structure de donn&#233;es &#233;norm&#233;ment utilis&#233;e, et importante &#224; conna&#238;tre.</p>
+<p>Vous avez une liste d'&#233;l&#233;ment qui est vide au d&#233;part, et deux types d'op&#233;rations sont possibles dessus :</p>
+<ul>
+<li>Ins&#233;rer une valeur dans la liste.</li>
+<li>Extraire le maximum (ou le minimum, le probl&#232;me reste le m&#234;me) de la liste.</li>
+</ul>
+<p>On a vu dans l'introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, comment trouver le maximum dans un tableau dynamique. On pourrait utiliser la m&#234;me m&#233;thode (que l'on change l&#233;g&#232;rement), et la m&#234;me structure, afin d'avoir une complexit&#233; en temps efficace de <span class="math inline">\(O(\log _2 N)\)</span>. Cependant, qu'en est-il de la complexit&#233; en m&#233;moire ? Que se passe-t-il si j'ai des milliards de milliards d'op&#233;rations ? En effet, on cr&#233;e de nombreuses fois des doublons afin d'avoir notre arbre binaire maximal final, mais peut-on faire autrement ? C'est l&#224; qu'on d&#233;couvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu'avec tous ces avantages, le tas est une structure de donn&#233;es &#233;norm&#233;ment utilis&#233;e, importante &#224; conna&#238;tre et qui peut s'av&#233;rer tr&#232;s utile quand on arrive aux limites des arbres binaires max/min (ce qui est notre cas dans cet exemple).</p>
 <h2 id="principe-du-tas">Principe du tas</h2>
 <p>Le tas (ou <em>heap</em> en anglais), sera la plupart du temps impl&#233;ment&#233; comme un <strong>tas binaire</strong>, c'est-&#224;-dire qu'il est construit sur la forme d'un arbre binaire. C'est sur cette structure que l'on va donc se concentrer dans cet article, mais sachez qu'il est possible de cr&#233;er des tas bas&#233;s sur des arbres autres que binaires.</p>
 <p>Dans notre arbre binaire maximal, le p&#232;re d'un n&#339;ud est le maximum des deux n&#339;uds (autrement dit, c'est soit l'un soit l'autre), dans un tas binaire, le p&#232;re d'un n&#339;ud n'est pas un double de ses enfants, mais au contraire un autre n&#339;ud ind&#233;pendant qui respecte une propri&#233;t&#233; sp&#233;cifique au tas (<strong>tas minimal</strong> : alors le p&#232;re a une valeur inf&#233;rieure ou &#233;gale &#224; celles de ses fils, et <strong>tas maximal</strong> : le p&#232;re a une valeur sup&#233;rieure ou &#233;gale &#224; celles de ses fils).</p>
@@ -211,9 +214,9 @@ TODO : changer entr&#233;e/sortie de l'impl&#233; en fonction du probl&#232;me p
 <img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_tas_max.png" alt="Exemple de tas maximal" />
 <p class="caption">Exemple de tas maximal</p>
 </div>
-<p>Ce tas max peut repr&#233;senter le tableau situ&#233; en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'&#233;l&#233;ment maximum du tableau (de m&#234;me un tas min aura &#224; la racine l'&#233;l&#233;ment minimum du tableau).</p>
+<p>Ce tas max peut par exemple repr&#233;senter le tableau situ&#233; en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'&#233;l&#233;ment maximum du tableau (de m&#234;me un tas min aura &#224; la racine l'&#233;l&#233;ment minimum du tableau).</p>
 <h2 id="op&#233;rations-sur-un-tas">Op&#233;rations sur un tas</h2>
-<p>Un tas ne peut pas avoir de &quot;trous&quot; dedans, seul le dernier &#233;tage de l'arbre peut ne pas &#234;tre rempli en entier. Lorsqu'on veut ins&#233;rer un nouvel &#233;l&#233;ment, on a donc pas d'autres choix que de le placer &#224; la premi&#232;re place libre que l'on trouve dans le tas. Cependant, ce nouvel &#233;l&#233;ment ne respecte pas les propri&#233;t&#233;s du tas, et il va falloir &#233;changer des &#233;l&#233;ments afin d'avoir une structure coh&#233;rente. Pour cela, on applique le m&#234;me principe que lors d'un changement d'une valeur dans un arbre binaire maximal, c'est-&#224;-dire que l'on va modifier tous les n&#339;uds parents tant que les propri&#233;t&#233;s du tas ne sont pas respect&#233;es.</p>
+<p>Un tas ne peut pas avoir de &quot;trous&quot; dedans, seul le dernier &#233;tage de l'arbre peut ne pas &#234;tre rempli en entier. Lorsqu'on veut ins&#233;rer un nouvel &#233;l&#233;ment, on a donc pas d'autres choix que de le placer &#224; la premi&#232;re place libre que l'on trouve dans le tas. Cependant, ce nouvel &#233;l&#233;ment ne respecte pas les propri&#233;t&#233;s du tas, et il va falloir effectuer des modifications afin d'avoir une structure coh&#233;rente. Pour cela, on applique le m&#234;me principe que lors d'un changement d'une valeur dans un arbre binaire maximal, c'est-&#224;-dire que l'on va modifier tous les n&#339;uds parents tant que les propri&#233;t&#233;s du tas ne sont pas respect&#233;es.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png" alt="Exemple d&#39;insertion d&#39;un nouvel &#233;l&#233;ment dans un tas maximal" />
 <p class="caption">Exemple d'insertion d'un nouvel &#233;l&#233;ment dans un tas maximal</p>
@@ -224,7 +227,7 @@ TODO : changer entr&#233;e/sortie de l'impl&#233; en fonction du probl&#232;me p
 <img src="//static.napnac.ga/img/algo/structure/arbre/tas/exemple_extraction_tas_max.png" alt="Exemple d&#39;extraction du maximum dans un tas" />
 <p class="caption">Exemple d'extraction du maximum dans un tas</p>
 </div>
-<p>On extrait 42 qui est le maximum de notre tas, et on ins&#232;re la derni&#232;re valeur du tas &#224; la place de la racine pour boucher le trou (4 en vert). Pour entasser notre &#233;l&#233;ment et respecter les caract&#233;ristiques d'un tas max, on &#233;change le n&#339;ud avec le maximum de ses deux fils tant qu'on peut (pour un tas min, on &#233;change avec le minimum de ses deux fils). Gr&#226;ce &#224; cela, on a reconstitu&#233; notre tas maximum, car le 4 est de nouveau a une place qui respecte le tas max.</p>
+<p>On extrait 42 qui est le maximum de notre tas, et on ins&#232;re la derni&#232;re valeur &#224; la place de la racine pour boucher le trou (c'est le 4 en vert). Pour entasser notre &#233;l&#233;ment et respecter les caract&#233;ristiques d'un tas max, on &#233;change le n&#339;ud avec le maximum de ses deux fils tant qu'on peut (pour un tas min, on &#233;change avec le minimum de ses deux fils). Gr&#226;ce &#224; cela, on a reconstitu&#233; notre tas maximum, car le 4 est de nouveau a une place qui respecte les propri&#233;t&#233;s.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code des deux op&#233;rations du tas max :</p>
 <pre class="nohighlight"><code>insertion (n&#339;ud) :
@@ -262,6 +265,7 @@ extraction :
    Retourner l&#39;ancienne racine</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>Notre tas binaire est bas&#233; sur un arbre binaire, il a donc une hauteur maximale de <span class="math inline">\(O(\log _2 N)\)</span> avec <span class="math inline">\(N\)</span> le nombre d'&#233;l&#233;ments du tas. Pour l'insertion d'un &#233;l&#233;ment, on fait dans le pire des cas remonter le n&#339;ud jusqu'&#224; la racine et donc on effectue <span class="math inline">\(\log _2 N\)</span> op&#233;rations. Pareil pour l'extraction du min/max, on fait dans le pire des cas <span class="math inline">\(\log _2 N\)</span> &#233;changes, r&#233;sultant dans les deux cas en une complexit&#233; en <span class="math inline">\(O(\log _2 N)\)</span>.</p>
+<p>Pour ce qui est de la complexit&#233; en m&#233;moire, il n'y a aucuns doublons, on occupe donc uniquement l'espace n&#233;cessaire pour stocker <span class="math inline">\(N\)</span> &#233;l&#233;ments.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C d'un tas max :</p>
 <a href="javascript:toggle_visibility('tas_max.c');">tas_max.c</a>
@@ -348,32 +352,12 @@ extraction :
       <span class="kw">if</span>(estPuissanceDeux(iEle + <span class="dv">1</span>))
          printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
    }
-   
+
    printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
-}
-
-<span class="dt">int</span> main(<span class="dt">void</span>)
-{
-   inserer(<span class="dv">12</span>);
-   inserer(<span class="dv">9</span>);
-   inserer(<span class="dv">1</span>);
-   inserer(<span class="dv">42</span>);
-   inserer(<span class="dv">10</span>);
-   inserer(<span class="dv">27</span>);
-   inserer(<span class="dv">3</span>);
-   inserer(<span class="dv">5</span>);
-   inserer(<span class="dv">4</span>);
-   inserer(<span class="dv">6</span>);
-   inserer(<span class="dv">3</span>);
-   inserer(<span class="dv">8</span>);
-   afficher();
-   printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, extraire());
-   afficher();
-
-   <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
-<p>J'impl&#233;mente un tas maximal, mais la version minimale du tas est quasiment la m&#234;me, il suffit de changer <code>tas[noeud] &gt; tas[pere]</code>, <code>tas[noeud] &lt; tas[gauche] || tas[noeud] &lt; tas[droit]</code> ainsi que la fonction <code>max</code>. Le code est plut&#244;t simple, mais j'utilise une petite astuce pour afficher le tas (la fonction <code>afficher</code> est juste l&#224; pour d&#233;bugger en g&#233;n&#233;ral, et voir si le tas est bien celui attendu). Pour afficher mon tas, il faut que j'effectue un retour &#224; la ligne lorsque le n&#339;ud est le 1er, le 3&#232;me, le 7&#232;me, 15&#232;me, etc. et tous ces nombres sont des puissances de 2 si l'on rajoute 1. De ce fait, on peut utiliser des <a href="https://en.wikipedia.org/wiki/Bitwise_operation">op&#233;rations bit &#224; bit</a> afin de v&#233;rifier si <code>noeud + 1</code> est une puissance de 2, et si c'est le cas, on a termin&#233; l'&#233;tage actuel du tas. C'est loin d'&#234;tre indispensable &#224; la compr&#233;hension du code, mais c'est toujours int&#233;ressant &#224; savoir.</p>
+<p><em>Pour repr&#233;senter mon tas, j'utilise un simple tableau comme vu dans les impl&#233;mentations d'arbre binaire (<a href="/algo/structure/arbre/arbre_binaire.html#tableau">lien</a>).</em></p>
+<p>J'impl&#233;mente un tas maximal, mais la version minimale du tas est quasiment la m&#234;me, il suffit de changer <code>tas[noeud] &gt; tas[pere]</code>, <code>tas[noeud] &lt; tas[gauche] || tas[noeud] &lt; tas[droit]</code> ainsi que la fonction <code>max</code>. Le code est plut&#244;t simple, mais j'utilise une petite astuce pour afficher le tas (la fonction <code>afficher</code> est juste l&#224; pour d&#233;bugger en g&#233;n&#233;ral, et voir si le tas est bien celui attendu). Pour afficher mon tas, je sais qu'il faut effectuer un retour &#224; la ligne lorsque le n&#339;ud est le 1er, le 3&#232;me, le 7&#232;me, 15&#232;me, etc. et tous ces nombres sont des puissances de 2 si l'on rajoute 1. De ce fait, on peut utiliser des <a href="https://en.wikipedia.org/wiki/Bitwise_operation">op&#233;rations bit &#224; bit</a> afin de v&#233;rifier si <code>noeud + 1</code> est une puissance de 2, et si c'est le cas, on a termin&#233; l'&#233;tage actuel du tas. C'est loin d'&#234;tre indispensable &#224; la compr&#233;hension du code, mais c'est toujours int&#233;ressant &#224; savoir.</p>
 <p>En C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) a une impl&#233;mentation d'une <a href="/algo/structure/file.html#file-&#224;-priorit&#233;">file &#224; priorit&#233;</a> utilisant un tas max : <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>. Il est possible d'utiliser cette structure afin d'avoir un tas min, en red&#233;finissant l'op&#233;rateur <code>&lt;</code> nous permettant de changer l'ordre de priorit&#233; dans le tas :</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;queue&gt;</span>
 

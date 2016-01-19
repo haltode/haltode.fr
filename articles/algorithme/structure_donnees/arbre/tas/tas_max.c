@@ -80,27 +80,6 @@ void afficher(void)
       if(estPuissanceDeux(iEle + 1))
          printf("\n");
    }
-   
+
    printf("\n");
-}
-
-int main(void)
-{
-   inserer(12);
-   inserer(9);
-   inserer(1);
-   inserer(42);
-   inserer(10);
-   inserer(27);
-   inserer(3);
-   inserer(5);
-   inserer(4);
-   inserer(6);
-   inserer(3);
-   inserer(8);
-   afficher();
-   printf("%d\n", extraire());
-   afficher();
-
-   return 0;
 }
