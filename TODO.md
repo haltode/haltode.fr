@@ -14,7 +14,6 @@
 
 ## Tri
 
-- Tri rapide : refaire code (cf hackerrank) + explications détaillées dessus
 - Tri par tas : smmoothsort
 - Tri par dénombrement : améliorations/variantes ? Utilisation du tri (comme un "sous-tri" dans le tri par base)
 

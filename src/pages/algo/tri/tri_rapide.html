@@ -190,7 +190,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="tri-rapide">Tri rapide</h1></a>
 <p>Publi&#233; le : 10/05/2014<br />
-<em>Modifi&#233; le : 13/12/2015</em></p>
+<em>Modifi&#233; le : 22/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&#8217;algorithme</a></li>
@@ -300,6 +300,7 @@ function toggle_visibility(id) {
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
+<p>Pour simplifier le r&#233;arrangement du tableau, on place notre pivot au d&#233;but afin de s'occuper du reste du tableau comme un tout. Ensuite, on ram&#232;ne tous les &#233;l&#233;ments inf&#233;rieurs au pivot en d&#233;but du tableau gr&#226;ce &#224; <code>dernierEmplacement</code>, afin de s'assurer que ceux plus grands sont en fin de tableau, et que la derni&#232;re place tenue par la variable sera celle du pivot.</p>
 <p>L'entr&#233;e :</p>
 <pre class="nohighlight"><code>5
 5 9 7 3 8</code></pre>

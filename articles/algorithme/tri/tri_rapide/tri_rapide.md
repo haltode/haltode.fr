@@ -3,7 +3,7 @@ Tri rapide
 algo/tri
 
 Publié le : 10/05/2014  
-*Modifié le : 13/12/2015*
+*Modifié le : 22/01/2016*
 
 ## Introduction
 
@@ -67,6 +67,8 @@ L’implémentation en C du tri rapide :
 
 [INSERT]
 tri_rapide.c
+
+Pour simplifier le réarrangement du tableau, on place notre pivot au début afin de s'occuper du reste du tableau comme un tout. Ensuite, on ramène tous les éléments inférieurs au pivot en début du tableau grâce à `dernierEmplacement`, afin de s'assurer que ceux plus grands sont en fin de tableau, et que la dernière place tenue par la variable sera celle du pivot.
 
 L'entrée :
 
