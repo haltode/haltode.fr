@@ -6,6 +6,7 @@
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 - Rediriger itechome.wordpress.com vers napnac.ga
 - Supprimer temp.html (temp.md, temp.html, modif css) : commit 92
+- Différencier les articles en cours de rédactions
 
 ## Structure de données
 
@@ -14,12 +15,8 @@
 
 ## Tri
 
-- Tri par tas : smmoothsort
+- Tri par tas : smoothsort
 - Tri par dénombrement : améliorations/variantes ? Utilisation du tri (comme un "sous-tri" dans le tri par base)
-
-## IA
-
-- Amélioration algo min max : <http://www.ffothello.org/informatique/algorithmes/>
 
 # Liste de futurs articles
 
@@ -28,7 +25,7 @@
 - Structure de données : Table de hachage
 - Tri en O(N) : tri par base, tri par paquets
 - Recherche : union-find
-- IA : algo min-max
+- IA : algo min-max (http://www.ffothello.org/informatique/algorithmes/)
 
 - Introduction à la complexité algorithmique (temps + mémoire)
 - Recherche : chaîne de caractères
