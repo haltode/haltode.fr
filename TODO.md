@@ -7,45 +7,24 @@
 - Rediriger itechome.wordpress.com vers napnac.ga
 - Supprimer temp.html (temp.md, temp.html, modif css) : commit 92
 
-# Algorithme
-
 ## Structure de données
-### Graphe
 
-- Lien opérations utiles ? (faire un article regroupant le reste ?)
-
-### Arbre
-
-- Arbre binaire : lien des variantes dans "Définition"
-
-### Tas
-
-- Code tri par tas
+- Graphe : liens opérations utiles (faire un article qui regroupe tout ?)
+- Arbre binaire : liens arbre bin de recherche + arbre rouge/noir (dans "Définition")
 
 ## Tri
 
-- Comparison-based Lower Bounds for Sorting
+- Tri rapide : refaire code (cf hackerrank) + explications détaillées dessus
+- Tri par tas : smmoothsort
+- Tri par dénombrement : améliorations/variantes ? Utilisation du tri (comme un "sous-tri" dans le tri par base)
 
-### Tri rapide
+## IA
 
-- Code hackerrank (refaire le code + explications plus détaillées)
-
-### Tri par tas
-
-- Smoothsort
-
-### Tri par dénombrement
-
-- Améliorations/variantes ?
-- Utilisation possible du tri (ex : utiliser comme un "sous-tri" dans le tri par base)
-
-# IA
-
-- Refaire article algo min max en se basant sur l'article du morpion
 - Amélioration algo min max : <http://www.ffothello.org/informatique/algorithmes/>
 
-# Liste de futurs possibles articles
+# Liste de futurs articles
 
+- Graphe : plus court chemin
 - Arbre : Arbre de recherche + Trie
 - Structure de données : Table de hachage
 - Tri en O(N) : tri par base, tri par paquets

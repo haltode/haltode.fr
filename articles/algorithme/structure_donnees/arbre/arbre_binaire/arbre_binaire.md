@@ -35,7 +35,7 @@ Cette structure de données a l'avantage d'être très modulable et on peut lui 
 
 - L'arbre binaire **maximal** a la particularité d'avoir chaque nœud parent comme étant le maximum de ses deux fils. C'est la structure utilisée dans l'exemple de l'introduction, on part d'un tableau initial et on crée l'arbre en prenant deux à deux les maximums en remontant jusqu'à avoir une racine.
 - L'arbre binaire **minimal** repose sur le même principe que le précédent, sauf que chaque parent représente le minimum de ses fils.
-- Un **tas** (et plus particulièrement un tas binaire) permet un stockage plus efficace qu'avec un arbre binaire max/min en évitant de créer des doublons des différents nœuds dans l'arbre, et répond rapidement à des questions de maximum/minimum dynamiques.
+- Un [**tas**](/algo/structure/arbre/tas.html) (et plus particulièrement un tas binaire) permet un stockage plus efficace qu'avec un arbre binaire max/min en évitant de créer des doublons des différents nœuds dans l'arbre, et répond rapidement à des questions de maximum/minimum dynamiques.
 - Un **arbre binaire de recherche** attribue à chaque nœud une *clé* qui va organiser l'arbre. Tous les nœuds à gauche d'un nœud père auront tous des clés inférieures à ce dernier, et tous les nœuds à droite auront une clé supérieure.
 - Un **arbre rouge et noir** est la même idée qu'un arbre binaire de recherche, excepté que chaque nœud a une *couleur* qui permet d'organiser l'arbre mais aussi de l'équilibrer pour ne pas avoir un côté bien plus grand que l'autre à cause de l'ordre des clés.
 

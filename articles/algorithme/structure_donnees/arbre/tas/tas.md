@@ -3,11 +3,11 @@ Tas
 algo/structure/arbre/
 
 Publié le : 11/01/2016  
-*Modifié le : 21/01/2016*
+*Modifié le : 22/01/2016*
 
 ## Introduction
 
-Vous avez une liste d'élément qui est vide au départ, et deux types d'opérations sont possibles dessus :
+Vous avez une liste d'éléments qui est vide au départ, et deux types d'opérations sont possibles dessus :
 
 - Insérer une valeur dans la liste.
 - Extraire le maximum (ou le minimum, le problème reste le même) de la liste.
@@ -32,7 +32,7 @@ Un tas ne peut pas avoir de "trous" dedans, seul le dernier étage de l'arbre pe
 
 On souhaite insérer la valeur 11 (en vert) dans notre tas maximal, on le place donc sur la première place libre, puis on l'échange avec son père tant que ce dernier est plus petit que 11 (car c'est un tas maximal). A la fin, 11 a été inséré, et notre tas respecte bien les propriétés d'un tas max.
 
-La deuxième opération principale d'un tas est l'extraction de son minimum/maximum (en fonction des propriétés du tas). On a vu que cette valeur se trouve forcément à la racine, mais comment reboucher le trou qu'on vient de faire ? Une solution consiste à prendre le dernier élément du tas (sur le dernier étage), et de le déplacer à la racine. Vu que c'est une feuille, on peut très bien le bouger de place sans inconvénient, cependant on ne respecte plus les propriétés du tas. On va donc **entasser** cet élément pour qu'il se retrouve à sa bonne place :
+La deuxième opération principale d'un tas est l'extraction de son minimum/maximum (en fonction du tas). On a vu que cette valeur se trouve forcément à la racine, mais comment reboucher le trou qu'on vient de faire ? Une solution consiste à prendre le dernier élément du tas, et de le déplacer à la racine. Vu que c'est une feuille, on peut très bien le bouger de place sans inconvénient, cependant on ne respecte plus les propriétés du tas. On va donc **entasser** cet élément pour qu'il se retrouve à sa bonne place :
 
 ![Exemple d'extraction du maximum dans un tas](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_extraction_tas_max.png)
 
@@ -84,7 +84,7 @@ extraction :
 
 ## Complexité
 
-Notre tas binaire est basé sur un arbre binaire, il a donc une hauteur maximale de $O(\log _2 N)$ avec $N$ le nombre d'éléments du tas. Pour l'insertion d'un élément, on fait dans le pire des cas remonter le nœud jusqu'à la racine et donc on effectue $\log _2 N$ opérations. Pareil pour l'extraction du min/max, on fait dans le pire des cas $\log _2 N$ échanges, résultant dans les deux cas en une complexité en $O(\log _2 N)$.
+Notre tas binaire est basé sur un arbre binaire, il a donc une hauteur maximale de $\log _2 N$ avec $N$ le nombre d'éléments du tas. Pour l'insertion d'un élément, on fait dans le pire des cas remonter le nœud jusqu'à la racine et donc on effectue $\log _2 N$ opérations. Pareil pour l'extraction du min/max, on fait dans le pire des cas $\log _2 N$ échanges, résultant dans les deux cas en une complexité en $O(\log _2 N)$.
 
 Pour ce qui est de la complexité en mémoire, il n'y a aucuns doublons, on occupe donc uniquement l'espace nécessaire pour stocker $N$ éléments.
 
@@ -121,8 +121,8 @@ priority_queue <Element> tasMin;
 
 ## Variantes
 
-Le tas possèdent beaucoup de variantes, certaines sont plus utiles que d'autres, et en général on choisit la plus appropriée en fonction des données que l'on reçoit, mais aussi par rapport aux opérations que l'on souhaite effectuer dessus. On peut déjà citer toutes les différentes versions du tas : **binaire**, **ternaire**, et même de façon plus globale **n-aire**. Il est aussi possible de découper notre tas en plusieurs sous arbres de tailles spécifiques, suivant un ordre précis, et permettant des améliorations théoriques de la complexité des opérations. Je dis bien théorique, car en pratique les implémentations ne sont pas spécialement plus rapides que des tas binaires classiques, ce sont donc des structures peu utilisées en pratique, mais qu'on peut retrouver dans certaines améliorations d'algorithmes. Les plus connus sont le [**tas de Fibonacci**](https://en.wikipedia.org/wiki/Fibonacci_heap), le [**tas binomial**](https://en.wikipedia.org/wiki/Binomial_heap), ou encore [le tas jumelé](https://en.wikipedia.org/wiki/Pairing_heap) mais on peut retrouver cette idée dans l'amélioration du tri par tas : le [smoothsort](/algo/tri/tri_tas.html#smoothsort). Enfin, il y a différentes variantes qui s'appuient sur l'idée d'un tas, mais la modifie afin de proposer des avantages précis pour des algorithmes ou bien des opérations, comme le [**tas faible**](https://en.wikipedia.org/wiki/Weak_heap) qui se concentre sur le tri principalement.
+Le tas possèdent beaucoup de variantes, certaines sont plus utiles que d'autres, et en général on choisit la plus appropriée en fonction des données que l'on reçoit, mais aussi par rapport aux opérations que l'on souhaite effectuer dessus. On peut déjà citer toutes les différentes versions du tas : **binaire**, **ternaire**, et même de façon plus globale **n-aire**. Il est aussi possible de découper notre tas en plusieurs sous arbres de tailles spécifiques, suivant un ordre précis, et permettant des améliorations théoriques de la complexité des opérations. Je dis bien théorique, car en pratique les implémentations ne sont pas spécialement plus rapides que des tas binaires classiques, ce sont donc des structures peu utilisées en pratique, mais qu'on peut retrouver dans certaines améliorations d'algorithmes. Les plus connus sont le [**tas de Fibonacci**](https://en.wikipedia.org/wiki/Fibonacci_heap), le [**tas binomial**](https://en.wikipedia.org/wiki/Binomial_heap), ou encore [le tas jumelé](https://en.wikipedia.org/wiki/Pairing_heap) mais on peut voir ce principe dans l'amélioration du tri par tas : le [smoothsort](/algo/tri/tri_tas.html#smoothsort). Enfin, il y a différentes variantes qui s'appuient sur l'idée d'un tas, mais la modifie afin de proposer des avantages précis pour des algorithmes ou bien des opérations, comme le [**tas faible**](https://en.wikipedia.org/wiki/Weak_heap) qui se concentre sur le tri principalement.
 
 ## Conclusion
 
-Le tas est donc une structure de données adaptée aux opérations de recherche de minimum/maximum, et de tri. On le retrouve à la base du [tri par tas](/algo/tri/tri_tas.html), mais aussi dans la création d'une [file à priorité](/algo/structure/file.html#file-à-priorité) qui elle sert dans l'[algorithme de plus court chemin de Dijkstra](/algo/structure/graphe/plus_court_chemin.html#dijkstra) par exemple. Des variantes de tas permettent aussi des améliorations dans plusieurs catégories d'algorithmes, et cette structure de données peut très vite créer d'autres structures complexes et puissantes avec des complexités en mémoire faibles et en temps élevées.
+Le tas est donc une structure de données adaptée aux opérations de recherche de minimum/maximum, et de tri. On le retrouve à la base du [tri par tas](/algo/tri/tri_tas.html), mais aussi dans la création d'une [file à priorité](/algo/structure/file.html#file-à-priorité) qui elle sert dans l'[algorithme de plus court chemin de Dijkstra](/algo/structure/graphe/plus_court_chemin.html#dijkstra) par exemple. Des variantes de tas permettent aussi des améliorations dans plusieurs catégories d'algorithmes, et cette structure de données peut très vite créer d'autres structures complexes et puissantes avec des complexités en temps et en mémoire faibles.
