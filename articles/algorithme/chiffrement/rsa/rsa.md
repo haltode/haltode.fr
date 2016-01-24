@@ -3,7 +3,7 @@ RSA
 algo/chiffrement
 
 Publié le : 31/05/2014  
-*Modifié le : 23/01/2016*
+*Modifié le : 24/01/2016*
 
 ## Introduction
 
@@ -370,12 +370,53 @@ Ceci nous montre bien qu'à défaut de vouloir utiliser l'algorithme plus rapide
 
 ### Attaque de Wiener
 
+Dans le même style qu'attaquer des messages avec des $e$ petits, en 1990 Michael Wiener a trouvé une attaque similaire mais sur des petits $d$. Il démontra que si $d < \frac{1}{3}n^{\frac{1}{4}}$, on peut retrouver $d$, grâce à l'algorithme des [fractions continues](https://en.wikipedia.org/wiki/Continued_fraction).
+
+On part de l'équivalence suivante :
+
+$ed \equiv 1 \mod m$
+
+Par définition $m = (p - 1)(q - 1)$, et $ppcm(a, b) = \frac{| ab |}{pgcd(a, b)}$ (plus d'infos sur le [ppcm](https://en.wikipedia.org/wiki/Least_common_multiple)), or $p$ et $q$ sont premiers entre eux, donc $pgcd(p, q) = 1$, et on peut alors écrire :
+
+$ed \equiv 1 \mod ppcm(p - 1, q - 1)$
+
+Cela signifie qu'il existe un nombre entier $K$, tel que :
+
+$ed = K \times ppcm(p - 1, q - 1) + 1$
+
+Soit $G = pgcd(p - 1, q - 1)$, $k = \frac{K}{pgcd(K, G)}$ et $g = \frac{G}{pgcd(K, G)}$, on a la relation suivante :
+
+$ed = \frac{k}{g}(p - 1)(q - 1) + 1$
+
+Que l'on peut arranger en divisant le tout par $dpq$ :
+
+$\frac{e}{pq} = \frac{k}{dg}(1 - \delta)$ avec $\delta = \frac{p + q - 1 - \frac{g}{k}}{pq}$
+
+A partir de là, si on arrive à déterminer $\frac{k}{dg}$ grâce à l'algorithme des fractions continues, on peut trouver $k$ mais surtout $dg$ qui nous permet de casser le système RSA.
+
+Un article spécialement sur l'ataque Wiener (en français) montrant comment utiliser l'algorithme des fractions continues : [Attaque de clés RSA par la méthode de Wiener](http://www.jannaud.fr/static/download/Travail/rapportwiener.pdf).
+
+### Attaque par chronométrage
+
 ### Attaque sur les implémentations
 
 En pratique, il est difficile de toujours faire une implémentation parfaite d'un système de chiffrement, et des études/audits révèlent régulièrement des failles dans certains systèmes de sécurité. Il est donc possible de se focaliser sur des attaques d'implémentations au lieu d'essayer de casser un système de chiffrement théorique.
 
 TODO : exemple de faille dans des implémentations
 
+#### Autres attaques
+
+### Module de chiffrement commun
+
+Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). A première vue, il n'y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu'une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.
+
+![Démonstration de cette propriété](//static.napnac.ga/img/algo/chiffrement/rsa/demonstration_facto_n.png)
+
+La démonstration vient de *Twenty Years of Attacks on the RSA Cryptosystem* de Dan Boneh, que vous pouvez retrouver en pdf sur Internet.
+
+Et voici un exemple concret de l'utilisation de cette propriété pour factoriser $n$ : [lien](http://www.di-mgt.com.au/rsa_factorize_n.html).
+
 ## Conclusion
 
-TODO : ouverture cryptographie quantique pour transmettre la clé de manière 100% sécurisé face à des ordinateurs non quantiques + ordinateur quantique pour casser des clés rapidement (d-wave)
+TODO : déplacer la partie crypto hybride et parler de AES en ouverture ?
+TODO : ouverture cryptographie quantique pour transmettre la clé de manière 100% sécurisé face à des ordinateurs non quantiques + ordinateur quantique pour casser des clés rapidement (d-wave, talk 32c3)

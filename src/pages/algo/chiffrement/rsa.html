@@ -190,7 +190,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="rsa">RSA</h1></a>
 <p>Publi&#233; le : 31/05/2014<br />
-<em>Modifi&#233; le : 23/01/2016</em></p>
+<em>Modifi&#233; le : 24/01/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -695,11 +695,34 @@ Code</code></pre>
 <p>Cette attaque sera ensuite reprise par plusieurs autres math&#233;maticiens pour cr&#233;er diff&#233;rentes variantes et am&#233;liorations : <a href="https://en.wikipedia.org/wiki/Coppersmith&#39;s_Attack#Franklin-Reiter_Related_Message_Attack">Franklin-Reiter</a>, <a href="https://en.wikipedia.org/wiki/Coppersmith&#39;s_Attack#Coppersmith.E2.80.99s_Short_Pad_Attack">Coppersmith</a>.</p>
 <p>Ceci nous montre bien qu'&#224; d&#233;faut de vouloir utiliser l'algorithme plus rapidement, on perd &#233;norm&#233;ment en s&#233;curit&#233;, il faut donc faire attention lors d'am&#233;lioration de ce type &#224; ne pas affaiblir le syst&#232;me de chiffrement. Un petit exposant <span class="math inline">\(e\)</span> facilite donc cette attaque, car plus il est petit plus le nombre de message &#224; r&#233;cup&#233;rer est faible, et plus le temps n&#233;cessaire &#224; trouver le message d&#233;chiffr&#233; est court.</p>
 <h3 id="attaque-de-wiener">Attaque de Wiener</h3>
+<p>Dans le m&#234;me style qu'attaquer des messages avec des <span class="math inline">\(e\)</span> petits, en 1990 Michael Wiener a trouv&#233; une attaque similaire mais sur des petits <span class="math inline">\(d\)</span>. Il d&#233;montra que si <span class="math inline">\(d &lt; \frac{1}{3}n^{\frac{1}{4}}\)</span>, on peut retrouver <span class="math inline">\(d\)</span>, gr&#226;ce &#224; l'algorithme des <a href="https://en.wikipedia.org/wiki/Continued_fraction">fractions continues</a>.</p>
+<p>On part de l'&#233;quivalence suivante :</p>
+<p><span class="math inline">\(ed \equiv 1 \mod m\)</span></p>
+<p>Par d&#233;finition <span class="math inline">\(m = (p - 1)(q - 1)\)</span>, et <span class="math inline">\(ppcm(a, b) = \frac{| ab |}{pgcd(a, b)}\)</span> (plus d'infos sur le <a href="https://en.wikipedia.org/wiki/Least_common_multiple">ppcm</a>), or <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> sont premiers entre eux, donc <span class="math inline">\(pgcd(p, q) = 1\)</span>, et on peut alors &#233;crire :</p>
+<p><span class="math inline">\(ed \equiv 1 \mod ppcm(p - 1, q - 1)\)</span></p>
+<p>Cela signifie qu'il existe un nombre entier <span class="math inline">\(K\)</span>, tel que :</p>
+<p><span class="math inline">\(ed = K \times ppcm(p - 1, q - 1) + 1\)</span></p>
+<p>Soit <span class="math inline">\(G = pgcd(p - 1, q - 1)\)</span>, <span class="math inline">\(k = \frac{K}{pgcd(K, G)}\)</span> et <span class="math inline">\(g = \frac{G}{pgcd(K, G)}\)</span>, on a la relation suivante :</p>
+<p><span class="math inline">\(ed = \frac{k}{g}(p - 1)(q - 1) + 1\)</span></p>
+<p>Que l'on peut arranger en divisant le tout par <span class="math inline">\(dpq\)</span> :</p>
+<p><span class="math inline">\(\frac{e}{pq} = \frac{k}{dg}(1 - \delta)\)</span> avec <span class="math inline">\(\delta = \frac{p + q - 1 - \frac{g}{k}}{pq}\)</span></p>
+<p>A partir de l&#224;, si on arrive &#224; d&#233;terminer <span class="math inline">\(\frac{k}{dg}\)</span> gr&#226;ce &#224; l'algorithme des fractions continues, on peut trouver <span class="math inline">\(k\)</span> mais surtout <span class="math inline">\(dg\)</span> qui nous permet de casser le syst&#232;me RSA.</p>
+<p>Un article sp&#233;cialement sur l'ataque Wiener (en fran&#231;ais) montrant comment utiliser l'algorithme des fractions continues : <a href="http://www.jannaud.fr/static/download/Travail/rapportwiener.pdf">Attaque de cl&#233;s RSA par la m&#233;thode de Wiener</a>.</p>
+<h3 id="attaque-par-chronom&#233;trage">Attaque par chronom&#233;trage</h3>
 <h3 id="attaque-sur-les-impl&#233;mentations">Attaque sur les impl&#233;mentations</h3>
 <p>En pratique, il est difficile de toujours faire une impl&#233;mentation parfaite d'un syst&#232;me de chiffrement, et des &#233;tudes/audits r&#233;v&#232;lent r&#233;guli&#232;rement des failles dans certains syst&#232;mes de s&#233;curit&#233;. Il est donc possible de se focaliser sur des attaques d'impl&#233;mentations au lieu d'essayer de casser un syst&#232;me de chiffrement th&#233;orique.</p>
 <p>TODO : exemple de faille dans des impl&#233;mentations</p>
+<h4 id="autres-attaques">Autres attaques</h4>
+<h3 id="module-de-chiffrement-commun">Module de chiffrement commun</h3>
+<p>Cr&#233;er un module de chiffrement &#224; chaque g&#233;n&#233;ration de paires de cl&#233;s peut &#234;tre une op&#233;ration lourde, et certaines personnes utilisaient un m&#234;me <span class="math inline">\(n\)</span> pour toutes les paires (avec bien entendu des <span class="math inline">\(e\)</span> et <span class="math inline">\(d\)</span> diff&#233;rents). A premi&#232;re vue, il n'y a pas de raison que &#231;a ne fonctionne pas, cependant il a &#233;t&#233; d&#233;montr&#233; qu'une personne poss&#233;dant une paire de cl&#233; de ce genre, peut factoriser assez facilement <span class="math inline">\(n\)</span> avec son propre <span class="math inline">\(e\)</span> et <span class="math inline">\(d\)</span> et ainsi d&#233;duire les cl&#233;s priv&#233;es des autres personnes du syst&#232;me.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/chiffrement/rsa/demonstration_facto_n.png" alt="D&#233;monstration de cette propri&#233;t&#233;" />
+<p class="caption">D&#233;monstration de cette propri&#233;t&#233;</p>
+</div>
+<p>La d&#233;monstration vient de <em>Twenty Years of Attacks on the RSA Cryptosystem</em> de Dan Boneh, que vous pouvez retrouver en pdf sur Internet.</p>
+<p>Et voici un exemple concret de l'utilisation de cette propri&#233;t&#233; pour factoriser <span class="math inline">\(n\)</span> : <a href="http://www.di-mgt.com.au/rsa_factorize_n.html">lien</a>.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>TODO : ouverture cryptographie quantique pour transmettre la cl&#233; de mani&#232;re 100% s&#233;curis&#233; face &#224; des ordinateurs non quantiques + ordinateur quantique pour casser des cl&#233;s rapidement (d-wave)</p>
+<p>TODO : d&#233;placer la partie crypto hybride et parler de AES en ouverture ? TODO : ouverture cryptographie quantique pour transmettre la cl&#233; de mani&#232;re 100% s&#233;curis&#233; face &#224; des ordinateurs non quantiques + ordinateur quantique pour casser des cl&#233;s rapidement (d-wave, talk 32c3)</p>
  
       <!-- ------------ -->
 
