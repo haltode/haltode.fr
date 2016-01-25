@@ -3,7 +3,7 @@ RSA
 algo/chiffrement
 
 Publié le : 31/05/2014  
-*Modifié le : 24/01/2016*
+*Modifié le : 25/01/2016*
 
 ## Introduction
 
@@ -394,19 +394,41 @@ $\frac{e}{pq} = \frac{k}{dg}(1 - \delta)$ avec $\delta = \frac{p + q - 1 - \frac
 
 A partir de là, si on arrive à déterminer $\frac{k}{dg}$ grâce à l'algorithme des fractions continues, on peut trouver $k$ mais surtout $dg$ qui nous permet de casser le système RSA.
 
-Un article spécialement sur l'ataque Wiener (en français) montrant comment utiliser l'algorithme des fractions continues : [Attaque de clés RSA par la méthode de Wiener](http://www.jannaud.fr/static/download/Travail/rapportwiener.pdf).
-
-### Attaque par chronométrage
+Un article spécialement sur l'attaque Wiener (en français) montrant comment utiliser l'algorithme des fractions continues : [Attaque de clés RSA par la méthode de Wiener](http://www.jannaud.fr/static/download/Travail/rapportwiener.pdf).
 
 ### Attaque sur les implémentations
 
 En pratique, il est difficile de toujours faire une implémentation parfaite d'un système de chiffrement, et des études/audits révèlent régulièrement des failles dans certains systèmes de sécurité. Il est donc possible de se focaliser sur des attaques d'implémentations au lieu d'essayer de casser un système de chiffrement théorique.
 
+#### Attaque par chronométrage
+
+L'idée consiste à étudier le temps nécessaire à l'ordinateur qui stocke la clé privée de déchiffrer (ou de signer) plusieurs messages. Cette attaque se base sur le fait que la plupart des implémentations utilisent un même algorithme (ou alors un algorithme connu) afin d'effectuer le déchiffrement, et on peut donc en déduire le nombres d'opérations effectuées et ainsi petit à petit récupérer des informations sur $d$. Par exemple, il est courant d'utiliser l'exponentiation modulaire pour implémenter notre fonction de déchiffrement, comme nous avons vu précédemment, cependant une amélioration de cette dernière se base sur la représentation binaire de la clé (et donc de $d$), ce qui nous permet après plusieurs opérations de déchiffrement de faire des analyses statistiques sur les informations recueillies pour déterminer $d$. Or, en général, une amélioration en temps est souvent cruciale en cryptographie, ceci est donc largement utilisé.
+
+Tout d'abord, regardons l'amélioration de l'exponentiation modulaire :
+
+Soit $d$ notre exposant dans l'expression $f'(x) = x^d \mod n$ avec $x$ notre message chiffré. On peut écrire $d$, sous forme de représentation binaire :
+
+$d = \displaystyle\sum_{i=0}^{b-1} a_i2^i$ avec $a$ représentant un bit (soit 0 soit 1), et $b$ le nombre de bit pour représenter $d$.
+
+On a donc $x^d$ qu'on représente ainsi :
+
+$x^d = \displaystyle\prod_{i=0}^{b-1} (x^{2^i})^{a_i}$
+
+Cette représentation binaire permet de faire des opérations extrêmement rapides dans la plupart des langages de programmation grâce aux opérateurs bit à bit, en C par exemple on a les opérateurs `>>` et `<<` pour effectuer des décalages (ou *shift* en anglais) sur des nombres binaires (ceci permet notamment un gain énorme de temps sur des opérations comme les puissances).
+
+L'attaque par chronométrage consisterai dans notre cas, à observer le temps que met l'ordinateur pour déchiffrer un certain message afin de trouver petit à petit chaque bit de $d$. Tout d'abord, $d$ par définition est forcément impair, on conclut donc que le bit 0 de $d$ sera $d_0 = 1$ (plus d'infos : [bit de poids faible](https://en.wikipedia.org/wiki/Least_significant_bit)). Pour trouver les autres bits, on va émettre des hypothèses sur la valeur de $a_i$, qui peut être soit 1, soit 0 ($a_i$ n'est autre que le bit $i$ de $d$). S'il est égal à 0, le résultat de $(b^{2^i})^{a_i} sera forcément 1, et l'opération sera alors bien plus rapide et différente en terme de temps qu'avec $a_i = 0$, ce qui nous donne des informations sur des bits de $d$. Il est possible d'utiliser ce principe afin de découvrir $d$ en entier, simplement en demandant à l'ordinateur de déchiffrer des messages bien spécifiques.
+
+Cette attaque ne s'applique pas uniquement à RSA, et peut être un aspect important de la sécurité d'une implémentation. Pour s'en protéger, on peut par exemple effectuer des délais dans le programme afin d'avoir un temps fixe pour chaque opérations nécessaires, ou encore d'utiliser une technique d'[aveuglement](https://en.wikipedia.org/wiki/Blinding_%28cryptography%29). Pour cette technique, avant de déchiffrer le message $x$, l'ordinateur va prendre au hasard un nombre entier $r$ et calculer $x' = x \cdot r^e \mod n$, puis faire $y' = x'^d \mod n$, et enfin $y = \frac{y'}{r} \mod n$. Ces opérations sont en réalité un simple chiffrement/déchiffrement, mais en utilisant une variable intermédiaire $r$ qui rend alors impossible l'attaque par chronométrage car $r$ est choisi aléatoirement par l'ordinateur.
+
+Sachez qu'il y a des attaques dans la même idée, mais se basant cette fois sur la consommation électrique de l'ordinateur qui peut varier en fonction des opérations effectuées lors du déchiffrement.
+
+#### Exemples de failles dans des implémentations
+
 TODO : exemple de faille dans des implémentations
 
-#### Autres attaques
+### Autres attaques
 
-### Module de chiffrement commun
+#### Module de chiffrement commun
 
 Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). A première vue, il n'y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu'une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.
 
@@ -414,7 +436,7 @@ Créer un module de chiffrement à chaque génération de paires de clés peut �
 
 La démonstration vient de *Twenty Years of Attacks on the RSA Cryptosystem* de Dan Boneh, que vous pouvez retrouver en pdf sur Internet.
 
-Et voici un exemple concret de l'utilisation de cette propriété pour factoriser $n$ : [lien](http://www.di-mgt.com.au/rsa_factorize_n.html).
+Et voici un exemple concret de l'utilisation de cette propriété pour factoriser $n$ : [How to factorize N given d](http://www.di-mgt.com.au/rsa_factorize_n.html).
 
 ## Conclusion
 
