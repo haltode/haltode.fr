@@ -3,7 +3,7 @@ RSA
 algo/chiffrement
 
 Publié le : 31/05/2014  
-*Modifié le : 25/01/2016*
+*Modifié le : 26/01/2016*
 
 ## Introduction
 
@@ -396,6 +396,16 @@ A partir de là, si on arrive à déterminer $\frac{k}{dg}$ grâce à l'algorith
 
 Un article spécialement sur l'attaque Wiener (en français) montrant comment utiliser l'algorithme des fractions continues : [Attaque de clés RSA par la méthode de Wiener](http://www.jannaud.fr/static/download/Travail/rapportwiener.pdf).
 
+### Module de chiffrement commun
+
+Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). A première vue, il n'y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu'une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.
+
+![Démonstration de cette propriété](//static.napnac.ga/img/algo/chiffrement/rsa/demonstration_facto_n.png)
+
+La démonstration vient de *Twenty Years of Attacks on the RSA Cryptosystem* de Dan Boneh, que vous pouvez retrouver en pdf sur Internet.
+
+Et voici un exemple concret de l'utilisation de cette propriété pour factoriser $n$ : [How to factorize N given d](http://www.di-mgt.com.au/rsa_factorize_n.html).
+
 ### Attaque sur les implémentations
 
 En pratique, il est difficile de toujours faire une implémentation parfaite d'un système de chiffrement, et des études/audits révèlent régulièrement des failles dans certains systèmes de sécurité. Il est donc possible de se focaliser sur des attaques d'implémentations au lieu d'essayer de casser un système de chiffrement théorique.
@@ -424,19 +434,24 @@ Sachez qu'il y a des attaques dans la même idée, mais se basant cette fois sur
 
 #### Exemples de failles dans des implémentations
 
-TODO : exemple de faille dans des implémentations
+La dernière attaque traite un type d'exploitation de manière assez large car cela ne s'applique pas uniquement pour RSA, mais de manière bien plus général, on trouve dans tous types de codes sources, et dans tous les domaines, des failles permettant de réaliser des attaques dessus. La cryptographie est loin d'être une exception et il y a énormément d'exemple d'attaques faites sur des systèmes après avoir trouvé des failles de sécurité importantes :
+
+- [Heartbleed](https://en.wikipedia.org/wiki/Heartbleed) : en 2014, une découverte majeure dans la bibliothèque [OpenSSL](https://www.openssl.org/) permettait de récupérer des informations secrètes à cause d'une erreur d'implémentation. La raison de cette attaque est que la librairie utilise une option appelée *heartbeat* qui permet de s'assurer que le client et le serveur sont toujours connectés, et elle fonctionne très simplement : le client envoie une requête au serveur avec une chaîne aléatoire, le serveur récupère la requête et renvoie la chaîne afin de montrer qu'il est toujours présent. Le problème était que la partie de code s'occupant de cette option ne vérifiait pas la taille indiquée dans la requête au sujet de la chaîne, c'est-à-dire que je pouvais envoyer cette chaîne au serveur "jIO91mq0x/" et dire qu'elle fait 42 caractères, le serveur va alors me renvoyer les 42 derniers caractères qu'il a en mémoire (dont la chaîne que je lui ai envoyé), ce qui peut rendre public des données sensibles comme des clés privées de chiffrement.
+- En début d'année 2016, une faille critique dans [OpenSSH](http://www.openssh.com/) donnait accès aux clés privées SSH d'un utilisateur et donc détruisait toutes sécurités du système de chiffrement. Une option datant de 2010 (qui n'était même pas documentée) était activée par défaut sur un client OpenSSH et permettait de se reconnecter automatiquement à un serveur en cas de déconnexion soudaine. Cette option expérimentale présentait deux failles dont une permettait de récupérer les clés privées SSH d'un utilisateur.
+- En 2015, une faille énorme dans le code des protocoles SSL/TLS d'Apple est découverte avec notamment ce fameux code qui a beaucoup circulé à ce propos :
+	```c
+	if ((err = SSLHashSHA1.update(&hashCtx, &signedParams)) != 0)
+		goto fail;
+		goto fail;
+	```
+	Où la ligne `goto fail;` est répétée deux fois ce qui signifie que quelque soit le résultat du test précédent, la fonction ira de toute façon au label `fail` sautant alors tous les tests de sécurité qui sont situés après. Ceci permettait à une personne malveillante d'utiliser un certificat qui semble être correct, mais qui en réalité n'a pas une bonne clé privée associée, afin d'avoir une connexion sécurisée https qui parait authentique pour l'utilisateur alors que ce n'est pas forcément le cas.
+- ...
+
+Même si peu après la découverte de ces failles, un patch a été rapidement proposé, certaines exploitations sont présentes et possibles depuis plusieurs années dans des systèmes et nécessitent bien plus de mises à jour de la part des utilisateurs. De nos jours, c'est une pratique régulière d'organiser des concours où le but est de découvrir le plus de failles et exploitations possibles dans une implémentation en échange d'argent pour la découverte. Cela permet de maintenir des systèmes importants en terme de sécurité, afin d'éviter toutes failles critiques dans le système.
 
 ### Autres attaques
 
-#### Module de chiffrement commun
-
-Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). A première vue, il n'y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu'une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.
-
-![Démonstration de cette propriété](//static.napnac.ga/img/algo/chiffrement/rsa/demonstration_facto_n.png)
-
-La démonstration vient de *Twenty Years of Attacks on the RSA Cryptosystem* de Dan Boneh, que vous pouvez retrouver en pdf sur Internet.
-
-Et voici un exemple concret de l'utilisation de cette propriété pour factoriser $n$ : [How to factorize N given d](http://www.di-mgt.com.au/rsa_factorize_n.html).
+TODO : parler des backdoor ? attaques physiques ?
 
 ## Conclusion
 
