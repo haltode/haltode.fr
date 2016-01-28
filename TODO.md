@@ -5,7 +5,6 @@
    - Originalité du site ? Qu'est-ce qui le démarque ?
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 - Rediriger itechome.wordpress.com vers napnac.ga
-- Supprimer temp.html (temp.md, temp.html, modif css) : commit 92
 - Différencier les articles en cours de rédactions
 
 ## Structure de données
