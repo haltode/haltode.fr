@@ -12,30 +12,30 @@
 % Intro : contre exemple de l'algorithme proposé
 
 \begin{tikzpicture}
-\node [draw, anchor=center] (first) {$8$};
-\node [draw, anchor=center, right=0cm of first] (second) {$3$};
-\node [draw, anchor=center, right=0cm of second] (third) {$14$};
-\node [draw, anchor=center, right=0cm of third, fill=green!20] (fourth) {$42$};
-\node [draw, anchor=center, right=0cm of fourth] (fifth) {$2$};
-\node [draw, anchor=center, right=0cm of fifth] (sixth) {$0$};
+   \node [draw, anchor=center] (first) {$8$};
+   \node [draw, anchor=center, right=0cm of first] (second) {$3$};
+   \node [draw, anchor=center, right=0cm of second] (third) {$14$};
+   \node [draw, anchor=center, right=0cm of third, fill=green!20] (fourth) {$42$};
+   \node [draw, anchor=center, right=0cm of fourth] (fifth) {$2$};
+   \node [draw, anchor=center, right=0cm of fifth] (sixth) {$0$};
 \end{tikzpicture}
 \hspace{2cm}
 \begin{tikzpicture}
-\node [draw] {$42$};
+   \node [draw] {$42$};
 \end{tikzpicture}
 
 \vspace{1cm}
 \begin{tikzpicture}
-\node [draw, anchor=center] (first) {$8$};
-\node [draw, anchor=center, right=0cm of first] (second) {$3$};
-\node [draw, anchor=center, right=0cm of second, fill=green!20] (third) {$14$};
-\node [draw, anchor=center, right=0cm of third, fill=red!20] (fourth) {$7$};
-\node [draw, anchor=center, right=0cm of fourth] (fifth) {$2$};
-\node [draw, anchor=center, right=0cm of fifth] (sixth) {$0$};
+   \node [draw, anchor=center] (first) {$8$};
+   \node [draw, anchor=center, right=0cm of first] (second) {$3$};
+   \node [draw, anchor=center, right=0cm of second, fill=green!20] (third) {$14$};
+   \node [draw, anchor=center, right=0cm of third, fill=red!20] (fourth) {$7$};
+   \node [draw, anchor=center, right=0cm of fourth] (fifth) {$2$};
+   \node [draw, anchor=center, right=0cm of fifth] (sixth) {$0$};
 \end{tikzpicture}
 \hspace{2.2cm}
 \begin{tikzpicture}
-\node [draw] {$42$};
+   \node [draw] {$42$};
 \end{tikzpicture}
 
 % Intro : représentation des sous problèmes
@@ -43,32 +43,32 @@
 \vspace{2cm}
 
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=35mm},
-    level 2/.style={->, >=stealth, sibling distance=20mm},
-    level 3/.style={->, >=stealth, sibling distance=10mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node[fill = green!20] {10}
-        child {
-	        node {9}
-	        child { 
-	        	node{7}
-	        	child{node[fill=blue!20]{4}}
-	        	child{node[fill=blue!20]{7}}
-	        }
-	        child {
-	        	node {9}
-	        	child{node[fill=blue!20]{1}}
-	        	child{node[fill=blue!20]{9}}
-	        }
-    }
-    child {
-        node {10}
-        child {
-        	node{10}
-        	child{node[fill=blue!20]{3}}
-        	child{node[fill=blue!20]{10}}
-        }
-    };
+      level 1/.style={->, >=stealth, sibling distance=35mm},
+      level 2/.style={->, >=stealth, sibling distance=20mm},
+   level 3/.style={->, >=stealth, sibling distance=10mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node[fill = green!20] {10}
+   child {
+      node {9}
+      child { 
+         node{7}
+         child{node[fill=blue!20]{4}}
+         child{node[fill=blue!20]{7}}
+      }
+      child {
+         node {9}
+         child{node[fill=blue!20]{1}}
+         child{node[fill=blue!20]{9}}
+      }
+   }
+   child {
+      node {10}
+      child {
+         node{10}
+         child{node[fill=blue!20]{3}}
+         child{node[fill=blue!20]{10}}
+      }
+   };
 
 \end{tikzpicture}
 
@@ -77,21 +77,21 @@
 \vspace{2cm}
 
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{3}
-        child {
-	        node {9}
-	        child{node{2}}
-	        child{node{3}}
-	    }
-	    child {
-	        node {21}
-	        child{node{6}}
-	        child{node{7}}
-	    };
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{3}
+   child {
+      node {9}
+      child{node{2}}
+      child{node{3}}
+   }
+   child {
+      node {21}
+      child{node{6}}
+      child{node{7}}
+   };
 
 \end{tikzpicture}
 
@@ -100,53 +100,53 @@
 \vspace{2cm}
 
 \begin{tikzpicture}
-\node[draw, circle] {A};
+   \node[draw, circle] {A};
 \end{tikzpicture}
 \hspace{2cm}
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{node[fill=green!20]{B}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{node[fill=green!20]{B}};
 \end{tikzpicture}
 \hspace{2cm}
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{node{B}}
-        child{node[fill=green!20]{C}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{node{B}}
+   child{node[fill=green!20]{C}};
 \end{tikzpicture}
 \hspace{2cm}
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{
-        	node{B}
-        	child{node[fill=green!20]{D}}
-        }
-        child{node{C}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{
+      node{B}
+      child{node[fill=green!20]{D}}
+   }
+   child{node{C}};
 \end{tikzpicture}
 \hspace{2cm}
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{
-        	node{B}
-        	child{node{D}}
-        	child{node[fill=green!20]{E}}
-        }
-        child{node{C}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{
+      node{B}
+      child{node{D}}
+      child{node[fill=green!20]{E}}
+   }
+   child{node{C}};
 \end{tikzpicture}
 
 % Exemple de suppression de nœuds (3 cas) dans un arbre binaire normal
@@ -156,22 +156,22 @@
 % Cas 1 : pas d'enfant
 
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{node{B}}
-        child{node[fill=red!30]{C}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{node{B}}
+   child{node[fill=red!30]{C}};
 \end{tikzpicture}
 \hspace{2cm}
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{node{B}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{node{B}};
 \end{tikzpicture}
 
 % Cas 2 : un seul enfant
@@ -179,26 +179,26 @@
 \vspace{2cm}
 
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{
-        	node[fill=red!30]{B}
-        	child{node{D}}
-        }
-        child{node{C}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{
+      node[fill=red!30]{B}
+      child{node{D}}
+   }
+   child{node{C}};
 \end{tikzpicture}
 \hspace{2cm}
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw]
-    \node{A}
-        child{node{D}}
-        child{node{C}};
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw]
+   \node{A}
+   child{node{D}}
+   child{node{C}};
 \end{tikzpicture}
 
 % Implémentation d'un arbre binaire dans un tableau
@@ -206,44 +206,44 @@
 \vspace{2cm}
 
 \begin{tikzpicture}[level distance = 1.5cm,
-    level 1/.style={->, >=stealth, sibling distance=20mm},
-    level 2/.style={->, >=stealth, sibling distance=10mm},
-    level 3/.style={->, >=stealth, sibling distance=5mm}]
-\tikzstyle{every node} = [circle, draw, font=\bfseries]
-    \node{3$_1$}
-        child {
-	        node {9$_2$}
-	        child{node{2$_4$}}
-	        child{node{3$_5$}}
-	    }
-	    child {
-	        node {21$_3$}
-	        child{node{6$_6$}}
-	        child{node{7$_7$}}
-	    };
+      level 1/.style={->, >=stealth, sibling distance=20mm},
+      level 2/.style={->, >=stealth, sibling distance=10mm},
+   level 3/.style={->, >=stealth, sibling distance=5mm}]
+   \tikzstyle{every node} = [circle, draw, font=\bfseries]
+   \node{3$_1$}
+   child {
+      node {9$_2$}
+      child{node{2$_4$}}
+      child{node{3$_5$}}
+   }
+   child {
+      node {21$_3$}
+      child{node{6$_6$}}
+      child{node{7$_7$}}
+   };
 
 \end{tikzpicture}
 
 \vspace{0.5cm}
 
 \begin{tikzpicture}
-\node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$3$};
-\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$9$};
-\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$21$};
-\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$2$};
-\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$3$};
-\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fifth] (sixth) {$6$};
-\node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of sixth] (seventh) {$7$};
+   \node [font=\sffamily\Large\bfseries, draw, anchor=center] (first) {$3$};
+   \node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of first] (second) {$9$};
+   \node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of second] (third) {$21$};
+   \node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of third] (fourth) {$2$};
+   \node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fourth] (fifth) {$3$};
+   \node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of fifth] (sixth) {$6$};
+   \node [font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of sixth] (seventh) {$7$};
 \end{tikzpicture}
 
 \begin{tikzpicture}
-\node [font=\sffamily\Large\bfseries, anchor=center] (first) {$_1$};
-\node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of first] (second) {$_2$};
-\node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of second] (third) {$_3$};
-\node [font=\sffamily\Large\bfseries, anchor=center, right=0.2cm of third] (fourth) {$_4$};
-\node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of fourth] (fifth) {$_5$};
-\node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of fifth] (sixth) {$_6$};
-\node [font=\sffamily\Large\bfseries, anchor=center, right=0cm of sixth] (seventh) {$_7$};
+   \node [font=\sffamily\Large\bfseries, anchor=center] (first) {$_1$};
+   \node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of first] (second) {$_2$};
+   \node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of second] (third) {$_3$};
+   \node [font=\sffamily\Large\bfseries, anchor=center, right=0.2cm of third] (fourth) {$_4$};
+   \node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of fourth] (fifth) {$_5$};
+   \node [font=\sffamily\Large\bfseries, anchor=center, right=0.1cm of fifth] (sixth) {$_6$};
+   \node [font=\sffamily\Large\bfseries, anchor=center, right=0cm of sixth] (seventh) {$_7$};
 \end{tikzpicture}
 
 \end{document}
