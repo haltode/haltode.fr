@@ -3,11 +3,11 @@ Tri par dénombrement
 algo/tri
 
 Publié le : 05/07/2014  
-*Modifié le : 09/12/2015*
+*Modifié le : 02/02/2016*
 
 ## Introduction
 
-Le tri par dénombrement (*counting sort* en anglais) est l’un des algorithmes de tri le plus rapide, et pourtant il est loin d'être compliqué, même s'il a quelques restrictions et défauts. Le tri s'exécute en un temps linéaire, mais uniquement sur des nombres entiers.
+Le tri par dénombrement (*counting sort* en anglais) est l’un des algorithmes de tri le plus rapide, et pourtant il est loin d'être compliqué, même s'il a quelques restrictions et défauts. Le tri s'exécute en un temps linéaire, mais uniquement sur des nombres entiers. La particularité du tri est qu'il est la base d'autres algorithmes de tri en temps linéaires, permettant de s'adapter aux besoins en temps et en mémoire.
 
 ## Principe de l’algorithme
 
@@ -88,4 +88,4 @@ test01.out
 
 ## Conclusion
 
-Le tri par dénombrement est donc un algorithme de tri assez restrictif (il ne travaille qu'avec des nombres entiers), et doit obliger des compromis de mémoire pour avoir une complexité en temps linéaire.
+Le tri par dénombrement est donc un algorithme de tri assez restrictif (il ne travaille qu'avec des nombres entiers), et doit obliger des compromis de mémoire pour avoir une complexité en temps linéaire. Cependant, quand on connait l'entrée, on peut utiliser cet algorithme afin d'avoir un temps d'exécution très rapide, mais on peut aussi changer le fonctionnement de ce tri afin d'améliorer la complexité en mémoire, sans trop impacter la complexité en temps, et c'est ce que fait le [tri par base](/algorithme/tri/tri_base.html) qui est un autre algorithme en temps linéaire inspiré du tri par dénombrement. On le retrouve aussi dans le [tri par paquets](/algorithme/tri/tri_paquets.html) qui permet de faire des améliorations de manières générales en temps et en mémoire à ce dernier.

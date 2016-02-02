@@ -5,7 +5,6 @@
    - Originalité du site ? Qu'est-ce qui le démarque ?
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 - Rediriger itechome.wordpress.com vers napnac.ga
-- Différencier les articles en cours de rédactions
 
 ## Structure de données
 
@@ -15,7 +14,6 @@
 ## Tri
 
 - Tri par tas : smoothsort
-- Tri par dénombrement : améliorations/variantes ? Utilisation du tri (comme un "sous-tri" dans le tri par base)
 
 # Liste de futurs articles
 
