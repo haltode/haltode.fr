@@ -13,4 +13,4 @@ Liste de mes différents projets personnels :
 | **06/2013** - **09/2013** | [ASCII Funfair](/projets/ascii_funfair.html)  | Programme regroupant différents jeux connus, en solo et en multijoueur  |
 | **04/2013**               | [Pseudo-C](/projets/pseudo-c.html)            | Traducteur et interpréteur de pseudo-code en langage C                  |
 
-Vous pouvez aussi retrouver mes plus petits projets sur Github : <https://github.com/iTech->.
+Vous pouvez aussi retrouver mes plus petits projets sur Github : <https://github.com/iTech->. Et si cela vous intéresse, j'écris aussi des [récapitulatifs](/recap.html) de ce que je réalise chaque mois en programmation et en informatique de manière plus générale.
