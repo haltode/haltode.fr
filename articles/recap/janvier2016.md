@@ -36,7 +36,7 @@ Comme plus gros projet ce mois-ci, j'ai mis en place [pornote](https://github.co
 
 #### Reste
 
-Après ce projet, j'ai voulu jouer un peu avec la vision par ordinateur, et donc j'ai regardé comment utiliser [SimpleCV](http://simplecv.org/), avec pour idée de faire un jeu de snake (ou un autre jeu) qu'on pouvait contrôler entièrement avec les yeux, cependant en cherchant un peu j'ai découvert [PyGaze](http://www.pygaze.org/) mais qui finalement réalise tout le travail à ma place et ne représente plus vraiment un défi en terme de vision par ordinateur, donc je suis passé à autre chose. La deuxième chose que je voulais essayer en plus de la vision par ordinateur était l'apprentissage automatique (*machine learning* en anglais), mais j'en reparlais plus dans le récap de février.
+Après ce projet, j'ai voulu jouer un peu avec la vision par ordinateur, et donc j'ai regardé comment utiliser [SimpleCV](http://simplecv.org/), avec pour idée de faire un jeu de snake (ou un autre jeu) qu'on pouvait contrôler entièrement avec les yeux, cependant en cherchant un peu j'ai découvert [PyGaze](http://www.pygaze.org/) mais qui finalement réalise tout le travail à ma place et ne représente plus vraiment un défi en termes de vision par ordinateur, donc je suis passé à autre chose. La deuxième chose que je voulais essayer en plus de la vision par ordinateur était l'apprentissage automatique (*machine learning* en anglais), mais j'en reparlais plus dans le récap de février.
 
 ## Autres
 
