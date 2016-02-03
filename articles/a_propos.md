@@ -8,7 +8,7 @@ Je suis Thibault (ou napnac), un jeune programmeur de 16 ans, passionné d'infor
 
 ## Comment me contacter ?
 
-Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à <napnac.ga@gmail.com>.
+Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à <napnac.ga@gmail.com> ou consulter mon compte Twitter : [iTech](https://twitter.com/iTech__).
 
 ## Site
 
