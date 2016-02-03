@@ -43,7 +43,7 @@ fichier.extension
 
 Cette notation n'est pas officielle dans le langage Markdown, mais puisque j'ai mon propre script de conversion, je peux créer des comportements spécifiques en fonction de mes besoins. Lorsque le script est exécuté, mon fichier est intégré dans l'article avec la bonne coloration syntaxique (en fonction de l'extension), et avec une possibilité de s'afficher/cacher si le code est trop long.
 
-Le lien vers le script (contenant des informations plus détaillées à ce propos) : <https://github.com/iTech-/napnac.ga/blob/master/conversion.sh>
+Le lien vers le script (contenant des informations plus détaillées à ce propos) : <https://github.com/napnac/napnac.ga/blob/master/conversion.sh>
 
 Toutes les pages sont stockées dans le dossier `articles` et converties en HTML dans le dossier `src/pages`.
 
@@ -69,7 +69,7 @@ Une fois le site mis en place, il m'a fallu réécrire la totalité de mes ancie
 
 ## Lien
 
-Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <https://github.com/iTech-/napnac.ga>
+Tous les codes sources, les articles, les images, etc. sont disponibles sur la page Github du projet : <https://github.com/napnac/napnac.ga>
 
 ## Conclusion
 

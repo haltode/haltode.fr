@@ -39,7 +39,7 @@ Dans le **multijoueur**, vous pouvez accéder à tous les jeux (compatibles en m
 
 ## Lien
 
-Le lien vers la page Github du projet : <https://github.com/iTech-/ASCII-Funfair>
+Le lien vers la page Github du projet : <https://github.com/napnac/ASCII-Funfair>
 
 ## Conclusion
 

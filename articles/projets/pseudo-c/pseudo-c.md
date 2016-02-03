@@ -54,7 +54,7 @@ J'avais implémenté quelques fonctions bien particulières (`Aleatoire`, `Pause
 
 ## Lien
 
-Le lien vers la page Github du projet (avec une description plus précise de la syntaxe et du fonctionnement de ce programme) : <https://github.com/iTech-/Pseudo-C>
+Le lien vers la page Github du projet (avec une description plus précise de la syntaxe et du fonctionnement de ce programme) : <https://github.com/napnac/Pseudo-C>
 
 ## Conclusion
 

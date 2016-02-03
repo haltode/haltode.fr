@@ -33,7 +33,7 @@ Voici quelques captures d’écran du jeu :
 
 ## Lien
 
-Le lien vers la page Github du projet pour plus d'informations sur le jeu : <https://github.com/iTech-/Rhyddid>
+Le lien vers la page Github du projet pour plus d'informations sur le jeu : <https://github.com/napnac/Rhyddid>
 
 ## Conclusion
 

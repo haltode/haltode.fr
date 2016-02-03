@@ -78,7 +78,7 @@ class Main
 
 ## Lien
 
-Le lien vers la page Github du projet : <https://github.com/iTech-/NandToTetris>  
+Le lien vers la page Github du projet : <https://github.com/napnac/NandToTetris>  
 Le site du livre : <http://www.nand2tetris.org/>
 
 D'autres liens utiles à propos du projet :
