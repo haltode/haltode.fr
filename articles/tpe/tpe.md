@@ -2,7 +2,7 @@ TPE
 ===
 
 Publié le : 11/12/2015  
-*Modifié le : 11/12/2015*
+*Modifié le : 10/02/2016*
 
 ## Introduction
 
@@ -28,13 +28,13 @@ A cause des tensions, des centaines de projets secrets sont financés et même s
 
 ### Projet Echelon
 
-Dans les années 60, le projet Echelon est officieusement créé suite à l'accord en 1943 lors de la Seconde Guerre mondiale entre les Etats-Unis et le Royaume-Uni afin de se partager les données collectées par les services de renseignement des deux pays. L'objectif du projet est de surveiller entièrement le bloc soviétique et ses alliés grâce à un réseau important de satellites et de centres de traitement automatisés.Pour cela, le réseau intercepte toutes les communications passant par des satellites commerciaux afin de collecter les appels téléphoniques, les mails, et les fax qui seront ensuite traitées dans des centres à l'aide d'ordinateurs.
+Dans les années 60, le projet Echelon est officieusement créé suite à l'accord en 1943 lors de la Seconde Guerre mondiale entre les Etats-Unis et le Royaume-Uni afin de se partager les données collectées par les services de renseignement des deux pays. L'objectif du projet est de surveiller entièrement le bloc soviétique et ses alliés grâce à un réseau important de satellites et de centres de traitement automatisés. Pour cela, le réseau intercepte toutes les communications passant par des satellites commerciaux afin de collecter les appels téléphoniques, les mails, et les fax qui seront ensuite traitées dans des centres à l'aide d'ordinateurs.
 
 Les signaux interceptés par l'ensemble du projet peuvent être répartis en trois principales catégories :
 
 - Les **ondes radio** : c'est ce qui est le plus utilisé à l'époque pour établir des communications militaires ou diplomatiques.
-- Les **câbles sous-marin** : 
-- Les **émissions électromagnétiques** : un appareil électronique (par exemple un radar) émet des données permettant d'en déduire sa localisation, sa portée, sa longueur d'onde etc.
+- Les **câbles sous-marin** : lorsque les communications par radios fonctionnent difficilement, on reliait directement les deux personnes qui souhaitaient communiquer le plus souvent par des câbles sous-marins, afin d'avoir une solution sûre.
+- Les **émissions électromagnétiques** : un appareil électronique (par exemple un radar) émet des données permettant d'en déduire sa localisation, sa portée, sa longueur d'onde, etc.
 
 #### Les ondes radio
 
@@ -54,34 +54,41 @@ Son fonctionnement se base sur trois éléments principaux :
 
 ![Les différents éléments de l'antenne AN/FLR-9](//static.napnac.ga/img/tpe/antenne_fonctionnement.png)
 
-[TODO : mettre les fréquences dans un schéma et montrer les utilisations spécifiques]
-
-[
-Chacune des trois couches va intercepter des ondes radio entre des fréquences spécifiques :
-
-- Couche A : 2 à 6 MHz
-- Couche B : 6 à 18 MHz
-- Couche C : 18 à 30 MHz
-]
-
-#### Emissions électromagnétiques
 #### Câble sous-marin
 
-La communication par câble sous-marin est la seule solution fiable à l'époque aux ondes radios qui parfois ne sont pas de grandes qualités. Intercepter ces communications est donc un enjeu majeur pour les deux pays adverses.
+La communication par câble sous-marin est la seule solution fiable à l'époque aux ondes radios qui parfois ne sont pas de grandes qualités (en cas de mauvais temps par exemple les ondes se reflètent mal). Intercepter ces communications est donc un enjeu majeur pour les deux pays adverses.
+
+Pour cela, des sous-marins spécialisés localisaient les câbles, et installaient des **pods**, permettant d'écouter les câbles auxquels ils sont attachés.
+
+![Exemple de pod attaché à un câble sous-marin](//static.napnac.ga/img/tpe/exemple_pod_cable.jpg)
+
+Ces pods écoutaient par **induction** sur les câbles, et enregistraient toutes les informations sur des bandes qui étaient ensuite récupérées environ une fois par an par d'autres sous-marins.
+
+TODO : principe de l'induction (<https://en.wikipedia.org/wiki/Electromagnetic_induction>)
+
+L'opération américaine Ivy Bells était basée sur ce principe d'écoute, et pendant plus de 10 ans, les Etats-Unis ont écouté toutes les communications soviétiques qui transitées par un câble, avant qu'un agent de la NSA fut acheté par le KGB pour environ 35 000 dollars.
+
+Les communications américaines se basées essentiellement sur ce système de câble sous-marin, et les Etats-Unis ont anticipé une alternative dans le cas d'un conflit massif avec l'URSS. Le projet West Ford est alors lancé dans les années 60, devant se charger de recréer une ionosphère artificielle autour de la Terre pour avoir des communications radios plus fiables, grâce à des millions d'aiguilles en cuivre. Cependant, peu après des retours positifs du projet, les satellites artificiels commencent à apparaître, rendant ces aiguilles inutiles et plus contraignantes.
+
+Aujourd'hui encore, les câbles sous-marin sont le principal support afin de communiquer, et quasiment toutes les transmissions se font grâce à ce système.
 
 #### Analyse des données récoltées
 
-[TODO : parler du projet west ford]
+Toutes ces données sont ensuite traitées dans d'énormes centres technologiques créés pour ce projet de renseignement, grâce à des centaines d'ordinateurs.
+
+En juillet 1962, un rapport anormal au sujet de l'île de Cuba montre des navires soviétiques qui se dirigent dessus. Les Etats-Unis pensaient que ces navires possédaient des armes de destructions massives (nucléaires), et veulent les intercepter avant qu'elles arrivent à destination. Cependant, les deux camps se menacent avec des armes nucléaires, et risquent de lancer une guerre nucléaire mondiale. Peu après, de nouvelles informations qui viennent du projet Echelon montrent bien des missiles à tête nucléaire installés sur des rampes de lancement, ainsi que d'autres missiles classiques, des bombardiers, des fusées, des navires contenant des ogives nucléaires et d'autres armes placées sur l'île.
+
+![Photo aérienne de l'île de Cuba](//static.napnac.ga/img/tpe/photo_aerienne_cuba.jpg)
+
+Les tensions sont extrêmes, et pendant plus d'une quinzaine de jours des négociations et des menaces sont envoyées de la part des deux camps entre Khrouchtchev et Kennedy, frôlant chaque jour une guerre nucléaire. Finalement, début novembre, cette *crise de Cuba* prend fin dans une entente entre les deux pays pour éviter une nouvelle guerre, et ils mettront en place le **téléphone rouge** pour lier directement les deux dirigeants en cas de crise majeure.
+
+Cet exemple de la crise de Cuba est un parmi beaucoup d'autres, mais fut le plus frappant pendant toute la durée de la Guerre Froide.
 
 #### Le projet Echelon aujourd'hui
 
-Le projet de renseignement s'est développé mondialement, et de nombreux pays ont rejoins le programme. C'est le plus grand et le plus puissant réseau de renseignement à ce jour, avec un budget de plusieurs dizaines de milliards de dollars par an rien que pour les Etats-Unis qui sont l'acteur principal du projet.
+Le projet de renseignement s'est développé mondialement, et de nombreux pays ont rejoins le programme. C'est le plus grand et le plus puissant réseau de renseignement à ce jour, avec un budget de plusieurs dizaines de milliards de dollars par an rien que pour les Etats-Unis, qui sont l'acteur principal du projet.
 
 ### Projet soviétique ? Satellite espion ?
-
-
-[TODO : dissuasion nucléaire]
-[TODO : lien historique -> crise de cuba]
 
 ## Conclusion
 
@@ -103,3 +110,8 @@ Le projet de renseignement s'est développé mondialement, et de nombreux pays o
 - <https://en.wikipedia.org/wiki/ECHELON>
 - <http://www.herodote.net/5_mars_1946-evenement-19460305.php>
 - <https://en.wikipedia.org/wiki/Signals_intelligence>
+- <https://fr.wikipedia.org/wiki/Renseignement_d'origine_%C3%A9lectromagn%C3%A9tique>
+- <http://reseau.echelon.free.fr/reseau.echelon/photos/divers.htm>
+- <https://fr.wikipedia.org/wiki/Projet_West_Ford>
+- <http://www.history.com/topics/cold-war/cuban-missile-crisis>
+- <https://fr.wikipedia.org/wiki/Crise_des_missiles_de_Cuba>
