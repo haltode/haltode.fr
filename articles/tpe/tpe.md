@@ -2,13 +2,13 @@ TPE
 ===
 
 Publié le : 11/12/2015  
-*Modifié le : 10/02/2016*
+*Modifié le : 13/02/2016*
 
 ## Introduction
 
 Après la Seconde Guerre mondiale, des tensions se forment entre les deux blocs militaires et économiques du monde, et notamment entre les Etats-Unis et l'Union Soviétique devenus les deux superpuissances mondiales à cause du déclin des pays européens pendant la guerre. De véritables courses sont ensuite lancées dans plusieurs domaines comme le domaine militaire (avec les avancées dans le nucléaire), le domaine spatiale (course vers l'espace), et dans le développement des nouvelles technologies (surveillance entre les pays et surveillance de masse). L'idée de surveillance peut se définir comme étant une observation attentive de quelqu'un ou quelque chose dans le but de le contrôler. Avec les tensions créées lors de la guerre, chaque pays se tournera rapidement vers la surveillance afin d'anticiper les déplacements et les actions de ses adversaires. La Guerre froide sera alors un point de départ essentiel de la surveillance moderne, et permettra l'apparition de nombreux systèmes de surveillance encore utilisés aujourd'hui. Mais on peut se demander comment la surveillance a changé le cours de la Guerre froide ? Et jusqu'à quel point ?
 
-[TODO : annonce du plan]
+Nous aborderons le sujet en traitant tout d'abord d'une remise en contexte, puis nous étudierons différents projets créés dans le but de surveiller et de contrôler, avant de terminer sur une étude de cas révélatrice de cette guerre étrange.
 
 ## L'origine des tensions
 
@@ -62,9 +62,7 @@ Pour cela, des sous-marins spécialisés localisaient les câbles, et installaie
 
 ![Exemple de pod attaché à un câble sous-marin](//static.napnac.ga/img/tpe/exemple_pod_cable.jpg)
 
-Ces pods écoutaient par **induction** sur les câbles, et enregistraient toutes les informations sur des bandes qui étaient ensuite récupérées environ une fois par an par d'autres sous-marins.
-
-TODO : principe de l'induction (<https://en.wikipedia.org/wiki/Electromagnetic_induction>)
+Ces pods écoutaient par **[induction](https://fr.wikipedia.org/wiki/Induction_%C3%A9lectromagn%C3%A9tique)** sur les câbles, et enregistraient toutes les informations sur des bandes qui étaient ensuite récupérées environ une fois par an par d'autres sous-marins.
 
 L'opération américaine Ivy Bells était basée sur ce principe d'écoute, et pendant plus de 10 ans, les Etats-Unis ont écouté toutes les communications soviétiques qui transitées par un câble, avant qu'un agent de la NSA fut acheté par le KGB pour environ 35 000 dollars.
 
@@ -88,15 +86,28 @@ Cet exemple de la crise de Cuba est un parmi beaucoup d'autres, mais fut le plus
 
 Le projet de renseignement s'est développé mondialement, et de nombreux pays ont rejoins le programme. C'est le plus grand et le plus puissant réseau de renseignement à ce jour, avec un budget de plusieurs dizaines de milliards de dollars par an rien que pour les Etats-Unis, qui sont l'acteur principal du projet.
 
-### Projet soviétique ? Satellite espion ?
+## Etude de cas
+
+La surveillance sous toute ses formes joue un rôle essentiel dans l’issue de la guerre froide mais également dans la mesure ou elle a été déterminante de la paix dans le monde a cette époque.
+Etudions le cas non sans singularité de Stanislav Petrov, un officier de la force de défense anti-aérienne soviétique [Voyska PVO](https://fr.wikipedia.org/wiki/Voyska_PVO).
+
+![Badge de la Voyska PVO](//static.napnac.ga/img/tpe/badge_voyska.jpg)
+
+Le 26 septembre 1983 dans la base de Serpoukhov-15, dont le rôle était de recueillir et analyser des informations prévenant les potentiels tirs de missiles américains. Ces informations proviennent de satellites soviétiques de surveillance de type Cosmos faisant partie d’une série de missions satellitaires espion. Ce que l’on nomme « l’incident du 26 septembre 1983 » avec assez d’ironie n’est autre qu’une alerte s’agissant de tirs missiles d’origine américaine détectés par la mission Cosmos 1382.
+
+Petrov était de garde cette nuit là et sa réaction a totalement déterminé l’avenir de la guerre froide et du monde. En effet, face à cette alerte d’une gravité extrême et dans l’urgence de la situation cet officier a su poser son esprit quelques secondes et analyser la situation. Après quelques instant il décide à la surprise de ses coéquipiers d’informer ses supérieurs qu’il pourrait éventuellement s’agir d’une fausse alerte vu le petit nombre de missiles détectés. Cet initiative courageuse a permis d’éviter une riposte certaine et totale de l’URSS et donc éviter le commencement d’un conflit nucléaire planétaire.
+
+Après une analyse poussée des technologies de surveillance soviétiques satellitaires il s’est avéré que ce que celle-ci avaient relevé n’était autre qu’une mauvaise interprétation thermique des reflets du soleil sur les nuages pris alors pour l’énergie dégagée lors d’un lancement militaire.
+
+Les systèmes de surveillance soviétiques ont été mis en place dans le cadre de l’opération RYAN consistant a réunir le plus d’informations possibles sur les opposants pour prévenir d’éventuelles attaques. Lancée en 1981 par Louri Andropov, directeur du [KGB](https://fr.wikipedia.org/wiki/KGB) cette opération est le résultat de l’ultime inquiétude de ce dernier face aux progrès d’artillerie nucléaire (Il est nécessaire de souligner que le temps de voyage d’un missile depuis la [RFA](https://fr.wikipedia.org/wiki/Allemagne_de_l%27Ouest) n’est que de 6 à 8 minutes jusqu’à Moscou).
+
+Ce contexte d’extrême tension de la guerre froide lié à l’inquiétude face a une possible attaque nucléaire ennemie renforce l’importance de la réaction de Stanislav Petrov, d’ailleurs récompensé bien plus tard d’un prix par l’Association of Word Citizen le 19 janvier 2006 pour ses services et sa contribution à la paix dans le monde. Il jouera également son propre rôle dans un film intitulé *The Man Who Saved the World* directement : L’homme qui sauva le monde.
 
 ## Conclusion
 
-[TODO : Ouverture : surveillance aujourd'hui (internet + informatique moderne (3ème révolution industrielle) : nouveaux moyens de communication, nsa, prism, etc.)]
+La Guerre Froide fut une guerre très compliquée et qui a donné lieu a d’immenses inquiétudes pour la pérennité du monde. En effet elle incarne totalement la phrase de Raymond Aron « Paix impossible, guerre improbable » malgré les multiples tensions qu’elle a présenté notamment durant la crise de Cuba, le plus haut point d’inquiétude de la guerre froide en matière de paix mondiale, mais également à d’autres reprises plus tard dans les années 1980. Les deux superpuissances URSS et États Unis sont dans l’attente permanente d’une attaque adverse mais tout deux pourtant appliquent le principe de la dissuasion nucléaire maintenant un équilibre relatif entre les deux blocs. Durant cette guerre froide, des milliards de dollars ont été investis dans des opérations de surveillance rendant celle-ci indubitablement nécessaire au dénouement des tensions dans la mesure ou elle a changé le cours de cette guerre a plusieurs reprises. Lors de la Crise de Cuba, les clichés satellitaires informant du déplacement de cargos soviétiques chargés en matériel militaire nucléaire en pleine période de tensions font réagir Kennedy et empêchent la découverte  tardive de ces déplacements offensifs ou défensif selon les point de vue, qui aurait pu mal tourner. Cependant, si la surveillance en général peut avoir une influence positive sur le contrôle des relations international et des actions adverses, elle peut également induire en erreur du fait de sa fiabilité n’étant pas toujours optimale, par exemple avec le cas de Stanislav Petrov où la surveillance aurait, si il n’avait pas réagi de la sorte, provoqué un conflit nucléaire mondial. En somme, le terme général de **surveillance**, dans le cadre de projet comme échelon, sous forme de satellite, d’interception des ondes radios, par pod, des émissions électromagnétiques, ou les clichés satellitaires, désigne un terme important de cette époque ayant eu une réelle influence sur le cours de la guerre froide, qu’elle ait sauvé ou presque condamné le monde dans lequel nous vivons. De nos jours, ce terme est toujours utilisé à différentes échelles. En effet, il existe de nouveaux moyens de surveillance rendant possible le contrôle total des populations et des autres nations, notamment avec l’arrivée d’internet, de l’informatique, des organisations comme la NSA...
 
-### Source
-
-[TODO : organiser source]
+### Bibliographie
 
 - <https://fr.wikipedia.org/wiki/Satellite_de_reconnaissance>
 - <http://actualitedelhistoire.over-blog.com/article-les-black-program-le-projet-echelon-48336570.html>
