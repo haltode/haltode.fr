@@ -24,7 +24,7 @@ La liste des articles publiés :
 
          - Tri en $O(N^2)$ : [tri à bulles](/algo/tri/tri_bulles.html), [tri par sélection](/algo/tri/tri_selection.html), [tri par insertion](/algo/tri/tri_insertion.html)
          - Tri en $O(N \log _2 N)$ : [tri fusion](/algo/tri/tri_fusion.html), [tri rapide](/algo/tri/tri_rapide.html), [tri par tas](/algo/tri/tri_tas.html)
-         - Tri en $O(N)$ : [tri par dénombrement](/algo/tri/tri_denombrement.html)
+         - Tri en $O(N)$ : [tri par dénombrement](/algo/tri/tri_denombrement.html), [tri par base](/algo/tri/tri_base.html)
 
     - Recherche :
 
