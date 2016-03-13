@@ -28,7 +28,4 @@
 - Compression de données : codage de huffman
 - IA : apprentissage artificiel
 - Algorithmes quantiques
-- Cryptographie quantique
-- AES
-- Optimisation
 - N = NP ?
