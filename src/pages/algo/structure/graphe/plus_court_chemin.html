@@ -173,7 +173,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="plus-court-chemin">Plus court chemin</h1></a>
 <p>Publi&#233; le : 09/01/2016<br />
-<em>Modifi&#233; le : 09/01/2016</em></p>
+<em>Modifi&#233; le : 13/03/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#dijkstra">Dijkstra</a></li>
@@ -183,22 +183,23 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Comment votre GPS peut-il conna&#238;tre le plus court chemin entre Paris et Grenoble aussi facilement ? De mani&#232;re g&#233;n&#233;rale, on peut se demander comment calculer l'itin&#233;raire entre deux points donn&#233;s d'une carte de telle sorte que la distance soit minimale ? On pourrait aller encore plus loin dans la g&#233;n&#233;ralisation, en repr&#233;sentant notre carte comme un <a href="/algo/structure/graphe.html">graphe</a> et en transformant la question en : Quel est le plus court chemin entre un n&#339;ud A et B dans un graphe pond&#233;r&#233; ?</p>
+<p>Comment votre GPS peut-il conna&#238;tre le plus court chemin entre Paris et Grenoble aussi facilement ? De mani&#232;re g&#233;n&#233;rale, on peut se demander comment calculer l'itin&#233;raire entre deux points donn&#233;s d'une carte de telle sorte que la distance soit minimale ? On pourrait aller encore plus loin dans la g&#233;n&#233;ralisation, en repr&#233;sentant notre carte comme un <a href="/algo/structure/graphe.html">graphe</a> et en transformant la question en : quel est le plus court chemin entre un n&#339;ud A et B dans un graphe pond&#233;r&#233; ?</p>
 <p>Il existe diff&#233;rentes mani&#232;res de r&#233;pondre &#224; cette question, et la r&#233;ponse varie souvent en fonction du graphe donn&#233; en entr&#233;e de notre algorithme (pond&#233;r&#233; positivement, n&#233;gativement, dense, creux, etc.). Savoir reconna&#238;tre un probl&#232;me de plus court chemin est donc important, et utiliser le bon algorithme l'est encore plus. Ces algorithmes ne se limitent pas &#224; la cr&#233;ation d'un simple GPS rudimentaire, mais peuvent aller bien plus loin et servent de base &#224; de nombreuses autres applications.</p>
 <h2 id="dijkstra">Dijkstra</h2>
 <h3 id="principe">Principe</h3>
-<p>L'algorithme de Dijkstra est sans doute l'un des algorithmes de plus court chemin le plus connu. Ce dernier se base sur le <a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">parcours en largeur</a> afin de trouver le plus court chemin dans un graphe pond&#233;r&#233; <strong>positivement</strong> (ce point est tr&#232;s important, mais nous en reviendrons plus en d&#233;tails apr&#232;s). On sait que ce type de parcours permet de trouver le plus court chemin sur un graphe non pond&#233;r&#233; (o&#249; on associe chaque arc avec une longueur arbitraire de 1 unit&#233;) et qu'il utilise une file pour stocker les &#233;l&#233;ments afin de les parcourir profondeur par profondeur. L'algorithme de Dijkstra s'appuie sur la m&#234;me id&#233;e except&#233; qu'il ne va pas utiliser une simple file car tous les arcs n'ont pas la m&#234;me pond&#233;ration, mais une <a href="/algo/structure/file.html#file-&#224;-priorit&#233;">file &#224; priorit&#233;</a>. Cette derni&#232;re permet de toujours avoir le n&#339;ud avec la distance minimale par rapport au d&#233;part en t&#234;te de file, et garantit alors lorsqu'on atteint notre n&#339;ud de sortie qu'on a trouv&#233; le plus court chemin.</p>
+<p>L'algorithme de Dijkstra est sans doute l'un des algorithmes de plus court chemin le plus connu. Ce dernier se base sur le <a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">parcours en largeur</a> afin de trouver le plus court chemin dans un graphe pond&#233;r&#233; <strong>positivement</strong> (ce point est tr&#232;s important, mais nous en reviendrons plus en d&#233;tails apr&#232;s). On sait qu'un parcours en largeur permet de trouver le plus court chemin sur un graphe non pond&#233;r&#233; (o&#249; on associe chaque arc avec une longueur arbitraire de 1 unit&#233;) et qu'il utilise une file pour stocker les &#233;l&#233;ments afin de les parcourir profondeur par profondeur. L'algorithme de Dijkstra s'appuie sur la m&#234;me id&#233;e, sauf qu'il ne va pas utiliser une simple file (car tous les arcs n'ont pas la m&#234;me pond&#233;ration) mais une <a href="/algo/structure/file.html#file-&#224;-priorit&#233;">file &#224; priorit&#233;</a>. Cette derni&#232;re permet de toujours avoir le n&#339;ud avec la distance minimale par rapport au d&#233;part en t&#234;te de file, et garantie alors qu'on a trouv&#233; le plus court chemin lorsqu'on atteint le n&#339;ud de sortie.</p>
 <h3 id="exemple">Exemple</h3>
 <p>Soit le graphe suivant :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/exemple_graphe_dijkstra.png" alt="Exemple de graphe pond&#233;r&#233; positivement" />
 <p class="caption">Exemple de graphe pond&#233;r&#233; positivement</p>
 </div>
+<p>On a en bleu le n&#339;ud de d&#233;part, et en vert le n&#339;ud d'arriv&#233;e. Ici, on peut facilement trouver le plus court chemin &#224; la main : 1, 3, 4, 6 (pour un co&#251;t total de 7 unit&#233;s).</p>
 <h3 id="pseudo-code">Pseudo-code</h3>
-<p>Le pseudo-code de l'algorithme de Dijkstra est donc identique &#224; celui du parcours en profondeur, sauf qu'on utilise une file &#224; priorit&#233; au lieu d'une file, qui va organiser les &#233;l&#233;ments en fonction de leur distance au n&#339;ud de d&#233;part :</p>
-<pre class="nohighlight"><code>Dijkstra (depart) :
+<p>Le pseudo-code de l'algorithme de Dijkstra est donc identique &#224; celui du parcours en profondeur, sauf qu'on utilise une file &#224; priorit&#233; au lieu d'une file, afin d'organiser les &#233;l&#233;ments en fonction de leur distance au n&#339;ud de d&#233;part :</p>
+<pre class="nohighlight"><code>Dijkstra (d&#233;part, arriv&#233;e) :
 
-   depart.ditance = 0
+   d&#233;part.distance = 0
    Enfiler le n&#339;ud de d&#233;part
 
    Tant que la file &#224; priorit&#233; n&#39;est pas vide
@@ -215,11 +216,103 @@ function toggle_visibility(id) {
 <h3 id="complexit&#233;">Complexit&#233;</h3>
 <h3 id="impl&#233;mentation">Impl&#233;mentation</h3>
 <p>Une impl&#233;mentation en C++ (pour avoir <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>) de cet algorithme :</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"></code></pre></div>
+<a href="javascript:toggle_visibility('dijkstra.cpp');">dijkstra.cpp</a>
+<div id="dijkstra.cpp" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
+<span class="ot">#include &lt;vector&gt;</span>
+<span class="ot">#include &lt;queue&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="kw">struct</span> Noeud
+{
+   <span class="dt">int</span> index;
+   <span class="dt">int</span> distance;
+
+   <span class="dt">bool</span> <span class="kw">operator</span> &lt; (<span class="dt">const</span> Noeud &amp;autre) <span class="dt">const</span>
+   {
+      <span class="kw">if</span>(distance &lt; autre.distance)
+         <span class="kw">return</span> <span class="kw">false</span>;
+      <span class="kw">else</span>
+         <span class="kw">return</span> <span class="kw">true</span>;
+   }
+};
+
+<span class="dt">const</span> <span class="dt">int</span> NB_NOEUD_MAX = <span class="dv">1000</span>;
+
+vector &lt;Noeud&gt; voisin[NB_NOEUD_MAX];
+<span class="dt">bool</span> dejaVu[NB_NOEUD_MAX];
+
+<span class="dt">int</span> dijkstra(<span class="dt">int</span> depart, <span class="dt">int</span> arrivee)
+{
+   priority_queue &lt;Noeud&gt; file;
+   Noeud initial, actuel;
+   <span class="dt">int</span> iVoisin;
+
+   initial.index = depart;
+   initial.distance = <span class="dv">0</span>;
+
+   file.push(initial);
+   <span class="kw">while</span>(!file.empty()) {
+      actuel = file.top();
+      file.pop();
+
+      <span class="kw">if</span>(actuel.index == arrivee)
+         <span class="kw">return</span> actuel.distance;
+      <span class="kw">if</span>(dejaVu[actuel.index])
+         <span class="kw">continue</span>;
+
+      dejaVu[actuel.index] = <span class="kw">true</span>;
+      <span class="kw">for</span>(iVoisin = <span class="dv">0</span>; iVoisin &lt; voisin[actuel.index].size(); ++iVoisin) {
+         <span class="kw">if</span>(!dejaVu[voisin[actuel.index][iVoisin].index]) {
+            Noeud nouveau;
+            nouveau.index = voisin[actuel.index][iVoisin].index;
+            nouveau.distance =   actuel.distance +
+                                 voisin[actuel.index][iVoisin].distance;
+            file.push(nouveau);
+         }
+      }
+   }
+
+   <span class="kw">return</span> <span class="dv">-1</span>;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> nbArc;
+   <span class="dt">int</span> iArc;
+
+   scanf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;nbArc);
+
+   <span class="kw">for</span>(iArc = <span class="dv">0</span>; iArc &lt; nbArc; ++iArc) {
+      <span class="dt">int</span> noeud1, noeud2, distance;
+      Noeud nouveau;
+      scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;noeud1, &amp;noeud2, &amp;distance);
+      nouveau.distance = distance;
+
+      nouveau.index = noeud2;
+      voisin[noeud1].push_back(nouveau);
+      nouveau.index = noeud1;
+      voisin[noeud2].push_back(nouveau);
+   }
+
+   printf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, dijkstra(<span class="dv">1</span>, <span class="dv">6</span>));
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
 <p>Le graphe d'entr&#233;e :</p>
-<pre class="nohighlight"><code></code></pre>
+<pre class="nohighlight"><code>8
+1 2 1
+1 3 1
+2 3 3
+2 6 10
+3 4 2
+3 5 4
+4 6 4
+5 6 3</code></pre>
 <p>Et le plus court chemin en sortie :</p>
-<pre class="nohighlight"><code></code></pre>
+<pre class="nohighlight"><code>7</code></pre>
+<p>La structure du code est identique &#224; celle du parcours en profondeur, on doit juste utiliser une structure afin de repr&#233;senter nos n&#339;uds (du graphe, et de notre file) et aussi d&#233;crire l'op&#233;rateur <code>&lt;</code> pour que l'impl&#233;mentation de la <code>priority_queue</code> puisse fonctionner correctement en fonction de la variable <code>distance</code> de chacun des n&#339;uds.</p>
 <h3 id="cas-dutilisation">Cas d'utilisation</h3>
 <h2 id="ford-bellman">Ford-Bellman</h2>
 <h2 id="a">A* ?</h2>
