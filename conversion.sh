@@ -26,8 +26,9 @@ function insert_code {
       line_number=`grep -n -m 1 "\[INSERT\]" copy.md | cut -d: -f 1`
       line_number=$((line_number + 1))
 
-      filename=`sed "$line_number q;d" copy.md`
-      extension="${filename##*.}"
+      file=`sed "$line_number q;d" copy.md`
+      extension="${file##*.}"
+      filename=$(basename "$file")
 
       # If the source code is in fact a test file (input or output),
       # then disable highlighting
@@ -37,8 +38,8 @@ function insert_code {
       fi
 
       # If the source code file is more than 20 lines, hide it (with js function)
-      lenght=`cat $(dirname $1)/$filename | wc -l`
-      if [ $lenght -gt 20 ]; then
+      length=`cat $(dirname $1)/$file | wc -l`
+      if [ $length -gt 20 ]; then
          # Insert a div tag to make the javascript function work
          sed -i "$line_number s/.*/\\\`\\\`\\\`\n<\/div>/" copy.md
          line_number=$((line_number - 1))
@@ -53,7 +54,7 @@ function insert_code {
       fi
 
       # Insert the source code
-      sed -i "$line_number r $(dirname $1)/$filename" copy.md
+      sed -i "$line_number r $(dirname $1)/$file" copy.md
    done
 }
 
