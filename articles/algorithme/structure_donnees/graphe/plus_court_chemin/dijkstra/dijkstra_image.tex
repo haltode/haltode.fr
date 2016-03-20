@@ -12,6 +12,7 @@
 \begin{document}
 
 % Exemple de graphe pondéré positivement
+
 \begin{tikzpicture}[ shorten >=1pt, auto, node distance = 3cm, thick, 
    node/.style = {circle, draw,
                      font = \sffamily\Large\bfseries}]
@@ -206,6 +207,25 @@
    \path (4) edge node {$4$} (6);
    \path [ultra thick] (5) edge node {$3$} (6);
 
+\end{tikzpicture}
+
+% Contre-exemple : graphe pondéré négativement
+
+\vspace{1cm}
+
+\begin{tikzpicture}[ shorten >=1pt, auto, node distance = 3cm, thick, 
+   node/.style = {circle, draw,
+                     font = \sffamily\Large\bfseries}]
+   \node[node, fill = blue!20] (1) {$1$};
+   \node[node] (2) [above right = 1cm and 2.5cm of 1]{$2$};
+   \node[node] (3) [below right = 1cm and 2.5cm of 1]{$3$};
+   \node[node, fill = green!20] (4) [below right = 1cm and 3cm of 2]{$4$};
+
+   \path (1) edge node {$1$} (2);
+   \path (1) edge node {$10$} (3);
+   \path (2) edge node {$-100$} (4);
+   \path (3) edge node {$-1000$} (4);
+   
 \end{tikzpicture}
 
 \end{document}

@@ -58,9 +58,11 @@ int dijkstra(int depart, int arrivee)
 
 int main(void)
 {
+   int depart, arrivee;
    int nbArc;
    int iArc;
 
+   scanf("%d %d\n", &depart, &arrivee);
    scanf("%d\n", &nbArc);
 
    for(iArc = 0; iArc < nbArc; ++iArc) {
@@ -75,7 +77,7 @@ int main(void)
       voisin[noeud2].push_back(nouveau);
    }
 
-   printf("%d\n", dijkstra(1, 6));
+   printf("%d\n", dijkstra(depart, arrivee));
 
    return 0;
 }

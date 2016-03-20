@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="plus-court-chemin">Plus court chemin</h1></a>
-<p>Publi&#233; le : 19/03/2016<br />
-<em>Modifi&#233; le : 19/03/2016</em></p>
+<p>Publi&#233; le : 20/03/2016<br />
+<em>Modifi&#233; le : 20/03/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#dijkstra">Dijkstra</a></li>
@@ -187,51 +187,51 @@ function toggle_visibility(id) {
 <p>Il existe diff&#233;rentes mani&#232;res de r&#233;pondre &#224; cette question, et la r&#233;ponse varie souvent en fonction du graphe donn&#233; en entr&#233;e de notre algorithme (pond&#233;r&#233; positivement, n&#233;gativement, dense, creux, etc.). Savoir reconna&#238;tre un probl&#232;me de plus court chemin est donc important, et utiliser le bon algorithme l'est encore plus. Ces algorithmes ne se limitent pas &#224; la cr&#233;ation d'un simple GPS rudimentaire, mais peuvent aller bien plus loin et servent de base &#224; de nombreuses autres applications.</p>
 <h2 id="dijkstra">Dijkstra</h2>
 <h3 id="principe">Principe</h3>
-<p>L'algorithme de Dijkstra est sans doute l'un des algorithmes de plus court chemin le plus connu. Ce dernier se base sur le <a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">parcours en largeur</a> afin de trouver le plus court chemin dans un graphe pond&#233;r&#233; <strong>positivement</strong> (ce point est tr&#232;s important, mais nous y reviendrons plus en d&#233;tails apr&#232;s). On sait qu'un parcours en largeur permet de trouver le plus court chemin sur un graphe non pond&#233;r&#233; (o&#249; on associe chaque arc avec une longueur arbitraire de 1 unit&#233;) et qu'il utilise une file pour stocker les &#233;l&#233;ments afin de les parcourir profondeur par profondeur. L'algorithme de Dijkstra s'appuie sur la m&#234;me id&#233;e, sauf qu'il ne va pas utiliser une simple file (car tous les arcs n'ont pas la m&#234;me pond&#233;ration) mais une <a href="/algo/structure/file.html#file-&#224;-priorit&#233;">file &#224; priorit&#233;</a>. Cette derni&#232;re permet de toujours avoir le n&#339;ud avec la distance minimale par rapport au d&#233;part en t&#234;te de file, et garantie alors qu'on a trouv&#233; le plus court chemin lorsqu'on atteint le n&#339;ud de sortie. La file &#224; priorit&#233; a aussi l'avantage d'&#234;tre une structure de donn&#233;es tr&#232;s efficace, et rapide ce qui rend notre algorithme d'autant plus int&#233;ressant.</p>
+<p>L'algorithme de Dijkstra est sans doute l'un des algorithmes de plus court chemin le plus connu. Ce dernier se base sur le <a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">parcours en largeur</a> afin de trouver le plus court chemin dans un graphe pond&#233;r&#233; <strong>positivement</strong> (ce point est tr&#232;s important, mais nous y reviendrons plus en d&#233;tails apr&#232;s). On sait qu'un parcours en largeur permet de trouver le plus court chemin sur un graphe non pond&#233;r&#233; (o&#249; on associe chaque arc avec une longueur arbitraire de 1 unit&#233;) et qu'il utilise une file pour stocker les &#233;l&#233;ments afin de les parcourir profondeur par profondeur. L'algorithme de Dijkstra s'appuie sur la m&#234;me id&#233;e, sauf qu'il ne va pas utiliser une simple file (car tous les arcs n'ont pas la m&#234;me pond&#233;ration) mais une <a href="/algo/structure/file.html#file-&#224;-priorit&#233;">file &#224; priorit&#233;</a>. Cette derni&#232;re permet de toujours avoir le n&#339;ud avec la distance minimale par rapport au d&#233;part en t&#234;te de file, et garantie alors qu'on a trouv&#233; le plus court chemin lorsqu'on atteint le n&#339;ud de sortie. La file &#224; priorit&#233; a aussi l'avantage d'&#234;tre une structure de donn&#233;es tr&#232;s efficace et rapide, ce qui rend notre algorithme d'autant plus int&#233;ressant.</p>
 <h3 id="exemple">Exemple</h3>
 <p>Soit le graphe suivant :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_graphe.png" alt="Exemple de graphe pond&#233;r&#233; positivement" />
 <p class="caption">Exemple de graphe pond&#233;r&#233; positivement</p>
 </div>
-<p>On a en bleu le n&#339;ud de d&#233;part, et en vert le n&#339;ud d'arriv&#233;e. Ici, on peut facilement trouver le plus court chemin &#224; la main : 1, 3, 4, 6 (pour un co&#251;t total de 7 unit&#233;s).</p>
-<p>L'algorithme de Dijkstra commence donc par le n&#339;ud de d&#233;part (1), et regarde ses voisins :</p>
+<p>On souhaite trouver le plus court chemin pour aller du n&#339;ud de d&#233;part (en bleu) au n&#339;ud d'arriv&#233;e (en vert).</p>
+<p>L'algorithme de Dijkstra commence par le n&#339;ud de d&#233;part (1), et examine ses voisins :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_1.png" alt="Tour 1 de l&#39;algorithme" />
 <p class="caption">Tour 1 de l'algorithme</p>
 </div>
-<p>Le n&#339;ud en bleu repr&#233;sente d&#233;sormais le n&#339;ud en t&#234;te de notre file &#224; priorit&#233; (j'ai aussi repr&#233;sent&#233; la distance parcourue depuis le n&#339;ud initial en indice). Le n&#339;ud 1 a deux arcs, qui repr&#233;sentent donc deux possibilit&#233;s pour le moment, si l'on prend en compte la distance depuis le n&#339;ud de d&#233;part, et le poids des arcs, il faut faire un choix entre le r&#233;sultat de 0 + 1 (n&#339;ud 1 vers n&#339;ud 2) et 0 + 1 (1 vers 3). Dans notre cas donc les deux n&#339;uds sont &#233;quivalents en terme d'efficacit&#233;, mais pour notre exemple on va imaginer que notre impl&#233;mentation va choisir le n&#339;ud 2 en premier (le n&#339;ud 3 menant directement au plus court chemin, il est plus int&#233;ressant de voir comment notre algorithme va rectifier son tir). On enl&#232;ve donc le n&#339;ud 1 qu'on vient de visiter de notre file &#224; priorit&#233;, et on place le n&#339;ud 2 :</p>
+<p>Le n&#339;ud en bleu repr&#233;sente d&#233;sormais le n&#339;ud en t&#234;te de notre file &#224; priorit&#233;, et j'ai aussi indiqu&#233; la distance parcourue depuis le n&#339;ud initial en indice. Le n&#339;ud 1 poss&#232;de deux arcs qui repr&#233;sentent donc deux possibilit&#233;s pour le moment. L'algorithme prend en compte la distance depuis le n&#339;ud de d&#233;part ainsi que le poids des arcs pour choisir le prochain n&#339;ud &#224; visiter. Les diff&#233;rentes combinaisons actuellement sont donc : 0 + 1 (n&#339;ud 1 vers n&#339;ud 2) et 0 + 1 (1 vers 3). Dans notre cas les deux n&#339;uds sont &#233;quivalents en terme d'efficacit&#233;, mais notre impl&#233;mentation doit bien choisir lequel parcourir et nous imaginerons que l'on visite le n&#339;ud 2 (le n&#339;ud 3 menant directement au plus court chemin, il est plus int&#233;ressant de voir comment notre algorithme va rectifier son tir). Notre file &#224; priorit&#233; contient donc les n&#339;uds 2 et 3 (le 1 a &#233;t&#233; retir&#233;), mais le 2 apparait avant c'est donc celui ci qu'on va visiter au prochain tour :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_2.png" alt="Tour 2" />
 <p class="caption">Tour 2</p>
 </div>
-<p>Notre algorithme nous m&#232;ne au n&#339;ud 2, avec comme distance totale 1. Le point tr&#232;s important ici, est que lors du dernier tour, on avait deux choix possibles d'arcs &#224; emprunter, en choisissant l'un des deux on n'oublie pas de conserver l'autre au cas o&#249; justement ce n'est pas le chemin le plus optimal qu'on vient d'emprunter. Lorsqu'on regarde les voisins du n&#339;ud 2 (en plus du voisin de 1 qu'on n'a pas visit&#233;), on doit choisir entre : 0 + 1 (n&#339;ud 1 vers 3), 1 + 3 (2 vers 3), ou 1 + 10 (2 vers 6). On voit que le minimum est atteint pour 0 + 1, soit le n&#339;ud 1 vers le 3. On enl&#232;ve le n&#339;ud 2 de la file &#224; priorit&#233; (tout en conservant les arcs non emprunt&#233;s), et on y ins&#232;re le n&#339;ud 3 :</p>
+<p>Notre algorithme nous m&#232;ne au n&#339;ud 2, avec comme distance totale 1. Le point tr&#232;s important ici, est que lors du dernier tour, on avait deux choix possibles d'arcs &#224; emprunter, en choisissant l'un des deux on n'oublie pas de conserver l'autre au cas o&#249; justement ce n'est pas le chemin le plus optimal qu'on vient de prendre. Et la file &#224; priorit&#233; est le point essentiel car cette structure se chargera de faire remonter automatiquement le n&#339;ud 3 en t&#234;te si ce dernier devient finalement un choix plus int&#233;ressant. Lorsqu'on ajoute les voisins du n&#339;ud 2 &#224; notre file, on doit choisir entre : 0 + 1 (n&#339;ud 1 vers 3), 1 + 3 (2 vers 3), ou 1 + 10 (2 vers 6). On voit que le minimum est atteint pour 0 + 1, soit le n&#339;ud 1 vers le 3. Notre file &#224; priorit&#233; ne poss&#232;de donc plus le n&#339;ud 2, et a en t&#234;te le n&#339;ud 3 qu'on parcourt lors du prochain tour :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_3.png" alt="Tour 3" />
 <p class="caption">Tour 3</p>
 </div>
-<p>Nous sommes au n&#339;ud 3 avec une distance totale depuis le n&#339;ud de d&#233;part de 1, comme d'habitude on va chercher &#224; comparer nos anciennes possibilit&#233;s &#224; celles qui se sont rajout&#233;es (les voisins de 3). L'algorithme doit donc choisir entre : 1 + 2 (n&#339;ud 3 vers 4), 1 + 4 (3 vers 5), 1 + 3 (2 vers 3), 1 + 10 (2 vers 6). Le choix avec une distance minimale est donc le premier : allant du n&#339;ud 3 vers le n&#339;ud 4. On continue l'algorithme :</p>
+<p>Nous sommes au n&#339;ud 3 avec une distance totale depuis le n&#339;ud de d&#233;part de 1, comme d'habitude on va chercher &#224; comparer nos anciennes possibilit&#233;s &#224; celles qui se sont rajout&#233;es (les voisins de 3). L'algorithme doit donc choisir entre : 1 + 2 (n&#339;ud 3 vers 4), 1 + 4 (3 vers 5), 1 + 3 (2 vers 3), et 1 + 10 (2 vers 6). Le choix avec une distance minimale est donc le premier : allant du n&#339;ud 3 vers le n&#339;ud 4. On continue l'algorithme :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_4.png" alt="Tour 4" />
 <p class="caption">Tour 4</p>
 </div>
-<p>On a enlev&#233; le n&#339;ud 3 de notre file &#224; priorit&#233; et plac&#233; le n&#339;ud 4. On se retrouve avec un nouvel arc possible, et on va comparer de nouveau les diff&#233;rents chemins : 3 + 4 (n&#339;ud 4 vers 6), 1 + 4 (3 vers 5), 1 + 3 (2 vers 3), 1 + 10 (2 vers 6). L'algorithme choisit donc le chemin 2 vers 3 :</p>
+<p>On se retrouve avec un nouvel arc disponible, et on va comparer de nouveau les diff&#233;rents chemins possibles : 3 + 4 (n&#339;ud 4 vers 6), 1 + 4 (3 vers 5), 1 + 3 (2 vers 3), et 1 + 10 (2 vers 6). L'algorithme choisit donc le chemin 2 vers 3 :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_5.png" alt="Tour 5" />
 <p class="caption">Tour 5</p>
 </div>
-<p>Cependant lorsqu'on arrive sur le n&#339;ud 3, on s'aper&#231;oit qu'on a d&#233;j&#224; visit&#233; ce n&#339;ud (il est donc tout &#224; fait inutile de recommencer cette op&#233;ration), et l'algorithme va imm&#233;diatement choisir un autre chemin entre : 3 + 4 (n&#339;ud 4 vers 6), 1 + 4 (3 vers 5), 1 + 10 (2 vers 6). Le chemin choisi est donc celui reliant le n&#339;ud 3 au 5 :</p>
+<p>Cependant lorsqu'on arrive sur le n&#339;ud 3, on s'aper&#231;oit qu'on a d&#233;j&#224; visit&#233; ce n&#339;ud (il est donc tout &#224; fait inutile de recommencer cette op&#233;ration), et l'algorithme va imm&#233;diatement choisir un autre chemin entre : 3 + 4 (n&#339;ud 4 vers 6), 1 + 4 (3 vers 5), et 1 + 10 (2 vers 6). Le chemin choisi est donc celui reliant le n&#339;ud 3 au 5 :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_6.png" alt="Tour 6" />
 <p class="caption">Tour 6</p>
 </div>
-<p>Comme auparavant, le n&#339;ud 3 est enlev&#233; de la file &#224; priorit&#233;, et le 5 rajout&#233;. On prend en compte le nouvel arc possible et on choisit entre : 3 + 4 (n&#339;ud 4 vers 6), 5 + 3 (5 vers 6) et 1 + 10 (2 vers 6). Le premier choix &#233;tant celui avec le plus petit r&#233;sultat, c'est ce qu'on d&#233;cide de r&#233;aliser :</p>
+<p>Comme auparavant, on prend en compte le nouvel arc possible et on choisit entre : 3 + 4 (n&#339;ud 4 vers 6), 5 + 3 (5 vers 6) et 1 + 10 (2 vers 6). Le premier choix &#233;tant celui avec le plus petit r&#233;sultat, c'est ce qu'on d&#233;cide de r&#233;aliser :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_7.png" alt="Tour 7" />
 <p class="caption">Tour 7</p>
 </div>
-<p>On arrive au n&#339;ud vert (et donc celui d'arriv&#233;e), notre algorithme est donc termin&#233; et on a forc&#233;ment trouv&#233; le plus court chemin pour s'y rendre (les autres possibilit&#233;s restants &#233;tant forc&#233;ment des chemins avec une plus longue distance).</p>
-<p>TODO : pourquoi il est rapide, et on ne peut pas vraiment faire mieux</p>
+<p>On arrive au n&#339;ud vert (celui d'arriv&#233;e), notre algorithme a donc termin&#233; et on a trouv&#233; le plus court chemin pour s'y rendre (les autres possibilit&#233;s restantes &#233;tant forc&#233;ment des chemins avec une plus longue distance).</p>
+<p>Cet exemple peut pr&#234;ter &#224; confusion car finalement on a visit&#233; tous les n&#339;uds du graphe ainsi que la plupart des arcs, mais j'ai choisi ceci pour justement montrer au mieux le fonctionnement de l'algorithme et surtout comment ce dernier r&#233;alise son choix pour trouver le chemin optimal en termes de distance. Sur d'&#233;normes graphes, l'algorithme de Dijkstra est tr&#232;s utile car il ne visitera que ce dont il a r&#233;ellement besoin puisque si on r&#233;fl&#233;chit &#224; sa mani&#232;re de fonctionner, on ne peut pas savoir &#224; l'avance si le chemin qu'il emprunte actuellement restera optimal jusqu'au bout (d'o&#249; la n&#233;cessit&#233; de conserver les diff&#233;rents choix rencontr&#233;s lors du parcours), et inversement il se peut que les autres chemins sont en r&#233;alit&#233; pires et qu'il faut donc bien garder celui actuel.</p>
 <h3 id="pseudo-code">Pseudo-code</h3>
 <p>Le pseudo-code de l'algorithme de Dijkstra est donc identique &#224; celui du parcours en profondeur, sauf qu'on utilise une file &#224; priorit&#233; au lieu d'une file, afin d'organiser les &#233;l&#233;ments en fonction de leur distance au n&#339;ud de d&#233;part :</p>
 <pre class="nohighlight"><code>Dijkstra (d&#233;part, arriv&#233;e) :
@@ -251,8 +251,12 @@ function toggle_visibility(id) {
             voisin.distance = n&#339;ud.distance + arc
             Enfiler le voisin</code></pre>
 <h3 id="complexit&#233;">Complexit&#233;</h3>
+<p>La complexit&#233; de cet algorithme peut &#233;norm&#233;ment changer en fonction de son impl&#233;mentation, et il est important de comprendre pourquoi mais surtout comment.</p>
+<p>On sait que notre file &#224; priorit&#233; nous permet deux op&#233;rations d'insertion et de suppression en un temps logarithmique de <span class="math inline">\(O(\log _2 x)\)</span> avec <span class="math inline">\(x\)</span> le nombre d'&#233;l&#233;ments de la file. Dans notre cas, un n&#339;ud peut &#234;tre ajout&#233; &#224; notre file autant de fois qu'il y a d'arcs qui le pr&#233;c&#233;dent, ce qui signifie que dans le pire des cas on aura <span class="math inline">\(M\)</span> &#233;l&#233;ments dans la file &#224; priorit&#233;. De m&#234;me, dans le pire des cas, on devra supprimer ces <span class="math inline">\(M\)</span> &#233;l&#233;ments de la file (si le dernier &#233;l&#233;ment est celui qu'on cherche), r&#233;sultant en <span class="math inline">\(M\)</span> insertions et <span class="math inline">\(M\)</span> suppressions au maximum. Notre complexit&#233; en temps est donc de <span class="math inline">\(O(M \log _2 M + M \log _2 M)\)</span> soit <span class="math inline">\(O(2M \log _2 M)\)</span> qu'on peut simplifier en <span class="math inline">\(O(M \log _2 M)\)</span> car 2 est une constante insignifiante pour des valeurs de <span class="math inline">\(M\)</span> &#233;lev&#233;es.</p>
+<p>Cependant, il est possible d'am&#233;liorer le nombre d'&#233;l&#233;ments dans notre file &#224; priorit&#233; en mettant &#224; jour les valeurs des n&#339;uds d&#233;j&#224; enfil&#233;s, plut&#244;t que de recr&#233;er des &#233;l&#233;ments en plus dans la file. Cette op&#233;ration s'effectue aussi en temps logarithmique, et nous permet de garder au maximum <span class="math inline">\(N\)</span> &#233;l&#233;ments dans notre file. Finalement, on a donc dans le pire des cas <span class="math inline">\(N\)</span> insertions, <span class="math inline">\(N\)</span> suppressions, et <span class="math inline">\(M\)</span> mises &#224; jour d'&#233;l&#233;ments dans la file. Ceci nous donne une nouvelle complexit&#233; en temps de <span class="math inline">\(O(2N \log _2 N + M \log _2 N)\)</span> que l'on peut simplifier en <span class="math inline">\(O(M \log _2 N)\)</span> car dans la plupart des cas on aura <span class="math inline">\(M \geq N\)</span>.</p>
+<p>Enfin, on peut encore am&#233;liorer notre complexit&#233; en temps si l'on utilise une variante de la file &#224; priorit&#233; : le <a href="https://en.wikipedia.org/wiki/Fibonacci_heap">tas de Fibonacci</a>. Cette structure a un temps constant pour l'insertion et la mise &#224; jour d'&#233;l&#233;ments, ce qui nous donne une complexit&#233; finale de <span class="math inline">\(O(N + N \log _2 N + M)\)</span>, et si l'on suppose que de mani&#232;re g&#233;n&#233;rale on a <span class="math inline">\(M \geq N\)</span>, on peut &#233;crire cette complexit&#233; en temps comme ceci : <span class="math inline">\(O(N \log _2 N + M)\)</span>.</p>
 <h3 id="impl&#233;mentation">Impl&#233;mentation</h3>
-<p>Une impl&#233;mentation en C++ (pour avoir <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>) de cet algorithme :</p>
+<p>Une impl&#233;mentation en C++ (pour avoir <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>) de cet algorithme (sans les am&#233;liorations de complexit&#233; propos&#233;es dans la derni&#232;re partie) :</p>
 <a href="javascript:toggle_visibility('dijkstra.cpp');">dijkstra.cpp</a>
 <div id="dijkstra.cpp" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
@@ -315,9 +319,11 @@ vector &lt;Noeud&gt; voisin[NB_NOEUD_MAX];
 
 <span class="dt">int</span> main(<span class="dt">void</span>)
 {
+   <span class="dt">int</span> depart, arrivee;
    <span class="dt">int</span> nbArc;
    <span class="dt">int</span> iArc;
 
+   scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;depart, &amp;arrivee);
    scanf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;nbArc);
 
    <span class="kw">for</span>(iArc = <span class="dv">0</span>; iArc &lt; nbArc; ++iArc) {
@@ -332,13 +338,14 @@ vector &lt;Noeud&gt; voisin[NB_NOEUD_MAX];
       voisin[noeud2].push_back(nouveau);
    }
 
-   printf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, dijkstra(<span class="dv">1</span>, <span class="dv">6</span>));
+   printf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, dijkstra(depart, arrivee));
 
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
-<p>Le graphe d'entr&#233;e est d&#233;crit selon une liste d'arcs du style <em>n&#339;ud1 n&#339;ud2 poids</em> :</p>
-<pre class="nohighlight"><code>8
+<p>En entr&#233;e, pour d&#233;crire notre graphe on va d'abord indiquer le n&#339;ud de d&#233;part et d'arriv&#233;e, puis le nombre d'arcs et enfin la liste de ces derniers du style <code>n&#339;ud1 n&#339;ud2 poids</code> :</p>
+<pre class="nohighlight"><code>1 6
+8
 1 2 1
 1 3 1
 2 3 3
@@ -351,6 +358,44 @@ vector &lt;Noeud&gt; voisin[NB_NOEUD_MAX];
 <pre class="nohighlight"><code>7</code></pre>
 <p>La structure du code est identique &#224; celle du parcours en profondeur, on doit juste utiliser une structure afin de repr&#233;senter nos n&#339;uds (du graphe, et de notre file) et aussi d&#233;crire l'op&#233;rateur <code>&lt;</code> pour que l'impl&#233;mentation de la <code>priority_queue</code> puisse fonctionner correctement en fonction de la variable <code>distance</code> de chacun des n&#339;uds.</p>
 <h3 id="cas-dutilisation">Cas d'utilisation</h3>
+<p>J'ai pr&#233;cis&#233; au d&#233;but de mes explications que l'algorithme de Dijkstra ne s'appliquait que sur des graphes pond&#233;r&#233;s positivement (ou nul), mais pourquoi ? Voici tout d'abord un contre-exemple pour prouver cette propri&#233;t&#233; :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/contre_exemple.png" alt="Graphe pond&#233;r&#233; n&#233;gativement" />
+<p class="caption">Graphe pond&#233;r&#233; n&#233;gativement</p>
+</div>
+<p>Regardons ce qui se passe si on utilise notre algorithme pour trouver le plus court chemin entre le n&#339;ud 1 et 4 :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Tour</th>
+<th align="center">N&#339;ud actuel</th>
+<th align="center">Distance totale</th>
+<th align="left">Choix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="left"><strong>0 + 1 (1 vers 2)</strong> ou 0 + 10 (1 vers 3)</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="left"><strong>1 - 100 (2 vers 4)</strong> ou 0 + 10 (1 vers 3)</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">-99</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>On voit bien que le chemin trouv&#233; a une distance totale de -99, cependant on peut faire mieux en empruntant le chemin suivant : 1, 3, 4 pour une distance de -990. L'algorithme ne voit pas le n&#339;ud 3 comme int&#233;ressant car l'arc permettant d'y acc&#233;der a un poids de 10 alors que sur le chemin actuel notre poids est bien inf&#233;rieur &#224; ce dernier, du coup on n'atteindra jamais l'arc de -1000 s&#233;parant le n&#339;ud 3 et 4 qui offre un chemin optimal jusqu'&#224; l'arriv&#233;e.</p>
+<p>L'algorithme de Dijkstra ne fonctionne donc pas sur ce genre de graphe, et ceci pour une simple raison : c'est un algorithme dit <a href="https://en.wikipedia.org/wiki/Greedy_algorithm"><strong>glouton</strong></a>. Cela signifie qu'il va chercher &#224; faire des choix locaux optimaux (c'est-&#224;-dire &#224; un instant <em>t</em> bien pr&#233;cis), pour esp&#233;rer trouver un choix global optimal aussi. Dans notre cas, on cherche &#224; emprunter &#224; un instant <em>t</em> le chemin avec le poids le plus faible possible (tout en consid&#233;rant la distance d&#233;j&#224; parcourue), pour esp&#233;rer tomber sur le n&#339;ud d'arriv&#233;e avec une distance minimale (ce qui est d&#233;montrable). L'algorithme se base donc sur le fait que rajouter un arc ne peut jamais am&#233;liorer le chemin (puisque les poids sont forc&#233;ment positifs ou nuls), et il ne peut donc pas fonctionner avec des poids n&#233;gatifs (qui eux peuvent dans certains cas am&#233;liorer le co&#251;t total).</p>
 <h2 id="ford-bellman">Ford-Bellman</h2>
 <h2 id="a">A* ?</h2>
 <h2 id="floyd-warshall">Floyd-Warshall ?</h2>
