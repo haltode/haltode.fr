@@ -2,8 +2,8 @@ Plus court chemin
 =================
 algo/structure/graphe/
 
-Publié le : 20/03/2016  
-*Modifié le : 20/03/2016*
+Publié le : 26/03/2016  
+*Modifié le : 26/03/2016*
 
 ## Introduction
 
@@ -55,7 +55,7 @@ Comme auparavant, on prend en compte le nouvel arc possible et on choisit entre 
 
 On arrive au nœud vert (celui d'arrivée), notre algorithme a donc terminé et on a trouvé le plus court chemin pour s'y rendre (les autres possibilités restantes étant forcément des chemins avec une plus longue distance).
 
-Cet exemple peut prêter à confusion car finalement on a visité tous les nœuds du graphe ainsi que la plupart des arcs, mais j'ai choisi ceci pour justement montrer au mieux le fonctionnement de l'algorithme et surtout comment ce dernier réalise son choix pour trouver le chemin optimal en termes de distance. Sur d'énormes graphes, l'algorithme de Dijkstra est très utile car il ne visitera que ce dont il a réellement besoin puisque si on réfléchit à sa manière de fonctionner, on ne peut pas savoir à l'avance si le chemin qu'il emprunte actuellement restera optimal jusqu'au bout (d'où la nécessité de conserver les différents choix rencontrés lors du parcours), et inversement il se peut que les autres chemins sont en réalité pires et qu'il faut donc bien garder celui actuel.
+Cet exemple peut prêter à confusion car finalement on a visité tous les nœuds du graphe ainsi que la plupart des arcs, mais j'ai choisi ceci pour justement montrer au mieux le fonctionnement de l'algorithme et surtout comment ce dernier réalise son choix pour trouver le chemin optimal en termes de distance. Sur d'énormes graphes, l'algorithme de Dijkstra est très utile car il ne visitera que ce dont il a réellement besoin puisque si on réfléchit à sa manière de fonctionner, on ne peut pas savoir à l'avance si le chemin qu'il emprunte actuellement restera optimal jusqu'au bout (d'où la nécessité de conserver les différents choix rencontrés lors du parcours), et inversement il se peut que les autres chemins soient en réalité pires et qu'il faut donc bien garder celui actuel.
 
 ### Pseudo-code
 
@@ -127,9 +127,25 @@ On voit bien que le chemin trouvé a une distance totale de -99, cependant on pe
 
 L'algorithme de Dijkstra ne fonctionne donc pas sur ce genre de graphe, et ceci pour une simple raison : c'est un algorithme dit [**glouton**](https://en.wikipedia.org/wiki/Greedy_algorithm). Cela signifie qu'il va chercher à faire des choix locaux optimaux (c'est-à-dire à un instant *t* bien précis), pour espérer trouver un choix global optimal aussi. Dans notre cas, on cherche à emprunter à un instant *t* le chemin avec le poids le plus faible possible (tout en considérant la distance déjà parcourue), pour espérer tomber sur le nœud d'arrivée avec une distance minimale (ce qui est démontrable). L'algorithme se base donc sur le fait que rajouter un arc ne peut jamais améliorer le chemin (puisque les poids sont forcément positifs ou nuls), et il ne peut donc pas fonctionner avec des poids négatifs (qui eux peuvent dans certains cas améliorer le coût total).
 
-## Ford-Bellman
+On pourrait penser qu'une solution face à ce problème serait de rajouter à tous les arcs un certain poids afin de les rendre positifs, mais encore une fois cette idée ne fonctionne pas :
 
-## A* ?
+![Contre-exemple](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/contre_exemple2.png)
+
+A gauche un graphe avec des pondérations négatives, et à droite l'équivalent mais cette fois on a rajouté 4 à chaque poids pour n'avoir que des arcs positifs ou nuls. On veut dans les deux cas trouver le plus court chemin entre les nœuds 1 et 4 et on voit clairement que dans notre graphe original, le chemin optimal est 1, 2, 3, 4, mais dans notre nouveau graphe avec le changement de pondération, le chemin 1, 4 est plus optimal. Il n'est donc pas possible d'utiliser l'algorithme de Dijkstra sur un graphe qui n'a pas naturellement de pondérations positives ou nulles.
+
+### A* ?
+
+## Bellman-Ford
+
+### Principe
+
+### Exemple
+
+### Pseudo-code
+
+### Complexité
+
+### Implémentation
 
 ## Floyd-Warshall ?
 

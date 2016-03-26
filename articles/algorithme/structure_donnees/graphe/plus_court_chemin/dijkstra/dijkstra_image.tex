@@ -228,4 +228,36 @@
    
 \end{tikzpicture}
 
+% Contre-exemple 2 : ajout pour compenser les poids négatifs
+
+\vspace{1cm}
+
+\begin{tikzpicture}[ shorten >=1pt, auto, node distance = 3cm, thick, 
+   node/.style = {circle, draw,
+                     font = \sffamily\Large\bfseries}]
+   \node[node, fill = blue!20] (1) {$1$};
+   \node[node] (2) [below right = 1cm and 1.5cm of 1]{$2$};
+   \node[node] (3) [right = 2cm of 2]{$3$};
+   \node[node, fill = green!20] (4) [right = 6cm of 1]{$4$};
+
+   \path [ultra thick](1) edge node {$2$} (2);
+   \path (1) edge node {$4$} (4);
+   \path [ultra thick](2) edge node {$2$} (3);
+   \path [ultra thick](3) edge node {$-4$} (4);
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}[ shorten >=1pt, auto, node distance = 3cm, thick, 
+   node/.style = {circle, draw,
+                     font = \sffamily\Large\bfseries}]
+   \node[node, fill = blue!20] (1) {$1$};
+   \node[node] (2) [below right = 1cm and 1.5cm of 1]{$2$};
+   \node[node] (3) [right = 2cm of 2]{$3$};
+   \node[node, fill = green!20] (4) [right = 6cm of 1]{$4$};
+
+   \path (1) edge node {$6$} (2);
+   \path [ultra thick](1) edge node {$8$} (4);
+   \path (2) edge node {$6$} (3);
+   \path (3) edge node {$0$} (4);
+\end{tikzpicture}
+
 \end{document}

@@ -172,13 +172,12 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="plus-court-chemin">Plus court chemin</h1></a>
-<p>Publi&#233; le : 20/03/2016<br />
-<em>Modifi&#233; le : 20/03/2016</em></p>
+<p>Publi&#233; le : 26/03/2016<br />
+<em>Modifi&#233; le : 26/03/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#dijkstra">Dijkstra</a></li>
-<li><a href="#ford-bellman">Ford-Bellman</a></li>
-<li><a href="#a">A* ?</a></li>
+<li><a href="#bellman-ford">Bellman-Ford</a></li>
 <li><a href="#floyd-warshall">Floyd-Warshall ?</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
@@ -231,7 +230,7 @@ function toggle_visibility(id) {
 <p class="caption">Tour 7</p>
 </div>
 <p>On arrive au n&#339;ud vert (celui d'arriv&#233;e), notre algorithme a donc termin&#233; et on a trouv&#233; le plus court chemin pour s'y rendre (les autres possibilit&#233;s restantes &#233;tant forc&#233;ment des chemins avec une plus longue distance).</p>
-<p>Cet exemple peut pr&#234;ter &#224; confusion car finalement on a visit&#233; tous les n&#339;uds du graphe ainsi que la plupart des arcs, mais j'ai choisi ceci pour justement montrer au mieux le fonctionnement de l'algorithme et surtout comment ce dernier r&#233;alise son choix pour trouver le chemin optimal en termes de distance. Sur d'&#233;normes graphes, l'algorithme de Dijkstra est tr&#232;s utile car il ne visitera que ce dont il a r&#233;ellement besoin puisque si on r&#233;fl&#233;chit &#224; sa mani&#232;re de fonctionner, on ne peut pas savoir &#224; l'avance si le chemin qu'il emprunte actuellement restera optimal jusqu'au bout (d'o&#249; la n&#233;cessit&#233; de conserver les diff&#233;rents choix rencontr&#233;s lors du parcours), et inversement il se peut que les autres chemins sont en r&#233;alit&#233; pires et qu'il faut donc bien garder celui actuel.</p>
+<p>Cet exemple peut pr&#234;ter &#224; confusion car finalement on a visit&#233; tous les n&#339;uds du graphe ainsi que la plupart des arcs, mais j'ai choisi ceci pour justement montrer au mieux le fonctionnement de l'algorithme et surtout comment ce dernier r&#233;alise son choix pour trouver le chemin optimal en termes de distance. Sur d'&#233;normes graphes, l'algorithme de Dijkstra est tr&#232;s utile car il ne visitera que ce dont il a r&#233;ellement besoin puisque si on r&#233;fl&#233;chit &#224; sa mani&#232;re de fonctionner, on ne peut pas savoir &#224; l'avance si le chemin qu'il emprunte actuellement restera optimal jusqu'au bout (d'o&#249; la n&#233;cessit&#233; de conserver les diff&#233;rents choix rencontr&#233;s lors du parcours), et inversement il se peut que les autres chemins soient en r&#233;alit&#233; pires et qu'il faut donc bien garder celui actuel.</p>
 <h3 id="pseudo-code">Pseudo-code</h3>
 <p>Le pseudo-code de l'algorithme de Dijkstra est donc identique &#224; celui du parcours en profondeur, sauf qu'on utilise une file &#224; priorit&#233; au lieu d'une file, afin d'organiser les &#233;l&#233;ments en fonction de leur distance au n&#339;ud de d&#233;part :</p>
 <pre class="nohighlight"><code>Dijkstra (d&#233;part, arriv&#233;e) :
@@ -396,8 +395,19 @@ vector &lt;Noeud&gt; voisin[NB_NOEUD_MAX];
 </table>
 <p>On voit bien que le chemin trouv&#233; a une distance totale de -99, cependant on peut faire mieux en empruntant le chemin suivant : 1, 3, 4 pour une distance de -990. L'algorithme ne voit pas le n&#339;ud 3 comme int&#233;ressant car l'arc permettant d'y acc&#233;der a un poids de 10 alors que sur le chemin actuel notre poids est bien inf&#233;rieur &#224; ce dernier, du coup on n'atteindra jamais l'arc de -1000 s&#233;parant le n&#339;ud 3 et 4 qui offre un chemin optimal jusqu'&#224; l'arriv&#233;e.</p>
 <p>L'algorithme de Dijkstra ne fonctionne donc pas sur ce genre de graphe, et ceci pour une simple raison : c'est un algorithme dit <a href="https://en.wikipedia.org/wiki/Greedy_algorithm"><strong>glouton</strong></a>. Cela signifie qu'il va chercher &#224; faire des choix locaux optimaux (c'est-&#224;-dire &#224; un instant <em>t</em> bien pr&#233;cis), pour esp&#233;rer trouver un choix global optimal aussi. Dans notre cas, on cherche &#224; emprunter &#224; un instant <em>t</em> le chemin avec le poids le plus faible possible (tout en consid&#233;rant la distance d&#233;j&#224; parcourue), pour esp&#233;rer tomber sur le n&#339;ud d'arriv&#233;e avec une distance minimale (ce qui est d&#233;montrable). L'algorithme se base donc sur le fait que rajouter un arc ne peut jamais am&#233;liorer le chemin (puisque les poids sont forc&#233;ment positifs ou nuls), et il ne peut donc pas fonctionner avec des poids n&#233;gatifs (qui eux peuvent dans certains cas am&#233;liorer le co&#251;t total).</p>
-<h2 id="ford-bellman">Ford-Bellman</h2>
-<h2 id="a">A* ?</h2>
+<p>On pourrait penser qu'une solution face &#224; ce probl&#232;me serait de rajouter &#224; tous les arcs un certain poids afin de les rendre positifs, mais encore une fois cette id&#233;e ne fonctionne pas :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/contre_exemple2.png" alt="Contre-exemple" />
+<p class="caption">Contre-exemple</p>
+</div>
+<p>A gauche un graphe avec des pond&#233;rations n&#233;gatives, et &#224; droite l'&#233;quivalent mais cette fois on a rajout&#233; 4 &#224; chaque poids pour n'avoir que des arcs positifs ou nuls. On veut dans les deux cas trouver le plus court chemin entre les n&#339;uds 1 et 4 et on voit clairement que dans notre graphe original, le chemin optimal est 1, 2, 3, 4, mais dans notre nouveau graphe avec le changement de pond&#233;ration, le chemin 1, 4 est plus optimal. Il n'est donc pas possible d'utiliser l'algorithme de Dijkstra sur un graphe qui n'a pas naturellement de pond&#233;rations positives ou nulles.</p>
+<h3 id="a">A* ?</h3>
+<h2 id="bellman-ford">Bellman-Ford</h2>
+<h3 id="principe-1">Principe</h3>
+<h3 id="exemple-1">Exemple</h3>
+<h3 id="pseudo-code-1">Pseudo-code</h3>
+<h3 id="complexit&#233;-1">Complexit&#233;</h3>
+<h3 id="impl&#233;mentation-1">Impl&#233;mentation</h3>
 <h2 id="floyd-warshall">Floyd-Warshall ?</h2>
 <h2 id="conclusion">Conclusion</h2>
  
