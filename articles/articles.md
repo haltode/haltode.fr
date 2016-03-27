@@ -10,6 +10,7 @@ La liste des articles publiés :
 
          - [Introduction aux algorithmes](/algo/general/introduction.html)
          - [Comment et où s'entraîner ?](/algo/general/entrainement.html)
+         - Approche et stratégie : [dynamique](/algo/general/approche/dynamique.html)
 
     - Structure de données :
 
