@@ -172,10 +172,187 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="algorithme-dynamique">Algorithme dynamique</h1></a>
-<p>Publi&#233; le : 27/03/2016<br />
-<em>Modifi&#233; le : 27/03/2016</em></p>
+<p>Publi&#233; le : 28/03/2016<br />
+<em>Modifi&#233; le : 28/03/2016</em></p>
 <ul id="summary">
+<li><a href="#principe">Principe</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#utilisation">Utilisation</a></li>
 </ul>
+<h2 id="principe">Principe</h2>
+<p>La programmation dynamique (<em>dynamic programming</em> ou encore <em>dynamic optimization</em> en anglais) est une technique d'optimisation d'un algorithme visant &#224; &#233;viter de recalculer des sous-probl&#232;mes en les stockant en m&#233;moire. L'id&#233;e est simple, mais le gain sur la complexit&#233; en temps peut &#234;tre consid&#233;rable, et cette technique est tr&#232;s largement utilis&#233;e dans de nombreux algorithmes.</p>
+<p>En r&#233;alit&#233;, vous utilisez ce principe tr&#232;s souvent sans m&#234;me vous en rendre compte. Si je vous demande de me calculer le r&#233;sultat de &quot;1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1&quot; vous mettrez un certain temps afin de trouver la somme des termes, mais si je rajoute &quot;+ 1&quot; &#224; la fin de ce calcul, vous pouvez me r&#233;pondre instantan&#233;ment le r&#233;sultat de la nouvelle expression. Vous avez naturellement stock&#233; en m&#233;moire le r&#233;sultat de l'expression originale, que vous avez ensuite r&#233;utilis&#233; pour trouver le r&#233;sultat d'une nouvelle expression.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Voici un exemple de fonction en C calculant le <code>n</code>i&#232;me terme de la <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence">suite de Fibonacci</a>:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> fibonacci(<span class="dt">int</span> n)
+{
+   <span class="kw">if</span>(n &lt;= <span class="dv">1</span>)
+      <span class="kw">return</span> n;
+   <span class="kw">return</span> fibonacci(n - <span class="dv">1</span>) + fibonacci(n - <span class="dv">2</span>);
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> n;
+   
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;n);
+   printf(<span class="st">&quot;%lld</span><span class="ch">\n</span><span class="st">&quot;</span>, fibonacci(n));
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+<p>J'utilise le type <code>unsigned long long</code> car on risque d'avoir des nombres tr&#232;s grands &#224; manipuler. Maintenant, testons l'efficacit&#233; du programme :</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">time</span> ./fibonacci
+<span class="kw">20</span>
+<span class="kw">6765</span>
+<span class="kw">./fibonacci</span>  0,00s user 0,00s system 0% cpu 1,367 total
+
+$ <span class="kw">time</span> ./fibonacci
+<span class="kw">30</span>
+<span class="kw">832040</span>
+<span class="kw">./fibonacci</span>  0,02s user 0,00s system 1% cpu 1,221 total
+
+$ <span class="kw">time</span> ./fibonacci
+<span class="kw">40</span>
+<span class="kw">102334155</span>
+<span class="kw">./fibonacci</span>  1,47s user 0,00s system 52% cpu 2,789 total
+
+$ <span class="kw">time</span> ./fibonacci
+<span class="kw">45</span>
+<span class="kw">1134903170</span>
+<span class="kw">./fibonacci</span>  16,73s user 0,04s system 87% cpu 19,079 total
+
+$ <span class="kw">time</span> ./fibonacci
+<span class="kw">50</span>
+<span class="kw">12586269025</span>
+<span class="kw">./fibonacci</span>  186,12s user 0,12s system 98% cpu 3:09,48 total
+
+$ <span class="kw">time</span> ./fibonacci
+<span class="kw">55</span>
+<span class="kw">139583862445</span>
+<span class="kw">./fibonacci</span>  2080,48s user 2,38s system 98% cpu 35:19,94 total</code></pre></div>
+<p>On remarque que le temps n&#233;cessaire au programme afin de calculer le r&#233;sultat cro&#238;t tr&#232;s rapidement, et cela est d&#251; au fait que notre impl&#233;mentation a une complexit&#233; <strong>exponentielle</strong>.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/general/approche/dynamique/representation_exp.png" alt="Repr&#233;sentation graphique de la fonction exponentielle" />
+<p class="caption">Repr&#233;sentation graphique de la fonction exponentielle</p>
+</div>
+<p>La raison de cette lenteur est que le nombre d'appels r&#233;cursifs est exponentiel, prenons l'exemple du calcul du 5&#232;me terme de la suite :</p>
+<pre><code>fibonacci(5) = 5 :
+   fibonacci(4) + fibonacci(3)
+
+   fibonacci(4) = 3 :
+      fibonacci(3) + fibonacci(2)
+
+      fibonacci(3) = 2 :
+         fibonacci(2) + fibonacci(1)
+
+         fibonacci(2) = 1 :
+            fibonacci(1) + fibonacci(0)
+
+            fibonacci(1) = 1
+            fibonacci(0) = 0
+
+         fibonacci(1) = 1
+      fibonacci(2) = 1 :
+         fibonacci(1) + fibonacci(0)
+
+         fibonacci(1) = 1
+         fibonacci(0) = 0
+
+   fibonacci(3) = 2 :
+      fibonacci(2) + fibonacci(1)
+
+      fibonacci(2) = 1 :
+         fibonacci(1) + fibonacci(0)
+
+         fibonacci(1) = 1
+         fibonacci(0) = 0
+
+      fibonacci(1) = 1</code></pre>
+<p>Plusieurs appels sont r&#233;p&#233;t&#233;s inutilement ici (<code>fibonacci(2)</code> et <code>fibonacci(3)</code> notamment), et ce nombre de r&#233;p&#233;titions ne fait qu'augmenter au fur et &#224; mesure que l'entr&#233;e augmente. Cela r&#233;sulte donc en une impl&#233;mentation <strong>extr&#234;mement lente</strong>.</p>
+<p>Voici le m&#234;me programme, mais dynamis&#233; cette fois ci :</p>
+<a href="javascript:toggle_visibility('fibonacci_dyn.c');">fibonacci_dyn.c</a>
+<div id="fibonacci_dyn.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define N_MAX 100000</span>
+<span class="ot">#define PAS_CALCULE -1</span>
+
+<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> resultat[N_MAX + <span class="dv">1</span>];
+
+<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> fibonacci(<span class="dt">int</span> n)
+{
+   <span class="kw">if</span>(n &lt;= <span class="dv">1</span>)
+      <span class="kw">return</span> n;
+   <span class="kw">if</span>(resultat[n] != PAS_CALCULE)
+      <span class="kw">return</span> resultat[n];
+
+   resultat[n] = fibonacci(n - <span class="dv">1</span>) + fibonacci(n - <span class="dv">2</span>);
+   <span class="kw">return</span> resultat[n];
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> n;
+   <span class="dt">int</span> iRes;
+   
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;n);
+
+   <span class="kw">for</span>(iRes = <span class="dv">0</span>; iRes &lt;= n; ++iRes)
+      resultat[iRes] = PAS_CALCULE;
+
+   printf(<span class="st">&quot;%lld</span><span class="ch">\n</span><span class="st">&quot;</span>, fibonacci(n));
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>On a d&#233;sormais un tableau qui va retenir les r&#233;sultats qu'on a d&#233;j&#224; calcul&#233; pour &#233;viter de faire des appels r&#233;cursifs suppl&#233;mentaires qui au final sont inutiles. Ce tableau est initialis&#233; pour diff&#233;rencier les cas o&#249; on a d&#233;j&#224; calcul&#233; le r&#233;sultat et le cas o&#249; il faut le calculer, puis dans notre fonction <code>fibonacci</code> on rajoute un test pour voir si on conna&#238;t d&#233;j&#224; le r&#233;sultat pour le <code>n</code>&#232;me terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.</p>
+<p>Cette simple am&#233;lioration a un impact &#233;norme sur notre programme :</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">time</span> ./fibonacci_dyn
+<span class="kw">100</span>
+<span class="kw">3736710778780434371</span>
+<span class="kw">./fibonacci_dyn</span>  0,00s user 0,00s system 0% cpu 38,304 total
+
+$ <span class="kw">time</span> ./fibonacci_dyn
+<span class="kw">1000</span>
+<span class="kw">817770325994397771</span>
+<span class="kw">./fibonacci_dyn</span>  0,00s user 0,00s system 0% cpu 2,635 total
+
+$ <span class="kw">time</span> ./fibonacci_dyn
+<span class="kw">10000</span>
+<span class="kw">-2872092127636481573</span>
+<span class="kw">./fibonacci_dyn</span>  0,00s user 0,00s system 0% cpu 2,314 total
+
+$ <span class="kw">time</span> ./fibonacci_dyn
+<span class="kw">100000</span>
+<span class="kw">2754320626097736315</span>
+<span class="kw">./fibonacci_dyn</span>  0,01s user 0,01s system 0% cpu 5,043 total</code></pre></div>
+<p><em>Les r&#233;sultats ne sont pas corrects car ils sont tellement immenses qu'on ne peut pas les stocker dans nos simples variables.</em></p>
+<p>On voit que cette fois ci, notre impl&#233;mentation n'a pas de complexit&#233; exponentielle, et elle est donc bien plus efficace que l'originale.</p>
+<p>Pour bien comparer, voici l'exemple du calcul du 5&#232;me terme, mais version dynamis&#233; :</p>
+<pre><code>fibonacci(5) = 5 :
+   fibonacci(4) + fibonacci(3)
+
+   fibonacci(4) = 3 :
+      fibonacci(3) + fibonacci(2)
+
+      fibonacci(3) = 2 :
+         fibonacci(2) + fibonacci(1)
+
+         fibonacci(2) = 1 :
+            fibonacci(1) + fibonacci(0)
+
+            fibonacci(1) = 1
+            fibonacci(0) = 0
+
+         fibonacci(1) = 1
+      fibonacci(2) = 1 (DEJA CALCULE)
+
+   fibonacci(3) = 2 (DEJA CALCULE)</code></pre>
+<p>On calcule uniquement ce dont on a besoin une fois, et on le r&#233;utilise ensuite.</p>
+<h2 id="utilisation">Utilisation</h2>
+<p>Dynamiser un algorithme peut donc drastiquement changer sa complexit&#233; en temps.</p>
  
       <!-- ------------ -->
 
