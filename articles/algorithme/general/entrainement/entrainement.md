@@ -17,5 +17,5 @@ En voici une liste non exhaustive :
 - [HackerRank](https://www.hackerrank.com/domains/algorithms/warmup) : beaucoup d'exercices répartis en différentes catégories sont disponibles pour s'entrainer en algorithmie.
 - [Project Euler](https://projecteuler.net/) : des problèmes plutôt orientés mathématiques, mais qui nécessitent des algorithmes bien utiles pour être résolus.
 - [Sphere online judge](http://www.spoj.com/problems/classical/) : énorme réserve à exercice en tous genres, dans toutes les catégories.
-- [Topcode](https://www.topcoder.com/) : des challenges dans différents domaines (rémunérés pour certains), mais le site contient surtout pas mal de tutoriels et de références intéressantes, ainsi que beaucoup d'exercices disponibles.
+- [Topcoder](https://www.topcoder.com/) : des challenges dans différents domaines (rémunérés pour certains), mais le site contient surtout pas mal de tutoriels et de références intéressantes, ainsi que beaucoup d'exercices disponibles.
 - [Google Code Jam](https://code.google.com/codejam/) : un concours international est mis en place par Google chaque année à travers différentes épreuves de sélection.
