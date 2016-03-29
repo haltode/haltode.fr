@@ -172,16 +172,26 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="algorithme-dynamique">Algorithme dynamique</h1></a>
-<p>Publi&#233; le : 28/03/2016<br />
-<em>Modifi&#233; le : 28/03/2016</em></p>
+<p>Publi&#233; le : 29/03/2016<br />
+<em>Modifi&#233; le : 29/03/2016</em></p>
 <ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#exemple">Exemple</a></li>
-<li><a href="#utilisation">Utilisation</a></li>
+<li><a href="#optimisation">Optimisation</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
+<h2 id="introduction">Introduction</h2>
+<p>Le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour r&#233;gner</a> est assez commun en algorithmique, et celui-ci repose sur une id&#233;e simple :</p>
+<ul>
+<li>D&#233;couper un probl&#232;me en sous-probl&#232;me plus simple (de mani&#232;re <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursive</a>).</li>
+<li>R&#233;soudre les sous-probl&#232;mes et combiner leurs solutions pour r&#233;soudre le probl&#232;me initial.</li>
+</ul>
+<p>Il y a de nombreux domaines dans laquelle cette m&#233;thode excelle (<a href="/algo/recherche/dichotomie.html">dichotomie</a>, <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, etc.), mais l&#224; o&#249; elle atteint ses limites c'est lorsque les sous-probl&#232;mes rencontr&#233;s ne sont pas forc&#233;ment unique. Dans ce cas, on en vient &#224; recalculer beaucoup de sous-probl&#232;mes qu'on a d&#233;j&#224; r&#233;solus, ce qui rend notre programme tr&#232;s lent, voir inutilisable.</p>
+<p>La programmation dynamique est un moyen de pallier ce probl&#232;me d'efficacit&#233; du programme, en offrant une solution simple et facile &#224; mettre en place.</p>
 <h2 id="principe">Principe</h2>
-<p>La programmation dynamique (<em>dynamic programming</em> ou encore <em>dynamic optimization</em> en anglais) est une technique d'optimisation d'un algorithme visant &#224; &#233;viter de recalculer des sous-probl&#232;mes en les stockant en m&#233;moire. L'id&#233;e est simple, mais le gain sur la complexit&#233; en temps peut &#234;tre consid&#233;rable, et cette technique est tr&#232;s largement utilis&#233;e dans de nombreux algorithmes.</p>
-<p>En r&#233;alit&#233;, vous utilisez ce principe tr&#232;s souvent sans m&#234;me vous en rendre compte. Si je vous demande de me calculer le r&#233;sultat de &quot;1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1&quot; vous mettrez un certain temps afin de trouver la somme des termes, mais si je rajoute &quot;+ 1&quot; &#224; la fin de ce calcul, vous pouvez me r&#233;pondre instantan&#233;ment le r&#233;sultat de la nouvelle expression. Vous avez naturellement stock&#233; en m&#233;moire le r&#233;sultat de l'expression originale, que vous avez ensuite r&#233;utilis&#233; pour trouver le r&#233;sultat d'une nouvelle expression.</p>
+<p>La programmation dynamique (<em>dynamic programming</em> ou encore <em>dynamic optimization</em> en anglais) est une technique d'optimisation d'un algorithme visant &#224; &#233;viter de recalculer des sous-probl&#232;mes en stockant les r&#233;sultats en m&#233;moire. L'id&#233;e est simple, mais le gain sur la complexit&#233; en temps peut &#234;tre consid&#233;rable, et cette technique est tr&#232;s largement utilis&#233;e dans de nombreux algorithmes.</p>
+<p>En r&#233;alit&#233;, vous utilisez ce principe tr&#232;s souvent sans m&#234;me vous en rendre compte. Si je vous demande de me calculer le r&#233;sultat de &quot;1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1&quot; vous mettrez un certain temps afin de trouver la somme des termes, mais si je rajoute &quot;+ 1&quot; &#224; la fin de ce calcul, vous pouvez me r&#233;pondre instantan&#233;ment le r&#233;sultat de la nouvelle expression. Vous avez naturellement stock&#233; en m&#233;moire le r&#233;sultat de l'expression originale, que vous avez ensuite r&#233;utilis&#233; pour trouver le r&#233;sultat d'une nouvelle expression sans avoir besoin de refaire le calcul en entier.</p>
 <h2 id="exemple">Exemple</h2>
 <p>Voici un exemple de fonction en C calculant le <code>n</code>i&#232;me terme de la <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence">suite de Fibonacci</a>:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
@@ -202,7 +212,7 @@ function toggle_visibility(id) {
 
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
-<p>J'utilise le type <code>unsigned long long</code> car on risque d'avoir des nombres tr&#232;s grands &#224; manipuler. Maintenant, testons l'efficacit&#233; du programme :</p>
+<p>J'utilise le type <code>unsigned long long</code> car on risque d'avoir des nombres tr&#232;s grands &#224; manipuler. Maintenant, testons l'efficacit&#233; du programme sur diff&#233;rentes entr&#233;es (20, 30, 40, 45, 50, 55) :</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">time</span> ./fibonacci
 <span class="kw">20</span>
 <span class="kw">6765</span>
@@ -232,7 +242,7 @@ $ <span class="kw">time</span> ./fibonacci
 <span class="kw">55</span>
 <span class="kw">139583862445</span>
 <span class="kw">./fibonacci</span>  2080,48s user 2,38s system 98% cpu 35:19,94 total</code></pre></div>
-<p>On remarque que le temps n&#233;cessaire au programme afin de calculer le r&#233;sultat cro&#238;t tr&#232;s rapidement, et cela est d&#251; au fait que notre impl&#233;mentation a une complexit&#233; <strong>exponentielle</strong>.</p>
+<p>On remarque que le temps n&#233;cessaire au programme afin de calculer le r&#233;sultat cro&#238;t <strong>tr&#232;s rapidement</strong>, et cela est d&#251; au fait que notre impl&#233;mentation a une complexit&#233; <strong>exponentielle</strong>.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/general/approche/dynamique/representation_exp.png" alt="Repr&#233;sentation graphique de la fonction exponentielle" />
 <p class="caption">Repr&#233;sentation graphique de la fonction exponentielle</p>
@@ -270,7 +280,7 @@ $ <span class="kw">time</span> ./fibonacci
          fibonacci(0) = 0
 
       fibonacci(1) = 1</code></pre>
-<p>Plusieurs appels sont r&#233;p&#233;t&#233;s inutilement ici (<code>fibonacci(2)</code> et <code>fibonacci(3)</code> notamment), et ce nombre de r&#233;p&#233;titions ne fait qu'augmenter au fur et &#224; mesure que l'entr&#233;e augmente. Cela r&#233;sulte donc en une impl&#233;mentation <strong>extr&#234;mement lente</strong>.</p>
+<p>Plusieurs appels sont r&#233;p&#233;t&#233;s inutilement ici (<code>fibonacci(2)</code> et <code>fibonacci(3)</code> notamment), et ce nombre de r&#233;p&#233;titions ne fait qu'augmenter au fur et &#224; mesure que l'entr&#233;e s'agrandit. Cela r&#233;sulte donc en une impl&#233;mentation <strong>extr&#234;mement lente</strong>.</p>
 <p>Voici le m&#234;me programme, mais dynamis&#233; cette fois ci :</p>
 <a href="javascript:toggle_visibility('fibonacci_dyn.c');">fibonacci_dyn.c</a>
 <div id="fibonacci_dyn.c" style="display: none;">
@@ -307,7 +317,7 @@ $ <span class="kw">time</span> ./fibonacci
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
-<p>On a d&#233;sormais un tableau qui va retenir les r&#233;sultats qu'on a d&#233;j&#224; calcul&#233; pour &#233;viter de faire des appels r&#233;cursifs suppl&#233;mentaires qui au final sont inutiles. Ce tableau est initialis&#233; pour diff&#233;rencier les cas o&#249; on a d&#233;j&#224; calcul&#233; le r&#233;sultat et le cas o&#249; il faut le calculer, puis dans notre fonction <code>fibonacci</code> on rajoute un test pour voir si on conna&#238;t d&#233;j&#224; le r&#233;sultat pour le <code>n</code>&#232;me terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.</p>
+<p>On a d&#233;sormais un tableau qui va retenir les r&#233;sultats qu'on a d&#233;j&#224; calcul&#233; pour &#233;viter de faire des appels r&#233;cursifs suppl&#233;mentaires qui sont finalement inutiles. Ce tableau est initialis&#233; avec la valeur <code>PAS_CALCULE</code> pour diff&#233;rencier le cas o&#249; on a d&#233;j&#224; calcul&#233; le r&#233;sultat et celui o&#249; on ne l'a pas encore fait, puis dans notre fonction <code>fibonacci</code> on rajoute un test pour voir si on conna&#238;t le r&#233;sultat pour le <code>n</code>&#232;me terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.</p>
 <p>Cette simple am&#233;lioration a un impact &#233;norme sur notre programme :</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">time</span> ./fibonacci_dyn
 <span class="kw">100</span>
@@ -329,7 +339,7 @@ $ <span class="kw">time</span> ./fibonacci_dyn
 <span class="kw">2754320626097736315</span>
 <span class="kw">./fibonacci_dyn</span>  0,01s user 0,01s system 0% cpu 5,043 total</code></pre></div>
 <p><em>Les r&#233;sultats ne sont pas corrects car ils sont tellement immenses qu'on ne peut pas les stocker dans nos simples variables.</em></p>
-<p>On voit que cette fois ci, notre impl&#233;mentation n'a pas de complexit&#233; exponentielle, et elle est donc bien plus efficace que l'originale.</p>
+<p>On est d&#233;sormais capable de trouver le r&#233;sultat sur des entr&#233;es bien plus grandes en moins d'une seconde (ce qui aurait pris une <em>infinit&#233;</em> de temps sur notre ancien programme). Notre impl&#233;mentation n'a pas de complexit&#233; exponentielle, et elle est donc bien plus efficace que l'originale.</p>
 <p>Pour bien comparer, voici l'exemple du calcul du 5&#232;me terme, mais version dynamis&#233; :</p>
 <pre><code>fibonacci(5) = 5 :
    fibonacci(4) + fibonacci(3)
@@ -351,8 +361,18 @@ $ <span class="kw">time</span> ./fibonacci_dyn
 
    fibonacci(3) = 2 (DEJA CALCULE)</code></pre>
 <p>On calcule uniquement ce dont on a besoin une fois, et on le r&#233;utilise ensuite.</p>
-<h2 id="utilisation">Utilisation</h2>
-<p>Dynamiser un algorithme peut donc drastiquement changer sa complexit&#233; en temps.</p>
+<h2 id="optimisation">Optimisation</h2>
+<p>La programmation dynamique est un excellent exemple de compromis entre <strong>complexit&#233; en temps</strong> et <strong>complexit&#233; en m&#233;moire</strong> d'un algorithme.</p>
+<p>Il peut assez souvent arriver que notre probl&#232;me n&#233;cessite un tableau gigantesque pour avoir un algorithme dynamique. Mais dans la plupart des cas, on peut optimiser la complexit&#233; en m&#233;moire du nouvel algorithme, en utilisant uniquement des parties du tableau dont on a r&#233;ellement besoin.</p>
+<ul>
+<li>transformation en algo it&#233;ratif + opti m&#233;moire tableau</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Dynamiser un algorithme peut donc drastiquement changer sa complexit&#233; en temps, et cette technique d'optimisation peut s'appliquer &#224; la plupart des algorithmes r&#233;cursifs qui cherchent une <strong>solution optimale</strong> parmi beaucoup d'autres.</p>
+<ul>
+<li>ex algo dyn</li>
+<li>liste exos dyn</li>
+</ul>
  
       <!-- ------------ -->
 
