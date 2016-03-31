@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <!-- Syntax highlighting -->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Code ---- */
+pre {
+   width: 90%;
+   white-space: pre-wrap;
+   word-break: break-all;
+   word-wrap: break-word;
+}
+</style>
+      <!---- ---->
+
+      <title>Mars 2016 - napnac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/">
+            <img src="//static.napnac.ga/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="mars-2016">Mars 2016</h1></a>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#projet-principal">Projet principal</a></li>
+<li><a href="#sous-projet">Sous-projet</a></li>
+<li><a href="#autres">Autres</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Durant ce mois de mars, j'ai pu r&#233;aliser &#233;norm&#233;ment de choses que je voulais faire durant le mois de f&#233;vrier, mais aussi d'autres petits projets plus diff&#233;rents.</p>
+<h2 id="projet-principal">Projet principal</h2>
+<p>Le gros projet de mars &#233;tait de commencer &#224; m'int&#233;resser plus s&#233;rieusement &#224; l'apprentissage artificiel. J'ai donc suivi le cours en ligne d'Andrew Ng (<a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a>) que je n'ai pas encore fini mais j'ai actuellement compl&#233;t&#233; 8 des 11 semaines de cours propos&#233;es. Cela a pris plus de temps que je ne pensais, et m&#234;me au rythme de 2h-2h30 par soir c'&#233;tait assez difficile de vouloir tout compl&#233;ter en un mois car je n'avais aucunes r&#233;elles connaissances dans le domaine du machine learning, ni les connaissances n&#233;cessaires en math&#233;matiques pour comprendre le fonctionnement de certains algorithmes. Dans l'ensemble, je trouve que c'est un excellent cours, qui regroupe toutes les notions indispensables pour assimiler (et impl&#233;menter) plusieurs algorithmes basiques de machine learning. En revanche, il y a quelques erreurs au niveau des codes sources fournit par le cours (sans doute car il date de 2011, et que le cours n'a pas d&#251; recevoir de mises &#224; jour majeures dans ce domaine r&#233;cemment), heureusement on trouve rapidement des solutions sur les forums correspondants. Ce qui est important avec ce cours, c'est qu'il propose d'impl&#233;menter tous les algorithmes pr&#233;sent&#233;s, et recommande pour cela d'utiliser <a href="https://gnu.org/software/octave/">Octave</a> (une alternative libre et gratuite &#224; Matlab, un langage de programmation interpr&#233;t&#233; et sp&#233;cialis&#233; dans le calcul num&#233;rique), j'ai donc pu d&#233;couvrir pour la premi&#232;re fois ce langage assez int&#233;ressant, surtout pour l'utilisation dans le machine learning qui rend l'impl&#233;mentation facile avec la plupart des op&#233;rateurs math&#233;matiques d&#233;j&#224; fournis par le langage.</p>
+<p>Ce cours en ligne n&#233;cessite pas mal d'investissement, car les semaines sont parfois assez longues, et les vid&#233;os aussi peuvent rapidement d&#233;passer les 15 minutes. Pour essayer de rester concentrer jusqu'au bout, je prenais des notes (j'ai quasiment rempli un cahier de notes), et parfois j'acc&#233;l&#233;rais, voire passais, certains passages.</p>
+<p>A noter qu'au m&#234;me moment, j'ai trouv&#233; une suite de vid&#233;os assez r&#233;cente permettant d'introduire et d'impl&#233;menter un r&#233;seau de neurones (en Python cette fois) : <a href="http://lumiverse.io/series/neural-networks-demystified">Neural Networks Demystified</a>. Une approche accessible &#224; tous, et qui permet de mieux comprendre cet algorithme dont on a beaucoup entendu parler, notamment avec la victoire d'<a href="https://en.wikipedia.org/wiki/AlphaGo">AlphaGo</a> face &#224; Lee Sedol au jeu de Go (comme quoi j'ai bien choisi le mois pour en apprendre plus sur l'apprentissage artificiel !).</p>
+<h2 id="sous-projet">Sous-projet</h2>
+<h3 id="mlai">mlai</h3>
+<p>Le cours en ligne de machine learning propose des petits &quot;devoirs&quot; afin d'impl&#233;menter des algorithmes d'apprentissage artificiel (ou bien d'autres m&#233;thodes sp&#233;cifiques au domaine). J'ai donc voulu r&#233;aliser ces derniers, et proposer ma version des impl&#233;mentations de diff&#233;rents algorithmes :</p>
+<ul>
+<li>Linear regression</li>
+<li>Logistic regression</li>
+<li>Neural network</li>
+<li>Support vector machines</li>
+<li>K-means</li>
+</ul>
+<p>Vous pouvez retrouver toutes les sources du projet sur son repos Github : <a href="https://github.com/napnac/mlai" class="uri">https://github.com/napnac/mlai</a>. Mais il se peut que j'impl&#233;mente de nouveaux algorithmes dans le futur, notamment car il me reste 3 semaines de cours &#224; compl&#233;ter.</p>
+<p>Les devoirs &#224; faire venant du cours ne sont pas tr&#232;s compliqu&#233; vu qu'il suffit dans la plupart du temps d'impl&#233;menter les formules donn&#233;es (m&#234;me s'il faut garder en t&#234;te ce que font ces formules pour bien comprendre le but de ce qu'on impl&#233;mente). En revanche, l&#224; o&#249; les devoirs sont int&#233;ressants c'est qu'on a des donn&#233;es d&#233;j&#224; pr&#234;tes &#224; &#234;tre exploit&#233;es par notre impl&#233;mentation (parfois ces donn&#233;es sont inspir&#233;es de fait r&#233;els : agence immobili&#232;re, usine de composants &#233;lectronique, etc. ou alors elles sont fictives et servent de rep&#232;res visuelles).</p>
+<h3 id="lispy">lispy</h3>
+<p>Comme autre sous-projet ce mois-ci : <a href="http://www.buildyourownlisp.com/">Build Your Own Lisp</a>. J'ai d&#251; voir ce lien d&#233;filer dans mes flux RSS, et j'ai trouv&#233; l'id&#233;e int&#233;ressante donc j'ai d&#233;cid&#233; de suivre ce tutoriel, qui un peu &#224; la mani&#232;re de <a href="http://learncodethehardway.org/">Learn Code The Hard Way</a>, vous apprend &#224; coder un langage de programmation semblable &#224; <a href="https://en.wikipedia.org/wiki/Lisp_%28programming_language%29">Lisp</a> en C. La lecture &#233;tait agr&#233;able, m&#234;me si j'ai eu un peu de mal au d&#233;but ne connaissant pas du tout le Lisp, et j'ai donc du m'adapter &#224; ce nouveau langage.</p>
+<p>Vous pouvez retrouver les sources sur le repos du projet : <a href="https://github.com/napnac/lispy" class="uri">https://github.com/napnac/lispy</a>.</p>
+<h2 id="autres">Autres</h2>
+<p>Entre tout &#231;a, j'ai trouv&#233; le temps d'avancer un peu au niveau des articles :</p>
+<ul>
+<li>J'ai fini l'article sur le <a href="/algo/tri/tri_base.html">tri par base</a> qui trainait un peu et &#224; moiti&#233; fait.</li>
+<li>J'ai aussi termin&#233; la partie sur l'algorithme de Dijkstra dans l'article sur les plus courts chemins. Le texte n&#233;cessite cependant encore quelques relectures, et l'article en lui-m&#234;me est encore loin d'&#234;tre termin&#233;.</li>
+<li>En voulant commencer la partie sur l'algorithme de Bellman-Ford (toujours dans l'article sur les plus courts chemins), je me suis rendu compte que j'avais envie d'expliquer plus en d&#233;tails ce qu'&#233;tait un algorithme dynamique et j'ai donc commenc&#233; &#224; r&#233;diger un article expliquant cette approche. Cependant, ceci m'a donn&#233; envie de faire de m&#234;me pour d'autres approches assez utilis&#233;es en algorithmique comme : diviser pour r&#233;gner, r&#233;cursion, algorithme glouton, etc.</li>
+</ul>
+<p>En ce qui concerne les forums, j'ai entrepris d'instaurer un <a href="https://zestedesavoir.com/forums/sujet/5663/un-systeme-de-mentorat/">syst&#232;me de mentorat</a> sur Zeste de Savoir. L'id&#233;e n'a pas forc&#233;ment tr&#232;s bien accroch&#233;e, et j'esp&#232;re pouvoir relancer le concept (en le modifiant pour qu'ils plaisent &#224; plus de personne) prochainement.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le mois de mars c'est surtout un bon rattrapage face au mois de f&#233;vrier, et j'ai ador&#233; faire toutes ces activit&#233;s assez diff&#233;rentes (entre le machine learning, lispy, les articles et Zeste de Savoir). Durant le mois d'avril j'aimerais donc finir le cours d'Andrew Ng, mais surtout &#233;crire des articles &#224; propos des diff&#233;rents algorithmes de machine learning que j'ai appris (car le fait d'expliquer permet de se rendre compte si on a r&#233;ellement compris), et si possible je souhaiterais faire un projet concret incluant de l'apprentissage artificiel (m&#234;me si je n'ai pas encore d'id&#233;e). Aussi, j'adorerais r&#233;aliser un d&#233;fi de Clem' sur Zeste de Savoir qui consisterait en une s&#233;rie de petits challenges divers (j'&#233;voque l'id&#233;e <a href="https://zestedesavoir.com/forums/sujet/3813/les-defis-de-clem/?page=11#p102365">ici</a>).</p>
+<p>Je pense qu'avril sera le dernier mois r&#233;ellement d&#233;di&#233; au machine learning, apr&#232;s cela je vais passer &#224; autre chose.</p>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+      </footer>
+
+   </body>
+</html>
