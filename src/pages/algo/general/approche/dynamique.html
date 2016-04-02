@@ -212,7 +212,7 @@ function toggle_visibility(id) {
 
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
-<p>J'utilise le type <code>unsigned long long</code> car on risque d'avoir des nombres tr&#232;s grands &#224; manipuler. Maintenant, testons l'efficacit&#233; du programme sur diff&#233;rentes entr&#233;es :</p>
+<p>J'utilise le type <code>unsigned long long</code> car on risque d'avoir des nombres tr&#232;s grands &#224; manipuler. Maintenant, testons l'efficacit&#233; du programme sur diff&#233;rentes entr&#233;es (les r&#233;sultats varient bien entendu en fonction de l'ordinateur que vous utilisez) :</p>
 <table>
 <thead>
 <tr class="header">
@@ -294,7 +294,7 @@ function toggle_visibility(id) {
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
-<p>On a d&#233;sormais un tableau qui va retenir les r&#233;sultats qu'on a d&#233;j&#224; calcul&#233; pour &#233;viter de faire des appels r&#233;cursifs suppl&#233;mentaires qui sont finalement inutiles. Ce tableau est initialis&#233; avec la valeur <code>PAS_CALCULE</code> pour diff&#233;rencier le cas o&#249; on a d&#233;j&#224; calcul&#233; le r&#233;sultat et celui o&#249; on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont sup&#233;rieurs ou &#233;gaux &#224; 0), puis dans notre fonction <code>fibonacci</code> on rajoute un test pour voir si on conna&#238;t le r&#233;sultat pour le <code>n</code>&#232;me terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.</p>
+<p>On a d&#233;sormais un tableau qui va retenir les r&#233;sultats qu'on a d&#233;j&#224; calcul&#233;s pour &#233;viter de faire des appels r&#233;cursifs suppl&#233;mentaires qui sont finalement inutiles. Ce tableau est initialis&#233; avec la valeur <code>PAS_CALCULE</code> pour diff&#233;rencier le cas o&#249; on a d&#233;j&#224; calcul&#233; le r&#233;sultat et celui o&#249; on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont sup&#233;rieurs ou &#233;gaux &#224; 0), puis dans notre fonction <code>fibonacci</code> on rajoute un test pour voir si on conna&#238;t le r&#233;sultat pour le <code>n</code>&#232;me terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.</p>
 <p>Cette simple am&#233;lioration a un impact &#233;norme sur notre programme :</p>
 <table>
 <thead>
@@ -331,16 +331,71 @@ function toggle_visibility(id) {
 </div>
 <p>On calcule uniquement ce dont on a besoin une fois, et on le r&#233;utilise ensuite (les n&#339;uds bleus repr&#233;sentent les n&#339;uds d&#233;j&#224; calcul&#233;s pour lesquels on connait directement le r&#233;sultat).</p>
 <h2 id="optimisation">Optimisation</h2>
-<p>La programmation dynamique est un excellent exemple de compromis entre <strong>complexit&#233; en temps</strong> et <strong>complexit&#233; en m&#233;moire</strong> d'un algorithme.</p>
-<p>Il peut assez souvent arriver que notre probl&#232;me n&#233;cessite un tableau gigantesque pour avoir un algorithme dynamique. Mais dans la plupart des cas, on peut optimiser la complexit&#233; en m&#233;moire du nouvel algorithme, en utilisant uniquement des parties du tableau dont on a r&#233;ellement besoin.</p>
-<ul>
-<li>transformation en algo it&#233;ratif + opti m&#233;moire tableau</li>
-</ul>
+<p>La programmation dynamique est un excellent exemple de compromis entre <strong>complexit&#233; en temps</strong> et <strong>complexit&#233; en m&#233;moire</strong> d'un algorithme. En effet, on sacrifie de la m&#233;moire pour stocker notre tableau qui retiendra des r&#233;sultats, afin de ne pas recalculer lesdits r&#233;sultats plusieurs fois et ainsi sauver du temps. Il faut donc bien prendre en compte les deux facteurs du temps et de la m&#233;moire car dans certains cas (et en fonction des ressources &#224; disposition), on pr&#233;f&#233;rera privil&#233;gier l'un par rapport &#224; l'autre.</p>
+<p>Cependant, il est parfois possible d'optimiser l'espace m&#233;moire utilis&#233; par notre algorithme dynamique, r&#233;sultant en un algorithme ayant une complexit&#233; en temps et en m&#233;moire extr&#234;mement int&#233;ressante. Pour cela, il va falloir changer notre mani&#232;re de programmer notre algorithme dynamique. L'approche <strong>r&#233;cursive</strong> qu'on avait pr&#233;c&#233;demment utilis&#233;e &#233;tait dite <strong>descendante</strong> dans le sens o&#249; on divise notre gros probl&#232;me en sous-probl&#232;me jusqu'&#224; arriver &#224; un probl&#232;me de base &#224; r&#233;soudre. Une autre mani&#232;re de voir le probl&#232;me est de fa&#231;on <strong>it&#233;rative</strong> en partant d'un probl&#232;me simple pour le complexifier au fur et &#224; mesure qu'on avance, c'est une m&#233;thode dite <strong>ascendante</strong>. Et dans notre cas, cette derni&#232;re peut nous offrir des avantages &#233;normes en m&#233;moire car en rendant notre probl&#232;me de plus en plus compliqu&#233; (jusqu'&#224; arriver au probl&#232;me initial), on peut se d&#233;barrasser des probl&#232;mes tr&#232;s simples et garder uniquement ceux n&#233;cessaire &#224; la construction du plus gros probl&#232;me. Il est impossible de faire &#231;a avec l'approche descendante, car cette m&#233;thode a besoin &#224; tout instant des sous-probl&#232;mes pour d&#233;composer le probl&#232;me initial puis pour le r&#233;soudre.</p>
+<p>TODO : SCH&#201;MA COMPARAISON DEUX METHODES</p>
+<p>Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calcul&#233; disons le 5&#232;me terme, il est tout &#224; fait inutile de garder en m&#233;moire les termes 2 et 3 car le 6&#232;me terme n&#233;cessitera uniquement le 5&#232;me et le 4&#232;me termes. Ceci signifie qu'&#224; tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.</p>
+<a href="javascript:toggle_visibility('fibonacci_dyn_opti.c');">fibonacci_dyn_opti.c</a>
+<div id="fibonacci_dyn_opti.c" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="ot">#define PAS_CALCULE -1</span>
+
+<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> fibonacci(<span class="dt">int</span> n)
+{
+   <span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> prochain, actuel, dernier;
+   <span class="dt">int</span> iTerme;
+
+   actuel = <span class="dv">1</span>;
+   dernier = <span class="dv">0</span>;
+
+   <span class="kw">for</span>(iTerme = <span class="dv">2</span>; iTerme &lt;= n; ++iTerme) {
+      prochain = actuel + dernier;
+
+      dernier = actuel;
+      actuel = prochain;
+   }
+
+   <span class="kw">return</span> actuel;
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> n;
+   
+   scanf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, &amp;n);
+   <span class="kw">if</span>(n == <span class="dv">0</span>)
+      printf(<span class="st">&quot;0</span><span class="ch">\n</span><span class="st">&quot;</span>);
+   <span class="kw">else</span>
+      printf(<span class="st">&quot;%lld</span><span class="ch">\n</span><span class="st">&quot;</span>, fibonacci(n));
+
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>Notre programme est d&#233;sormais &#233;crit de mani&#232;re it&#233;rative (avec une simple boucle), ce qui fait qu'on a uniquement besoin des deux derniers termes <code>actuel</code> et <code>dernier</code>, afin de calculer <code>prochain</code>. On n'utilise pas de tableau ici, mais dans le cas o&#249; il faudrait plus que deux pr&#233;c&#233;dents &#233;l&#233;ments pour calculer le prochain, un tableau serait sans doute plus judicieux.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Dynamiser un algorithme peut donc drastiquement changer sa complexit&#233; en temps, et cette technique d'optimisation peut s'appliquer &#224; la plupart des algorithmes r&#233;cursifs qui cherchent une <strong>solution optimale</strong> parmi beaucoup d'autres.</p>
+<p>Dynamiser un algorithme peut donc radicalement changer sa complexit&#233; en temps, et cette technique d'optimisation peut s'appliquer &#224; la plupart des algorithmes r&#233;cursifs qui cherchent une <strong>solution optimale</strong> parmi beaucoup d'autres. On retrouve des algorithmes dynamiques de partout et dans tous les domaines car cette optimisation s'applique &#224; de tr&#232;s nombreux probl&#232;mes.</p>
+<p>M&#234;me si l'id&#233;e de la programmation dynamique est tr&#232;s simple, programmer un algorithme dynamique peut &#234;tre bien plus compliqu&#233;. Le seul moyen d'&#234;tre vraiment &#224; l'aise avec cette optimisation est de pratiquement <strong>&#233;norm&#233;ment</strong>, sur des probl&#232;mes croissants en complexit&#233;. Cette introduction sert uniquement d'explication br&#232;ve, mais voici d'autres liens pouvant vous int&#233;ressez si vous souhaitez r&#233;ellement en apprendre plus :</p>
 <ul>
-<li>ex algo dyn</li>
-<li>liste exos dyn</li>
+<li><p>Cours/tutoriel</p>
+<ul>
+<li><a href="https://www.codechef.com/wiki/tutorial-dynamic-programming">Tutorial for Dynamic Programming</a></li>
+<li><a href="https://www.quora.com/Are-there-any-good-resources-or-tutorials-for-dynamic-programming-besides-the-TopCoder-tutorial/answer/Michal-Danil%C3%A1k">Are there any good resources or tutorials for dynamic programming besides the TopCoder tutorial?</a></li>
+<li><a href="http://stackoverflow.com/questions/4278188/good-examples-articles-books-for-understanding-dynamic-programming">Good examples, articles, books for understanding dynamic programming</a></li>
+<li>(avanc&#233;) <a href="http://codeforces.com/blog/entry/8219">Dynamic Programming Optimizations</a></li>
+</ul></li>
+<li><p>Exercices</p>
+<ul>
+<li><a href="http://codeforces.com/blog/entry/325">Dynamic Programming Type</a></li>
+<li><a href="http://codeforces.com/problemset/tags/dp">Codeforces - Dynamic Programming tag</a></li>
+<li><a href="https://www.codechef.com/tags/problems/dp">Codechef - Dynamic Programming tag</a></li>
+<li><a href="http://apps.topcoder.com/forums/;jsessionid=C684F032169B7439C8012AAB6BA2018C?module=Thread&amp;threadID=674592">SPOJ - Dynamic Programming Problems List</a></li>
+<li><a href="https://community.topcoder.com/tc?module=ProblemArchive&amp;sr=&amp;er=&amp;sc=&amp;sd=&amp;class=&amp;cat=Dynamic+Programming&amp;div1l=&amp;div2l=&amp;mind1s=&amp;mind2s=&amp;maxd1s=&amp;maxd2s=&amp;wr=">Topcoder - Dynamic Programming tag</a></li>
+</ul></li>
+</ul>
+<p>L'id&#233;al serait de commencer par des probl&#232;mes vraiment basiques, et de monter progressivement en complexit&#233; pour bien appr&#233;hender cette technique d'optimisation.</p>
+<ul>
+<li>TODO : fin conclusion + plus de ressources ?</li>
 </ul>
  
       <!-- ------------ -->

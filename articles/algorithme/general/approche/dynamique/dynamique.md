@@ -29,7 +29,7 @@ Voici un exemple de fonction en C calculant le `n`ième terme de la [suite de Fi
 [INSERT]
 fibonacci.c
 
-J'utilise le type `unsigned long long` car on risque d'avoir des nombres très grands à manipuler. Maintenant, testons l'efficacité du programme sur différentes entrées :
+J'utilise le type `unsigned long long` car on risque d'avoir des nombres très grands à manipuler. Maintenant, testons l'efficacité du programme sur différentes entrées (les résultats varient bien entendu en fonction de l'ordinateur que vous utilisez) :
 
 | Entrée | Temps d'exécution du programme |
 | ------ | ------------------------------ |
@@ -55,7 +55,7 @@ Voici le même programme, mais dynamisé cette fois ci :
 [INSERT]
 fibonacci_dyn.c
 
-On a désormais un tableau qui va retenir les résultats qu'on a déjà calculé pour éviter de faire des appels récursifs supplémentaires qui sont finalement inutiles. Ce tableau est initialisé avec la valeur `PAS_CALCULE` pour différencier le cas où on a déjà calculé le résultat et celui où on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont supérieurs ou égaux à 0), puis dans notre fonction `fibonacci` on rajoute un test pour voir si on connaît le résultat pour le `n`ème terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.
+On a désormais un tableau qui va retenir les résultats qu'on a déjà calculés pour éviter de faire des appels récursifs supplémentaires qui sont finalement inutiles. Ce tableau est initialisé avec la valeur `PAS_CALCULE` pour différencier le cas où on a déjà calculé le résultat et celui où on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont supérieurs ou égaux à 0), puis dans notre fonction `fibonacci` on rajoute un test pour voir si on connaît le résultat pour le `n`ème terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.
 
 Cette simple amélioration a un impact énorme sur notre programme :
 
@@ -78,15 +78,40 @@ On calcule uniquement ce dont on a besoin une fois, et on le réutilise ensuite 
 
 ## Optimisation
 
-La programmation dynamique est un excellent exemple de compromis entre **complexité en temps** et **complexité en mémoire** d'un algorithme.
+La programmation dynamique est un excellent exemple de compromis entre **complexité en temps** et **complexité en mémoire** d'un algorithme. En effet, on sacrifie de la mémoire pour stocker notre tableau qui retiendra des résultats, afin de ne pas recalculer lesdits résultats plusieurs fois et ainsi sauver du temps. Il faut donc bien prendre en compte les deux facteurs du temps et de la mémoire car dans certains cas (et en fonction des ressources à disposition), on préférera privilégier l'un par rapport à l'autre.
 
-Il peut assez souvent arriver que notre problème nécessite un tableau gigantesque pour avoir un algorithme dynamique. Mais dans la plupart des cas, on peut optimiser la complexité en mémoire du nouvel algorithme, en utilisant uniquement des parties du tableau dont on a réellement besoin.
+Cependant, il est parfois possible d'optimiser l'espace mémoire utilisé par notre algorithme dynamique, résultant en un algorithme ayant une complexité en temps et en mémoire extrêmement intéressante. Pour cela, il va falloir changer notre manière de programmer notre algorithme dynamique. L'approche **récursive** qu'on avait précédemment utilisée était dite **descendante** dans le sens où on divise notre gros problème en sous-problème jusqu'à arriver à un problème de base à résoudre. Une autre manière de voir le problème est de façon **itérative** en partant d'un problème simple pour le complexifier au fur et à mesure qu'on avance, c'est une méthode dite **ascendante**. Et dans notre cas, cette dernière peut nous offrir des avantages énormes en mémoire car en rendant notre problème de plus en plus compliqué (jusqu'à arriver au problème initial), on peut se débarrasser des problèmes très simples et garder uniquement ceux nécessaire à la construction du plus gros problème. Il est impossible de faire ça avec l'approche descendante, car cette méthode a besoin à tout instant des sous-problèmes pour décomposer le problème initial puis pour le résoudre.
 
-- transformation en algo itératif + opti mémoire tableau
+TODO : SCHÉMA COMPARAISON DEUX METHODES
+
+Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calculé disons le 5ème terme, il est tout à fait inutile de garder en mémoire les termes 2 et 3 car le 6ème terme nécessitera uniquement le 5ème et le 4ème termes. Ceci signifie qu'à tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.
+
+[INSERT]
+fibonacci_dyn_opti.c
+
+Notre programme est désormais écrit de manière itérative (avec une simple boucle), ce qui fait qu'on a uniquement besoin des deux derniers termes `actuel` et `dernier`, afin de calculer `prochain`. On n'utilise pas de tableau ici, mais dans le cas où il faudrait plus que deux précédents éléments pour calculer le prochain, un tableau serait sans doute plus judicieux.
 
 ## Conclusion
 
-Dynamiser un algorithme peut donc drastiquement changer sa complexité en temps, et cette technique d'optimisation peut s'appliquer à la plupart des algorithmes récursifs qui cherchent une **solution optimale** parmi beaucoup d'autres.
+Dynamiser un algorithme peut donc radicalement changer sa complexité en temps, et cette technique d'optimisation peut s'appliquer à la plupart des algorithmes récursifs qui cherchent une **solution optimale** parmi beaucoup d'autres. On retrouve des algorithmes dynamiques de partout et dans tous les domaines car cette optimisation s'applique à de très nombreux problèmes.
 
-- ex algo dyn
-- liste exos dyn
+Même si l'idée de la programmation dynamique est très simple, programmer un algorithme dynamique peut être bien plus compliqué. Le seul moyen d'être vraiment à l'aise avec cette optimisation est de pratiquement **énormément**, sur des problèmes croissants en complexité. Cette introduction sert uniquement d'explication brève, mais voici d'autres liens pouvant vous intéressez si vous souhaitez réellement en apprendre plus :
+
+- Cours/tutoriel
+
+    - [Tutorial for Dynamic Programming](https://www.codechef.com/wiki/tutorial-dynamic-programming)
+    - [Are there any good resources or tutorials for dynamic programming besides the TopCoder tutorial?](https://www.quora.com/Are-there-any-good-resources-or-tutorials-for-dynamic-programming-besides-the-TopCoder-tutorial/answer/Michal-Danil%C3%A1k)
+    - [Good examples, articles, books for understanding dynamic programming](http://stackoverflow.com/questions/4278188/good-examples-articles-books-for-understanding-dynamic-programming)
+    - (avancé) [Dynamic Programming Optimizations](http://codeforces.com/blog/entry/8219)
+
+- Exercices
+
+    - [Dynamic Programming Type](http://codeforces.com/blog/entry/325)
+    - [Codeforces - Dynamic Programming tag](http://codeforces.com/problemset/tags/dp)
+    - [Codechef - Dynamic Programming tag](https://www.codechef.com/tags/problems/dp)
+    - [SPOJ - Dynamic Programming Problems List](http://apps.topcoder.com/forums/;jsessionid=C684F032169B7439C8012AAB6BA2018C?module=Thread&threadID=674592)
+    - [Topcoder - Dynamic Programming tag](https://community.topcoder.com/tc?module=ProblemArchive&sr=&er=&sc=&sd=&class=&cat=Dynamic+Programming&div1l=&div2l=&mind1s=&mind2s=&maxd1s=&maxd2s=&wr=)
+
+L'idéal serait de commencer par des problèmes vraiment basiques, et de monter progressivement en complexité pour bien appréhender cette technique d'optimisation.
+
+- TODO : fin conclusion + plus de ressources ?
