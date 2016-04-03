@@ -13,6 +13,11 @@
 ## Tri
 
 - Tri par tas : smoothsort
+- Tri par base : démonstration (pourquoi ça fonctionne ?)
+
+## Chiffrement
+
+- RSA : courbe elliptique, et autres alternatives aux logarithmes discrets
 
 # Liste de futurs articles
 
@@ -22,6 +27,7 @@
 - Tri en O(N) : tri par paquets
 - Recherche : union-find
 - IA : algo min-max (http://www.ffothello.org/informatique/algorithmes/)
+- Approches : récursion, algo glouton, diviser pour régner
 
 - Introduction à la complexité algorithmique (temps + mémoire)
 - Recherche : chaîne de caractères
@@ -29,3 +35,4 @@
 - IA : apprentissage artificiel
 - Algorithmes quantiques
 - N = NP ?
+- Cryptographie quantique ?
