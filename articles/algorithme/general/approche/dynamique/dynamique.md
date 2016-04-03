@@ -97,7 +97,7 @@ Notre programme est désormais écrit de manière itérative (avec une simple bo
 
 Dynamiser un algorithme peut donc radicalement changer sa complexité en temps, et cette technique d'optimisation peut s'appliquer à la plupart des algorithmes récursifs qui cherchent une **solution optimale** parmi beaucoup d'autres. On retrouve des algorithmes dynamiques de partout et dans tous les domaines car cette optimisation s'applique à de très nombreux problèmes.
 
-Même si l'idée de la programmation dynamique est très simple, programmer un algorithme dynamique peut être bien plus compliqué. Le seul moyen d'être vraiment à l'aise avec cette optimisation est de pratiquement **énormément**, sur des problèmes croissants en complexité. Cette introduction sert uniquement d'explication brève, mais voici d'autres liens pouvant vous intéressez si vous souhaitez réellement en apprendre plus :
+Même si l'idée de la programmation dynamique est très simple, programmer un algorithme dynamique peut être bien plus compliqué. Le seul moyen d'être vraiment à l'aise avec cette optimisation est de pratiquement **énormément**, sur des problèmes variés. Cette introduction sert uniquement d'explication brève sur le sujet, mais voici d'autres liens pouvant vous intéresser si vous souhaitez réellement en apprendre plus (il y a des **tonnes** d'informations sur la programmation dynamique en ligne, donc n'hésitez pas à faire plus de recherches si nécessaire) :
 
 - Cours/tutoriel
 
@@ -114,6 +114,6 @@ Même si l'idée de la programmation dynamique est très simple, programmer un a
     - [SPOJ - Dynamic Programming Problems List](http://apps.topcoder.com/forums/;jsessionid=C684F032169B7439C8012AAB6BA2018C?module=Thread&threadID=674592)
     - [Topcoder - Dynamic Programming tag](https://community.topcoder.com/tc?module=ProblemArchive&sr=&er=&sc=&sd=&class=&cat=Dynamic+Programming&div1l=&div2l=&mind1s=&mind2s=&maxd1s=&maxd2s=&wr=)
 
-L'idéal serait de commencer par des problèmes vraiment basiques, et de monter progressivement en complexité pour bien appréhender cette technique d'optimisation.
+L'idéal serait de commencer par des problèmes vraiment basiques, et de monter progressivement en complexité une fois que vous vous sentez à l'aise, pour bien appréhender cette technique d'optimisation.
 
-- TODO : fin conclusion + plus de ressources ?
+Ce n'est pas une approche qu'on peut maîtriser facilement, car il a toujours des optimisations ou différentes manières d'approcher un problème de programmation dynamique. Mais ce qui est sûr, c'est que plus vous pratiquerez, meilleur vous serez.
