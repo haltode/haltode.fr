@@ -2,8 +2,8 @@ Algorithme dynamique
 ====================
 algo/general/approche
 
-Publié le : 02/04/2016  
-*Modifié le : 02/04/2016*
+Publié le : 03/04/2016  
+*Modifié le : 03/04/2016*
 
 ## Introduction
 
@@ -12,7 +12,7 @@ Le principe du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_c
 - Découper un problème compliqué en sous-problème plus simple (de manière [récursive](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29)).
 - Résoudre les sous-problèmes et combiner leurs solutions pour résoudre le problème initial.
 
-Il y a de nombreux domaines dans laquelle cette méthode excelle ([dichotomie](/algo/recherche/dichotomie.html), [tri fusion](/algo/tri/tri_fusion.html), [tri rapide](/algo/tri/tri_rapide.html), etc.), mais là où elle atteint ses limites c'est lorsque les sous-problèmes rencontrés ne sont pas forcément unique. Dans ce cas, on en vient à recalculer beaucoup de sous-problèmes qu'on a déjà résolus, ce qui rend notre programme très lent, voir inutilisable. 
+Il y a de nombreux domaines dans laquelle cette méthode excelle ([dichotomie](/algo/recherche/dichotomie.html), [tri fusion](/algo/tri/tri_fusion.html), [tri rapide](/algo/tri/tri_rapide.html), etc.), mais là où elle atteint ses limites c'est lorsque les sous-problèmes rencontrés ne sont pas uniques. Dans ce cas, on en vient à recalculer beaucoup de sous-problèmes que l'on a déjà résolus, ce qui rend notre programme très lent, voir inutilisable. 
 
 La programmation dynamique est un moyen de pallier ce problème d'efficacité du programme, en offrant une solution simple et facile à mettre en place.
 
@@ -82,7 +82,9 @@ La programmation dynamique est un excellent exemple de compromis entre **complex
 
 Cependant, il est parfois possible d'optimiser l'espace mémoire utilisé par notre algorithme dynamique, résultant en un algorithme ayant une complexité en temps et en mémoire extrêmement intéressante. Pour cela, il va falloir changer notre manière de programmer notre algorithme dynamique. L'approche **récursive** qu'on avait précédemment utilisée était dite **descendante** dans le sens où on divise notre gros problème en sous-problème jusqu'à arriver à un problème de base à résoudre. Une autre manière de voir le problème est de façon **itérative** en partant d'un problème simple pour le complexifier au fur et à mesure qu'on avance, c'est une méthode dite **ascendante**. Et dans notre cas, cette dernière peut nous offrir des avantages énormes en mémoire car en rendant notre problème de plus en plus compliqué (jusqu'à arriver au problème initial), on peut se débarrasser des problèmes très simples et garder uniquement ceux nécessaire à la construction du plus gros problème. Il est impossible de faire ça avec l'approche descendante, car cette méthode a besoin à tout instant des sous-problèmes pour décomposer le problème initial puis pour le résoudre.
 
-TODO : SCHÉMA COMPARAISON DEUX METHODES
+![Comparaison des deux méthodes](//static.napnac.ga/img/algo/general/approche/dynamique/comparaison_methodes.png)
+
+J'ai représenté deux tableaux en 2D fictifs représentant le stockage des calculs pour notre algorithme dynamique. A gauche, la méthode descendante, qui dépend donc de tous les éléments précédents pour former le résultat final. Et à droite, la méthode ascendante, qui elle ne dépend pas toujours de tous les résultats précédents (ici le résultat nécessite uniquement les deux derniers), on peut donc économiser une bonne partie du tableau qui n'est plus utile de garder.
 
 Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calculé disons le 5ème terme, il est tout à fait inutile de garder en mémoire les termes 2 et 3 car le 6ème terme nécessitera uniquement le 5ème et le 4ème termes. Ceci signifie qu'à tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.
 

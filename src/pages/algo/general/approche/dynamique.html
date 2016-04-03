@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="algorithme-dynamique">Algorithme dynamique</h1></a>
-<p>Publi&#233; le : 02/04/2016<br />
-<em>Modifi&#233; le : 02/04/2016</em></p>
+<p>Publi&#233; le : 03/04/2016<br />
+<em>Modifi&#233; le : 03/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -187,7 +187,7 @@ function toggle_visibility(id) {
 <li>D&#233;couper un probl&#232;me compliqu&#233; en sous-probl&#232;me plus simple (de mani&#232;re <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursive</a>).</li>
 <li>R&#233;soudre les sous-probl&#232;mes et combiner leurs solutions pour r&#233;soudre le probl&#232;me initial.</li>
 </ul>
-<p>Il y a de nombreux domaines dans laquelle cette m&#233;thode excelle (<a href="/algo/recherche/dichotomie.html">dichotomie</a>, <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, etc.), mais l&#224; o&#249; elle atteint ses limites c'est lorsque les sous-probl&#232;mes rencontr&#233;s ne sont pas forc&#233;ment unique. Dans ce cas, on en vient &#224; recalculer beaucoup de sous-probl&#232;mes qu'on a d&#233;j&#224; r&#233;solus, ce qui rend notre programme tr&#232;s lent, voir inutilisable.</p>
+<p>Il y a de nombreux domaines dans laquelle cette m&#233;thode excelle (<a href="/algo/recherche/dichotomie.html">dichotomie</a>, <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, etc.), mais l&#224; o&#249; elle atteint ses limites c'est lorsque les sous-probl&#232;mes rencontr&#233;s ne sont pas uniques. Dans ce cas, on en vient &#224; recalculer beaucoup de sous-probl&#232;mes que l'on a d&#233;j&#224; r&#233;solus, ce qui rend notre programme tr&#232;s lent, voir inutilisable.</p>
 <p>La programmation dynamique est un moyen de pallier ce probl&#232;me d'efficacit&#233; du programme, en offrant une solution simple et facile &#224; mettre en place.</p>
 <h2 id="principe">Principe</h2>
 <p>La programmation dynamique (<em>dynamic programming</em> ou encore <em>dynamic optimization</em> en anglais) est une technique d'optimisation d'un algorithme visant &#224; &#233;viter de recalculer des sous-probl&#232;mes en stockant les r&#233;sultats en m&#233;moire. L'id&#233;e est simple, mais le gain sur la complexit&#233; en temps peut &#234;tre consid&#233;rable, et cette technique est tr&#232;s largement utilis&#233;e dans de nombreux algorithmes.</p>
@@ -333,7 +333,11 @@ function toggle_visibility(id) {
 <h2 id="optimisation">Optimisation</h2>
 <p>La programmation dynamique est un excellent exemple de compromis entre <strong>complexit&#233; en temps</strong> et <strong>complexit&#233; en m&#233;moire</strong> d'un algorithme. En effet, on sacrifie de la m&#233;moire pour stocker notre tableau qui retiendra des r&#233;sultats, afin de ne pas recalculer lesdits r&#233;sultats plusieurs fois et ainsi sauver du temps. Il faut donc bien prendre en compte les deux facteurs du temps et de la m&#233;moire car dans certains cas (et en fonction des ressources &#224; disposition), on pr&#233;f&#233;rera privil&#233;gier l'un par rapport &#224; l'autre.</p>
 <p>Cependant, il est parfois possible d'optimiser l'espace m&#233;moire utilis&#233; par notre algorithme dynamique, r&#233;sultant en un algorithme ayant une complexit&#233; en temps et en m&#233;moire extr&#234;mement int&#233;ressante. Pour cela, il va falloir changer notre mani&#232;re de programmer notre algorithme dynamique. L'approche <strong>r&#233;cursive</strong> qu'on avait pr&#233;c&#233;demment utilis&#233;e &#233;tait dite <strong>descendante</strong> dans le sens o&#249; on divise notre gros probl&#232;me en sous-probl&#232;me jusqu'&#224; arriver &#224; un probl&#232;me de base &#224; r&#233;soudre. Une autre mani&#232;re de voir le probl&#232;me est de fa&#231;on <strong>it&#233;rative</strong> en partant d'un probl&#232;me simple pour le complexifier au fur et &#224; mesure qu'on avance, c'est une m&#233;thode dite <strong>ascendante</strong>. Et dans notre cas, cette derni&#232;re peut nous offrir des avantages &#233;normes en m&#233;moire car en rendant notre probl&#232;me de plus en plus compliqu&#233; (jusqu'&#224; arriver au probl&#232;me initial), on peut se d&#233;barrasser des probl&#232;mes tr&#232;s simples et garder uniquement ceux n&#233;cessaire &#224; la construction du plus gros probl&#232;me. Il est impossible de faire &#231;a avec l'approche descendante, car cette m&#233;thode a besoin &#224; tout instant des sous-probl&#232;mes pour d&#233;composer le probl&#232;me initial puis pour le r&#233;soudre.</p>
-<p>TODO : SCH&#201;MA COMPARAISON DEUX METHODES</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/general/approche/dynamique/comparaison_methodes.png" alt="Comparaison des deux m&#233;thodes" />
+<p class="caption">Comparaison des deux m&#233;thodes</p>
+</div>
+<p>J'ai repr&#233;sent&#233; deux tableaux en 2D fictifs repr&#233;sentant le stockage des calculs pour notre algorithme dynamique. A gauche, la m&#233;thode descendante, qui d&#233;pend donc de tous les &#233;l&#233;ments pr&#233;c&#233;dents pour former le r&#233;sultat final. Et &#224; droite, la m&#233;thode ascendante, qui elle ne d&#233;pend pas toujours de tous les r&#233;sultats pr&#233;c&#233;dents (ici le r&#233;sultat n&#233;cessite uniquement les deux derniers), on peut donc &#233;conomiser une bonne partie du tableau qui n'est plus utile de garder.</p>
 <p>Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calcul&#233; disons le 5&#232;me terme, il est tout &#224; fait inutile de garder en m&#233;moire les termes 2 et 3 car le 6&#232;me terme n&#233;cessitera uniquement le 5&#232;me et le 4&#232;me termes. Ceci signifie qu'&#224; tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.</p>
 <a href="javascript:toggle_visibility('fibonacci_dyn_opti.c');">fibonacci_dyn_opti.c</a>
 <div id="fibonacci_dyn_opti.c" style="display: none;">

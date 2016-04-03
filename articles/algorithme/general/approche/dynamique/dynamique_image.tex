@@ -1,4 +1,4 @@
-% inspired from http://tex.stackexchange.com/questions/63612/tikz-tree-drawing-with-comments-to-each-level
+% inspired from http://tex.stackexchange.com/questions/63612/tikz-tree-drawing-with-comments-to-each-level and http://tex.stackexchange.com/questions/45808/tikz-grid-lines
 \documentclass{article}
 
 \usepackage{tikz}
@@ -70,6 +70,19 @@
    }
    child { node [fill = blue!20] {$f(3)$} };
 
+\end{tikzpicture}
+
+% Comparaison méthodes ascendante et descendante
+
+\newpage
+
+\begin{tikzpicture}
+   \foreach \i in {0,...,9} {
+      \draw [very thin,black] (\i,0) -- (\i,9)  node [above] at (\i,9) {$\i$};
+    }
+    \foreach \i in {0,...,9} {
+       \draw [very thin,black] (0,\i) -- (9,\i) node [left] at (0,9-\i) {$\i$};
+    }
 \end{tikzpicture}
 
 \end{document}
