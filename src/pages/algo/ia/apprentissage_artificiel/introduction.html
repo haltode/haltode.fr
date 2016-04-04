@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <!-- Syntax highlighting -->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Code ---- */
+pre {
+   width: 90%;
+   white-space: pre-wrap;
+   word-break: break-all;
+   word-wrap: break-word;
+}
+</style>
+      <!---- ---->
+
+      <title>Introduction à l'apprentissage artificiel - napnac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/">
+            <img src="//static.napnac.ga/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="introduction-&#224;-lapprentissage-artificiel">Introduction &#224; l'apprentissage artificiel</h1></a>
+<p>Publi&#233; le : 04/04/2016<br />
+<em>Modifi&#233; le : 04/04/2016</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe">Principe</a></li>
+<li><a href="#type-dapprentissage">Type d'apprentissage</a></li>
+<li><a href="#domaine-dapplication">Domaine d'application</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Si vous suivez r&#233;guli&#232;rement les nouvelles dans le domaine de l'informatique, vous &#234;tes sans doute d&#233;j&#224; tomb&#233; sur un article parlant d'un programmant utilisant le principe d'apprentissage artificiel (ou <em>machine learning</em> en anglais) afin de r&#233;soudre efficacement une t&#226;che qui parait compliqu&#233;e voire impossible pour un ordinateur. Si ce n'est pas le cas, il suffit de taper &quot;machine learning&quot; dans un moteur de recherche et regarder les r&#233;sultats dans la section &quot;news&quot; pour apercevoir un nombre impressionnant d'articles r&#233;cents &#224; ce propos et sur des th&#232;mes tr&#232;s vari&#233;s. Mais qu'est-ce que l'apprentissage artificiel ? Dans quel domaine peut-on l'appliquer ? Et surtout quels sont concr&#232;tement les algorithmes mis en place par ce type d'apprentissage ?</p>
+<h2 id="principe">Principe</h2>
+<p>En g&#233;n&#233;ral, lorsqu'on cherche &#224; r&#233;soudre un probl&#232;me avec un ordinateur, on lui demande de r&#233;aliser une suite d'op&#233;rations bien pr&#233;cises pour avoir une sortie voulue. Cependant, dans certains cas il est tr&#232;s compliqu&#233; de d&#233;finir cette suite d'op&#233;rations, et pourtant en tant qu'humain nous sommes capable de le faire sans difficult&#233;. Par exemple, essayez de d&#233;crire &#224; votre machine comment reconna&#238;tre un visage sur une photo, pour l'ordinateur l'image n'est qu'un amas de pixels, et la notion de visage ne lui &#233;voque rien du tout, cependant vous &#234;tes capable instantan&#233;ment de le faire et cela depuis tout petit. Le but de l'apprentissage artificiel n'est pas de d&#233;crire directement des op&#233;rations afin de r&#233;soudre le probl&#232;me, mais plut&#244;t de donner la capacit&#233; &#224; l'ordinateur d'apprendre &#224; r&#233;soudre le probl&#232;me par lui m&#234;me. Pour apprendre, il fait comme vous et moi lorsqu'on essaie de s'am&#233;liorer dans une discipline, c'est-&#224;-dire en essayant, en &#233;chouant, et en adaptant sa strat&#233;gie dans le but d'&#234;tre meilleur la prochaine fois.</p>
+<p>L'apprentissage artificiel (ou parfois appel&#233; <em>apprentissage automatique</em>) d&#233;signe un domaine de l'intelligence artificiel visant &#224; <strong>reproduire un comportement sp&#233;cifique</strong> &#224; partir de <strong>donn&#233;es</strong>. Ce comportement est en g&#233;n&#233;ral cr&#233;&#233; &#224; partir de rien, et sera ensuite am&#233;lior&#233; automatiquement par l'algorithme d'apprentissage.</p>
+<p>On peut alors comprendre &#224; quel point ce domaine peut &#234;tre int&#233;ressant vu la complexit&#233; de certaines automatisations de t&#226;ches aujourd'hui. D'autant plus qu'on a acc&#232;s rapidement &#224; &#233;norm&#233;ment de donn&#233;es gr&#226;ce &#224; Internet, rendant l'apprentissage toujours plus efficace.</p>
+<h2 id="type-dapprentissage">Type d'apprentissage</h2>
+<p>Il existe de nombreuses mani&#232;res de faire apprendre quelque chose &#224; votre ordinateur, et il faut choisir la plus adapt&#233;es en fonction du but de votre intelligence artificielle :</p>
+<ul>
+<li><strong>Apprentissage supervis&#233;</strong> : on fournit &#224; l'ordinateur un exemple d'entr&#233;es pour le probl&#232;me qu'on cherche &#224; r&#233;soudre, ainsi que les sorties correspondantes et on souhaite que notre algorithme g&#233;n&#233;ralise du mieux possible afin de pouvoir trouver la sortie (ou une approximation) par lui m&#234;me &#224; partir d'une nouvelle entr&#233;e qu'il n'a jamais vu auparavant. Par exemple, si on reprend l'id&#233;e de d&#233;tecter un visage dans une photo, on pourrait donner &#224; l'ordinateur des milliers de photos diff&#233;rentes et lui indiquer pour chacune o&#249; se trouve les visages afin qu'il puisse essayer de comprendre ce qu'est un visage pour finalement savoir en d&#233;tecter un sur de nouvelles photos.</li>
+<li><strong>Apprentissage non supervis&#233;</strong> : on donne cette fois ci &#224; l'ordinateur uniquement les entr&#233;es, et on aimerait qu'il regroupe les entr&#233;es en diff&#233;rentes classes qu'il g&#233;n&#232;re et qu'il attribue alors automatiquement aux entr&#233;es. Par exemple, vous avez une liste d'articles de journaux que vous aimeriez trier en fonction du sujet abord&#233; dedans, l'id&#233;e serait que votre algorithme regroupe les articles discutant d'un sujet commun ensemble. L'entr&#233;e serait alors les articles, tandis que les sorties seraient les cat&#233;gories auxquelles appartiennent les diff&#233;rentes articles.</li>
+<li><strong>Apprentissage semi supervis&#233;</strong> :</li>
+<li><strong>Apprentissage par renforcement</strong> :</li>
+</ul>
+<p>Il faut aussi faire attention &#224; la sortie voulue, et il existe alors diff&#233;rents types de probl&#232;me :</p>
+<ul>
+<li><strong>Classification</strong> : on cherche &#224; cat&#233;goriser les entr&#233;es gr&#226;ce &#224; diff&#233;rentes <strong>classes</strong> (dans un apprentissage non supervis&#233; donc), ces classes peuvent &#234;tre par exemple dans le cadre d'une description d'une image : &quot;animal&quot;, &quot;paysage&quot;, &quot;montagne&quot;, &quot;for&#234;t&quot;, etc.</li>
+<li><strong>R&#233;gression</strong> : les valeurs obtenues dans un probl&#232;me de r&#233;gression sont des <strong>valeurs num&#233;riques</strong>, par exemple l'estimation du prix d'un appartement en fonction de diff&#233;rents crit&#232;res comme sa taille, son emplacement g&#233;ographique, le nombre de pi&#232;ce, son anciennet&#233;, etc.</li>
+</ul>
+<h2 id="domaine-dapplication">Domaine d'application</h2>
+<p>L'apprentissage artificiel est pr&#233;sent partout :</p>
+<ul>
+<li><strong>M&#233;decine</strong> : afin de faire des diagnostiques, un ordinateur peut &#234;tre un atout majeur car il a acc&#232;s &#224; des milliers d'exemples de patients et peut ainsi effectuer un diagnostique automatiquement et relativement pr&#233;cis sur le type de maladie, son avancement, etc. (ex : <a href="https://en.wikipedia.org/wiki/Watson_%28computer%29">Watson</a> une intelligence artificielle d&#233;velopp&#233;e par IBM qui a des utilisations multiples, et notamment dans la m&#233;decine).</li>
+<li><strong>Moteur de recherche</strong> : la plupart des moteurs de recherches modernes utilisent des algorithmes de machine learning autant pour comprendre la requ&#234;te de l'utilisateur, que pour la chercher ou encore trier les r&#233;sultats.</li>
+<li><strong>Communication</strong> : la reconnaissance vocale, ou la compr&#233;hension d'un message &#233;crit sont des probl&#232;mes extr&#234;mement complexes &#224; r&#233;soudre, et pourtant gr&#226;ce &#224; l'apprentissage artificiel, on arrive parfois &#224; des r&#233;sultats assez impressionnant de pr&#233;cision hors normes. <a href="http://www.soundhound.com/hound">Hound</a> avait fait beaucoup de bruit en 2015 gr&#226;ce &#224; une <a href="https://www.youtube.com/watch?v=M1ONXea0mXg">vid&#233;o</a> qui d&#233;montrait une efficacit&#233; incroyable compar&#233; &#224; ses autres concurrents (Siri, Google Now, Cortana, etc.).</li>
+<li><strong>Traitement d'images</strong> : que ce soit pour reconna&#238;tre un visage, ou d&#233;crire une image, l'apprentissage artificiel est souvent indispensable vu la complexit&#233; de la t&#226;che. Facebook a par exemple un algorithme terriblement efficace de reconnaissance de visage, gr&#226;ce au nombre colossal de photos envoy&#233;es sur la plateforme en ligne (servant alors d'exemple et d'entra&#238;nement &#224; l'algorithme). Ce dernier est tellement puissant qu'il est m&#234;me capable de vous reconna&#238;tre de dos ou si votre visage est partiellement couvert, voire que vous ne regardez pas la cam&#233;ras depuis quelques ann&#233;es maintenant (todo : lien). Google a aussi d&#233;velopp&#233; un programme capable de faire une description tr&#232;s pr&#233;cise d'une image (todo : lien)</li>
+<li>TODO : continuer les exemples</li>
+</ul>
+<p>Mais on retrouve aussi cette forme d'intelligence artificielle dans des applications moins pratiques dans la vie de tous les jours, mais tout de m&#234;me int&#233;ressantes voire surprenantes :</p>
+<ul>
+<li>Art (peinture, musique, etc.)</li>
+<li>Jeu (&#233;chec, go, etc.)</li>
+</ul>
+<p>TODO : image ?</p>
+<h2 id="conclusion">Conclusion</h2>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <hr>
+         <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
+         <br>
+      </footer>
+
+   </body>
+</html>

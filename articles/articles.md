@@ -37,3 +37,7 @@ La liste des articles publiés :
          - [Chiffre de Vigenère](/algo/chiffrement/chiffre_vigenere.html)
          - [Chiffre de Vernam](/algo/chiffrement/chiffre_vernam.html)
          - [RSA](/algo/chiffrement/rsa.html)
+
+    - IA :
+
+         - [Introduction à l'apprentissage artificiel](/algo/ia/apprentissage_artificiel/introduction.html)
