@@ -5,9 +5,14 @@
    - Originalité du site ? Qu'est-ce qui le démarque ?
 - Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 
+## Approches
+
+- Dynamique : conseils d'implémentation
+
 ## Structure de données
 
 - Graphe : liens opérations utiles (faire un article qui regroupe tout ?)
+   - Plus court chemin : démonstration dijkstra + A* (amélioration)
 - Arbre binaire : liens arbre bin de recherche + arbre rouge/noir (dans "Définition")
 
 ## Tri
