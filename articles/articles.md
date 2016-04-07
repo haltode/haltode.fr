@@ -40,4 +40,6 @@ La liste des articles publiés :
 
     - IA :
 
-         - [Introduction à l'apprentissage artificiel](/algo/ia/apprentissage_artificiel/introduction.html)
+         - Apprentissage artificiel :
+            
+             - [Introduction](/algo/ia/apprentissage_artificiel/introduction.html)
