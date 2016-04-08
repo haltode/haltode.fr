@@ -3,7 +3,7 @@ Introduction à l'apprentissage artificiel
 algo/ia/apprentissage_artificiel
 
 Publié le : 07/04/2016  
-*Modifié le : 07/04/2016*
+*Modifié le : 08/04/2016*
 
 ## Introduction
 
@@ -40,11 +40,11 @@ L'apprentissage artificiel utilise les mathématiques afin de résoudre ces prob
 
 Les deux paramètres de l'entrée sont l'axe x et l'axe y, et les sorties sont les classes correspondantes (rond ou croix).
 
-Dans un problème de régression, on pourrait par exemple chercher à généraliser l'entrée (nos axes) à l'aide d'une fonction, ici elle est linéaire, mais on peut retrouver des fonctions polynomiales complexes pour créer des modèles plus sophistiqués :
+Dans un problème de régression, on cherchera par exemple à généraliser l'entrée (l'axe x dans notre cas) à l'aide d'une fonction, ici elle est linéaire, mais on peut trouver des fonctions polynomiales complexes pour créer des modèles plus sophistiqués :
 
 ![Exemple de régression](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_regression.png)
 
-Ce modèle nous permettra de générer une sortie sur de nouveaux paramètres.
+Ce modèle nous permettra de générer une sortie (l'axe y) sur de nouveaux paramètres, en utilisant la fonction calculée (ici elle sera donc de la forme $y = ax + b$).
 
 Enfin, un exemple de partitionnement serait de regrouper des points entre eux, et de les différencier en groupe, comme ici avec trois différents clusters (rouge, bleu, et vert) :
 
@@ -60,6 +60,7 @@ L'apprentissage artificiel est présent partout :
 - **Traitement d'images** : que ce soit pour reconnaître un visage, ou décrire une image, l'apprentissage artificiel est souvent indispensable vu la complexité de la tâche. Facebook a par exemple un algorithme terriblement efficace de reconnaissance de visage ([DeepFace](https://research.facebook.com/publications/deepface-closing-the-gap-to-human-level-performance-in-face-verification/)), grâce au nombre colossal de photos envoyées sur la plateforme en ligne (servant alors d'exemple et d'entraînement à l'algorithme). Ce dernier est tellement puissant qu'il est même capable de vous reconnaître lorsque vous ne regardez pas la caméra, quand vous avez le visage partiellement couvert, ou bien encore quand vous êtes de dos. Google a aussi développé un [programme](http://cs.stanford.edu/people/karpathy/deepimagesent/) capable de faire une description très précise d'une image ce qui est assez bluffant pour un ordinateur vu la complexité de certaines images.
 - **Internet** : la plupart des réseaux sociaux (Facebook, Twitter, ...), des sites de ventes (Amazon, Ebay, ...), de divertissement (Netflix, Deezer, Spotify, ...) utilisent des algorithmes d'apprentissage artificiel pour vous faire des recommandations, des suggestions, afin de mieux comprendre vos goûts (qui est une notion trop abstraite pour être entièrement décrite et précisée à un ordinateur, d'où l'utilisation d'une intelligence artificielle).
 - **Transport** : la fameuse [Google Car](https://en.wikipedia.org/wiki/Google_self-driving_car) est une voiture totalement autonome et sans conducteur développée par Google, qui a dépassé le stade de test et roule aujourd'hui sur les routes de Californie. C'est impressionnant de voir à quel point on peut aller loin avec la technologie de l'apprentissage artificiel.
+- **Sécurité** : pour vérifier l'identité de quelqu'un, d'une transaction bancaire ou de l'authenticité d'un mail, les algorithmes de machine learning sont très utiles dans la sécurité et permettent d'identifier rapidement les fraudes éventuelles. Tous les bons clients mails sont capables de filtrer automatiquement les "spams" et tous systèmes bancaires est aussi équipés de ce genre de protection afin d'éviter tous échanges douteux voire illicites.
 
 La liste des exemples de tous les jours pourrait continuer **longtemps**, mais on retrouve aussi cette forme d'intelligence artificielle dans des applications plus surprenantes et très intéressantes :
 

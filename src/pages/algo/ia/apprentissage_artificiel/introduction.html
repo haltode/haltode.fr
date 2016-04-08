@@ -173,7 +173,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="introduction-&#224;-lapprentissage-artificiel">Introduction &#224; l'apprentissage artificiel</h1></a>
 <p>Publi&#233; le : 07/04/2016<br />
-<em>Modifi&#233; le : 07/04/2016</em></p>
+<em>Modifi&#233; le : 08/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -209,12 +209,12 @@ function toggle_visibility(id) {
 <p class="caption">Exemple de classification</p>
 </div>
 <p>Les deux param&#232;tres de l'entr&#233;e sont l'axe x et l'axe y, et les sorties sont les classes correspondantes (rond ou croix).</p>
-<p>Dans un probl&#232;me de r&#233;gression, on pourrait par exemple chercher &#224; g&#233;n&#233;raliser l'entr&#233;e (nos axes) &#224; l'aide d'une fonction, ici elle est lin&#233;aire, mais on peut retrouver des fonctions polynomiales complexes pour cr&#233;er des mod&#232;les plus sophistiqu&#233;s :</p>
+<p>Dans un probl&#232;me de r&#233;gression, on cherchera par exemple &#224; g&#233;n&#233;raliser l'entr&#233;e (l'axe x dans notre cas) &#224; l'aide d'une fonction, ici elle est lin&#233;aire, mais on peut trouver des fonctions polynomiales complexes pour cr&#233;er des mod&#232;les plus sophistiqu&#233;s :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_regression.png" alt="Exemple de r&#233;gression" />
 <p class="caption">Exemple de r&#233;gression</p>
 </div>
-<p>Ce mod&#232;le nous permettra de g&#233;n&#233;rer une sortie sur de nouveaux param&#232;tres.</p>
+<p>Ce mod&#232;le nous permettra de g&#233;n&#233;rer une sortie (l'axe y) sur de nouveaux param&#232;tres, en utilisant la fonction calcul&#233;e (ici elle sera donc de la forme <span class="math inline">\(y = ax + b\)</span>).</p>
 <p>Enfin, un exemple de partitionnement serait de regrouper des points entre eux, et de les diff&#233;rencier en groupe, comme ici avec trois diff&#233;rents clusters (rouge, bleu, et vert) :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_partitionnement.png" alt="Exemple de partitionnement" />
@@ -229,6 +229,7 @@ function toggle_visibility(id) {
 <li><strong>Traitement d'images</strong> : que ce soit pour reconna&#238;tre un visage, ou d&#233;crire une image, l'apprentissage artificiel est souvent indispensable vu la complexit&#233; de la t&#226;che. Facebook a par exemple un algorithme terriblement efficace de reconnaissance de visage (<a href="https://research.facebook.com/publications/deepface-closing-the-gap-to-human-level-performance-in-face-verification/">DeepFace</a>), gr&#226;ce au nombre colossal de photos envoy&#233;es sur la plateforme en ligne (servant alors d'exemple et d'entra&#238;nement &#224; l'algorithme). Ce dernier est tellement puissant qu'il est m&#234;me capable de vous reconna&#238;tre lorsque vous ne regardez pas la cam&#233;ra, quand vous avez le visage partiellement couvert, ou bien encore quand vous &#234;tes de dos. Google a aussi d&#233;velopp&#233; un <a href="http://cs.stanford.edu/people/karpathy/deepimagesent/">programme</a> capable de faire une description tr&#232;s pr&#233;cise d'une image ce qui est assez bluffant pour un ordinateur vu la complexit&#233; de certaines images.</li>
 <li><strong>Internet</strong> : la plupart des r&#233;seaux sociaux (Facebook, Twitter, ...), des sites de ventes (Amazon, Ebay, ...), de divertissement (Netflix, Deezer, Spotify, ...) utilisent des algorithmes d'apprentissage artificiel pour vous faire des recommandations, des suggestions, afin de mieux comprendre vos go&#251;ts (qui est une notion trop abstraite pour &#234;tre enti&#232;rement d&#233;crite et pr&#233;cis&#233;e &#224; un ordinateur, d'o&#249; l'utilisation d'une intelligence artificielle).</li>
 <li><strong>Transport</strong> : la fameuse <a href="https://en.wikipedia.org/wiki/Google_self-driving_car">Google Car</a> est une voiture totalement autonome et sans conducteur d&#233;velopp&#233;e par Google, qui a d&#233;pass&#233; le stade de test et roule aujourd'hui sur les routes de Californie. C'est impressionnant de voir &#224; quel point on peut aller loin avec la technologie de l'apprentissage artificiel.</li>
+<li><strong>S&#233;curit&#233;</strong> : pour v&#233;rifier l'identit&#233; de quelqu'un, d'une transaction bancaire ou de l'authenticit&#233; d'un mail, les algorithmes de machine learning sont tr&#232;s utiles dans la s&#233;curit&#233; et permettent d'identifier rapidement les fraudes &#233;ventuelles. Tous les bons clients mails sont capables de filtrer automatiquement les &quot;spams&quot; et tous syst&#232;mes bancaires est aussi &#233;quip&#233;s de ce genre de protection afin d'&#233;viter tous &#233;changes douteux voire illicites.</li>
 </ul>
 <p>La liste des exemples de tous les jours pourrait continuer <strong>longtemps</strong>, mais on retrouve aussi cette forme d'intelligence artificielle dans des applications plus surprenantes et tr&#232;s int&#233;ressantes :</p>
 <ul>
