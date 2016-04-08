@@ -13,4 +13,11 @@ Liste de mes différents projets personnels :
 | **06/2013** - **09/2013** | [ASCII Funfair](/projets/ascii_funfair.html)  | Programme regroupant différents jeux connus, en solo et en multijoueur  |
 | **04/2013**               | [Pseudo-C](/projets/pseudo-c.html)            | Traducteur et interpréteur de pseudo-code en langage C                  |
 
-Vous pouvez aussi retrouver mes plus petits projets sur Github : <https://github.com/napnac>. Et si cela vous intéresse, j'écris aussi des [récapitulatifs](/recap.html) de ce que je réalise chaque mois en programmation et en informatique de manière plus générale.
+Vous pouvez aussi retrouver mes plus petits projets sur Github : <https://github.com/napnac> :
+
+- [mlai](https://github.com/napnac/mlai) : implémentation basique de différents algorithmes de machine learning.
+- [lispy](https://github.com/napnac/lispy) : langage de programmation minimaliste inspiré de Lisp et écrit en C.
+- [zds-prog](https://github.com/napnac/zds-prog) : plusieurs codes sources venant des forums de [Zeste de Savoir](https://zestedesavoir.com/) (défi, atelier, etc.).
+- [pornote](https://github.com/napnac/pornote) : un site web parodique de Pronote, pour échanger les devoirs entre les classes.
+
+Et si cela vous intéresse, j'écris aussi des [récapitulatifs](/recap.html) de ce que je réalise chaque mois en programmation et en informatique de manière plus générale.
