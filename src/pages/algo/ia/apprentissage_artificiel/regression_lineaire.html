@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <!-- Syntax highlighting -->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async
+         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Code ---- */
+pre {
+   width: 90%;
+   white-space: pre-wrap;
+   word-break: break-all;
+   word-wrap: break-word;
+}
+</style>
+      <!---- ---->
+
+      <title>Régression linéaire - napnac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/">
+            <img src="//static.napnac.ga/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="r&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire</h1></a>
+<p>Publi&#233; le : 09/04/2016<br />
+<em>Modifi&#233; le : 09/04/2016</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe">Principe</a></li>
+<li><a href="#algorithmes">Algorithmes</a></li>
+<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#r&#233;gression-polynomiale">R&#233;gression polynomiale</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>On a vu dans l'<a href="/algo/ia/apprentissage_artificiel/introduction.html">introduction &#224; l'apprentissage artificiel</a>, que r&#233;colter des donn&#233;es utiles est une &#233;tape importante dans un processus d'apprentissage. Imaginons maintenant qu'on veuille estimer le prix d'un ordinateur en fonction de sa puissance de calcul, et pour ce faire vous avez not&#233; la puissance et le prix de diff&#233;rents ordinateurs dans un tableau :</p>
+<p><em>Les donn&#233;es sont totalement invent&#233;es et ne servent que d'exemple.</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Puissance (nombre d'op&#233;ration/s)</th>
+<th align="center">Prix (&#8364;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">173</td>
+<td align="center">194</td>
+</tr>
+<tr class="even">
+<td align="center">407</td>
+<td align="center">287</td>
+</tr>
+<tr class="odd">
+<td align="center">534</td>
+<td align="center">501</td>
+</tr>
+<tr class="even">
+<td align="center">714</td>
+<td align="center">674</td>
+</tr>
+<tr class="odd">
+<td align="center">956</td>
+<td align="center">771</td>
+</tr>
+<tr class="even">
+<td align="center">1226</td>
+<td align="center">860</td>
+</tr>
+</tbody>
+</table>
+<p>On peut repr&#233;senter ce tableau gr&#226;ce &#224; un graphique en deux dimensions tr&#232;s simple :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_donnees.png" alt="Exemple de donn&#233;es r&#233;colt&#233;es" />
+<p class="caption">Exemple de donn&#233;es r&#233;colt&#233;es</p>
+</div>
+<p>Ce qu'on cherche &#224; faire dans notre probl&#232;me c'est de <strong>g&#233;n&#233;raliser</strong> gr&#226;ce aux donn&#233;es obtenues. En tant qu'humain, on pourrait facilement faire une bonne g&#233;n&#233;ralisation comme ceci :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_generalisation.png" alt="Exemple de g&#233;n&#233;ralisation" />
+<p class="caption">Exemple de g&#233;n&#233;ralisation</p>
+</div>
+<p>On a une fonction lin&#233;aire, qu'on peut ensuite utiliser graphiquement pour trouver &#224; partir de la puissance d'un ordinateur, une bonne estimation de son prix.</p>
+<p>Cependant, comment faire comprendre &#224; un ordinateur ce que signifie le terme g&#233;n&#233;raliser ? Qu'est-ce qui fait qu'une fonction (lin&#233;aire, polynomiale, etc.) est une bonne g&#233;n&#233;ralisation de notre probl&#232;me ?</p>
+<h2 id="principe">Principe</h2>
+<p>La <strong>r&#233;gression lin&#233;aire</strong> est un moyen de g&#233;n&#233;raliser et de cr&#233;er un mod&#232;le lin&#233;aire (dans notre cas une fonction) &#224; partir d'exemples. Ce type d'apprentissage s'inscrit dans le cadre d'une m&#233;thode d'<strong>apprentissage supervis&#233;</strong> puisqu'on doit fournir &#224; l'algorithme des exemples d'entr&#233;es compos&#233;s de r&#233;ponses. Aussi, c'est un probl&#232;me de <strong>r&#233;gression</strong> car cherche &#224; obtenir des valeurs num&#233;riques gr&#226;ce &#224; notre fonction de g&#233;n&#233;ralisation.</p>
+<p>Un mod&#232;le va donc &#234;tre une fonction lin&#233;aire (<span class="math inline">\(y = ax + b\)</span>) qu'on notera :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x\)</span></p>
+<p>correspond aux param&#232;tres de notre fonction, avec <span class="math inline">\(\theta_{0} = b\)</span>, et <span class="math inline">\(\theta_{1} = a\)</span>. Cette fonction est aussi appel&#233;e <strong>fonction d'hypoth&#232;se</strong>, car on veut trouver une fonction <span class="math inline">\(h\)</span> qui se rapproche le plus possible de nos exemples afin de coller au mieux &#224; la r&#233;alit&#233; et &#224; une possible g&#233;n&#233;ralisation. Le probl&#232;me que cherche &#224; r&#233;soudre la r&#233;gression lin&#233;aire est donc de trouver les param&#232;tres qui rendent notre mod&#232;le le plus efficace possible.</p>
+<p>Pour comprendre comment trouver un bon mod&#232;le, il faut tout d'abord comprendre comment d&#233;crire l'efficacit&#233; d'un mod&#232;le quelconque, et surtout qu'est-ce qui rend un mod&#232;le meilleur qu'un autre ?</p>
+<h3 id="fonction-derreur">Fonction d'erreur</h3>
+<p>Afin de diff&#233;rencier deux mod&#232;les en fonction de leurs efficacit&#233;s, on va utiliser une <strong>fonction d'erreur</strong> qui mesure le taux d'erreur entre notre mod&#232;le et les donn&#233;es qu'on a r&#233;colt&#233;es.</p>
+<p>Dans le cas d'une r&#233;gression lin&#233;aire, une fonction d'erreur tr&#232;s commune est celle qui <strong>minimise la somme des carr&#233;s des erreurs</strong> :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Avant d'expliquer ce que fait concr&#232;tement cette fonction, il faut d&#233;tailler la notation. <span class="math inline">\(J\)</span> est notre fonction d'erreur, et elle prend <span class="math inline">\(\theta\)</span> comme param&#232;tres. La fonction <span class="math inline">\(h\)</span> est notre mod&#232;le qui utilise donc les param&#232;tres de la fonction d'erreur. La variable <span class="math inline">\(m\)</span> correspond au nombre d'exemples dans l'entr&#233;e, et <span class="math inline">\(x_{i}\)</span> ainsi que <span class="math inline">\(y_{i}\)</span> d&#233;signent respectivement les &#233;l&#233;ments <span class="math inline">\(i\)</span> de l'axe x et de l'axe y.</p>
+<p>D&#233;composons maintenant cette fonction afin de comprendre ce qu'elle cherche &#224; faire :</p>
+<p><span class="math inline">\((h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Ici on r&#233;alise la diff&#233;rence sur un exemple <span class="math inline">\(i\)</span> donn&#233;, entre le r&#233;sultat de l'estimation de notre fonction d'hypoth&#232;se et du r&#233;sultat de notre entr&#233;e sur ce m&#234;me exemple. On cherche &#224; voir si notre fonction est loin ou proche des donn&#233;es qu'on a r&#233;colt&#233;es (et donc de la r&#233;alit&#233;). Cette diff&#233;rence est mont&#233;e &#224; la puissance 2 afin d'avoir un r&#233;sultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le r&#233;sultat (s'il y a une grosse diff&#233;rence, le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement), alors qu'avec une autre fonction comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a> on n'aurait pas cette deuxi&#232;me propri&#233;t&#233; qui permet de mieux distinguer l'efficacit&#233; entre deux mod&#232;les.</p>
+<p>Si on reprend notre estimation faite &#224; la main du d&#233;but, la diff&#233;rence que l'on calcule dans notre expression correspond aux parties vertes sur ce sch&#233;ma :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_calcul_erreur.png" alt="Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;" />
+<p class="caption">Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;</p>
+</div>
+<p>Notre fonction d'erreur fait ensuite la moyenne de ces diff&#233;rences, en calculant ces derni&#232;res sur tous nos <span class="math inline">\(m\)</span> exemples en entr&#233;e :</p>
+<p><span class="math inline">\(\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Enfin, on divise les r&#233;sultats par 2 afin de simplifier la sortie obtenue :</p>
+<p><span class="math inline">\(\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span><br />
+<span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Cette fonction nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres qu'ils utilisent. Le but de la r&#233;gression lin&#233;aire est donc de <strong>minimiser</strong> la fonction d'erreur utilis&#233;e en fonction des param&#232;tres , afin d'avoir le meilleur mod&#232;le possible.</p>
+<p>TODO : autre fonction d'erreur int&#233;ressante ? TODO : graphique de la fonction d'erreur</p>
+<h2 id="algorithmes">Algorithmes</h2>
+<h3 id="algorithme-du-gradient">Algorithme du gradient</h3>
+<ul>
+<li>vectorization</li>
+<li>feature scaling</li>
+<li>mean normalization</li>
+</ul>
+<h3 id="normal-equation">Normal equation</h3>
+<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<h2 id="r&#233;gression-polynomiale">R&#233;gression polynomiale</h2>
+<h2 id="conclusion">Conclusion</h2>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <hr>
+         <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
+         <br>
+      </footer>
+
+   </body>
+</html>
