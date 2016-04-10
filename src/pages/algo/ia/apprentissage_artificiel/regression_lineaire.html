@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="r&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire</h1></a>
-<p>Publi&#233; le : 09/04/2016<br />
-<em>Modifi&#233; le : 09/04/2016</em></p>
+<p>Publi&#233; le : 10/04/2016<br />
+<em>Modifi&#233; le : 10/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -188,7 +188,7 @@ function toggle_visibility(id) {
 <table>
 <thead>
 <tr class="header">
-<th align="center">Puissance (nombre d'op&#233;ration/s)</th>
+<th align="center">Puissance (nombre d'op&#233;rations/s)</th>
 <th align="center">Prix (&#8364;)</th>
 </tr>
 </thead>
@@ -229,42 +229,55 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_generalisation.png" alt="Exemple de g&#233;n&#233;ralisation" />
 <p class="caption">Exemple de g&#233;n&#233;ralisation</p>
 </div>
-<p>On a une fonction lin&#233;aire, qu'on peut ensuite utiliser graphiquement pour trouver &#224; partir de la puissance d'un ordinateur, une bonne estimation de son prix.</p>
+<p>On a une fonction lin&#233;aire basique, qu'on peut ensuite utiliser graphiquement pour trouver &#224; partir de la puissance d'un ordinateur, une bonne estimation de son prix.</p>
 <p>Cependant, comment faire comprendre &#224; un ordinateur ce que signifie le terme g&#233;n&#233;raliser ? Qu'est-ce qui fait qu'une fonction (lin&#233;aire, polynomiale, etc.) est une bonne g&#233;n&#233;ralisation de notre probl&#232;me ?</p>
+<p>Avant de se lancer dans la recherche d'un algorithme d'apprentissage artificiel, il faut d&#233;finir ses caract&#233;ristiques. Dans notre probl&#232;me, on a un ensemble de donn&#233;es sous la forme d'entr&#233;es et de sorties correspondantes, nous sommes donc dans un <strong>apprentissage supervis&#233;</strong>. De plus, la sortie qu'on cherche est une valeur num&#233;rique, notre probl&#232;me appartient alors au domaine de la <strong>r&#233;gression</strong>. Une fois qu'on conna&#238;t ces deux informations essentielles, on peut d&#233;cider de l'algorithme &#224; utiliser en fonction de nos besoins et de nos ressources. Dans notre situation on souhaiterait faire une g&#233;n&#233;ralisation sous la forme d'une fonction lin&#233;aire, la m&#233;thode &#224; employer est donc : la <strong>r&#233;gression lin&#233;aire</strong>.</p>
 <h2 id="principe">Principe</h2>
-<p>La <strong>r&#233;gression lin&#233;aire</strong> est un moyen de g&#233;n&#233;raliser et de cr&#233;er un mod&#232;le lin&#233;aire (dans notre cas une fonction) &#224; partir d'exemples. Ce type d'apprentissage s'inscrit dans le cadre d'une m&#233;thode d'<strong>apprentissage supervis&#233;</strong> puisqu'on doit fournir &#224; l'algorithme des exemples d'entr&#233;es compos&#233;s de r&#233;ponses. Aussi, c'est un probl&#232;me de <strong>r&#233;gression</strong> car cherche &#224; obtenir des valeurs num&#233;riques gr&#226;ce &#224; notre fonction de g&#233;n&#233;ralisation.</p>
-<p>Un mod&#232;le va donc &#234;tre une fonction lin&#233;aire (<span class="math inline">\(y = ax + b\)</span>) qu'on notera :</p>
-<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x\)</span></p>
-<p>correspond aux param&#232;tres de notre fonction, avec <span class="math inline">\(\theta_{0} = b\)</span>, et <span class="math inline">\(\theta_{1} = a\)</span>. Cette fonction est aussi appel&#233;e <strong>fonction d'hypoth&#232;se</strong>, car on veut trouver une fonction <span class="math inline">\(h\)</span> qui se rapproche le plus possible de nos exemples afin de coller au mieux &#224; la r&#233;alit&#233; et &#224; une possible g&#233;n&#233;ralisation. Le probl&#232;me que cherche &#224; r&#233;soudre la r&#233;gression lin&#233;aire est donc de trouver les param&#232;tres qui rendent notre mod&#232;le le plus efficace possible.</p>
-<p>Pour comprendre comment trouver un bon mod&#232;le, il faut tout d'abord comprendre comment d&#233;crire l'efficacit&#233; d'un mod&#232;le quelconque, et surtout qu'est-ce qui rend un mod&#232;le meilleur qu'un autre ?</p>
+<p>La r&#233;gression lin&#233;aire est un moyen de g&#233;n&#233;raliser et de cr&#233;er un mod&#232;le lin&#233;aire &#224; partir d'exemples. Le mod&#232;le est une fonction lin&#233;aire, qu'on notera :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n\)</span> avec <span class="math inline">\(h(x) \simeq y\)</span></p>
+<p><span class="math inline">\(\theta\)</span> correspond aux diff&#233;rents coefficients de notre fonction qui prend <span class="math inline">\(n\)</span> <strong>attributs</strong> (ou <em>feature</em> en anglais) qui sont tout simplement les param&#232;tres de notre fonction (soit <span class="math inline">\(x\)</span>). <span class="math inline">\(y\)</span> est la sortie qu'on a obtenue lors de la r&#233;colte de donn&#233;es, on veut donc une fonction <span class="math inline">\(h\)</span>, aussi appel&#233;e <strong>fonction d'hypoth&#232;se</strong>, qui soit le plus proche possible de nos exemples afin de coller au mieux &#224; la r&#233;alit&#233;. Le probl&#232;me que cherche &#224; r&#233;soudre la r&#233;gression lin&#233;aire est donc de trouver les param&#232;tres <span class="math inline">\(\theta\)</span> qui rendent notre mod&#232;le le plus efficace possible.</p>
+<p>Dans notre cas, on a uniquement un attribut (la puissance de l'ordinateur), on cherche donc une fonction d'hypoth&#232;se qui retourne une estimation du prix de l'ordinateur de cette forme :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x_1\)</span></p>
+<p>Mais pour comprendre comment trouver un bon mod&#232;le, il faut tout d'abord comprendre comment d&#233;crire l'efficacit&#233; d'un mod&#232;le quelconque, et surtout qu'est-ce qui rend un mod&#232;le meilleur qu'un autre ?</p>
 <h3 id="fonction-derreur">Fonction d'erreur</h3>
 <p>Afin de diff&#233;rencier deux mod&#232;les en fonction de leurs efficacit&#233;s, on va utiliser une <strong>fonction d'erreur</strong> qui mesure le taux d'erreur entre notre mod&#232;le et les donn&#233;es qu'on a r&#233;colt&#233;es.</p>
 <p>Dans le cas d'une r&#233;gression lin&#233;aire, une fonction d'erreur tr&#232;s commune est celle qui <strong>minimise la somme des carr&#233;s des erreurs</strong> :</p>
 <p><span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Avant d'expliquer ce que fait concr&#232;tement cette fonction, il faut d&#233;tailler la notation. <span class="math inline">\(J\)</span> est notre fonction d'erreur, et elle prend <span class="math inline">\(\theta\)</span> comme param&#232;tres. La fonction <span class="math inline">\(h\)</span> est notre mod&#232;le qui utilise donc les param&#232;tres de la fonction d'erreur. La variable <span class="math inline">\(m\)</span> correspond au nombre d'exemples dans l'entr&#233;e, et <span class="math inline">\(x_{i}\)</span> ainsi que <span class="math inline">\(y_{i}\)</span> d&#233;signent respectivement les &#233;l&#233;ments <span class="math inline">\(i\)</span> de l'axe x et de l'axe y.</p>
+<p>Avant d'expliquer ce que fait concr&#232;tement cette fonction, il faut d&#233;tailler la notation. <span class="math inline">\(J\)</span> est notre fonction d'erreur, et elle prend <span class="math inline">\(\theta\)</span> comme param&#232;tres. La fonction <span class="math inline">\(h\)</span> est notre mod&#232;le qui utilise donc les param&#232;tres <span class="math inline">\(\theta\)</span> de la fonction d'erreur. La variable <span class="math inline">\(m\)</span> correspond au nombre d'exemples dans l'entr&#233;e, et <span class="math inline">\(x_{i}\)</span> ainsi que <span class="math inline">\(y_{i}\)</span> d&#233;signent le <span class="math inline">\(i\)</span>&#232;me exemple sous la forme d'un couple (entr&#233;e, sortie).</p>
 <p>D&#233;composons maintenant cette fonction afin de comprendre ce qu'elle cherche &#224; faire :</p>
 <p><span class="math inline">\((h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Ici on r&#233;alise la diff&#233;rence sur un exemple <span class="math inline">\(i\)</span> donn&#233;, entre le r&#233;sultat de l'estimation de notre fonction d'hypoth&#232;se et du r&#233;sultat de notre entr&#233;e sur ce m&#234;me exemple. On cherche &#224; voir si notre fonction est loin ou proche des donn&#233;es qu'on a r&#233;colt&#233;es (et donc de la r&#233;alit&#233;). Cette diff&#233;rence est mont&#233;e &#224; la puissance 2 afin d'avoir un r&#233;sultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le r&#233;sultat (s'il y a une grosse diff&#233;rence, le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement), alors qu'avec une autre fonction comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a> on n'aurait pas cette deuxi&#232;me propri&#233;t&#233; qui permet de mieux distinguer l'efficacit&#233; entre deux mod&#232;les.</p>
-<p>Si on reprend notre estimation faite &#224; la main du d&#233;but, la diff&#233;rence que l'on calcule dans notre expression correspond aux parties vertes sur ce sch&#233;ma :</p>
+<p>Ici on r&#233;alise la diff&#233;rence sur un exemple <span class="math inline">\(i\)</span> donn&#233;, entre le r&#233;sultat de l'estimation de notre fonction d'hypoth&#232;se et du r&#233;sultat de notre entr&#233;e sur ce m&#234;me exemple. On cherche &#224; voir si notre fonction est loin ou proche des donn&#233;es qu'on a r&#233;colt&#233;es (et donc de la r&#233;alit&#233;). Cette diff&#233;rence est mont&#233;e au carr&#233; afin d'avoir un r&#233;sultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le r&#233;sultat (s'il y a une grosse diff&#233;rence, le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement), alors qu'avec une autre fonction comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a> on n'aurait pas cette deuxi&#232;me propri&#233;t&#233; qui permet de mieux distinguer l'efficacit&#233; entre deux mod&#232;les.</p>
+<p>Si on reprend notre estimation possible faite &#224; la main, la diff&#233;rence que l'on calcule dans notre expression correspond aux parties vertes sur ce sch&#233;ma :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_calcul_erreur.png" alt="Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;" />
 <p class="caption">Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;</p>
 </div>
-<p>Notre fonction d'erreur fait ensuite la moyenne de ces diff&#233;rences, en calculant ces derni&#232;res sur tous nos <span class="math inline">\(m\)</span> exemples en entr&#233;e :</p>
+<p>Notre fonction d'erreur fait ensuite la moyenne de ces diff&#233;rences, en calculant ces derni&#232;res sur tous nos <span class="math inline">\(m\)</span> exemples :</p>
 <p><span class="math inline">\(\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Enfin, on divise les r&#233;sultats par 2 afin de simplifier la sortie obtenue :</p>
-<p><span class="math inline">\(\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span><br />
-<span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Cette fonction nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres qu'ils utilisent. Le but de la r&#233;gression lin&#233;aire est donc de <strong>minimiser</strong> la fonction d'erreur utilis&#233;e en fonction des param&#232;tres , afin d'avoir le meilleur mod&#232;le possible.</p>
-<p>TODO : autre fonction d'erreur int&#233;ressante ? TODO : graphique de la fonction d'erreur</p>
+<p>Enfin, on divise le r&#233;sultat par 2 afin de simplifier la sortie obtenue :</p>
+<p><span class="math inline">\(\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Cette fonction nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres <span class="math inline">\(\theta\)</span> qu'ils utilisent.</p>
+<p>Gr&#226;ce &#224; cela, on peut enfin d&#233;finir concr&#232;tement ce que signifie &quot;trouver le meilleur mod&#232;le&quot;. Cela revient &#224; trouver des param&#232;tres <span class="math inline">\(\theta\)</span> qui <strong>minimisent</strong> la fonction d'erreur utilis&#233;e.</p>
+<p>Si l'on affiche graphiquement un exemple de fonction d'erreur pour notre probl&#232;me, cela ressemblerait &#224; &#231;a :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_fonction_erreur.png" alt="Exemple de repr&#233;sentation graphique de la fonction d&#39;erreur" />
+<p class="caption">Exemple de repr&#233;sentation graphique de la fonction d'erreur</p>
+</div>
+<p>Sur ce graphique repr&#233;sentant <span class="math inline">\(J\)</span> en fonction de <span class="math inline">\(\theta_{0}\)</span> et <span class="math inline">\(\theta_{1}\)</span>, on remarque clairement les valeurs de <span class="math inline">\(\theta\)</span> pour lesquelles la fonction d'erreur est minimis&#233;e. Cependant, il va falloir trouver un algorithme qui calcule ces valeurs automatiquement, car on ne pourra pas toujours faire de repr&#233;sentation graphique (lorsqu'on a beaucoup d'attributs en entr&#233;e par exemple).</p>
 <h2 id="algorithmes">Algorithmes</h2>
+<p>On a r&#233;ussi &#224; d&#233;finir math&#233;matiquement l'objectif de la r&#233;gression lin&#233;aire, gr&#226;ce &#224; notre fonction d'erreur. D&#233;sormais il faut donc minimiser cette fonction avec les param&#232;tres <span class="math inline">\(\theta\)</span>.</p>
+<p>Deux m&#233;thodes r&#233;pandues s'offrent &#224; nous :</p>
+<ul>
+<li>L'<strong>algorithme du gradient</strong> : un algorithme it&#233;ratif (pouvant cependant &#234;tre am&#233;lior&#233; avec l'utilisation de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a>) utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un <strong>coefficient d'apprentissage</strong> (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
+<li>l'<strong>&#233;quation normale</strong> : une &#233;quation donnant le r&#233;sultat directement sans besoin d'it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations et a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span> &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a>. On l'utilisera en g&#233;n&#233;ral quand <span class="math inline">\(n\)</span> est suffisamment petit (par exemple en dessous de 1000, c'est raisonnable d'utiliser cette m&#233;thode, mais &#224; partir de 10000 il faudrait sans doute revoir la strat&#233;gie).</li>
+</ul>
 <h3 id="algorithme-du-gradient">Algorithme du gradient</h3>
 <ul>
 <li>vectorization</li>
 <li>feature scaling</li>
 <li>mean normalization</li>
 </ul>
-<h3 id="normal-equation">Normal equation</h3>
+<h3 id="equation-normale">Equation normale</h3>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <h2 id="r&#233;gression-polynomiale">R&#233;gression polynomiale</h2>
 <h2 id="conclusion">Conclusion</h2>
