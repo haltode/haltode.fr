@@ -1,0 +1,16 @@
+% inspired from http://www.texample.net/tikz/examples/gnuplot-basics/
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[domain=0:4]
+   \draw[very thin,color=gray] (-0.1,-0.5) grid (3.9,3.9);
+   \draw[->] (-0.5,0) -- (4.2,0) node[right] {$\theta_0$};
+   \draw[->] (0,-0.5) -- (0,4.2) node[above] {$J(\theta_0)$};
+   \draw[color=red] plot[id=x] function{(x - 2) **2};
+\end{tikzpicture}
+
+\end{document}

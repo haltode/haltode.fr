@@ -172,13 +172,13 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="r&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire</h1></a>
-<p>Publi&#233; le : 10/04/2016<br />
-<em>Modifi&#233; le : 10/04/2016</em></p>
+<p>Publi&#233; le : 11/04/2016<br />
+<em>Modifi&#233; le : 11/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#algorithmes">Algorithmes</a></li>
-<li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
+<li><a href="#probl&#232;mes">Probl&#232;mes</a></li>
 <li><a href="#r&#233;gression-polynomiale">R&#233;gression polynomiale</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
@@ -246,7 +246,7 @@ function toggle_visibility(id) {
 <p>Avant d'expliquer ce que fait concr&#232;tement cette fonction, il faut d&#233;tailler la notation. <span class="math inline">\(J\)</span> est notre fonction d'erreur, et elle prend <span class="math inline">\(\theta\)</span> comme param&#232;tres. La fonction <span class="math inline">\(h\)</span> est notre mod&#232;le qui utilise donc les param&#232;tres <span class="math inline">\(\theta\)</span> de la fonction d'erreur. La variable <span class="math inline">\(m\)</span> correspond au nombre d'exemples dans l'entr&#233;e, et <span class="math inline">\(x_{i}\)</span> ainsi que <span class="math inline">\(y_{i}\)</span> d&#233;signent le <span class="math inline">\(i\)</span>&#232;me exemple sous la forme d'un couple (entr&#233;e, sortie).</p>
 <p>D&#233;composons maintenant cette fonction afin de comprendre ce qu'elle cherche &#224; faire :</p>
 <p><span class="math inline">\((h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Ici on r&#233;alise la diff&#233;rence sur un exemple <span class="math inline">\(i\)</span> donn&#233;, entre le r&#233;sultat de l'estimation de notre fonction d'hypoth&#232;se et du r&#233;sultat de notre entr&#233;e sur ce m&#234;me exemple. On cherche &#224; voir si notre fonction est loin ou proche des donn&#233;es qu'on a r&#233;colt&#233;es (et donc de la r&#233;alit&#233;). Cette diff&#233;rence est mont&#233;e au carr&#233; afin d'avoir un r&#233;sultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le r&#233;sultat (s'il y a une grosse diff&#233;rence, le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement), alors qu'avec une autre fonction comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a> on n'aurait pas cette deuxi&#232;me propri&#233;t&#233; qui permet de mieux distinguer l'efficacit&#233; entre deux mod&#232;les.</p>
+<p>Ici on r&#233;alise la diff&#233;rence sur un exemple <span class="math inline">\(i\)</span> donn&#233;, entre le r&#233;sultat de l'estimation de notre fonction d'hypoth&#232;se et le r&#233;sultat de notre entr&#233;e sur ce m&#234;me exemple. On cherche &#224; voir si notre fonction est loin ou proche des donn&#233;es qu'on a r&#233;colt&#233;es (et donc de la r&#233;alit&#233;). Cette diff&#233;rence est mont&#233;e au carr&#233; afin d'avoir un r&#233;sultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le r&#233;sultat (s'il y a une grosse diff&#233;rence, le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement), alors qu'avec une autre fonction comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a> on n'aurait pas cette deuxi&#232;me propri&#233;t&#233; qui permet de mieux distinguer l'efficacit&#233; entre deux mod&#232;les.</p>
 <p>Si on reprend notre estimation possible faite &#224; la main, la diff&#233;rence que l'on calcule dans notre expression correspond aux parties vertes sur ce sch&#233;ma :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_calcul_erreur.png" alt="Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;" />
@@ -258,7 +258,7 @@ function toggle_visibility(id) {
 <p><span class="math inline">\(\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
 <p>Cette fonction nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres <span class="math inline">\(\theta\)</span> qu'ils utilisent.</p>
 <p>Gr&#226;ce &#224; cela, on peut enfin d&#233;finir concr&#232;tement ce que signifie &quot;trouver le meilleur mod&#232;le&quot;. Cela revient &#224; trouver des param&#232;tres <span class="math inline">\(\theta\)</span> qui <strong>minimisent</strong> la fonction d'erreur utilis&#233;e.</p>
-<p>Si l'on affiche graphiquement un exemple de fonction d'erreur pour notre probl&#232;me, cela ressemblerait &#224; &#231;a :</p>
+<p>Si l'on affiche graphiquement la fonction d'erreur pour notre probl&#232;me, on obtient ceci :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_fonction_erreur.png" alt="Exemple de repr&#233;sentation graphique de la fonction d&#39;erreur" />
 <p class="caption">Exemple de repr&#233;sentation graphique de la fonction d'erreur</p>
@@ -268,17 +268,56 @@ function toggle_visibility(id) {
 <p>On a r&#233;ussi &#224; d&#233;finir math&#233;matiquement l'objectif de la r&#233;gression lin&#233;aire, gr&#226;ce &#224; notre fonction d'erreur. D&#233;sormais il faut donc minimiser cette fonction avec les param&#232;tres <span class="math inline">\(\theta\)</span>.</p>
 <p>Deux m&#233;thodes r&#233;pandues s'offrent &#224; nous :</p>
 <ul>
-<li>L'<strong>algorithme du gradient</strong> : un algorithme it&#233;ratif (pouvant cependant &#234;tre am&#233;lior&#233; avec l'utilisation de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a>) utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un <strong>coefficient d'apprentissage</strong> (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
-<li>l'<strong>&#233;quation normale</strong> : une &#233;quation donnant le r&#233;sultat directement sans besoin d'it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations et a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span> &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a>. On l'utilisera en g&#233;n&#233;ral quand <span class="math inline">\(n\)</span> est suffisamment petit (par exemple en dessous de 1000, c'est raisonnable d'utiliser cette m&#233;thode, mais &#224; partir de 10000 il faudrait sans doute revoir la strat&#233;gie).</li>
+<li><strong>L'algorithme du gradient</strong> : un algorithme it&#233;ratif (pouvant cependant &#234;tre am&#233;lior&#233; avec l'utilisation de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a>) utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un <strong>coefficient d'apprentissage</strong> (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
+<li><strong>L'&#233;quation normale</strong> : une &#233;quation donnant le r&#233;sultat directement sans it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations et a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span> &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a>. On l'utilisera en g&#233;n&#233;ral quand <span class="math inline">\(n\)</span> est suffisamment petit (en g&#233;n&#233;ral au-dessus de 10000 on &#233;vite d'utiliser cette m&#233;thode).</li>
 </ul>
 <h3 id="algorithme-du-gradient">Algorithme du gradient</h3>
+<h4 id="principe-1">Principe</h4>
+<p>L'id&#233;e de l'algorithme est de commencer avec des param&#232;tres initiaux <span class="math inline">\(\theta\)</span> (en g&#233;n&#233;ral on utilise 0), puis de changer ces derniers en fonction du r&#233;sultat de la fonction d'erreur, afin de minimiser <span class="math inline">\(J\)</span> pour arriver on l'esp&#232;re &#224; un minimum global.</p>
+<p>Il est plus difficile de visualiser l'id&#233;e de l'algorithme sur notre pr&#233;c&#233;dent graphique en 3D, alors on va utiliser un graphique 2D sp&#233;cial qui trace les contours (on appelle cela un <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm"><em>contour plot</em></a> en anglais) :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/contour_plot.png" alt="Contour plot de notre graphique" />
+<p class="caption">Contour plot de notre graphique</p>
+</div>
+<p>Les contours repr&#233;sentent <span class="math inline">\(J\)</span> et on a nos deux coefficients entre abscisse et en ordonn&#233;e de notre graphique. La croix rouge correspond au minimum de la fonction <span class="math inline">\(J\)</span>, et c'est le point qu'on cherche &#224; atteindre.</p>
+<p>L'algorithme du gradient va proc&#233;der ainsi :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_algo_gradient.png" alt="Exemple du fonctionnement de l&#39;algorithme du gradient" />
+<p class="caption">Exemple du fonctionnement de l'algorithme du gradient</p>
+</div>
+<p>On part d'un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l'algorithme r&#233;alise-t-il ces pas ? Comment est-ce qu'il d&#233;cide de l'amplitude, ou encore de la direction &#224; prendre ?</p>
+<p>Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la &quot;pente&quot; de la repr&#233;sentation de la fonction pour d&#233;cider du prochain point &#224; explorer. Si l'on reprend notre graphique en 3D, imaginez une boule sur la partie rouge (qui repr&#233;sente donc une valeur importante), et bien la boule va automatiquement rouler vite dans la pente avant d'atteindre un point plat. Math&#233;matiquement parlant, cette d&#233;cision se ferra gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/Derivative"><strong>d&#233;riv&#233;e</strong></a> de la fonction <span class="math inline">\(J\)</span> au point actuel de notre algorithme.</p>
+<p>Simplifions notre probl&#232;me avec un exemple de fonction <span class="math inline">\(J\)</span> avec uniquement un param&#232;tre <span class="math inline">\(\theta_{0}\)</span> :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient.png" alt="Exemple simplifi&#233; de l&#39;algorithme du gradient" />
+<p class="caption">Exemple simplifi&#233; de l'algorithme du gradient</p>
+</div>
+<p>On initialise l'algorithme avec un point tel que <span class="math inline">\(\theta_{0} = 0\)</span>, et on calcule la d&#233;riv&#233;e de la fonction <span class="math inline">\(J\)</span> en ce point :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_init.png" alt="Initialisation" />
+<p class="caption">Initialisation</p>
+</div>
+<p>La d&#233;riv&#233;e est la droite en bleue, et on remarque que son coefficient directeur est n&#233;gatif et important, notre algorithme va donc augmenter <span class="math inline">\(\theta_{0}\)</span> de mani&#232;re importante.</p>
+<p>On peut continuer ainsi jusqu'&#224; tomber sur le minimum de notre fonction :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_reste.png" alt="Reste de l&#39;algorithme" />
+<p class="caption">Reste de l'algorithme</p>
+</div>
+<h4 id="pseudo-code">Pseudo-code</h4>
+<h4 id="complexit&#233;">Complexit&#233;</h4>
+<h4 id="impl&#233;mentation">Impl&#233;mentation</h4>
+<h4 id="am&#233;liorations">Am&#233;liorations</h4>
 <ul>
 <li>vectorization</li>
 <li>feature scaling</li>
 <li>mean normalization</li>
 </ul>
 <h3 id="equation-normale">Equation normale</h3>
-<h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
+<h2 id="probl&#232;mes">Probl&#232;mes</h2>
+<ul>
+<li>overfitting</li>
+<li>underfitting</li>
+</ul>
 <h2 id="r&#233;gression-polynomiale">R&#233;gression polynomiale</h2>
 <h2 id="conclusion">Conclusion</h2>
  

@@ -16,7 +16,6 @@ hold on;
 plot(x, y, '@');
 xlabel("Puissance de calcul (en centaine d\'operations par seconde)");
 ylabel("Prix (en centaine d\'euros)");
-title("Representation des donnees");
 
 % Ajout d'une ligne représentant une estimation faite à la main
 line_x = [0.85 ; 12.8];

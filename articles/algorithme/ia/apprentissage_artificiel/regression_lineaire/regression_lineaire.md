@@ -2,8 +2,8 @@ Régression linéaire
 ===================
 algo/ia/apprentissage_artificiel
 
-Publié le : 10/04/2016  
-*Modifié le : 10/04/2016*
+Publié le : 11/04/2016  
+*Modifié le : 11/04/2016*
 
 ## Introduction
 
@@ -62,7 +62,7 @@ Décomposons maintenant cette fonction afin de comprendre ce qu'elle cherche à 
 
 $(h_{\theta}(x_{i}) - y_{i})^2$
 
-Ici on réalise la différence sur un exemple $i$ donné, entre le résultat de l'estimation de notre fonction d'hypothèse et du résultat de notre entrée sur ce même exemple. On cherche à voir si notre fonction est loin ou proche des données qu'on a récoltées (et donc de la réalité). Cette différence est montée au carré afin d'avoir un résultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le résultat (s'il y a une grosse différence, le carré produira un résultat très élevé et inversement), alors qu'avec une autre fonction comme la [valeur absolue](https://en.wikipedia.org/wiki/Absolute_value) on n'aurait pas cette deuxième propriété qui permet de mieux distinguer l'efficacité entre deux modèles.
+Ici on réalise la différence sur un exemple $i$ donné, entre le résultat de l'estimation de notre fonction d'hypothèse et le résultat de notre entrée sur ce même exemple. On cherche à voir si notre fonction est loin ou proche des données qu'on a récoltées (et donc de la réalité). Cette différence est montée au carré afin d'avoir un résultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le résultat (s'il y a une grosse différence, le carré produira un résultat très élevé et inversement), alors qu'avec une autre fonction comme la [valeur absolue](https://en.wikipedia.org/wiki/Absolute_value) on n'aurait pas cette deuxième propriété qui permet de mieux distinguer l'efficacité entre deux modèles.
 
 Si on reprend notre estimation possible faite à la main, la différence que l'on calcule dans notre expression correspond aux parties vertes sur ce schéma :
 
@@ -80,7 +80,7 @@ Cette fonction nous permet alors de comparer deux modèles en fonction des param
 
 Grâce à cela, on peut enfin définir concrètement ce que signifie "trouver le meilleur modèle". Cela revient à trouver des paramètres $\theta$ qui **minimisent** la fonction d'erreur utilisée.
 
-Si l'on affiche graphiquement un exemple de fonction d'erreur pour notre problème, cela ressemblerait à ça :
+Si l'on affiche graphiquement la fonction d'erreur pour notre problème, on obtient ceci :
 
 ![Exemple de représentation graphique de la fonction d'erreur](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_fonction_erreur.png)
 
@@ -92,10 +92,50 @@ On a réussi à définir mathématiquement l'objectif de la régression linéair
 
 Deux méthodes répandues s'offrent à nous :
 
-- L'**algorithme du gradient** : un algorithme itératif (pouvant cependant être amélioré avec l'utilisation de [matrices](https://en.wikipedia.org/wiki/Matrix_%28mathematics%29)) utile quand $n$ est très large, et personnalisable grâce à un **coefficient d'apprentissage** (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).
-- l'**équation normale** : une équation donnant le résultat directement sans besoin d'itérations, cependant cette dernière est très lourde en opérations et a une complexité en temps de $O(n^3)$ à cause du [produit matriciel](https://en.wikipedia.org/wiki/Matrix_multiplication). On l'utilisera en général quand $n$ est suffisamment petit (par exemple en dessous de 1000, c'est raisonnable d'utiliser cette méthode, mais à partir de 10000 il faudrait sans doute revoir la stratégie).
+- **L'algorithme du gradient** : un algorithme itératif (pouvant cependant être amélioré avec l'utilisation de [matrices](https://en.wikipedia.org/wiki/Matrix_%28mathematics%29)) utile quand $n$ est très large, et personnalisable grâce à un **coefficient d'apprentissage** (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).
+- **L'équation normale** : une équation donnant le résultat directement sans itérations, cependant cette dernière est très lourde en opérations et a une complexité en temps de $O(n^3)$ à cause du [produit matriciel](https://en.wikipedia.org/wiki/Matrix_multiplication). On l'utilisera en général quand $n$ est suffisamment petit (en général au-dessus de 10000 on évite d'utiliser cette méthode).
 
 ### Algorithme du gradient
+
+#### Principe
+
+L'idée de l'algorithme est de commencer avec des paramètres initiaux $\theta$ (en général on utilise 0), puis de changer ces derniers en fonction du résultat de la fonction d'erreur, afin de minimiser $J$ pour arriver on l'espère à un minimum global.
+
+Il est plus difficile de visualiser l'idée de l'algorithme sur notre précédent graphique en 3D, alors on va utiliser un graphique 2D spécial qui trace les contours (on appelle cela un [*contour plot*](http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm) en anglais) :
+
+![Contour plot de notre graphique](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/contour_plot.png)
+
+Les contours représentent $J$ et on a nos deux coefficients entre abscisse et en ordonnée de notre graphique. La croix rouge correspond au minimum de la fonction $J$, et c'est le point qu'on cherche à atteindre.
+
+L'algorithme du gradient va procéder ainsi :
+
+![Exemple du fonctionnement de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_algo_gradient.png)
+
+On part d'un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l'algorithme réalise-t-il ces pas ? Comment est-ce qu'il décide de l'amplitude, ou encore de la direction à prendre ?
+
+Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la "pente" de la représentation de la fonction pour décider du prochain point à explorer. Si l'on reprend notre graphique en 3D, imaginez une boule sur la partie rouge (qui représente donc une valeur importante), et bien la boule va automatiquement rouler vite dans la pente avant d'atteindre un point plat. Mathématiquement parlant, cette décision se ferra grâce à la [**dérivée**](https://en.wikipedia.org/wiki/Derivative) de la fonction $J$ au point actuel de notre algorithme.
+
+Simplifions notre problème avec un exemple de fonction $J$ avec uniquement un paramètre $\theta_{0}$ :
+
+![Exemple simplifié de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient.png)
+
+On initialise l'algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée de la fonction $J$ en ce point :
+
+![Initialisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_init.png)
+
+La dérivée est la droite en bleue, et on remarque que son coefficient directeur est négatif et important, notre algorithme va donc augmenter $\theta_{0}$ de manière importante.
+
+On peut continuer ainsi jusqu'à tomber sur le minimum de notre fonction :
+
+![Reste de l'algorithme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_reste.png)
+
+#### Pseudo-code
+
+#### Complexité
+
+#### Implémentation
+
+#### Améliorations
 
 - vectorization
 - feature scaling
@@ -103,7 +143,10 @@ Deux méthodes répandues s'offrent à nous :
 
 ### Equation normale
 
-## Implémentation
+## Problèmes
+
+- overfitting
+- underfitting
 
 ## Régression polynomiale
 
