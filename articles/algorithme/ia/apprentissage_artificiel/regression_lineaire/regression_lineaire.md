@@ -2,8 +2,8 @@ Régression linéaire
 ===================
 algo/ia/apprentissage_artificiel
 
-Publié le : 12/04/2016  
-*Modifié le : 12/04/2016*
+Publié le : 13/04/2016  
+*Modifié le : 13/04/2016*
 
 ## Introduction
 
@@ -72,7 +72,7 @@ Notre fonction d'erreur va alors calculer la moyenne des différences sur nos $m
 
 $\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
-Enfin, on divise le résultat par 2 afin de simplifier la sortie obtenue :
+Enfin, on divise le résultat par 2 à titre de conventions car cela simplifiera nos futurs calculs :
 
 $\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
@@ -113,17 +113,17 @@ L'algorithme du gradient va procéder ainsi :
 
 On part d'un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l'algorithme réalise-t-il ces pas ? Comment est-ce qu'il décide de l'amplitude, ou encore de la direction à emprunter ?
 
-Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la "pente" de la représentation de la fonction pour décider du prochain point à explorer. Mathématiquement parlant, cette décision se fera grâce à la [**dérivée**](https://en.wikipedia.org/wiki/Derivative) de la fonction $J$ au point actuel de notre algorithme.
+Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la "pente" de la représentation de la fonction pour décider du prochain point à explorer. Mathématiquement parlant, cette décision se fera grâce à la [**dérivée partielle**](https://en.wikipedia.org/wiki/Partial_derivative) de la fonction $J$ au point actuel de notre algorithme.
 
 Simplifions notre problème avec un exemple de fonction $J$ prenant uniquement un paramètre $\theta_{0}$ :
 
 ![Exemple simplifié de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient.png)
 
-On initialise l'algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée de la fonction $J$ en ce point :
+On initialise l'algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée partielle de la fonction $J$ en ce point :
 
 ![Initialisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_init.png)
 
-La dérivée est la droite en bleue, et on remarque que son coefficient directeur est négatif et important, notre algorithme va donc augmenter $\theta_{0}$ de manière importante.
+La dérivée partielle est la droite en bleue, et on remarque que son coefficient directeur est négatif et important, notre algorithme va donc augmenter $\theta_{0}$ de manière importante.
 
 On peut continuer ainsi jusqu'à tomber sur le minimum de notre fonction :
 
@@ -133,11 +133,19 @@ On peut continuer ainsi jusqu'à tomber sur le minimum de notre fonction :
 
 Maintenant qu'on a vu le principe, il faut le décrire de manière concrète et mathématique.
 
-Tant que l'algorithme ne converge pas, on met à jour tous nos coefficients $\theta$ pour $i$ allant de 0 à $n$ :
+Tant que l'algorithme ne converge pas, on met à jour tous nos coefficients $\theta$ pour $j$ allant de 0 à $n$ :
 
-$\theta_{i} = \theta_{i} - \alpha\frac{\partial}{\partial\theta_{i}}J(\theta)$
+$\theta_{j} = \theta_{j} - \alpha\frac{\partial}{\partial\theta_{j}}J(\theta)$
 
-$\alpha$ est notre **vitesse d'apprentissage**, qui sert à réguler la rapidité de la convergence et la dérivée de $J$ est calculée par $\frac{\partial}{\partial\theta_{i}}J(\theta)$. Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement, ce qui peut l'amener à faire de mauvais choix comme par exemple :
+$\alpha$ est notre **vitesse d'apprentissage**, qui sert à réguler la rapidité de la convergence et la dérivée partielle de $J$ est représentée par $\frac{\partial}{\partial\theta_{j}}J(\theta)$. Lorsqu'on [calcule cette dérivée partielle](https://math.stackexchange.com/questions/70728/partial-derivative-in-gradient-descent-for-two-variables/189792#189792) on obtient :
+
+$\frac{\partial}{\partial\theta_{j}}J(\theta) = \frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}$
+
+Notre formule finale est donc :
+
+$\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}$
+
+Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement, ce qui peut l'amener à faire de mauvais choix comme par exemple :
 
 ![Exemple de conséquence d'un coefficient d'apprentissage élevé](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_eleve.png)
 
@@ -169,16 +177,39 @@ Le pseudo-code définitif ressemble donc à ceci :
 ```nohighlight
 Tant que l'algorithme ne converge pas ET qu'on n'a pas dépassé la limite de tours
    Pour chaque coefficient
-      Calculer temp[i]
+      Calculer temp[j]
    Pour chaque coefficient
-      theta[i] = temp[i]
+      theta[j] = temp[j]
 ```
 
-#### Complexité
-
-Notre algorithme est constitué d'une simple boucle principale avec deux boucles qui sont imbriquées dedans. Soit $K$ le nombre de tours maximum qu'on autorise à notre algorithme du gradient, et $n$ le nombre de coefficients, on a une complexité en temps de $O(2Kn)$, qu'on peut simplifier en $O(Kn)$.
-
 #### Implémentation
+
+TODO : expliquer ajout de colonne de 1
+
+TODO : pourquoi limite de tours
+
+[INSERT]
+regression_lineaire.py
+
+code graphique :
+
+```python
+import matplotlib.pyplot as plt
+
+# Récupère dans des listes les valeurs de x, y, et de notre approximation de y
+x = np.array(ia.x[:,1]).tolist()
+x = [float(i[0]) for i in x]
+
+y = np.array(ia.y).tolist()
+y = [float(i[0]) for i in y]
+
+y_approx = np.array(ia.x * ia.theta).tolist()
+y_approx = [float(i[0]) for i in y_approx]
+
+# Affiche les points donnés en entrée, ainsi que notre modèle linéaire
+plt.plot(x, y, '+')
+plt.plot(x, y_approx, '-')
+```
 
 #### Améliorations
 
@@ -193,6 +224,6 @@ Notre algorithme est constitué d'une simple boucle principale avec deux boucles
 - overfitting
 - underfitting
 
-## Régression polynomiale
-
 ## Conclusion
+
+- regression polynomiale

@@ -172,14 +172,13 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="r&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire</h1></a>
-<p>Publi&#233; le : 12/04/2016<br />
-<em>Modifi&#233; le : 12/04/2016</em></p>
+<p>Publi&#233; le : 13/04/2016<br />
+<em>Modifi&#233; le : 13/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#algorithmes">Algorithmes</a></li>
 <li><a href="#probl&#232;mes">Probl&#232;mes</a></li>
-<li><a href="#r&#233;gression-polynomiale">R&#233;gression polynomiale</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
@@ -254,7 +253,7 @@ function toggle_visibility(id) {
 </div>
 <p>Notre fonction d'erreur va alors calculer la moyenne des diff&#233;rences sur nos <span class="math inline">\(m\)</span> exemples :</p>
 <p><span class="math inline">\(\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Enfin, on divise le r&#233;sultat par 2 afin de simplifier la sortie obtenue :</p>
+<p>Enfin, on divise le r&#233;sultat par 2 &#224; titre de conventions car cela simplifiera nos futurs calculs :</p>
 <p><span class="math inline">\(\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
 <p>Cette fonction nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres <span class="math inline">\(\theta\)</span> qu'ils utilisent.</p>
 <p>Gr&#226;ce &#224; cela, on peut enfin d&#233;finir concr&#232;tement ce que signifie &quot;trouver le meilleur mod&#232;le&quot;. Cela revient &#224; trouver des param&#232;tres <span class="math inline">\(\theta\)</span> qui <strong>minimisent</strong> la fonction d'erreur utilis&#233;e.</p>
@@ -286,18 +285,18 @@ function toggle_visibility(id) {
 <p class="caption">Exemple du fonctionnement de l'algorithme du gradient</p>
 </div>
 <p>On part d'un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l'algorithme r&#233;alise-t-il ces pas ? Comment est-ce qu'il d&#233;cide de l'amplitude, ou encore de la direction &#224; emprunter ?</p>
-<p>Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la &quot;pente&quot; de la repr&#233;sentation de la fonction pour d&#233;cider du prochain point &#224; explorer. Math&#233;matiquement parlant, cette d&#233;cision se fera gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/Derivative"><strong>d&#233;riv&#233;e</strong></a> de la fonction <span class="math inline">\(J\)</span> au point actuel de notre algorithme.</p>
+<p>Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la &quot;pente&quot; de la repr&#233;sentation de la fonction pour d&#233;cider du prochain point &#224; explorer. Math&#233;matiquement parlant, cette d&#233;cision se fera gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/Partial_derivative"><strong>d&#233;riv&#233;e partielle</strong></a> de la fonction <span class="math inline">\(J\)</span> au point actuel de notre algorithme.</p>
 <p>Simplifions notre probl&#232;me avec un exemple de fonction <span class="math inline">\(J\)</span> prenant uniquement un param&#232;tre <span class="math inline">\(\theta_{0}\)</span> :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient.png" alt="Exemple simplifi&#233; de l&#39;algorithme du gradient" />
 <p class="caption">Exemple simplifi&#233; de l'algorithme du gradient</p>
 </div>
-<p>On initialise l'algorithme avec un point tel que <span class="math inline">\(\theta_{0} = 0\)</span>, et on calcule la d&#233;riv&#233;e de la fonction <span class="math inline">\(J\)</span> en ce point :</p>
+<p>On initialise l'algorithme avec un point tel que <span class="math inline">\(\theta_{0} = 0\)</span>, et on calcule la d&#233;riv&#233;e partielle de la fonction <span class="math inline">\(J\)</span> en ce point :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_init.png" alt="Initialisation" />
 <p class="caption">Initialisation</p>
 </div>
-<p>La d&#233;riv&#233;e est la droite en bleue, et on remarque que son coefficient directeur est n&#233;gatif et important, notre algorithme va donc augmenter <span class="math inline">\(\theta_{0}\)</span> de mani&#232;re importante.</p>
+<p>La d&#233;riv&#233;e partielle est la droite en bleue, et on remarque que son coefficient directeur est n&#233;gatif et important, notre algorithme va donc augmenter <span class="math inline">\(\theta_{0}\)</span> de mani&#232;re importante.</p>
 <p>On peut continuer ainsi jusqu'&#224; tomber sur le minimum de notre fonction :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_reste.png" alt="Reste de l&#39;algorithme" />
@@ -305,9 +304,13 @@ function toggle_visibility(id) {
 </div>
 <h4 id="pseudo-code">Pseudo-code</h4>
 <p>Maintenant qu'on a vu le principe, il faut le d&#233;crire de mani&#232;re concr&#232;te et math&#233;matique.</p>
-<p>Tant que l'algorithme ne converge pas, on met &#224; jour tous nos coefficients <span class="math inline">\(\theta\)</span> pour <span class="math inline">\(i\)</span> allant de 0 &#224; <span class="math inline">\(n\)</span> :</p>
-<p><span class="math inline">\(\theta_{i} = \theta_{i} - \alpha\frac{\partial}{\partial\theta_{i}}J(\theta)\)</span></p>
-<p><span class="math inline">\(\alpha\)</span> est notre <strong>vitesse d'apprentissage</strong>, qui sert &#224; r&#233;guler la rapidit&#233; de la convergence et la d&#233;riv&#233;e de <span class="math inline">\(J\)</span> est calcul&#233;e par <span class="math inline">\(\frac{\partial}{\partial\theta_{i}}J(\theta)\)</span>. Il est primordial de bien choisir le coefficient d'apprentissage, car si <span class="math inline">\(\alpha\)</span> est trop &#233;lev&#233; notre algorithme va chercher &#224; faire de tr&#232;s grands pas afin de converger rapidement, ce qui peut l'amener &#224; faire de mauvais choix comme par exemple :</p>
+<p>Tant que l'algorithme ne converge pas, on met &#224; jour tous nos coefficients <span class="math inline">\(\theta\)</span> pour <span class="math inline">\(j\)</span> allant de 0 &#224; <span class="math inline">\(n\)</span> :</p>
+<p><span class="math inline">\(\theta_{j} = \theta_{j} - \alpha\frac{\partial}{\partial\theta_{j}}J(\theta)\)</span></p>
+<p><span class="math inline">\(\alpha\)</span> est notre <strong>vitesse d'apprentissage</strong>, qui sert &#224; r&#233;guler la rapidit&#233; de la convergence et la d&#233;riv&#233;e partielle de <span class="math inline">\(J\)</span> est repr&#233;sent&#233;e par <span class="math inline">\(\frac{\partial}{\partial\theta_{j}}J(\theta)\)</span>. Lorsqu'on <a href="https://math.stackexchange.com/questions/70728/partial-derivative-in-gradient-descent-for-two-variables/189792#189792">calcule cette d&#233;riv&#233;e partielle</a> on obtient :</p>
+<p><span class="math inline">\(\frac{\partial}{\partial\theta_{j}}J(\theta) = \frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}\)</span></p>
+<p>Notre formule finale est donc :</p>
+<p><span class="math inline">\(\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}\)</span></p>
+<p>Il est primordial de bien choisir le coefficient d'apprentissage, car si <span class="math inline">\(\alpha\)</span> est trop &#233;lev&#233; notre algorithme va chercher &#224; faire de tr&#232;s grands pas afin de converger rapidement, ce qui peut l'amener &#224; faire de mauvais choix comme par exemple :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_eleve.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage &#233;lev&#233;" />
 <p class="caption">Exemple de cons&#233;quence d'un coefficient d'apprentissage &#233;lev&#233;</p>
@@ -335,12 +338,82 @@ function toggle_visibility(id) {
 <p>Le pseudo-code d&#233;finitif ressemble donc &#224; ceci :</p>
 <pre class="nohighlight"><code>Tant que l&#39;algorithme ne converge pas ET qu&#39;on n&#39;a pas d&#233;pass&#233; la limite de tours
    Pour chaque coefficient
-      Calculer temp[i]
+      Calculer temp[j]
    Pour chaque coefficient
-      theta[i] = temp[i]</code></pre>
-<h4 id="complexit&#233;">Complexit&#233;</h4>
-<p>Notre algorithme est constitu&#233; d'une simple boucle principale avec deux boucles qui sont imbriqu&#233;es dedans. Soit <span class="math inline">\(K\)</span> le nombre de tours maximum qu'on autorise &#224; notre algorithme du gradient, et <span class="math inline">\(n\)</span> le nombre de coefficients, on a une complexit&#233; en temps de <span class="math inline">\(O(2Kn)\)</span>, qu'on peut simplifier en <span class="math inline">\(O(Kn)\)</span>.</p>
+      theta[j] = temp[j]</code></pre>
 <h4 id="impl&#233;mentation">Impl&#233;mentation</h4>
+<p>TODO : expliquer ajout de colonne de 1</p>
+<p>TODO : pourquoi limite de tours</p>
+<a href="javascript:toggle_visibility('regression_lineaire.py');">regression_lineaire.py</a>
+<div id="regression_lineaire.py" style="display: none;">
+<pre class="py"><code>import numpy as np
+
+
+# x = exemple d&#39;entr&#233;e
+# y = exemple de sortie
+# m = nombre d&#39;exemples
+# n = nombre d&#39;attributs
+# theta = coefficients de notre fonction d&#39;hypothese
+
+class regression_lineaire:
+
+    def __init__(self, entree):
+        with open(entree) as f:
+            self.m, self.n = map(int, f.readline().split())
+
+        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=(list(range(self.n))), ndmin=2))
+        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=([self.n]), ndmin=2))
+
+        # Ajoute une colonne de 1 au d&#233;but de notre matrice x
+        col = np.ones((self.m, 1))
+        self.x = np.matrix(np.hstack((col, self.x)))
+        self.n = self.n + 1
+
+        # Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese
+        self.theta = np.matrix(np.zeros((self.n, 1)))
+
+    def algo_gradient(self, alpha, nb_tour_max):
+        for _ in range(nb_tour_max):
+            # Pour faire la mise &#224; jour instantan&#233;e des coefficients :
+            # 1. On calcule d&#39;abord les r&#233;sultats dans des variables temporaires
+            temp = np.zeros((self.n, 1))
+            for j in range(self.n):
+                somme = 0.0
+                for i in range(self.m):
+                    hypothese = float(self.x[i] * self.theta)
+                    somme = somme + ((hypothese - self.y[i]) * self.x.item((i, j)))
+                temp[j] = self.theta[j] - alpha * (1 / self.m) * somme
+
+            # 2. Puis on copie les r&#233;sultats dans nos coefficients
+            for j in range(self.n):
+                self.theta[j] = temp[j]
+
+
+ia = regression_lineaire(&quot;test01.in&quot;)
+ia.algo_gradient(0.01, 400)
+
+print(&quot;Coefficients de la fonction d&#39;hypothese :\n&quot;)
+for j in range(ia.n):
+    print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))</code></pre>
+</div>
+<p>code graphique :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+
+<span class="co"># R&#233;cup&#232;re dans des listes les valeurs de x, y, et de notre approximation de y</span>
+x <span class="op">=</span> np.array(ia.x[:,<span class="dv">1</span>]).tolist()
+x <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> x]
+
+y <span class="op">=</span> np.array(ia.y).tolist()
+y <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> y]
+
+y_approx <span class="op">=</span> np.array(ia.x <span class="op">*</span> ia.theta).tolist()
+y_approx <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> y_approx]
+
+<span class="co"># Affiche les points donn&#233;s en entr&#233;e, ainsi que notre mod&#232;le lin&#233;aire</span>
+plt.plot(x, y, <span class="st">&#39;+&#39;</span>)
+plt.plot(x, y_approx, <span class="st">&#39;-&#39;</span>)</code></pre></div>
 <h4 id="am&#233;liorations">Am&#233;liorations</h4>
 <ul>
 <li>vectorization</li>
@@ -353,8 +426,10 @@ function toggle_visibility(id) {
 <li>overfitting</li>
 <li>underfitting</li>
 </ul>
-<h2 id="r&#233;gression-polynomiale">R&#233;gression polynomiale</h2>
 <h2 id="conclusion">Conclusion</h2>
+<ul>
+<li>regression polynomiale</li>
+</ul>
  
       <!-- ------------ -->
 
