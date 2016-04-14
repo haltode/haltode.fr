@@ -183,31 +183,31 @@ function toggle_visibility(id) {
 <p>L'id&#233;e de l'algorithme est de commencer avec des param&#232;tres initiaux <span class="math inline">\(\theta\)</span> (en g&#233;n&#233;ral on utilise 0), puis d'adapter ces derniers avec le r&#233;sultat obtenu par notre fonction d'erreur, afin de minimiser <span class="math inline">\(J\)</span> pour arriver on l'esp&#232;re &#224; un minimum global.</p>
 <p>Il est plus difficile de visualiser l'id&#233;e de l'algorithme sur notre pr&#233;c&#233;dent graphique en 3D, alors on va utiliser un graphique 2D sp&#233;cial qui trace les contours (on appelle cela un <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm"><em>contour plot</em></a> en anglais) :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/contour_plot.png" alt="Contour plot de notre graphique" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/contour_plot.png" alt="Contour plot de notre graphique" />
 <p class="caption">Contour plot de notre graphique</p>
 </div>
 <p>Les contours repr&#233;sentent <span class="math inline">\(J\)</span> en fonction de nos deux coefficients <span class="math inline">\(\theta_{0}\)</span> et <span class="math inline">\(\theta_{1}\)</span>. La croix rouge correspond au minimum de la fonction d'erreur, et c'est le point qu'on cherche &#224; atteindre.</p>
 <p>L'algorithme du gradient va proc&#233;der ainsi :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_algo_gradient.png" alt="Exemple du fonctionnement de l&#39;algorithme du gradient" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_algo_gradient.png" alt="Exemple du fonctionnement de l&#39;algorithme du gradient" />
 <p class="caption">Exemple du fonctionnement de l'algorithme du gradient</p>
 </div>
 <p>On part d'un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l'algorithme r&#233;alise-t-il ces pas ? Comment est-ce qu'il d&#233;cide de l'amplitude, ou encore de la direction &#224; emprunter ?</p>
 <p>Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la &quot;pente&quot; de la repr&#233;sentation de la fonction pour d&#233;cider du prochain point &#224; explorer. Math&#233;matiquement parlant, cette d&#233;cision se fera gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/Partial_derivative"><strong>d&#233;riv&#233;e partielle</strong></a> de la fonction <span class="math inline">\(J\)</span> au point actuel de notre algorithme.</p>
 <p>Simplifions notre probl&#232;me avec un exemple de fonction <span class="math inline">\(J\)</span> prenant uniquement un param&#232;tre <span class="math inline">\(\theta_{0}\)</span> :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient.png" alt="Exemple simplifi&#233; de l&#39;algorithme du gradient" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient.png" alt="Exemple simplifi&#233; de l&#39;algorithme du gradient" />
 <p class="caption">Exemple simplifi&#233; de l'algorithme du gradient</p>
 </div>
 <p>On initialise l'algorithme avec un point tel que <span class="math inline">\(\theta_{0} = 0\)</span>, et on calcule la d&#233;riv&#233;e partielle de la fonction <span class="math inline">\(J\)</span> en ce point :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_init.png" alt="Initialisation" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_init.png" alt="Initialisation" />
 <p class="caption">Initialisation</p>
 </div>
 <p>La d&#233;riv&#233;e partielle est la droite en bleue, et on remarque que son coefficient directeur est n&#233;gatif et important, notre algorithme va donc augmenter <span class="math inline">\(\theta_{0}\)</span> de mani&#232;re importante.</p>
 <p>On peut continuer ainsi jusqu'&#224; tomber sur le minimum de notre fonction :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_reste.png" alt="Reste de l&#39;algorithme" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_reste.png" alt="Reste de l&#39;algorithme" />
 <p class="caption">Reste de l'algorithme</p>
 </div>
 <h2 id="pseudo-code">Pseudo-code</h2>
@@ -220,17 +220,17 @@ function toggle_visibility(id) {
 <p><span class="math inline">\(\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}\)</span></p>
 <p>Il est primordial de bien choisir le coefficient d'apprentissage, car si <span class="math inline">\(\alpha\)</span> est trop &#233;lev&#233; notre algorithme va chercher &#224; faire de tr&#232;s grands pas afin de converger rapidement, ce qui peut l'amener &#224; faire de mauvais choix comme par exemple :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_eleve.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage &#233;lev&#233;" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_eleve.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage &#233;lev&#233;" />
 <p class="caption">Exemple de cons&#233;quence d'un coefficient d'apprentissage &#233;lev&#233;</p>
 </div>
 <p>De m&#234;me, une vitesse d'apprentissage trop faible rendra notre algorithme terriblement lent :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_faible.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage faible" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_faible.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage faible" />
 <p class="caption">Exemple de cons&#233;quence d'un coefficient d'apprentissage faible</p>
 </div>
 <p>Pour choisir une valeur adapt&#233;e &#224; notre probl&#232;me, il faut en essayer diff&#233;rentes (0.001, 0.01, 0.1, 1, 10, etc.) tout en cr&#233;ant un graphique repr&#233;sentant l'&#233;volution de notre minimisation de <span class="math inline">\(J\)</span> en fonction du nombre d'it&#233;rations de l'algorithme. Si vous avez bien choisi le coefficient, vous devriez voir un graphique semblable &#224; ceci :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_bon.png" alt="Exemple de coefficient adapt&#233;" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_bon.png" alt="Exemple de coefficient adapt&#233;" />
 <p class="caption">Exemple de coefficient adapt&#233;</p>
 </div>
 <p>Dans notre d&#233;tail de l'algorithme du gradient, il y a un point tr&#232;s important &#224; ne pas n&#233;gliger : la mise &#224; jour de mani&#232;re <strong>instantan&#233;e</strong>. Vu que notre expression d&#233;pend elle-m&#234;me de <span class="math inline">\(\theta\)</span>, on ne peut pas se permettre de modifier certaines valeurs lorsqu'on met &#224; jour nos coefficients, il faut donc proc&#233;der en deux &#233;tapes bien distinctes :</p>
@@ -325,7 +325,7 @@ theta  0  :  0.5764647547614207
 theta  1  :  0.7219164912370313</code></pre>
 <p>Vu qu'on a uniquement un attribut, on peut repr&#233;senter notre fonction d'hypoth&#232;se et nos donn&#233;es en entr&#233;e sur un graphique 2D :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/sortie_prog_algo_gradient.png" alt="Sortie graphique du programme" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/sortie_prog_algo_gradient.png" alt="Sortie graphique du programme" />
 <p class="caption">Sortie graphique du programme</p>
 </div>
 <p>On obtient bien une g&#233;n&#233;ralisation efficace sous forme de fonction lin&#233;aire qui ressemble fortement &#224; celle qu'un humain peut faire &#224; la main (m&#234;me si celle que l'ordinateur a calcul&#233; est plus pr&#233;cise que celle faite &#224; la main).</p>

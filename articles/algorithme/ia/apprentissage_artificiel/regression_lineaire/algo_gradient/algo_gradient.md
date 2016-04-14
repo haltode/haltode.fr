@@ -11,13 +11,13 @@ L'idée de l'algorithme est de commencer avec des paramètres initiaux $\theta$ 
 
 Il est plus difficile de visualiser l'idée de l'algorithme sur notre précédent graphique en 3D, alors on va utiliser un graphique 2D spécial qui trace les contours (on appelle cela un [*contour plot*](http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm) en anglais) :
 
-![Contour plot de notre graphique](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/contour_plot.png)
+![Contour plot de notre graphique](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/contour_plot.png)
 
 Les contours représentent $J$ en fonction de nos deux coefficients $\theta_{0}$ et $\theta_{1}$. La croix rouge correspond au minimum de la fonction d'erreur, et c'est le point qu'on cherche à atteindre.
 
 L'algorithme du gradient va procéder ainsi :
 
-![Exemple du fonctionnement de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_algo_gradient.png)
+![Exemple du fonctionnement de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_algo_gradient.png)
 
 On part d'un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l'algorithme réalise-t-il ces pas ? Comment est-ce qu'il décide de l'amplitude, ou encore de la direction à emprunter ?
 
@@ -25,17 +25,17 @@ Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la "pente"
 
 Simplifions notre problème avec un exemple de fonction $J$ prenant uniquement un paramètre $\theta_{0}$ :
 
-![Exemple simplifié de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient.png)
+![Exemple simplifié de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient.png)
 
 On initialise l'algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée partielle de la fonction $J$ en ce point :
 
-![Initialisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_init.png)
+![Initialisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_init.png)
 
 La dérivée partielle est la droite en bleue, et on remarque que son coefficient directeur est négatif et important, notre algorithme va donc augmenter $\theta_{0}$ de manière importante.
 
 On peut continuer ainsi jusqu'à tomber sur le minimum de notre fonction :
 
-![Reste de l'algorithme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_simplifie_algo_gradient_reste.png)
+![Reste de l'algorithme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_reste.png)
 
 ## Pseudo-code
 
@@ -55,15 +55,15 @@ $\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\the
 
 Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement, ce qui peut l'amener à faire de mauvais choix comme par exemple :
 
-![Exemple de conséquence d'un coefficient d'apprentissage élevé](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_eleve.png)
+![Exemple de conséquence d'un coefficient d'apprentissage élevé](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_eleve.png)
 
 De même, une vitesse d'apprentissage trop faible rendra notre algorithme terriblement lent :
 
-![Exemple de conséquence d'un coefficient d'apprentissage faible](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_faible.png)
+![Exemple de conséquence d'un coefficient d'apprentissage faible](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_faible.png)
 
 Pour choisir une valeur adaptée à notre problème, il faut en essayer différentes (0.001, 0.01, 0.1, 1, 10, etc.) tout en créant un graphique représentant l'évolution de notre minimisation de $J$ en fonction du nombre d'itérations de l'algorithme. Si vous avez bien choisi le coefficient, vous devriez voir un graphique semblable à ceci :
 
-![Exemple de coefficient adapté](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_coeff_apprentissage_bon.png)
+![Exemple de coefficient adapté](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_bon.png)
 
 Dans notre détail de l'algorithme du gradient, il y a un point très important à ne pas négliger : la mise à jour de manière **instantanée**. Vu que notre expression dépend elle-même de $\theta$, on ne peut pas se permettre de modifier certaines valeurs lorsqu'on met à jour nos coefficients, il faut donc procéder en deux étapes bien distinctes :
 
@@ -119,7 +119,7 @@ test01.out
 
 Vu qu'on a uniquement un attribut, on peut représenter notre fonction d'hypothèse et nos données en entrée sur un graphique 2D :
 
-![Sortie graphique du programme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/sortie_prog_algo_gradient.png)
+![Sortie graphique du programme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/sortie_prog_algo_gradient.png)
 
 On obtient bien une généralisation efficace sous forme de fonction linéaire qui ressemble fortement à celle qu'un humain peut faire à la main (même si celle que l'ordinateur a calculé est plus précise que celle faite à la main).
 
