@@ -33,11 +33,11 @@
 - Recherche : union-find
 - IA : algo min-max (http://www.ffothello.org/informatique/algorithmes/)
 - Approches : récursion, algo glouton, diviser pour régner
+- IA : ml : logitic regression, neural network, svm, k-means, etc.
 
 - Introduction à la complexité algorithmique (temps + mémoire)
 - Recherche : chaîne de caractères
 - Compression de données : codage de huffman
-- IA : apprentissage artificiel
 - Algorithmes quantiques
 - N = NP ?
 - Cryptographie quantique ?
