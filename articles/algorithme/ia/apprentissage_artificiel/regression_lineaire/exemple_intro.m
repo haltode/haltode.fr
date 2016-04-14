@@ -2,11 +2,9 @@ clear;
 close all;
 clc;
 
-% Récupère les données x, y
-data = load('data_intro.txt');
-data_size = size(data, 2);
-x = data(:, 1:data_size - 1);
-y = data(:, data_size);
+% Exemple de données en entrée
+x = [1.73 ; 4.07 ; 5.34 ; 7.14 ; 9.56 ; 12.26];
+y = [1.94 ; 2.87 ; 5.01 ; 6.74 ; 7.71 ; 8.6];
 
 
 figure;
