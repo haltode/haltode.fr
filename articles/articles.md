@@ -43,4 +43,4 @@ La liste des articles publiés :
          - Apprentissage artificiel :
             
              - [Introduction](/algo/ia/apprentissage_artificiel/introduction.html)
-             - [Régression linéaire](/algo/ia/apprentissage_artificiel/regression_linaire.html) : [Algorithme du gradient](/algo/ia/apprentissage_artificiel/regression_linaire/algo_gradient.html) / [Equation normale](/algo/ia/apprentissage_artificiel/regression_linaire/equation_normale.html)
+             - [Régression linéaire](/algo/ia/apprentissage_artificiel/regression_lineaire.html) - [Algorithme du gradient](/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient.html) / [Equation normale](/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale.html)
