@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="r&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire</h1></a>
-<p>Publi&#233; le : 13/04/2016<br />
-<em>Modifi&#233; le : 13/04/2016</em></p>
+<p>Publi&#233; le : 14/04/2016<br />
+<em>Modifi&#233; le : 14/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -267,7 +267,7 @@ function toggle_visibility(id) {
 <p>On a r&#233;ussi &#224; d&#233;finir math&#233;matiquement l'objectif de la r&#233;gression lin&#233;aire, gr&#226;ce &#224; notre fonction d'erreur. D&#233;sormais il faut donc minimiser cette fonction avec les param&#232;tres <span class="math inline">\(\theta\)</span>.</p>
 <p>Deux m&#233;thodes r&#233;pandues s'offrent &#224; nous :</p>
 <ul>
-<li><strong>L'algorithme du gradient</strong> : un algorithme it&#233;ratif (pouvant cependant &#234;tre am&#233;lior&#233; avec l'utilisation de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a>) utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un coefficient d'apprentissage (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
+<li><strong>L'algorithme du gradient</strong> (<em>gradient descent</em> en anglais) : un algorithme it&#233;ratif (pouvant cependant &#234;tre am&#233;lior&#233; avec l'utilisation de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a>) utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un coefficient d'apprentissage (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
 <li><strong>L'&#233;quation normale</strong> : une &#233;quation donnant le r&#233;sultat directement sans it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations et a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span> &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a>. On l'utilisera plut&#244;t quand <span class="math inline">\(n\)</span> est suffisamment petit (au-dessus de 10000 environ on &#233;vite d'utiliser cette m&#233;thode).</li>
 </ul>
 <h3 id="algorithme-du-gradient">Algorithme du gradient</h3>
@@ -341,9 +341,13 @@ function toggle_visibility(id) {
       Calculer temp[j]
    Pour chaque coefficient
       theta[j] = temp[j]</code></pre>
+<p>En g&#233;n&#233;ral, on se contente de garder la deuxi&#232;me condition dans notre boucle principale afin de pouvoir fixer un nombre de tours maximum ou minimum &#224; notre algorithme (si ce dernier prend du temps par exemple, ou si on souhaite &#233;tudier sa progression).</p>
 <h4 id="impl&#233;mentation">Impl&#233;mentation</h4>
-<p>TODO : expliquer ajout de colonne de 1</p>
-<p>TODO : pourquoi limite de tours</p>
+<p>Par convention et pour simplifier le code, il n'est pas rare de rajouter un attribut <span class="math inline">\(x_0 = 1\)</span>, afin de remplacer notre fonction d'hypoth&#232;se <span class="math inline">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n\)</span>, en :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \displaystyle\sum_{i=0}^{n} \theta_{i}x_{i}\)</span></p>
+<p>Cette op&#233;ration est ensuite r&#233;alis&#233;e tr&#232;s simplement dans notre code, car <span class="math inline">\(\theta\)</span> est une matrice contenant une seule colonne, ce qui signifie que pour calculer le r&#233;sultat de notre fonction d'hypoth&#232;se, il suffit de faire un produit matriciel.</p>
+<p>Voici donc le code en Python pour l'algorithme du gradient :</p>
+<p><em>J'utilise Python afin d'avoir acc&#232;s &#224; des librairies scientifiques comme <a href="http://www.numpy.org/">numpy</a> pour les matrices et <a href="http://matplotlib.org/">matplotlib</a> pour les sorties graphiques</em></p>
 <a href="javascript:toggle_visibility('regression_lineaire.py');">regression_lineaire.py</a>
 <div id="regression_lineaire.py" style="display: none;">
 <pre class="py"><code>import numpy as np
@@ -398,7 +402,26 @@ print(&quot;Coefficients de la fonction d&#39;hypothese :\n&quot;)
 for j in range(ia.n):
     print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))</code></pre>
 </div>
-<p>code graphique :</p>
+<p>Notre fichier d'entr&#233;e contient sur la premi&#232;re ligne le nombre <span class="math inline">\(m\)</span> d'exemples, puis le nombre <span class="math inline">\(n\)</span> d'attributs et sur les <span class="math inline">\(m\)</span> prochaines lignes une liste de nombre dont la derni&#232;re colonne correspond &#224; <span class="math inline">\(y\)</span> et les autres &#224; <span class="math inline">\(x\)</span>. J'ai repris notre exemple de l'introduction pour construire le fichier d'entr&#233;e (les unit&#233;s sont toujours en centaine d'op&#233;rations et en centaine d'euros) :</p>
+<pre class="nohighlight"><code>6 1
+1.73 1.94
+4.07 2.87
+5.34 5.01
+7.14 6.74
+9.56 7.71
+12.26 8.6</code></pre>
+<p>En sortie on obtient les coefficients <span class="math inline">\(\theta\)</span> de notre fonction d'hypoth&#232;se :</p>
+<pre class="nohighlight"><code>Coefficients de la fonction d&#39;hypothese :
+
+theta  0  :  0.5764647547614207
+theta  1  :  0.7219164912370313</code></pre>
+<p>Vu qu'on a uniquement un attribut, on peut repr&#233;senter notre fonction d'hypoth&#232;se et nos donn&#233;es en entr&#233;e sur un graphique 2D :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/sortie_prog_algo_gradient.png" alt="Sortie graphique du programme" />
+<p class="caption">Sortie graphique du programme</p>
+</div>
+<p>On obtient bien une g&#233;n&#233;ralisation efficace sous forme de fonction lin&#233;aire qui ressemble fortement &#224; celle qu'un humain peut faire &#224; la main (m&#234;me si celle que l'ordinateur a calcul&#233; est plus pr&#233;cise que celle faite &#224; la main).</p>
+<p>Le code utilis&#233; pour r&#233;aliser cette sortie :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
 
 <span class="co"># R&#233;cup&#232;re dans des listes les valeurs de x, y, et de notre approximation de y</span>
@@ -413,10 +436,20 @@ y_approx <span class="op">=</span> [<span class="bu">float</span>(i[<span class=
 
 <span class="co"># Affiche les points donn&#233;s en entr&#233;e, ainsi que notre mod&#232;le lin&#233;aire</span>
 plt.plot(x, y, <span class="st">&#39;+&#39;</span>)
-plt.plot(x, y_approx, <span class="st">&#39;-&#39;</span>)</code></pre></div>
+plt.plot(x, y_approx, <span class="st">&#39;r-&#39;</span>)
+plt.show()</code></pre></div>
 <h4 id="am&#233;liorations">Am&#233;liorations</h4>
+<p>Une des premi&#232;res am&#233;liorations qu'on peut apporter &#224; notre code est celle qu'on a apport&#233; &#224; notre fonction d'hypoth&#232;se : l'utilisation des op&#233;rations des matrices. Au lieu d'appliquer des op&#233;rations sur les &#233;l&#233;ments d'une matrice un par un, on peut utiliser des op&#233;rations plus g&#233;n&#233;rales sur notre matrice enti&#232;re. Cela permet de supprimer la plupart des boucles, mais aussi &#224; l'avantage de r&#233;aliser une mise &#224; jour instantan&#233;e des coefficients automatiquement, sans m&#234;me avoir besoin de stocker nos r&#233;sultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
+<p><span class="math inline">\(\theta = \theta - \alpha\frac{1}{m}x^\intercal(h_{\theta}(x) - y)\)</span></p>
+<p>Si on d&#233;veloppe notre fonction d'hypoth&#232;se on arrive &#224; cette expression :</p>
+<p><span class="math inline">\(\theta = \theta - \alpha\frac{1}{m}x^\intercal(x\theta - y)\)</span></p>
+<p>Il n'y a plus aucunes boucles, et uniquement des op&#233;rations matricielles. Notre fonction pour l'algorithme du gradient devient donc dans notre code :</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> algo_gradient(<span class="va">self</span>, alpha, nb_tour_max):
+   <span class="cf">for</span> _ <span class="op">in</span> <span class="bu">range</span>(nb_tour_max):
+      derivee <span class="op">=</span> np.transpose(<span class="va">self</span>.x) <span class="op">*</span> (<span class="va">self</span>.x <span class="op">*</span> <span class="va">self</span>.theta <span class="op">-</span> <span class="va">self</span>.y)
+      <span class="va">self</span>.theta <span class="op">=</span> <span class="va">self</span>.theta <span class="op">-</span> alpha <span class="op">*</span> (<span class="dv">1</span> <span class="op">/</span> <span class="va">self</span>.m) <span class="op">*</span> derivee</code></pre></div>
+<p>Une deuxi&#232;me am&#233;lioration concernant cette fois-ci l'algorithme en lui m&#234;me plut&#244;t que le code.</p>
 <ul>
-<li>vectorization</li>
 <li>feature scaling</li>
 <li>mean normalization</li>
 </ul>
@@ -428,7 +461,7 @@ plt.plot(x, y_approx, <span class="st">&#39;-&#39;</span>)</code></pre></div>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <ul>
-<li>regression polynomiale</li>
+<li>&#233;voquer la r&#233;gression polynomiale</li>
 </ul>
  
       <!-- ------------ -->

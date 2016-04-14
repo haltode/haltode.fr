@@ -2,8 +2,8 @@ Régression linéaire
 ===================
 algo/ia/apprentissage_artificiel
 
-Publié le : 13/04/2016  
-*Modifié le : 13/04/2016*
+Publié le : 14/04/2016  
+*Modifié le : 14/04/2016*
 
 ## Introduction
 
@@ -92,7 +92,7 @@ On a réussi à définir mathématiquement l'objectif de la régression linéair
 
 Deux méthodes répandues s'offrent à nous :
 
-- **L'algorithme du gradient** : un algorithme itératif (pouvant cependant être amélioré avec l'utilisation de [matrices](https://en.wikipedia.org/wiki/Matrix_%28mathematics%29)) utile quand $n$ est très large, et personnalisable grâce à un coefficient d'apprentissage (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).
+- **L'algorithme du gradient** (*gradient descent* en anglais) : un algorithme itératif (pouvant cependant être amélioré avec l'utilisation de [matrices](https://en.wikipedia.org/wiki/Matrix_%28mathematics%29)) utile quand $n$ est très large, et personnalisable grâce à un coefficient d'apprentissage (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).
 - **L'équation normale** : une équation donnant le résultat directement sans itérations, cependant cette dernière est très lourde en opérations et a une complexité en temps de $O(n^3)$ à cause du [produit matriciel](https://en.wikipedia.org/wiki/Matrix_multiplication). On l'utilisera plutôt quand $n$ est suffisamment petit (au-dessus de 10000 environ on évite d'utiliser cette méthode).
 
 ### Algorithme du gradient
@@ -182,16 +182,40 @@ Tant que l'algorithme ne converge pas ET qu'on n'a pas dépassé la limite de to
       theta[j] = temp[j]
 ```
 
+En général, on se contente de garder la deuxième condition dans notre boucle principale afin de pouvoir fixer un nombre de tours maximum ou minimum à notre algorithme (si ce dernier prend du temps par exemple, ou si on souhaite étudier sa progression).
+
 #### Implémentation
 
-TODO : expliquer ajout de colonne de 1
+Par convention et pour simplifier le code, il n'est pas rare de rajouter un attribut $x_0 = 1$, afin de remplacer notre fonction d'hypothèse $h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n$, en :
 
-TODO : pourquoi limite de tours
+$h_{\theta}(x) = \displaystyle\sum_{i=0}^{n} \theta_{i}x_{i}$
+
+Cette opération est ensuite réalisée très simplement dans notre code, car $\theta$ est une matrice contenant une seule colonne, ce qui signifie que pour calculer le résultat de notre fonction d'hypothèse, il suffit de faire un produit matriciel.
+
+Voici donc le code en Python pour l'algorithme du gradient :
+
+*J'utilise Python afin d'avoir accès à des librairies scientifiques comme [numpy](http://www.numpy.org/) pour les matrices et [matplotlib](http://matplotlib.org/) pour les sorties graphiques*
 
 [INSERT]
 regression_lineaire.py
 
-code graphique :
+Notre fichier d'entrée contient sur la première ligne le nombre $m$ d'exemples, puis le nombre $n$ d'attributs et sur les $m$ prochaines lignes une liste de nombre dont la dernière colonne correspond à $y$ et les autres à $x$. J'ai repris notre exemple de l'introduction pour construire le fichier d'entrée (les unités sont toujours en centaine d'opérations et en centaine d'euros) :
+
+[INSERT]
+test01.in
+
+En sortie on obtient les coefficients $\theta$ de notre fonction d'hypothèse :
+
+[INSERT]
+test01.out
+
+Vu qu'on a uniquement un attribut, on peut représenter notre fonction d'hypothèse et nos données en entrée sur un graphique 2D :
+
+![Sortie graphique du programme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/sortie_prog_algo_gradient.png)
+
+On obtient bien une généralisation efficace sous forme de fonction linéaire qui ressemble fortement à celle qu'un humain peut faire à la main (même si celle que l'ordinateur a calculé est plus précise que celle faite à la main).
+
+Le code utilisé pour réaliser cette sortie :
 
 ```python
 import matplotlib.pyplot as plt
@@ -208,12 +232,31 @@ y_approx = [float(i[0]) for i in y_approx]
 
 # Affiche les points donnés en entrée, ainsi que notre modèle linéaire
 plt.plot(x, y, '+')
-plt.plot(x, y_approx, '-')
+plt.plot(x, y_approx, 'r-')
+plt.show()
 ```
 
 #### Améliorations
 
-- vectorization
+Une des premières améliorations qu'on peut apporter à notre code est celle qu'on a apporté à notre fonction d'hypothèse : l'utilisation des opérations des matrices. Au lieu d'appliquer des opérations sur les éléments d'une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi à l'avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :
+
+$\theta = \theta - \alpha\frac{1}{m}x^\intercal(h_{\theta}(x) - y)$
+
+Si on développe notre fonction d'hypothèse on arrive à cette expression :
+
+$\theta = \theta - \alpha\frac{1}{m}x^\intercal(x\theta - y)$
+
+Il n'y a plus aucunes boucles, et uniquement des opérations matricielles. Notre fonction pour l'algorithme du gradient devient donc dans notre code :
+
+```python
+def algo_gradient(self, alpha, nb_tour_max):
+   for _ in range(nb_tour_max):
+      derivee = np.transpose(self.x) * (self.x * self.theta - self.y)
+      self.theta = self.theta - alpha * (1 / self.m) * derivee
+```
+
+Une deuxième amélioration concernant cette fois-ci l'algorithme en lui même plutôt que le code.
+
 - feature scaling
 - mean normalization
 
@@ -226,4 +269,4 @@ plt.plot(x, y_approx, '-')
 
 ## Conclusion
 
-- regression polynomiale
+- évoquer la régression polynomiale
