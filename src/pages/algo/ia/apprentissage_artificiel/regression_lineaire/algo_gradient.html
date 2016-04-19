@@ -215,18 +215,18 @@ function toggle_visibility(id) {
 <p>Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la &quot;pente&quot; de la repr&#233;sentation de la fonction pour d&#233;cider du prochain point &#224; explorer. Par exemple sur notre graphique en 3D, il suffit d'imaginer une boule qu'on place sur la figure et qui va rouler jusqu'&#224; arriver dans un creux ou une surface assez plane. Math&#233;matiquement parlant, la d&#233;cision du prochain point &#224; parcourir se fera gr&#226;ce &#224; la <a href="https://en.wikipedia.org/wiki/Partial_derivative"><strong>d&#233;riv&#233;e partielle</strong></a> de la fonction <span class="math inline">\(J\)</span> au point actuel de notre algorithme.</p>
 <p>Simplifions notre probl&#232;me avec un exemple de fonction <span class="math inline">\(J\)</span> prenant uniquement un param&#232;tre <span class="math inline">\(\theta_{0}\)</span> :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient.png" alt="Exemple simplifi&#233; de l&#39;algorithme du gradient" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie.png" alt="Exemple simplifi&#233; de l&#39;algorithme du gradient" />
 <p class="caption">Exemple simplifi&#233; de l'algorithme du gradient</p>
 </div>
 <p>On initialise l'algorithme avec un point tel que <span class="math inline">\(\theta_{0} = 0\)</span>, et on calcule la d&#233;riv&#233;e partielle de la fonction <span class="math inline">\(J\)</span> en ce point :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_init.png" alt="Initialisation" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_init.png" alt="Initialisation" />
 <p class="caption">Initialisation</p>
 </div>
 <p>La d&#233;riv&#233;e partielle est la droite en bleue, et on remarque que le coefficient directeur de la tangente est <strong>n&#233;gatif</strong> et <strong>important</strong>, notre algorithme va donc <strong>augmenter</strong> <span class="math inline">\(\theta_{0}\)</span> de mani&#232;re <strong>importante</strong>.</p>
 <p>On peut continuer ainsi jusqu'&#224; tomber sur le minimum de notre fonction :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_reste.png" alt="Reste de l&#39;algorithme" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_reste.png" alt="Reste de l&#39;algorithme" />
 <p class="caption">Reste de l'algorithme</p>
 </div>
 <p>M&#234;me si on a vu que notre algorithme ne trouvera pas toujours le minimum global de la fonction, un minimum local est toujours int&#233;ressant, et sur des probl&#232;mes tr&#232;s complexes cela sera beaucoup plus efficace &#224; utiliser qu'une approximation faite &#224; la main.</p>

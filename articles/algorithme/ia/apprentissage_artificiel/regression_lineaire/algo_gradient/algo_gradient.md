@@ -49,17 +49,17 @@ Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la "pente"
 
 Simplifions notre problème avec un exemple de fonction $J$ prenant uniquement un paramètre $\theta_{0}$ :
 
-![Exemple simplifié de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient.png)
+![Exemple simplifié de l'algorithme du gradient](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie.png)
 
 On initialise l'algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée partielle de la fonction $J$ en ce point :
 
-![Initialisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_init.png)
+![Initialisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_init.png)
 
 La dérivée partielle est la droite en bleue, et on remarque que le coefficient directeur de la tangente est **négatif** et **important**, notre algorithme va donc **augmenter** $\theta_{0}$ de manière **importante**.
 
 On peut continuer ainsi jusqu'à tomber sur le minimum de notre fonction :
 
-![Reste de l'algorithme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_algo_gradient_reste.png)
+![Reste de l'algorithme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_simplifie_reste.png)
 
 Même si on a vu que notre algorithme ne trouvera pas toujours le minimum global de la fonction, un minimum local est toujours intéressant, et sur des problèmes très complexes cela sera beaucoup plus efficace à utiliser qu'une approximation faite à la main.
 
