@@ -307,10 +307,10 @@ class regression_lineaire:
         self.x = np.matrix(np.hstack((col, self.x)))
         self.n = self.n + 1
 
+    def algo_gradient(self, alpha, nb_tour_max):
         # Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese
         self.theta = np.matrix(np.zeros((self.n, 1)))
 
-    def algo_gradient(self, alpha, nb_tour_max):
         for _ in range(nb_tour_max):
             # Pour faire la mise &#224; jour instantan&#233;e des coefficients :
             # 1. On calcule d&#39;abord les r&#233;sultats dans des variables temporaires
@@ -378,6 +378,9 @@ plt.show()</code></pre>
 <p><span class="math inline">\(\theta = \theta - \alpha\frac{1}{m}x^\intercal(x\theta - y)\)</span></p>
 <p>Il n'y a plus aucunes boucles, et uniquement des op&#233;rations matricielles. Notre fonction pour l'algorithme du gradient devient donc dans notre code :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> algo_gradient(<span class="va">self</span>, alpha, nb_tour_max):
+   <span class="co"># Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese</span>
+   <span class="va">self</span>.theta <span class="op">=</span> np.matrix(np.zeros((<span class="va">self</span>.n, <span class="dv">1</span>)))
+
    <span class="cf">for</span> _ <span class="op">in</span> <span class="bu">range</span>(nb_tour_max):
       derivee <span class="op">=</span> np.transpose(<span class="va">self</span>.x) <span class="op">*</span> (<span class="va">self</span>.x <span class="op">*</span> <span class="va">self</span>.theta <span class="op">-</span> <span class="va">self</span>.y)
       <span class="va">self</span>.theta <span class="op">=</span> <span class="va">self</span>.theta <span class="op">-</span> alpha <span class="op">*</span> (<span class="dv">1</span> <span class="op">/</span> <span class="va">self</span>.m) <span class="op">*</span> derivee</code></pre></div>
@@ -440,10 +443,10 @@ class regression_lineaire:
         self.x = np.matrix(np.hstack((col, self.x)))
         self.n = self.n + 1
 
+    def algo_gradient(self, alpha, nb_tour_max):
         # Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese
         self.theta = np.matrix(np.zeros((self.n, 1)))
 
-    def algo_gradient(self, alpha, nb_tour_max):
         for _ in range(nb_tour_max):
             derivee = np.transpose(self.x) * (self.x * self.theta - self.y)
             self.theta = self.theta - alpha * (1 / self.m) * derivee

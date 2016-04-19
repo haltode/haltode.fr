@@ -23,10 +23,10 @@ class regression_lineaire:
         self.x = np.matrix(np.hstack((col, self.x)))
         self.n = self.n + 1
 
+    def algo_gradient(self, alpha, nb_tour_max):
         # Initialise à 0 les coefficients de la fonction d'hypothese
         self.theta = np.matrix(np.zeros((self.n, 1)))
 
-    def algo_gradient(self, alpha, nb_tour_max):
         for _ in range(nb_tour_max):
             # Pour faire la mise à jour instantanée des coefficients :
             # 1. On calcule d'abord les résultats dans des variables temporaires

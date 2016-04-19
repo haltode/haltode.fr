@@ -173,6 +173,9 @@ Il n'y a plus aucunes boucles, et uniquement des opérations matricielles. Notre
 
 ```python
 def algo_gradient(self, alpha, nb_tour_max):
+   # Initialise à 0 les coefficients de la fonction d'hypothese
+   self.theta = np.matrix(np.zeros((self.n, 1)))
+
    for _ in range(nb_tour_max):
       derivee = np.transpose(self.x) * (self.x * self.theta - self.y)
       self.theta = self.theta - alpha * (1 / self.m) * derivee
