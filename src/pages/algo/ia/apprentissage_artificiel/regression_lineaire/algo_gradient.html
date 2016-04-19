@@ -190,7 +190,7 @@ function toggle_visibility(id) {
 <p><span class="math inline">\(h_{\theta}(x) = \displaystyle\sum_{i=0}^{n} \theta_{i}x_{i}\)</span></p>
 <p>Cependant, <span class="math inline">\(\theta\)</span> et <span class="math inline">\(x\)</span> sont deux matrices, et le calcul de la fonction d'hypoth&#232;se pourrait s'&#233;crire sous la forme d'un simple <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> :</p>
 <p><span class="math inline">\(h_{\theta}(x) = \theta^\intercal x = x \theta\)</span></p>
-<p>Or on cherche &#224; trouver une fonction d'hypoth&#232;se efficace, et ceci revient &#224; trouver les coefficients <span class="math inline">\(\theta\)</span> de <span class="math inline">\(h_{\theta}\)</span> qui minimisent la fonction d'erreur <span class="math inline">\(J\)</span>. Pour rappel, notre fonction d'erreur ressemble &#224; cela :</p>
+<p>Notre but est de chercher une fonction d'hypoth&#232;se efficace, et ceci revient &#224; trouver les coefficients <span class="math inline">\(\theta\)</span> de <span class="math inline">\(h_{\theta}\)</span> qui minimisent la fonction d'erreur <span class="math inline">\(J\)</span>. Pour rappel, notre fonction d'erreur ressemble &#224; cela :</p>
 <p><span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
 <p>Et si on reprend l'exemple du prix de l'ordinateur, et qu'on affiche <span class="math inline">\(J\)</span> en fonction de <span class="math inline">\(\theta_0\)</span> et <span class="math inline">\(\theta_1\)</span>, on obtenait ce graphique en trois dimensions :</p>
 <div class="figure">
@@ -243,7 +243,7 @@ function toggle_visibility(id) {
 <li>Mettre &#224; jour nos valeurs en utilisant des variables temporaires.</li>
 <li>Copier le contenu de ces variables temporaires dans nos coefficients.</li>
 </ul>
-<p>Si l'on garde notre exemple avec deux attributs, on aurait ces op&#233;rations &#224; effectuer :</p>
+<p>Si l'on garde notre exemple avec un attribut, on aurait ces op&#233;rations &#224; effectuer :</p>
 <p><span class="math inline">\(temp0 = \theta_{0} - \alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0}, \theta_{1})\)</span></p>
 <p><span class="math inline">\(temp1 = \theta_{1} - \alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0}, \theta_{1})\)</span></p>
 <p><span class="math inline">\(\theta_{0} = temp0\)</span></p>
@@ -265,7 +265,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_eleve.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage &#233;lev&#233;" />
 <p class="caption">Exemple de cons&#233;quence d'un coefficient d'apprentissage &#233;lev&#233;</p>
 </div>
-<p>L'algorithme risque alors de ne pas converger voire de <strong>diverger</strong>.</p>
+<p>L'algorithme risque alors de ne pas converger, voire de <strong>diverger</strong>.</p>
 <p>A l'inverse, une vitesse d'apprentissage trop faible rendra notre algorithme terriblement lent :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_faible.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage faible" />
@@ -372,7 +372,7 @@ plt.plot(x, y_approx, <span class="st">&#39;r-&#39;</span>)
 plt.show()</code></pre></div>
 <h2 id="am&#233;liorations">Am&#233;liorations</h2>
 <h3 id="vectorization"><em>Vectorization</em></h3>
-<p>Afin de simplifier le code, il serait utile d'utiliser la m&#234;me am&#233;lioration qu'avec notre fonction d'hypoth&#232;se : l'utilisation d'op&#233;rations sur les matrices. Au lieu d'appliquer des op&#233;rations sur les &#233;l&#233;ments d'une matrice un par un, on peut utiliser des op&#233;rations plus g&#233;n&#233;rales sur notre matrice enti&#232;re. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de r&#233;aliser une mise &#224; jour instantan&#233;e des coefficients automatiquement, sans m&#234;me avoir besoin de stocker nos r&#233;sultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
+<p>Afin de simplifier le code, il serait utile d'utiliser la m&#234;me am&#233;lioration qu'avec notre fonction d'hypoth&#232;se : les op&#233;rations sur les matrices. Au lieu d'appliquer des op&#233;rations sur les &#233;l&#233;ments d'une matrice un par un, on peut utiliser des op&#233;rations plus g&#233;n&#233;rales sur notre matrice enti&#232;re. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de r&#233;aliser une mise &#224; jour instantan&#233;e des coefficients automatiquement, sans m&#234;me avoir besoin de stocker nos r&#233;sultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
 <p><span class="math inline">\(\theta = \theta - \alpha\frac{1}{m}x^\intercal(h_{\theta}(x) - y)\)</span></p>
 <p>Si on d&#233;veloppe notre fonction d'hypoth&#232;se on arrive &#224; cette expression :</p>
 <p><span class="math inline">\(\theta = \theta - \alpha\frac{1}{m}x^\intercal(x\theta - y)\)</span></p>
@@ -394,7 +394,7 @@ plt.show()</code></pre></div>
 <p class="caption">Echelles similaires</p>
 </div>
 <p>Notre algorithme va alors converger bien plus rapidement.</p>
-<p>Pour r&#233;aliser cette op&#233;ration dite de <a href="https://en.wikipedia.org/wiki/Feature_scaling"><em>feature scaling</em></a> en anglais, on utilise une m&#233;thode de <a href="https://en.wikipedia.org/wiki/Feature_scaling#Standardization">standardisation</a> (aussi appel&#233;e <em>mean normalization</em>). Le but est d'avoir toutes nos valeurs de <span class="math inline">\(x\)</span>, tel qu'on a approximativement <span class="math inline">\(-1 \leq x \leq 1\)</span>. On va donc modifier chaque valeur <span class="math inline">\(i\)</span> de <span class="math inline">\(x\)</span> de cette fa&#231;on :</p>
+<p>Pour r&#233;aliser cette op&#233;ration dite de <a href="https://en.wikipedia.org/wiki/Feature_scaling"><em>feature scaling</em></a> en anglais, on utilise une m&#233;thode de <a href="https://en.wikipedia.org/wiki/Feature_scaling#Standardization">standardisation</a> (aussi appel&#233;e <em>mean normalization</em> dans notre cas). Le but est d'avoir toutes nos valeurs de <span class="math inline">\(x\)</span>, tel qu'on a approximativement <span class="math inline">\(-1 \leq x \leq 1\)</span>. On va donc modifier chaque valeur <span class="math inline">\(i\)</span> de <span class="math inline">\(x\)</span> :</p>
 <p><span class="math inline">\(x_i = \frac{x_i - \bar{x_i}}{\sigma_i}\)</span></p>
 <p><span class="math inline">\(\bar{x}\)</span> repr&#233;sente la moyenne, et <span class="math inline">\(\sigma\)</span> est l'<a href="https://fr.wikipedia.org/wiki/%C3%89cart_type">&#233;cart type</a> (qui nous sert &#224; mesurer la dispersion de nos valeurs).</p>
 <p>Il faut en revanche faire attention &#224; ne pas appliquer cela sur <span class="math inline">\(x_0\)</span> car cette valeur doit toujours &#234;tre &#233;gale &#224; 1, on r&#233;alisera donc l'op&#233;ration de feature scaling avant d'ajouter notre colonne de 1 &#224; <span class="math inline">\(x\)</span> :</p>
@@ -457,6 +457,13 @@ for j in range(ia.n):
     print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))</code></pre>
 </div>
 <h2 id="conclusion">Conclusion</h2>
+<p>L'algorithme du gradient est donc un algorithme it&#233;ratif servant &#224; minimiser notre fonction d'erreur <span class="math inline">\(J\)</span> afin de trouver les param&#232;tres <span class="math inline">\(\theta\)</span> optimaux pour notre fonction d'hypoth&#232;se. Cet algorithme est tr&#232;s utile sur des entr&#233;es extr&#234;mement importantes car on peut contr&#244;ler son nombre d'it&#233;rations ainsi que sa vitesse d'apprentissage (qu'il faut bien choisir au risque de r&#233;duire consid&#233;rablement l'efficacit&#233; de notre programme).</p>
+<p>Il faut savoir qu'il existe diff&#233;rentes variantes de cet algorithme :</p>
+<ul>
+<li><strong>Batch gradient descent</strong> : la m&#233;thode qu'on a rencontr&#233;e dans cet article, et qui utilise les <span class="math inline">\(m\)</span> exemples de l'entr&#233;e &#224; chaque it&#233;ration.</li>
+<li><strong>Stochastic gradient descent</strong> : dans cette variante, on utilise uniquement un seul exemple afin de mettre &#224; jour nos coefficients <span class="math inline">\(\theta\)</span>. Le but est d'&#233;viter des minimums locaux peu int&#233;ressants dans des bases de donn&#233;es &#233;normes, afin d'arriver on l'esp&#232;re &#224; un minimum local proche du minimum global (voire si possible &#233;gal). Un autre avantage est naturellement sa rapidit&#233; vu qu'on utilise qu'un seul exemple &#224; chaque it&#233;ration.</li>
+<li><strong>Mini-batch gradient descent</strong> : un m&#233;lange des deux derni&#232;res m&#233;thodes, qui consiste &#224; utiliser un nombre <span class="math inline">\(b\)</span> d'exemples afin d'essayer de combiner les avantages des deux autres variantes.</li>
+</ul>
  
       <!-- ------------ -->
 

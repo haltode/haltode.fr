@@ -19,7 +19,7 @@ Cependant, $\theta$ et $x$ sont deux matrices, et le calcul de la fonction d'hyp
 
 $h_{\theta}(x) = \theta^\intercal x = x \theta$
 
-Or on cherche à trouver une fonction d'hypothèse efficace, et ceci revient à trouver les coefficients $\theta$ de $h_{\theta}$ qui minimisent la fonction d'erreur $J$. Pour rappel, notre fonction d'erreur ressemble à cela :
+Notre but est de chercher une fonction d'hypothèse efficace, et ceci revient à trouver les coefficients $\theta$ de $h_{\theta}$ qui minimisent la fonction d'erreur $J$. Pour rappel, notre fonction d'erreur ressemble à cela :
 
 $J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
@@ -84,7 +84,7 @@ Dans notre détail de l'algorithme du gradient, il y a un point très important 
 - Mettre à jour nos valeurs en utilisant des variables temporaires.
 - Copier le contenu de ces variables temporaires dans nos coefficients.
 
-Si l'on garde notre exemple avec deux attributs, on aurait ces opérations à effectuer :
+Si l'on garde notre exemple avec un attribut, on aurait ces opérations à effectuer :
 
 $temp0 = \theta_{0} - \alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0}, \theta_{1})$
 
@@ -106,8 +106,8 @@ Tant qu'on n'a pas dépassé la limite de tours
 
 Notre boucle principale n'utilise plus la condition de convergence de notre algorithme du gradient pour plusieurs raisons :
 
-   - Lorsqu'on atteint un minimum local (ou global), l'algorithme va automatiquement s'arrêter car il ne met plus à jour les coefficients $\theta$ vu que notre tangente sera horizontale.
-   - Il est préférable de fixer un nombre de tours maximum à l'algorithme car sinon ce dernier peut prendre énormément de temps à converger et il est plus intéressant de pouvoir contrôler la durée de calcul afin d'étudier la progression de notre algorithme du gradient.
+- Lorsqu'on atteint un minimum local (ou global), l'algorithme va automatiquement s'arrêter car il ne met plus à jour les coefficients $\theta$ vu que notre tangente sera horizontale.
+- Il est préférable de fixer un nombre de tours maximum à l'algorithme car sinon ce dernier peut prendre énormément de temps à converger et il est plus intéressant de pouvoir contrôler la durée de calcul afin d'étudier la progression de notre algorithme du gradient.
 
 ## Coefficient d'apprentissage
 
@@ -115,7 +115,7 @@ Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha
 
 ![Exemple de conséquence d'un coefficient d'apprentissage élevé](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient/exemple_coeff_apprentissage_eleve.png)
 
-L'algorithme risque alors de ne pas converger voire de **diverger**. 
+L'algorithme risque alors de ne pas converger, voire de **diverger**. 
 
 A l'inverse, une vitesse d'apprentissage trop faible rendra notre algorithme terriblement lent :
 
@@ -177,7 +177,7 @@ plt.show()
 
 ### *Vectorization*
 
-Afin de simplifier le code, il serait utile d'utiliser la même amélioration qu'avec notre fonction d'hypothèse : l'utilisation d'opérations sur les matrices. Au lieu d'appliquer des opérations sur les éléments d'une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :
+Afin de simplifier le code, il serait utile d'utiliser la même amélioration qu'avec notre fonction d'hypothèse : les opérations sur les matrices. Au lieu d'appliquer des opérations sur les éléments d'une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :
 
 $\theta = \theta - \alpha\frac{1}{m}x^\intercal(h_{\theta}(x) - y)$
 
@@ -208,7 +208,7 @@ Le problème ici est que notre algorithme du gradient va mettre beaucoup plus de
 
 Notre algorithme va alors converger bien plus rapidement.
 
-Pour réaliser cette opération dite de [*feature scaling*](https://en.wikipedia.org/wiki/Feature_scaling) en anglais, on utilise une méthode de [standardisation](https://en.wikipedia.org/wiki/Feature_scaling#Standardization) (aussi appelée *mean normalization*). Le but est d'avoir toutes nos valeurs de $x$, tel qu'on a approximativement $-1 \leq x \leq 1$. On va donc modifier chaque valeur $i$ de $x$ de cette façon :
+Pour réaliser cette opération dite de [*feature scaling*](https://en.wikipedia.org/wiki/Feature_scaling) en anglais, on utilise une méthode de [standardisation](https://en.wikipedia.org/wiki/Feature_scaling#Standardization) (aussi appelée *mean normalization* dans notre cas). Le but est d'avoir toutes nos valeurs de $x$, tel qu'on a approximativement $-1 \leq x \leq 1$. On va donc modifier chaque valeur $i$ de $x$ :
 
 $x_i = \frac{x_i - \bar{x_i}}{\sigma_i}$
 
@@ -234,3 +234,11 @@ Le code final avec les deux améliorations :
 regression_lineaire_vect_fs.py
 
 ## Conclusion
+
+L'algorithme du gradient est donc un algorithme itératif servant à minimiser notre fonction d'erreur $J$ afin de trouver les paramètres $\theta$ optimaux pour notre fonction d'hypothèse. Cet algorithme est très utile sur des entrées extrêmement importantes car on peut contrôler son nombre d'itérations ainsi que sa vitesse d'apprentissage (qu'il faut bien choisir au risque de réduire considérablement l'efficacité de notre programme).
+
+Il faut savoir qu'il existe différentes variantes de cet algorithme :
+
+- **Batch gradient descent** : la méthode qu'on a rencontrée dans cet article, et qui utilise les $m$ exemples de l'entrée à chaque itération.
+- **Stochastic gradient descent** : dans cette variante, on utilise uniquement un seul exemple afin de mettre à jour nos coefficients $\theta$. Le but est d'éviter des minimums locaux peu intéressants dans des bases de données énormes, afin d'arriver on l'espère à un minimum local proche du minimum global (voire si possible égal). Un autre avantage est naturellement sa rapidité vu qu'on utilise qu'un seul exemple à chaque itération.
+- **Mini-batch gradient descent** : un mélange des deux dernières méthodes, qui consiste à utiliser un nombre $b$ d'exemples afin d'essayer de combiner les avantages des deux autres variantes.
