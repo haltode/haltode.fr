@@ -67,11 +67,33 @@ $\theta = (x^\intercal x)^{-1} x^\intercal y$
 
 On retrouve bien notre équation normale.
 
+## Complexité
+
+La raison pour laquelle cette méthode n'est pas tout le temps utilisée est assez simple : la **rapidité**. En effet, le produit matriciel est encore un problème ouvert car on ne sait pas s'il existe de meilleurs algorithmes que ceux employés aujourd'hui. L'algorithme naïf de multiplication matriciel a une complexité en temps de $O(N^3)$ avec $N$ le nombre de lignes des matrices, mais cependant, les autres algorithmes n'ont pas une complexité si différente ($O(N^{2.807})$ pour l'[algorithme de Strassen](https://en.wikipedia.org/wiki/Strassen_algorithm) ou encore $O(2.376)$ pour l'[algorithme de Coppersmith-Winograd](https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm)).
+
+Il est donc peu envisageable d'implémenter la méthode de l'équation normale lorsqu'on a environ $n > 10000$.
+
 ## Implémentation
 
 Le code en Python permettant de calculer les paramètres $\theta$ avec l'équation normale :
 
 [INSERT]
 equation_normale.py
+
+Afin d'optimiser légèrement le programme, la matrice transposée de $x$ est stockée dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la même opération, même si ce n'est pas l'une des plus couteuses).
+
+En entrée de notre programme, on donne le même fichier que pour l'algorithme du gradient :
+
+[INSERT]
+test01.in
+
+En sortie en revanche, on obtient des paramètres $\theta$ différents car le coefficient d'apprentissage, le nombre d'itérations maximum et l'opération de *feature scaling* influent sur le résultat :
+
+[INSERT]
+test01.out
+
+Et voici la représentation graphique de notre fonction d'hypothèse trouvée (le code utilisé est le même que celui pour l'algorithme du gradient) :
+
+![Sortie graphique du programme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale/sortie_prog.png)
 
 ## Conclusion

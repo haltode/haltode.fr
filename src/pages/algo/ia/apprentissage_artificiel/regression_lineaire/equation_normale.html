@@ -178,6 +178,7 @@ function toggle_visibility(id) {
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#d&#233;monstration">D&#233;monstration</a></li>
+<li><a href="#complexit&#233;">Complexit&#233;</a></li>
 <li><a href="#impl&#233;mentation">Impl&#233;mentation</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
@@ -212,9 +213,69 @@ function toggle_visibility(id) {
 <p>Si la matrice r&#233;sultant du calcul de <span class="math inline">\(x^\intercal x\)</span> est <strong>inversible</strong>, alors on peut multiplier les deux c&#244;t&#233;s par l'inverse de cette derni&#232;re et ainsi affirmer que :</p>
 <p><span class="math inline">\(\theta = (x^\intercal x)^{-1} x^\intercal y\)</span></p>
 <p>On retrouve bien notre &#233;quation normale.</p>
+<h2 id="complexit&#233;">Complexit&#233;</h2>
+<p>La raison pour laquelle cette m&#233;thode n'est pas tout le temps utilis&#233;e est assez simple : la <strong>rapidit&#233;</strong>. En effet, le produit matriciel est encore un probl&#232;me ouvert car on ne sait pas s'il existe de meilleurs algorithmes que ceux employ&#233;s aujourd'hui. L'algorithme na&#239;f de multiplication matriciel a une complexit&#233; en temps de <span class="math inline">\(O(N^3)\)</span> avec <span class="math inline">\(N\)</span> le nombre de lignes des matrices, mais cependant, les autres algorithmes n'ont pas une complexit&#233; si diff&#233;rente (<span class="math inline">\(O(N^{2.807})\)</span> pour l'<a href="https://en.wikipedia.org/wiki/Strassen_algorithm">algorithme de Strassen</a> ou encore <span class="math inline">\(O(2.376)\)</span> pour l'<a href="https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm">algorithme de Coppersmith-Winograd</a>).</p>
+<p>Il est donc peu envisageable d'impl&#233;menter la m&#233;thode de l'&#233;quation normale lorsqu'on a environ <span class="math inline">\(n &gt; 10000\)</span>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Le code en Python permettant de calculer les param&#232;tres <span class="math inline">\(\theta\)</span> avec l'&#233;quation normale :</p>
-<pre class="py"><code></code></pre>
+<a href="javascript:toggle_visibility('equation_normale.py');">equation_normale.py</a>
+<div id="equation_normale.py" style="display: none;">
+<pre class="py"><code>import numpy as np
+
+
+# x = exemple d&#39;entr&#233;e
+# y = exemple de sortie
+# m = nombre d&#39;exemples
+# n = nombre d&#39;attributs
+# theta = coefficients de notre fonction d&#39;hypothese
+
+class regression_lineaire:
+
+    def __init__(self, entree):
+        with open(entree) as f:
+            self.m, self.n = map(int, f.readline().split())
+
+        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=(list(range(self.n))), ndmin=2))
+        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=([self.n]), ndmin=2))
+
+        # Ajoute une colonne de 1 au d&#233;but de notre matrice x
+        col = np.ones((self.m, 1))
+        self.x = np.matrix(np.hstack((col, self.x)))
+        self.n = self.n + 1
+
+    def equation_normale(self):
+        x_t = np.transpose(self.x)
+        self.theta = (x_t * self.x).I * x_t * self.y
+
+
+ia = regression_lineaire(&quot;test01.in&quot;)
+ia.equation_normale()
+
+print(&quot;Coefficients de la fonction d&#39;hypothese :\n&quot;)
+for j in range(ia.n):
+    print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))</code></pre>
+</div>
+<p>Afin d'optimiser l&#233;g&#232;rement le programme, la matrice transpos&#233;e de <span class="math inline">\(x\)</span> est stock&#233;e dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la m&#234;me op&#233;ration, m&#234;me si ce n'est pas l'une des plus couteuses).</p>
+<p>En entr&#233;e de notre programme, on donne le m&#234;me fichier que pour l'algorithme du gradient :</p>
+<pre class="nohighlight"><code>6 1
+1.73 1.94
+4.07 2.87
+5.34 5.01
+7.14 6.74
+9.56 7.71
+12.26 8.6</code></pre>
+<p>En sortie en revanche, on obtient des param&#232;tres <span class="math inline">\(\theta\)</span> diff&#233;rents car le coefficient d'apprentissage, le nombre d'it&#233;rations maximum et l'op&#233;ration de <em>feature scaling</em> influent sur le r&#233;sultat :</p>
+<pre class="nohighlight"><code>Coefficients de la fonction d&#39;hypothese :
+
+theta  0  :  0.9424111325332967
+theta  1  :  0.678691601117212</code></pre>
+<p>Et voici la repr&#233;sentation graphique de notre fonction d'hypoth&#232;se trouv&#233;e (le code utilis&#233; est le m&#234;me que celui pour l'algorithme du gradient) :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale/sortie_prog.png" alt="Sortie graphique du programme" />
+<p class="caption">Sortie graphique du programme</p>
+</div>
 <h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
