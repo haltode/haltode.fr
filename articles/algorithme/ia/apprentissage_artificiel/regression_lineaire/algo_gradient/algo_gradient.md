@@ -97,6 +97,8 @@ $\theta_{1} = temp1$
 Le pseudo-code définitif ressemble donc à ceci :
 
 ```nohighlight
+Initialiser tous les coefficients à 0
+
 Tant qu'on n'a pas dépassé la limite de tours
    Pour chaque coefficient
       Calculer temp[j]
