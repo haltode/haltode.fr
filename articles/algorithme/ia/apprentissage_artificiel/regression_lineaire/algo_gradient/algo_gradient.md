@@ -134,7 +134,7 @@ Voici le code en Python pour l'algorithme du gradient :
 *J'utilise Python afin d'avoir accès à des librairies scientifiques comme [numpy](http://www.numpy.org/) pour les matrices et [matplotlib](http://matplotlib.org/) pour les graphiques.*
 
 [INSERT]
-regression_lineaire.py
+algo_gradient.py
 
 Notre fichier d'entrée contient sur la première ligne le nombre $m$ d'exemples, puis le nombre $n$ d'attributs. Sur les $m$ prochaines lignes, on retrouve une liste de nombre dont la dernière colonne correspond à $y$ et les autres à $x$. J'ai repris notre exemple de l'introduction pour construire le fichier d'entrée (les unités sont toujours en centaine d'opérations et en centaine d'euros) :
 
@@ -154,24 +154,8 @@ On obtient bien une généralisation efficace sous forme de fonction linéaire q
 
 Le code utilisé pour réaliser cette sortie :
 
-```python
-import matplotlib.pyplot as plt
-
-# Récupère dans des listes les valeurs de x, y, et de notre approximation de y
-x = np.array(ia.x[:,1]).tolist()
-x = [float(i[0]) for i in x]
-
-y = np.array(ia.y).tolist()
-y = [float(i[0]) for i in y]
-
-y_approx = np.array(ia.x * ia.theta).tolist()
-y_approx = [float(i[0]) for i in y_approx]
-
-# Affiche les points donnés en entrée, ainsi que notre modèle linéaire
-plt.plot(x, y, '+')
-plt.plot(x, y_approx, 'r-')
-plt.show()
-```
+[INSERT]
+sortie_graphique.py
 
 ## Améliorations
 
@@ -231,7 +215,7 @@ test01_fs.out
 Le code final avec les deux améliorations :
 
 [INSERT]
-regression_lineaire_vect_fs.py
+algo_gradient_vect_fs.py
 
 ## Conclusion
 

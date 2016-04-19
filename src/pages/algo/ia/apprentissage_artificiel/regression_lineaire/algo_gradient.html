@@ -280,8 +280,8 @@ function toggle_visibility(id) {
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Voici le code en Python pour l'algorithme du gradient :</p>
 <p><em>J'utilise Python afin d'avoir acc&#232;s &#224; des librairies scientifiques comme <a href="http://www.numpy.org/">numpy</a> pour les matrices et <a href="http://matplotlib.org/">matplotlib</a> pour les graphiques.</em></p>
-<a href="javascript:toggle_visibility('regression_lineaire.py');">regression_lineaire.py</a>
-<div id="regression_lineaire.py" style="display: none;">
+<a href="javascript:toggle_visibility('algo_gradient.py');">algo_gradient.py</a>
+<div id="algo_gradient.py" style="display: none;">
 <pre class="py"><code>import numpy as np
 
 
@@ -354,22 +354,22 @@ theta  1  :  0.7219164912370313</code></pre>
 </div>
 <p>On obtient bien une g&#233;n&#233;ralisation efficace sous forme de fonction lin&#233;aire qui ressemble fortement &#224; celle qu'un humain peut faire &#224; la main (m&#234;me si celle que l'ordinateur a calcul&#233; est plus pr&#233;cise que celle faite &#224; la main).</p>
 <p>Le code utilis&#233; pour r&#233;aliser cette sortie :</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+<pre class="py"><code>import matplotlib.pyplot as plt
 
-<span class="co"># R&#233;cup&#232;re dans des listes les valeurs de x, y, et de notre approximation de y</span>
-x <span class="op">=</span> np.array(ia.x[:,<span class="dv">1</span>]).tolist()
-x <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> x]
+# R&#233;cup&#232;re dans des listes les valeurs de x, y, et de notre approximation de y
+x = np.array(ia.x[:,1]).tolist()
+x = [float(i[0]) for i in x]
 
-y <span class="op">=</span> np.array(ia.y).tolist()
-y <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> y]
+y = np.array(ia.y).tolist()
+y = [float(i[0]) for i in y]
 
-y_approx <span class="op">=</span> np.array(ia.x <span class="op">*</span> ia.theta).tolist()
-y_approx <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> y_approx]
+y_approx = np.array(ia.x * ia.theta).tolist()
+y_approx = [float(i[0]) for i in y_approx]
 
-<span class="co"># Affiche les points donn&#233;s en entr&#233;e, ainsi que notre mod&#232;le lin&#233;aire</span>
-plt.plot(x, y, <span class="st">&#39;+&#39;</span>)
-plt.plot(x, y_approx, <span class="st">&#39;r-&#39;</span>)
-plt.show()</code></pre></div>
+# Affiche les points donn&#233;s en entr&#233;e, ainsi que notre mod&#232;le lin&#233;aire
+plt.plot(x, y, &#39;+&#39;)
+plt.plot(x, y_approx, &#39;r-&#39;)
+plt.show()</code></pre>
 <h2 id="am&#233;liorations">Am&#233;liorations</h2>
 <h3 id="vectorization"><em>Vectorization</em></h3>
 <p>Afin de simplifier le code, il serait utile d'utiliser la m&#234;me am&#233;lioration qu'avec notre fonction d'hypoth&#232;se : les op&#233;rations sur les matrices. Au lieu d'appliquer des op&#233;rations sur les &#233;l&#233;ments d'une matrice un par un, on peut utiliser des op&#233;rations plus g&#233;n&#233;rales sur notre matrice enti&#232;re. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de r&#233;aliser une mise &#224; jour instantan&#233;e des coefficients automatiquement, sans m&#234;me avoir besoin de stocker nos r&#233;sultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
@@ -410,8 +410,8 @@ theta  1  :  2.3208884389927897</code></pre>
 <p class="caption">Sortie graphique apr&#232;s op&#233;ration de feature scaling</p>
 </div>
 <p>Le code final avec les deux am&#233;liorations :</p>
-<a href="javascript:toggle_visibility('regression_lineaire_vect_fs.py');">regression_lineaire_vect_fs.py</a>
-<div id="regression_lineaire_vect_fs.py" style="display: none;">
+<a href="javascript:toggle_visibility('algo_gradient_vect_fs.py');">algo_gradient_vect_fs.py</a>
+<div id="algo_gradient_vect_fs.py" style="display: none;">
 <pre class="py"><code>import numpy as np
 
 
