@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="equation-normale">Equation normale</h1></a>
-<p>Publi&#233; le : 19/04/2016<br />
-<em>Modifi&#233; le : 19/04/2016</em></p>
+<p>Publi&#233; le : 20/04/2016<br />
+<em>Modifi&#233; le : 20/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -267,7 +267,7 @@ for j in range(ia.n):
 7.14 6.74
 9.56 7.71
 12.26 8.6</code></pre>
-<p>En sortie en revanche, on obtient des param&#232;tres <span class="math inline">\(\theta\)</span> diff&#233;rents car le coefficient d'apprentissage, le nombre d'it&#233;rations maximum et l'op&#233;ration de <em>feature scaling</em> influent sur le r&#233;sultat :</p>
+<p>En sortie en revanche, on obtient des param&#232;tres <span class="math inline">\(\theta\)</span> diff&#233;rents car l'initialisation de <span class="math inline">\(\theta\)</span>, le coefficient d'apprentissage, le nombre d'it&#233;rations maximum et l'op&#233;ration de <em>feature scaling</em> influent sur le r&#233;sultat :</p>
 <pre class="nohighlight"><code>Coefficients de la fonction d&#39;hypothese :
 
 theta  0  :  0.9424111325332967
@@ -278,6 +278,7 @@ theta  1  :  0.678691601117212</code></pre>
 <p class="caption">Sortie graphique du programme</p>
 </div>
 <h2 id="conclusion">Conclusion</h2>
+<p>La m&#233;thode de l'&#233;quation normale est donc plus pr&#233;cise que celle de l'algorithme du gradient car elle calcule le minimum global de la fonction d'erreur en d&#233;terminant <span class="math inline">\(\theta\)</span> directement avec une relation math&#233;matique. Cependant, on ne peut pas employer cette &#233;quation tout le temps car elle a une complexit&#233; en temps trop &#233;lev&#233;e, ce qui la rend quasiment inutilisable sur des entr&#233;es o&#249; <span class="math inline">\(n &gt; 10000\)</span>.</p>
  
       <!-- ------------ -->
 

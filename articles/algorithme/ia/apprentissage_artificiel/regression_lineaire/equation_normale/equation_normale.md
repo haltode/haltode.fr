@@ -2,8 +2,8 @@ Equation normale
 ================
 algo/ia/apprentissage_artificiel/regression_lineaire
 
-Publié le : 19/04/2016  
-*Modifié le : 19/04/2016*
+Publié le : 20/04/2016  
+*Modifié le : 20/04/2016*
 
 ## Introduction
 
@@ -89,7 +89,7 @@ En entrée de notre programme, on donne le même fichier que pour l'algorithme d
 [INSERT]
 test01.in
 
-En sortie en revanche, on obtient des paramètres $\theta$ différents car le coefficient d'apprentissage, le nombre d'itérations maximum et l'opération de *feature scaling* influent sur le résultat :
+En sortie en revanche, on obtient des paramètres $\theta$ différents car l'initialisation de $\theta$, le coefficient d'apprentissage, le nombre d'itérations maximum et l'opération de *feature scaling* influent sur le résultat :
 
 [INSERT]
 test01.out
@@ -99,3 +99,5 @@ Et voici la représentation graphique de notre fonction d'hypothèse trouvée (l
 ![Sortie graphique du programme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale/sortie_prog.png)
 
 ## Conclusion
+
+La méthode de l'équation normale est donc plus précise que celle de l'algorithme du gradient car elle calcule le minimum global de la fonction d'erreur en déterminant $\theta$ directement avec une relation mathématique. Cependant, on ne peut pas employer cette équation tout le temps car elle a une complexité en temps trop élevée, ce qui la rend quasiment inutilisable sur des entrées où $n > 10000$.
