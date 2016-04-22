@@ -180,7 +180,7 @@ function toggle_visibility(id) {
 <li><a href="#fonction-derreur">Fonction d'erreur</a></li>
 <li><a href="#algorithmes">Algorithmes</a></li>
 <li><a href="#r&#233;gression-polynomiale">R&#233;gression polynomiale</a></li>
-<li><a href="#probl&#232;me">Probl&#232;me</a></li>
+<li><a href="#probl&#232;mes">Probl&#232;mes</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
@@ -314,9 +314,20 @@ function toggle_visibility(id) {
 <li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html"><strong>L'&#233;quation normale</strong></a> : une &#233;quation donnant le r&#233;sultat directement sans it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> qui a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span>. On l'utilisera plut&#244;t quand <span class="math inline">\(n\)</span> est suffisamment petit (en g&#233;n&#233;ral en dessous de 10000).</li>
 </ul>
 <h2 id="r&#233;gression-polynomiale">R&#233;gression polynomiale</h2>
-<h2 id="probl&#232;me">Probl&#232;me</h2>
-<p>Apr&#232;s avoir vu ces deux exemples d'algorithmes concrets, il est temps d'aborder un probl&#232;me que peuvent rencontrer ces derniers, et plus g&#233;n&#233;ralement, la plupart des algorithmes d'apprentissage artificiel : le <strong>surapprentissage</strong>.</p>
-<p>Le but de l'apprentissage supervis&#233; est de fournir &#224; notre algorithme des exemples &#224; partir desquels il peut g&#233;n&#233;raliser le probl&#232;me &#224; r&#233;soudre. Cependant, il arrive que notre algorithme ne g&#233;n&#233;ralise pas mais en vient &#224; r&#233;citer par c&#339;ur les donn&#233;es fournies. Le probl&#232;me est que notre programme va alors trouver la bonne r&#233;ponse sur quasiment tous nos exemples, mais d&#232;s qu'il verra une nouvelle entr&#233;e il r&#233;pondra totalement &#224; c&#244;t&#233;. Il n'a pas r&#233;ussi &#224; g&#233;n&#233;raliser, et il est tomb&#233; dans le cas par cas. Cette notion de surapprentissage (ou <em>overfitting</em> en anglais) est essentielle &#224; comprendre car c'est un probl&#232;me extr&#234;mement r&#233;current dans le domaine de l'apprentissage artificiel.</p>
+<p>Maintenant qu'on a vu comment fonctionne la r&#233;gression lin&#233;aire, il est temps d'utiliser des fonctions polynomiales plus complexes afin de g&#233;n&#233;raliser sur des donn&#233;es non lin&#233;aires. En r&#233;alit&#233;, l'unique changement &#224; r&#233;aliser est sur notre fonction d'hypoth&#232;se puisque la fonction d'erreur et les deux algorithmes restent exactement les m&#234;mes. Il suffit donc d'employer une <strong>fonction d'hypoth&#232;se polynomiale</strong> :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2^2 + \ldots + \theta_{n}x_n^d\)</span></p>
+<p>Dans cette expression, <span class="math inline">\(d\)</span> correspond au degr&#233; maximum de notre fonction.</p>
+<p>Dans le cas o&#249; on a peu d'attributs, et qu'on veut une fonction tr&#232;s complexe, il est tout &#224; fait possible d'utiliser plusieurs fois les m&#234;mes attributs mais avec diff&#233;rents degr&#233;s, par exemple :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_1^2 + \theta_{3}x_1^3\)</span></p>
+<p>Il est aussi courant d'ajouter d'autres termes que de simples puissances, comme des exponentiations, des logarithmes, des racines carr&#233;es, des fonctions trigonom&#233;triques, etc. dans le but de mod&#233;liser des fonctions avec un aspect particulier pour bien coller &#224; nos donn&#233;es.</p>
+<p>Si possible, afficher les donn&#233;es sur un graphique est la meilleure chose &#224; faire afin de pouvoir visualiser quels types d'attributs il nous faut pour notre fonction d'hypoth&#232;se. Sinon, il est toujours envisageable de tester plusieurs combinaisons et de voir laquelle est la meilleure en fonction du r&#233;sultat de la fonction d'erreur.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" alt="Exemple de r&#233;gression polynomiale sur des donn&#233;es non-lin&#233;aires" />
+<p class="caption">Exemple de r&#233;gression polynomiale sur des donn&#233;es non-lin&#233;aires</p>
+</div>
+<h2 id="probl&#232;mes">Probl&#232;mes</h2>
+<p>Dans le domaine de l'apprentissage artificiel, il y a un probl&#232;me commun &#224; de tr&#232;s nombreux algorithmes : le <strong>surapprentissage</strong>.</p>
+<p>Dans un apprentissage supervis&#233;, le but est de fournir &#224; notre algorithme des exemples &#224; partir desquels il peut g&#233;n&#233;raliser le probl&#232;me &#224; r&#233;soudre. Cependant, il arrive que ce dernier ne g&#233;n&#233;ralise pas assez, et en vient &#224; r&#233;citer par c&#339;ur les donn&#233;es fournies. Le probl&#232;me est que notre programme va alors trouver la bonne r&#233;ponse sur quasiment tous nos exemples, mais d&#232;s qu'il verra une nouvelle entr&#233;e il r&#233;pondra totalement &#224; c&#244;t&#233;. Il n'a pas r&#233;ussi &#224; g&#233;n&#233;raliser, et il est tomb&#233; dans le cas par cas. Cette notion de surapprentissage (ou <em>overfitting</em> en anglais) est essentielle &#224; comprendre car c'est un probl&#232;me extr&#234;mement r&#233;current dans le domaine de l'apprentissage artificiel, et sp&#233;cialement dans le cadre d'un apprentissage supervis&#233;.</p>
 <p>Par exemple, prenons ces donn&#233;es :</p>
 <ul>
 <li>overfitting</li>

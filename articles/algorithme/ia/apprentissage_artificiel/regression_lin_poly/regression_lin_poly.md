@@ -115,12 +115,27 @@ Deux méthodes répandues s'offrent à nous :
 
 ## Régression polynomiale
 
+Maintenant qu'on a vu comment fonctionne la régression linéaire, il est temps d'utiliser des fonctions polynomiales plus complexes afin de généraliser sur des données non linéaires. En réalité, l'unique changement à réaliser est sur notre fonction d'hypothèse puisque la fonction d'erreur et les deux algorithmes restent exactement les mêmes. Il suffit donc d'employer une **fonction d'hypothèse polynomiale** :
 
-## Problème
+$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2^2 + \ldots + \theta_{n}x_n^d$
 
-Après avoir vu ces deux exemples d'algorithmes concrets, il est temps d'aborder un problème que peuvent rencontrer ces derniers, et plus généralement, la plupart des algorithmes d'apprentissage artificiel : le **surapprentissage**.
+Dans cette expression, $d$ correspond au degré maximum de notre fonction.
 
-Le but de l'apprentissage supervisé est de fournir à notre algorithme des exemples à partir desquels il peut généraliser le problème à résoudre. Cependant, il arrive que notre algorithme ne généralise pas mais en vient à réciter par cœur les données fournies. Le problème est que notre programme va alors trouver la bonne réponse sur quasiment tous nos exemples, mais dès qu'il verra une nouvelle entrée il répondra totalement à côté. Il n'a pas réussi à généraliser, et il est tombé dans le cas par cas. Cette notion de surapprentissage (ou *overfitting* en anglais) est essentielle à comprendre car c'est un problème extrêmement récurrent dans le domaine de l'apprentissage artificiel.
+Dans le cas où on a peu d'attributs, et qu'on veut une fonction très complexe, il est tout à fait possible d'utiliser plusieurs fois les mêmes attributs mais avec différents degrés, par exemple :
+
+$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_1^2 + \theta_{3}x_1^3$
+
+Il est aussi courant d'ajouter d'autres termes que de simples puissances, comme des exponentiations, des logarithmes, des racines carrées, des fonctions trigonométriques, etc. dans le but de modéliser des fonctions avec un aspect particulier pour bien coller à nos données.
+
+Si possible, afficher les données sur un graphique est la meilleure chose à faire afin de pouvoir visualiser quels types d'attributs il nous faut pour notre fonction d'hypothèse. Sinon, il est toujours envisageable de tester plusieurs combinaisons et de voir laquelle est la meilleure en fonction du résultat de la fonction d'erreur.
+
+![Exemple de régression polynomiale sur des données non-linéaires](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png)
+
+## Problèmes
+
+Dans le domaine de l'apprentissage artificiel, il y a un problème commun à de très nombreux algorithmes : le **surapprentissage**.
+
+Dans un apprentissage supervisé, le but est de fournir à notre algorithme des exemples à partir desquels il peut généraliser le problème à résoudre. Cependant, il arrive que ce dernier ne généralise pas assez, et en vient à réciter par cœur les données fournies. Le problème est que notre programme va alors trouver la bonne réponse sur quasiment tous nos exemples, mais dès qu'il verra une nouvelle entrée il répondra totalement à côté. Il n'a pas réussi à généraliser, et il est tombé dans le cas par cas. Cette notion de surapprentissage (ou *overfitting* en anglais) est essentielle à comprendre car c'est un problème extrêmement récurrent dans le domaine de l'apprentissage artificiel, et spécialement dans le cadre d'un apprentissage supervisé.
 
 Par exemple, prenons ces données :
 
