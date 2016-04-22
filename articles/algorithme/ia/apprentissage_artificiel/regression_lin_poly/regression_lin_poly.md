@@ -1,9 +1,9 @@
-Régression linéaire
-===================
+Régression linéaire/polynomiale
+===============================
 algo/ia/apprentissage_artificiel
 
-Publié le : 14/04/2016  
-*Modifié le : 14/04/2016*
+Publié le : 20/04/2016  
+*Modifié le : 20/04/2016*
 
 ## Introduction
 
@@ -33,6 +33,8 @@ On a une fonction linéaire basique, qu'on peut ensuite utiliser graphiquement p
 Cependant, du point de vue d'une personne, il est facile de trouver un lien entre les données dans le but de généraliser, mais comment un algorithme peut-il reproduire ce comportement ? Qu'est-ce qui fait qu'une fonction (linéaire, polynomiale, etc.) est une bonne généralisation de notre problème ?
 
 Avant de se lancer dans la recherche d'un algorithme d'apprentissage artificiel, il faut définir ses caractéristiques. Dans notre problème, on a un ensemble de données sous la forme d'entrées et de sorties correspondantes, nous sommes donc dans un **apprentissage supervisé**. De plus, la sortie qu'on cherche est une valeur numérique, notre problème appartient alors au domaine de la **régression**. Une fois qu'on connaît ces deux informations essentielles, on peut décider de l'algorithme à utiliser en fonction de nos besoins et de nos ressources. Dans notre situation on souhaiterait faire une généralisation sous la forme d'une fonction linéaire, la méthode à employer est donc : la **régression linéaire**.
+
+*La régression linéaire n'est qu'un cas particulier de la régression polynomiale, mais il est plus simple de commencer à une simple fonction linéaire pour ensuite aborder des fonctions plus complexes (même si le principe reste exactement le même).*
 
 ## Principe
 
@@ -111,11 +113,18 @@ Deux méthodes répandues s'offrent à nous :
 - [**L'algorithme du gradient**](/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient.html) (*gradient descent* en anglais) : un algorithme itératif utile quand $n$ est très large, et personnalisable grâce à un coefficient d'apprentissage (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).
 - [**L'équation normale**](/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale.html) : une équation donnant le résultat directement sans itérations, cependant cette dernière est très lourde en opérations à cause du [produit matriciel](https://en.wikipedia.org/wiki/Matrix_multiplication) qui a une complexité en temps de $O(n^3)$. On l'utilisera plutôt quand $n$ est suffisamment petit (en général en dessous de 10000).
 
-## Problèmes
+## Régression polynomiale
+
+
+## Problème
+
+Après avoir vu ces deux exemples d'algorithmes concrets, il est temps d'aborder un problème que peuvent rencontrer ces derniers, et plus généralement, la plupart des algorithmes d'apprentissage artificiel : le **surapprentissage**.
+
+Le but de l'apprentissage supervisé est de fournir à notre algorithme des exemples à partir desquels il peut généraliser le problème à résoudre. Cependant, il arrive que notre algorithme ne généralise pas mais en vient à réciter par cœur les données fournies. Le problème est que notre programme va alors trouver la bonne réponse sur quasiment tous nos exemples, mais dès qu'il verra une nouvelle entrée il répondra totalement à côté. Il n'a pas réussi à généraliser, et il est tombé dans le cas par cas. Cette notion de surapprentissage (ou *overfitting* en anglais) est essentielle à comprendre car c'est un problème extrêmement récurrent dans le domaine de l'apprentissage artificiel.
+
+Par exemple, prenons ces données :
 
 - overfitting
 - underfitting
 
 ## Conclusion
-
-- évoquer la régression polynomiale

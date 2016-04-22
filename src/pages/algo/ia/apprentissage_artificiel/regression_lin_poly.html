@@ -136,7 +136,7 @@ pre {
 </style>
       <!---- ---->
 
-      <title>Régression linéaire - napnac</title>
+      <title>TITLE</title>
    </head>
 
    <body>
@@ -171,15 +171,16 @@ function toggle_visibility(id) {
 
       <!-- Page/Article -->
 
-<a href=""><h1 id="r&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire</h1></a>
-<p>Publi&#233; le : 14/04/2016<br />
-<em>Modifi&#233; le : 14/04/2016</em></p>
+<a href=""><h1 id="r&#233;gression-lin&#233;airepolynomiale">R&#233;gression lin&#233;aire/polynomiale</h1></a>
+<p>Publi&#233; le : 20/04/2016<br />
+<em>Modifi&#233; le : 20/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#fonction-derreur">Fonction d'erreur</a></li>
 <li><a href="#algorithmes">Algorithmes</a></li>
-<li><a href="#probl&#232;mes">Probl&#232;mes</a></li>
+<li><a href="#r&#233;gression-polynomiale">R&#233;gression polynomiale</a></li>
+<li><a href="#probl&#232;me">Probl&#232;me</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
@@ -232,6 +233,7 @@ function toggle_visibility(id) {
 <p>On a une fonction lin&#233;aire basique, qu'on peut ensuite utiliser graphiquement pour trouver &#224; partir de la puissance d'un ordinateur, une bonne estimation de son prix.</p>
 <p>Cependant, du point de vue d'une personne, il est facile de trouver un lien entre les donn&#233;es dans le but de g&#233;n&#233;raliser, mais comment un algorithme peut-il reproduire ce comportement ? Qu'est-ce qui fait qu'une fonction (lin&#233;aire, polynomiale, etc.) est une bonne g&#233;n&#233;ralisation de notre probl&#232;me ?</p>
 <p>Avant de se lancer dans la recherche d'un algorithme d'apprentissage artificiel, il faut d&#233;finir ses caract&#233;ristiques. Dans notre probl&#232;me, on a un ensemble de donn&#233;es sous la forme d'entr&#233;es et de sorties correspondantes, nous sommes donc dans un <strong>apprentissage supervis&#233;</strong>. De plus, la sortie qu'on cherche est une valeur num&#233;rique, notre probl&#232;me appartient alors au domaine de la <strong>r&#233;gression</strong>. Une fois qu'on conna&#238;t ces deux informations essentielles, on peut d&#233;cider de l'algorithme &#224; utiliser en fonction de nos besoins et de nos ressources. Dans notre situation on souhaiterait faire une g&#233;n&#233;ralisation sous la forme d'une fonction lin&#233;aire, la m&#233;thode &#224; employer est donc : la <strong>r&#233;gression lin&#233;aire</strong>.</p>
+<p><em>La r&#233;gression lin&#233;aire n'est qu'un cas particulier de la r&#233;gression polynomiale, mais il est plus simple de commencer &#224; une simple fonction lin&#233;aire pour ensuite aborder des fonctions plus complexes (m&#234;me si le principe reste exactement le m&#234;me).</em></p>
 <h2 id="principe">Principe</h2>
 <p>La r&#233;gression lin&#233;aire est un moyen de g&#233;n&#233;raliser et de cr&#233;er un mod&#232;le lin&#233;aire &#224; partir d'exemples. Lesdits exemples sont repr&#233;sent&#233;s &#224; l'aide de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a> o&#249; <span class="math inline">\(x\)</span> est l'entr&#233;e, et <span class="math inline">\(y\)</span> est la sortie correspondante. Prenons le cas o&#249; on essaie de g&#233;n&#233;raliser le prix d'un appartement en fonction de sa taille et de son nombre de pi&#232;ces (encore une fois les donn&#233;es sont fictives):</p>
 <table>
@@ -311,15 +313,16 @@ function toggle_visibility(id) {
 <li><a href="/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient.html"><strong>L'algorithme du gradient</strong></a> (<em>gradient descent</em> en anglais) : un algorithme it&#233;ratif utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un coefficient d'apprentissage (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
 <li><a href="/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale.html"><strong>L'&#233;quation normale</strong></a> : une &#233;quation donnant le r&#233;sultat directement sans it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> qui a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span>. On l'utilisera plut&#244;t quand <span class="math inline">\(n\)</span> est suffisamment petit (en g&#233;n&#233;ral en dessous de 10000).</li>
 </ul>
-<h2 id="probl&#232;mes">Probl&#232;mes</h2>
+<h2 id="r&#233;gression-polynomiale">R&#233;gression polynomiale</h2>
+<h2 id="probl&#232;me">Probl&#232;me</h2>
+<p>Apr&#232;s avoir vu ces deux exemples d'algorithmes concrets, il est temps d'aborder un probl&#232;me que peuvent rencontrer ces derniers, et plus g&#233;n&#233;ralement, la plupart des algorithmes d'apprentissage artificiel : le <strong>surapprentissage</strong>.</p>
+<p>Le but de l'apprentissage supervis&#233; est de fournir &#224; notre algorithme des exemples &#224; partir desquels il peut g&#233;n&#233;raliser le probl&#232;me &#224; r&#233;soudre. Cependant, il arrive que notre algorithme ne g&#233;n&#233;ralise pas mais en vient &#224; r&#233;citer par c&#339;ur les donn&#233;es fournies. Le probl&#232;me est que notre programme va alors trouver la bonne r&#233;ponse sur quasiment tous nos exemples, mais d&#232;s qu'il verra une nouvelle entr&#233;e il r&#233;pondra totalement &#224; c&#244;t&#233;. Il n'a pas r&#233;ussi &#224; g&#233;n&#233;raliser, et il est tomb&#233; dans le cas par cas. Cette notion de surapprentissage (ou <em>overfitting</em> en anglais) est essentielle &#224; comprendre car c'est un probl&#232;me extr&#234;mement r&#233;current dans le domaine de l'apprentissage artificiel.</p>
+<p>Par exemple, prenons ces donn&#233;es :</p>
 <ul>
 <li>overfitting</li>
 <li>underfitting</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
-<ul>
-<li>&#233;voquer la r&#233;gression polynomiale</li>
-</ul>
  
       <!-- ------------ -->
 
