@@ -328,11 +328,32 @@ function toggle_visibility(id) {
 <h2 id="probl&#232;mes">Probl&#232;mes</h2>
 <p>Dans le domaine de l'apprentissage artificiel, il y a un probl&#232;me commun &#224; de tr&#232;s nombreux algorithmes : le <strong>surapprentissage</strong>.</p>
 <p>Dans un apprentissage supervis&#233;, le but est de fournir &#224; notre algorithme des exemples &#224; partir desquels il peut g&#233;n&#233;raliser le probl&#232;me &#224; r&#233;soudre. Cependant, il arrive que ce dernier ne g&#233;n&#233;ralise pas assez, et en vient &#224; r&#233;citer par c&#339;ur les donn&#233;es fournies. Le probl&#232;me est que notre programme va alors trouver la bonne r&#233;ponse sur quasiment tous nos exemples, mais d&#232;s qu'il verra une nouvelle entr&#233;e il r&#233;pondra totalement &#224; c&#244;t&#233;. Il n'a pas r&#233;ussi &#224; g&#233;n&#233;raliser, et il est tomb&#233; dans le cas par cas. Cette notion de surapprentissage (ou <em>overfitting</em> en anglais) est essentielle &#224; comprendre car c'est un probl&#232;me extr&#234;mement r&#233;current dans le domaine de l'apprentissage artificiel, et sp&#233;cialement dans le cadre d'un apprentissage supervis&#233;.</p>
-<p>Par exemple, prenons ces donn&#233;es :</p>
-<ul>
-<li>overfitting</li>
-<li>underfitting</li>
-</ul>
+<p>Par exemple, prenons des donn&#233;es imaginaires :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png" alt="Exemple de donn&#233;es" />
+<p class="caption">Exemple de donn&#233;es</p>
+</div>
+<p>On pourrait tenter d'utiliser une r&#233;gression lin&#233;aire avec une fonction d'hypoth&#232;se de la forme <span class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1\)</span> :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png" alt="Tentative de r&#233;gression lin&#233;aire" />
+<p class="caption">Tentative de r&#233;gression lin&#233;aire</p>
+</div>
+<p>On voit bien qu'on arrive &#224; une tr&#232;s mauvaise g&#233;n&#233;ralisation car il nous manque des attributs. Dans ce cas, on parle de <strong>sous-apprentissage</strong> (ou <em>underfitting</em> en anglais), c'est une situation plus rare que le surapprentissage, et il suffit de rajouter des attributs pour contrer le probl&#232;me. Essayons, avec une simple fonction polynomiale comme <span class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2\)</span> :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" alt="Une simple fonction polynomiale" />
+<p class="caption">Une simple fonction polynomiale</p>
+</div>
+<p>Notre mod&#232;le polynomial correspond bien &#224; nos donn&#233;es et semble assez bien g&#233;n&#233;raliser le probl&#232;me. Cependant, que se passe-t-il si on avait rajout&#233; plus d'attributs ? Essayons avec une fonction polynomiale plus complexe comme <span class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x1^2 + \theta_3x1^3 + \theta_4x1^4 \ldots\)</span> :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png" alt="Fonction polynomiale tr&#232;s complexe" />
+<p class="caption">Fonction polynomiale tr&#232;s complexe</p>
+</div>
+<p>Le mod&#232;le essaie de coller au mieux &#224; nos donn&#233;es au point de ne plus du tout g&#233;n&#233;raliser le probl&#232;me, on est tomb&#233; dans le surapprentissage. Notre programme s'est trop bien adapt&#233; &#224; nos donn&#233;es, et il n'arrivera pas &#224; pr&#233;dire correctement la sortie de nouveaux exemples.</p>
+<p>L'apprentissage supervis&#233; est donc un domaine difficile car il faut arriver &#224; trouver les attributs vraiment n&#233;cessaires &#224; notre algorithme pour &#234;tre le plus efficace possible, sans pour autant tomber dans le surapprentissage. Mais il existe des m&#233;thodes afin d'&#233;viter au plus ce probl&#232;me si contraignant, comme la <strong>r&#233;gularisation</strong>.</p>
+<h3 id="r&#233;gularisation">R&#233;gularisation</h3>
+<h4 id="algorithme-du-gradient">Algorithme du gradient</h4>
+<h4 id="equation-normale">Equation normale</h4>
+<h4 id="validation-crois&#233;e">Validation crois&#233;e</h4>
 <h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->

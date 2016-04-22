@@ -137,9 +137,32 @@ Dans le domaine de l'apprentissage artificiel, il y a un problème commun à de 
 
 Dans un apprentissage supervisé, le but est de fournir à notre algorithme des exemples à partir desquels il peut généraliser le problème à résoudre. Cependant, il arrive que ce dernier ne généralise pas assez, et en vient à réciter par cœur les données fournies. Le problème est que notre programme va alors trouver la bonne réponse sur quasiment tous nos exemples, mais dès qu'il verra une nouvelle entrée il répondra totalement à côté. Il n'a pas réussi à généraliser, et il est tombé dans le cas par cas. Cette notion de surapprentissage (ou *overfitting* en anglais) est essentielle à comprendre car c'est un problème extrêmement récurrent dans le domaine de l'apprentissage artificiel, et spécialement dans le cadre d'un apprentissage supervisé.
 
-Par exemple, prenons ces données :
+Par exemple, prenons des données imaginaires :
 
-- overfitting
-- underfitting
+![Exemple de données](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png)
+
+On pourrait tenter d'utiliser une régression linéaire avec une fonction d'hypothèse de la forme $h_{\theta}(x) = \theta_0 + \theta_1x_1$ :
+
+![Tentative de régression linéaire](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png)
+
+On voit bien qu'on arrive à une très mauvaise généralisation car il nous manque des attributs. Dans ce cas, on parle de **sous-apprentissage** (ou *underfitting* en anglais), c'est une situation plus rare que le surapprentissage, et il suffit de rajouter des attributs pour contrer le problème. Essayons, avec une simple fonction polynomiale comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2$ :
+
+![Une simple fonction polynomiale](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png)
+
+Notre modèle polynomial correspond bien à nos données et semble assez bien généraliser le problème. Cependant, que se passe-t-il si on avait rajouté plus d'attributs ? Essayons avec une fonction polynomiale plus complexe comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x1^2 + \theta_3x1^3 + \theta_4x1^4 \ldots$ :
+
+![Fonction polynomiale très complexe](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png)
+
+Le modèle essaie de coller au mieux à nos données au point de ne plus du tout généraliser le problème, on est tombé dans le surapprentissage. Notre programme s'est trop bien adapté à nos données, et il n'arrivera pas à prédire correctement la sortie de nouveaux exemples.
+
+L'apprentissage supervisé est donc un domaine difficile car il faut arriver à trouver les attributs vraiment nécessaires à notre algorithme pour être le plus efficace possible, sans pour autant tomber dans le surapprentissage. Mais il existe des méthodes afin d'éviter au plus ce problème si contraignant, comme la **régularisation**.
+
+### Régularisation
+
+#### Algorithme du gradient
+
+#### Equation normale
+
+#### Validation croisée
 
 ## Conclusion
