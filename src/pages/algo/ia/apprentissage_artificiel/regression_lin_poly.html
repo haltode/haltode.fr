@@ -222,12 +222,12 @@ function toggle_visibility(id) {
 </table>
 <p>On peut repr&#233;senter ce tableau gr&#226;ce &#224; un graphique en deux dimensions tr&#232;s simple :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_donnees.png" alt="Exemple de donn&#233;es r&#233;colt&#233;es" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png" alt="Exemple de donn&#233;es r&#233;colt&#233;es" />
 <p class="caption">Exemple de donn&#233;es r&#233;colt&#233;es</p>
 </div>
 <p>Ce qu'on cherche &#224; faire dans notre probl&#232;me c'est de <strong>g&#233;n&#233;raliser</strong> gr&#226;ce aux donn&#233;es obtenues. En tant qu'humain, on pourrait facilement faire une bonne g&#233;n&#233;ralisation comme ceci :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_generalisation.png" alt="Exemple de g&#233;n&#233;ralisation" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png" alt="Exemple de g&#233;n&#233;ralisation" />
 <p class="caption">Exemple de g&#233;n&#233;ralisation</p>
 </div>
 <p>On a une fonction lin&#233;aire basique, qu'on peut ensuite utiliser graphiquement pour trouver &#224; partir de la puissance d'un ordinateur, une bonne estimation de son prix.</p>
@@ -291,7 +291,7 @@ function toggle_visibility(id) {
 <p>Ici on r&#233;alise la diff&#233;rence sur un exemple <span class="math inline">\(i\)</span> donn&#233;, entre l'estimation de notre fonction d'hypoth&#232;se et la sortie fournie en entr&#233;e. On cherche &#224; voir si notre fonction est loin ou proche des donn&#233;es qu'on a r&#233;colt&#233;es (et donc de la r&#233;alit&#233;). Cette diff&#233;rence est mont&#233;e au carr&#233; afin d'avoir un r&#233;sultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le r&#233;sultat (s'il y a un gros &#233;cart, le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement), alors qu'avec une autre fonction comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a> on n'aurait pas cette deuxi&#232;me propri&#233;t&#233; qui permet de mieux distinguer l'efficacit&#233; entre deux mod&#232;les.</p>
 <p>Si on reprend la g&#233;n&#233;ralisation qu'on a faite &#224; la main, la diff&#233;rence que l'on calcule dans notre expression correspond aux parties vertes sur ce sch&#233;ma :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_calcul_erreur.png" alt="Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png" alt="Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;" />
 <p class="caption">Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;</p>
 </div>
 <p>Notre fonction d'erreur va alors calculer la moyenne des diff&#233;rences sur nos <span class="math inline">\(m\)</span> exemples :</p>
@@ -302,7 +302,7 @@ function toggle_visibility(id) {
 <p>Gr&#226;ce &#224; cela, on peut enfin d&#233;finir concr&#232;tement ce que signifie &quot;trouver le meilleur mod&#232;le&quot;. Cela revient &#224; trouver des param&#232;tres <span class="math inline">\(\theta\)</span> qui <strong>minimisent</strong> la fonction d'erreur utilis&#233;e.</p>
 <p>Si l'on affiche graphiquement la fonction d'erreur pour notre probl&#232;me, on obtient ceci :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_fonction_erreur.png" alt="Exemple de repr&#233;sentation graphique de la fonction d&#39;erreur" />
+<img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" alt="Exemple de repr&#233;sentation graphique de la fonction d&#39;erreur" />
 <p class="caption">Exemple de repr&#233;sentation graphique de la fonction d'erreur</p>
 </div>
 <p>Sur ce graphique repr&#233;sentant <span class="math inline">\(J\)</span> en fonction de <span class="math inline">\(\theta_{0}\)</span> et <span class="math inline">\(\theta_{1}\)</span>, on remarque clairement les valeurs de <span class="math inline">\(\theta\)</span> pour lesquelles la fonction d'erreur est minimis&#233;e. Cependant, il va falloir trouver un algorithme qui calcule ces valeurs automatiquement, car on ne pourra pas toujours faire de repr&#233;sentation graphique (lorsqu'on a beaucoup d'attributs en entr&#233;e par exemple).</p>
@@ -310,8 +310,8 @@ function toggle_visibility(id) {
 <p>On a r&#233;ussi &#224; d&#233;finir math&#233;matiquement l'objectif de la r&#233;gression lin&#233;aire gr&#226;ce &#224; notre fonction d'erreur. D&#233;sormais il faut donc minimiser cette fonction avec les param&#232;tres <span class="math inline">\(\theta\)</span>.</p>
 <p>Deux m&#233;thodes r&#233;pandues s'offrent &#224; nous :</p>
 <ul>
-<li><a href="/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient.html"><strong>L'algorithme du gradient</strong></a> (<em>gradient descent</em> en anglais) : un algorithme it&#233;ratif utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un coefficient d'apprentissage (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
-<li><a href="/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale.html"><strong>L'&#233;quation normale</strong></a> : une &#233;quation donnant le r&#233;sultat directement sans it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> qui a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span>. On l'utilisera plut&#244;t quand <span class="math inline">\(n\)</span> est suffisamment petit (en g&#233;n&#233;ral en dessous de 10000).</li>
+<li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html"><strong>L'algorithme du gradient</strong></a> (<em>gradient descent</em> en anglais) : un algorithme it&#233;ratif utile quand <span class="math inline">\(n\)</span> est tr&#232;s large, et personnalisable gr&#226;ce &#224; un coefficient d'apprentissage (ce dernier peut aussi &#234;tre un d&#233;savantage car dans certains cas il est difficile de le choisir efficacement).</li>
+<li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html"><strong>L'&#233;quation normale</strong></a> : une &#233;quation donnant le r&#233;sultat directement sans it&#233;rations, cependant cette derni&#232;re est tr&#232;s lourde en op&#233;rations &#224; cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> qui a une complexit&#233; en temps de <span class="math inline">\(O(n^3)\)</span>. On l'utilisera plut&#244;t quand <span class="math inline">\(n\)</span> est suffisamment petit (en g&#233;n&#233;ral en dessous de 10000).</li>
 </ul>
 <h2 id="r&#233;gression-polynomiale">R&#233;gression polynomiale</h2>
 <h2 id="probl&#232;me">Probl&#232;me</h2>

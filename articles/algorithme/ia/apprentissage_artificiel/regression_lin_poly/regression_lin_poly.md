@@ -22,11 +22,11 @@ Vous souhaitez utiliser un algorithme d'apprentissage artificiel afin d'estimer 
 
 On peut représenter ce tableau grâce à un graphique en deux dimensions très simple :
 
-![Exemple de données récoltées](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_donnees.png)
+![Exemple de données récoltées](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png)
 
 Ce qu'on cherche à faire dans notre problème c'est de **généraliser** grâce aux données obtenues. En tant qu'humain, on pourrait facilement faire une bonne généralisation comme ceci :
 
-![Exemple de généralisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_generalisation.png)
+![Exemple de généralisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png)
 
 On a une fonction linéaire basique, qu'on peut ensuite utiliser graphiquement pour trouver à partir de la puissance d'un ordinateur, une bonne estimation de son prix.
 
@@ -84,7 +84,7 @@ Ici on réalise la différence sur un exemple $i$ donné, entre l'estimation de 
 
 Si on reprend la généralisation qu'on a faite à la main, la différence que l'on calcule dans notre expression correspond aux parties vertes sur ce schéma :
 
-![Exemple de calcul de différence entre estimation et réalité](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_calcul_erreur.png)
+![Exemple de calcul de différence entre estimation et réalité](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png)
 
 Notre fonction d'erreur va alors calculer la moyenne des différences sur nos $m$ exemples :
 
@@ -100,7 +100,7 @@ Grâce à cela, on peut enfin définir concrètement ce que signifie "trouver le
 
 Si l'on affiche graphiquement la fonction d'erreur pour notre problème, on obtient ceci :
 
-![Exemple de représentation graphique de la fonction d'erreur](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lineaire/exemple_fonction_erreur.png)
+![Exemple de représentation graphique de la fonction d'erreur](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png)
 
 Sur ce graphique représentant $J$ en fonction de $\theta_{0}$ et $\theta_{1}$, on remarque clairement les valeurs de $\theta$ pour lesquelles la fonction d'erreur est minimisée. Cependant, il va falloir trouver un algorithme qui calcule ces valeurs automatiquement, car on ne pourra pas toujours faire de représentation graphique (lorsqu'on a beaucoup d'attributs en entrée par exemple).
 
@@ -110,8 +110,8 @@ On a réussi à définir mathématiquement l'objectif de la régression linéair
 
 Deux méthodes répandues s'offrent à nous :
 
-- [**L'algorithme du gradient**](/algo/ia/apprentissage_artificiel/regression_lineaire/algo_gradient.html) (*gradient descent* en anglais) : un algorithme itératif utile quand $n$ est très large, et personnalisable grâce à un coefficient d'apprentissage (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).
-- [**L'équation normale**](/algo/ia/apprentissage_artificiel/regression_lineaire/equation_normale.html) : une équation donnant le résultat directement sans itérations, cependant cette dernière est très lourde en opérations à cause du [produit matriciel](https://en.wikipedia.org/wiki/Matrix_multiplication) qui a une complexité en temps de $O(n^3)$. On l'utilisera plutôt quand $n$ est suffisamment petit (en général en dessous de 10000).
+- [**L'algorithme du gradient**](/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html) (*gradient descent* en anglais) : un algorithme itératif utile quand $n$ est très large, et personnalisable grâce à un coefficient d'apprentissage (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).
+- [**L'équation normale**](/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html) : une équation donnant le résultat directement sans itérations, cependant cette dernière est très lourde en opérations à cause du [produit matriciel](https://en.wikipedia.org/wiki/Matrix_multiplication) qui a une complexité en temps de $O(n^3)$. On l'utilisera plutôt quand $n$ est suffisamment petit (en général en dessous de 10000).
 
 ## Régression polynomiale
 
