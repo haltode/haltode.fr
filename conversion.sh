@@ -123,7 +123,7 @@ function convert {
 
    # Insert the page's title
    title=`sed -n "1p" copy.md`
-   sed -i "s/TITLE/$title - napnac/g" src/pages/$(basename ${1%.md}.html)
+   sed -i "s~TITLE~$title - napnac~g" src/pages/$(basename ${1%.md}.html)
 
    # Insert inline CSS/JS
    sed -i "/CSS/r src/static/css/layout.css.html" src/pages/$(basename ${1%.md}.html)

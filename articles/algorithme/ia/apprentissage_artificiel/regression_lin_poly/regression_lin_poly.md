@@ -2,8 +2,8 @@ Régression linéaire/polynomiale
 ===============================
 algo/ia/apprentissage_artificiel
 
-Publié le : 20/04/2016  
-*Modifié le : 20/04/2016*
+Publié le : 22/04/2016  
+*Modifié le : 22/04/2016*
 
 ## Introduction
 
