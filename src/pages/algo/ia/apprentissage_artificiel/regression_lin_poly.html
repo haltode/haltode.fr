@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="r&#233;gression-lin&#233;airepolynomiale">R&#233;gression lin&#233;aire/polynomiale</h1></a>
-<p>Publi&#233; le : 22/04/2016<br />
-<em>Modifi&#233; le : 22/04/2016</em></p>
+<p>Publi&#233; le : 24/04/2016<br />
+<em>Modifi&#233; le : 24/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -233,7 +233,7 @@ function toggle_visibility(id) {
 <p>On a une fonction lin&#233;aire basique, qu'on peut ensuite utiliser graphiquement pour trouver &#224; partir de la puissance d'un ordinateur, une bonne estimation de son prix.</p>
 <p>Cependant, du point de vue d'une personne, il est facile de trouver un lien entre les donn&#233;es dans le but de g&#233;n&#233;raliser, mais comment un algorithme peut-il reproduire ce comportement ? Qu'est-ce qui fait qu'une fonction (lin&#233;aire, polynomiale, etc.) est une bonne g&#233;n&#233;ralisation de notre probl&#232;me ?</p>
 <p>Avant de se lancer dans la recherche d'un algorithme d'apprentissage artificiel, il faut d&#233;finir ses caract&#233;ristiques. Dans notre probl&#232;me, on a un ensemble de donn&#233;es sous la forme d'entr&#233;es et de sorties correspondantes, nous sommes donc dans un <strong>apprentissage supervis&#233;</strong>. De plus, la sortie qu'on cherche est une valeur num&#233;rique, notre probl&#232;me appartient alors au domaine de la <strong>r&#233;gression</strong>. Une fois qu'on conna&#238;t ces deux informations essentielles, on peut d&#233;cider de l'algorithme &#224; utiliser en fonction de nos besoins et de nos ressources. Dans notre situation on souhaiterait faire une g&#233;n&#233;ralisation sous la forme d'une fonction lin&#233;aire, la m&#233;thode &#224; employer est donc : la <strong>r&#233;gression lin&#233;aire</strong>.</p>
-<p><em>La r&#233;gression lin&#233;aire n'est qu'un cas particulier de la r&#233;gression polynomiale, mais il est plus simple de commencer &#224; une simple fonction lin&#233;aire pour ensuite aborder des fonctions plus complexes (m&#234;me si le principe reste exactement le m&#234;me).</em></p>
+<p><em>La r&#233;gression lin&#233;aire n'est qu'un cas particulier de la r&#233;gression polynomiale, mais il est plus simple de commencer avec une simple fonction lin&#233;aire pour ensuite aborder des fonctions plus complexes (m&#234;me si le principe reste exactement le m&#234;me).</em></p>
 <h2 id="principe">Principe</h2>
 <p>La r&#233;gression lin&#233;aire est un moyen de g&#233;n&#233;raliser et de cr&#233;er un mod&#232;le lin&#233;aire &#224; partir d'exemples. Lesdits exemples sont repr&#233;sent&#233;s &#224; l'aide de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a> o&#249; <span class="math inline">\(x\)</span> est l'entr&#233;e, et <span class="math inline">\(y\)</span> est la sortie correspondante. Prenons le cas o&#249; on essaie de g&#233;n&#233;raliser le prix d'un appartement en fonction de sa taille et de son nombre de pi&#232;ces (encore une fois les donn&#233;es sont fictives):</p>
 <table>
@@ -343,7 +343,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" alt="Une simple fonction polynomiale" />
 <p class="caption">Une simple fonction polynomiale</p>
 </div>
-<p>Notre mod&#232;le polynomial correspond bien &#224; nos donn&#233;es et semble assez bien g&#233;n&#233;raliser le probl&#232;me. Cependant, que se passe-t-il si on avait rajout&#233; plus d'attributs ? Essayons avec une fonction polynomiale plus complexe comme <span class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x1^2 + \theta_3x1^3 + \theta_4x1^4 \ldots\)</span> :</p>
+<p>Notre mod&#232;le polynomial correspond bien &#224; nos donn&#233;es et semble assez bien g&#233;n&#233;raliser le probl&#232;me. Cependant, que se passe-t-il si on avait rajout&#233; plus d'attributs ? Essayons avec une fonction polynomiale plus complexe comme <span class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots\)</span> :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png" alt="Fonction polynomiale tr&#232;s complexe" />
 <p class="caption">Fonction polynomiale tr&#232;s complexe</p>
@@ -351,9 +351,36 @@ function toggle_visibility(id) {
 <p>Le mod&#232;le essaie de coller au mieux &#224; nos donn&#233;es au point de ne plus du tout g&#233;n&#233;raliser le probl&#232;me, on est tomb&#233; dans le surapprentissage. Notre programme s'est trop bien adapt&#233; &#224; nos donn&#233;es, et il n'arrivera pas &#224; pr&#233;dire correctement la sortie de nouveaux exemples.</p>
 <p>L'apprentissage supervis&#233; est donc un domaine difficile car il faut arriver &#224; trouver les attributs vraiment n&#233;cessaires &#224; notre algorithme pour &#234;tre le plus efficace possible, sans pour autant tomber dans le surapprentissage. Mais il existe des m&#233;thodes afin d'&#233;viter au plus ce probl&#232;me si contraignant, comme la <strong>r&#233;gularisation</strong>.</p>
 <h3 id="r&#233;gularisation">R&#233;gularisation</h3>
+<p>Le principe de la r&#233;gularisation est de <strong>p&#233;naliser</strong> les attributs avec des coefficients ayant des degr&#233;s &#233;lev&#233;s (puisque c'est &#224; cause d'eux que notre mod&#232;le a une forme tr&#232;s particuli&#232;re qui ne g&#233;n&#233;ralise pas assez). Si l'on reprend notre dernier exemple avec une fonction d'hypoth&#232;se de la forme :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots\)</span></p>
+<p>P&#233;naliser <span class="math inline">\(\theta_3\)</span> et <span class="math inline">\(\theta_4\)</span> permettrait d'avoir un mod&#232;le qui g&#233;n&#233;ralise beaucoup mieux, sans passer par des formes extr&#234;mes.</p>
+<p>Pour r&#233;aliser cela, il faut ajouter &#224; notre fonction d'erreur un terme de r&#233;gularisation :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m} \left[\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2 + \lambda \displaystyle\sum_{j=1}^{n} \theta_j^2\right]\)</span></p>
+<p>Dans le terme ajout&#233; <span class="math inline">\(\lambda \displaystyle\sum_{j=1}^{n} \theta_j^2\)</span>, on a <span class="math inline">\(\lambda\)</span> qui correspond au <strong>param&#232;tre de la r&#233;gularisation</strong> (et donc qui d&#233;termine la puissance de la p&#233;nalisation). Il faut aussi noter qu'on ne p&#233;nalise pas <span class="math inline">\(\theta_0\)</span>.</p>
+<p>Gr&#226;ce &#224; cela, les coefficients avec des degr&#233;s &#233;lev&#233;s augmenteront fortement le r&#233;sultat de la fonction d'erreur, obligeant naturellement &#224; nos algorithmes de p&#233;naliser ces derniers. On arrive donc &#224; une fonction d'hypoth&#232;se simplifi&#233;, et moins sujet au cas de surapprentissage.</p>
+<p>Cependant il faut adapter nos deux algorithmes &#224; cette nouvelle fonction d'erreur, en les modifiant l&#233;g&#232;rement.</p>
 <h4 id="algorithme-du-gradient">Algorithme du gradient</h4>
+<p>Avec notre ancienne fonction d'erreur, on devait mettre &#224; jour nos coefficients de mani&#232;re simultan&#233;e de cette fa&#231;on (si l'on n'utilise pas la version vectoris&#233;e) :</p>
+<p>Pour chaque coefficient <span class="math inline">\(\theta_j\)</span> avec <span class="math inline">\(j\)</span> allant de 0 &#224; <span class="math inline">\(n\)</span> :</p>
+<p><span class="math inline">\(\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}\)</span></p>
+<p>D&#233;sormais, on va avoir :</p>
+<p>Pour chaque coefficient <span class="math inline">\(\theta_j\)</span> avec <span class="math inline">\(j\)</span> allant de 1 &#224; <span class="math inline">\(n\)</span> (puisqu'on ne p&#233;nalise pas <span class="math inline">\(\theta_0\)</span>, et on utilisera l'ancienne formule pour ce coefficient) :</p>
+<p><span class="math inline">\(\theta_{j} = \theta_{j} - \alpha\left[\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij} + \frac{\lambda}{m}\theta_j\right]\)</span></p>
+<p>On a obtenu cette formule de la m&#234;me mani&#232;re que pour l'ancienne, c'est-&#224;-dire en calculant la d&#233;riv&#233;e partielle de la fonction d'erreur.</p>
 <h4 id="equation-normale">Equation normale</h4>
-<h4 id="validation-crois&#233;e">Validation crois&#233;e</h4>
+<p>Pour l'&#233;quation normale, on applique encore notre d&#233;monstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le r&#233;sultat suivant :</p>
+<p><span class="math inline">\(\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\\ &amp;1\\ &amp;&amp;1 \\ &amp;&amp;&amp;\ddots \\ &amp;&amp;&amp;&amp;1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y\)</span></p>
+<p>On retrouve notre param&#232;tre de r&#233;gularisation <span class="math inline">\(\lambda\)</span>, ainsi qu'une matrice de taille <span class="math inline">\((n + 1)\times(n + 1)\)</span> assez sp&#233;ciale compos&#233;e de 1 uniquement dans la diagonale en partant de la deuxi&#232;me colonne (le reste de la matrice contient des 0). Cette matrice est en r&#233;alit&#233; une <a href="https://en.wikipedia.org/wiki/Identity_matrix">matrice identit&#233;</a> sans le premier terme en haut &#224; gauche (en rapport avec <span class="math inline">\(\theta_0\)</span> qui n'est pas p&#233;nalis&#233;).</p>
+<h4 id="param&#232;tre-de-r&#233;gularisation">Param&#232;tre de r&#233;gularisation</h4>
+<p>Avec un param&#232;tre <span class="math inline">\(\lambda\)</span> tr&#232;s large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement p&#233;nalis&#233;s qu'on risque d'avoir une fonction d'hypoth&#232;se trop simple pour notre probl&#232;me. A l'inverse, un param&#232;tre <span class="math inline">\(\lambda\)</span> trop petit ne va pas assez p&#233;naliser les coefficients avec des degr&#233;s &#233;lev&#233;s ce qui n'att&#233;nuera pas notre probl&#232;me de surapprentissage et sera donc inutile.</p>
+<p>Il faut alors r&#233;ussir &#224; choisir un bon param&#232;tre de r&#233;gularisation <span class="math inline">\(\lambda\)</span>, et pour cela on peut s'aider de diff&#233;rents &#233;chantillons, ainsi que de la <strong>validation crois&#233;e</strong>. Jusqu'&#224; pr&#233;sent, le seul &#233;chantillon de nos donn&#233;es qu'on utilisait &#233;tait <strong>l'&#233;chantillon d'apprentissage</strong>. On va d&#233;sormais rajouter deux nouveaux &#233;chantillons :</p>
+<ul>
+<li><strong>l'&#233;chantillon de test</strong> : on l'utilisera pour mesurer l'efficacit&#233; de notre algorithme sur de nouvelles donn&#233;es, car si on mesure cela sur notre &#233;chantillon d'apprentissage et que notre algorithme a un probl&#232;me de surapprentissage, on verra de tr&#232;s bons r&#233;sultats mais en r&#233;alit&#233; notre programme est m&#233;diocre voire mauvais.</li>
+<li><strong>l'&#233;chantillon de validation</strong> : on va utiliser cet &#233;chantillon afin de tester diff&#233;rentes valeurs de <span class="math inline">\(\lambda\)</span> et s&#233;lectionner la meilleure.</li>
+</ul>
+<p>On n'utilisera pas l'&#233;chantillon de test dans le choix du param&#232;tre <span class="math inline">\(\lambda\)</span>, mais il est important d'en parler car en g&#233;n&#233;ral sur nos donn&#233;es on les divise entre nos diff&#233;rents &#233;chantillons de tel sorte &#224; avoir environ 60% des donn&#233;es dans l'&#233;chantillon d'apprentissage, 20% dans celui de test, et 20% dans celui de validation.</p>
+<p>Le principe de la validation crois&#233;e est de tester diff&#233;rents param&#232;tres de r&#233;gularisation (0, 0.01, 0.02, 0.04, 0.08, ..., 10, ...) et de s&#233;lectionner le meilleur. Pour trouver celui qui nous convient, on prend chacun et on r&#233;alise notre op&#233;ration de minimisation de <span class="math inline">\(J\)</span> afin d'avoir pour chaque param&#232;tre des coefficients <span class="math inline">\(\theta\)</span>. Pour chacun de ces coefficients, on va utiliser notre fonction d'erreur de base (sans la r&#233;gularisation) mais sur l'&#233;chantillon de validation afin de mesurer la performance de notre algorithme sur de nouvelle donn&#233;es (on n'utilise pas l'&#233;chantillon de test car ce dernier sera utilis&#233; en dernier pour voir si notre algorithme g&#233;n&#233;ral fonctionne correctement et non pas uniquement le param&#232;tre de r&#233;gularisation). Il suffit alors de choisir le param&#232;tre qui donnera le r&#233;sultat le plus petit.</p>
+<p>Notez qu'on peut utiliser cette m&#233;thode de validation crois&#233;e afin de choisir les degr&#233;s &#224; utiliser dans notre fonction d'hypoth&#232;se polynomiale de la m&#234;me fa&#231;on que pour <span class="math inline">\(\lambda\)</span>.</p>
 <h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->

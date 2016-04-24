@@ -86,9 +86,9 @@ Dans notre détail de l'algorithme du gradient, il y a un point très important 
 
 Si l'on garde notre exemple avec un attribut, on aurait ces opérations à effectuer :
 
-$temp0 = \theta_{0} - \alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0}, \theta_{1})$
+$temp0 = \theta_{0} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{i0}$
 
-$temp1 = \theta_{1} - \alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0}, \theta_{1})$
+$temp1 = \theta_{1} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{i1}$
 
 $\theta_{0} = temp0$
 

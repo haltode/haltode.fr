@@ -244,8 +244,8 @@ function toggle_visibility(id) {
 <li>Copier le contenu de ces variables temporaires dans nos coefficients.</li>
 </ul>
 <p>Si l'on garde notre exemple avec un attribut, on aurait ces op&#233;rations &#224; effectuer :</p>
-<p><span class="math inline">\(temp0 = \theta_{0} - \alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0}, \theta_{1})\)</span></p>
-<p><span class="math inline">\(temp1 = \theta_{1} - \alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0}, \theta_{1})\)</span></p>
+<p><span class="math inline">\(temp0 = \theta_{0} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{i0}\)</span></p>
+<p><span class="math inline">\(temp1 = \theta_{1} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{i1}\)</span></p>
 <p><span class="math inline">\(\theta_{0} = temp0\)</span></p>
 <p><span class="math inline">\(\theta_{1} = temp1\)</span></p>
 <p>Le pseudo-code d&#233;finitif ressemble donc &#224; ceci :</p>

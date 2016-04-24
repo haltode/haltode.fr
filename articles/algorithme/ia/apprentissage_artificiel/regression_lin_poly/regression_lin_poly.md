@@ -2,8 +2,8 @@ Régression linéaire/polynomiale
 ===============================
 algo/ia/apprentissage_artificiel
 
-Publié le : 22/04/2016  
-*Modifié le : 22/04/2016*
+Publié le : 24/04/2016  
+*Modifié le : 24/04/2016*
 
 ## Introduction
 
@@ -34,7 +34,7 @@ Cependant, du point de vue d'une personne, il est facile de trouver un lien entr
 
 Avant de se lancer dans la recherche d'un algorithme d'apprentissage artificiel, il faut définir ses caractéristiques. Dans notre problème, on a un ensemble de données sous la forme d'entrées et de sorties correspondantes, nous sommes donc dans un **apprentissage supervisé**. De plus, la sortie qu'on cherche est une valeur numérique, notre problème appartient alors au domaine de la **régression**. Une fois qu'on connaît ces deux informations essentielles, on peut décider de l'algorithme à utiliser en fonction de nos besoins et de nos ressources. Dans notre situation on souhaiterait faire une généralisation sous la forme d'une fonction linéaire, la méthode à employer est donc : la **régression linéaire**.
 
-*La régression linéaire n'est qu'un cas particulier de la régression polynomiale, mais il est plus simple de commencer à une simple fonction linéaire pour ensuite aborder des fonctions plus complexes (même si le principe reste exactement le même).*
+*La régression linéaire n'est qu'un cas particulier de la régression polynomiale, mais il est plus simple de commencer avec une simple fonction linéaire pour ensuite aborder des fonctions plus complexes (même si le principe reste exactement le même).*
 
 ## Principe
 
@@ -149,7 +149,7 @@ On voit bien qu'on arrive à une très mauvaise généralisation car il nous man
 
 ![Une simple fonction polynomiale](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png)
 
-Notre modèle polynomial correspond bien à nos données et semble assez bien généraliser le problème. Cependant, que se passe-t-il si on avait rajouté plus d'attributs ? Essayons avec une fonction polynomiale plus complexe comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x1^2 + \theta_3x1^3 + \theta_4x1^4 \ldots$ :
+Notre modèle polynomial correspond bien à nos données et semble assez bien généraliser le problème. Cependant, que se passe-t-il si on avait rajouté plus d'attributs ? Essayons avec une fonction polynomiale plus complexe comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots$ :
 
 ![Fonction polynomiale très complexe](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png)
 
@@ -159,10 +159,59 @@ L'apprentissage supervisé est donc un domaine difficile car il faut arriver à 
 
 ### Régularisation
 
+Le principe de la régularisation est de **pénaliser** les attributs avec des coefficients ayant des degrés élevés (puisque c'est à cause d'eux que notre modèle a une forme très particulière qui ne généralise pas assez). Si l'on reprend notre dernier exemple avec une fonction d'hypothèse de la forme :
+
+$h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots$
+
+Pénaliser $\theta_3$ et $\theta_4$ permettrait d'avoir un modèle qui généralise beaucoup mieux, sans passer par des formes extrêmes.
+
+Pour réaliser cela, il faut ajouter à notre fonction d'erreur un terme de régularisation :
+
+$J(\theta) = \frac{1}{2m} \left[\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2 + \lambda \displaystyle\sum_{j=1}^{n} \theta_j^2\right]$
+
+Dans le terme ajouté $\lambda \displaystyle\sum_{j=1}^{n} \theta_j^2$, on a $\lambda$ qui correspond au **paramètre de la régularisation** (et donc qui détermine la puissance de la pénalisation). Il faut aussi noter qu'on ne pénalise pas $\theta_0$.
+
+Grâce à cela, les coefficients avec des degrés élevés augmenteront fortement le résultat de la fonction d'erreur, obligeant naturellement à nos algorithmes de pénaliser ces derniers. On arrive donc à une fonction d'hypothèse simplifié, et moins sujet au cas de surapprentissage.
+
+Cependant il faut adapter nos deux algorithmes à cette nouvelle fonction d'erreur, en les modifiant légèrement.
+
 #### Algorithme du gradient
+
+Avec notre ancienne fonction d'erreur, on devait mettre à jour nos coefficients de manière simultanée de cette façon (si l'on n'utilise pas la version vectorisée) :
+
+Pour chaque coefficient $\theta_j$ avec $j$ allant de 0 à $n$ :
+
+$\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}$
+
+Désormais, on va avoir :
+
+Pour chaque coefficient $\theta_j$ avec $j$ allant de 1 à $n$ (puisqu'on ne pénalise pas $\theta_0$, et on utilisera l'ancienne formule pour ce coefficient) :
+
+$\theta_{j} = \theta_{j} - \alpha\left[\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij} + \frac{\lambda}{m}\theta_j\right]$
+
+On a obtenu cette formule de la même manière que pour l'ancienne, c'est-à-dire en calculant la dérivée partielle de la fonction d'erreur.
 
 #### Equation normale
 
-#### Validation croisée
+Pour l'équation normale, on applique encore notre démonstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat suivant :
+
+$\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\\ &1\\ &&1 \\ &&&\ddots \\ &&&&1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y$
+
+On retrouve notre paramètre de régularisation $\lambda$, ainsi qu'une matrice de taille $(n + 1)\times(n + 1)$ assez spéciale composée de 1 uniquement dans la diagonale en partant de la deuxième colonne (le reste de la matrice contient des 0). Cette matrice est en réalité une [matrice identité](https://en.wikipedia.org/wiki/Identity_matrix) sans le premier terme en haut à gauche (en rapport avec $\theta_0$ qui n'est pas pénalisé).
+
+#### Paramètre de régularisation
+
+Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement pénalisés qu'on risque d'avoir une fonction d'hypothèse trop simple pour notre problème. A l'inverse, un paramètre $\lambda$ trop petit ne va pas assez pénaliser les coefficients avec des degrés élevés ce qui n'atténuera pas notre problème de surapprentissage et sera donc inutile.
+
+Il faut alors réussir à choisir un bon paramètre de régularisation $\lambda$, et pour cela on peut s'aider de différents échantillons, ainsi que de la **validation croisée**. Jusqu'à présent, le seul échantillon de nos données qu'on utilisait était **l'échantillon d'apprentissage**. On va désormais rajouter deux nouveaux échantillons :
+
+- **l'échantillon de test** : on l'utilisera pour mesurer l'efficacité de notre algorithme sur de nouvelles données, car si on mesure cela sur notre échantillon d'apprentissage et que notre algorithme a un problème de surapprentissage, on verra de très bons résultats mais en réalité notre programme est médiocre voire mauvais.
+- **l'échantillon de validation** : on va utiliser cet échantillon afin de tester différentes valeurs de $\lambda$ et sélectionner la meilleure.
+
+On n'utilisera pas l'échantillon de test dans le choix du paramètre $\lambda$, mais il est important d'en parler car en général sur nos données on les divise entre nos différents échantillons de tel sorte à avoir environ 60% des données dans l'échantillon d'apprentissage, 20% dans celui de test, et 20% dans celui de validation.
+
+Le principe de la validation croisée est de tester différents paramètres de régularisation (0, 0.01, 0.02, 0.04, 0.08, ..., 10, ...) et de sélectionner le meilleur. Pour trouver celui qui nous convient, on prend chacun et on réalise notre opération de minimisation de $J$ afin d'avoir pour chaque paramètre des coefficients $\theta$. Pour chacun de ces coefficients, on va utiliser notre fonction d'erreur de base (sans la régularisation) mais sur l'échantillon de validation afin de mesurer la performance de notre algorithme sur de nouvelle données (on n'utilise pas l'échantillon de test car ce dernier sera utilisé en dernier pour voir si notre algorithme général fonctionne correctement et non pas uniquement le paramètre de régularisation). Il suffit alors de choisir le paramètre qui donnera le résultat le plus petit.
+
+Notez qu'on peut utiliser cette méthode de validation croisée afin de choisir les degrés à utiliser dans notre fonction d'hypothèse polynomiale de la même façon que pour $\lambda$.
 
 ## Conclusion
