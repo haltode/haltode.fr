@@ -171,7 +171,7 @@ $J(\theta) = \frac{1}{2m} \left[\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) -
 
 Dans le terme ajouté $\lambda \displaystyle\sum_{j=1}^{n} \theta_j^2$, on a $\lambda$ qui correspond au **paramètre de la régularisation** (et donc qui détermine la puissance de la pénalisation). Il faut aussi noter qu'on ne pénalise pas $\theta_0$.
 
-Grâce à cela, les coefficients avec des degrés élevés augmenteront fortement le résultat de la fonction d'erreur, obligeant naturellement à nos algorithmes de pénaliser ces derniers. On arrive donc à une fonction d'hypothèse simplifié, et moins sujet au cas de surapprentissage.
+Grâce à cela, les coefficients avec des degrés élevés augmenteront fortement le résultat de la fonction d'erreur, obligeant naturellement à nos algorithmes de pénaliser ces derniers. On arrive donc à une fonction d'hypothèse simplifiée, et moins sujet au cas de surapprentissage.
 
 Cependant il faut adapter nos deux algorithmes à cette nouvelle fonction d'erreur, en les modifiant légèrement.
 
@@ -193,7 +193,7 @@ On a obtenu cette formule de la même manière que pour l'ancienne, c'est-à-dir
 
 #### Equation normale
 
-Pour l'équation normale, on applique encore notre démonstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat suivant :
+Pour l'équation normale, on applique de nouveau notre démonstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat suivant :
 
 $\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\\ &1\\ &&1 \\ &&&\ddots \\ &&&&1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y$
 
@@ -205,13 +205,22 @@ Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentis
 
 Il faut alors réussir à choisir un bon paramètre de régularisation $\lambda$, et pour cela on peut s'aider de différents échantillons, ainsi que de la **validation croisée**. Jusqu'à présent, le seul échantillon de nos données qu'on utilisait était **l'échantillon d'apprentissage**. On va désormais rajouter deux nouveaux échantillons :
 
-- **l'échantillon de test** : on l'utilisera pour mesurer l'efficacité de notre algorithme sur de nouvelles données, car si on mesure cela sur notre échantillon d'apprentissage et que notre algorithme a un problème de surapprentissage, on verra de très bons résultats mais en réalité notre programme est médiocre voire mauvais.
-- **l'échantillon de validation** : on va utiliser cet échantillon afin de tester différentes valeurs de $\lambda$ et sélectionner la meilleure.
+- **l'échantillon de test** : on l'utilisera pour mesurer l'efficacité de notre algorithme sur de nouvelles données, car si on mesure cela sur notre échantillon d'apprentissage et que notre algorithme a un problème de surapprentissage, on verra de très bons résultats alors qu'on a un programme médiocre incapable de généraliser.
+- **l'échantillon de validation** : on va employer cet échantillon afin de tester différentes valeurs de $\lambda$ et sélectionner la meilleure.
 
 On n'utilisera pas l'échantillon de test dans le choix du paramètre $\lambda$, mais il est important d'en parler car en général sur nos données on les divise entre nos différents échantillons de tel sorte à avoir environ 60% des données dans l'échantillon d'apprentissage, 20% dans celui de test, et 20% dans celui de validation.
 
-Le principe de la validation croisée est de tester différents paramètres de régularisation (0, 0.01, 0.02, 0.04, 0.08, ..., 10, ...) et de sélectionner le meilleur. Pour trouver celui qui nous convient, on prend chacun et on réalise notre opération de minimisation de $J$ afin d'avoir pour chaque paramètre des coefficients $\theta$. Pour chacun de ces coefficients, on va utiliser notre fonction d'erreur de base (sans la régularisation) mais sur l'échantillon de validation afin de mesurer la performance de notre algorithme sur de nouvelle données (on n'utilise pas l'échantillon de test car ce dernier sera utilisé en dernier pour voir si notre algorithme général fonctionne correctement et non pas uniquement le paramètre de régularisation). Il suffit alors de choisir le paramètre qui donnera le résultat le plus petit.
+Le principe de la validation croisée est de tester différentes valeurs de $\lambda$ et sélectionner la meilleure grâce à notre fonction d'erreur et à nos échantillons :
+
+- Générer différents paramètres de régularisation (0, 0.01, 0.02, 0.04, ..., 1, ... 10, ...).
+- Pour chaque paramètre $\lambda$ à tester, calculer les coefficients $\theta$ en minimisant $J$ (version régularisée).
+- Pour chaque coefficient obtenu, calculer le taux d'erreur par rapport à notre échantillon de validation (encore inconnue du programme) en utilisant la fonction d'erreur de base sur cet échantillon (on n'utilise pas l'échantillon de test car il ne faut pas que notre algorithme voit les données de cet échantillon avant d'être totalement entrainé).
+- Choisir $\lambda$ qui obtient le plus faible taux d'erreur sur la dernière étape.
 
 Notez qu'on peut utiliser cette méthode de validation croisée afin de choisir les degrés à utiliser dans notre fonction d'hypothèse polynomiale de la même façon que pour $\lambda$.
 
 ## Conclusion
+
+La régression linéaire/polynomiale est donc un moyen de généraliser un problème à partir d'exemples fournis en construisant un modèle plus ou moins complexe. On a pu voir deux algorithmes très différents, ainsi que le principal problème lié à ce type d'apprentissage avant d'aborder une solution efficace.
+
+Même si l'action de "généraliser" est une notion assez facile à réaliser en tant qu'humain, c'est bien plus compliqué de le faire comprendre à un ordinateur et les mathématiques nous permettent de nous en rapprocher considérablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilisé à travers d'autres algorithmes d'apprentissage artificiel, il était donc important de le découvrir ici dans un cadre assez accessible.
