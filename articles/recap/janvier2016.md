@@ -1,6 +1,6 @@
 Janvier 2016
 ============
-recap/
+recap
 
 ## Introduction
 

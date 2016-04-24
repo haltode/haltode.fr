@@ -1,6 +1,6 @@
 File
 ====
-algo/structure/
+algo/structure
 
 Publié le : 08/06/2014  
 *Modifié le : 28/11/2015*

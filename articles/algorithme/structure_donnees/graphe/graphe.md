@@ -1,6 +1,6 @@
 Graphe
 ======
-algo/structure/
+algo/structure
 
 Publié le : 20/06/2015  
 *Modifié le : 01/12/2015*

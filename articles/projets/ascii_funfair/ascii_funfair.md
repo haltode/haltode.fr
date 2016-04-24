@@ -1,6 +1,6 @@
 ASCII Funfair
 =============
-projets/
+projets
 
 Date du projet : juin 2013 à septembre 2013  
 *Modifié le : 05/12/2015*

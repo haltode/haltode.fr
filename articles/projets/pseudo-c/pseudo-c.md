@@ -1,6 +1,6 @@
 Pseudo-C
 ========
-projets/
+projets
 
 Publié le : 01/03/2015  
 *Modifié le : 05/12/2015*

@@ -1,6 +1,6 @@
 Arbre binaire
 =============
-algo/structure/arbre/
+algo/structure/arbre
 
 Publié le : 27/12/2015  
 *Modifié le : 14/01/2016*

@@ -1,6 +1,6 @@
 Liste chaînée
 =============
-algo/structure/
+algo/structure
 
 Publié le : 08/06/2014  
 *Modifié le : 16/01/2016*

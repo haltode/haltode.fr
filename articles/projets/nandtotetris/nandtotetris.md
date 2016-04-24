@@ -1,6 +1,6 @@
 NandToTetris
 ====
-projets/
+projets
 
 Date du projet : février 2014 à avril 2014  
 *Modifié le : 10/12/2015*

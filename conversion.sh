@@ -1,21 +1,5 @@
 #!/bin/sh
 
-function remove_old_files {
-   find src/pages -name "*.html" -type f -delete
-}
-
-function generate_css {
-   echo "<style>" > src/static/css/layout.css.html
-   cat src/static/css/layout.css >> src/static/css/layout.css.html
-   echo "</style>" >> src/static/css/layout.css.html
-}
-
-function generate_js {
-   echo "<script type=\"text/javascript\">" > src/static/js/script.js.html
-   cat src/static/js/script.js >> src/static/js/script.js.html
-   echo "</script>" >> src/static/js/script.js.html
-}
-
 # Syntax in the article :
 # [INSERT]
 # filename.extension
@@ -143,12 +127,9 @@ function convert {
 }
 
 
-remove_old_files
-generate_css
-generate_js
-
-find articles -name '*.md' | \
+# Check every articles that we modified since last commit
+git diff --name-only | grep '^articles' | grep '.md$' | \
 while read file
-do 
+do
    convert $file
 done

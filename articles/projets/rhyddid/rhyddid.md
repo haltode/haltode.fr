@@ -1,6 +1,6 @@
 Rhyddid
 =======
-projets/
+projets
 
 Date du projet : octobre 2013 à janvier 2014  
 *Modifié le : 08/12/2015*

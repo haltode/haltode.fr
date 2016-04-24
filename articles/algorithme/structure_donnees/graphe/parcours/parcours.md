@@ -1,6 +1,6 @@
 Parcours d'un graphe
 ====================
-algo/structure/graphe/
+algo/structure/graphe
 
 Publié le : 07/12/2015  
 *Modifié le : 13/12/2015*

@@ -1,6 +1,6 @@
 Tas
 ===
-algo/structure/arbre/
+algo/structure/arbre
 
 Publié le : 11/01/2016  
 *Modifié le : 22/01/2016*

@@ -1,6 +1,6 @@
 Plus court chemin
 =================
-algo/structure/graphe/
+algo/structure/graphe
 
 Publié le : 26/03/2016  
 *Modifié le : 26/03/2016*
