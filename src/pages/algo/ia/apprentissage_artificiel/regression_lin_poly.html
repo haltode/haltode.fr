@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="r&#233;gression-lin&#233;airepolynomiale">R&#233;gression lin&#233;aire/polynomiale</h1></a>
-<p>Publi&#233; le : 24/04/2016<br />
-<em>Modifi&#233; le : 24/04/2016</em></p>
+<p>Publi&#233; le : 25/04/2016<br />
+<em>Modifi&#233; le : 25/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -383,13 +383,14 @@ function toggle_visibility(id) {
 <ul>
 <li>G&#233;n&#233;rer diff&#233;rents param&#232;tres de r&#233;gularisation (0, 0.01, 0.02, 0.04, ..., 1, ... 10, ...).</li>
 <li>Pour chaque param&#232;tre <span class="math inline">\(\lambda\)</span> &#224; tester, calculer les coefficients <span class="math inline">\(\theta\)</span> en minimisant <span class="math inline">\(J\)</span> (version r&#233;gularis&#233;e).</li>
-<li>Pour chaque coefficient obtenu, calculer le taux d'erreur par rapport &#224; notre &#233;chantillon de validation (encore inconnue du programme) en utilisant la fonction d'erreur de base sur cet &#233;chantillon (on n'utilise pas l'&#233;chantillon de test car il ne faut pas que notre algorithme voit les donn&#233;es de cet &#233;chantillon avant d'&#234;tre totalement entrain&#233;).</li>
+<li>Pour chaque coefficient obtenu, calculer le taux d'erreur par rapport &#224; notre &#233;chantillon de validation (encore inconnue du programme) en utilisant la fonction d'erreur non r&#233;gularis&#233;e sur cet &#233;chantillon : <span class="math inline">\(J_{validation}\)</span> (on n'utilise pas l'&#233;chantillon de test car il ne faut pas que notre algorithme voit les donn&#233;es de cet &#233;chantillon avant d'&#234;tre totalement entrain&#233;).</li>
 <li>Choisir <span class="math inline">\(\lambda\)</span> qui obtient le plus faible taux d'erreur sur la derni&#232;re &#233;tape.</li>
 </ul>
 <p>Notez qu'on peut utiliser cette m&#233;thode de validation crois&#233;e afin de choisir les degr&#233;s &#224; utiliser dans notre fonction d'hypoth&#232;se polynomiale de la m&#234;me fa&#231;on que pour <span class="math inline">\(\lambda\)</span>.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>La r&#233;gression lin&#233;aire/polynomiale est donc un moyen de g&#233;n&#233;raliser un probl&#232;me &#224; partir d'exemples fournis en construisant un mod&#232;le plus ou moins complexe. On a pu voir deux algorithmes tr&#232;s diff&#233;rents, ainsi que le principal probl&#232;me li&#233; &#224; ce type d'apprentissage avant d'aborder une solution efficace.</p>
-<p>M&#234;me si l'action de &quot;g&#233;n&#233;raliser&quot; est une notion assez facile &#224; r&#233;aliser en tant qu'humain, c'est bien plus compliqu&#233; de le faire comprendre &#224; un ordinateur et les math&#233;matiques nous permettent de nous en rapprocher consid&#233;rablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilis&#233; &#224; travers d'autres algorithmes d'apprentissage artificiel, il &#233;tait donc important de le d&#233;couvrir ici dans un cadre assez accessible.</p>
+<p>M&#234;me si l'action de &quot;g&#233;n&#233;raliser&quot; est une notion assez facile &#224; appr&#233;hender en tant qu'humain, c'est bien plus compliqu&#233; de le faire comprendre &#224; un ordinateur et les math&#233;matiques nous permettent de nous en rapprocher consid&#233;rablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilis&#233; &#224; travers d'autres algorithmes d'apprentissage artificiel, il &#233;tait donc important de le d&#233;couvrir ici dans un cadre assez accessible.</p>
+<p>D&#233;duire un mod&#232;le &#224; partir de donn&#233;es est un probl&#232;me tr&#232;s commun, et la r&#233;gression lin&#233;aire/polynomiale est une m&#233;thode employ&#233;e dans pleins de domaines comme l'&#233;conomie, la finance, les statistiques, la g&#233;ographie, la physique, la biologie, etc.</p>
  
       <!-- ------------ -->
 

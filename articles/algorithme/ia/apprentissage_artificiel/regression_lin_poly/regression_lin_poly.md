@@ -2,8 +2,8 @@ Régression linéaire/polynomiale
 ===============================
 algo/ia/apprentissage_artificiel
 
-Publié le : 24/04/2016  
-*Modifié le : 24/04/2016*
+Publié le : 25/04/2016  
+*Modifié le : 25/04/2016*
 
 ## Introduction
 
@@ -214,7 +214,7 @@ Le principe de la validation croisée est de tester différentes valeurs de $\la
 
 - Générer différents paramètres de régularisation (0, 0.01, 0.02, 0.04, ..., 1, ... 10, ...).
 - Pour chaque paramètre $\lambda$ à tester, calculer les coefficients $\theta$ en minimisant $J$ (version régularisée).
-- Pour chaque coefficient obtenu, calculer le taux d'erreur par rapport à notre échantillon de validation (encore inconnue du programme) en utilisant la fonction d'erreur de base sur cet échantillon (on n'utilise pas l'échantillon de test car il ne faut pas que notre algorithme voit les données de cet échantillon avant d'être totalement entrainé).
+- Pour chaque coefficient obtenu, calculer le taux d'erreur par rapport à notre échantillon de validation (encore inconnue du programme) en utilisant la fonction d'erreur non régularisée sur cet échantillon : $J_{validation}$ (on n'utilise pas l'échantillon de test car il ne faut pas que notre algorithme voit les données de cet échantillon avant d'être totalement entrainé).
 - Choisir $\lambda$ qui obtient le plus faible taux d'erreur sur la dernière étape.
 
 Notez qu'on peut utiliser cette méthode de validation croisée afin de choisir les degrés à utiliser dans notre fonction d'hypothèse polynomiale de la même façon que pour $\lambda$.
@@ -223,4 +223,6 @@ Notez qu'on peut utiliser cette méthode de validation croisée afin de choisir 
 
 La régression linéaire/polynomiale est donc un moyen de généraliser un problème à partir d'exemples fournis en construisant un modèle plus ou moins complexe. On a pu voir deux algorithmes très différents, ainsi que le principal problème lié à ce type d'apprentissage avant d'aborder une solution efficace.
 
-Même si l'action de "généraliser" est une notion assez facile à réaliser en tant qu'humain, c'est bien plus compliqué de le faire comprendre à un ordinateur et les mathématiques nous permettent de nous en rapprocher considérablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilisé à travers d'autres algorithmes d'apprentissage artificiel, il était donc important de le découvrir ici dans un cadre assez accessible.
+Même si l'action de "généraliser" est une notion assez facile à appréhender en tant qu'humain, c'est bien plus compliqué de le faire comprendre à un ordinateur et les mathématiques nous permettent de nous en rapprocher considérablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilisé à travers d'autres algorithmes d'apprentissage artificiel, il était donc important de le découvrir ici dans un cadre assez accessible.
+
+Déduire un modèle à partir de données est un problème très commun, et la régression linéaire/polynomiale est une méthode employée dans pleins de domaines comme l'économie, la finance, les statistiques, la géographie, la physique, la biologie, etc.
