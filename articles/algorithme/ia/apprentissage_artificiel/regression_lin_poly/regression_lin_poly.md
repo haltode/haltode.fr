@@ -94,7 +94,7 @@ Par convention, et pour simplifier nos futurs calculs, on divise le résultat ob
 
 $J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
-Cette fonction d'erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent.
+Cette fonction d'erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent. Il est d'ailleurs possible de démontrer que cette fonction est un estimateur optimal sous certaines hypothèses grâce au [théorème de Gauss-Markov](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem), c'est pour cela qu'elle est utilisée quasiment dans tous les cas de régression linéaire/polynomiale.
 
 Grâce à cela, on peut enfin définir concrètement ce que signifie "trouver le meilleur modèle". Cela revient à trouver des paramètres $\theta$ qui **minimisent** la fonction d'erreur utilisée.
 

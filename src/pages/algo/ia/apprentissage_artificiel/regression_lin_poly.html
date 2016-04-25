@@ -298,7 +298,7 @@ function toggle_visibility(id) {
 <p><span class="math inline">\(J(\theta) = \frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
 <p>Par convention, et pour simplifier nos futurs calculs, on divise le r&#233;sultat obtenu par 2 :</p>
 <p><span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Cette fonction d'erreur nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres <span class="math inline">\(\theta\)</span> qu'ils utilisent.</p>
+<p>Cette fonction d'erreur nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres <span class="math inline">\(\theta\)</span> qu'ils utilisent. Il est d'ailleurs possible de d&#233;montrer que cette fonction est un estimateur optimal sous certaines hypoth&#232;ses gr&#226;ce au <a href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem">th&#233;or&#232;me de Gauss-Markov</a>, c'est pour cela qu'elle est utilis&#233;e quasiment dans tous les cas de r&#233;gression lin&#233;aire/polynomiale.</p>
 <p>Gr&#226;ce &#224; cela, on peut enfin d&#233;finir concr&#232;tement ce que signifie &quot;trouver le meilleur mod&#232;le&quot;. Cela revient &#224; trouver des param&#232;tres <span class="math inline">\(\theta\)</span> qui <strong>minimisent</strong> la fonction d'erreur utilis&#233;e.</p>
 <p>Si l'on affiche graphiquement la fonction d'erreur pour notre probl&#232;me, on obtient ceci :</p>
 <div class="figure">
