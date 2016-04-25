@@ -15,6 +15,7 @@ Liste de mes différents projets personnels :
 
 Vous pouvez aussi retrouver mes plus petits projets sur Github : <https://github.com/napnac> :
 
+- [trologin](https://github.com/napnac/trologin) : différents scripts utilisés pour troller lors des finales de [Prologin](https://prologin.org/).
 - [mlai](https://github.com/napnac/mlai) : implémentation basique de différents algorithmes de machine learning.
 - [lispy](https://github.com/napnac/lispy) : langage de programmation minimaliste inspiré de Lisp et écrit en C.
 - [zds-prog](https://github.com/napnac/zds-prog) : plusieurs codes sources venant des forums de [Zeste de Savoir](https://zestedesavoir.com/) (défi, atelier, etc.).
