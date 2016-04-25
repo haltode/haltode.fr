@@ -24,7 +24,7 @@ On peut représenter ce tableau grâce à un graphique en deux dimensions très 
 
 ![Exemple de données récoltées](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png)
 
-Ce qu'on cherche à faire dans notre problème c'est d'**extrapoler**, c'est-à-dire généraliser grâce aux données obtenues. En tant qu'humain, on pourrait facilement faire une bonne généralisation comme ceci :
+Ce qu'on cherche à faire dans notre problème c'est d'**extrapoler**, c'est-à-dire généraliser grâce aux données obtenues afin de prédire un résultat. En tant qu'humain, on pourrait facilement faire une bonne généralisation comme ceci :
 
 ![Exemple de généralisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png)
 
@@ -70,31 +70,31 @@ Mais pour comprendre comment trouver un bon modèle, il faut tout d'abord compre
 
 Afin de différencier deux modèles en fonction de leurs efficacités, on va utiliser une **fonction d'erreur** qui mesure le taux d'erreur entre notre modèle et la réalité.
 
-Dans le cas de la régression linéaire, une fonction d'erreur très commune est celle-ci :
+Si on prend un exemple $i$, la différence entre l'estimation de notre fonction d'hypothèse et la sortie fournie en entrée se note :
 
-$J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
+$h_{\theta}(x_{i}) - y_{i}$
 
-$J$ est notre fonction d'erreur, et elle prend $\theta$ comme paramètres. La variable $m$ correspond au nombre d'exemples dans l'entrée, et $x_{i}$ ainsi que $y_{i}$ désignent le $i$ème exemple sous la forme d'un couple (entrée, sortie).
-
-Décomposons maintenant cette fonction afin de comprendre ce qu'elle cherche à faire :
+Où $x_{i}$ et $y_{i}$ désignent le $i$ème exemple sous la forme d'un couple (entrée, sortie). Cependant, cette valeur peut être négative, on va donc la monter au carré car cela nous permet aussi d'amplifier le résultat (s'il y a une grosse différence, alors le carré produira un résultat très élevé et inversement). Si on avait utilisé une autre fonction pour rendre l'expression positive, comme la [valeur absolue](https://en.wikipedia.org/wiki/Absolute_value), on n'aurait pas eu cette deuxième propriété intéressante qui permet de mieux distinguer deux modèles en fonction de leurs efficacités.
 
 $(h_{\theta}(x_{i}) - y_{i})^2$
 
-Ici on réalise la différence sur un exemple $i$ donné, entre l'estimation de notre fonction d'hypothèse et la sortie fournie en entrée. On cherche à voir si notre fonction est loin ou proche des données qu'on a récoltées (et donc de la réalité). Cette différence est montée au carré afin d'avoir un résultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le résultat (s'il y a un gros écart, le carré produira un résultat très élevé et inversement), alors qu'avec une autre fonction comme la [valeur absolue](https://en.wikipedia.org/wiki/Absolute_value) on n'aurait pas cette deuxième propriété qui permet de mieux distinguer l'efficacité entre deux modèles.
+Vu qu'il y a $m$ exemples en entrée, on va faire la moyenne de toutes les différences au carré pour prendre chaque exemple en compte dans notre fonction d'erreur :
+
+$\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
 Si on reprend la généralisation qu'on a faite à la main, la différence que l'on calcule dans notre expression correspond aux parties vertes sur ce schéma :
 
 ![Exemple de calcul de différence entre estimation et réalité](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png)
 
-Notre fonction d'erreur va alors calculer la moyenne des différences sur nos $m$ exemples :
+On notera cette fonction $J$, qu'on appelle aussi l'**estimateur des moindres carrés** :
 
-$\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
+$J(\theta) = \frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
-Enfin, on divise le résultat par 2 à titre de convention car cela simplifiera nos futurs calculs :
+Par convention, et pour simplifier nos futurs calculs, on divise le résultat obtenu par 2 :
 
-$\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
+$J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
-Cette fonction nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent.
+Cette fonction d'erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent.
 
 Grâce à cela, on peut enfin définir concrètement ce que signifie "trouver le meilleur modèle". Cela revient à trouver des paramètres $\theta$ qui **minimisent** la fonction d'erreur utilisée.
 

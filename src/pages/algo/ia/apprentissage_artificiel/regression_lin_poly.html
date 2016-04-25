@@ -225,7 +225,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png" alt="Exemple de donn&#233;es r&#233;colt&#233;es" />
 <p class="caption">Exemple de donn&#233;es r&#233;colt&#233;es</p>
 </div>
-<p>Ce qu'on cherche &#224; faire dans notre probl&#232;me c'est d'<strong>extrapoler</strong>, c'est-&#224;-dire g&#233;n&#233;raliser gr&#226;ce aux donn&#233;es obtenues. En tant qu'humain, on pourrait facilement faire une bonne g&#233;n&#233;ralisation comme ceci :</p>
+<p>Ce qu'on cherche &#224; faire dans notre probl&#232;me c'est d'<strong>extrapoler</strong>, c'est-&#224;-dire g&#233;n&#233;raliser gr&#226;ce aux donn&#233;es obtenues afin de pr&#233;dire un r&#233;sultat. En tant qu'humain, on pourrait facilement faire une bonne g&#233;n&#233;ralisation comme ceci :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png" alt="Exemple de g&#233;n&#233;ralisation" />
 <p class="caption">Exemple de g&#233;n&#233;ralisation</p>
@@ -283,22 +283,22 @@ function toggle_visibility(id) {
 <p>Mais pour comprendre comment trouver un bon mod&#232;le, il faut tout d'abord comprendre comment d&#233;crire l'efficacit&#233; d'un mod&#232;le quelconque, et surtout qu'est-ce qui rend un mod&#232;le meilleur qu'un autre ?</p>
 <h2 id="fonction-derreur">Fonction d'erreur</h2>
 <p>Afin de diff&#233;rencier deux mod&#232;les en fonction de leurs efficacit&#233;s, on va utiliser une <strong>fonction d'erreur</strong> qui mesure le taux d'erreur entre notre mod&#232;le et la r&#233;alit&#233;.</p>
-<p>Dans le cas de la r&#233;gression lin&#233;aire, une fonction d'erreur tr&#232;s commune est celle-ci :</p>
-<p><span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p><span class="math inline">\(J\)</span> est notre fonction d'erreur, et elle prend <span class="math inline">\(\theta\)</span> comme param&#232;tres. La variable <span class="math inline">\(m\)</span> correspond au nombre d'exemples dans l'entr&#233;e, et <span class="math inline">\(x_{i}\)</span> ainsi que <span class="math inline">\(y_{i}\)</span> d&#233;signent le <span class="math inline">\(i\)</span>&#232;me exemple sous la forme d'un couple (entr&#233;e, sortie).</p>
-<p>D&#233;composons maintenant cette fonction afin de comprendre ce qu'elle cherche &#224; faire :</p>
+<p>Si on prend un exemple <span class="math inline">\(i\)</span>, la diff&#233;rence entre l'estimation de notre fonction d'hypoth&#232;se et la sortie fournie en entr&#233;e se note :</p>
+<p><span class="math inline">\(h_{\theta}(x_{i}) - y_{i}\)</span></p>
+<p>O&#249; <span class="math inline">\(x_{i}\)</span> et <span class="math inline">\(y_{i}\)</span> d&#233;signent le <span class="math inline">\(i\)</span>&#232;me exemple sous la forme d'un couple (entr&#233;e, sortie). Cependant, cette valeur peut &#234;tre n&#233;gative, on va donc la monter au carr&#233; car cela nous permet aussi d'amplifier le r&#233;sultat (s'il y a une grosse diff&#233;rence, alors le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement). Si on avait utilis&#233; une autre fonction pour rendre l'expression positive, comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a>, on n'aurait pas eu cette deuxi&#232;me propri&#233;t&#233; int&#233;ressante qui permet de mieux distinguer deux mod&#232;les en fonction de leurs efficacit&#233;s.</p>
 <p><span class="math inline">\((h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Ici on r&#233;alise la diff&#233;rence sur un exemple <span class="math inline">\(i\)</span> donn&#233;, entre l'estimation de notre fonction d'hypoth&#232;se et la sortie fournie en entr&#233;e. On cherche &#224; voir si notre fonction est loin ou proche des donn&#233;es qu'on a r&#233;colt&#233;es (et donc de la r&#233;alit&#233;). Cette diff&#233;rence est mont&#233;e au carr&#233; afin d'avoir un r&#233;sultat positif dans un premier temps, mais aussi car la puissance permet d'amplifier le r&#233;sultat (s'il y a un gros &#233;cart, le carr&#233; produira un r&#233;sultat tr&#232;s &#233;lev&#233; et inversement), alors qu'avec une autre fonction comme la <a href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a> on n'aurait pas cette deuxi&#232;me propri&#233;t&#233; qui permet de mieux distinguer l'efficacit&#233; entre deux mod&#232;les.</p>
+<p>Vu qu'il y a <span class="math inline">\(m\)</span> exemples en entr&#233;e, on va faire la moyenne de toutes les diff&#233;rences au carr&#233; pour prendre chaque exemple en compte dans notre fonction d'erreur :</p>
+<p><span class="math inline">\(\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
 <p>Si on reprend la g&#233;n&#233;ralisation qu'on a faite &#224; la main, la diff&#233;rence que l'on calcule dans notre expression correspond aux parties vertes sur ce sch&#233;ma :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png" alt="Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;" />
 <p class="caption">Exemple de calcul de diff&#233;rence entre estimation et r&#233;alit&#233;</p>
 </div>
-<p>Notre fonction d'erreur va alors calculer la moyenne des diff&#233;rences sur nos <span class="math inline">\(m\)</span> exemples :</p>
-<p><span class="math inline">\(\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Enfin, on divise le r&#233;sultat par 2 &#224; titre de convention car cela simplifiera nos futurs calculs :</p>
-<p><span class="math inline">\(\frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
-<p>Cette fonction nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres <span class="math inline">\(\theta\)</span> qu'ils utilisent.</p>
+<p>On notera cette fonction <span class="math inline">\(J\)</span>, qu'on appelle aussi l'<strong>estimateur des moindres carr&#233;s</strong> :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Par convention, et pour simplifier nos futurs calculs, on divise le r&#233;sultat obtenu par 2 :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Cette fonction d'erreur nous permet alors de comparer deux mod&#232;les en fonction des param&#232;tres <span class="math inline">\(\theta\)</span> qu'ils utilisent.</p>
 <p>Gr&#226;ce &#224; cela, on peut enfin d&#233;finir concr&#232;tement ce que signifie &quot;trouver le meilleur mod&#232;le&quot;. Cela revient &#224; trouver des param&#232;tres <span class="math inline">\(\theta\)</span> qui <strong>minimisent</strong> la fonction d'erreur utilis&#233;e.</p>
 <p>Si l'on affiche graphiquement la fonction d'erreur pour notre probl&#232;me, on obtient ceci :</p>
 <div class="figure">
