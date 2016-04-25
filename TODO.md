@@ -3,7 +3,6 @@
 - Flux rss
 - Page d'accueil
    - Originalité du site ? Qu'est-ce qui le démarque ?
-- Possibilité de cliquer sur les titres pour avoir l'anchor dans l'url
 
 ## Approches
 
@@ -31,9 +30,11 @@
 - Structure de données : Table de hachage
 - Tri en O(N) : tri par paquets
 - Recherche : union-find
-- IA : algo min-max (http://www.ffothello.org/informatique/algorithmes/)
+- IA : algo min-max
 - Approches : récursion, algo glouton, diviser pour régner
 - IA : ml : logitic regression, neural network, svm, k-means, etc.
+
+
 
 - Introduction à la complexité algorithmique (temps + mémoire)
 - Recherche : chaîne de caractères
