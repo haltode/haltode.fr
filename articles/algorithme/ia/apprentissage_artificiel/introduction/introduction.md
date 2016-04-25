@@ -3,7 +3,7 @@ Introduction à l'apprentissage artificiel
 algo/ia/apprentissage_artificiel
 
 Publié le : 07/04/2016  
-*Modifié le : 12/04/2016*
+*Modifié le : 25/04/2016*
 
 ## Introduction
 
@@ -76,30 +76,6 @@ L'apprentissage artificiel est donc un domaine extrêmement vaste de l'intellige
 
 Cependant, cette forme d'intelligence ne sait pas tout faire et nécessite toujours l'aide d'un humain afin de l'améliorer, de lui fournir des données pertinentes, et l'idée d'une intelligence artificielle autonome capable d'apprendre, communiquer et prendre des décisions importantes en effraie plus d'un. Ceci a poussé à la création d'une [organisation](http://futureoflife.org/) très particulière dans le but d'éviter des risques majeurs dûs à des intelligences artificielles, et cette dernière est supportée par plusieurs personnalités importantes comme [Stephen Hawking](https://en.wikipedia.org/wiki/Stephen_Hawking), ou encore [Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk). Même si l'apprentissage artificiel, voire l'intelligence artificielle de manière générale, peut nous apporter énormément d'améliorations et d'innovations impensables dans la vie de tous les jours, ceci peut tout à fait apporter de grands risques et une [lettre ouverte](http://futureoflife.org/open-letter-autonomous-weapons/) de la fondation *Futur of Life* dénonce l'automatisation d'armes de guerre qui marquent selon eux "une troisième révolution dans l'armement après la poudre à canon et le nucléaire". Les Etats-Unis notamment utilisent déjà des intelligences artificielles afin de remplacer les humains dans des programmes de drones, car les pilotes étaient souvent [affectés mentalement](http://www.democracynow.org/2013/10/25/a_drone_warriors_torment_ex_air) et développaient des traumatismes les forçant à arrêter.
 
-L'avenir de cette discipline est cependant loin d'être sombre, et beaucoup de projets ambitieux sont lancés avec des objectifs tous plus fous les uns que les autres, et on commence à faire des [prédictions](https://fr.sputniknews.com/insolite/201504251015815685/) sur le futur assez impressionnantes :
-
-> 2020 – Les ordinateurs personnels atteindront une puissance de traitement comparable au cerveau humain.
-
-> 2022 – Les USA et l'Europe adopteront des lois réglementant les relations entre les individus et les robots. L'activité des robots, leurs droits, devoirs et autres restrictions seront formalisés.
-
-> 2024 – Les éléments d'intelligence informatique seront obligatoires dans les voitures. Il sera interdit aux individus de conduire une voiture qui ne sera pas équipée d'une assistance informatique.
-
-> 2027 – Un robot personnel capable d'accomplir des actions complexes en toute autonomie sera aussi anodin qu'un réfrigérateur ou une machine à café.
-
-> 2029 – L'ordinateur pourra passer le test de Turing pour prouver son intelligence dans le sens humain du terme, grâce à la simulation informatique du cerveau humain.
-
-> 2033 – Les voitures sans conducteur circuleront sur les routes.
-
-> 2034 – Le premier rendez-vous de l'homme avec l'intelligence artificielle. Le film Her en version plus moderne: la compagne virtuelle pourrait être équipée d'un "corps" en projetant une image dans la rétine de l'œil – par exemple, à l'aide de lentilles ou de lunettes virtuelles.
-
-> 2037 – Un progrès gigantesque sera enregistré dans la compréhension du secret du cerveau humain. Des centaines de sous-régions ayant des fonctions spécifiques seront découvertes. Certains algorithmes qui codent le développement de ces régions seront décryptés et intégrés aux réseaux neuronaux d'ordinateurs.
-
-> 2038 – L'apparition de personnes robotisées et de produits de technologies transhumanistes. Ils seront dotés d'une intelligence supplémentaire (par exemple, orientée sur une sphère concrète de connaissances que le cerveau humain est incapable de couvrir entièrement) et de divers implants optionnels – des yeux-caméras aux bras-prothèses supplémentaires.
-
-> 2044 – L'intelligence non-biologique sera des milliards de fois plus intelligente que son homologue biologique.
-
-> 2045 – Arrivée de la singularité technologique. La Terre se transformera en ordinateur gigantesque.
-
-> 2099 – Le processus de singularité technologique s'étend sur tout l'Univers.
+L'avenir de cette discipline est cependant loin d'être sombre, et beaucoup de projets ambitieux sont lancés avec des objectifs tous plus fous les uns que les autres (imitation artificielle du cerveau humain, le transhumanisme, transfert de conscience humaine dans des ordinateurs, etc.).
 
 Vu l'omni-présence de ce domaine aujourd'hui, et dans le futur, il est important pour un programmeur d'en comprendre la base ainsi que les principaux algorithmes afin de résoudre des problèmes d'apprentissage artificiel.
