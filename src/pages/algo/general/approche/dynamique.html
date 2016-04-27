@@ -173,12 +173,13 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="algorithme-dynamique">Algorithme dynamique</h1></a>
 <p>Publi&#233; le : 03/04/2016<br />
-<em>Modifi&#233; le : 03/04/2016</em></p>
+<em>Modifi&#233; le : 27/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#optimisation">Optimisation</a></li>
+<li><a href="#conseils-dimpl&#233;mentation">Conseils d'impl&#233;mentation</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
@@ -377,6 +378,15 @@ function toggle_visibility(id) {
 }</code></pre></div>
 </div>
 <p>Notre programme est d&#233;sormais &#233;crit de mani&#232;re it&#233;rative (avec une simple boucle), ce qui fait qu'on a uniquement besoin des deux derniers termes <code>actuel</code> et <code>dernier</code>, afin de calculer <code>prochain</code>. On n'utilise pas de tableau ici, mais dans le cas o&#249; il faudrait plus que deux pr&#233;c&#233;dents &#233;l&#233;ments pour calculer le prochain, un tableau serait sans doute plus judicieux.</p>
+<h2 id="conseils-dimpl&#233;mentation">Conseils d'impl&#233;mentation</h2>
+<p>Quand on d&#233;bute avec les algorithmes dynamiques, il est toujours pr&#233;f&#233;rable de proc&#233;der par &#233;tapes lorsqu'on essaie de coder un nouvel algorithme :</p>
+<ul>
+<li>Coder la version r&#233;cursive na&#239;ve : cela permet de bien &#233;tablir la r&#233;cursion qui sera l'&#233;l&#233;ment central de l'algorithme.</li>
+<li>Dynamiser la solution : si l'&#233;tape pr&#233;c&#233;dente est correctement r&#233;alis&#233;e, il suffit de cr&#233;er un tableau (attention &#224; bien choisir les bons param&#232;tres pour ce dernier), d'ajouter une condition en cas de &quot;d&#233;j&#224; vu&quot;, et enfin de modifier la r&#233;cursion afin de prendre en compte notre tableau.</li>
+<li>Coder la version it&#233;rative : parfois il est n&#233;cessaire d'utiliser cette approche pour des raisons de m&#233;moire et d'efficacit&#233;.</li>
+</ul>
+<p>Une fois r&#233;ellement &#224; l'aise, il est possible de sauter la premi&#232;re &#233;tape, pour aller directement &#224; l'approche qu'on pr&#233;f&#232;re (r&#233;cursive ou it&#233;rative). Attention tout de m&#234;me &#224; ne pas aller trop vite au risque de perdre &#233;norm&#233;ment de temps. Si vous choisissez la version r&#233;cursive par exemple, il est quasiment tout le temps pr&#233;f&#233;rable de passer par la m&#233;thode na&#239;ve en premier pour v&#233;rifier rapidement la validit&#233; de votre algorithme. Dynamiser cette solution ne prend que quelques secondes, alors que repartir de z&#233;ro &#224; cause d'un mauvais d&#233;part vous prendra bien plus de temps.</p>
+<p>Il arrive aussi d'avoir du mal &#224; trouver la version dynamique de notre algorithme na&#239;f, et c'est souvent &#224; cause de la r&#233;cursion qui est mal d&#233;finie. Pour s'aider, on peut se dire que de mani&#232;re g&#233;n&#233;rale, les param&#232;tres de la fonction sont les <strong>situations</strong> (c'est-&#224;-dire les param&#232;tres qu'on utilisera en indice de notre tableau), et la valeur de retour sera l'<strong>information</strong> (ce qu'on stocke dans notre tableau).</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Dynamiser un algorithme peut donc radicalement changer sa complexit&#233; en temps, et cette technique d'optimisation peut s'appliquer &#224; la plupart des algorithmes r&#233;cursifs qui cherchent une <strong>solution optimale</strong> parmi beaucoup d'autres. On retrouve des algorithmes dynamiques de partout et dans tous les domaines car cette optimisation s'applique &#224; de tr&#232;s nombreux probl&#232;mes.</p>
 <p>M&#234;me si l'id&#233;e de la programmation dynamique est tr&#232;s simple, programmer un algorithme dynamique peut &#234;tre bien plus compliqu&#233;. Le seul moyen d'&#234;tre vraiment &#224; l'aise avec cette optimisation est de pratiquement <strong>&#233;norm&#233;ment</strong>, sur des probl&#232;mes vari&#233;s. Cette introduction sert uniquement d'explication br&#232;ve sur le sujet, mais voici d'autres liens pouvant vous int&#233;resser si vous souhaitez r&#233;ellement en apprendre plus (il y a des <strong>tonnes</strong> d'informations sur la programmation dynamique en ligne, donc n'h&#233;sitez pas &#224; faire plus de recherches si n&#233;cessaire) :</p>

@@ -3,7 +3,7 @@ Algorithme dynamique
 algo/general/approche
 
 Publié le : 03/04/2016  
-*Modifié le : 03/04/2016*
+*Modifié le : 27/04/2016*
 
 ## Introduction
 
@@ -92,6 +92,18 @@ Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calculé diso
 fibonacci_dyn_opti.c
 
 Notre programme est désormais écrit de manière itérative (avec une simple boucle), ce qui fait qu'on a uniquement besoin des deux derniers termes `actuel` et `dernier`, afin de calculer `prochain`. On n'utilise pas de tableau ici, mais dans le cas où il faudrait plus que deux précédents éléments pour calculer le prochain, un tableau serait sans doute plus judicieux.
+
+## Conseils d'implémentation
+
+Quand on débute avec les algorithmes dynamiques, il est toujours préférable de procéder par étapes lorsqu'on essaie de coder un nouvel algorithme :
+
+- Coder la version récursive naïve : cela permet de bien établir la récursion qui sera l'élément central de l'algorithme.
+- Dynamiser la solution : si l'étape précédente est correctement réalisée, il suffit de créer un tableau (attention à bien choisir les bons paramètres pour ce dernier), d'ajouter une condition en cas de "déjà vu", et enfin de modifier la récursion afin de prendre en compte notre tableau.
+- Coder la version itérative : parfois il est nécessaire d'utiliser cette approche pour des raisons de mémoire et d'efficacité.
+
+Une fois réellement à l'aise, il est possible de sauter la première étape, pour aller directement à l'approche qu'on préfère (récursive ou itérative). Attention tout de même à ne pas aller trop vite au risque de perdre énormément de temps. Si vous choisissez la version récursive par exemple, il est quasiment tout le temps préférable de passer par la méthode naïve en premier pour vérifier rapidement la validité de votre algorithme. Dynamiser cette solution ne prend que quelques secondes, alors que repartir de zéro à cause d'un mauvais départ vous prendra bien plus de temps.
+
+Il arrive aussi d'avoir du mal à trouver la version dynamique de notre algorithme naïf, et c'est souvent à cause de la récursion qui est mal définie. Pour s'aider, on peut se dire que de manière générale, les paramètres de la fonction sont les **situations** (c'est-à-dire les paramètres qu'on utilisera en indice de notre tableau), et la valeur de retour sera l'**information** (ce qu'on stocke dans notre tableau).
 
 ## Conclusion
 
