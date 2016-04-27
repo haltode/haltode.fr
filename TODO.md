@@ -4,10 +4,6 @@
 - Page d'accueil
    - Originalité du site ? Qu'est-ce qui le démarque ?
 
-## Approches
-
-- Dynamique : conseils d'implémentation
-
 ## Structure de données
 
 - Graphe : liens opérations utiles (faire un article qui regroupe tout ?)
