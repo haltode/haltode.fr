@@ -13,7 +13,6 @@
 ## Tri
 
 - Tri par tas : smoothsort
-- Tri par base : démonstration (pourquoi ça fonctionne ?)
 
 ## Chiffrement
 
