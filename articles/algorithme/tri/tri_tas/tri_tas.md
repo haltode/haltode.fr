@@ -3,7 +3,7 @@ Tri par tas
 algo/tri
 
 Publié le : 14/05/2014  
-*Modifié le : 26/12/2015*
+*Modifié le : 29/04/2016*
 
 ## Introduction
 
@@ -97,47 +97,14 @@ Comme pour le tri rapide, le tri par tas peut être mélangé avec un autre algo
 
 ### Smoothsort
 
-TODO : pourquoi suite de léonard ? image + pseudo-code + meilleures explications
+Le *smoothsort* est une variante du tri par tas permettant d'améliorer la complexité en temps dans le meilleur des cas en $O(N)$ (lorsque les nombres en entrée sont déjà triés ou quasi triés par exemple). Ce tri est assez complexe, et même s'il a une meilleure approche d'un point de vue théorique, il sera peu utilisé en pratique, tout comme le tri par tas comparé au tri rapide.
 
-Le Smoothsort est une variante du tri par tas permettant d'améliorer la complexité en temps dans le meilleur des cas en $O(N)$ (le cas où les nombres en entrée sont déjà triés ou quasi triés par exemple). Le principe de ce tri se base non plus sur un seul tas, mais sur plusieurs ayant un comportement différent et s'appuyant sur la [suite de Léonard](https://en.wikipedia.org/wiki/Leonardo_number).
+Le principe du smoothsort est de baser le tri non plus sur un seul tas, mais sur plusieurs de différentes tailles. Cette nouvelle structure de données est un **tas de Léonard**, car elle s'appuie sur la [suite de Léonard](https://en.wikipedia.org/wiki/Leonardo_number).
 
-Cette suite se définit comme ceci :
+![Exemple de tas de Léonard (en bleu les racines des sous-arbres)](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tas_leonard.png)
 
-$L(0) = 1$  
-$L(1) = 1$  
-$L(n) = L(n - 1) + L(n - 2) + 1$
-
-Les premiers éléments sont : 1, 1, 3, 5, 9, 15, 25, 41, 67, etc.
-
-On va utiliser cette suite afin de créer plusieurs tas, dont la taille est un nombre de la suite de Léonard. En plus de cette taille spécifique, les tas auront des opérations d'insertions et de suppressions différentes, pour pouvoir facilement trier notre tableau ensuite.
-
-**Insertion** (création des tas) :
-
-L'insertion d'un élément se décompose en deux étapes, premièrement l'ajout et deuxièmement la réorganisation de nos tas.
-
-L'ajout se déroule selon des règles bien spécifiques, que l'on répète pour chaque élément du tableau :
-
-- Si les deux derniers tas sont de taille $L(n + 1)$ et $L(n)$, alors le nouvel élément devient la racine des deux tas, et forme un tas plus grand de taille $L(n + 2)$.
-- Sinon si le dernier tas a une taille différente de $L(1)$, alors le nouvel élément est un tas de taille $L(1)$.
-- Sinon, le nouvel élément est un tas de taille $L(0)$.
-
-Une fois l'ajout de notre élément, on va réorganiser les tas créés :
-
-- On considère notre dernier tas créé comme le tas dit **actuel**.
-- Tant qu'il y a un tas avant le tas actuel, et que la racine de ce tas est supérieure à la racine du tas actuel et à ses deux premiers enfants : échanger les deux racines et l'autre tas devient le tas actuel.
-- Tant que le tas actuel a plus d'un élément et que l'un des deux enfants de la racine de ce tas est supérieur à la racine du tas actuel : échanger le plus grand des deux fils avec la racine, et ce fils devient la racine du nouveau tas actuel.
-
-**Suppression** (réorganisation des éléments dans le tableau désormais trié) :
-
-Une fois nos tas créés, il faut les parcourir afin d'en tirer les éléments du tableau mais trié.
-
-On recommence ces opérations tant qu'il reste un tas :
-
-- Si le dernier tas a une taille de $L(0)$ ou $L(1)$, alors on peut simplement le retirer et le placer dans notre tableau.
-- Sinon, retirer la racine du tas et réorganiser les éléments des deux sous tas si besoin.
-
-Toutes ces explications peuvent paraître assez abstraites, et voici un exemple pour mieux comprendre le fonctionnement du Smoothsort :
+Cet ensemble a des propriétés spécifiques (sur la taille des sous-arbres, l'ordre d'apparition des racines, etc.), rendant les opérations d'insertion et de suppression assez longues à décrire et à expliquer. Il faudrait un article à part entier pour évoquer ce curieux algorithme de tri, et si ce dernier vous intéresse je vous recommande fortement cette page qui traite en profondeur du sujet : [Smoothsort Demystified](http://www.keithschwarz.com/smoothsort/).
 
 ## Conclusion
 
-Le tri par tas est donc un algorithme de tri efficace en $O(N \log _2 N)$ non stable mais en place. En pratique, cet algorithme est moins utilisé que le tri rapide, même si en théorie il a une meilleure complexité dans le pire des cas. Il sert en revanche à l'amélioration du tri rapide, dans sa variante l'[introsort](/algo/tri/tri_rapide.html#introsort) et reste donc un algorithme de tri essentiel à connaître.
+Le tri par tas est donc un algorithme de tri efficace en $O(N \log _2 N)$ non stable mais en place. En pratique, cet algorithme est moins utilisé que le tri rapide, même si en théorie il a une meilleure complexité dans le pire des cas ainsi qu'une amélioration intéressante : le *smoothsort*. Il sert en revanche à l'amélioration du tri rapide, dans sa variante l'[introsort](/algo/tri/tri_rapide.html#introsort) et reste donc un algorithme de tri essentiel à connaître.

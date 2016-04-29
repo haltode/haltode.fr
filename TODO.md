@@ -10,10 +10,6 @@
    - Plus court chemin : démonstration dijkstra + A* (amélioration)
 - Arbre binaire : liens arbre bin de recherche + arbre rouge/noir (dans "Définition")
 
-## Tri
-
-- Tri par tas : smoothsort
-
 ## Chiffrement
 
 - RSA : courbe elliptique, et autres alternatives aux logarithmes discrets

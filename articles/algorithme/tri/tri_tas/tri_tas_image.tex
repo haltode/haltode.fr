@@ -246,4 +246,25 @@
    \node [fill=green!20, font=\sffamily\Large\bfseries, draw, anchor=center, right=0cm of sixth] (seventh) {$9$};
 \end{tikzpicture}
 
+
+% Smoothsort : exemple de tas de leonard
+
+\newpage
+
+\begin{tikzpicture}[->, >=stealth', grow = 250]
+   \node [n, fill=blue!20] (a) {42}
+   child{ node [n] {26}
+      child{ node [n] {12}
+      }
+      child{ node [n] {4} }
+   }
+   child{ node [n] {37} } ; 
+
+   \node [n, fill=blue!20, right=3cm of a] {99}
+   child{ node [n] {66} }
+   child{ node [n] {56} } ; 
+
+   \node [n, fill=blue!20, text width=2em, right=6cm of a] {102};
+\end{tikzpicture}
+
 \end{document}
