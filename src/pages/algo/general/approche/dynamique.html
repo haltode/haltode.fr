@@ -173,7 +173,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="algorithme-dynamique">Algorithme dynamique</h1></a>
 <p>Publi&#233; le : 03/04/2016<br />
-<em>Modifi&#233; le : 27/04/2016</em></p>
+<em>Modifi&#233; le : 29/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -188,7 +188,7 @@ function toggle_visibility(id) {
 <li>D&#233;couper un probl&#232;me compliqu&#233; en sous-probl&#232;me plus simple (de mani&#232;re <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">r&#233;cursive</a>).</li>
 <li>R&#233;soudre les sous-probl&#232;mes et combiner leurs solutions pour r&#233;soudre le probl&#232;me initial.</li>
 </ul>
-<p>Il y a de nombreux domaines dans laquelle cette m&#233;thode excelle (<a href="/algo/recherche/dichotomie.html">dichotomie</a>, <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, etc.), mais l&#224; o&#249; elle atteint ses limites c'est lorsque les sous-probl&#232;mes rencontr&#233;s ne sont pas uniques. Dans ce cas, on en vient &#224; recalculer beaucoup de sous-probl&#232;mes que l'on a d&#233;j&#224; r&#233;solus, ce qui rend notre programme tr&#232;s lent, voir inutilisable.</p>
+<p>Il y a de nombreux domaines dans laquelle cette m&#233;thode excelle (<a href="/algo/recherche/dichotomie.html">dichotomie</a>, <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, etc.), mais l&#224; o&#249; elle atteint ses limites c'est lorsque les sous-probl&#232;mes rencontr&#233;s ne sont pas uniques. Dans ce cas, on en vient &#224; recalculer beaucoup de sous-probl&#232;mes que l'on a d&#233;j&#224; r&#233;solus, ce qui rend notre programme tr&#232;s lent, voire inutilisable.</p>
 <p>La programmation dynamique est un moyen de pallier ce probl&#232;me d'efficacit&#233; du programme, en offrant une solution simple et facile &#224; mettre en place.</p>
 <h2 id="principe">Principe</h2>
 <p>La programmation dynamique (<em>dynamic programming</em> ou encore <em>dynamic optimization</em> en anglais) est une technique d'optimisation d'un algorithme visant &#224; &#233;viter de recalculer des sous-probl&#232;mes en stockant les r&#233;sultats en m&#233;moire. L'id&#233;e est simple, mais le gain sur la complexit&#233; en temps peut &#234;tre consid&#233;rable, et cette technique est tr&#232;s largement utilis&#233;e dans de nombreux algorithmes.</p>
@@ -267,9 +267,9 @@ function toggle_visibility(id) {
 <span class="ot">#define N_MAX 100000</span>
 <span class="ot">#define PAS_CALCULE -1</span>
 
-<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> resultat[N_MAX + <span class="dv">1</span>];
+<span class="dt">long</span> <span class="dt">long</span> resultat[N_MAX + <span class="dv">1</span>];
 
-<span class="dt">unsigned</span> <span class="dt">long</span> <span class="dt">long</span> fibonacci(<span class="dt">int</span> n)
+<span class="dt">long</span> <span class="dt">long</span> fibonacci(<span class="dt">int</span> n)
 {
    <span class="kw">if</span>(n &lt;= <span class="dv">1</span>)
       <span class="kw">return</span> n;
@@ -295,7 +295,7 @@ function toggle_visibility(id) {
    <span class="kw">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 </div>
-<p>On a d&#233;sormais un tableau qui va retenir les r&#233;sultats qu'on a d&#233;j&#224; calcul&#233;s pour &#233;viter de faire des appels r&#233;cursifs suppl&#233;mentaires qui sont finalement inutiles. Ce tableau est initialis&#233; avec la valeur <code>PAS_CALCULE</code> pour diff&#233;rencier le cas o&#249; on a d&#233;j&#224; calcul&#233; le r&#233;sultat et celui o&#249; on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont sup&#233;rieurs ou &#233;gaux &#224; 0), puis dans notre fonction <code>fibonacci</code> on rajoute un test pour voir si on conna&#238;t le r&#233;sultat pour le <code>n</code>&#232;me terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.</p>
+<p>On a d&#233;sormais un tableau qui va retenir les r&#233;sultats qu'on a d&#233;j&#224; calcul&#233;s pour &#233;viter de faire des appels r&#233;cursifs suppl&#233;mentaires qui sont finalement inutiles. Ce tableau est initialis&#233; avec la valeur <code>PAS_CALCULE</code> pour diff&#233;rencier le cas o&#249; on a d&#233;j&#224; calcul&#233; le r&#233;sultat et celui o&#249; on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont sup&#233;rieurs ou &#233;gaux &#224; 0, il faut donc faire attention &#224; utiliser <code>long long</code> et non pas <code>unsigned long long</code> ici), puis dans notre fonction <code>fibonacci</code> on rajoute un test pour voir si on conna&#238;t le r&#233;sultat pour le <code>n</code>&#232;me terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.</p>
 <p>Cette simple am&#233;lioration a un impact &#233;norme sur notre programme :</p>
 <table>
 <thead>
@@ -330,7 +330,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/general/approche/dynamique/appels_fib5_dynamique.png" alt="Appels r&#233;cursifs effectu&#233;s pour calculer le 5&#232;me terme de mani&#232;re dynamique" />
 <p class="caption">Appels r&#233;cursifs effectu&#233;s pour calculer le 5&#232;me terme de mani&#232;re dynamique</p>
 </div>
-<p>On calcule uniquement ce dont on a besoin une fois, et on le r&#233;utilise ensuite (les n&#339;uds bleus repr&#233;sentent les n&#339;uds d&#233;j&#224; calcul&#233;s pour lesquels on connait directement le r&#233;sultat).</p>
+<p>On calcule uniquement ce dont on a besoin une fois, et on le r&#233;utilise ensuite (les n&#339;uds bleus repr&#233;sentent les n&#339;uds d&#233;j&#224; calcul&#233;s pour lesquels on conna&#238;t directement le r&#233;sultat).</p>
 <h2 id="optimisation">Optimisation</h2>
 <p>La programmation dynamique est un excellent exemple de compromis entre <strong>complexit&#233; en temps</strong> et <strong>complexit&#233; en m&#233;moire</strong> d'un algorithme. En effet, on sacrifie de la m&#233;moire pour stocker notre tableau qui retiendra des r&#233;sultats, afin de ne pas recalculer lesdits r&#233;sultats plusieurs fois et ainsi sauver du temps. Il faut donc bien prendre en compte les deux facteurs du temps et de la m&#233;moire car dans certains cas (et en fonction des ressources &#224; disposition), on pr&#233;f&#233;rera privil&#233;gier l'un par rapport &#224; l'autre.</p>
 <p>Cependant, il est parfois possible d'optimiser l'espace m&#233;moire utilis&#233; par notre algorithme dynamique, r&#233;sultant en un algorithme ayant une complexit&#233; en temps et en m&#233;moire extr&#234;mement int&#233;ressante. Pour cela, il va falloir changer notre mani&#232;re de programmer notre algorithme dynamique. L'approche <strong>r&#233;cursive</strong> qu'on avait pr&#233;c&#233;demment utilis&#233;e &#233;tait dite <strong>descendante</strong> dans le sens o&#249; on divise notre gros probl&#232;me en sous-probl&#232;me jusqu'&#224; arriver &#224; un probl&#232;me de base &#224; r&#233;soudre. Une autre mani&#232;re de voir le probl&#232;me est de fa&#231;on <strong>it&#233;rative</strong> en partant d'un probl&#232;me simple pour le complexifier au fur et &#224; mesure qu'on avance, c'est une m&#233;thode dite <strong>ascendante</strong>. Et dans notre cas, cette derni&#232;re peut nous offrir des avantages &#233;normes en m&#233;moire car en rendant notre probl&#232;me de plus en plus compliqu&#233; (jusqu'&#224; arriver au probl&#232;me initial), on peut se d&#233;barrasser des probl&#232;mes tr&#232;s simples et garder uniquement ceux n&#233;cessaire &#224; la construction du plus gros probl&#232;me. Il est impossible de faire &#231;a avec l'approche descendante, car cette m&#233;thode a besoin &#224; tout instant des sous-probl&#232;mes pour d&#233;composer le probl&#232;me initial puis pour le r&#233;soudre.</p>

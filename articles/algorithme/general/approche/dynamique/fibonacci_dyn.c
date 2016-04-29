@@ -3,9 +3,9 @@
 #define N_MAX 100000
 #define PAS_CALCULE -1
 
-unsigned long long resultat[N_MAX + 1];
+long long resultat[N_MAX + 1];
 
-unsigned long long fibonacci(int n)
+long long fibonacci(int n)
 {
    if(n <= 1)
       return n;

@@ -3,7 +3,7 @@ Algorithme dynamique
 algo/general/approche
 
 Publié le : 03/04/2016  
-*Modifié le : 27/04/2016*
+*Modifié le : 29/04/2016*
 
 ## Introduction
 
@@ -12,7 +12,7 @@ Le principe du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_c
 - Découper un problème compliqué en sous-problème plus simple (de manière [récursive](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29)).
 - Résoudre les sous-problèmes et combiner leurs solutions pour résoudre le problème initial.
 
-Il y a de nombreux domaines dans laquelle cette méthode excelle ([dichotomie](/algo/recherche/dichotomie.html), [tri fusion](/algo/tri/tri_fusion.html), [tri rapide](/algo/tri/tri_rapide.html), etc.), mais là où elle atteint ses limites c'est lorsque les sous-problèmes rencontrés ne sont pas uniques. Dans ce cas, on en vient à recalculer beaucoup de sous-problèmes que l'on a déjà résolus, ce qui rend notre programme très lent, voir inutilisable. 
+Il y a de nombreux domaines dans laquelle cette méthode excelle ([dichotomie](/algo/recherche/dichotomie.html), [tri fusion](/algo/tri/tri_fusion.html), [tri rapide](/algo/tri/tri_rapide.html), etc.), mais là où elle atteint ses limites c'est lorsque les sous-problèmes rencontrés ne sont pas uniques. Dans ce cas, on en vient à recalculer beaucoup de sous-problèmes que l'on a déjà résolus, ce qui rend notre programme très lent, voire inutilisable. 
 
 La programmation dynamique est un moyen de pallier ce problème d'efficacité du programme, en offrant une solution simple et facile à mettre en place.
 
@@ -55,7 +55,7 @@ Voici le même programme, mais dynamisé cette fois ci :
 [INSERT]
 fibonacci_dyn.c
 
-On a désormais un tableau qui va retenir les résultats qu'on a déjà calculés pour éviter de faire des appels récursifs supplémentaires qui sont finalement inutiles. Ce tableau est initialisé avec la valeur `PAS_CALCULE` pour différencier le cas où on a déjà calculé le résultat et celui où on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont supérieurs ou égaux à 0), puis dans notre fonction `fibonacci` on rajoute un test pour voir si on connaît le résultat pour le `n`ème terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.
+On a désormais un tableau qui va retenir les résultats qu'on a déjà calculés pour éviter de faire des appels récursifs supplémentaires qui sont finalement inutiles. Ce tableau est initialisé avec la valeur `PAS_CALCULE` pour différencier le cas où on a déjà calculé le résultat et celui où on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont supérieurs ou égaux à 0, il faut donc faire attention à utiliser `long long` et non pas `unsigned long long` ici), puis dans notre fonction `fibonacci` on rajoute un test pour voir si on connaît le résultat pour le `n`ème terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.
 
 Cette simple amélioration a un impact énorme sur notre programme :
 
@@ -74,7 +74,7 @@ Pour bien comparer, voici l'exemple du calcul du 5ème terme, mais version dynam
 
 ![Appels récursifs effectués pour calculer le 5ème terme de manière dynamique](//static.napnac.ga/img/algo/general/approche/dynamique/appels_fib5_dynamique.png)
 
-On calcule uniquement ce dont on a besoin une fois, et on le réutilise ensuite (les nœuds bleus représentent les nœuds déjà calculés pour lesquels on connait directement le résultat).
+On calcule uniquement ce dont on a besoin une fois, et on le réutilise ensuite (les nœuds bleus représentent les nœuds déjà calculés pour lesquels on connaît directement le résultat).
 
 ## Optimisation
 
