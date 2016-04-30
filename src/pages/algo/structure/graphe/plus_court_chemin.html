@@ -173,7 +173,7 @@ function toggle_visibility(id) {
 
 <a href=""><h1 id="plus-court-chemin">Plus court chemin</h1></a>
 <p>Publi&#233; le : 26/03/2016<br />
-<em>Modifi&#233; le : 26/03/2016</em></p>
+<em>Modifi&#233; le : 30/04/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#dijkstra">Dijkstra</a></li>
@@ -404,6 +404,10 @@ vector &lt;Noeud&gt; voisin[NB_NOEUD_MAX];
 <h3 id="a">A* ?</h3>
 <h2 id="bellman-ford">Bellman-Ford</h2>
 <h3 id="principe-1">Principe</h3>
+<p>L'approche gloutonne du pr&#233;c&#233;dent algorithme est excellente car elle permet d'aborder le probl&#232;me de mani&#232;re intelligente, ce qui lui donne une complexit&#233; tr&#232;s int&#233;ressante, tout en &#233;tant optimale. Cependant, elle ne s'applique pas &#224; toutes les configurations de graphe, et il nous faut donc un nouvel algorithme.</p>
+<p>Reprenons depuis le d&#233;but. On a un graphe pond&#233;r&#233; (positivement ou n&#233;gativement), et on cherche le plus court chemin entre deux n&#339;uds distincts. Une approche <strong>na&#239;ve</strong> serait d'explorer chaque chemin et de choisir celui qui obtient une pond&#233;ration totale minimale. Le probl&#232;me ici est &#233;vident la complexit&#233; en temps qui rendra notre programme tr&#232;s lent. Dans ce genre de situation, il est fondamental de se poser cette question : qu'est-ce qui rend notre algorithme peu efficace ? Lorsqu'on explore tous les chemins, le probl&#232;me est qu'on repasse tr&#232;s souvent sur d'anciens n&#339;uds et arcs, ce qui fait qu'on parcourt notre graphe plusieurs fois. Maintenant qu'on conna&#238;t la raison de la lenteur, il faut chercher &#224; am&#233;liorer ce point, et c'est exactement ce que r&#233;alise l'algorithme de Bellman-Ford qui se base lui aussi sur une approche int&#233;ressante : la <a href="/algo/general/approche/dynamique.html"><strong>programmation dynamique</strong></a>. L'id&#233;e est justement de ne pas repasser plusieurs fois sur des parties du graphe, mais au contraire d'utiliser un algorithme dynamique afin d'&#233;viter de re-calculer des op&#233;rations inutiles en stockant intelligemment les r&#233;sultats en m&#233;moire.</p>
+<p><em>Il est int&#233;ressant de noter que <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a>, l'un des inventeurs de cet algorithme, est le p&#232;re fondateur de la programmation dynamique.</em></p>
+<p>L'algorithme de Bellman-Ford utilise donc un tableau principal de <span class="math inline">\(N\)</span> cases (<span class="math inline">\(N\)</span> &#233;tant le nombre de n&#339;uds du graphe), contenant la plus petite distance actuellement trouv&#233;e entre le n&#339;ud correspondant &#224; la case et le n&#339;ud d'arriv&#233;e.</p>
 <h3 id="exemple-1">Exemple</h3>
 <h3 id="pseudo-code-1">Pseudo-code</h3>
 <h3 id="complexit&#233;-1">Complexit&#233;</h3>

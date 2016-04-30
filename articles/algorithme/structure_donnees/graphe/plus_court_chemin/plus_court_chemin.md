@@ -3,7 +3,7 @@ Plus court chemin
 algo/structure/graphe
 
 Publié le : 26/03/2016  
-*Modifié le : 26/03/2016*
+*Modifié le : 30/04/2016*
 
 ## Introduction
 
@@ -138,6 +138,14 @@ A gauche un graphe avec des pondérations négatives, et à droite l'équivalent
 ## Bellman-Ford
 
 ### Principe
+
+L'approche gloutonne du précédent algorithme est excellente car elle permet d'aborder le problème de manière intelligente, ce qui lui donne une complexité très intéressante, tout en étant optimale. Cependant, elle ne s'applique pas à toutes les configurations de graphe, et il nous faut donc un nouvel algorithme.
+
+Reprenons depuis le début. On a un graphe pondéré (positivement ou négativement), et on cherche le plus court chemin entre deux nœuds distincts. Une approche **naïve** serait d'explorer chaque chemin et de choisir celui qui obtient une pondération totale minimale. Le problème ici est évident la complexité en temps qui rendra notre programme très lent. Dans ce genre de situation, il est fondamental de se poser cette question : qu'est-ce qui rend notre algorithme peu efficace ? Lorsqu'on explore tous les chemins, le problème est qu'on repasse très souvent sur d'anciens nœuds et arcs, ce qui fait qu'on parcourt notre graphe plusieurs fois. Maintenant qu'on connaît la raison de la lenteur, il faut chercher à améliorer ce point, et c'est exactement ce que réalise l'algorithme de Bellman-Ford qui se base lui aussi sur une approche intéressante : la [**programmation dynamique**](/algo/general/approche/dynamique.html). L'idée est justement de ne pas repasser plusieurs fois sur des parties du graphe, mais au contraire d'utiliser un algorithme dynamique afin d'éviter de re-calculer des opérations inutiles en stockant intelligemment les résultats en mémoire.
+
+*Il est intéressant de noter que [Richard Bellman](https://en.wikipedia.org/wiki/Richard_E._Bellman), l'un des inventeurs de cet algorithme, est le père fondateur de la programmation dynamique.*
+
+L'algorithme de Bellman-Ford utilise donc un tableau principal de $N$ cases ($N$ étant le nombre de nœuds du graphe), contenant la plus petite distance actuellement trouvée entre le nœud correspondant à la case et le nœud d'arrivée.
 
 ### Exemple
 
