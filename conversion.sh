@@ -126,8 +126,10 @@ function convert {
    rm copy.md
 }
 
+# The hard way : convert everything
+#find articles -name '*.md' | \
 
-# Check every articles that we modified since last commit
+# The quick way : check every articles that we modified since last commit
 git diff --name-only | grep '^articles' | grep '.md$' | \
 while read file
 do
