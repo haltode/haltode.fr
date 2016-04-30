@@ -19,7 +19,6 @@
 - Graphe : plus court chemin
 - Arbre : Arbre de recherche + Trie
 - Structure de données : Table de hachage
-- Tri en O(N) : tri par paquets
 - Recherche : union-find
 - IA : algo min-max
 - Approches : récursion, algo glouton, diviser pour régner
