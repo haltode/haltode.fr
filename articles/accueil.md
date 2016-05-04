@@ -18,7 +18,7 @@ J'écris des articles à propos d'algorithme, en évoquant différents thèmes c
 
 Dans chaque article, je vous décris le fonctionnement d'un algorithme avec des explications, des exemples et des schémas. Un pseudo-code, puis une implémentation (en C la plupart du temps) viennent ensuite pour vous montrer quelque chose de concret. Enfin, je discute des possibilités d'améliorations ou des variantes de l'algorithme, ainsi que de ses potentielles applications dans la vie de tous les jours.
 
-Vous pouvez également retrouver des articles sur mes différents [projets](/projets.html) dans le monde de l'informatique, sans forcément de rapport avec les algorithmes, ou encore des [récapitulatifs](/recap.html) de ce que j'ai réalisé chaque mois.
+Vous pouvez également retrouver des articles sur mes différents [projets](/projets.html) dans le monde de l'informatique, sans forcément de rapport avec les algorithmes.
 
 ## A qui s'adresse ce site ?
 
