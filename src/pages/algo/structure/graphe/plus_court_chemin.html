@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="plus-court-chemin">Plus court chemin</h1></a>
-<p>Publi&#233; le : 26/03/2016<br />
-<em>Modifi&#233; le : 30/04/2016</em></p>
+<p>Publi&#233; le : 20/05/2016<br />
+<em>Modifi&#233; le : 20/05/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#dijkstra">Dijkstra</a></li>
@@ -405,11 +405,81 @@ vector &lt;Noeud&gt; voisin[NB_NOEUD_MAX];
 <h2 id="bellman-ford">Bellman-Ford</h2>
 <h3 id="principe-1">Principe</h3>
 <p>L'approche gloutonne du pr&#233;c&#233;dent algorithme est excellente car elle permet d'aborder le probl&#232;me de mani&#232;re intelligente, ce qui lui donne une complexit&#233; tr&#232;s int&#233;ressante, tout en &#233;tant optimale. Cependant, elle ne s'applique pas &#224; toutes les configurations de graphe, et il nous faut donc un nouvel algorithme.</p>
-<p>Reprenons depuis le d&#233;but. On a un graphe pond&#233;r&#233; (positivement ou n&#233;gativement), et on cherche le plus court chemin entre deux n&#339;uds distincts. Une approche <strong>na&#239;ve</strong> serait d'explorer chaque chemin et de choisir celui qui obtient une pond&#233;ration totale minimale. Le probl&#232;me ici est &#233;vident la complexit&#233; en temps qui rendra notre programme tr&#232;s lent. Dans ce genre de situation, il est fondamental de se poser cette question : qu'est-ce qui rend notre algorithme peu efficace ? Lorsqu'on explore tous les chemins, le probl&#232;me est qu'on repasse tr&#232;s souvent sur d'anciens n&#339;uds et arcs, ce qui fait qu'on parcourt notre graphe plusieurs fois. Maintenant qu'on conna&#238;t la raison de la lenteur, il faut chercher &#224; am&#233;liorer ce point, et c'est exactement ce que r&#233;alise l'algorithme de Bellman-Ford qui se base lui aussi sur une approche int&#233;ressante : la <a href="/algo/general/approche/dynamique.html"><strong>programmation dynamique</strong></a>. L'id&#233;e est justement de ne pas repasser plusieurs fois sur des parties du graphe, mais au contraire d'utiliser un algorithme dynamique afin d'&#233;viter de re-calculer des op&#233;rations inutiles en stockant intelligemment les r&#233;sultats en m&#233;moire.</p>
+<p>Reprenons depuis le d&#233;but. On a un graphe pond&#233;r&#233; (positivement ou n&#233;gativement), et on cherche le plus court chemin entre deux n&#339;uds distincts. Une approche <strong>na&#239;ve</strong> serait d'explorer chaque chemin et de choisir celui qui obtient une pond&#233;ration totale minimale. Le probl&#232;me ici est &#233;videmment la complexit&#233; en temps qui rendra notre programme tr&#232;s lent. Dans ce genre de situation, il est fondamental de se poser cette question : qu'est-ce qui rend notre algorithme peu efficace ? Lorsqu'on explore tous les chemins, le probl&#232;me est qu'on repasse tr&#232;s souvent sur d'anciens n&#339;uds et arcs, ce qui nous fait parcourir notre graphe plusieurs fois.</p>
+<p>Maintenant qu'on conna&#238;t la raison de la lenteur, il faut chercher &#224; am&#233;liorer ce point, et c'est exactement ce que r&#233;alise l'algorithme de Bellman-Ford qui se base sur une approche diff&#233;rente du probl&#232;me : la <a href="/algo/general/approche/dynamique.html"><strong>programmation dynamique</strong></a>. L'id&#233;e est justement de ne pas repasser plusieurs fois sur des parties du graphe, mais au contraire d'utiliser un algorithme dynamique afin d'&#233;viter de re-calculer des op&#233;rations inutiles en stockant intelligemment les r&#233;sultats en m&#233;moire.</p>
 <p><em>Il est int&#233;ressant de noter que <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a>, l'un des inventeurs de cet algorithme, est le p&#232;re fondateur de la programmation dynamique.</em></p>
-<p>L'algorithme de Bellman-Ford utilise donc un tableau principal de <span class="math inline">\(N\)</span> cases (<span class="math inline">\(N\)</span> &#233;tant le nombre de n&#339;uds du graphe), contenant la plus petite distance actuellement trouv&#233;e entre le n&#339;ud correspondant &#224; la case et le n&#339;ud d'arriv&#233;e.</p>
 <h3 id="exemple-1">Exemple</h3>
+<p>Un exemple de l'algorithme de Bellman-Ford serait assez peu int&#233;ressant car il n'adopte pas de strat&#233;gie particuli&#232;re au niveau du parcours du graphe (contrairement &#224; l'algorithme de Dijkstra), mais se contente de tester chaque possibilit&#233; de chemin avec une <strong>impl&#233;mentation dynamique</strong> le rendant plus rapide qu'une impl&#233;mentation na&#239;ve.</p>
 <h3 id="pseudo-code-1">Pseudo-code</h3>
+<p>Pour utiliser un algorithme dynamique correctement, il est essentiel de r&#233;diger la version r&#233;cursive d'abord afin de bien comprendre ce que cherche &#224; r&#233;aliser ce dernier.</p>
+<p>Le probl&#232;me du plus court chemin sur un graphe pond&#233;r&#233; positivement et n&#233;gativement introduit cependant un nouveau souci : les <strong>cycles am&#233;liorants</strong>. En effet, vu qu'une pond&#233;ration peut d&#233;sormais &#234;tre n&#233;gative, il est possible de tomber dans une boucle infinie (qu'on appelle plus pr&#233;cis&#233;ment cycle am&#233;liorant) qui va sans cesse diminuer la distance parcourue. Ceci pose un s&#233;rieux probl&#232;me car puisqu'on peut am&#233;liorer la distance &#224; chaque fois qu'on passe dans ce cycle, il existera toujours un meilleur chemin &#224; emprunter, et on ne peut donc pas trouver de solution &#224; cause de cette boucle infinie.</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_cycle_ameliorant.png" alt="Exemple de cycle am&#233;liorant" />
+<p class="caption">Exemple de cycle am&#233;liorant</p>
+</div>
+<p>Sur cet exemple de graphe, on remarque que le chemin surlign&#233; en rouge est un cycle am&#233;liorant, car la distance du chemin va baisser &#224; chaque fois qu'on le parcourt ce qui fait qu'il existe toujours un chemin plus efficace, et cela entra&#238;ne une boucle infinie dans notre algorithme.</p>
+<p>Pour contrer cela, on va imposer une limite de recherche &#224; notre r&#233;cursion qui ne pourra pas d&#233;passer l'exploration de <span class="math inline">\(K\)</span> n&#339;uds (vu qu'un plus court chemin ne passe pas deux fois par un m&#234;me n&#339;ud, car sinon il contient un cycle am&#233;liorant). On peut d&#233;sormais reformuler plus notre probl&#232;me de plus court chemin entre un n&#339;ud A et B, en un probl&#232;me cherchant &#224; minimiser la distance entre A et B en r&#233;alisant <span class="math inline">\(K\)</span> &#233;tapes. La reformulation est importante puisqu'elle limite la recherche afin de ne pas tomber dans une boucle infinie.</p>
+<p>Voici un premier pseudo-code simplifi&#233; de la r&#233;cursion (on suppose que le graphe en entr&#233;e soit orient&#233; et ne poss&#232;de pas de cycles am&#233;liorantes pour &#233;tablier une premi&#232;re id&#233;e de l'algorithme g&#233;n&#233;ral).</p>
+<pre class="nohighlight"><code>Bellman-Ford (n&#339;ud, nbEtape) :
+
+   Si nbEtape = 0
+      Si c&#39;est le n&#339;ud d&#39;arriv&#233;e
+         Retourner 0
+      Sinon
+         Retourner -INFINI
+
+   cheminMin = Bellman-Ford(n&#339;ud, nbEtape - 1)
+   Pour chaque voisin du n&#339;ud
+      cheminVoisin = pond&#233;rationArc + Bellman-Ford(voisin, nbEtape - 1)
+      cheminMin = min(cheminMin, cheminVoisin)
+
+   Retourner cheminMin</code></pre>
+<p>Ce pseudo-code traduit une simple r&#233;cursion permettant d'explorer tous les chemins en moins de <code>nbEtape</code> jusqu'&#224; l'arriv&#233;e, tout en s&#233;lectionnant le plus court d'entre eux.</p>
+<p>Maintenant, on passe &#224; l'&#233;tape de dynamisation de cet algorithme puisque ce dernier est terriblement lent et poss&#232;de une complexit&#233; en temps exponentielle car il ne fait que r&#233;p&#233;ter des appels r&#233;cursifs inutilement. Les deux param&#232;tres de notre fonction ne d&#233;passent jamais <span class="math inline">\(N\)</span> (avec <span class="math inline">\(N\)</span> le nombre de n&#339;uds du graphe), on peut alors cr&#233;er un tableau en 2D stockant le plus court chemin pour tous les param&#232;tres possibles de notre fonction.</p>
+<pre class="nohighlight"><code>plusCourtChemin[NB_NOEUD_MAX][NB_NOEUD_MAX] (initialis&#233; &#224; -1)
+
+Bellman-Ford (n&#339;ud, nbEtape) :
+
+   Si nbEtape = 0
+      Si c&#39;est le n&#339;ud d&#39;arriv&#233;e
+         Retourner 0
+      Sinon
+         Retourner -INFINI
+   Si plusCourtChemin[n&#339;ud][nbEtape] != -1
+      Retourner plusCourtChemin[n&#339;ud][nbEtape]
+
+   cheminMin = Bellman-Ford(n&#339;ud, nbEtape - 1)
+   Pour chaque voisin du n&#339;ud
+      cheminVoisin = pond&#233;rationArc + Bellman-Ford(voisin, nbEtape - 1)
+      cheminMin = min(cheminMin, cheminVoisin)
+
+   plusCourtChemin[n&#339;ud][nbEtape] = cheminMin
+   Retourner cheminMin</code></pre>
+<p>On a ajout&#233; trois points fondamentaux qu'on retrouve dans un processus de dynamisation d'un algorithme :</p>
+<ul>
+<li>L'<strong>initialisation</strong> du tableau <code>plusCourtChemin</code> &#224; -1 pour marquer toutes les valeurs comme non calcul&#233;es.</li>
+<li>Une <strong>condition</strong> au d&#233;but de notre r&#233;cursion afin de v&#233;rifier si la valeur n'a pas d&#233;j&#224; &#233;t&#233; calcul&#233;.</li>
+<li>Une <strong>mise &#224; jour</strong> du tableau apr&#232;s avoir trouv&#233; une nouvelle valeur.</li>
+</ul>
+<p>Une fois qu'on a r&#233;ussi &#224; obtenir une complexit&#233; de temps non exponentielle (puisque d&#233;sormais on ne reparcourt pas inutilement des parties du graphe), il est toujours int&#233;ressant de tenter de r&#233;duire notre complexit&#233; en m&#233;moire si possible. Actuellement, cette derni&#232;re est de <span class="math inline">\(N^2\)</span>, ce qui est tout &#224; fait correcte, mais qui peut cependant &#234;tre am&#233;lior&#233;.</p>
+<p>Le passage &#224; la version it&#233;rative de l'algorithme dynamique est essentiel &#224; cette r&#233;duction de l'espace m&#233;moire utilis&#233;, et c'est ce qu'on va r&#233;aliser dans un premier temps :</p>
+<pre class="nohighlight"><code>plusCourtChemin[NB_NOEUD_MAX][NB_NOEUD_MAX] (initialis&#233; &#224; -1)
+
+Bellman-Ford () :
+
+   Pour chaque n&#339;ud (1&#232;re dimension du tableau)
+      Pour chaque &#233;tape (2&#232;me dimension du tableau)
+         cheminMin = plusCourtChemin[n&#339;ud][&#233;tape - 1]
+         Pour chaque voisin du n&#339;ud
+            cheminVoisin = pond&#233;rationArc + plusCourtChemin[voisin][&#233;tape - 1]
+            cheminMin = min(cheminMin, cheminVoisin)
+         plusCourtChemin[voisin][&#233;tape] = cheminMin
+
+   Retourner plusCourtChemin[d&#233;part][arriv&#233;e]
+</code></pre>
+<p>On remarque alors que chaque ligne de notre tableau d&#233;pend uniquement de la ligne pr&#233;c&#233;dente, ce qui nous permet de r&#233;aliser une &#233;norme &#233;conomie de m&#233;moire en r&#233;duisant notre tableau d'une dimension enti&#232;re :</p>
+<pre class="nohighlight"><code></code></pre>
+<p>TODO : + d'explications sur le passage &#224; l'it&#233;ratif + sch&#233;ma opti m&#233;moire</p>
 <h3 id="complexit&#233;-1">Complexit&#233;</h3>
 <h3 id="impl&#233;mentation-1">Impl&#233;mentation</h3>
 <h2 id="floyd-warshall">Floyd-Warshall ?</h2>
