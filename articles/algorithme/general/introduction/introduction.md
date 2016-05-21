@@ -21,7 +21,7 @@ On peut voir un algorithme comme une recette de cuisine :
 
 ## Domaine d'application
 
-Cette définition est assez large car un algorithme peut s'appliquer partout, par exemple lorsque vous donnez le chemin à un passant vous indiquez dans un ordre précis les directions à prendre et vous lui communiquez donc des instructions à suivre. Lorsque vous programmez, vous donnez des ordres à l'ordinateur à l'aide de commandes et d'instructions qu'il comprend, et ces dernières doivent être dans le bon ordre pour avoir la sortie voulue. Il existe des milliers d'exemples possibles, et sans même le savoir vous utilisez des algorithmes tous les jours. La plupart des objets autour de vous ont été construit grâce à des algorithmes, une grande partie a été fabriqué depuis une usine qui reçoit en entrée des composants et constitue en différentes étapes bien définies un produit final.
+Cette définition est assez large car un algorithme peut s'appliquer partout, par exemple lorsque vous donnez le chemin à un passant vous indiquez dans un ordre précis les directions à prendre et vous lui communiquez donc des instructions à suivre. Lorsque vous programmez, vous donnez des ordres à l'ordinateur à l'aide de commandes et d'instructions qu'il comprend, et ces dernières doivent être dans le bon ordre pour avoir la sortie voulue. Il existe des milliers d'exemples possibles, et sans même le savoir vous utilisez des algorithmes tous les jours. La plupart des objets autour de vous ont été construits grâce à des algorithmes, une grande partie a été fabriquée depuis une usine qui reçoit en entrée des composants et constitue en différentes étapes bien définies un produit final.
 
 De manière générale, on peut dire qu'un algorithme est un outil qui résout un problème donné, et ce problème peut être de tout type :
 
@@ -39,7 +39,7 @@ Tous ces problèmes nécessitent des algorithmes plus ou moins complexes pour fo
 
 ## Utilité pour un programmeur
 
-Un programmeur est une personne qui résout des problèmes à l'aide de programmes informatiques. Cependant différentes manières existent pour résoudre un problème, et on cherche souvent celle qui prendra le moins de place en mémoire, ou qui sera la plus rapide en temps. Il est donc nécessaire pour un programmeur d'avoir un minimum de notions en algorithmie afin de produire un code de qualité (en terme d'efficacité). Les algorithmes sont des outils comme un autre et il est fondamental de savoir les utiliser correctement lorsque vous programmez.
+Un programmeur est une personne qui résout des problèmes à l'aide de programmes informatiques. Cependant différentes manières existent pour résoudre un problème, et on cherche souvent celle qui prendra le moins de place en mémoire, ou qui sera la plus rapide en temps. Il est donc nécessaire pour un programmeur d'avoir un minimum de notions en algorithmie afin de produire un code de qualité (en termes d'efficacité). Les algorithmes sont des outils comme un autre et il est fondamental de savoir les utiliser correctement lorsque vous programmez.
 
 ## Conclusion
 

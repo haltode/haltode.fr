@@ -201,11 +201,11 @@ function toggle_visibility(id) {
 <p>On peut tout &#224; fait reprendre le m&#234;me pseudo-code que le chiffre de Vigen&#232;re pour la partie chiffrement/d&#233;chiffrement, en revanche, il nous faut une nouvelle fonction permettant de g&#233;n&#233;rer notre cl&#233; :</p>
 <pre class="nohighlight"><code>creerCle :
 
-   Tant que la cl&#233; g&#233;n&#233;r&#233;e a d&#233;j&#224; &#233;t&#233; utilis&#233;
+   Tant que la cl&#233; g&#233;n&#233;r&#233;e a d&#233;j&#224; &#233;t&#233; utilis&#233;e
 
       Pour chaque lettre du message 
          Generer une lettre al&#233;atoire pour notre cl&#233;</code></pre>
-<p>Pour savoir si on a d&#233;j&#224; utilis&#233; une cl&#233;, plusieurs solutions s'offrent &#224; nous. On peut tout d'abord utiliser un simple tableau qui stockera toutes les cl&#233;s utilis&#233;es, et &#224; chaque fois que l'on en g&#233;n&#232;re une nouvelle, on v&#233;rifie qu'elle n'est pas dans notre tableau avant de l'ajouter. Il est aussi possible d'am&#233;liorer cette solution en utilisant une <a href="/algo/recherche/dichotomie.html">recherche dichotomique</a>, nous permettant dans notre tableau (tri&#233; par ordre alphab&#233;tique) de chercher rapidement si une cl&#233; a d&#233;j&#224; &#233;t&#233; g&#233;n&#233;r&#233; ou non.</p>
+<p>Pour savoir si on a d&#233;j&#224; utilis&#233; une cl&#233;, plusieurs solutions s'offrent &#224; nous. On peut tout d'abord utiliser un simple tableau qui stockera toutes les cl&#233;s utilis&#233;es, et &#224; chaque fois que l'on en g&#233;n&#232;re une nouvelle, on v&#233;rifie qu'elle n'est pas dans notre tableau avant de l'ajouter. Il est aussi possible d'am&#233;liorer cette solution en utilisant une <a href="/algo/recherche/dichotomie.html">recherche dichotomique</a>, nous permettant dans notre tableau (tri&#233; par ordre alphab&#233;tique) de chercher rapidement si une cl&#233; a d&#233;j&#224; &#233;t&#233; g&#233;n&#233;r&#233;e ou non.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L'impl&#233;mentation en C d'un programme g&#233;n&#233;rant une cl&#233; de chiffrement pour le chiffre de Vernam :</p>
 <a href="javascript:toggle_visibility('generer_cle.c');">generer_cle.c</a>
@@ -298,7 +298,7 @@ bool estDejaUtilisee(<span class="dt">void</span>)
 <pre class="nohighlight"><code>Algorithme</code></pre>
 <p>La sortie que j'ai obtenue (elle change &#224; chaque fois) :</p>
 <pre class="nohighlight"><code>shrtvsgviw</code></pre>
-<p>Le fichier de cl&#233; qui ont d&#233;j&#224; &#233;t&#233; g&#233;n&#233;r&#233; (et donc inutilisable maintenant) :</p>
+<p>Le fichier de cl&#233;s qui ont d&#233;j&#224; &#233;t&#233; g&#233;n&#233;r&#233;es (et donc inutilisable maintenant) :</p>
 <pre class="nohighlight"><code>dovcexdoba
 ckdexeiezr
 zmagzxogpx

@@ -13,7 +13,7 @@ Face à ces problèmes de temps, et de mémoire, on a besoin d'une nouvelle stru
 
 ## Principe de la liste chaînée
 
-Une liste chaînée (*linked list* en anglais) est une structure de données auto référentielle, c'est-à-dire que chacun de ses éléments pointent vers l'élément suivant que l'on appelle des **nœuds** (*node*). A partir de cette définition on peut déjà établir le contenu d'un élément d'une liste chaînée :
+Une liste chaînée (*linked list* en anglais) est une structure de données auto référentielle, c'est-à-dire que chacun de ses éléments pointe vers l'élément suivant que l'on appelle des **nœuds** (*node*). A partir de cette définition on peut déjà établir le contenu d'un élément d'une liste chaînée :
 
 - **Des données** : ces données peuvent être de n'importe quels types (entier, flottant, chaîne de caractère, etc.), et il peut en y avoir autant que possible par élément.
 - **Un pointeur** : ce pointeur pointe vers l'élément suivant de la liste, et permet de lier les nœuds entre eux.

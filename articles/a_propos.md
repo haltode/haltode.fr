@@ -26,4 +26,4 @@ Voici une liste des outils les plus importants que j'utilise quotidiennement sur
 - **Editeur** : [Vim](http://www.vim.org/)
 - **Logiciel de gestion de versions** : [Git](https://git-scm.com/)
 
-Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste de mes outils plus détaillée sur mon Github : <https://github.com/napnac/Dotfiles>
+Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste détaillée de mes outils sur mon Github : <https://github.com/napnac/Dotfiles>

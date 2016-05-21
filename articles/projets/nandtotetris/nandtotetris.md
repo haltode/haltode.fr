@@ -54,7 +54,7 @@ Enfin on crée le mini-OS qui est plutôt une librairie qui fournit des fonction
 - **Screen** : Permet d’afficher des lignes, des rectangles, des cercles, etc. sur l’écran.
 - **Keyboard** : Permet de lire sur l’entrée de l’ordinateur (le clavier) des nombres, des caractères, des chaînes, etc.
 - **Memory** : Permet d’allouer et de dé-allouer des objets et définit quelques appels systèmes sur la mémoire.
-- **Sys** : Fournit quelques appels systèmes sur l’ordinateur comme une fonction arrêtant le programme en cours, une fonction en cas d’erreur, une fonction qui attends un certains nombres de millisecondes.
+- **Sys** : Fournit quelques appels systèmes sur l’ordinateur comme une fonction arrêtant le programme en cours, une fonction en cas d’erreur, une fonction qui attend un certains nombres de millisecondes.
 
 
 ### Le langage Jack
@@ -89,8 +89,8 @@ D'autres liens utiles à propos du projet :
 
 ## Conclusion
 
-Très bon projet selon moi, j'ai pu en apprendre plus sur les ordinateurs et leurs fonctionnement mais aussi sur la création d'un compilateur. J’aimerai finir sur quelques petites *astuces*, que j’aurai bien aimé connaître quand j’ai commencé ce projet. Il faut savoir que j'ai tiré ces astuces du projet, mais ces dernières sont applicables dans de nombreux autres domaines :
+Très bon projet selon moi, j'ai pu en apprendre plus sur les ordinateurs et leurs fonctionnements mais aussi sur la création d'un compilateur. J’aimerai finir sur quelques petites *astuces*, que j’aurai bien aimé connaître quand j’ai commencé ce projet. Il faut savoir que j'ai tiré ces astuces du projet, mais ces dernières sont applicables dans de nombreux autres domaines :
 
 - Si vous ne comprenez pas un point dans un chapitre, **ne sautez surtout pas ce point**. C’est sans doute la pire erreur que j’ai pu faire, si vous ne comprenez pas quelque chose, relisez le passage l’expliquant, faites des tests de votre côté, cherchez sur internet, etc. jusqu’à avoir compris car sinon vous ne pourrez pas implémenter la partie concernée et vous perdrez bien plus de temps que si vous aviez cherché à comprendre dès le départ.
-- **Prenez votre temps**, j’ai du lire au moins 2-3 fois chaque chapitre pour être sûr d’avoir bien tout compris.
+- **Prenez votre temps**, j’ai dû lire au moins 2-3 fois chaque chapitre pour être sûr d’avoir bien tout compris.
 - **N’abandonnez pas**, cela aura été assez difficile pour moi de finir ce projet, mais je n’ai pas abandonné et j’ai finalement réussi, vous bloquerez sûrement quelque part à un moment mais réfléchissez et vous trouverez à votre manière la solution. Pour la petite anecdote, j’ai passé presque deux semaines sur le *VM Translator* à cause d’un problème que je n’arrivais pas à fixer.

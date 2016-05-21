@@ -113,7 +113,7 @@ Notre boucle principale n'utilise plus la condition de convergence de notre algo
 
 ## Coefficient d'apprentissage
 
-Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement (en anglais on utilise le terme de *overshoot*), et ceci peut l'amener à faire de mauvais choix comme par exemple :
+Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement (en anglais on utilise le terme d'*overshoot*), et ceci peut l'amener à faire de mauvais choix comme :
 
 ![Exemple de conséquence d'un coefficient d'apprentissage élevé](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_eleve.png)
 
@@ -210,7 +210,7 @@ Il faut en revanche faire attention à ne pas appliquer cela sur $x_0$ car cette
 self.x = (self.x - np.mean(self.x)) / np.std(self.x)
 ```
 
-Notre sortie n'est alors plus la même puisque nos valeurs ont été changé pour être sur une échelle similaire :
+Notre sortie n'est alors plus la même puisque nos valeurs ont été changées pour être sur une échelle similaire :
 
 [INSERT]
 test01_fs.out

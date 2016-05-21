@@ -43,7 +43,7 @@ Un arbre possède énormément de variantes, qui elles même possèdent des sous
 
 ## Conclusion
 
-L'arbre est donc une structure données élémentaire (que l'on peut considérer comme un graphe avec des propriétés spécifiques), s'appliquant dans plusieurs domaines et permettant d'implémenter une hiérarchie :
+L'arbre est donc une structure de données élémentaire (que l'on peut considérer comme un graphe avec des propriétés spécifiques), s'appliquant dans plusieurs domaines et permettant d'implémenter une hiérarchie :
 
 - Votre système de fichier doit sans doute utiliser un arbre pour représenter les dossiers, les sous dossiers et les fichiers de votre disque dur. Sous [Linux](https://en.wikipedia.org/wiki/Linux) par exemple, la racine de votre ordinateur est `/`, et vous pouvez accéder à vos fichiers en indiquant la liste de dossiers à suivre en partant de la racine `/home/utilisateur/Documents/.../fichier`.
 - Pour rechercher des éléments, un arbre peut être une structure très intéressante, permettant une recherche en $O(\log _2 N)$, il est d'ailleurs la base d'algorithmes de tris (comme le [tri par tas](/algo/tri/tri_tas.html)).

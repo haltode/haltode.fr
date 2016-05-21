@@ -51,7 +51,7 @@ Pour la suppression d'un nœud, il y a trois cas possibles :
 
 - Soit le nœud à supprimer est une feuille, dans ce cas rien de plus simple et on le supprime sans se soucier du reste.
 - Soit le nœud possède un fils, on remplace alors ce nœud par son unique fils.
-- Soit le nœud a deux fils, et il faut décider quel nœud va remplacer le père, c'est assez ambigüe car on ne peut pas réellement choisir dans un arbre binaire normal puisque les deux fils peuvent tous les deux remplacer le nœud parent, il faut donc choisir à l'avance selon ses propres critères. Heureusement, ce n'est pas toujours le cas et lorsque notre arbre binaire a des propriétés (ce qui arrivera souvent), on peut alors décider quel nœud choisir afin de remplacer le père, en fonction desdites propriétés.
+- Soit le nœud a deux fils, et il faut décider quel nœud va remplacer le père, c'est assez ambigu car on ne peut pas réellement choisir dans un arbre binaire normal puisque les deux fils peuvent tous les deux remplacer le nœud parent, il faut donc choisir à l'avance selon ses propres critères. Heureusement, ce n'est pas toujours le cas et lorsque notre arbre binaire a des propriétés (ce qui arrivera souvent), on peut alors décider quel nœud choisir afin de remplacer le père, en fonction desdites propriétés.
 
 ![Différents cas de suppression de nœuds dans un arbre binaire](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_suppression_noeud.png)
 

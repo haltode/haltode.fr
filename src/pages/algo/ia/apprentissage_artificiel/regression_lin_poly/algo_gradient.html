@@ -262,7 +262,7 @@ Tant qu&#39;on n&#39;a pas d&#233;pass&#233; la limite de tours
 <li>Il est pr&#233;f&#233;rable de fixer un nombre de tours maximum &#224; l'algorithme car sinon ce dernier peut prendre &#233;norm&#233;ment de temps &#224; converger et il est plus int&#233;ressant de pouvoir contr&#244;ler la dur&#233;e de calcul afin d'&#233;tudier la progression de notre algorithme du gradient.</li>
 </ul>
 <h2 id="coefficient-dapprentissage">Coefficient d'apprentissage</h2>
-<p>Il est primordial de bien choisir le coefficient d'apprentissage, car si <span class="math inline">\(\alpha\)</span> est trop &#233;lev&#233; notre algorithme va chercher &#224; faire de tr&#232;s grands pas afin de converger rapidement (en anglais on utilise le terme de <em>overshoot</em>), et ceci peut l'amener &#224; faire de mauvais choix comme par exemple :</p>
+<p>Il est primordial de bien choisir le coefficient d'apprentissage, car si <span class="math inline">\(\alpha\)</span> est trop &#233;lev&#233; notre algorithme va chercher &#224; faire de tr&#232;s grands pas afin de converger rapidement (en anglais on utilise le terme d'<em>overshoot</em>), et ceci peut l'amener &#224; faire de mauvais choix comme :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_eleve.png" alt="Exemple de cons&#233;quence d&#39;un coefficient d&#39;apprentissage &#233;lev&#233;" />
 <p class="caption">Exemple de cons&#233;quence d'un coefficient d'apprentissage &#233;lev&#233;</p>
@@ -405,7 +405,7 @@ plt.show()</code></pre>
 <p>Il faut en revanche faire attention &#224; ne pas appliquer cela sur <span class="math inline">\(x_0\)</span> car cette valeur doit toujours &#234;tre &#233;gale &#224; 1, on r&#233;alisera donc l'op&#233;ration de feature scaling avant d'ajouter notre colonne de 1 &#224; <span class="math inline">\(x\)</span> :</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Feature scaling</span>
 <span class="va">self</span>.x <span class="op">=</span> (<span class="va">self</span>.x <span class="op">-</span> np.mean(<span class="va">self</span>.x)) <span class="op">/</span> np.std(<span class="va">self</span>.x)</code></pre></div>
-<p>Notre sortie n'est alors plus la m&#234;me puisque nos valeurs ont &#233;t&#233; chang&#233; pour &#234;tre sur une &#233;chelle similaire :</p>
+<p>Notre sortie n'est alors plus la m&#234;me puisque nos valeurs ont &#233;t&#233; chang&#233;es pour &#234;tre sur une &#233;chelle similaire :</p>
 <pre class="nohighlight"><code>Coefficients de la fonction d&#39;hypothese :
 
 theta  0  :  5.379994218974877

@@ -89,7 +89,7 @@ Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer u
 
 ### Tri Shell
 
-Le tri par insertion est un algorithme de tri très efficace sur des entrées quasiment triéés, et on peut utiliser cette propriété intéressante du tri pour l'améliorer. En effet, le tri Shell (*Shell sort* en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu'on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.
+Le tri par insertion est un algorithme de tri très efficace sur des entrées quasiment triées, et on peut utiliser cette propriété intéressante du tri pour l'améliorer. En effet, le tri Shell (*Shell sort* en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu'on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.
 
 Pour calculer cet écart, on utilise cette formule :
 

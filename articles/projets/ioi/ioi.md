@@ -11,7 +11,7 @@ Ce projet est bien différent de mes précédents, mais sans aucun doute le plus
 
 ## Histoire
 
-Je découvre [France IOI](http://www.france-ioi.org/index.php?sLanguage=fr) début 2012, et je m'entraîne alors dessus de temps en temps dans le but d'apprendre à programmer plus que pour apprendre l'algorithmie. Je réalise un stage débutant (qui n'existe plus aujourd'hui, à l'époque j'étais fin niveau 1 et j'apprenais au stage ce qu'était une pile ou encore une file), ce fut ma première expérience en terme d'algorithme mais je n'ai malheureusement pas continué car j'ai préféré faire d'autres projets de programmation. De 2012 à 2013, j'arrive à progresser jusqu'au niveau 3 en connaissant uniquement quelques bases d'algorithmie.
+Je découvre [France IOI](http://www.france-ioi.org/index.php?sLanguage=fr) début 2012, et je m'entraîne alors dessus de temps en temps dans le but d'apprendre à programmer plus que pour apprendre l'algorithmie. Je réalise un stage débutant (qui n'existe plus aujourd'hui, à l'époque j'étais fin niveau 1 et j'apprenais au stage ce qu'était une pile ou encore une file), ce fut ma première expérience en termes d'algorithme mais je n'ai malheureusement pas continué car j'ai préféré faire d'autres projets de programmation. De 2012 à 2013, j'arrive à progresser jusqu'au niveau 3 en connaissant uniquement quelques bases d'algorithmie.
 
 Entre mes projets, je retourne sur le site occasionnellement pour résoudre quelques exercices, et je participe pour la première fois à [Algoréa](http://www.france-ioi.org/concours/algorea) en 2013, où je me qualifie en demi-finale, et je progresse jusqu'à la fin du niveau 3.
 

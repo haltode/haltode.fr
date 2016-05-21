@@ -11,7 +11,7 @@ Avec l'apparition des premiers systèmes de cryptanalyses, le [chiffre de César
 
 ## Principe de l'algorithme
 
-Le chiffre de Vigenère est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) utilisant une [substitution poly-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution) pour chiffrer et déchiffrer le message secret. Ceci signifie que la clé de chiffrement est une chaîne de caractères, et c'est là dessus que repose la sécurité de l'algorithme, car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).
+Le chiffre de Vigenère est un [chiffrement symétrique](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) utilisant une [substitution poly-alphabétique](https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution) pour chiffrer et déchiffrer le message secret. Ceci signifie que la clé de chiffrement est une chaîne de caractères, et c'est là-dessus que repose la sécurité de l'algorithme, car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).
 
 ## Exemple
 
@@ -90,7 +90,7 @@ Notre objectif est de casser le message ci-dessus qui a été chiffré en utilis
 [INSERT]
 test02.in
 
-Les seules informations que l'on a sont que toutes les majuscules ont été transformé en minuscules, tous les accents par des lettres non accentuées, et les espaces et signes de ponctuations ont été enlevé.
+Les seules informations que l'on a sont que toutes les majuscules ont été transformées en minuscules, tous les accents par des lettres non accentuées, et les espaces et signes de ponctuations ont été enlevés.
 
 ### Trouver la longueur de la clé de chiffrement
 
@@ -154,7 +154,7 @@ test02.out
 
 ### Déduire la clé
 
-Une fois qu'on a notre longueur de clé, on peut savoir quelles lettres du message ont été chiffré avec les mêmes lettres de la clé (puisqu'on connait sa longueur, on sait donc où se répète la clé).
+Une fois qu'on a notre longueur de clé, on peut savoir quelles lettres du message ont été chiffrées avec les mêmes lettres de la clé (puisqu'on connait sa longueur, on sait donc où se répète la clé).
 
 On va alors découper le message chiffré en plusieurs catégories de lettres :
 
@@ -168,7 +168,7 @@ Notre message découpé en 5 lignes :
 [INSERT]
 test03.out
 
-Finalement, on peut dire que chaque ligne a été chiffré à l'aide d'un simple chiffre de César, puisque toutes les lettres d'une même ligne sont chiffrées avec la même lettre de la clé, et cette lettre peut être vue comme un simple nombre. Une fois que l'on sait cela, on peut effectuer une analyse fréquentielle pour trouver la clé de chiffrement, comme pour le chiffre de César, sur chacune des lignes découpées.
+Finalement, on peut dire que chaque ligne a été chiffrée à l'aide d'un simple chiffre de César, puisque toutes les lettres d'une même ligne sont chiffrées avec la même lettre de la clé, et cette lettre peut être vue comme un simple nombre. Une fois que l'on sait cela, on peut effectuer une analyse fréquentielle pour trouver la clé de chiffrement, comme pour le chiffre de César, sur chacune des lignes découpées.
 
 On cherche pour chaque ligne, la lettre apparaissant le plus, puis l'on déduit que cette lettre représente la lettre E dans l'alphabet normal, on peut donc facilement retrouver l'alphabet chiffré utilisé avec cette lettre. Prenons l'exemple de la première ligne :
 

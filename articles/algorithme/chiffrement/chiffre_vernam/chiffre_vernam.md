@@ -32,13 +32,13 @@ On peut tout à fait reprendre le même pseudo-code que le chiffre de Vigenère 
 ```nohighlight
 creerCle :
 
-   Tant que la clé générée a déjà été utilisé
+   Tant que la clé générée a déjà été utilisée
 
       Pour chaque lettre du message 
          Generer une lettre aléatoire pour notre clé
 ```
 
-Pour savoir si on a déjà utilisé une clé, plusieurs solutions s'offrent à nous. On peut tout d'abord utiliser un simple tableau qui stockera toutes les clés utilisées, et à chaque fois que l'on en génère une nouvelle, on vérifie qu'elle n'est pas dans notre tableau avant de l'ajouter. Il est aussi possible d'améliorer cette solution en utilisant une [recherche dichotomique](/algo/recherche/dichotomie.html), nous permettant dans notre tableau (trié par ordre alphabétique) de chercher rapidement si une clé a déjà été généré ou non.
+Pour savoir si on a déjà utilisé une clé, plusieurs solutions s'offrent à nous. On peut tout d'abord utiliser un simple tableau qui stockera toutes les clés utilisées, et à chaque fois que l'on en génère une nouvelle, on vérifie qu'elle n'est pas dans notre tableau avant de l'ajouter. Il est aussi possible d'améliorer cette solution en utilisant une [recherche dichotomique](/algo/recherche/dichotomie.html), nous permettant dans notre tableau (trié par ordre alphabétique) de chercher rapidement si une clé a déjà été générée ou non.
 
 ## Implémentation
 
@@ -57,7 +57,7 @@ La sortie que j'ai obtenue (elle change à chaque fois) :
 [INSERT]
 test01.out
 
-Le fichier de clé qui ont déjà été généré (et donc inutilisable maintenant) :
+Le fichier de clés qui ont déjà été générées (et donc inutilisable maintenant) :
 
 [INSERT]
 cle_utilisee.txt

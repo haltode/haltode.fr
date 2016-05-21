@@ -71,7 +71,7 @@ On retrouve bien notre équation normale.
 
 La raison pour laquelle cette méthode n'est pas tout le temps utilisée est assez simple : la **rapidité**.
 
-En effet, le produit matriciel est encore un problème ouvert car on ne sait pas s'il existe de meilleurs algorithmes que ceux employés aujourd'hui. L'algorithme naïf de multiplication matriciel a une complexité en temps de $O(N^3)$ avec $N$ le nombre de lignes des matrices, mais cependant, les autres algorithmes n'ont pas une complexité si différente ($O(N^{2.807})$ pour l'[algorithme de Strassen](https://en.wikipedia.org/wiki/Strassen_algorithm) ou encore $O(N^{2.376})$ pour l'[algorithme de Coppersmith-Winograd](https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm)).
+En effet, le produit matriciel est encore un problème ouvert car on ne sait pas s'il existe de meilleurs algorithmes que ceux employés aujourd'hui. L'algorithme naïf de multiplication matriciel a une complexité en temps de $O(N^3)$ avec $N$ le nombre de lignes des matrices, cependant, les autres algorithmes n'ont pas une complexité si différente ($O(N^{2.807})$ pour l'[algorithme de Strassen](https://en.wikipedia.org/wiki/Strassen_algorithm) ou encore $O(N^{2.376})$ pour l'[algorithme de Coppersmith-Winograd](https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm)).
 
 Il est donc peu envisageable d'implémenter la méthode de l'équation normale lorsqu'on a environ $n > 10000$.
 

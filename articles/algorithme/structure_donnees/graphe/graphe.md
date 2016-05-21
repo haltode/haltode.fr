@@ -17,7 +17,7 @@ On peut définir un graphe comme étant un ensemble de **nœuds** (ou de sommets
 
 ![Exemple de graphe](//static.napnac.ga/img/algo/structure/graphe/graphe_exemple.png)
 
-En anglais, on parle de *nodes* ou *vertices* pour les nœuds, et de *edges* ou *arcs* pour les arêtes.
+En anglais, on parle de *nodes* ou *vertices* pour les nœuds, et d'*edges* ou *arcs* pour les arêtes.
 
 Pour information, si deux nœuds sont reliés par un arc on dit qu'ils sont **voisins**. De plus, le **degré entrant** d'un nœud correspond au nombre d'arcs arrivant sur ce nœud, et il en est de même pour le **degré sortant** correspondant alors au nombre d'arcs sortant du nœud.
 

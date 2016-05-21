@@ -87,7 +87,7 @@ test01.out
 
 ## Conclusion
 
-Le tri par base est donc un algorithme de tri très rapide qui s'exécute en temps linéaire en se basant sur un autre algorithme de tri stable pour fonctionner. Il permet notamment de combler les avantages du tri par dénombrement, mais cependant ce n'est pas pour cela que ce dernier est bien plus efficace que d'autres algorithmes de tri en $O(N \log _2 N)$ comme le [tri rapide](/algo/tri/tri_rapide.html) et ceci pour plusieurs raisons :
+Le tri par base est donc un algorithme de tri très rapide qui s'exécute en temps linéaire en se basant sur un autre algorithme de tri stable pour fonctionner. Il permet notamment de combler les avantages du tri par dénombrement, cependant ce n'est pas pour cela que ce dernier est bien plus efficace que d'autres algorithmes de tri en $O(N \log _2 N)$ comme le [tri rapide](/algo/tri/tri_rapide.html) et ceci pour plusieurs raisons :
 
 - Le tri par base exécute au maximum $C$ passes sur le tableau, ce qui est en général moins que pour le tri rapide, mais ces dernières seront plus longues à effectuer, rendant dans certains cas le tri rapide plus efficace que le tri par base, même s'ils ont une complexité en temps différente.
 - Les implémentations des deux algorithmes peuvent provoquer de gros changements sur les performances, mais leurs fonctionnements aussi car en général le tri rapide utilisera mieux la [mémoire cache](https://en.wikipedia.org/wiki/Cache_%28computing%29) que le tri par base ce qui le rend plus utile dans certains cas.
