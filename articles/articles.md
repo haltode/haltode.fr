@@ -19,7 +19,7 @@ La liste des articles publiés :
          - [Pile](/algo/structure/pile.html)
          - [File](/algo/structure/file.html)
          - [Arbre](/algo/structure/arbre.html) - [Arbre binaire](/algo/structure/arbre/arbre_binaire.html) / [Tas](/algo/structure/arbre/tas.html)
-         - [Graphe](/algo/structure/graphe.html) - [Parcours](/algo/structure/graphe/parcours.html)
+         - [Graphe](/algo/structure/graphe.html) - [Parcours](/algo/structure/graphe/parcours.html) / [Plus court chemin]() : [Dijkstra](), [Bellman-Ford](), [Floyd-Warshall]()
 
     - Tri :
 
