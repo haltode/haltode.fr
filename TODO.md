@@ -7,7 +7,7 @@
 ## Structure de données
 
 - Graphe : liens opérations utiles (faire un article qui regroupe tout ?)
-   - Plus court chemin : démonstration dijkstra + A* (amélioration)
+   - Plus court chemin : démonstration dijkstra
 - Arbre binaire : liens arbre bin de recherche + arbre rouge/noir (dans "Définition")
 
 ## Chiffrement
@@ -17,12 +17,12 @@
 # Liste de futurs articles
 
 - Graphe : plus court chemin
-- Arbre : Arbre de recherche + Trie
-- Structure de données : Table de hachage
+- Arbre : arbre couvrant minimal, arbre de recherche, trie
+- Structure de données : table de hachage
 - Recherche : union-find
+- Approches : récursion, glouton, diviser pour régner
+- IA : logitic regression, neural network, svm, k-means, etc.
 - IA : algo min-max
-- Approches : récursion, algo glouton, diviser pour régner
-- IA : ml : logitic regression, neural network, svm, k-means, etc.
 
 
 
@@ -31,4 +31,4 @@
 - Compression de données : codage de huffman
 - Algorithmes quantiques
 - N = NP ?
-- Cryptographie quantique ?
+- Cryptographie quantique
