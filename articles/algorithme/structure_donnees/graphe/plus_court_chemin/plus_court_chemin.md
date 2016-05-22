@@ -15,8 +15,8 @@ Il existe différentes manières de répondre à cette question, et la réponse 
 
 Une liste non exhaustive d'algorithmes essentiels permettant de résoudre le problème du plus court chemin :
 
-- [**Dijkstra**](/algo/structure/graphe/plus_court_chemin/dijkstra.html) : un algorithme **glouton** efficace, avec une complexité en temps de $O(M * \log _2 M)$ (avec $M$ le nombre d'arcs du graphe), mais qui ne fonctionne que sur des graphes pondérés positivement.
-- [**Bellman-Ford**](/algo/structure/graphe/plus_court_chemin/bellman_ford.html) : un algorithme **dynamique** applicable sur n'importe quel type de pondération d'un graphe, mais avec une complexité en temps légèrement plus lente de $O(N * M)$ (avec $N$ le nombre de nœuds du graphe).
+- [**Dijkstra**](/algo/structure/graphe/plus_court_chemin/dijkstra.html) : un algorithme **glouton** efficace, avec une complexité en temps de $O(M \log _2 M)$ (avec $M$ le nombre d'arcs du graphe), mais qui ne fonctionne que sur des graphes pondérés positivement.
+- [**Bellman-Ford**](/algo/structure/graphe/plus_court_chemin/bellman_ford.html) : un algorithme **dynamique** applicable sur n'importe quel type de pondération d'un graphe, mais avec une complexité en temps légèrement plus lente de $O(NM)$ (avec $N$ le nombre de nœuds du graphe).
 - [**Floyd-Warshall**](/algo/structure/graphe/plus_court_chemin/floyd_warshall.html) :
 
 ## Conclusion
