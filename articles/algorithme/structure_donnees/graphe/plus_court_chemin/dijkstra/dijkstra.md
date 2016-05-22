@@ -2,10 +2,8 @@ Algorithme de Dijkstra
 ======================
 algo/structure/graphe/plus_court_chemin
 
-Publié le : 21/05/2016  
-*Modifié le : 21/05/2016*
-
-## Introduction
+Publié le : 22/05/2016  
+*Modifié le : 22/05/2016*
 
 ## Principe
 
@@ -23,7 +21,7 @@ L'algorithme de Dijkstra commence par le nœud de départ (1), et examine ses vo
 
 ![Tour 1 de l'algorithme](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_1.png)
 
-Le nœud en bleu représente désormais le nœud en tête de notre file à priorité, et j'ai aussi indiqué la distance parcourue depuis le nœud initial en indice. Le nœud 1 possède deux arcs qui représentent donc deux possibilités pour le moment. L'algorithme prend en compte la distance depuis le nœud de départ ainsi que le poids des arcs pour choisir le prochain nœud à visiter. Les différentes combinaisons actuellement sont donc : 0 + 1 (nœud 1 vers nœud 2) et 0 + 1 (1 vers 3). Dans notre cas les deux nœuds sont équivalents en terme d'efficacité, mais notre implémentation doit bien choisir lequel parcourir et nous imaginerons que l'on visite le nœud 2 (le nœud 3 menant directement au plus court chemin, il est plus intéressant de voir comment notre algorithme va rectifier son tir). Notre file à priorité contient donc les nœuds 2 et 3 (le 1 a été retiré), mais le 2 apparait avant c'est donc celui ci qu'on va visiter au prochain tour :
+Le nœud en bleu représente désormais le nœud en tête de notre file à priorité, et j'ai aussi indiqué la distance parcourue depuis le nœud initial en indice. Le nœud 1 possède deux arcs qui représentent donc deux possibilités pour le moment. L'algorithme prend en compte la distance depuis le nœud de départ ainsi que le poids des arcs pour choisir le prochain nœud à visiter. Les différentes combinaisons actuellement sont donc : 0 + 1 (nœud 1 vers nœud 2) et 0 + 1 (1 vers 3). Dans notre cas les deux nœuds sont équivalents en termes d'efficacité, mais notre implémentation doit bien choisir lequel parcourir et nous imaginerons que l'on visite le nœud 2 (le nœud 3 menant directement au plus court chemin, il est plus intéressant de voir comment notre algorithme va rectifier son tir). Notre file à priorité contient donc les nœuds 2 et 3 (le 1 a été retiré), mais le 2 apparait avant c'est donc celui-ci qu'on va visiter au prochain tour :
 
 ![Tour 2](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_2.png)
 
@@ -127,6 +125,9 @@ On pourrait penser qu'une solution face à ce problème serait de rajouter à to
 
 A gauche un graphe avec des pondérations négatives, et à droite l'équivalent mais cette fois on a rajouté 4 à chaque poids pour n'avoir que des arcs positifs ou nuls. On veut dans les deux cas trouver le plus court chemin entre les nœuds 1 et 4 et on voit clairement que dans notre graphe original, le chemin optimal est 1, 2, 3, 4, mais dans notre nouveau graphe avec le changement de pondération, le chemin 1, 4 est plus optimal. Il n'est donc pas possible d'utiliser l'algorithme de Dijkstra sur un graphe qui n'a pas naturellement de pondérations positives ou nulles.
 
-## A* ?
-
 ## Conclusion
+
+L'algorithme de Dijkstra est donc un algorithme glouton de recherche de plus court chemin dans un graphe pondéré positivement, avec une complexité en temps intéressante de $O(M \log _2 M)$ (pouvant cependant être améliorée en $O(N \log _2 N + M)$). L'algorithme en lui-même pose principalement deux problèmes :
+
+- Il ne peut pas être utilisé sur des graphes pondérés négativement. Dans ce cas, il faut avoir recours à d'autres algorithmes de recherche de plus court chemin, comme celui de [**Bellman-Ford**](/algo/structure/graphe/plus_court_chemin/bellman_ford.html).
+- Il ne fait aucunes différences entre les multiples chemins qu'il emprunte, c'est-à-dire qu'il ne va jamais en favoriser un par rapport à un autre. En effet ceci peut être un problème, car en fonction du graphe en entrée, si un chemin semble optimal au début il est très probable qu'il soit, ou mène, au plus court chemin. C'est ce qu'essaie d'améliorer la variante de l'algorithme appelée : **A\***. Cette dernière fonctionne exactement comme l'algorithme de Dijkstra, mais utilise une technique dite [**heuristique**](https://en.wikipedia.org/wiki/Heuristic) lors de la sélection du prochain nœud à visiter. Cette fonction heuristique doit estimer la distance qu'il y a entre le prochain nœud et l'arrivée. Cela peut sembler étrange de devoir estimer cette distance, puisqu'on ne peut pas garantir sa véracité, mais c'est le principe même d'une heuristique. Cette variante est très utilisée en pratique, notamment dans les jeux vidéos, car elle permet d'obtenir de très bons résultats rapidement. Des algorithmes qui se basent sur des heuristiques sont en réalité très fréquents, car même si peu efficace en théorie (il est facile de trouver des exemples où l'algorithme A\*  est lent) ils se basent sur le fait qu'en pratique, on ne trouve pas ces cas aussi spécifiques, et ils gagnent ainsi du temps pour obtenir un résultat très proche de la réalité. La question bien sûr est : comment choisir la fonction heuristique ? Cela dépend d'énormément de facteurs, mais voici un article regroupant différentes idées très intéressantes et utiles dans beaucoup de cas : [A\* ’s Use of the Heuristic](http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html).
