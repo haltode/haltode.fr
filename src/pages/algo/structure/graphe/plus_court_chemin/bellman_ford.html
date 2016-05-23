@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="algorithme-de-bellman-ford">Algorithme de Bellman-Ford</h1></a>
-<p>Publi&#233; le : 21/05/2016<br />
-<em>Modifi&#233; le : 21/05/2016</em></p>
+<p>Publi&#233; le : 23/05/2016<br />
+<em>Modifi&#233; le : 23/05/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -184,22 +184,25 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
+<p>L'approche gloutonne de l'<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> est excellente car elle permet d'aborder le probl&#232;me du plus court chemin de mani&#232;re intelligente, ce qui lui donne une complexit&#233; en temps int&#233;ressante, tout en &#233;tant optimale. Cependant, elle ne s'applique pas &#224; toutes les configurations de graphes (par exemple ceux avec des pond&#233;rations n&#233;gatives), et il nous faut donc un nouvel algorithme pour g&#233;rer ces cas.</p>
 <h2 id="principe">Principe</h2>
-<p>L'approche gloutonne du pr&#233;c&#233;dent algorithme est excellente car elle permet d'aborder le probl&#232;me de mani&#232;re intelligente, ce qui lui donne une complexit&#233; tr&#232;s int&#233;ressante, tout en &#233;tant optimale. Cependant, elle ne s'applique pas &#224; toutes les configurations de graphe, et il nous faut donc un nouvel algorithme pour g&#233;rer ce cas.</p>
 <p>Reprenons depuis le d&#233;but. On a un graphe pond&#233;r&#233; (positivement ou n&#233;gativement), et on cherche le plus court chemin entre deux n&#339;uds distincts. Une approche <strong>na&#239;ve</strong> serait d'explorer toutes les combinaisons possibles de chemin et de choisir celle qui obtient une pond&#233;ration totale minimale. Le probl&#232;me ici est &#233;videmment la complexit&#233; en temps exponentielle. Dans ce genre de situation, il est fondamental de se poser cette question : qu'est-ce qui rend notre algorithme si lent ? Lorsqu'on explore toutes les possibilit&#233;s de chemins, on repasse tr&#232;s souvent sur d'anciens n&#339;uds et arcs, ce qui nous fait parcourir notre graphe plusieurs fois inutilement.</p>
-<p>D&#233;sormais, on conna&#238;t la raison de la lenteur de notre pr&#233;c&#233;dent algorithme, et il faut alors chercher &#224; am&#233;liorer ce point, si possible, ou bien &#224; changer de concept. L'algorithme de Bellman-Ford va am&#233;liorer l'algorithme na&#239;f, en utilisant une approche diff&#233;rente du probl&#232;me : la <a href="/algo/general/approche/dynamique.html"><strong>programmation dynamique</strong></a>. L'id&#233;e est justement de ne pas repasser plusieurs fois sur des parties du graphe, en gardant les informations utiles en m&#233;moire &#224; l'aide d'un algorithme dynamique.</p>
+<p>D&#233;sormais, on conna&#238;t la raison de la lenteur de notre pr&#233;c&#233;dent algorithme, et il faut alors chercher &#224; am&#233;liorer ce point, si possible, ou bien &#224; changer de concept. L'algorithme de Bellman-Ford va am&#233;liorer l'algorithme na&#239;f, en utilisant une approche diff&#233;rente du probl&#232;me : la <a href="/algo/general/approche/dynamique.html"><strong>programmation dynamique</strong></a>. L'id&#233;e est justement de ne pas repasser plusieurs fois sur des parties du graphe, mais plut&#244;t de garder les informations utiles en m&#233;moire &#224; l'aide d'un algorithme dynamique.</p>
 <p><em>Il est int&#233;ressant de noter que <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a>, l'un des inventeurs de cet algorithme, est le p&#232;re fondateur de la programmation dynamique.</em></p>
 <h2 id="exemple">Exemple</h2>
 <p>Un exemple de l'algorithme de Bellman-Ford serait assez peu int&#233;ressant car il n'adopte pas de strat&#233;gie particuli&#232;re au niveau du parcours du graphe (contrairement &#224; l'algorithme de Dijkstra). Il se contente uniquement de tester chaque possibilit&#233; de chemin avec une <strong>impl&#233;mentation dynamique</strong> le rendant plus rapide qu'une impl&#233;mentation na&#239;ve.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
+<p><em>Pour appr&#233;hender au mieux cette partie, il est n&#233;cessaire d'&#234;tre familier &#224; la programmation dynamique (ou au moins d'en conna&#238;tre la base). Si ce n'est pas le cas, je vous renvoie vers mon article sur le sujet dont le lien est situ&#233; au-dessus.</em></p>
 <p>Pour mettre en place un algorithme dynamique correctement, il est essentiel de r&#233;diger la version r&#233;cursive d'abord afin d'&#233;tablir explicitement la r&#233;cursion pour bien comprendre ce que cherche &#224; r&#233;aliser l'algorithme.</p>
-<p>Le probl&#232;me du plus court chemin sur un graphe pond&#233;r&#233; positivement et n&#233;gativement introduit cependant un nouveau souci : les <strong>cycles am&#233;liorants</strong>. En effet, vu qu'une pond&#233;ration peut d&#233;sormais &#234;tre n&#233;gative, il est possible de tomber dans une boucle infinie (qu'on appelle plus pr&#233;cis&#233;ment un cycle am&#233;liorant) qui va sans cesse diminuer la distance parcourue. Ceci pose un r&#233;el probl&#232;me car puisqu'on peut am&#233;liorer la distance &#224; chaque fois qu'on passe dans ce cycle, il existera toujours un meilleur chemin &#224; emprunter, et on ne peut donc pas trouver de solution &#224; cause de cette boucle infinie.</p>
+<h3 id="cycle-am&#233;liorant">Cycle am&#233;liorant</h3>
+<p>Avant de se plonger dans le pseudo-code, il faut noter que le probl&#232;me du plus court chemin sur un graphe pond&#233;r&#233; positivement et n&#233;gativement introduit un nouveau souci : les <strong>cycles am&#233;liorants</strong> (ou <em>negative cycle</em> en anglais). En effet, vu qu'une pond&#233;ration peut d&#233;sormais &#234;tre n&#233;gative, il est possible de tomber dans une boucle infinie (qu'on appelle plus pr&#233;cis&#233;ment un cycle am&#233;liorant) qui va sans cesse diminuer la distance parcourue. Ceci pose un r&#233;el probl&#232;me puisqu'on peut am&#233;liorer la distance &#224; chaque fois qu'on passe dans ce cycle, et il existera toujours un meilleur chemin &#224; emprunter. Lorsqu'un graphe contient ce genre de cycle, il n'y a pas de solution &#224; cause de cette boucle infinie, il faut donc pouvoir le d&#233;tecter.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_cycle_ameliorant.png" alt="Exemple de cycle am&#233;liorant" />
 <p class="caption">Exemple de cycle am&#233;liorant</p>
 </div>
-<p>Sur cet exemple de graphe, on remarque que le chemin surlign&#233; en rouge est un cycle am&#233;liorant, car la distance du chemin va baisser &#224; chaque fois qu'on le parcourt ce qui fait qu'il existe toujours un chemin plus efficace, et cela entra&#238;ne une boucle infinie dans notre algorithme.</p>
-<p>Pour contrer cela, on va imposer une limite de recherche &#224; notre r&#233;cursion qui ne pourra pas d&#233;passer l'exploration de <span class="math inline">\(K\)</span> n&#339;uds. Une limite de <span class="math inline">\(N\)</span> n&#339;uds maximum &#224; explorer permet &#224; notre algorithme de ne jamais tomber dans une boucle infinie (avec <span class="math inline">\(N\)</span> le nombre de n&#339;uds du graphe), puisqu'un plus court chemin, qui ne contient pas de cycle am&#233;liorant, ne passe jamais plus de deux fois par un m&#234;me n&#339;ud. On peut d&#233;sormais reformuler plus clairement notre probl&#232;me de plus court chemin entre un n&#339;ud A et B, en un probl&#232;me cherchant &#224; minimiser la distance entre A et B en r&#233;alisant <span class="math inline">\(K\)</span> &#233;tapes au maximum. La reformulation est importante puisqu'elle limite la recherche afin de ne pas tomber dans une boucle infinie.</p>
+<p>Sur cet exemple de graphe (avec le n&#339;ud de d&#233;part en bleu, et celui d'arriv&#233;e en vert), on remarque que le chemin surlign&#233; en rouge est un cycle am&#233;liorant. En effet, d&#232;s qu'on parcourt ce cycle, la distance parcourue en sortie sera toujours inf&#233;rieure &#224; celle en entr&#233;e, d'o&#249; l'int&#233;r&#234;t de le visiter &#224; nouveau afin de diminuer encore la distance, et ainsi de suite, ce qui entraine une boucle infinie. Il est impossible de trouver le plus court chemin entre le n&#339;ud 1 et 4 dans ce graphe, car on peut am&#233;liorer la distance parcourue &#224; l'infini sans jamais arriver au n&#339;ud en vert.</p>
+<p>Pour contrer cela, on va imposer une limite de recherche &#224; notre r&#233;cursion qui ne pourra pas d&#233;passer l'exploration de <span class="math inline">\(K\)</span> n&#339;uds. Une limite de <span class="math inline">\(N\)</span> n&#339;uds maximum &#224; explorer permet &#224; notre algorithme de ne jamais tomber dans une boucle infinie (avec <span class="math inline">\(N\)</span> le nombre de n&#339;uds du graphe), puisqu'un plus court chemin, qui ne contient pas de cycle am&#233;liorant, ne passe jamais plus de deux fois par un m&#234;me n&#339;ud. On peut d&#233;sormais reformuler clairement notre probl&#232;me de plus court chemin entre un n&#339;ud A et B, en un probl&#232;me cherchant &#224; minimiser la distance entre A et B en r&#233;alisant <span class="math inline">\(K\)</span> &#233;tapes au maximum. La reformulation est importante puisqu'elle limite la recherche afin de ne pas tomber dans une boucle infinie.</p>
+<h3 id="version-r&#233;cursive">Version r&#233;cursive</h3>
 <p>Voici un premier pseudo-code simplifi&#233; de la r&#233;cursion (on suppose que le graphe en entr&#233;e est orient&#233; et ne poss&#232;de pas de cycles am&#233;liorantes pour &#233;tablir une premi&#232;re id&#233;e de l'algorithme g&#233;n&#233;ral).</p>
 <pre class="nohighlight"><code>Bellman-Ford (nbEtape, n&#339;ud) :
 
@@ -215,7 +218,8 @@ function toggle_visibility(id) {
       cheminMin = min(cheminMin, cheminVoisin)
 
    Retourner cheminMin</code></pre>
-<p>Ce pseudo-code traduit une simple r&#233;cursion permettant d'explorer tous les chemins en moins de <code>nbEtape</code> jusqu'&#224; l'arriv&#233;e, tout en s&#233;lectionnant le plus court d'entre eux.</p>
+<p>Ce pseudo-code traduit une simple r&#233;cursion permettant d'explorer tous les chemins en moins de <code>nbEtape</code> jusqu'&#224; l'arriv&#233;e, tout en s&#233;lectionnant le plus court d'entre eux. Pour cela, l'algorithme utilise une simple boucle sur tous les voisins d'un n&#339;ud ainsi qu'une variable <code>cheminMin</code> qu'on actualise pour toujours avoir le chemin avec la pond&#233;ration minimale entre tous les choix possibles.</p>
+<h3 id="version-dynamique-r&#233;cursive">Version dynamique r&#233;cursive</h3>
 <p>Maintenant, on passe &#224; l'&#233;tape de dynamisation de cet algorithme puisque ce dernier est terriblement lent et poss&#232;de une complexit&#233; en temps exponentielle car il ne fait que r&#233;p&#233;ter des appels r&#233;cursifs inutilement. On va donc cr&#233;er un tableau 2D stockant le plus court chemin pour tous les param&#232;tres possibles de notre fonction, afin de ne jamais avoir &#224; recalculer le r&#233;sultat d'un m&#234;me appel.</p>
 <pre class="nohighlight"><code>plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialis&#233; &#224; -1)
 
@@ -236,13 +240,15 @@ Bellman-Ford (nbEtape, n&#339;ud) :
 
    plusCourtChemin[nbEtape][n&#339;ud] = cheminMin
    Retourner cheminMin</code></pre>
-<p>On a ajout&#233; trois points fondamentaux qu'on retrouve dans un processus de dynamisation d'un algorithme :</p>
+<p>On a seulement ajout&#233; les trois points fondamentaux qu'on retrouve dans un processus de dynamisation d'un algorithme :</p>
 <ul>
 <li>L'<strong>initialisation</strong> du tableau <code>plusCourtChemin</code> &#224; -1 pour marquer toutes les valeurs comme non calcul&#233;es.</li>
-<li>Une <strong>condition</strong> au d&#233;but de notre r&#233;cursion afin de v&#233;rifier si la valeur n'a pas d&#233;j&#224; &#233;t&#233; calcul&#233;e.</li>
+<li>Une <strong>condition</strong> au d&#233;but de notre r&#233;cursion afin de v&#233;rifier si la valeur n'a pas d&#233;j&#224; &#233;t&#233; calcul&#233;e (et si c'est le cas, on la retourne directement).</li>
 <li>Une <strong>mise &#224; jour</strong> du tableau apr&#232;s avoir trouv&#233; une nouvelle valeur.</li>
 </ul>
-<p>Une fois qu'on a r&#233;ussi &#224; obtenir une complexit&#233; en temps non exponentielle (puisque d&#233;sormais on ne reparcourt pas inutilement des parties du graphe), il est toujours int&#233;ressant de tenter de r&#233;duire notre complexit&#233; en m&#233;moire si possible. Actuellement, dans le dernier pseudo-code, on a une complexit&#233; m&#233;moire de l'ordre de <span class="math inline">\(N^2\)</span> puisque <span class="math inline">\(N\)</span> repr&#233;sente le nombre de n&#339;uds du graphe, et on sait qu'on choisit la limite <span class="math inline">\(K\)</span>, tel que <span class="math inline">\(K = N\)</span> pour &#233;viter les cycles am&#233;liorants. Cet ordre de grandeur est tout &#224; fait correct en termes d'espace m&#233;moire, surtout vu le gain de temps qu'on acquiert gr&#226;ce au tableau, mais il peut cependant &#234;tre encore am&#233;lior&#233;.</p>
+<h3 id="version-dynamique-it&#233;rative">Version dynamique it&#233;rative</h3>
+<p>TODO : revoir deux derni&#232;res sous-parties</p>
+<p>Une fois qu'on a r&#233;ussi &#224; obtenir une complexit&#233; en temps non exponentielle (puisque d&#233;sormais on ne parcourt pas inutilement des parties du graphe), il est toujours int&#233;ressant de tenter de r&#233;duire notre complexit&#233; en m&#233;moire si possible. Actuellement, dans le dernier pseudo-code, on a une complexit&#233; m&#233;moire de l'ordre de <span class="math inline">\(N^2\)</span> puisque <span class="math inline">\(N\)</span> repr&#233;sente le nombre de n&#339;uds du graphe, et on sait qu'on choisit la limite <span class="math inline">\(K\)</span>, tel que <span class="math inline">\(K = N\)</span> pour &#233;viter les cycles am&#233;liorants. Cet ordre de grandeur est tout &#224; fait correct en termes d'espace m&#233;moire, surtout vu le gain de temps qu'on acquiert gr&#226;ce au tableau, mais il peut &#234;tre encore am&#233;lior&#233;.</p>
 <p>Le passage &#224; la version it&#233;rative de l'algorithme dynamique est essentiel &#224; cette r&#233;duction de l'espace m&#233;moire utilis&#233;, et c'est ce qu'on va r&#233;aliser dans un premier temps :</p>
 <pre class="nohighlight"><code>Bellman-Ford :
 
@@ -277,6 +283,7 @@ Bellman-Ford (nbEtape, n&#339;ud) :
    Retourner plusCourtChemin[d&#233;part]</code></pre>
 <p>TODO : v&#233;rifier arriv&#233;e dans plusCourtChemin[arriv&#233;e] = 0</p>
 <p>Pr&#233;c&#233;demment, on utilisait une boucle sur les n&#339;uds et une boucle sur les voisins de ces derniers, mais pour &#233;viter ces deux boucles, on utilise simplement une sur tous les arcs du graphe.</p>
+<h3 id="d&#233;tection-de-cycles-am&#233;liorants">D&#233;tection de cycles am&#233;liorants</h3>
 <p>Cette &#233;conomie de m&#233;moire a d'autres avantages &#224; part faire diminuer la complexit&#233; en m&#233;moire :</p>
 <ul>
 <li>Le code est d'autant plus simplifi&#233;.</li>
@@ -302,8 +309,8 @@ Bellman-Ford (nbEtape, n&#339;ud) :
    Sinon
       Retourner plusCourtChemin[d&#233;part]</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>L'avantage de passer de l'approche r&#233;cursive &#224; l'approche it&#233;rative dans un algorithme dynamique, est qu'on peut facilement trouver la complexit&#233; en temps de ce dernier. En effet, les deux boucles imbriqu&#233;es nous permettent de calculer une complexit&#233; en temps de <span class="math inline">\(O(N * M)\)</span> avec <span class="math inline">\(N\)</span> le nombre de n&#339;uds du graphe, et <span class="math inline">\(M\)</span> le nombre d'arcs.</p>
-<p>TODO : comparaison dijkstra</p>
+<p>L'avantage de passer de l'approche r&#233;cursive &#224; l'approche it&#233;rative dans un algorithme dynamique, est qu'on peut facilement trouver la complexit&#233; en temps de ce dernier. En effet, les deux boucles imbriqu&#233;es nous permettent de calculer une complexit&#233; en temps de <span class="math inline">\(O(N * M)\)</span> avec <span class="math inline">\(N\)</span> le nombre de n&#339;uds du graphe, et <span class="math inline">\(M\)</span> le nombre d'arcs (puisqu'on sait que pour &#233;viter un cycle am&#233;liorant il suffit que <span class="math inline">\(K = N\)</span>).</p>
+<p>Cette complexit&#233; en temps est l&#233;g&#232;rement moins efficace que celle de l'algorithme de Dijkstra, mais reste tr&#232;s raisonnable vu la complexit&#233; exponentielle de l'algorithme na&#239;f. Surtout que l'algorithme de Dijkstra ne permet pas de r&#233;aliser le calcul du plus court chemin sur des graphes pond&#233;r&#233;s n&#233;gativement, et que l'algorithme de Bellman-Ford g&#232;re le cas des cycles am&#233;liorants de mani&#232;re tr&#232;s simple et &#233;l&#233;gante.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L'impl&#233;mentation en C++ de l'algorithme de Bellman-Ford :</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"></code></pre></div>
