@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="algorithme-de-bellman-ford">Algorithme de Bellman-Ford</h1></a>
-<p>Publi&#233; le : 23/05/2016<br />
-<em>Modifi&#233; le : 23/05/2016</em></p>
+<p>Publi&#233; le : 26/05/2016<br />
+<em>Modifi&#233; le : 26/05/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -210,7 +210,7 @@ function toggle_visibility(id) {
       Si c&#39;est le n&#339;ud d&#39;arriv&#233;e
          Retourner 0
       Sinon
-         Retourner -INFINI car le chemin est invalide
+         Retourner INFINI car le chemin est invalide
 
    cheminMin = Bellman-Ford(nbEtape - 1, n&#339;ud)
    Pour chaque voisin du n&#339;ud
@@ -229,7 +229,7 @@ Bellman-Ford (nbEtape, n&#339;ud) :
       Si c&#39;est le n&#339;ud d&#39;arriv&#233;e
          Retourner 0
       Sinon
-         Retourner -INFINI car le chemin est invalide
+         Retourner INFINI car le chemin est invalide
    Si plusCourtChemin[nbEtape][n&#339;ud] != -1
       Retourner plusCourtChemin[nbEtape][n&#339;ud]
 
@@ -248,11 +248,12 @@ Bellman-Ford (nbEtape, n&#339;ud) :
 </ul>
 <h3 id="version-dynamique-it&#233;rative">Version dynamique it&#233;rative</h3>
 <p>TODO : revoir deux derni&#232;res sous-parties</p>
-<p>Une fois qu'on a r&#233;ussi &#224; obtenir une complexit&#233; en temps non exponentielle (puisque d&#233;sormais on ne parcourt pas inutilement des parties du graphe), il est toujours int&#233;ressant de tenter de r&#233;duire notre complexit&#233; en m&#233;moire si possible. Actuellement, dans le dernier pseudo-code, on a une complexit&#233; m&#233;moire de l'ordre de <span class="math inline">\(N^2\)</span> puisque <span class="math inline">\(N\)</span> repr&#233;sente le nombre de n&#339;uds du graphe, et on sait qu'on choisit la limite <span class="math inline">\(K\)</span>, tel que <span class="math inline">\(K = N\)</span> pour &#233;viter les cycles am&#233;liorants. Cet ordre de grandeur est tout &#224; fait correct en termes d'espace m&#233;moire, surtout vu le gain de temps qu'on acquiert gr&#226;ce au tableau, mais il peut &#234;tre encore am&#233;lior&#233;.</p>
+<p>Une fois qu'on a r&#233;ussi &#224; obtenir une complexit&#233; en temps non exponentielle (puisque d&#233;sormais on ne parcourt pas inutilement des parties du graphe), il est toujours int&#233;ressant de tenter de r&#233;duire notre complexit&#233; en m&#233;moire si possible. Actuellement, dans notre dernier pseudo-code, on a une complexit&#233; m&#233;moire de l'ordre de <span class="math inline">\(KN\)</span>, ce qui est &#233;quivalent &#224; du <span class="math inline">\(N^2\)</span>, car on choisit la limite <span class="math inline">\(K\)</span>, tel que <span class="math inline">\(K = N\)</span> pour &#233;viter les cycles am&#233;liorants. Cet ordre de grandeur est tout &#224; fait correct en termes d'espace m&#233;moire, surtout vu le gain de temps qu'on acquiert gr&#226;ce au tableau, mais il peut &#234;tre encore largement am&#233;lior&#233;.</p>
 <p>Le passage &#224; la version it&#233;rative de l'algorithme dynamique est essentiel &#224; cette r&#233;duction de l'espace m&#233;moire utilis&#233;, et c'est ce qu'on va r&#233;aliser dans un premier temps :</p>
 <pre class="nohighlight"><code>Bellman-Ford :
 
-   plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialis&#233; &#224; -1)
+   plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialis&#233; &#224; INFINI)
+   plusCourtChemin[0][arriv&#233;e] = 0
 
    Pour chaque &#233;tape
       Pour chaque n&#339;ud
@@ -263,12 +264,24 @@ Bellman-Ford (nbEtape, n&#339;ud) :
          plusCourtChemin[&#233;tape][n&#339;ud] = cheminMin
 
    Retourner plusCourtChemin[nbEtapeMax - 1][d&#233;part]</code></pre>
-<p>Pour comprendre comment on passe &#224; la version it&#233;rative de l'algorithme, il est important de r&#233;aliser une repr&#233;sentation graphique de <code>plusCourtChemin</code> :</p>
+<p>Plusieurs points importants &#224; comprendre dans cette version it&#233;rative de l'algorithme :</p>
+<ul>
+<li>Le tableau <code>plusCourtChemin</code> est initialis&#233; &#224; <code>INFINI</code> car on n'a plus besoin de d&#233;tecter le cas o&#249; l'on retombe sur un appel de fonction d&#233;j&#224; rencontr&#233; auparavant, puisque d&#233;sormais on utilise des boucles (passage de la version r&#233;cursive &#224; it&#233;rative). On choisit donc la valeur <code>INFINI</code> pour noter qu'on ne conna&#238;t pas de plus court chemin pour un n&#339;ud donn&#233; &#224; une &#233;tape pr&#233;cise.</li>
+<li>On a transform&#233; les appels r&#233;cursifs en deux boucles imbriqu&#233;es, une sur les &#233;tapes, et l'autre sur les n&#339;uds. En r&#233;alit&#233;, on parcourt simplement notre tableau <code>plusCourtChemin</code>, et c'est exactement ce que r&#233;alisait implicitement notre fonction r&#233;cursive puisqu'on retrouve la premi&#232;re boucle gr&#226;ce au param&#232;tre de la fonction <code>nbEtape</code> (que l'on diminuait &#224; chaque fois de 1, et qui nous permettait d'arr&#234;ter la r&#233;cursion lorsqu'elle atteignait 0), et la boucle sur les n&#339;uds lors des appels r&#233;cursifs sur les n&#339;uds voisins. Notre structure au niveau de la boucle des voisins n'a pas chang&#233;, et on cherche toujours &#224; garder le minimum dans notre tableau <code>plusCourtChemin</code>.</li>
+</ul>
+<p>Prenons l'exemple de ce graphe (ne contenant pas de cycle am&#233;liorant pour simplifier la chose), et appliquons notre nouveau pseudo-code it&#233;ratif dessus pour bien l'appr&#233;hender :</p>
 <div class="figure">
-<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/representation_tableau_dyn.png" alt="Repr&#233;sentation graphique du tableau 2D de l&#39;algorithme dynamique" />
-<p class="caption">Repr&#233;sentation graphique du tableau 2D de l'algorithme dynamique</p>
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_graphe_pseudo_code_iteratif.png" alt="Exemple de graphe orient&#233; et pond&#233;r&#233;" />
+<p class="caption">Exemple de graphe orient&#233; et pond&#233;r&#233;</p>
 </div>
-<p>Chaque &#233;tape repr&#233;sente une ligne du tableau, et chaque n&#339;ud une colonne. On remarque rapidement que pour remplir une ligne enti&#232;re, il suffit uniquement de la pr&#233;c&#233;dente. On peut donc remplir it&#233;rative ment le tableau ligne par ligne, afin d'arriver au r&#233;sultat obtenu.</p>
+<p>On cherche le plus court chemin entre le n&#339;ud 1 (en bleu) et le n&#339;ud 5 (en vert), et notre tableau <code>plusCourtChemin</code> initial ressemble donc &#224; cela :</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png" alt="Etat initial du tableau plusCourtChemin" />
+<p class="caption">Etat initial du tableau <code>plusCourtChemin</code></p>
+</div>
+<p>TODO : &#233;tape 0, 1 et finale</p>
+<p>TODO : passage des deux boucles (n&#339;uds + voisin) &#224; une seule boucle (arc)</p>
+<p>TODO : transition + refaire explication r&#233;duction m&#233;moire</p>
 <p>Le fait que chaque ligne d&#233;pende uniquement de la pr&#233;c&#233;dente est fondamental dans l'&#233;conomie de m&#233;moire que l'on cherche &#224; r&#233;aliser, car cela signifie qu'&#224; tout moment, on a besoin uniquement d'une seule ligne pour d&#233;duire la prochaine. Il est donc possible de supprimer une dimension enti&#232;re, vu que les <span class="math inline">\(K\)</span> &#233;tapes ne sont pas n&#233;cessaires &#224; stocker car on peut se contenter de stocker simplement la derni&#232;re. Notre complexit&#233; en m&#233;moire passe d&#233;sormais &#224; de l'ordre de <span class="math inline">\(N\)</span> :</p>
 <pre class="nohighlight"><code>Bellman-Ford :
 
@@ -281,7 +294,6 @@ Bellman-Ford (nbEtape, n&#339;ud) :
          plusCourtChemin[n&#339;ud1arc] = min(plusCourtChemin[n&#339;ud1arc], cheminVoisin)
 
    Retourner plusCourtChemin[d&#233;part]</code></pre>
-<p>TODO : v&#233;rifier arriv&#233;e dans plusCourtChemin[arriv&#233;e] = 0</p>
 <p>Pr&#233;c&#233;demment, on utilisait une boucle sur les n&#339;uds et une boucle sur les voisins de ces derniers, mais pour &#233;viter ces deux boucles, on utilise simplement une sur tous les arcs du graphe.</p>
 <h3 id="d&#233;tection-de-cycles-am&#233;liorants">D&#233;tection de cycles am&#233;liorants</h3>
 <p>Cette &#233;conomie de m&#233;moire a d'autres avantages &#224; part faire diminuer la complexit&#233; en m&#233;moire :</p>

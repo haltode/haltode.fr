@@ -2,8 +2,8 @@ Algorithme de Bellman-Ford
 ==========================
 algo/structure/graphe/plus_court_chemin
 
-Publié le : 23/05/2016  
-*Modifié le : 23/05/2016*
+Publié le : 26/05/2016  
+*Modifié le : 26/05/2016*
 
 ## Introduction
 
@@ -48,7 +48,7 @@ Bellman-Ford (nbEtape, nœud) :
       Si c'est le nœud d'arrivée
          Retourner 0
       Sinon
-         Retourner -INFINI car le chemin est invalide
+         Retourner INFINI car le chemin est invalide
 
    cheminMin = Bellman-Ford(nbEtape - 1, nœud)
    Pour chaque voisin du nœud
@@ -73,7 +73,7 @@ Bellman-Ford (nbEtape, nœud) :
       Si c'est le nœud d'arrivée
          Retourner 0
       Sinon
-         Retourner -INFINI car le chemin est invalide
+         Retourner INFINI car le chemin est invalide
    Si plusCourtChemin[nbEtape][nœud] != -1
       Retourner plusCourtChemin[nbEtape][nœud]
 
@@ -96,14 +96,15 @@ On a seulement ajouté les trois points fondamentaux qu'on retrouve dans un proc
 
 TODO : revoir deux dernières sous-parties
 
-Une fois qu'on a réussi à obtenir une complexité en temps non exponentielle (puisque désormais on ne parcourt pas inutilement des parties du graphe), il est toujours intéressant de tenter de réduire notre complexité en mémoire si possible. Actuellement, dans le dernier pseudo-code, on a une complexité mémoire de l'ordre de $N^2$ puisque $N$ représente le nombre de nœuds du graphe, et on sait qu'on choisit la limite $K$, tel que $K = N$ pour éviter les cycles améliorants. Cet ordre de grandeur est tout à fait correct en termes d'espace mémoire, surtout vu le gain de temps qu'on acquiert grâce au tableau, mais il peut être encore amélioré.
+Une fois qu'on a réussi à obtenir une complexité en temps non exponentielle (puisque désormais on ne parcourt pas inutilement des parties du graphe), il est toujours intéressant de tenter de réduire notre complexité en mémoire si possible. Actuellement, dans notre dernier pseudo-code, on a une complexité mémoire de l'ordre de $KN$, ce qui est équivalent à du $N^2$, car on choisit la limite $K$, tel que $K = N$ pour éviter les cycles améliorants. Cet ordre de grandeur est tout à fait correct en termes d'espace mémoire, surtout vu le gain de temps qu'on acquiert grâce au tableau, mais il peut être encore largement amélioré.
 
 Le passage à la version itérative de l'algorithme dynamique est essentiel à cette réduction de l'espace mémoire utilisé, et c'est ce qu'on va réaliser dans un premier temps :
 
 ```nohighlight
 Bellman-Ford :
 
-   plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialisé à -1)
+   plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialisé à INFINI)
+   plusCourtChemin[0][arrivée] = 0
 
    Pour chaque étape
       Pour chaque nœud
@@ -116,11 +117,24 @@ Bellman-Ford :
    Retourner plusCourtChemin[nbEtapeMax - 1][départ]
 ```
 
-Pour comprendre comment on passe à la version itérative de l'algorithme, il est important de réaliser une représentation graphique de `plusCourtChemin` :
+Plusieurs points importants à comprendre dans cette version itérative de l'algorithme :
 
-![Représentation graphique du tableau 2D de l'algorithme dynamique](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/representation_tableau_dyn.png)
+- Le tableau `plusCourtChemin` est initialisé à `INFINI` car on n'a plus besoin de détecter le cas où l'on retombe sur un appel de fonction déjà rencontré auparavant, puisque désormais on utilise des boucles (passage de la version récursive à itérative). On choisit donc la valeur `INFINI` pour noter qu'on ne connaît pas de plus court chemin pour un nœud donné à une étape précise.
+- On a transformé les appels récursifs en deux boucles imbriquées, une sur les étapes, et l'autre sur les nœuds. En réalité, on parcourt simplement notre tableau `plusCourtChemin`, et c'est exactement ce que réalisait implicitement notre fonction récursive puisqu'on retrouve la première boucle grâce au paramètre de la fonction `nbEtape` (que l'on diminuait à chaque fois de 1, et qui nous permettait d'arrêter la récursion lorsqu'elle atteignait 0), et la boucle sur les nœuds lors des appels récursifs sur les nœuds voisins. Notre structure au niveau de la boucle des voisins n'a pas changé, et on cherche toujours à garder le minimum dans notre tableau `plusCourtChemin`.
 
-Chaque étape représente une ligne du tableau, et chaque nœud une colonne. On remarque rapidement que pour remplir une ligne entière, il suffit uniquement de la précédente. On peut donc remplir itérative ment le tableau ligne par ligne, afin d'arriver au résultat obtenu.
+Prenons l'exemple de ce graphe (ne contenant pas de cycle améliorant pour simplifier la chose), et appliquons notre nouveau pseudo-code itératif dessus pour bien l'appréhender :
+
+![Exemple de graphe orienté et pondéré](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_graphe_pseudo_code_iteratif.png)
+
+On cherche le plus court chemin entre le nœud 1 (en bleu) et le nœud 5 (en vert), et notre tableau `plusCourtChemin` initial ressemble donc à cela :
+
+![Etat initial du tableau `plusCourtChemin`](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png)
+
+TODO : étape 0, 1 et finale
+
+TODO : passage des deux boucles (nœuds + voisin) à une seule boucle (arc)
+
+TODO : transition + refaire explication réduction mémoire
 
 Le fait que chaque ligne dépende uniquement de la précédente est fondamental dans l'économie de mémoire que l'on cherche à réaliser, car cela signifie qu'à tout moment, on a besoin uniquement d'une seule ligne pour déduire la prochaine. Il est donc possible de supprimer une dimension entière, vu que les $K$ étapes ne sont pas nécessaires à stocker car on peut se contenter de stocker simplement la dernière. Notre complexité en mémoire passe désormais à de l'ordre de $N$ :
 
@@ -137,8 +151,6 @@ Bellman-Ford :
 
    Retourner plusCourtChemin[départ]
 ```
-
-TODO : vérifier arrivée dans plusCourtChemin[arrivée] = 0
 
 Précédemment, on utilisait une boucle sur les nœuds et une boucle sur les voisins de ces derniers, mais pour éviter ces deux boucles, on utilise simplement une sur tous les arcs du graphe.
 
