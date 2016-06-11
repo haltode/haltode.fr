@@ -89,7 +89,7 @@ Une implémentation en C++ (pour avoir [`priority_queue`](http://www.cplusplus.c
 [INSERT]
 dijkstra.cpp
 
-En entrée, pour décrire notre graphe on va d'abord indiquer le nœud de départ et d'arrivée, puis le nombre d'arcs et enfin la liste de ces derniers du style `nœud1 nœud2 poids` :
+En entrée, pour décrire notre graphe on va d'abord indiquer le nœud de départ et d'arrivée, puis le nombre d'arcs et enfin la liste de ces derniers du style `nœud1 nœud2 poids` (qu'on appelle aussi [liste d'arcs](/algo/structure/graphe.html#liste-darcs)):
 
 [INSERT]
 test01.in
