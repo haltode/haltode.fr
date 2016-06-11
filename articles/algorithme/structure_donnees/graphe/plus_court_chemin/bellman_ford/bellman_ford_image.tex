@@ -57,7 +57,7 @@
 
 % Exemple init
 
-\newpage
+\vspace{1cm}
 
 \begin{tikzpicture}[ scale=0.8, every node/.style={transform shape},
    shorten >=1pt, ->, >=stealth, auto, node distance = 3cm, thick, 
@@ -92,6 +92,8 @@
 
 % Exemple tour 0
 
+\newpage
+
 \begin{tikzpicture}[ scale=0.8, every node/.style={transform shape},
    shorten >=1pt, ->, >=stealth, auto, node distance = 3cm, thick, 
    node/.style = {circle, draw,
@@ -120,6 +122,76 @@
       2 & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ \\ \hline
       3 & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ \\ \hline
       4 & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ \\ \hline
+   \end{tabular}
+\end{table}
+
+% Exemple tour 1
+
+\vspace{1cm}
+
+\begin{tikzpicture}[ scale=0.8, every node/.style={transform shape},
+   shorten >=1pt, ->, >=stealth, auto, node distance = 3cm, thick, 
+   node/.style = {circle, draw,
+                     font = \sffamily\Large\bfseries}]
+   \node[node, fill = blue!20] (1) {$1$};
+   \node[node] (2) [below right = 1.3cm and 2cm of 1]{$2$};
+   \node[node] (3) [above right = 1cm and 3cm of 1]{$3$};
+   \node[node] (4) [above right = 0.1cm and 2.5cm of 2]{$4$};
+   \node[node, fill=green!20] (5) [above right = 0.5cm and 2.5cm of 4]{$5$};
+
+   \path (1) edge node {$2$} (2);
+   \path (1) edge node {$-1$} (3);
+   \path (2) edge node {$3$} (3);
+   \path (2) edge node {$-2$} (4);
+   \path (3) edge node {$2$} (4);
+   \path (3) edge node {$2$} (5);
+   \path (4) edge node {$-4$} (5);
+\end{tikzpicture}
+
+\begin{table}[h]
+   \begin{tabular}{|c|c|c|c|c|c|}
+      \hline
+      \diagbox{Etape}{Nœud} & 1 & 2 & 3 & 4 & 5 \\ \hline
+      0 & $+\infty$ & $+\infty$ & 2 & -4 & 0 \\ \hline
+      \textbf{1} & \textbf{1} & \textbf{-6} & \textbf{-2} & \textbf{-4} & \textbf{0} \\ \hline
+      2 & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ \\ \hline
+      3 & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ \\ \hline
+      4 & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ & $+\infty$ \\ \hline
+   \end{tabular}
+\end{table}
+
+% Exemple tour 4
+
+\vspace{1cm}
+
+\begin{tikzpicture}[ scale=0.8, every node/.style={transform shape},
+   shorten >=1pt, ->, >=stealth, auto, node distance = 3cm, thick, 
+   node/.style = {circle, draw,
+                     font = \sffamily\Large\bfseries}]
+   \node[node, fill = blue!20] (1) {$1$};
+   \node[node] (2) [below right = 1.3cm and 2cm of 1]{$2$};
+   \node[node] (3) [above right = 1cm and 3cm of 1]{$3$};
+   \node[node] (4) [above right = 0.1cm and 2.5cm of 2]{$4$};
+   \node[node, fill=green!20] (5) [above right = 0.5cm and 2.5cm of 4]{$5$};
+
+   \path (1) edge node {$2$} (2);
+   \path (1) edge node {$-1$} (3);
+   \path (2) edge node {$3$} (3);
+   \path (2) edge node {$-2$} (4);
+   \path (3) edge node {$2$} (4);
+   \path (3) edge node {$2$} (5);
+   \path (4) edge node {$-4$} (5);
+\end{tikzpicture}
+
+\begin{table}[h]
+   \begin{tabular}{|c|c|c|c|c|c|}
+      \hline
+      \diagbox{Etape}{Nœud} & 1 & 2 & 3 & 4 & 5 \\ \hline
+      0 & $+\infty$ & $+\infty$ & 2 & -4 & 0 \\ \hline
+      1 & 1 & -6 & -2 & -4 & 0 \\ \hline
+      2 & -4 & -6 & -2 & -4 & 0 \\ \hline
+      3 & -4 & -6 & -2 & -4 & 0 \\ \hline
+      \textbf{4} & \textbf{-4} & \textbf{-6} & \textbf{-2} & \textbf{-4} & \textbf{0} \\ \hline
    \end{tabular}
 \end{table}
 

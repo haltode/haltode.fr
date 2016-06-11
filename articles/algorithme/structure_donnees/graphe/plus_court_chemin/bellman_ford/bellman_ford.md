@@ -2,8 +2,8 @@ Algorithme de Bellman-Ford
 ==========================
 algo/structure/graphe/plus_court_chemin
 
-Publié le : 26/05/2016  
-*Modifié le : 26/05/2016*
+Publié le : 11/06/2016  
+*Modifié le : 11/06/2016*
 
 ## Introduction
 
@@ -120,7 +120,8 @@ Bellman-Ford :
 Plusieurs points importants à comprendre dans cette version itérative de l'algorithme :
 
 - Le tableau `plusCourtChemin` est initialisé à `INFINI` car on n'a plus besoin de détecter le cas où l'on retombe sur un appel de fonction déjà rencontré auparavant, puisque désormais on utilise des boucles (passage de la version récursive à itérative). On choisit donc la valeur `INFINI` pour noter qu'on ne connaît pas de plus court chemin pour un nœud donné à une étape précise.
-- On a transformé les appels récursifs en deux boucles imbriquées, une sur les étapes, et l'autre sur les nœuds. En réalité, on parcourt simplement notre tableau `plusCourtChemin`, et c'est exactement ce que réalisait implicitement notre fonction récursive puisqu'on retrouve la première boucle grâce au paramètre de la fonction `nbEtape` (que l'on diminuait à chaque fois de 1, et qui nous permettait d'arrêter la récursion lorsqu'elle atteignait 0), et la boucle sur les nœuds lors des appels récursifs sur les nœuds voisins. Notre structure au niveau de la boucle des voisins n'a pas changé, et on cherche toujours à garder le minimum dans notre tableau `plusCourtChemin`.
+- On a transformé les appels récursifs en deux boucles imbriquées, une sur les étapes, et l'autre sur les nœuds. En réalité, on parcourt simplement notre tableau `plusCourtChemin`, et c'est exactement ce que réalisait implicitement notre fonction récursive puisqu'on retrouve la première boucle grâce au paramètre de la fonction `nbEtape` (que l'on diminuait à chaque fois de 1, et qui nous permettait d'arrêter la récursion lorsqu'elle atteignait 0), et la boucle sur les nœuds lors des appels récursifs sur les nœuds voisins.
+- Notre structure au niveau de la boucle des voisins n'a pas changé, et on cherche toujours à garder le minimum dans notre tableau `plusCourtChemin`.
 
 Prenons l'exemple de ce graphe (ne contenant pas de cycle améliorant pour simplifier la chose), et appliquons notre nouveau pseudo-code itératif dessus pour bien l'appréhender :
 
@@ -130,9 +131,15 @@ On cherche le plus court chemin entre le nœud 1 (en bleu) et le nœud 5 (en ver
 
 ![Etat initial du tableau `plusCourtChemin`](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png)
 
-TODO : étape 0, 1 et finale
+TODO : explications
 
-TODO : passage des deux boucles (nœuds + voisin) à une seule boucle (arc)
+![Etape 0](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_0.png)
+
+![Etape 1](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_1.png)
+
+![Etat final du tableau](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_final_pseudo_code_iteratif.png)
+
+TODO : arrêt de l'algorithme quand aucunes modifications
 
 TODO : transition + refaire explication réduction mémoire
 
@@ -152,7 +159,7 @@ Bellman-Ford :
    Retourner plusCourtChemin[départ]
 ```
 
-Précédemment, on utilisait une boucle sur les nœuds et une boucle sur les voisins de ces derniers, mais pour éviter ces deux boucles, on utilise simplement une sur tous les arcs du graphe.
+En plus de réaliser une optimisation de l'espace mémoire, on facilite la lecture du pseudo-code en utilisant plus que deux boucles imbriquées à la place de trois. En effet, au lieu de parcourir les nœuds puis leurs voisins respectifs dans deux boucles imbriquées, on peut se contenter de visiter les arcs du graphe pour effectuer la même opération. Il ne faut pas oublier de lire le graphe en entrée comme une [liste d'arcs](/algo/structure/graphe.html#liste-darcs) pour permettre de parcourir tous les arcs en une seule boucle.
 
 ### Détection de cycles améliorants
 
@@ -196,5 +203,17 @@ L'implémentation en C++ de l'algorithme de Bellman-Ford :
 
 [INSERT]
 bellman_ford.cpp
+
+En entrée, on donne sur la première ligne le nœud de départ et d'arrivée pour le plus court chemin, puis sur la seconde ligne le nombre de nœuds et d'arcs du graphe, avant de terminer sur la liste d'arcs :
+
+[INSERT]
+test01.in
+
+La sortie attendue sur le graphe précédemment étudié :
+
+[INSERT]
+test01.out
+
+TODO : exemple avec cycle améliorant
 
 ## Conclusion

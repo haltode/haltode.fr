@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="algorithme-de-bellman-ford">Algorithme de Bellman-Ford</h1></a>
-<p>Publi&#233; le : 26/05/2016<br />
-<em>Modifi&#233; le : 26/05/2016</em></p>
+<p>Publi&#233; le : 11/06/2016<br />
+<em>Modifi&#233; le : 11/06/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -267,7 +267,8 @@ Bellman-Ford (nbEtape, n&#339;ud) :
 <p>Plusieurs points importants &#224; comprendre dans cette version it&#233;rative de l'algorithme :</p>
 <ul>
 <li>Le tableau <code>plusCourtChemin</code> est initialis&#233; &#224; <code>INFINI</code> car on n'a plus besoin de d&#233;tecter le cas o&#249; l'on retombe sur un appel de fonction d&#233;j&#224; rencontr&#233; auparavant, puisque d&#233;sormais on utilise des boucles (passage de la version r&#233;cursive &#224; it&#233;rative). On choisit donc la valeur <code>INFINI</code> pour noter qu'on ne conna&#238;t pas de plus court chemin pour un n&#339;ud donn&#233; &#224; une &#233;tape pr&#233;cise.</li>
-<li>On a transform&#233; les appels r&#233;cursifs en deux boucles imbriqu&#233;es, une sur les &#233;tapes, et l'autre sur les n&#339;uds. En r&#233;alit&#233;, on parcourt simplement notre tableau <code>plusCourtChemin</code>, et c'est exactement ce que r&#233;alisait implicitement notre fonction r&#233;cursive puisqu'on retrouve la premi&#232;re boucle gr&#226;ce au param&#232;tre de la fonction <code>nbEtape</code> (que l'on diminuait &#224; chaque fois de 1, et qui nous permettait d'arr&#234;ter la r&#233;cursion lorsqu'elle atteignait 0), et la boucle sur les n&#339;uds lors des appels r&#233;cursifs sur les n&#339;uds voisins. Notre structure au niveau de la boucle des voisins n'a pas chang&#233;, et on cherche toujours &#224; garder le minimum dans notre tableau <code>plusCourtChemin</code>.</li>
+<li>On a transform&#233; les appels r&#233;cursifs en deux boucles imbriqu&#233;es, une sur les &#233;tapes, et l'autre sur les n&#339;uds. En r&#233;alit&#233;, on parcourt simplement notre tableau <code>plusCourtChemin</code>, et c'est exactement ce que r&#233;alisait implicitement notre fonction r&#233;cursive puisqu'on retrouve la premi&#232;re boucle gr&#226;ce au param&#232;tre de la fonction <code>nbEtape</code> (que l'on diminuait &#224; chaque fois de 1, et qui nous permettait d'arr&#234;ter la r&#233;cursion lorsqu'elle atteignait 0), et la boucle sur les n&#339;uds lors des appels r&#233;cursifs sur les n&#339;uds voisins.</li>
+<li>Notre structure au niveau de la boucle des voisins n'a pas chang&#233;, et on cherche toujours &#224; garder le minimum dans notre tableau <code>plusCourtChemin</code>.</li>
 </ul>
 <p>Prenons l'exemple de ce graphe (ne contenant pas de cycle am&#233;liorant pour simplifier la chose), et appliquons notre nouveau pseudo-code it&#233;ratif dessus pour bien l'appr&#233;hender :</p>
 <div class="figure">
@@ -279,8 +280,20 @@ Bellman-Ford (nbEtape, n&#339;ud) :
 <img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png" alt="Etat initial du tableau plusCourtChemin" />
 <p class="caption">Etat initial du tableau <code>plusCourtChemin</code></p>
 </div>
-<p>TODO : &#233;tape 0, 1 et finale</p>
-<p>TODO : passage des deux boucles (n&#339;uds + voisin) &#224; une seule boucle (arc)</p>
+<p>TODO : explications</p>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_0.png" alt="Etape 0" />
+<p class="caption">Etape 0</p>
+</div>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_1.png" alt="Etape 1" />
+<p class="caption">Etape 1</p>
+</div>
+<div class="figure">
+<img src="//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_final_pseudo_code_iteratif.png" alt="Etat final du tableau" />
+<p class="caption">Etat final du tableau</p>
+</div>
+<p>TODO : arr&#234;t de l'algorithme quand aucunes modifications</p>
 <p>TODO : transition + refaire explication r&#233;duction m&#233;moire</p>
 <p>Le fait que chaque ligne d&#233;pende uniquement de la pr&#233;c&#233;dente est fondamental dans l'&#233;conomie de m&#233;moire que l'on cherche &#224; r&#233;aliser, car cela signifie qu'&#224; tout moment, on a besoin uniquement d'une seule ligne pour d&#233;duire la prochaine. Il est donc possible de supprimer une dimension enti&#232;re, vu que les <span class="math inline">\(K\)</span> &#233;tapes ne sont pas n&#233;cessaires &#224; stocker car on peut se contenter de stocker simplement la derni&#232;re. Notre complexit&#233; en m&#233;moire passe d&#233;sormais &#224; de l'ordre de <span class="math inline">\(N\)</span> :</p>
 <pre class="nohighlight"><code>Bellman-Ford :
@@ -294,7 +307,7 @@ Bellman-Ford (nbEtape, n&#339;ud) :
          plusCourtChemin[n&#339;ud1arc] = min(plusCourtChemin[n&#339;ud1arc], cheminVoisin)
 
    Retourner plusCourtChemin[d&#233;part]</code></pre>
-<p>Pr&#233;c&#233;demment, on utilisait une boucle sur les n&#339;uds et une boucle sur les voisins de ces derniers, mais pour &#233;viter ces deux boucles, on utilise simplement une sur tous les arcs du graphe.</p>
+<p>En plus de r&#233;aliser une optimisation de l'espace m&#233;moire, on facilite la lecture du pseudo-code en utilisant plus que deux boucles imbriqu&#233;es &#224; la place de trois. En effet, au lieu de parcourir les n&#339;uds puis leurs voisins respectifs dans deux boucles imbriqu&#233;es, on peut se contenter de visiter les arcs du graphe pour effectuer la m&#234;me op&#233;ration. Il ne faut pas oublier de lire le graphe en entr&#233;e comme une <a href="/algo/structure/graphe.html#liste-darcs">liste d'arcs</a> pour permettre de parcourir tous les arcs en une seule boucle.</p>
 <h3 id="d&#233;tection-de-cycles-am&#233;liorants">D&#233;tection de cycles am&#233;liorants</h3>
 <p>Cette &#233;conomie de m&#233;moire a d'autres avantages &#224; part faire diminuer la complexit&#233; en m&#233;moire :</p>
 <ul>
@@ -325,7 +338,89 @@ Bellman-Ford (nbEtape, n&#339;ud) :
 <p>Cette complexit&#233; en temps est l&#233;g&#232;rement moins efficace que celle de l'algorithme de Dijkstra, mais reste tr&#232;s raisonnable vu la complexit&#233; exponentielle de l'algorithme na&#239;f. Surtout que l'algorithme de Dijkstra ne permet pas de r&#233;aliser le calcul du plus court chemin sur des graphes pond&#233;r&#233;s n&#233;gativement, et que l'algorithme de Bellman-Ford g&#232;re le cas des cycles am&#233;liorants de mani&#232;re tr&#232;s simple et &#233;l&#233;gante.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L'impl&#233;mentation en C++ de l'algorithme de Bellman-Ford :</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"></code></pre></div>
+<a href="javascript:toggle_visibility('bellman_ford.cpp');">bellman_ford.cpp</a>
+<div id="bellman_ford.cpp" style="display: none;">
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;cstdio&gt;</span>
+<span class="ot">#include &lt;vector&gt;</span>
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="kw">struct</span> Arc
+{
+   <span class="dt">int</span> noeud1;
+   <span class="dt">int</span> noeud2;
+   <span class="dt">int</span> poids;
+};
+
+<span class="dt">const</span> <span class="dt">int</span> NB_NOEUD_MAX = <span class="dv">1000</span>;
+<span class="dt">const</span> <span class="dt">int</span> INFINI       = <span class="dv">1000000000</span>;
+
+vector &lt;Arc&gt; arcs;
+<span class="dt">int</span> nbNoeud, nbArc;
+
+<span class="dt">void</span> bellmanFord(<span class="dt">int</span> depart, <span class="dt">int</span> arrivee)
+{
+   <span class="dt">int</span> plusCourtChemin[NB_NOEUD_MAX];
+   <span class="dt">int</span> iEtape, iArc;
+   <span class="dt">int</span> iNoeud;
+   <span class="dt">bool</span> modification;
+
+   <span class="kw">for</span>(iNoeud = <span class="dv">0</span>; iNoeud &lt; NB_NOEUD_MAX; ++iNoeud)
+      plusCourtChemin[iNoeud] = INFINI;
+   plusCourtChemin[arrivee] = <span class="dv">0</span>;
+
+   modification = <span class="kw">false</span>;
+   <span class="kw">for</span>(iEtape = <span class="dv">0</span>; iEtape &lt;= nbNoeud; ++iEtape) {
+      modification = <span class="kw">false</span>;
+      <span class="kw">for</span>(iArc = <span class="dv">0</span>; iArc &lt; arcs.size(); ++iArc) {
+         <span class="dt">int</span> noeud1, noeud2;
+         <span class="dt">int</span> cheminVoisin;
+         noeud1 = arcs[iArc].noeud1;
+         noeud2 = arcs[iArc].noeud2;
+         cheminVoisin = arcs[iArc].poids + plusCourtChemin[noeud2];
+         <span class="kw">if</span>(cheminVoisin &lt; plusCourtChemin[noeud1]) {
+            plusCourtChemin[noeud1] = cheminVoisin;
+            modification = <span class="kw">true</span>;
+         }
+      }
+   }
+
+   <span class="kw">if</span>(modification)
+      printf(<span class="st">&quot;Cycle ameliorant !</span><span class="ch">\n</span><span class="st">&quot;</span>);
+   <span class="kw">else</span>
+      printf(<span class="st">&quot;</span><span class="ch">%d\n</span><span class="st">&quot;</span>, plusCourtChemin[depart]);
+}
+
+<span class="dt">int</span> main(<span class="dt">void</span>)
+{
+   <span class="dt">int</span> depart, arrivee;
+   <span class="dt">int</span> iArc;
+
+   scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;depart, &amp;arrivee);
+   scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;nbNoeud, &amp;nbArc);
+
+   <span class="kw">for</span>(iArc = <span class="dv">0</span>; iArc &lt; nbArc; ++iArc) {
+      Arc nouveau;
+      scanf(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d</span><span class="st"> </span><span class="ch">%d\n</span><span class="st">&quot;</span>, &amp;nouveau.noeud1, &amp;nouveau.noeud2, &amp;nouveau.poids);
+      arcs.push_back(nouveau);
+   }
+
+   bellmanFord(depart, arrivee);
+   <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+</div>
+<p>En entr&#233;e, on donne sur la premi&#232;re ligne le n&#339;ud de d&#233;part et d'arriv&#233;e pour le plus court chemin, puis sur la seconde ligne le nombre de n&#339;uds et d'arcs du graphe, avant de terminer sur la liste d'arcs :</p>
+<pre class="nohighlight"><code>1 5
+5 7
+1 2 2
+1 3 -1
+2 3 3
+2 4 -2
+3 4 2
+3 5 2
+4 5 -4</code></pre>
+<p>La sortie attendue sur le graphe pr&#233;c&#233;demment &#233;tudi&#233; :</p>
+<pre class="nohighlight"><code>-4</code></pre>
+<p>TODO : exemple avec cycle am&#233;liorant</p>
 <h2 id="conclusion">Conclusion</h2>
  
       <!-- ------------ -->
