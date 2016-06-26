@@ -39,6 +39,3 @@ Tout d'abord, si vous n'êtes pas familier aux algorithmes, une petite [introduc
 
 Bonne visite !  
 napnac
-
-<br>
-<p style="text-align: center;"><a href="https://sous-surveillance.fr"><img style="border: 0;" src="//static.napnac.ga/img/PJL_banner.png" alt="Non à la loi renseignement" title="Non à la loi renseignement" height="60" width="468"/></a></p>
