@@ -2,8 +2,8 @@ Algorithme de Bellman-Ford
 ==========================
 algo/structure/graphe/plus_court_chemin
 
-Publié le : 11/06/2016  
-*Modifié le : 11/06/2016*
+Publié le : 26/06/2016  
+*Modifié le : 26/06/2016*
 
 ## Introduction
 
@@ -25,7 +25,7 @@ Un exemple de l'algorithme de Bellman-Ford serait assez peu intéressant car il 
 
 *Pour appréhender au mieux cette partie, il est nécessaire d'être familier à la programmation dynamique (ou au moins d'en connaître la base). Si ce n'est pas le cas, je vous renvoie vers mon article sur le sujet dont le lien est situé au-dessus.*
 
-Pour mettre en place un algorithme dynamique correctement, il est essentiel de rédiger la version récursive d'abord afin d'établir explicitement la récursion pour bien comprendre ce que cherche à réaliser l'algorithme.
+Pour mettre en place un algorithme dynamique correctement, il est essentiel de rédiger la version récursive d'abord afin d'établir explicitement la récursion pour bien comprendre ce que cherche à réaliser l'algorithme. Nous allons donc procéder par étape pour ce pseudo-code, en commençant par la version récursive naïve, puis nous l'améliorerons petit à petit grâce à un algorithme dynamique.
 
 ### Cycle améliorant
 
@@ -94,9 +94,7 @@ On a seulement ajouté les trois points fondamentaux qu'on retrouve dans un proc
 
 ### Version dynamique itérative
 
-TODO : revoir deux dernières sous-parties
-
-Une fois qu'on a réussi à obtenir une complexité en temps non exponentielle (puisque désormais on ne parcourt pas inutilement des parties du graphe), il est toujours intéressant de tenter de réduire notre complexité en mémoire si possible. Actuellement, dans notre dernier pseudo-code, on a une complexité mémoire de l'ordre de $KN$, ce qui est équivalent à du $N^2$, car on choisit la limite $K$, tel que $K = N$ pour éviter les cycles améliorants. Cet ordre de grandeur est tout à fait correct en termes d'espace mémoire, surtout vu le gain de temps qu'on acquiert grâce au tableau, mais il peut être encore largement amélioré.
+Une fois qu'on a réussi à obtenir une complexité en temps non exponentielle (puisque désormais on ne parcourt pas inutilement des parties du graphe), il est toujours intéressant de tenter de réduire notre complexité en mémoire si possible. Actuellement, dans notre dernier pseudo-code, on a une complexité mémoire de l'ordre de $O(KN)$, ce qui est équivalent à du $O(N^2)$, car on choisit la limite $K$, tel que $K = N$ pour éviter les cycles améliorants. Cet ordre de grandeur est tout à fait correct en termes d'espace mémoire, surtout vu le gain de temps qu'on acquiert grâce au tableau, mais il peut être encore largement amélioré.
 
 Le passage à la version itérative de l'algorithme dynamique est essentiel à cette réduction de l'espace mémoire utilisé, et c'est ce qu'on va réaliser dans un premier temps :
 
@@ -123,7 +121,7 @@ Plusieurs points importants à comprendre dans cette version itérative de l'alg
 - On a transformé les appels récursifs en deux boucles imbriquées, une sur les étapes, et l'autre sur les nœuds. En réalité, on parcourt simplement notre tableau `plusCourtChemin`, et c'est exactement ce que réalisait implicitement notre fonction récursive puisqu'on retrouve la première boucle grâce au paramètre de la fonction `nbEtape` (que l'on diminuait à chaque fois de 1, et qui nous permettait d'arrêter la récursion lorsqu'elle atteignait 0), et la boucle sur les nœuds lors des appels récursifs sur les nœuds voisins.
 - Notre structure au niveau de la boucle des voisins n'a pas changé, et on cherche toujours à garder le minimum dans notre tableau `plusCourtChemin`.
 
-Prenons l'exemple de ce graphe (ne contenant pas de cycle améliorant pour simplifier la chose), et appliquons notre nouveau pseudo-code itératif dessus pour bien l'appréhender :
+Avant de réaliser l'économie de mémoire, attardons-nous légèrement sur ce dernier pseudo-code afin de bien comprendre comment effectuer cette amélioration. Prenons l'exemple de ce graphe (ne contenant pas de cycle améliorant pour simplifier la chose), et appliquons notre nouveau pseudo-code itératif dessus pour bien l'appréhender :
 
 ![Exemple de graphe orienté et pondéré](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_graphe_pseudo_code_iteratif.png)
 
@@ -131,19 +129,55 @@ On cherche le plus court chemin entre le nœud 1 (en bleu) et le nœud 5 (en ver
 
 ![Etat initial du tableau `plusCourtChemin`](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png)
 
-TODO : explications
+Maintenant qu'on a initialisé notre tableau, on peut commencer à le remplir. Pour rappel, chaque case de ce tableau représente la longueur du plus court chemin reliant un nœud au nœud d'arrivée :
 
 ![Etape 0](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_0.png)
 
+La partie du pseudo-code nous concernant ici est la suivante :
+
+```nohighlight
+Pour chaque étape
+   Pour chaque nœud
+      cheminMin = plusCourtChemin[étape - 1][nœud]
+      Pour chaque voisin du nœud
+         cheminVoisin = pondérationArc + plusCourtChemin[étape - 1][voisin]
+         cheminMin = min(cheminMin, cheminVoisin)
+      plusCourtChemin[étape][nœud] = cheminMin
+```
+
+On va donc décomposer l'explication de l'étape 0, afin de traiter séparément le cas de chaque nœud.
+
+Pour le nœud 1, dans notre pseudo-code la ligne `cheminMin = plusCourtChemin[étape - 1][nœud]` permet de prendre en compte le dernier chemin trouvé pour un nœud, or ici c'est le premier tour donc on n'a aucunes informations qu'on peut réutiliser. On parcourt les voisins du nœud 1, soit les nœuds 2 et 3, et on calcule la pondération du chemin reliant 1 au meilleur chemin qu'on a trouvé avec ses voisins (cela correspond à la ligne `cheminVoisin = pondérationArc + plusCourtChemin[étape - 1][voisin]`). Encore une fois, on a aucunes informations sur des chemins pour aucun de ses voisins, donc la case du nœud 1 reste inchangée dans notre tableau.
+
+De même, le nœud 2 se retrouve dans cette situation. En effet, on ne possède aucunes informations antérieures (puisque c'est l'étape 0), et aucun de ses voisins (nœuds 3 et 4) n'en possèdent non plus.
+
+Le nœud 3 n'a aucunes précédentes informations, mais possède cependant comme voisin le nœud 5 (notre nœud d'arrivée). On peut donc trouver un chemin simple et direct entre le nœud 3 et 5, de pondération 2. Le nœud 4 est aussi voisin du nœud 3 mais ne possède encore aucunes données sur un éventuel chemin avec le nœud 5.
+
+On arrive enfin au nœud 4 et lui aussi est relié directement à notre nœud d'arrivée, on peut donc mettre à jour sa case dans le tableau.
+
+Au final, le premier tour de boucle ne va uniquement calculer des chemins (on n'est pas encore sûr qu'ils sont les plus courts) des voisins directs du nœud d'arrivée, puisque les autres nœuds n'ont aucunes informations à ce sujet.
+
+On recommence notre procédé sur les différents nœuds, mais cette fois on peut réutiliser les anciennes valeurs :
+
 ![Etape 1](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_1.png)
+
+Pour le nœud 1, le seul de ses deux voisins à posséder des informations est le nœud 3. On a donc pas d'autres choix de chemin reliant le nœud 1 et 5 que celui-ci pour le moment.
+
+Le nœud 2 en revanche peut utiliser les informations de ses deux voisins. On calcule donc le chemin qui minimise la pondération en choisissant le meilleur (ici, le chemin reliant 2, 3 et 5 a un coût total de 5 unités, et le chemin reliant 2, 4 et 5 a un coût de -6 unités, c'est donc ce dernier qu'on choisit).
+
+Pour le nœud 3, on connaît maintenant des informations au sujet du nœud 4 et on peut alors les exploiter à notre avantage. En effet, emprunter le chemin reliant le nœud 4 et 5 nous avantage par rapport à un chemin direct entre 3 et 5.
+
+Enfin le nœud 4 n'a pas d'autres voisins que le nœud 5 donc aucuns autres choix de chemin.
+
+On continue comme ceci jusqu'à avoir rempli tout notre tableau :
 
 ![Etat final du tableau](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_final_pseudo_code_iteratif.png)
 
-TODO : arrêt de l'algorithme quand aucunes modifications
+Désormais on connait le plus court chemin du graphe reliant le nœud 1 à 5, soit -4, et au passage on a aussi grâce à ce tableau les plus court chemins de tous les nœuds allant à 5.
 
-TODO : transition + refaire explication réduction mémoire
+*On remarque qu'à partir de l'étape 2 on n'effectue plus aucun changement sur le tableau, cela nous montre alors qu'on a trouvé notre solution dès l'étape 2 et il est tout à fait possible d'arrêter l'algorithme ici. Cependant, vu que la complexité en temps reste inchangé (dans le cas où le tableau est mis à jour à chaque étape), on n'implémentera pas cette amélioration afin de garder un code simple et concis.*
 
-Le fait que chaque ligne dépende uniquement de la précédente est fondamental dans l'économie de mémoire que l'on cherche à réaliser, car cela signifie qu'à tout moment, on a besoin uniquement d'une seule ligne pour déduire la prochaine. Il est donc possible de supprimer une dimension entière, vu que les $K$ étapes ne sont pas nécessaires à stocker car on peut se contenter de stocker simplement la dernière. Notre complexité en mémoire passe désormais à de l'ordre de $N$ :
+Cette explication du pseudo-code nous permet d'introduire notre économie de mémoire qu'on cherchait à réaliser. En effet, dans ce tableau chaque ligne dépend de la précédente pour être calculée. Cela signifie que pour trouver la ligne 3, on a uniquement besoin de l'étape 2, et on peut donc se débarrasser de l'étape 0 et 1. Au final, on se rend compte qu'on peut garder une ligne unique que l'on va mettre à jour à chaque étape puisqu'on a pas besoin de conserver plus que cela dans notre tableau. On a alors réussi à supprimer une dimension entière, et cela nous donne une complexité en mémoire de $O(N)$. Cette amélioration nécessite quelques modifications dans notre pseudo-code, mais on va en profiter pour simplifier ce dernier :
 
 ```nohighlight
 Bellman-Ford :
@@ -163,12 +197,9 @@ En plus de réaliser une optimisation de l'espace mémoire, on facilite la lectu
 
 ### Détection de cycles améliorants
 
-Cette économie de mémoire a d'autres avantages à part faire diminuer la complexité en mémoire :
+Notre pseudo-code n'est pas terminé, il nous reste encore la détection de cycles améliorants dans notre graphe, mais vu qu'on a simplifié et amélioré grandement notre pseudo-code, ce problème de cycles va être simple à gérer.
 
-- Le code est d'autant plus simplifié.
-- Le problème du cycle améliorant est très simple à gérer.
-
-En effet, pour détecter un cycle améliorant, il suffit de détecter si un chemin emprunte plus de $N$ nœuds, et on peut très simplement réaliser ce test en regardant si le tableau `plusCourtChemin` a été modifié une fois la limite atteinte (on va donc réaliser un tour de boucle en plus). Si c'est le cas, on sait que le graphe contient un cycle améliorant :
+Pour détecter un cycle améliorant, il suffit de détecter si un chemin emprunte plus de $N$ nœuds, et on peut très facilement réaliser ce test en regardant si le tableau `plusCourtChemin` a été modifié une fois la limite atteinte (on va donc réaliser un tour de boucle en plus). Si c'est le cas, on sait que le graphe contient un cycle améliorant :
 
 ```nohighlight
 Bellman-Ford :
@@ -191,9 +222,11 @@ Bellman-Ford :
       Retourner plusCourtChemin[départ]
 ```
 
+On a désormais le pseudo-code définitif de l'algorithme de Bellman-Ford.
+
 ## Complexité
 
-L'avantage de passer de l'approche récursive à l'approche itérative dans un algorithme dynamique, est qu'on peut facilement trouver la complexité en temps de ce dernier. En effet, les deux boucles imbriquées nous permettent de calculer une complexité en temps de $O(N * M)$ avec $N$ le nombre de nœuds du graphe, et $M$ le nombre d'arcs (puisqu'on sait que pour éviter un cycle améliorant il suffit que $K = N$).
+L'avantage de passer de l'approche récursive à l'approche itérative dans un algorithme dynamique, est qu'on peut simplement trouver la complexité en temps de ce dernier. En effet, les deux boucles imbriquées nous permettent de calculer une complexité en temps de $O(N * M)$ avec $N$ le nombre de nœuds du graphe, et $M$ le nombre d'arcs (puisqu'on sait que pour éviter un cycle améliorant il suffit que $K = N$).
 
 Cette complexité en temps est légèrement moins efficace que celle de l'algorithme de Dijkstra, mais reste très raisonnable vu la complexité exponentielle de l'algorithme naïf. Surtout que l'algorithme de Dijkstra ne permet pas de réaliser le calcul du plus court chemin sur des graphes pondérés négativement, et que l'algorithme de Bellman-Ford gère le cas des cycles améliorants de manière très simple et élégante.
 
@@ -214,6 +247,14 @@ La sortie attendue sur le graphe précédemment étudié :
 [INSERT]
 test01.out
 
-TODO : exemple avec cycle améliorant
+On teste avec notre exemple de graphe contenant un cycle améliorant :
+
+[INSERT]
+test02.in
+
+Le cycle est bien détecté par l'algorithme :
+
+[INSERT]
+test02.out
 
 ## Conclusion
