@@ -3,7 +3,7 @@ Introduction aux algorithmes
 algo/general
 
 Publié le : 26/12/2015  
-*Modifié le : 09/01/2016*
+*Modifié le : 11/07/2016*
 
 ## Introduction
 
@@ -43,4 +43,4 @@ Un programmeur est une personne qui résout des problèmes à l'aide de programm
 
 ## Conclusion
 
-Les algorithmes sont donc un domaine incontournable aujourd'hui, et encore plus si vous programmez. Connaître une base en algorithmie, savoir comment les algorithmes fonctionnent, comment les analyser vont vous permettre de devenir un meilleur programmeur. Cette série d'articles sur les algorithmes peut vous servir de base afin de vous donner une idée concrète sur le sujet, mais si vous souhaitez réellement progresser dans cette discipline il faudra [s'entraîner et pratiquer](/algo/general/entrainement.html) régulièrement.
+Les algorithmes sont donc un domaine incontournable aujourd'hui, et d'autant plus si vous programmez. Connaître une base en algorithmie, savoir comment les algorithmes fonctionnent, comment les analyser vont vous permettre de devenir un meilleur programmeur. Cette série d'articles sur les algorithmes peut vous servir de base afin de vous donner une idée concrète sur le sujet, mais si vous souhaitez réellement progresser dans cette discipline il faudra [s'entraîner et pratiquer](/algo/general/entrainement.html) régulièrement. Mais l'entraînement ne peut être réellement efficace que si vous utilisez des [méthodes de résolution](/algo/general/methodes.html) adaptées qui vous permettront de développer votre raisonnement logique. De plus, lorsqu'on cherche à comprendre un algorithme (ou même à le trouver), il est nécessaire de savoir [analyser sa complexité](/algo/general/complexite.html) en temps et en mémoire pour s'assurer de son efficacité ou pour le comparer à d'autres solutions. Enfin, de nombreuses approches existent pour résoudre un problème donné, et en connaître quelques-unes comme la [récursivité](/algo/general/approche/recursivite.html), la [programmation dynamique](/algo/general/approche/dynamique.html), ou encore l'[approche gloutonne](/algo/general/approche/glouton.html) est un avantage non négligeable car on les retrouve régulièrement dans des algorithmes.

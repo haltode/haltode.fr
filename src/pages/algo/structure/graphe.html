@@ -193,54 +193,59 @@ function toggle_visibility(id) {
 <p>Pour information, si deux n&#339;uds sont reli&#233;s par un arc on dit qu'ils sont <strong>voisins</strong>. De plus, le <strong>degr&#233; entrant</strong> d'un n&#339;ud correspond au nombre d'arcs arrivant sur ce n&#339;ud, et il en est de m&#234;me pour le <strong>degr&#233; sortant</strong> correspondant alors au nombre d'arcs sortant du n&#339;ud.</p>
 <h2 id="caract&#233;ristiques">Caract&#233;ristiques</h2>
 <p>Un graphe peut avoir de nombreuses caract&#233;ristiques diff&#233;rentes, en voici une liste que l'on retrouve couramment :</p>
-<table>
+<table style="width:50%;">
+<colgroup>
+<col width="22%" />
+<col width="16%" />
+<col width="11%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">Caract&#233;ristique</th>
-<th align="left">Description</th>
-<th align="left">Exemple</th>
+<th>Caract&#233;ristique</th>
+<th>Description</th>
+<th>Exemple</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Orient&#233;</td>
-<td align="left">Si les arcs ont un sens (repr&#233;sent&#233; par une fl&#232;che), le graphe est orient&#233;.</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_oriente.png" alt="Graphe orient&#233;" /></td>
+<td>Orient&#233;</td>
+<td>Si les arcs ont un sens (repr&#233;sent&#233; par une fl&#232;che), le graphe est orient&#233;.</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_oriente.png" alt="Graphe orient&#233;" /></td>
 </tr>
 <tr class="even">
-<td align="left">Non orient&#233;</td>
-<td align="left">Dans ce cas, on peut parcourir le graphe dans les deux sens.</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_non_oriente.png" alt="Graphe non orient&#233;" /></td>
+<td>Non orient&#233;</td>
+<td>Dans ce cas, on peut parcourir le graphe dans les deux sens.</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_non_oriente.png" alt="Graphe non orient&#233;" /></td>
 </tr>
 <tr class="odd">
-<td align="left">Pond&#233;r&#233; / non pond&#233;r&#233;</td>
-<td align="left">Un graphe est pond&#233;r&#233; si ses arcs ont un <strong>poids</strong> (par exemple la distance en km entre deux villes).</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_pondere.png" alt="Graphe pond&#233;r&#233;" /></td>
+<td>Pond&#233;r&#233; / non pond&#233;r&#233;</td>
+<td>Un graphe est pond&#233;r&#233; si ses arcs ont un <strong>poids</strong> (par exemple la distance en km entre deux villes).</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_pondere.png" alt="Graphe pond&#233;r&#233;" /></td>
 </tr>
 <tr class="even">
-<td align="left">Cyclique</td>
-<td align="left">Un graphe est cyclique s'il contient des chemins finissant l&#224; o&#249; ils ont commenc&#233; (des cycles).</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_cyclique.png" alt="Graphe cyclique" /></td>
+<td>Cyclique</td>
+<td>Un graphe est cyclique s'il contient des chemins finissant l&#224; o&#249; ils ont commenc&#233; (des cycles).</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_cyclique.png" alt="Graphe cyclique" /></td>
 </tr>
 <tr class="odd">
-<td align="left">Acyclique</td>
-<td align="left">Lorsque le graphe ne contient aucun cycle, il est acyclique.</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_acyclique.png" alt="Graphe acyclique" /></td>
+<td>Acyclique</td>
+<td>Lorsque le graphe ne contient aucun cycle, il est acyclique.</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_acyclique.png" alt="Graphe acyclique" /></td>
 </tr>
 <tr class="even">
-<td align="left">Dense</td>
-<td align="left">Si le nombre d'arcs est proche du nombre maximum d'arcs possibles de ce graphe, il est dense.</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_dense.png" alt="Graphe dense" /></td>
+<td>Dense</td>
+<td>Si le nombre d'arcs est proche du nombre maximum d'arcs possibles de ce graphe, il est dense.</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_dense.png" alt="Graphe dense" /></td>
 </tr>
 <tr class="odd">
-<td align="left">Creux</td>
-<td align="left">Au contraire, si le nombre d'arcs est faible par rapport au nombre de n&#339;uds, il est caract&#233;ris&#233; de creux.</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_creux.png" alt="Graphe creux" /></td>
+<td>Creux</td>
+<td>Au contraire, si le nombre d'arcs est faible par rapport au nombre de n&#339;uds, il est caract&#233;ris&#233; de creux.</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_creux.png" alt="Graphe creux" /></td>
 </tr>
 <tr class="even">
-<td align="left">Connexe / non connexe</td>
-<td align="left">Un graphe est dit connexe s'il existe un chemin (de un ou plusieurs n&#339;uds) reliant chaque paire de n&#339;uds possible.</td>
-<td align="left"><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_connexe.png" alt="Graphe connexe" /></td>
+<td>Connexe / non connexe</td>
+<td>Un graphe est dit connexe s'il existe un chemin (de un ou plusieurs n&#339;uds) reliant chaque paire de n&#339;uds possible.</td>
+<td><img src="//static.napnac.ga/img/algo/structure/graphe/graphe_connexe.png" alt="Graphe connexe" /></td>
 </tr>
 </tbody>
 </table>

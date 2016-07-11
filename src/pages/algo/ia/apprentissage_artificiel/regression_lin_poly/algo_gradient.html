@@ -281,57 +281,57 @@ Tant qu&#39;on n&#39;a pas d&#233;pass&#233; la limite de tours
 <p><em>J'utilise Python afin d'avoir acc&#232;s &#224; des librairies scientifiques comme <a href="http://www.numpy.org/">numpy</a> pour les matrices et <a href="http://matplotlib.org/">matplotlib</a> pour les graphiques.</em></p>
 <a href="javascript:toggle_visibility('algo_gradient.py');">algo_gradient.py</a>
 <div id="algo_gradient.py" style="display: none;">
-<pre class="py"><code>import numpy as np
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
 
 
-# x = exemple d&#39;entr&#233;e
-# y = exemple de sortie
-# m = nombre d&#39;exemples
-# n = nombre d&#39;attributs
-# theta = coefficients de notre fonction d&#39;hypothese
+<span class="co"># x = exemple d&#39;entr&#233;e</span>
+<span class="co"># y = exemple de sortie</span>
+<span class="co"># m = nombre d&#39;exemples</span>
+<span class="co"># n = nombre d&#39;attributs</span>
+<span class="co"># theta = coefficients de notre fonction d&#39;hypothese</span>
 
-class regression_lineaire:
+<span class="kw">class</span> regression_lineaire:
 
-    def __init__(self, entree):
-        with open(entree) as f:
-            self.m, self.n = map(int, f.readline().split())
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, entree):
+        <span class="cf">with</span> <span class="bu">open</span>(entree) <span class="im">as</span> f:
+            <span class="va">self</span>.m, <span class="va">self</span>.n <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, f.readline().split())
 
-        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
-                            usecols=(list(range(self.n))), ndmin=2))
-        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
-                            usecols=([self.n]), ndmin=2))
+        <span class="va">self</span>.x <span class="op">=</span> np.matrix(np.loadtxt(entree, skiprows<span class="op">=</span><span class="dv">1</span>,
+                            usecols<span class="op">=</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="va">self</span>.n))), ndmin<span class="op">=</span><span class="dv">2</span>))
+        <span class="va">self</span>.y <span class="op">=</span> np.matrix(np.loadtxt(entree, skiprows<span class="op">=</span><span class="dv">1</span>,
+                            usecols<span class="op">=</span>([<span class="va">self</span>.n]), ndmin<span class="op">=</span><span class="dv">2</span>))
 
-        # Ajoute une colonne de 1 au d&#233;but de notre matrice x
-        col = np.ones((self.m, 1))
-        self.x = np.matrix(np.hstack((col, self.x)))
-        self.n = self.n + 1
+        <span class="co"># Ajoute une colonne de 1 au d&#233;but de notre matrice x</span>
+        col <span class="op">=</span> np.ones((<span class="va">self</span>.m, <span class="dv">1</span>))
+        <span class="va">self</span>.x <span class="op">=</span> np.matrix(np.hstack((col, <span class="va">self</span>.x)))
+        <span class="va">self</span>.n <span class="op">=</span> <span class="va">self</span>.n <span class="op">+</span> <span class="dv">1</span>
 
-    def algo_gradient(self, alpha, nb_tour_max):
-        # Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese
-        self.theta = np.matrix(np.zeros((self.n, 1)))
+    <span class="kw">def</span> algo_gradient(<span class="va">self</span>, alpha, nb_tour_max):
+        <span class="co"># Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese</span>
+        <span class="va">self</span>.theta <span class="op">=</span> np.matrix(np.zeros((<span class="va">self</span>.n, <span class="dv">1</span>)))
 
-        for _ in range(nb_tour_max):
-            # Pour faire la mise &#224; jour instantan&#233;e des coefficients :
-            # 1. On calcule d&#39;abord les r&#233;sultats dans des variables temporaires
-            temp = np.zeros((self.n, 1))
-            for j in range(self.n):
-                somme = 0.0
-                for i in range(self.m):
-                    hypothese = float(self.x[i] * self.theta)
-                    somme = somme + ((hypothese - self.y[i]) * self.x.item((i, j)))
-                temp[j] = self.theta[j] - alpha * (1 / self.m) * somme
+        <span class="cf">for</span> _ <span class="op">in</span> <span class="bu">range</span>(nb_tour_max):
+            <span class="co"># Pour faire la mise &#224; jour instantan&#233;e des coefficients :</span>
+            <span class="co"># 1. On calcule d&#39;abord les r&#233;sultats dans des variables temporaires</span>
+            temp <span class="op">=</span> np.zeros((<span class="va">self</span>.n, <span class="dv">1</span>))
+            <span class="cf">for</span> j <span class="op">in</span> <span class="bu">range</span>(<span class="va">self</span>.n):
+                somme <span class="op">=</span> <span class="fl">0.0</span>
+                <span class="cf">for</span> i <span class="op">in</span> <span class="bu">range</span>(<span class="va">self</span>.m):
+                    hypothese <span class="op">=</span> <span class="bu">float</span>(<span class="va">self</span>.x[i] <span class="op">*</span> <span class="va">self</span>.theta)
+                    somme <span class="op">=</span> somme <span class="op">+</span> ((hypothese <span class="op">-</span> <span class="va">self</span>.y[i]) <span class="op">*</span> <span class="va">self</span>.x.item((i, j)))
+                temp[j] <span class="op">=</span> <span class="va">self</span>.theta[j] <span class="op">-</span> alpha <span class="op">*</span> (<span class="dv">1</span> <span class="op">/</span> <span class="va">self</span>.m) <span class="op">*</span> somme
 
-            # 2. Puis on copie les r&#233;sultats dans nos coefficients
-            for j in range(self.n):
-                self.theta[j] = temp[j]
+            <span class="co"># 2. Puis on copie les r&#233;sultats dans nos coefficients</span>
+            <span class="cf">for</span> j <span class="op">in</span> <span class="bu">range</span>(<span class="va">self</span>.n):
+                <span class="va">self</span>.theta[j] <span class="op">=</span> temp[j]
 
 
-ia = regression_lineaire(&quot;test01.in&quot;)
-ia.algo_gradient(0.01, 400)
+ia <span class="op">=</span> regression_lineaire(<span class="st">&quot;test01.in&quot;</span>)
+ia.algo_gradient(<span class="fl">0.01</span>, <span class="dv">400</span>)
 
-print(&quot;Coefficients de la fonction d&#39;hypothese :\n&quot;)
-for j in range(ia.n):
-    print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))</code></pre>
+<span class="bu">print</span>(<span class="st">&quot;Coefficients de la fonction d&#39;hypothese :</span><span class="ch">\n</span><span class="st">&quot;</span>)
+<span class="cf">for</span> j <span class="op">in</span> <span class="bu">range</span>(ia.n):
+    <span class="bu">print</span>(<span class="st">&quot;theta &quot;</span>, j, <span class="st">&quot; : &quot;</span>, <span class="bu">float</span>(ia.theta[j]))</code></pre></div>
 </div>
 <p>Notre fichier d'entr&#233;e contient sur la premi&#232;re ligne le nombre <span class="math inline">\(m\)</span> d'exemples, puis le nombre <span class="math inline">\(n\)</span> d'attributs. Sur les <span class="math inline">\(m\)</span> prochaines lignes, on retrouve une liste de nombre dont la derni&#232;re colonne correspond &#224; <span class="math inline">\(y\)</span> et les autres &#224; <span class="math inline">\(x\)</span>. J'ai repris notre exemple de l'introduction pour construire le fichier d'entr&#233;e (les unit&#233;s sont toujours en centaine d'op&#233;rations et en centaine d'euros) :</p>
 <pre class="nohighlight"><code>6 1
@@ -353,22 +353,22 @@ theta  1  :  0.7219164912370313</code></pre>
 </div>
 <p>On obtient bien une g&#233;n&#233;ralisation efficace sous forme de fonction lin&#233;aire qui ressemble fortement &#224; celle qu'un humain peut faire &#224; la main (m&#234;me si celle que l'ordinateur a calcul&#233; est plus pr&#233;cise que celle faite &#224; la main).</p>
 <p>Le code utilis&#233; pour r&#233;aliser cette sortie :</p>
-<pre class="py"><code>import matplotlib.pyplot as plt
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
 
-# R&#233;cup&#232;re dans des listes les valeurs de x, y, et de notre approximation de y
-x = np.array(ia.x[:,1]).tolist()
-x = [float(i[0]) for i in x]
+<span class="co"># R&#233;cup&#232;re dans des listes les valeurs de x, y, et de notre approximation de y</span>
+x <span class="op">=</span> np.array(ia.x[:,<span class="dv">1</span>]).tolist()
+x <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> x]
 
-y = np.array(ia.y).tolist()
-y = [float(i[0]) for i in y]
+y <span class="op">=</span> np.array(ia.y).tolist()
+y <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> y]
 
-y_approx = np.array(ia.x * ia.theta).tolist()
-y_approx = [float(i[0]) for i in y_approx]
+y_approx <span class="op">=</span> np.array(ia.x <span class="op">*</span> ia.theta).tolist()
+y_approx <span class="op">=</span> [<span class="bu">float</span>(i[<span class="dv">0</span>]) <span class="cf">for</span> i <span class="op">in</span> y_approx]
 
-# Affiche les points donn&#233;s en entr&#233;e, ainsi que notre mod&#232;le lin&#233;aire
-plt.plot(x, y, &#39;+&#39;)
-plt.plot(x, y_approx, &#39;r-&#39;)
-plt.show()</code></pre>
+<span class="co"># Affiche les points donn&#233;s en entr&#233;e, ainsi que notre mod&#232;le lin&#233;aire</span>
+plt.plot(x, y, <span class="st">&#39;+&#39;</span>)
+plt.plot(x, y_approx, <span class="st">&#39;r-&#39;</span>)
+plt.show()</code></pre></div>
 <h2 id="am&#233;liorations">Am&#233;liorations</h2>
 <h3 id="vectorization"><em>Vectorization</em></h3>
 <p>Afin de simplifier le code, il serait utile d'utiliser la m&#234;me am&#233;lioration qu'avec notre fonction d'hypoth&#232;se : les op&#233;rations sur les matrices. Au lieu d'appliquer des op&#233;rations sur les &#233;l&#233;ments d'une matrice un par un, on peut utiliser des op&#233;rations plus g&#233;n&#233;rales sur notre matrice enti&#232;re. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de r&#233;aliser une mise &#224; jour instantan&#233;e des coefficients automatiquement, sans m&#234;me avoir besoin de stocker nos r&#233;sultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
@@ -414,49 +414,49 @@ theta  1  :  2.3208884389927897</code></pre>
 <p>Le code final avec les deux am&#233;liorations :</p>
 <a href="javascript:toggle_visibility('algo_gradient_vect_fs.py');">algo_gradient_vect_fs.py</a>
 <div id="algo_gradient_vect_fs.py" style="display: none;">
-<pre class="py"><code>import numpy as np
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
 
 
-# x = exemple d&#39;entr&#233;e
-# y = exemple de sortie
-# m = nombre d&#39;exemples
-# n = nombre d&#39;attributs
-# theta = coefficients de notre fonction d&#39;hypothese
+<span class="co"># x = exemple d&#39;entr&#233;e</span>
+<span class="co"># y = exemple de sortie</span>
+<span class="co"># m = nombre d&#39;exemples</span>
+<span class="co"># n = nombre d&#39;attributs</span>
+<span class="co"># theta = coefficients de notre fonction d&#39;hypothese</span>
 
-class regression_lineaire:
+<span class="kw">class</span> regression_lineaire:
 
-    def __init__(self, entree):
-        with open(entree) as f:
-            self.m, self.n = map(int, f.readline().split())
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, entree):
+        <span class="cf">with</span> <span class="bu">open</span>(entree) <span class="im">as</span> f:
+            <span class="va">self</span>.m, <span class="va">self</span>.n <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, f.readline().split())
 
-        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
-                            usecols=(list(range(self.n))), ndmin=2))
-        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
-                            usecols=([self.n]), ndmin=2))
+        <span class="va">self</span>.x <span class="op">=</span> np.matrix(np.loadtxt(entree, skiprows<span class="op">=</span><span class="dv">1</span>,
+                            usecols<span class="op">=</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="va">self</span>.n))), ndmin<span class="op">=</span><span class="dv">2</span>))
+        <span class="va">self</span>.y <span class="op">=</span> np.matrix(np.loadtxt(entree, skiprows<span class="op">=</span><span class="dv">1</span>,
+                            usecols<span class="op">=</span>([<span class="va">self</span>.n]), ndmin<span class="op">=</span><span class="dv">2</span>))
 
-        # Feature scaling
-        self.x = (self.x - np.mean(self.x)) / np.std(self.x)
+        <span class="co"># Feature scaling</span>
+        <span class="va">self</span>.x <span class="op">=</span> (<span class="va">self</span>.x <span class="op">-</span> np.mean(<span class="va">self</span>.x)) <span class="op">/</span> np.std(<span class="va">self</span>.x)
 
-        # Ajoute une colonne de 1 au d&#233;but de notre matrice x
-        col = np.ones((self.m, 1))
-        self.x = np.matrix(np.hstack((col, self.x)))
-        self.n = self.n + 1
+        <span class="co"># Ajoute une colonne de 1 au d&#233;but de notre matrice x</span>
+        col <span class="op">=</span> np.ones((<span class="va">self</span>.m, <span class="dv">1</span>))
+        <span class="va">self</span>.x <span class="op">=</span> np.matrix(np.hstack((col, <span class="va">self</span>.x)))
+        <span class="va">self</span>.n <span class="op">=</span> <span class="va">self</span>.n <span class="op">+</span> <span class="dv">1</span>
 
-    def algo_gradient(self, alpha, nb_tour_max):
-        # Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese
-        self.theta = np.matrix(np.zeros((self.n, 1)))
+    <span class="kw">def</span> algo_gradient(<span class="va">self</span>, alpha, nb_tour_max):
+        <span class="co"># Initialise &#224; 0 les coefficients de la fonction d&#39;hypothese</span>
+        <span class="va">self</span>.theta <span class="op">=</span> np.matrix(np.zeros((<span class="va">self</span>.n, <span class="dv">1</span>)))
 
-        for _ in range(nb_tour_max):
-            derivee = np.transpose(self.x) * (self.x * self.theta - self.y)
-            self.theta = self.theta - alpha * (1 / self.m) * derivee
+        <span class="cf">for</span> _ <span class="op">in</span> <span class="bu">range</span>(nb_tour_max):
+            derivee <span class="op">=</span> np.transpose(<span class="va">self</span>.x) <span class="op">*</span> (<span class="va">self</span>.x <span class="op">*</span> <span class="va">self</span>.theta <span class="op">-</span> <span class="va">self</span>.y)
+            <span class="va">self</span>.theta <span class="op">=</span> <span class="va">self</span>.theta <span class="op">-</span> alpha <span class="op">*</span> (<span class="dv">1</span> <span class="op">/</span> <span class="va">self</span>.m) <span class="op">*</span> derivee
 
 
-ia = regression_lineaire(&quot;test01.in&quot;)
-ia.algo_gradient(0.01, 400)
+ia <span class="op">=</span> regression_lineaire(<span class="st">&quot;test01.in&quot;</span>)
+ia.algo_gradient(<span class="fl">0.01</span>, <span class="dv">400</span>)
 
-print(&quot;Coefficients de la fonction d&#39;hypothese :\n&quot;)
-for j in range(ia.n):
-    print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))</code></pre>
+<span class="bu">print</span>(<span class="st">&quot;Coefficients de la fonction d&#39;hypothese :</span><span class="ch">\n</span><span class="st">&quot;</span>)
+<span class="cf">for</span> j <span class="op">in</span> <span class="bu">range</span>(ia.n):
+    <span class="bu">print</span>(<span class="st">&quot;theta &quot;</span>, j, <span class="st">&quot; : &quot;</span>, <span class="bu">float</span>(ia.theta[j]))</code></pre></div>
 </div>
 <h2 id="conclusion">Conclusion</h2>
 <p>L'algorithme du gradient est donc un algorithme it&#233;ratif servant &#224; minimiser notre fonction d'erreur <span class="math inline">\(J\)</span> afin de trouver les param&#232;tres <span class="math inline">\(\theta\)</span> optimaux pour notre fonction d'hypoth&#232;se. Cet algorithme est tr&#232;s utile sur des entr&#233;es extr&#234;mement importantes car on peut contr&#244;ler son nombre d'it&#233;rations ainsi que sa vitesse d'apprentissage (qu'il faut bien choisir au risque de r&#233;duire consid&#233;rablement l'efficacit&#233; de notre programme).</p>

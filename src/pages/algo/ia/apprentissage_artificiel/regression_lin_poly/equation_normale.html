@@ -218,42 +218,42 @@ function toggle_visibility(id) {
 <p>Le code en Python permettant de calculer les param&#232;tres <span class="math inline">\(\theta\)</span> avec l'&#233;quation normale :</p>
 <a href="javascript:toggle_visibility('equation_normale.py');">equation_normale.py</a>
 <div id="equation_normale.py" style="display: none;">
-<pre class="py"><code>import numpy as np
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
 
 
-# x = exemple d&#39;entr&#233;e
-# y = exemple de sortie
-# m = nombre d&#39;exemples
-# n = nombre d&#39;attributs
-# theta = coefficients de notre fonction d&#39;hypothese
+<span class="co"># x = exemple d&#39;entr&#233;e</span>
+<span class="co"># y = exemple de sortie</span>
+<span class="co"># m = nombre d&#39;exemples</span>
+<span class="co"># n = nombre d&#39;attributs</span>
+<span class="co"># theta = coefficients de notre fonction d&#39;hypothese</span>
 
-class regression_lineaire:
+<span class="kw">class</span> regression_lineaire:
 
-    def __init__(self, entree):
-        with open(entree) as f:
-            self.m, self.n = map(int, f.readline().split())
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, entree):
+        <span class="cf">with</span> <span class="bu">open</span>(entree) <span class="im">as</span> f:
+            <span class="va">self</span>.m, <span class="va">self</span>.n <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, f.readline().split())
 
-        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
-                            usecols=(list(range(self.n))), ndmin=2))
-        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
-                            usecols=([self.n]), ndmin=2))
+        <span class="va">self</span>.x <span class="op">=</span> np.matrix(np.loadtxt(entree, skiprows<span class="op">=</span><span class="dv">1</span>,
+                            usecols<span class="op">=</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="va">self</span>.n))), ndmin<span class="op">=</span><span class="dv">2</span>))
+        <span class="va">self</span>.y <span class="op">=</span> np.matrix(np.loadtxt(entree, skiprows<span class="op">=</span><span class="dv">1</span>,
+                            usecols<span class="op">=</span>([<span class="va">self</span>.n]), ndmin<span class="op">=</span><span class="dv">2</span>))
 
-        # Ajoute une colonne de 1 au d&#233;but de notre matrice x
-        col = np.ones((self.m, 1))
-        self.x = np.matrix(np.hstack((col, self.x)))
-        self.n = self.n + 1
+        <span class="co"># Ajoute une colonne de 1 au d&#233;but de notre matrice x</span>
+        col <span class="op">=</span> np.ones((<span class="va">self</span>.m, <span class="dv">1</span>))
+        <span class="va">self</span>.x <span class="op">=</span> np.matrix(np.hstack((col, <span class="va">self</span>.x)))
+        <span class="va">self</span>.n <span class="op">=</span> <span class="va">self</span>.n <span class="op">+</span> <span class="dv">1</span>
 
-    def equation_normale(self):
-        x_t = np.transpose(self.x)
-        self.theta = (x_t * self.x).I * x_t * self.y
+    <span class="kw">def</span> equation_normale(<span class="va">self</span>):
+        x_t <span class="op">=</span> np.transpose(<span class="va">self</span>.x)
+        <span class="va">self</span>.theta <span class="op">=</span> (x_t <span class="op">*</span> <span class="va">self</span>.x).I <span class="op">*</span> x_t <span class="op">*</span> <span class="va">self</span>.y
 
 
-ia = regression_lineaire(&quot;test01.in&quot;)
+ia <span class="op">=</span> regression_lineaire(<span class="st">&quot;test01.in&quot;</span>)
 ia.equation_normale()
 
-print(&quot;Coefficients de la fonction d&#39;hypothese :\n&quot;)
-for j in range(ia.n):
-    print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))</code></pre>
+<span class="bu">print</span>(<span class="st">&quot;Coefficients de la fonction d&#39;hypothese :</span><span class="ch">\n</span><span class="st">&quot;</span>)
+<span class="cf">for</span> j <span class="op">in</span> <span class="bu">range</span>(ia.n):
+    <span class="bu">print</span>(<span class="st">&quot;theta &quot;</span>, j, <span class="st">&quot; : &quot;</span>, <span class="bu">float</span>(ia.theta[j]))</code></pre></div>
 </div>
 <p>Afin d'optimiser l&#233;g&#232;rement le programme, la matrice transpos&#233;e de <span class="math inline">\(x\)</span> est stock&#233;e dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la m&#234;me op&#233;ration, m&#234;me si ce n'est pas l'une des plus couteuses).</p>
 <p>En entr&#233;e de notre programme, on donne le m&#234;me fichier que pour l'algorithme du gradient :</p>
