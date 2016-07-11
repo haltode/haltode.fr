@@ -72,7 +72,7 @@ Cet algorithme de chiffrement possède cependant des failles, et il est tout à 
 
 L'attaque par force brute (*brute force attack* en anglais) consiste simplement à tester toutes les possibilités de clé de chiffrement une par une, jusqu'à trouver la bonne.
 
-Le problème avec le chiffre de César est qu'il n'existe en réalité que 26 uniques possibilités de clé de chiffrement. En effet, si l'on utilise une clé supérieure à 26 cela revient à utiliser une clé de $x mod 26$, par exemple si je chiffre le mot "Linux" avec une clé de chiffrement de 28 j'obtiens exactement le même résultat qu'avec ma clé de 2 car $28 \mod 26 = 2$. Il est de même pour les clés négatives, si j'utilise une clé de -1 cela revient à utiliser une clé de 25.
+Le problème avec le chiffre de César est qu'il n'existe en réalité que 26 uniques possibilités de clé de chiffrement. En effet, si l'on utilise une clé supérieure à 26 cela revient à utiliser une clé de $x \mod 26$, par exemple si je chiffre le mot "Linux" avec une clé de chiffrement de 28 j'obtiens exactement le même résultat qu'avec ma clé de 2 car $28 \mod 26 = 2$. Il est de même pour les clés négatives, si j'utilise une clé de -1 cela revient à utiliser une clé de 25.
 
 Notre attaque nécessite donc l'analyse d'uniquement 26 clés de chiffrement, ce qui n'est rien pour un ordinateur qui peut faire des milliards d'opérations à la seconde :
 
