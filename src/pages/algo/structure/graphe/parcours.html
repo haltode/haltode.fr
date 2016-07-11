@@ -209,7 +209,7 @@ function toggle_visibility(id) {
          DFS(voisin)</code></pre>
 <p>Si par exemple on cherche un n&#339;ud de sortie dans notre graphe, on pourrait rajouter une condition qui arr&#234;tera le DFS lorsqu'on a visit&#233; ce n&#339;ud. Cependant ici, le DFS parcourt tout le graphe &#224; titre d'exemple.</p>
 <h3 id="complexit&#233;">Complexit&#233;</h3>
-<p>Dans le pire des cas, si notre sortie est le dernier n&#339;ud que l'on visite, notre algorithme va devoir parcourir les <span class="math inline">\(M\)</span> arcs du graphe, on a donc une complexit&#233; en temps lin&#233;aire de <span class="math inline">\(O(M)\)</span>.</p>
+<p>Dans le pire des cas, si notre sortie est le dernier n&#339;ud que l'on visite, notre algorithme va devoir parcourir les <span class="math inline">M</span> arcs du graphe, on a donc une complexit&#233; en temps lin&#233;aire de <span class="math inline">O(M)</span>.</p>
 <h3 id="impl&#233;mentation">Impl&#233;mentation</h3>
 <p>On peut impl&#233;menter un DFS de deux mani&#232;res diff&#233;rentes, m&#234;me si on a plut&#244;t tendance &#224; le coder de mani&#232;re r&#233;cursive car le code est plus court et plus intuitif.</p>
 <h4 id="r&#233;cursif">R&#233;cursif</h4>
@@ -376,7 +376,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
 </div>
 <p>De m&#234;me, chaque n&#339;ud repr&#233;sente l'ordre de parcours dans le graphe, et on retrouve bien cette id&#233;e de parcours par couche.</p>
 <h3 id="pseudo-code-1">Pseudo-code</h3>
-<p>Pour impl&#233;menter ce syst&#232;me de parcours par niveau, on va utiliser une <a href="/algo/structure/file.html">file</a>. En effet, quand on est sur une couche <span class="math inline">\(N\)</span>, on veut que les voisins qu'on va parcourir lors de la couche <span class="math inline">\(N + 1\)</span> soient tous situ&#233;s apr&#232;s les n&#339;uds de la couche <span class="math inline">\(N\)</span> que l'on visite actuellement, on veut donc qu'ils arrivent &#224; la fin et ce principe respecte l'ordre du premier entr&#233;, premier sorti qu'on appelle aussi une file.</p>
+<p>Pour impl&#233;menter ce syst&#232;me de parcours par niveau, on va utiliser une <a href="/algo/structure/file.html">file</a>. En effet, quand on est sur une couche <span class="math inline">N</span>, on veut que les voisins qu'on va parcourir lors de la couche <span class="math inline">N + 1</span> soient tous situ&#233;s apr&#232;s les n&#339;uds de la couche <span class="math inline">N</span> que l'on visite actuellement, on veut donc qu'ils arrivent &#224; la fin et ce principe respecte l'ordre du premier entr&#233;, premier sorti qu'on appelle aussi une file.</p>
 <pre class="nohighlight"><code>BFS (depart) :
 
    Enfiler le n&#339;ud de d&#233;part
@@ -389,7 +389,7 @@ vector &lt;<span class="dt">int</span>&gt; graphe[NB_NOEUD_MAX];
          Si le voisin n&#39;est pas visit&#233;
             Enfiler le voisin</code></pre>
 <h3 id="complexit&#233;-1">Complexit&#233;</h3>
-<p>Comme pour le parcours en profondeur, si notre sortie est le dernier n&#339;ud que l'on visite on aura une complexit&#233; en <span class="math inline">\(O(M)\)</span> avec <span class="math inline">\(M\)</span> le nombre d'arcs du graphe.</p>
+<p>Comme pour le parcours en profondeur, si notre sortie est le dernier n&#339;ud que l'on visite on aura une complexit&#233; en <span class="math inline">O(M)</span> avec <span class="math inline">M</span> le nombre d'arcs du graphe.</p>
 <h3 id="impl&#233;mentation-1">Impl&#233;mentation</h3>
 <p>L'impl&#233;mentation du parcours en largeur en C++ (afin d'avoir le type <code>queue</code> et <code>vector</code>) :</p>
 <a href="javascript:toggle_visibility('bfs.cpp');">bfs.cpp</a>

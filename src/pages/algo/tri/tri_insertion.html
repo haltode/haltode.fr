@@ -182,7 +182,7 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri par insertion (<em>insertion sort</em> en anglais) est un algorithme de tri par comparaison simple, et intuitif mais toujours avec une complexit&#233; en <span class="math inline">\(O(N^2)\)</span>. Vous l&#8217;avez sans doute d&#233;j&#224; utilis&#233; sans m&#234;me vous en rendre compte : lorsque vous triez des cartes par exemple. C&#8217;est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a>, <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>, et le plus rapide en pratique sur une entr&#233;e de petite taille.</p>
+<p>Le tri par insertion (<em>insertion sort</em> en anglais) est un algorithme de tri par comparaison simple, et intuitif mais toujours avec une complexit&#233; en <span class="math inline">O(N^2)</span>. Vous l&#8217;avez sans doute d&#233;j&#224; utilis&#233; sans m&#234;me vous en rendre compte : lorsque vous triez des cartes par exemple. C&#8217;est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a>, <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>, et le plus rapide en pratique sur une entr&#233;e de petite taille.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
 <p>Le principe du tri par insertion est de trier les &#233;l&#233;ments du tableau comme avec des cartes :</p>
 <ul>
@@ -215,12 +215,12 @@ function toggle_visibility(id) {
       celui que l&#39;on souhaite ins&#233;rer
       Placer notre &#233;l&#233;ment &#224; sa place dans le trou ainsi cr&#233;&#233;</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>L&#8217;algorithme du tri par insertion a une complexit&#233; de <span class="math inline">\(O(N^2)\)</span> :</p>
+<p>L&#8217;algorithme du tri par insertion a une complexit&#233; de <span class="math inline">O(N^2)</span> :</p>
 <ul>
-<li>La premi&#232;re boucle parcourt <span class="math inline">\(N &#8211; 1\)</span> tours, ici on notera plut&#244;t <span class="math inline">\(N\)</span> tours car le <span class="math inline">\(&#8211; 1\)</span> n&#8217;est pas tr&#232;s important.</li>
-<li>D&#233;caler les &#233;l&#233;ments de la partie tri&#233;e prend <span class="math inline">\(i\)</span> tours (avec <span class="math inline">\(i\)</span> variant de 0 &#224; <span class="math inline">\(N\)</span>).</li>
+<li>La premi&#232;re boucle parcourt <span class="math inline">N &#8211; 1</span> tours, ici on notera plut&#244;t <span class="math inline">N</span> tours car le <span class="math inline">&#8211; 1</span> n&#8217;est pas tr&#232;s important.</li>
+<li>D&#233;caler les &#233;l&#233;ments de la partie tri&#233;e prend <span class="math inline">i</span> tours (avec <span class="math inline">i</span> variant de 0 &#224; <span class="math inline">N</span>).</li>
 </ul>
-<p>Dans le pire des cas on parcourt <span class="math inline">\(N^2\)</span> tours, donc le tri par insertion a une complexit&#233; en temps de <span class="math inline">\(O(N^2)\)</span>.</p>
+<p>Dans le pire des cas on parcourt <span class="math inline">N^2</span> tours, donc le tri par insertion a une complexit&#233; en temps de <span class="math inline">O(N^2)</span>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>L&#8217;impl&#233;mentation en C du tri par insertion :</p>
 <a href="javascript:toggle_visibility('tri_insertion.c');">tri_insertion.c</a>
@@ -281,14 +281,14 @@ function toggle_visibility(id) {
 <h3 id="tri-shell">Tri Shell</h3>
 <p>Le tri par insertion est un algorithme de tri tr&#232;s efficace sur des entr&#233;es quasiment tri&#233;es, et on peut utiliser cette propri&#233;t&#233; int&#233;ressante du tri pour l'am&#233;liorer. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va &#233;changer certaines valeurs du tableau &#224; un &#233;cart bien pr&#233;cis afin de le rendre dans la plupart des cas presque tri&#233;. Une fois qu'on a ce tableau r&#233;-arrang&#233;, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide gr&#226;ce &#224; notre premi&#232;re &#233;tape.</p>
 <p>Pour calculer cet &#233;cart, on utilise cette formule :</p>
-<p><span class="math inline">\(Ecart(N) = 3 \times Ecart(N - 1) + 1\)</span><br />
-avec <span class="math inline">\(Ecart(0) = 0\)</span></p>
+<p><span class="math inline">Ecart(N) = 3 \times Ecart(N - 1) + 1</span><br />
+avec <span class="math inline">Ecart(0) = 0</span></p>
 <p>Par exemple, on souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l'ordre croissant :</p>
 <p>On calcule les &#233;carts tant que le r&#233;sultat est inf&#233;rieur &#224; la taille du tableau.</p>
-<p><span class="math inline">\(Ecart(0) = 0\)</span><br />
-<span class="math inline">\(Ecart(1) = 3 \times Ecart(0) + 1 = 3 \times 0 + 1 = 1\)</span><br />
-<span class="math inline">\(Ecart(2) = 3 \times Ecart(1) + 1 = 3 \times 1 + 1 = 4\)</span><br />
-<span class="math inline">\(Ecart(3) = 3 \times Ecart(2) + 1 = 3 \times 4 + 1 = 13\)</span></p>
+<p><span class="math inline">Ecart(0) = 0</span><br />
+<span class="math inline">Ecart(1) = 3 \times Ecart(0) + 1 = 3 \times 0 + 1 = 1</span><br />
+<span class="math inline">Ecart(2) = 3 \times Ecart(1) + 1 = 3 \times 1 + 1 = 4</span><br />
+<span class="math inline">Ecart(3) = 3 \times Ecart(2) + 1 = 3 \times 4 + 1 = 13</span></p>
 <p>On a donc deux &#233;carts que l'on peut utiliser : 1 et 4 (13 &#233;tant sup&#233;rieur au nombre d'&#233;l&#233;ments du tableau). Cependant appliquer un &#233;cart de 1 revient &#224; faire un tri par insertion normal, on utilisera donc uniquement l'&#233;cart de 4 dans cet exemple.</p>
 <p>On compare ensuite chaque &#233;l&#233;ment du tableau &#233;cart&#233; de quatre &#233;l&#233;ments :</p>
 <p><strong>5</strong>, 8, 2, 9, <strong>1</strong>, 3 -&gt; on voit que 5 est sup&#233;rieur &#224; 1, on les &#233;change.<br />
@@ -304,10 +304,10 @@ avec <span class="math inline">\(Ecart(0) = 0\)</span></p>
 <li>Si c&#8217;est le cas on recommence l&#8217;op&#233;ration mais cette fois ci avec cet intervalle : <em>milieu ancien inter</em> -&gt; <em>fin ancien inter</em>.</li>
 <li>Sinon on recommence mais avec l&#8217;intervalle suivant : <em>d&#233;but ancien inter</em> -&gt; <em>milieu ancien inter</em>.</li>
 </ul>
-<p>Une fois que l&#8217;intervalle ne contient plus qu&#8217;un seul &#233;l&#233;ment, on a trouv&#233; l&#8217;emplacement o&#249; ins&#233;rer l'&#233;l&#233;ment &#224; sa place. Gr&#226;ce &#224; cette am&#233;lioration, l&#8217;algorithme du tri par insertion a pour complexit&#233; <span class="math inline">\(O(N \log _2 N)\)</span>.</p>
+<p>Une fois que l&#8217;intervalle ne contient plus qu&#8217;un seul &#233;l&#233;ment, on a trouv&#233; l&#8217;emplacement o&#249; ins&#233;rer l'&#233;l&#233;ment &#224; sa place. Gr&#226;ce &#224; cette am&#233;lioration, l&#8217;algorithme du tri par insertion a pour complexit&#233; <span class="math inline">O(N \log _2 N)</span>.</p>
 <p><em>J'ai expliqu&#233; ici tr&#232;s rapidement le principe de la dichotomie, j'en parle plus longuement dans mon article &#224; ce propos donc si vous n'avez pas tout suivi, je vous conseille d'aller le lire pour bien saisir ce concept fondamental en algorithmie.</em></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>L'algorithme du tri par insertion est simple et relativement intuitif, m&#234;me s'il a une complexit&#233; en temps quadratique. Cet algorithme de tri reste tr&#232;s utilis&#233; &#224; cause de ses facult&#233;s &#224; s'ex&#233;cuter en temps quasi lin&#233;aire sur des entr&#233;es d&#233;j&#224; tri&#233;es, et de mani&#232;re tr&#232;s efficace sur de petites entr&#233;es en g&#233;n&#233;ral (souvent plus performant, dans ce cas, que des algorithmes de tri en <span class="math inline">\(O(N \log _2 N)\)</span>).</p>
+<p>L'algorithme du tri par insertion est simple et relativement intuitif, m&#234;me s'il a une complexit&#233; en temps quadratique. Cet algorithme de tri reste tr&#232;s utilis&#233; &#224; cause de ses facult&#233;s &#224; s'ex&#233;cuter en temps quasi lin&#233;aire sur des entr&#233;es d&#233;j&#224; tri&#233;es, et de mani&#232;re tr&#232;s efficace sur de petites entr&#233;es en g&#233;n&#233;ral (souvent plus performant, dans ce cas, que des algorithmes de tri en <span class="math inline">O(N \log _2 N)</span>).</p>
  
       <!-- ------------ -->
 

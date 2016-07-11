@@ -182,7 +182,7 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri par tas (<em>heapsort</em> en anglais) est un algorithme de tri par comparaison, plut&#244;t efficace et qui a une complexit&#233; en <span class="math inline">\(O(N \log _2 N)\)</span>. C&#8217;est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non stable</a> mais <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
+<p>Le tri par tas (<em>heapsort</em> en anglais) est un algorithme de tri par comparaison, plut&#244;t efficace et qui a une complexit&#233; en <span class="math inline">O(N \log _2 N)</span>. C&#8217;est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non stable</a> mais <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
 <p>L'algorithme du tri par tas repose sur un &#233;l&#233;ment fondamental : le <a href="/algo/structure/arbre/tas.html">tas</a> (d'o&#249; son nom). En effet, ce tri cr&#233;e un tas max du tableau donn&#233; en entr&#233;e, et le parcourt afin de reconstituer les valeurs tri&#233;es dans notre tableau.</p>
 <h2 id="exemple">Exemple</h2>
@@ -214,7 +214,7 @@ function toggle_visibility(id) {
       Placer la racine du tas dans le tableau
       Entasser le dernier &#233;l&#233;ment du tas &#224; la place de la racine</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <span class="math inline">\(O(N \log _2 N)\)</span>. En effet, la boucle principale parcourt <span class="math inline">\(N\)</span> tours (<span class="math inline">\(N\)</span> &#233;tant la taille du tableau), et appelle &#224; chaque tour une fonction pour entasser qui a une complexit&#233; logarithmique.</p>
+<p>La complexit&#233; de l&#8217;algorithme du tri par tas est en <span class="math inline">O(N \log _2 N)</span>. En effet, la boucle principale parcourt <span class="math inline">N</span> tours (<span class="math inline">N</span> &#233;tant la taille du tableau), et appelle &#224; chaque tour une fonction pour entasser qui a une complexit&#233; logarithmique.</p>
 <p><em>Si vous n&#8217;avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie <a href="/algo/tri/tri_rapide.html#complexit&#233;">complexit&#233;</a> dans laquelle j&#8217;explique pourquoi le tri rapide peut &#234;tre jusqu&#8217;&#224; deux fois plus efficace que le tri par tas.</em></p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C++ (afin d'avoir le type <code>priority_queue</code>) du tri par tas :</p>
@@ -289,7 +289,7 @@ priority_queue &lt;<span class="dt">int</span>&gt; tas;
 <h3 id="m&#233;lange-dalgorithme">M&#233;lange d'algorithme</h3>
 <p>Comme pour le tri rapide, le tri par tas peut &#234;tre m&#233;lang&#233; avec un autre algorithme de tri lorsque le tableau poss&#232;de peu d&#8217;&#233;l&#233;ments afin de le rendre plus efficace. Pour en savoir plus &#224; ce sujet, je vous invite &#224; lire la partie <a href="/algo/tri/tri_rapide.html#m&#233;lange-dalgorithme">m&#233;lange d'algorithme</a> de mon article sur le tri rapide.</p>
 <h3 id="smoothsort">Smoothsort</h3>
-<p>Le <em>smoothsort</em> est une variante du tri par tas permettant d'am&#233;liorer la complexit&#233; en temps dans le meilleur des cas en <span class="math inline">\(O(N)\)</span> (lorsque les nombres en entr&#233;e sont d&#233;j&#224; tri&#233;s ou quasi tri&#233;s par exemple). Ce tri est assez complexe, et m&#234;me s'il a une meilleure approche d'un point de vue th&#233;orique, il sera peu utilis&#233; en pratique, tout comme le tri par tas compar&#233; au tri rapide.</p>
+<p>Le <em>smoothsort</em> est une variante du tri par tas permettant d'am&#233;liorer la complexit&#233; en temps dans le meilleur des cas en <span class="math inline">O(N)</span> (lorsque les nombres en entr&#233;e sont d&#233;j&#224; tri&#233;s ou quasi tri&#233;s par exemple). Ce tri est assez complexe, et m&#234;me s'il a une meilleure approche d'un point de vue th&#233;orique, il sera peu utilis&#233; en pratique, tout comme le tri par tas compar&#233; au tri rapide.</p>
 <p>Le principe du smoothsort est de baser le tri non plus sur un seul tas, mais sur plusieurs de diff&#233;rentes tailles. Cette nouvelle structure de donn&#233;es est un <strong>tas de L&#233;onard</strong>, car elle s'appuie sur la <a href="https://en.wikipedia.org/wiki/Leonardo_number">suite de L&#233;onard</a>.</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/tri/tri_tas/exemple_tas_leonard.png" alt="Exemple de tas de L&#233;onard (en bleu les racines des sous-arbres)" />
@@ -297,7 +297,7 @@ priority_queue &lt;<span class="dt">int</span>&gt; tas;
 </div>
 <p>Cet ensemble a des propri&#233;t&#233;s sp&#233;cifiques (sur la taille des sous-arbres, l'ordre d'apparition des racines, etc.), rendant les op&#233;rations d'insertion et de suppression assez longues &#224; d&#233;crire et &#224; expliquer. Il faudrait un article &#224; part entier pour &#233;voquer ce curieux algorithme de tri, et si ce dernier vous int&#233;resse je vous recommande fortement cette page qui traite en profondeur du sujet : <a href="http://www.keithschwarz.com/smoothsort/">Smoothsort Demystified</a>.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri par tas est donc un algorithme de tri efficace en <span class="math inline">\(O(N \log _2 N)\)</span> non stable mais en place. En pratique, cet algorithme est moins utilis&#233; que le tri rapide, m&#234;me si en th&#233;orie il a une meilleure complexit&#233; dans le pire des cas ainsi qu'une am&#233;lioration int&#233;ressante : le <em>smoothsort</em>. Il sert en revanche &#224; l'am&#233;lioration du tri rapide, dans sa variante l'<a href="/algo/tri/tri_rapide.html#introsort">introsort</a> et reste donc un algorithme de tri essentiel &#224; conna&#238;tre.</p>
+<p>Le tri par tas est donc un algorithme de tri efficace en <span class="math inline">O(N \log _2 N)</span> non stable mais en place. En pratique, cet algorithme est moins utilis&#233; que le tri rapide, m&#234;me si en th&#233;orie il a une meilleure complexit&#233; dans le pire des cas ainsi qu'une am&#233;lioration int&#233;ressante : le <em>smoothsort</em>. Il sert en revanche &#224; l'am&#233;lioration du tri rapide, dans sa variante l'<a href="/algo/tri/tri_rapide.html#introsort">introsort</a> et reste donc un algorithme de tri essentiel &#224; conna&#238;tre.</p>
  
       <!-- ------------ -->
 

@@ -84,7 +84,7 @@ function convert {
    # Convert the .md file with pandoc into a .tmp.html file 
    # This will be the core file, but we need to add the header and the footer to
    # it so it can be the entire .html file
-   sed "3d" copy.md | pandoc --ascii --mathjax -o "$(basename ${1%.md}.tmp.html)"
+   sed "3d" copy.md | pandoc --ascii --katex -o "$(basename ${1%.md}.tmp.html)"
    cat src/templates/header.html $(basename ${1%.md}.tmp.html) src/templates/footer.html > src/pages/$(basename ${1%.md}.html)
    rm $(basename ${1%.md}.tmp.html)
 
