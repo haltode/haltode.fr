@@ -21,7 +21,7 @@ La liste des articles publiés :
          - [Arbre](/algo/structure/arbre.html) - [Arbre binaire](/algo/structure/arbre/arbre_binaire.html) / [Tas](/algo/structure/arbre/tas.html)
          - [Graphe](/algo/structure/graphe.html)
             - [Parcours](/algo/structure/graphe/parcours.html)
-            - Plus court chemin : Dijkstra, Bellman-Ford, Floyd-Warshall
+            - [Plus court chemin](/algo/structure/graphe/plus_court_chemin.html) : [Dijkstra](/algo/structure/graphe/plus_court_chemin/dijkstra.html), [Bellman-Ford](/algo/structure/graphe/plus_court_chemin/bellman_ford.html), Floyd-Warshall
 
     - Tri :
 
