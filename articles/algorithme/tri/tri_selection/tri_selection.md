@@ -64,7 +64,7 @@ triSelection :
 Comme pour le tri à bulles, le tri par sélection a une complexité en $O(N^2)$ :
 
 - La première boucle parcourt $N$ tours.
-- La deuxième boucle parcourt $$N – i$$ tours ($i$ variant de 0 à $N$).
+- La deuxième boucle parcourt $N–i$ tours ($i$ variant de 0 à $N$).
 
 Sa complexité est donc légèrement inférieure à $N^2$, cependant cette différence est mineure et sa complexité est considérée comme étant en $O(N^2)$.
 
