@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -230,13 +233,13 @@ estVide :
    Sinon
       Retourner faux</code></pre>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
-<p>Soit <span class="math inline">N</span> le nombre d'&#233;l&#233;ments de la file.</p>
+<p>Soit <span class="math inline">\(N\)</span> le nombre d'&#233;l&#233;ments de la file.</p>
 <ul>
-<li><code>cr&#233;erFile</code> : <span class="math inline">O(1)</span></li>
-<li><code>supprimerFile</code> : <span class="math inline">O(N)</span></li>
-<li><code>enfiler</code> : <span class="math inline">O(1)</span></li>
-<li><code>d&#233;filer</code> : <span class="math inline">O(1)</span></li>
-<li><code>estVide</code> : <span class="math inline">O(1)</span></li>
+<li><code>cr&#233;erFile</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>supprimerFile</code> : <span class="math inline">\(O(N)\)</span></li>
+<li><code>enfiler</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>d&#233;filer</code> : <span class="math inline">\(O(1)\)</span></li>
+<li><code>estVide</code> : <span class="math inline">\(O(1)\)</span></li>
 </ul>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Le lien vers une impl&#233;mentation en C d&#8217;une file :</p>
@@ -363,11 +366,6 @@ estVide :
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>

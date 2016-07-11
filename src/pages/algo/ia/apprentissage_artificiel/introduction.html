@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -211,7 +214,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_regression.png" alt="Exemple de r&#233;gression" />
 <p class="caption">Exemple de r&#233;gression</p>
 </div>
-<p>Ce mod&#232;le nous permettra de g&#233;n&#233;rer une sortie (l'axe y) sur de nouveaux param&#232;tres, en utilisant la fonction calcul&#233;e (ici elle sera donc de la forme <span class="math inline">y = ax + b</span>).</p>
+<p>Ce mod&#232;le nous permettra de g&#233;n&#233;rer une sortie (l'axe y) sur de nouveaux param&#232;tres, en utilisant la fonction calcul&#233;e (ici elle sera donc de la forme <span class="math inline">\(y = ax + b\)</span>).</p>
 <p>Enfin, un exemple de partitionnement serait de regrouper des points entre eux, et de les diff&#233;rencier en groupe, comme ici avec trois diff&#233;rents clusters (rouge, bleu, et vert) :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_partitionnement.png" alt="Exemple de partitionnement" />
@@ -249,11 +252,6 @@ function toggle_visibility(id) {
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>

@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -180,42 +183,42 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Contrairement &#224; l'<a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">algorithme du gradient</a> l'&#233;quation normale est une expression math&#233;matique et non pas un algorithme it&#233;ratif, qui permet de r&#233;soudre notre probl&#232;me de <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">r&#233;gression lin&#233;aire</a> en trouvant les valeurs de <span class="math inline">\theta</span> pour lesquelles notre fonction <span class="math inline">J</span> est minimis&#233;e.</p>
+<p>Contrairement &#224; l'<a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">algorithme du gradient</a> l'&#233;quation normale est une expression math&#233;matique et non pas un algorithme it&#233;ratif, qui permet de r&#233;soudre notre probl&#232;me de <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">r&#233;gression lin&#233;aire</a> en trouvant les valeurs de <span class="math inline">\(\theta\)</span> pour lesquelles notre fonction <span class="math inline">\(J\)</span> est minimis&#233;e.</p>
 <h2 id="principe">Principe</h2>
 <p>L'&#233;quation normale est d&#233;finie comme ceci :</p>
-<p><span class="math inline">\theta = (x^\intercal x)^{-1} x^\intercal y</span></p>
-<p>On peut gr&#226;ce &#224; cela calculer directement <span class="math inline">\theta</span> qui permet d'obtenir notre fonction d'hypoth&#232;se tel que <span class="math inline">h_{\theta} \simeq y</span>.</p>
+<p><span class="math inline">\(\theta = (x^\intercal x)^{-1} x^\intercal y\)</span></p>
+<p>On peut gr&#226;ce &#224; cela calculer directement <span class="math inline">\(\theta\)</span> qui permet d'obtenir notre fonction d'hypoth&#232;se tel que <span class="math inline">\(h_{\theta} \simeq y\)</span>.</p>
 <h2 id="d&#233;monstration">D&#233;monstration</h2>
 <p>Reprenons notre fonction d'hypoth&#232;se :</p>
-<p><span class="math inline">h_{\theta} = x\theta</span></p>
+<p><span class="math inline">\(h_{\theta} = x\theta\)</span></p>
 <p>Ainsi que notre fonction d'erreur :</p>
-<p><span class="math inline">J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2</span></p>
-<p>Vu que <span class="math inline">x</span> et <span class="math inline">\theta</span> sont deux matrices, on peut se permettre de r&#233;&#233;crire notre fonction <span class="math inline">J</span> en utilisant des op&#233;rations matricielles et en rempla&#231;ant la fonction d'hypoth&#232;se par son contenu :</p>
-<p><span class="math inline">J(\theta) = \frac{1}{2m} (x\theta - y)^\intercal (x\theta - y)</span></p>
-<p>Or, soit <span class="math inline">A</span> et <span class="math inline">B</span> deux matrices on a <span class="math inline">(A + B)^\intercal = A^\intercal + B^\intercal</span>, donc :</p>
-<p><span class="math inline">J(\theta) = \frac{1}{2m} ((x\theta)^\intercal - y^\intercal)(x\theta - y)</span></p>
-<p>Plus loin dans la d&#233;monstration on va d&#233;river cette fonction puis la comparer &#224; 0, le facteur <span class="math inline">\frac{1}{2m}</span> sera donc inutile et il n'y a pas besoin de le garder ici :</p>
-<p><span class="math inline">J(\theta) = ((x\theta)^\intercal - y^\intercal)(x\theta - y)</span></p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Vu que <span class="math inline">\(x\)</span> et <span class="math inline">\(\theta\)</span> sont deux matrices, on peut se permettre de r&#233;&#233;crire notre fonction <span class="math inline">\(J\)</span> en utilisant des op&#233;rations matricielles et en rempla&#231;ant la fonction d'hypoth&#232;se par son contenu :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m} (x\theta - y)^\intercal (x\theta - y)\)</span></p>
+<p>Or, soit <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span> deux matrices on a <span class="math inline">\((A + B)^\intercal = A^\intercal + B^\intercal\)</span>, donc :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m} ((x\theta)^\intercal - y^\intercal)(x\theta - y)\)</span></p>
+<p>Plus loin dans la d&#233;monstration on va d&#233;river cette fonction puis la comparer &#224; 0, le facteur <span class="math inline">\(\frac{1}{2m}\)</span> sera donc inutile et il n'y a pas besoin de le garder ici :</p>
+<p><span class="math inline">\(J(\theta) = ((x\theta)^\intercal - y^\intercal)(x\theta - y)\)</span></p>
 <p>D&#233;veloppons les deux facteurs :</p>
-<p><span class="math inline">J(\theta) = (x\theta)^\intercal x\theta - (x\theta)^\intercal y - y^\intercal (x\theta) + y^\intercal y</span></p>
-<p>On sait que <span class="math inline">y</span> est un vecteur et que le r&#233;sultat de la multiplication matricielle <span class="math inline">x\theta</span> l'est aussi, l'ordre de multiplication des deux ne change donc rien et on peut simplifier <span class="math inline">- (x\theta)^\intercal y - y^\intercal (x\theta)</span> en <span class="math inline">-2(x\theta)^\intercal y</span> :</p>
-<p><span class="math inline">J(\theta) = (x\theta)^\intercal x\theta -2(x\theta)^\intercal y + y^\intercal y</span></p>
-<p>On peut continuer de d&#233;velopper notre expression puisque <span class="math inline">(AB)^\intercal = B^\intercal A^\intercal</span> :</p>
-<p><span class="math inline">J(\theta) = \theta^\intercal x^\intercal x\theta - 2(x\theta)^\intercal y + y^\intercal y</span></p>
-<p>Pour trouver <span class="math inline">\theta</span> &#224; partir de cette expression, il faut <a href="http://eli.thegreenplace.net/2015/the-normal-equation-and-matrix-calculus/">d&#233;river</a> la fonction <span class="math inline">J</span> et comparer le r&#233;sultat &#224; 0. On obtient :</p>
-<p><span class="math inline">\frac{\partial J}{\partial\theta} = 2x^\intercal x\theta - 2x^\intercal y</span></p>
-<p><span class="math inline">2x^\intercal x\theta - 2x^\intercal y = 0</span></p>
-<p>On ajoute <span class="math inline">2x^\intercal y</span> de chaque c&#244;t&#233; de l'&#233;quation, et on divise par deux l'expression :</p>
-<p><span class="math inline">x^\intercal x\theta = x^\intercal y</span></p>
-<p>Si la matrice r&#233;sultant du calcul de <span class="math inline">x^\intercal x</span> est <strong>inversible</strong>, alors on peut multiplier les deux c&#244;t&#233;s par l'inverse de cette derni&#232;re et ainsi affirmer que :</p>
-<p><span class="math inline">\theta = (x^\intercal x)^{-1} x^\intercal y</span></p>
+<p><span class="math inline">\(J(\theta) = (x\theta)^\intercal x\theta - (x\theta)^\intercal y - y^\intercal (x\theta) + y^\intercal y\)</span></p>
+<p>On sait que <span class="math inline">\(y\)</span> est un vecteur et que le r&#233;sultat de la multiplication matricielle <span class="math inline">\(x\theta\)</span> l'est aussi, l'ordre de multiplication des deux ne change donc rien et on peut simplifier <span class="math inline">\(- (x\theta)^\intercal y - y^\intercal (x\theta)\)</span> en <span class="math inline">\(-2(x\theta)^\intercal y\)</span> :</p>
+<p><span class="math inline">\(J(\theta) = (x\theta)^\intercal x\theta -2(x\theta)^\intercal y + y^\intercal y\)</span></p>
+<p>On peut continuer de d&#233;velopper notre expression puisque <span class="math inline">\((AB)^\intercal = B^\intercal A^\intercal\)</span> :</p>
+<p><span class="math inline">\(J(\theta) = \theta^\intercal x^\intercal x\theta - 2(x\theta)^\intercal y + y^\intercal y\)</span></p>
+<p>Pour trouver <span class="math inline">\(\theta\)</span> &#224; partir de cette expression, il faut <a href="http://eli.thegreenplace.net/2015/the-normal-equation-and-matrix-calculus/">d&#233;river</a> la fonction <span class="math inline">\(J\)</span> et comparer le r&#233;sultat &#224; 0. On obtient :</p>
+<p><span class="math inline">\(\frac{\partial J}{\partial\theta} = 2x^\intercal x\theta - 2x^\intercal y\)</span></p>
+<p><span class="math inline">\(2x^\intercal x\theta - 2x^\intercal y = 0\)</span></p>
+<p>On ajoute <span class="math inline">\(2x^\intercal y\)</span> de chaque c&#244;t&#233; de l'&#233;quation, et on divise par deux l'expression :</p>
+<p><span class="math inline">\(x^\intercal x\theta = x^\intercal y\)</span></p>
+<p>Si la matrice r&#233;sultant du calcul de <span class="math inline">\(x^\intercal x\)</span> est <strong>inversible</strong>, alors on peut multiplier les deux c&#244;t&#233;s par l'inverse de cette derni&#232;re et ainsi affirmer que :</p>
+<p><span class="math inline">\(\theta = (x^\intercal x)^{-1} x^\intercal y\)</span></p>
 <p>On retrouve bien notre &#233;quation normale.</p>
 <h2 id="complexit&#233;">Complexit&#233;</h2>
 <p>La raison pour laquelle cette m&#233;thode n'est pas tout le temps utilis&#233;e est assez simple : la <strong>rapidit&#233;</strong>.</p>
-<p>En effet, le produit matriciel est encore un probl&#232;me ouvert car on ne sait pas s'il existe de meilleurs algorithmes que ceux employ&#233;s aujourd'hui. L'algorithme na&#239;f de multiplication matriciel a une complexit&#233; en temps de <span class="math inline">O(N^3)</span> avec <span class="math inline">N</span> le nombre de lignes des matrices, cependant, les autres algorithmes n'ont pas une complexit&#233; si diff&#233;rente (<span class="math inline">O(N^{2.807})</span> pour l'<a href="https://en.wikipedia.org/wiki/Strassen_algorithm">algorithme de Strassen</a> ou encore <span class="math inline">O(N^{2.376})</span> pour l'<a href="https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm">algorithme de Coppersmith-Winograd</a>).</p>
-<p>Il est donc peu envisageable d'impl&#233;menter la m&#233;thode de l'&#233;quation normale lorsqu'on a environ <span class="math inline">n &gt; 10000</span>.</p>
+<p>En effet, le produit matriciel est encore un probl&#232;me ouvert car on ne sait pas s'il existe de meilleurs algorithmes que ceux employ&#233;s aujourd'hui. L'algorithme na&#239;f de multiplication matriciel a une complexit&#233; en temps de <span class="math inline">\(O(N^3)\)</span> avec <span class="math inline">\(N\)</span> le nombre de lignes des matrices, cependant, les autres algorithmes n'ont pas une complexit&#233; si diff&#233;rente (<span class="math inline">\(O(N^{2.807})\)</span> pour l'<a href="https://en.wikipedia.org/wiki/Strassen_algorithm">algorithme de Strassen</a> ou encore <span class="math inline">\(O(N^{2.376})\)</span> pour l'<a href="https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm">algorithme de Coppersmith-Winograd</a>).</p>
+<p>Il est donc peu envisageable d'impl&#233;menter la m&#233;thode de l'&#233;quation normale lorsqu'on a environ <span class="math inline">\(n &gt; 10000\)</span>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
-<p>Le code en Python permettant de calculer les param&#232;tres <span class="math inline">\theta</span> avec l'&#233;quation normale :</p>
+<p>Le code en Python permettant de calculer les param&#232;tres <span class="math inline">\(\theta\)</span> avec l'&#233;quation normale :</p>
 <a href="javascript:toggle_visibility('equation_normale.py');">equation_normale.py</a>
 <div id="equation_normale.py" style="display: none;">
 <div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
@@ -255,7 +258,7 @@ ia.equation_normale()
 <span class="cf">for</span> j <span class="op">in</span> <span class="bu">range</span>(ia.n):
     <span class="bu">print</span>(<span class="st">&quot;theta &quot;</span>, j, <span class="st">&quot; : &quot;</span>, <span class="bu">float</span>(ia.theta[j]))</code></pre></div>
 </div>
-<p>Afin d'optimiser l&#233;g&#232;rement le programme, la matrice transpos&#233;e de <span class="math inline">x</span> est stock&#233;e dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la m&#234;me op&#233;ration, m&#234;me si ce n'est pas l'une des plus couteuses).</p>
+<p>Afin d'optimiser l&#233;g&#232;rement le programme, la matrice transpos&#233;e de <span class="math inline">\(x\)</span> est stock&#233;e dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la m&#234;me op&#233;ration, m&#234;me si ce n'est pas l'une des plus couteuses).</p>
 <p>En entr&#233;e de notre programme, on donne le m&#234;me fichier que pour l'algorithme du gradient :</p>
 <pre class="nohighlight"><code>6 1
 1.73 1.94
@@ -264,7 +267,7 @@ ia.equation_normale()
 7.14 6.74
 9.56 7.71
 12.26 8.6</code></pre>
-<p>En sortie en revanche, on obtient des param&#232;tres <span class="math inline">\theta</span> diff&#233;rents car l'initialisation de <span class="math inline">\theta</span>, le coefficient d'apprentissage, le nombre d'it&#233;rations maximum et l'op&#233;ration de <em>feature scaling</em> influent sur le r&#233;sultat :</p>
+<p>En sortie en revanche, on obtient des param&#232;tres <span class="math inline">\(\theta\)</span> diff&#233;rents car l'initialisation de <span class="math inline">\(\theta\)</span>, le coefficient d'apprentissage, le nombre d'it&#233;rations maximum et l'op&#233;ration de <em>feature scaling</em> influent sur le r&#233;sultat :</p>
 <pre class="nohighlight"><code>Coefficients de la fonction d&#39;hypothese :
 
 theta  0  :  0.9424111325332967
@@ -275,7 +278,7 @@ theta  1  :  0.678691601117212</code></pre>
 <p class="caption">Sortie graphique du programme</p>
 </div>
 <h2 id="conclusion">Conclusion</h2>
-<p>La m&#233;thode de l'&#233;quation normale est donc plus pr&#233;cise que celle de l'algorithme du gradient car elle calcule le minimum global de la fonction d'erreur en d&#233;terminant <span class="math inline">\theta</span> directement avec une relation math&#233;matique. Cependant, on ne peut pas employer cette &#233;quation tout le temps car elle a une complexit&#233; en temps trop &#233;lev&#233;e, ce qui la rend quasiment inutilisable sur des entr&#233;es o&#249; <span class="math inline">n &gt; 10000</span>.</p>
+<p>La m&#233;thode de l'&#233;quation normale est donc plus pr&#233;cise que celle de l'algorithme du gradient car elle calcule le minimum global de la fonction d'erreur en d&#233;terminant <span class="math inline">\(\theta\)</span> directement avec une relation math&#233;matique. Cependant, on ne peut pas employer cette &#233;quation tout le temps car elle a une complexit&#233; en temps trop &#233;lev&#233;e, ce qui la rend quasiment inutilisable sur des entr&#233;es o&#249; <span class="math inline">\(n &gt; 10000\)</span>.</p>
  
       <!-- ------------ -->
 
@@ -285,11 +288,6 @@ theta  1  :  0.678691601117212</code></pre>
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>

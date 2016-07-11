@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -195,7 +198,7 @@ function toggle_visibility(id) {
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png" alt="Exemple de chiffrement" />
 <p class="caption">Exemple de chiffrement</p>
 </div>
-<p>Le rang dans l'alphabet commence &#224; 0 (et non 1) car <span class="math inline">26 \mod 26 = 0</span>, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l'additionne &#224; la lettre correspondante de la cl&#233;. On n'oublie pas d'appliquer notre <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour revenir au d&#233;but de l'alphabet si on d&#233;passe Z.</p>
+<p>Le rang dans l'alphabet commence &#224; 0 (et non 1) car <span class="math inline">\(26 \mod 26 = 0\)</span>, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l'additionne &#224; la lettre correspondante de la cl&#233;. On n'oublie pas d'appliquer notre <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour revenir au d&#233;but de l'alphabet si on d&#233;passe Z.</p>
 <p>Pour le d&#233;chiffrement, l'id&#233;e est la m&#234;me sauf qu'on soustrait au lieu d'ajouter le rang de la lettre de la cl&#233; :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png" alt="Exemple de d&#233;chiffrement" />
@@ -1134,11 +1137,6 @@ Demain, comme aujourd&#39;hui, je parlerai &#224; la Radio de Londres.</code></p
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>

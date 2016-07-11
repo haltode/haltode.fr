@@ -195,7 +195,7 @@ On a obtenu cette formule de la même manière que pour l'ancienne, c'est-à-dir
 
 Pour l'équation normale, on applique de nouveau notre démonstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat suivant :
 
-$\theta = \left(x^\intercal x + \lambda \begin{bmatrix} 0\\ &1\\ &&1 \\ &&&\ddots \\ &&&&1 \end{bmatrix}\right)^{-1} x^\intercal y$
+$\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\\ &1\\ &&1 \\ &&&\ddots \\ &&&&1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y$
 
 On retrouve notre paramètre de régularisation $\lambda$, ainsi qu'une matrice de taille $(n + 1)\times(n + 1)$ assez spéciale composée de 1 uniquement dans la diagonale en partant de la deuxième colonne (le reste de la matrice contient des 0). Cette matrice est en réalité une [matrice identité](https://en.wikipedia.org/wiki/Identity_matrix) sans le premier terme en haut à gauche (en rapport avec $\theta_0$ qui n'est pas pénalisé).
 

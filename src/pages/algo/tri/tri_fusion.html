@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -182,12 +185,12 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Le tri fusion (<em>merge sort</em> en anglais) est un algorithme de tri par comparaison efficace qui a pour complexit&#233; <span class="math inline">O(N \log _2 N)</span>, il se base sur le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour r&#233;gner</a>. Cet algorithme est <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais ne s&#8217;ex&#233;cute pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
+<p>Le tri fusion (<em>merge sort</em> en anglais) est un algorithme de tri par comparaison efficace qui a pour complexit&#233; <span class="math inline">\(O(N \log _2 N)\)</span>, il se base sur le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour r&#233;gner</a>. Cet algorithme est <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais ne s&#8217;ex&#233;cute pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&#8217;algorithme</h2>
 <p>L'algorithme se compose de deux parties distinctes :</p>
 <ul>
 <li><strong>Diviser</strong> : on divise r&#233;cursivement le tableau, c'est-&#224;-dire qu'on va couper le tableau en deux sous tableaux et recommencer cette op&#233;ration sur ces derniers jusqu'&#224; ce que chaque sous tableau ne contienne plus qu'un seul &#233;l&#233;ment.</li>
-<li><strong>Fusionner</strong> : une fois notre tableau divis&#233; en <span class="math inline">N</span> sous tableaux (<span class="math inline">N</span> &#233;tant le nombre d'&#233;l&#233;ments), on fusionne deux &#224; deux les tableaux en r&#233;organisant les &#233;l&#233;ments dans l'ordre du tri (croissant ou d&#233;croissant).</li>
+<li><strong>Fusionner</strong> : une fois notre tableau divis&#233; en <span class="math inline">\(N\)</span> sous tableaux (<span class="math inline">\(N\)</span> &#233;tant le nombre d'&#233;l&#233;ments), on fusionne deux &#224; deux les tableaux en r&#233;organisant les &#233;l&#233;ments dans l'ordre du tri (croissant ou d&#233;croissant).</li>
 </ul>
 <p>L'int&#233;r&#234;t de diviser pour ensuite fusionner est que cr&#233;er un tableau tri&#233; &#224; partir de deux sous tableaux peut s'effectuer en temps lin&#233;aire. C'est ce point en particulier qui fait la rapidit&#233; du tri fusion.</p>
 <h2 id="exemple">Exemple</h2>
@@ -242,7 +245,7 @@ fusionner (d&#233;but, milieu, fin) :
 <img src="//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png" alt="Calcul de la complexit&#233;" />
 <p class="caption">Calcul de la complexit&#233;</p>
 </div>
-<p>Les deux appels r&#233;cursifs sont repr&#233;sent&#233;s par une s&#233;paration du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une m&#234;me profondeur formeront toujours un unique tableau contenant <span class="math inline">N</span> &#233;l&#233;ments (<span class="math inline">N</span> &#233;tant la taille du tableau de d&#233;part), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de n&#339;uds. C'est tr&#232;s important car on appelle notre fonction <code>fusionner</code> &#224; chaque n&#339;ud, or cette fonction s'ex&#233;cute en temps lin&#233;aire de <span class="math inline">O(N)</span> avec <span class="math inline">N</span> la taille du sous tableau. On peut donc dire gr&#226;ce aux deux derni&#232;res informations, qu'&#224; chaque profondeur on aura appel&#233; notre fonction <code>fusionner</code> sur <span class="math inline">N</span> &#233;l&#233;ments (quelle que soit la profondeur). De plus, on sait que cet arbre poss&#232;de <span class="math inline">\log _2 N</span> profondeurs (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikip&#233;dia</a>), ce qui nous donne finalement une complexit&#233; en <span class="math inline">O(N \log _2 N)</span>.</p>
+<p>Les deux appels r&#233;cursifs sont repr&#233;sent&#233;s par une s&#233;paration du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une m&#234;me profondeur formeront toujours un unique tableau contenant <span class="math inline">\(N\)</span> &#233;l&#233;ments (<span class="math inline">\(N\)</span> &#233;tant la taille du tableau de d&#233;part), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de n&#339;uds. C'est tr&#232;s important car on appelle notre fonction <code>fusionner</code> &#224; chaque n&#339;ud, or cette fonction s'ex&#233;cute en temps lin&#233;aire de <span class="math inline">\(O(N)\)</span> avec <span class="math inline">\(N\)</span> la taille du sous tableau. On peut donc dire gr&#226;ce aux deux derni&#232;res informations, qu'&#224; chaque profondeur on aura appel&#233; notre fonction <code>fusionner</code> sur <span class="math inline">\(N\)</span> &#233;l&#233;ments (quelle que soit la profondeur). De plus, on sait que cet arbre poss&#232;de <span class="math inline">\(\log _2 N\)</span> profondeurs (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikip&#233;dia</a>), ce qui nous donne finalement une complexit&#233; en <span class="math inline">\(O(N \log _2 N)\)</span>.</p>
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>Une impl&#233;mentation en C du tri fusion :</p>
 <a href="javascript:toggle_visibility('tri_fusion.c');">tri_fusion.c</a>
@@ -329,7 +332,7 @@ fusionner (d&#233;but, milieu, fin) :
 <p>Les <a href="/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a> sont effectivement un bon moyen d'impl&#233;menter le tri fusion &#224; cause de cette flexibilit&#233; que ce tri impose. En effet, on doit pouvoir s&#233;parer des &#233;l&#233;ments pour les fusionner dans un ordre diff&#233;rent apr&#232;s, et ces op&#233;rations ne sont pas pratiques ni optimales avec des tableaux, mais sont adapt&#233;es &#224; des listes cha&#238;n&#233;es.</p>
 <p>La complexit&#233; en temps reste la m&#234;me, mais la complexit&#233; en m&#233;moire est am&#233;lior&#233;e.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri fusion est donc un algorithme de tri efficace, qui a pour complexit&#233; <span class="math inline">O(N \log _2 N)</span>. Cependant, cet algorithme est finalement peu utilis&#233; en pratique &#224; cause du <a href="/algo/tri/tri_rapide.html">tri rapide</a> qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilit&#233; d'am&#233;liorations, etc.).</p>
+<p>Le tri fusion est donc un algorithme de tri efficace, qui a pour complexit&#233; <span class="math inline">\(O(N \log _2 N)\)</span>. Cependant, cet algorithme est finalement peu utilis&#233; en pratique &#224; cause du <a href="/algo/tri/tri_rapide.html">tri rapide</a> qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilit&#233; d'am&#233;liorations, etc.).</p>
  
       <!-- ------------ -->
 
@@ -339,11 +342,6 @@ fusionner (d&#233;but, milieu, fin) :
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>

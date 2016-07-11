@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -198,9 +201,9 @@ function toggle_visibility(id) {
 </ul></li>
 <li><p>Tri :</p>
 <ul>
-<li>Tri en <span class="math inline">O(N^2)</span> : <a href="/algo/tri/tri_bulles.html">tri &#224; bulles</a>, <a href="/algo/tri/tri_selection.html">tri par s&#233;lection</a>, <a href="/algo/tri/tri_insertion.html">tri par insertion</a></li>
-<li>Tri en <span class="math inline">O(N \log _2 N)</span> : <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, <a href="/algo/tri/tri_tas.html">tri par tas</a></li>
-<li>Tri en <span class="math inline">O(N)</span> : <a href="/algo/tri/tri_denombrement.html">tri par d&#233;nombrement</a>, <a href="/algo/tri/tri_base.html">tri par base</a></li>
+<li>Tri en <span class="math inline">\(O(N^2)\)</span> : <a href="/algo/tri/tri_bulles.html">tri &#224; bulles</a>, <a href="/algo/tri/tri_selection.html">tri par s&#233;lection</a>, <a href="/algo/tri/tri_insertion.html">tri par insertion</a></li>
+<li>Tri en <span class="math inline">\(O(N \log _2 N)\)</span> : <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, <a href="/algo/tri/tri_tas.html">tri par tas</a></li>
+<li>Tri en <span class="math inline">\(O(N)\)</span> : <a href="/algo/tri/tri_denombrement.html">tri par d&#233;nombrement</a>, <a href="/algo/tri/tri_base.html">tri par base</a></li>
 </ul></li>
 <li><p>Recherche :</p>
 <ul>
@@ -232,11 +235,6 @@ function toggle_visibility(id) {
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>

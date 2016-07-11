@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -252,7 +255,7 @@ function toggle_visibility(id) {
 <h2 id="impl&#233;mentation">Impl&#233;mentation</h2>
 <p>On peut impl&#233;menter un graphe de diff&#233;rentes fa&#231;ons, en fonction de nos besoins mais aussi de nos capacit&#233;s (en temps et en m&#233;moire).</p>
 <h3 id="matrice-dadjacence">Matrice d'adjacence</h3>
-<p>Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de repr&#233;senter des arcs entre deux n&#339;uds. On peut utiliser un tableau 2D de bool&#233;en (<code>true</code> = arc, <code>false</code> = pas d'arc), ou bien un tableau 2D d'entier (ou de flottant) qui permet alors de stocker les pond&#233;rations des arcs (<span class="math inline">x</span> = pond&#233;ration de l'arc, 0 = pas d'arc).</p>
+<p>Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de repr&#233;senter des arcs entre deux n&#339;uds. On peut utiliser un tableau 2D de bool&#233;en (<code>true</code> = arc, <code>false</code> = pas d'arc), ou bien un tableau 2D d'entier (ou de flottant) qui permet alors de stocker les pond&#233;rations des arcs (<span class="math inline">\(x\)</span> = pond&#233;ration de l'arc, 0 = pas d'arc).</p>
 <p>Voici un exemple de matrice d'adjacence (j'ai utilis&#233; le premier graphe de l'article pour construire la matrice) :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/exemple_matrice_adjacence.png" alt="Exemple de matrice d&#39;adjacence" />
@@ -270,9 +273,9 @@ function toggle_visibility(id) {
 <li>Est-ce que le n&#339;ud <em>A</em> et le n&#339;ud <em>B</em> sont voisins ?</li>
 <li>Quel est le poids de l'arc entre le n&#339;ud <em>C</em> et <em>D</em> ?</li>
 </ul>
-<p>La complexit&#233; en m&#233;moire est en <span class="math inline">O(N^2)</span> (avec <span class="math inline">N</span> le nombre de n&#339;uds du graphe), et la complexit&#233; pour acc&#233;der aux deux informations cit&#233;es au-dessus est en <span class="math inline">O(1)</span> (puisqu'il s'agit d'un tableau).</p>
+<p>La complexit&#233; en m&#233;moire est en <span class="math inline">\(O(N^2)\)</span> (avec <span class="math inline">\(N\)</span> le nombre de n&#339;uds du graphe), et la complexit&#233; pour acc&#233;der aux deux informations cit&#233;es au-dessus est en <span class="math inline">\(O(1)\)</span> (puisqu'il s'agit d'un tableau).</p>
 <h3 id="liste-dadjacence">Liste d'adjacence</h3>
-<p>On peut utiliser une variante de la matrice d'adjacence afin d'&#233;conomiser de la m&#233;moire (mais cette repr&#233;sentation requiert un temps en <span class="math inline">O(N)</span> pour savoir si deux n&#339;uds sont voisins ou pour conna&#238;tre la pond&#233;ration d'un arc). Cette solution consiste &#224; utiliser un tableau de <a href="/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a>, chaque n&#339;ud du graphe a sa propre liste cha&#238;n&#233;e contenant tous ses voisins (et &#233;ventuellement toutes les pond&#233;rations).</p>
+<p>On peut utiliser une variante de la matrice d'adjacence afin d'&#233;conomiser de la m&#233;moire (mais cette repr&#233;sentation requiert un temps en <span class="math inline">\(O(N)\)</span> pour savoir si deux n&#339;uds sont voisins ou pour conna&#238;tre la pond&#233;ration d'un arc). Cette solution consiste &#224; utiliser un tableau de <a href="/algo/structure/liste_chainee.html">listes cha&#238;n&#233;es</a>, chaque n&#339;ud du graphe a sa propre liste cha&#238;n&#233;e contenant tous ses voisins (et &#233;ventuellement toutes les pond&#233;rations).</p>
 <p>Voici par exemple la liste d'adjacence qui repr&#233;sente de nouveau le premier graphe de l'article :</p>
 <div class="figure">
 <img src="//static.napnac.ga/img/algo/structure/graphe/exemple_liste_adjacence.png" alt="Exemple de liste d&#39;adjacence" />
@@ -283,7 +286,7 @@ function toggle_visibility(id) {
 <p>La structure <code>Voisin</code> contient l'index du voisin, mais elle peut aussi contenir la pond&#233;ration de l'arc liant les deux n&#339;uds, voir d'autres informations sp&#233;cifiques au graphe.</p>
 <p>La liste d'adjacence est le plus souvent utilis&#233;e lorsque :</p>
 <ul>
-<li>On n'a pas assez de m&#233;moire pour stocker une matrice d'adjacence : la complexit&#233; en m&#233;moire d'une liste d'adjacence est de <span class="math inline">O(N + M)</span> (avec <span class="math inline">M</span> le nombre d'arcs du graphe).</li>
+<li>On n'a pas assez de m&#233;moire pour stocker une matrice d'adjacence : la complexit&#233; en m&#233;moire d'une liste d'adjacence est de <span class="math inline">\(O(N + M)\)</span> (avec <span class="math inline">\(M\)</span> le nombre d'arcs du graphe).</li>
 <li>On ne cherche pas &#224; r&#233;pondre aux questions du type tel n&#339;ud est-il voisin &#224; tel autre n&#339;ud ? Ou encore quel est le poids de tel arc entre ces deux n&#339;uds ? Mais plut&#244;t lorsqu'on cherche &#224; parcourir le graphe plus rapidement qu'en utilisant une matrice d'adjacence. En effet, dans une liste d'adjacence il n'y a que les voisins du n&#339;ud en question, alors que dans la matrice tous les n&#339;uds sont repr&#233;sent&#233;s.</li>
 </ul>
 <h3 id="liste-darcs">Liste d'arcs</h3>
@@ -296,7 +299,7 @@ function toggle_visibility(id) {
 <p>De m&#234;me que pour la liste d'adjacence, j'utilise les <code>vector</code> :</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector &lt;Arc&gt; graphe;</code></pre></div>
 <p>La structure <code>Arc</code> contient l'index des deux n&#339;uds ainsi que la pond&#233;ration de l'arc (si c'est un graphe pond&#233;r&#233;).</p>
-<p>Une liste d'arcs est plus rarement utilis&#233;e pour repr&#233;senter un graphe, mais peut s'av&#233;rer tr&#232;s utile lorsqu'on n'a pas assez de m&#233;moire (&#224; cause du nombre trop &#233;lev&#233; de n&#339;uds) pour repr&#233;senter le graphe avec une matrice d'adjacence ou m&#234;me une liste d'adjacence. On utilise donc une liste d'arcs avec une complexit&#233; en m&#233;moire de <span class="math inline">O(M)</span>.</p>
+<p>Une liste d'arcs est plus rarement utilis&#233;e pour repr&#233;senter un graphe, mais peut s'av&#233;rer tr&#232;s utile lorsqu'on n'a pas assez de m&#233;moire (&#224; cause du nombre trop &#233;lev&#233; de n&#339;uds) pour repr&#233;senter le graphe avec une matrice d'adjacence ou m&#234;me une liste d'adjacence. On utilise donc une liste d'arcs avec une complexit&#233; en m&#233;moire de <span class="math inline">\(O(M)\)</span>.</p>
 <h2 id="parcourir-un-graphe">Parcourir un graphe</h2>
 <p>Afin de parcourir notre graphe, on peut utiliser deux algorithmes diff&#233;rents :</p>
 <ul>
@@ -334,11 +337,6 @@ function toggle_visibility(id) {
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>

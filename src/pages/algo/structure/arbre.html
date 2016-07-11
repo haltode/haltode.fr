@@ -9,10 +9,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression with KaTeX -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
 
       <!-- CSS -->
 <style>
@@ -210,7 +213,7 @@ function toggle_visibility(id) {
 <p>L'arbre est donc une structure de donn&#233;es &#233;l&#233;mentaire (que l'on peut consid&#233;rer comme un graphe avec des propri&#233;t&#233;s sp&#233;cifiques), s'appliquant dans plusieurs domaines et permettant d'impl&#233;menter une hi&#233;rarchie :</p>
 <ul>
 <li>Votre syst&#232;me de fichier doit sans doute utiliser un arbre pour repr&#233;senter les dossiers, les sous dossiers et les fichiers de votre disque dur. Sous <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> par exemple, la racine de votre ordinateur est <code>/</code>, et vous pouvez acc&#233;der &#224; vos fichiers en indiquant la liste de dossiers &#224; suivre en partant de la racine <code>/home/utilisateur/Documents/.../fichier</code>.</li>
-<li>Pour rechercher des &#233;l&#233;ments, un arbre peut &#234;tre une structure tr&#232;s int&#233;ressante, permettant une recherche en <span class="math inline">O(\log _2 N)</span>, il est d'ailleurs la base d'algorithmes de tris (comme le <a href="/algo/tri/tri_tas.html">tri par tas</a>).</li>
+<li>Pour rechercher des &#233;l&#233;ments, un arbre peut &#234;tre une structure tr&#232;s int&#233;ressante, permettant une recherche en <span class="math inline">\(O(\log _2 N)\)</span>, il est d'ailleurs la base d'algorithmes de tris (comme le <a href="/algo/tri/tri_tas.html">tri par tas</a>).</li>
 <li>Quand vous tapez une phrase et que votre moteur de recherche la compl&#232;te, il utilise sans doute un arbre (et plus particuli&#232;rement un trie), afin de stocker efficacement les diff&#233;rentes possibilit&#233;s de recherche en fonction de diff&#233;rents crit&#232;res (nombre de fois recherch&#233;, nombre de liens en rapport, etc.).</li>
 <li><a href="https://en.wikipedia.org/wiki/Parsing">Parser</a> une expression peut &#234;tre compliqu&#233;, et un arbre semble parfaitement adapt&#233; pour pratiquer une analyse syntaxique sur des expressions (en math&#233;matiques par exemple, pour interpr&#233;ter une expression non parenth&#233;s&#233;e et en g&#233;rant les cas de priorit&#233;s d'op&#233;rations).</li>
 <li>Dans un routeur, une <a href="https://en.wikipedia.org/wiki/Routing_table">table de routage</a> sera utilis&#233;e afin de joindre un autre r&#233;seau, et cette derni&#232;re utilise un arbre pour stocker les informations sans trop utiliser de m&#233;moire (&#224; la mani&#232;re du dictionnaire, c'est-&#224;-dire gr&#226;ce &#224; des pr&#233;fixes).</li>
@@ -224,11 +227,6 @@ function toggle_visibility(id) {
          <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
          <br>
       </footer>
-
-      <!-- Automatically render all of the math inside the page with KaTeX -->
-      <script>
-         renderMathInElement(document.body);
-      </script>
 
    </body>
 </html>
