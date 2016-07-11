@@ -26,7 +26,7 @@ Pour information, si deux nœuds sont reliés par un arc on dit qu'ils sont **vo
 Un graphe peut avoir de nombreuses caractéristiques différentes, en voici une liste que l'on retrouve couramment :
 
 | Caractéristique       | Description                                                                                                        | Exemple                                                                         |
-| ---------------       | -----------                                                                                                        | -------                                                                         |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------------------- |
 | Orienté               | Si les arcs ont un sens (représenté par une flèche), le graphe est orienté.                                        | ![Graphe orienté](//static.napnac.ga/img/algo/structure/graphe/graphe_oriente.png)         |
 | Non orienté           | Dans ce cas, on peut parcourir le graphe dans les deux sens.                                                       | ![Graphe non orienté](//static.napnac.ga/img/algo/structure/graphe/graphe_non_oriente.png) |
 | Pondéré / non pondéré | Un graphe est pondéré si ses arcs ont un **poids** (par exemple la distance en km entre deux villes).              | ![Graphe pondéré](//static.napnac.ga/img/algo/structure/graphe/graphe_pondere.png)         |
