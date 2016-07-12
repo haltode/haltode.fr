@@ -10,7 +10,7 @@ La liste des articles publiés :
 
          - [Introduction aux algorithmes](/algo/general/introduction.html)
          - [Comment et où s'entraîner ?](/algo/general/entrainement.html)
-         - Méthodes de résolution
+         - Méthode de résolution
          - Analyse de la complexité des algorithmes
          - Approche et stratégie : récursivité, [dynamique](/algo/general/approche/dynamique.html), gloutonne
 

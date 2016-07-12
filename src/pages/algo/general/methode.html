@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext" type="text/css" />
+      <link rel="icon" type="image/x-icon" href="//static.napnac.ga/img/favicon.ico">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+
+      <!-- Syntax highlighting -->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+		<!-- Renders LaTeX expression -->
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript" async 
+			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
+
+      <!-- CSS -->
+<style>
+body {
+   font-family: "Helvetica Neue", 'Lato', Helvetica, sans-serif;
+   max-width: 1000px;
+   margin: 0 auto;
+   position: relative;
+   width: 95%;
+   line-height: 1.5;
+}
+
+/* ---- Titles ---- */
+
+h1 {
+   padding-top: 2%;
+   padding-bottom: 2%;
+   color: #DE4834;
+}
+
+h2, h3, h4, h5, h6 {
+   padding-top: 1%;
+   padding-bottom: 1%;
+   color: #DE4834;
+}
+
+/* ---- Link ---- */
+
+a {
+   text-decoration: none;
+   color: #2E64FE;
+}
+
+/* ---- List (+ main menu list) ---- */
+
+ul {
+   padding-left: 30px;
+}
+
+#main_menu {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+#main_menu li {
+   display: inline;
+   margin-right: 1px;
+}
+#main_menu li a {
+   line-height: 1em;
+   padding: 4px 20px;
+   text-align: center;
+}
+#main_menu li a:hover, #main_menu li a:active {
+   text-decoration: underline;
+}
+
+/* ---- Tables (same look as from github markdown layout) ---- */
+
+table {
+   display: block;
+   width: 100%;
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin-top: 0;
+   margin-bottom: 16px;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th,
+table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   background-color: #fff;
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+/* ---- Image and caption ---- */
+
+.figure {
+   text-align: center;
+}
+
+.caption {
+   font-style: italic;
+   text-align: center;
+}
+
+/* ---- Summary ---- */
+
+#summary {
+   width: 70%;
+   text-align: justify;
+   line-height: 1.6;
+}
+
+/* ---- Code ---- */
+pre {
+   width: 90%;
+   white-space: pre-wrap;
+   word-break: break-all;
+   word-wrap: break-word;
+}
+</style>
+      <!---- ---->
+
+      <title>Méthode de résolution - napnac</title>
+   </head>
+
+   <body>
+
+      <!-- Javascript -->
+<script type="text/javascript">
+function toggle_visibility(id) {
+   var element = document.getElementById(id);
+   if(element.style.display == 'block')
+      element.style.display = 'none';
+   else
+      element.style.display = 'block';
+}
+</script>
+      <!---- ---->
+
+      <header>
+         <a href="/">
+            <img src="//static.napnac.ga/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      <!-- Page/Article -->
+
+<a href=""><h1 id="m&#233;thode-de-r&#233;solution">M&#233;thode de r&#233;solution</h1></a>
+<p>Publi&#233; le : 12/07/2016<br />
+<em>Modifi&#233; le : 12/07/2016</em></p>
+<ul id="summary">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#enonc&#233;">Enonc&#233;</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#algorithme">Algorithme</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#v&#233;rifier-le-pseudo-code">V&#233;rifier le pseudo-code</a></li>
+<li><a href="#coder-lalgorithme">Coder l'algorithme</a></li>
+<li><a href="#tester-le-code">Tester le code</a></li>
+<li><a href="#d&#233;buguer-le-programme">D&#233;buguer le programme</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Je ne le r&#233;p&#232;terai jamais assez, mais <a href="http://www.france-ioi.org/">France-IOI</a> est la r&#233;f&#233;rence francophone en algorithmique, et une des choses qui distingue fortement cette plateforme est la m&#233;thode de r&#233;solution qu'elle cherche &#224; transmettre au travers de ses exercices. Cet article a pour but de pr&#233;senter cette m&#233;thode qui peut &#234;tre terriblement efficace si correctement maitris&#233;e. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices, mais de mani&#232;re g&#233;n&#233;rale lorsqu'on cherche un algorithme pour r&#233;soudre un probl&#232;me donn&#233;.</p>
+<p>Cependant, cette m&#233;thode peut para&#238;tre longue et fastidieuse au d&#233;but, et n&#233;cessite de l'<a href="/algo/general/entrainement.html">entra&#238;nement</a> ainsi que de la rigueur pour &#234;tre utilis&#233;e efficacement. La vitesse viendra avec la pratique et non en b&#226;clant les &#233;tapes de cette m&#233;thode. Il peut &#234;tre frustrant au d&#233;but de r&#233;soudre lentement un probl&#232;me, mais cela vous sera tr&#232;s utile dans le futur et vous serez capable de r&#233;aliser les diff&#233;rentes &#233;tapes de cette m&#233;thode bien plus rapidement gr&#226;ce &#224; votre exp&#233;rience.</p>
+<p>TODO : prendre feuille + crayon</p>
+<h2 id="enonc&#233;">Enonc&#233;</h2>
+<h3 id="lecture">Lecture</h3>
+<p>Que ce soit un concours de programmation ou un probl&#232;me que vous cherchez &#224; r&#233;soudre, la premi&#232;re &#233;tape est de <strong>lire attentivement l'&#233;nonc&#233;</strong>, et de ne surtout pas se pr&#233;cipiter. C'est une erreur commune de se tromper dans la lecture du sujet, alors qu'il est facile d'&#233;viter cela. Relisez plusieurs fois ce dernier jusqu'&#224; l'avoir en t&#234;te, et essayer de vous concentrer sur le sujet et non sur l'algorithme pour l'instant. Il est fr&#233;quent de commencer &#224; lire le sujet et d'avoir une id&#233;e d'algorithme en t&#234;te qu'on cherche &#224; d&#233;velopper, mais cette derni&#232;re n'est quasiment jamais la bonne car on n'a pas toutes les informations en t&#234;te. <strong>Ne cherchez pas de solutions au probl&#232;me pour l'instant</strong>, votre premier objectif est de comprendre parfaitement le sujet et de n'avoir aucuns doutes dessus. Commencer &#224; chercher aussi t&#244;t ne ferra que vous perturber, vous emm&#234;ler ou encore pire, vous induire en erreur.</p>
+<h3 id="reformulation">Reformulation</h3>
+<p>Une fois le sujet correctement lu et appr&#233;hend&#233;, il est crucial de le <strong>reformuler en quelques phrases</strong> (deux ou trois en g&#233;n&#233;ral suffisent, il ne s'agit pas de r&#233;&#233;crire le probl&#232;me ici). Ceci vous permet dans un premier temps de v&#233;rifier votre compr&#233;hension vis &#224; vis de l'&#233;nonc&#233;, mais aussi de le d&#233;crire efficacement et de mani&#232;re concise. Supprimez tous les d&#233;tails inutiles, et concentrez vous sur ce qu'on vous demande concr&#232;tement de faire. Vous pouvez vous aider en &#233;crivant deux phrases types, &quot;On nous donne...&quot; et &quot;On nous demande...&quot;, puis si n&#233;cessaire notez les points importants &#224; ne pas oublier ou sp&#233;cifiques au sujet. Attention cependant, car <strong>l'&#233;tape de reformulation ne doit pas d&#233;river du sujet</strong> (en le simplifiant ou en le g&#233;n&#233;ralisant par exemple), elle doit le d&#233;crire parfaitement comme si vous expliquiez l'&#233;nonc&#233; &#224; une personne.</p>
+<p>Il est tr&#232;s fr&#233;quent dans un concours de programmation d'avoir une histoire qui accompagne le sujet, et l'&#233;tape de reformulation permet d'&#233;carter cette derni&#232;re en explicitant le probl&#232;me de mani&#232;re crue et non imag&#233;e. Il faut arriver &#224; se <strong>d&#233;tacher le plus possible de l'histoire</strong> et de d&#233;crire le probl&#232;me d'un point de vue purement algorithmique.</p>
+<p>Voici un exemple de sujet tr&#232;s simple, ainsi qu'une reformulation de ce dernier :</p>
+<blockquote>
+<p>Alice et Bob sont de tr&#232;s bons amis, cependant les deux voyagent beaucoup et ils aimeraient se rencontrer afin de discuter de leurs derni&#232;res aventures. A force de voyager, Alice et Bob n'ont plus &#233;norm&#233;ment d'argent, et Alice n'a pas de quoi voyager pour rencontrer Bob. Ce dernier d&#233;cide donc de la rejoindre, et se renseigne sur les diff&#233;rents moyens de transports ainsi que leurs co&#251;ts. Son but est de voyager &#224; prix minime, pour &#233;conomiser dans de futurs voyages. Apr&#232;s une recherche sur son navigateur favoris, Bob se retrouve avec les informations suivantes :<br />
+Paris -&gt; Shanghai : 700&#8364; (avion)<br />
+New-York -&gt; P&#233;kin : 800&#8364; (avion)<br />
+Moscou -&gt; Shanghai : 450&#8364; (avion)<br />
+P&#233;kin -&gt; Moscou : 300&#8364; (train)<br />
+Le Caire -&gt; Paris : 500&#8364; (avion)<br />
+Paris -&gt; Londres : 200&#8364; (train)</p>
+<p>Sachant que Bob est actuellement &#224; ... et que Alice se trouve &#224; ..., combien Bob devra-t-il d&#233;penser au minimum afin de rencontrer Alice ?</p>
+</blockquote>
+<p>TODO : relire une derni&#232;re fois le sujet pour &#234;tre s&#251;r de la reformulation (car on risque de souvent revenir dessus donc mieux vaut qu'elle soit vraie). TODO : aucun d&#233;tail de r&#233;solution encore une fois, on reste sur la compr&#233;hension du sujet et c'est tout.</p>
+<h3 id="dimensions-et-contraintes">Dimensions et contraintes</h3>
+<p>TODO : ne pas mettre dimensions/contraintes dans reformulation</p>
+<h2 id="exemple">Exemple</h2>
+<h3 id="repr&#233;sentation-graphique-du-probl&#232;me">Repr&#233;sentation graphique du probl&#232;me</h3>
+<h2 id="algorithme">Algorithme</h2>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<h2 id="v&#233;rifier-le-pseudo-code">V&#233;rifier le pseudo-code</h2>
+<h2 id="coder-lalgorithme">Coder l'algorithme</h2>
+<h2 id="tester-le-code">Tester le code</h2>
+<h2 id="d&#233;buguer-le-programme">D&#233;buguer le programme</h2>
+<h2 id="conclusion">Conclusion</h2>
+ 
+      <!-- ------------ -->
+
+      <footer>
+         <br>
+         <hr>
+         <p>Une question ? Une suggestion ? N'h&#233;sitez pas &#224; me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.
+         <br>
+      </footer>
+
+   </body>
+</html>
