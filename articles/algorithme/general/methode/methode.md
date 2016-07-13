@@ -62,8 +62,8 @@ Enfin, dernière sous étape qui concerne l'énoncé, il faut noter sur votre fe
 Une **dimension** est une donnée qu'on fournit dans l'énoncé du problème. Par exemple dans le cas du problème d'Alice et Bob, on pourra avoir une liste de dimensions comme :
 
 > Soit $N$ le nombre de villes où peuvent voyager Alice et Bob, $1 <= N <= 200$  
-> Soit $M$ le prix d'un trajet, $1 <= M <= 3000€$  
-> Soit $K$ le coût total du trajet de Bob pour rejoindre Alice, $1 <= K <= 100000€$
+> Soit $M$ le prix d'un trajet, $1 <= M <= 3000$€  
+> Soit $K$ le coût total du trajet de Bob pour rejoindre Alice, $1 <= K <= 100000$€
 
 On distingue plusieurs types de dimensions :
 
