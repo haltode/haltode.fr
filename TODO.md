@@ -1,8 +1,10 @@
-# Général
-
 - Flux rss
 - Page d'accueil
    - Originalité du site ? Qu'est-ce qui le démarque ?
+
+### Général
+
+- Dynamique : principe d'optimalité de Bellman + exemple concret de prob dyn
 
 ### Structure de données
 
@@ -16,12 +18,17 @@
 
 # A venir
 
-- plus court chemin
-- récursivité (+ diviser pour régner), glouton
-- logistic regression
+- méthode
+- complexité
+- dynamique
+- récusisivité (+ diviser pour régner)
+- accueil (+ lien nouveaux articles)
 
 PAUSE (relecture des précédents articles, et mise à jour des plus anciens)
 
+- glouton
+- plus court chemin (floyd warshall : exemple de l'aéroport)
+- logistic regression
 - union-find
 - arbre couvrant minimal
 
@@ -31,7 +38,6 @@ PAUSE (relecture des précédents articles, et mise à jour des plus anciens)
 - Structure de données : table de hachage
 - IA : neural network, svm, k-means, etc.
 - IA : algo min-max
-- Introduction à la complexité algorithmique (temps + mémoire)
 - Recherche : chaîne de caractères
 - Compression de données : codage de huffman
 - Algorithmes quantiques
