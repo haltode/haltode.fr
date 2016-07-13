@@ -43,31 +43,31 @@ J'essaie de mieux m'organiser avec mon nouvel entrainement en essayant de me foc
 
 En septembre 2015, Algoréa recommence et je ne me qualifie pas en finale (je n'essaie plus vraiment, j'abandonne), et finalement lors de la première épreuve de sélection pour le stage de la Toussaint je décide d'arrêter pour de bon les concours. J'en parle avec mon entraîneur avant d'en décider "officiellement".
 
-> **iTech**    Au bout de 1h, j'ai arrêté mais pas parce que je n'y arrivais pas (j'avais même quelques idées pas mal sur le 1), mais parce que j'ai eu ce même sentiment que j'ai à chaque concours quasiment : j'ai tout simplement pas envie de faire de compétition, je n'ai pas cet esprit de compétition, quand je fais de l'algo j'aime ça et je m'amuse à chercher, mais en concours j'ai plus ce plaisir et je n'ai absolument aucune envie de continuer l'épreuve
+> **napnac**    Au bout de 1h, j'ai arrêté mais pas parce que je n'y arrivais pas (j'avais même quelques idées pas mal sur le 1), mais parce que j'ai eu ce même sentiment que j'ai à chaque concours quasiment : j'ai tout simplement pas envie de faire de compétition, je n'ai pas cet esprit de compétition, quand je fais de l'algo j'aime ça et je m'amuse à chercher, mais en concours j'ai plus ce plaisir et je n'ai absolument aucune envie de continuer l'épreuve
 >
 > **cheikdav**    Eh bien, comme bon te semble
 >
 > **cheikdav**    Si t'as l'impression que la compet ca te va pas, te force pas
 >
-> **iTech**    Ouais j'ai l'impression que c'est ça, et je m'en rends compte un peu tard
+> **napnac**    Ouais j'ai l'impression que c'est ça, et je m'en rends compte un peu tard
 >
-> **iTech**    Du coup je pense arrêter, surtout que si j'ai pas un bon esprit de compet, vu la concurrence j'ai pas grande chance pour les IOI
+> **napnac**    Du coup je pense arrêter, surtout que si j'ai pas un bon esprit de compet, vu la concurrence j'ai pas grande chance pour les IOI
 >
 > **cheikdav**    Bah, tu t'en rends pas spécialement tard ou je pense pas que ce soit du temps perdu de toute façon
 >
 > **cheikdav**    T'as bien progressé
 >
-> **iTech**    Ah ça non
+> **napnac**    Ah ça non
 >
-> **iTech**    Pour moi ça été quelque chose de super
+> **napnac**    Pour moi ça été quelque chose de super
 >
 > **cheikdav**    Tu peux tout à fait continuer à t'entrainer sans participer aux epreuves
 >
 > **cheikdav**    Le principal, c'est tout de meme de progresser
 >
-> **iTech**    Oui et je vais en faire de temps en temps de l'algo
+> **napnac**    Oui et je vais en faire de temps en temps de l'algo
 >
-> **iTech**    Mais c'est vrai que les compets ne m'attirent plus :/ 
+> **napnac**    Mais c'est vrai que les compets ne m'attirent plus :/ 
 
 ## Conclusion
 
