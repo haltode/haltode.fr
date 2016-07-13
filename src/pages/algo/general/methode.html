@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="m&#233;thode-de-r&#233;solution">M&#233;thode de r&#233;solution</h1></a>
-<p>Publi&#233; le : 12/07/2016<br />
-<em>Modifi&#233; le : 12/07/2016</em></p>
+<p>Publi&#233; le : 13/07/2016<br />
+<em>Modifi&#233; le : 13/07/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#enonc&#233;">Enonc&#233;</a></li>
@@ -189,29 +189,128 @@ function toggle_visibility(id) {
 <h2 id="introduction">Introduction</h2>
 <p>Je ne le r&#233;p&#232;terai jamais assez, mais <a href="http://www.france-ioi.org/">France-IOI</a> est la r&#233;f&#233;rence francophone en algorithmique, et une des choses qui distingue fortement cette plateforme est la m&#233;thode de r&#233;solution qu'elle cherche &#224; transmettre au travers de ses exercices. Cet article a pour but de pr&#233;senter cette m&#233;thode qui peut &#234;tre terriblement efficace si correctement maitris&#233;e. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices, mais de mani&#232;re g&#233;n&#233;rale lorsqu'on cherche un algorithme pour r&#233;soudre un probl&#232;me donn&#233;.</p>
 <p>Cependant, cette m&#233;thode peut para&#238;tre longue et fastidieuse au d&#233;but, et n&#233;cessite de l'<a href="/algo/general/entrainement.html">entra&#238;nement</a> ainsi que de la rigueur pour &#234;tre utilis&#233;e efficacement. La vitesse viendra avec la pratique et non en b&#226;clant les &#233;tapes de cette m&#233;thode. Il peut &#234;tre frustrant au d&#233;but de r&#233;soudre lentement un probl&#232;me, mais cela vous sera tr&#232;s utile dans le futur et vous serez capable de r&#233;aliser les diff&#233;rentes &#233;tapes de cette m&#233;thode bien plus rapidement gr&#226;ce &#224; votre exp&#233;rience.</p>
-<p>TODO : prendre feuille + crayon</p>
+<p>Pour commencer, il vous faut uniquement une feuille et un crayon.</p>
 <h2 id="enonc&#233;">Enonc&#233;</h2>
 <h3 id="lecture">Lecture</h3>
-<p>Que ce soit un concours de programmation ou un probl&#232;me que vous cherchez &#224; r&#233;soudre, la premi&#232;re &#233;tape est de <strong>lire attentivement l'&#233;nonc&#233;</strong>, et de ne surtout pas se pr&#233;cipiter. C'est une erreur commune de se tromper dans la lecture du sujet, alors qu'il est facile d'&#233;viter cela. Relisez plusieurs fois ce dernier jusqu'&#224; l'avoir en t&#234;te, et essayer de vous concentrer sur le sujet et non sur l'algorithme pour l'instant. Il est fr&#233;quent de commencer &#224; lire le sujet et d'avoir une id&#233;e d'algorithme en t&#234;te qu'on cherche &#224; d&#233;velopper, mais cette derni&#232;re n'est quasiment jamais la bonne car on n'a pas toutes les informations en t&#234;te. <strong>Ne cherchez pas de solutions au probl&#232;me pour l'instant</strong>, votre premier objectif est de comprendre parfaitement le sujet et de n'avoir aucuns doutes dessus. Commencer &#224; chercher aussi t&#244;t ne ferra que vous perturber, vous emm&#234;ler ou encore pire, vous induire en erreur.</p>
+<p>Que ce soit un concours de programmation ou un probl&#232;me que vous cherchez &#224; r&#233;soudre, la premi&#232;re &#233;tape est de <strong>lire attentivement l'&#233;nonc&#233;</strong>, et de ne surtout pas se pr&#233;cipiter. Cela peut paraitre &#233;vidant, mais c'est une erreur commune de se tromper dans la lecture du sujet, alors qu'il est facile d'&#233;viter ceci. Relisez plusieurs fois ce dernier jusqu'&#224; l'avoir en t&#234;te, et essayer de vous concentrer sur le sujet et non sur l'algorithme pour l'instant. Il est fr&#233;quent de commencer &#224; lire le sujet et d'avoir une id&#233;e d'algorithme en t&#234;te qu'on cherche &#224; d&#233;velopper, mais cette derni&#232;re n'est quasiment jamais la bonne car on n'a pas toutes les informations &#224; propos de l'&#233;nonc&#233;. <strong>Ne cherchez pas de solutions au probl&#232;me pour l'instant</strong>, votre premier objectif est de comprendre parfaitement le sujet et de n'avoir aucuns doutes dessus. Commencer &#224; chercher aussi t&#244;t ne ferra que vous perturber, vous emm&#234;ler ou encore pire, vous induire en erreur.</p>
 <h3 id="reformulation">Reformulation</h3>
-<p>Une fois le sujet correctement lu et appr&#233;hend&#233;, il est crucial de le <strong>reformuler en quelques phrases</strong> (deux ou trois en g&#233;n&#233;ral suffisent, il ne s'agit pas de r&#233;&#233;crire le probl&#232;me ici). Ceci vous permet dans un premier temps de v&#233;rifier votre compr&#233;hension vis &#224; vis de l'&#233;nonc&#233;, mais aussi de le d&#233;crire efficacement et de mani&#232;re concise. Supprimez tous les d&#233;tails inutiles, et concentrez vous sur ce qu'on vous demande concr&#232;tement de faire. Vous pouvez vous aider en &#233;crivant deux phrases types, &quot;On nous donne...&quot; et &quot;On nous demande...&quot;, puis si n&#233;cessaire notez les points importants &#224; ne pas oublier ou sp&#233;cifiques au sujet. Attention cependant, car <strong>l'&#233;tape de reformulation ne doit pas d&#233;river du sujet</strong> (en le simplifiant ou en le g&#233;n&#233;ralisant par exemple), elle doit le d&#233;crire parfaitement comme si vous expliquiez l'&#233;nonc&#233; &#224; une personne.</p>
-<p>Il est tr&#232;s fr&#233;quent dans un concours de programmation d'avoir une histoire qui accompagne le sujet, et l'&#233;tape de reformulation permet d'&#233;carter cette derni&#232;re en explicitant le probl&#232;me de mani&#232;re crue et non imag&#233;e. Il faut arriver &#224; se <strong>d&#233;tacher le plus possible de l'histoire</strong> et de d&#233;crire le probl&#232;me d'un point de vue purement algorithmique.</p>
+<p>Une fois le sujet correctement lu et appr&#233;hend&#233;, il est crucial de le <strong>reformuler en quelques phrases</strong> (deux ou trois en g&#233;n&#233;ral suffisent, il ne s'agit pas de r&#233;&#233;crire le probl&#232;me ici). Ceci vous permet dans un premier temps de v&#233;rifier votre compr&#233;hension vis-&#224;-vis de l'&#233;nonc&#233;, mais aussi de le d&#233;crire efficacement et de mani&#232;re concise. Supprimez tous les d&#233;tails inutiles, et concentrez-vous sur ce qu'on vous demande concr&#232;tement de faire. Vous pouvez vous aider en &#233;crivant deux phrases types, &quot;On nous donne...&quot; et &quot;On nous demande...&quot;, puis si n&#233;cessaire notez les points importants &#224; ne pas oublier ou sp&#233;cifiques au sujet. Attention cependant, car <strong>l'&#233;tape de reformulation ne doit pas d&#233;river du sujet</strong> (en le simplifiant ou en le g&#233;n&#233;ralisant par exemple), elle doit le d&#233;crire parfaitement comme si vous expliquiez l'&#233;nonc&#233; &#224; une personne.</p>
+<p>Il est tr&#232;s courant dans un concours de programmation d'avoir une histoire qui accompagne le sujet, et l'&#233;tape de reformulation permet d'&#233;carter cette derni&#232;re en explicitant le probl&#232;me de mani&#232;re crue et non imag&#233;e. Il faut arriver &#224; se <strong>d&#233;tacher le plus possible de l'histoire</strong> et de d&#233;crire le probl&#232;me d'un point de vue purement algorithmique.</p>
 <p>Voici un exemple de sujet tr&#232;s simple, ainsi qu'une reformulation de ce dernier :</p>
 <blockquote>
-<p>Alice et Bob sont de tr&#232;s bons amis, cependant les deux voyagent beaucoup et ils aimeraient se rencontrer afin de discuter de leurs derni&#232;res aventures. A force de voyager, Alice et Bob n'ont plus &#233;norm&#233;ment d'argent, et Alice n'a pas de quoi voyager pour rencontrer Bob. Ce dernier d&#233;cide donc de la rejoindre, et se renseigne sur les diff&#233;rents moyens de transports ainsi que leurs co&#251;ts. Son but est de voyager &#224; prix minime, pour &#233;conomiser dans de futurs voyages. Apr&#232;s une recherche sur son navigateur favoris, Bob se retrouve avec les informations suivantes :<br />
-Paris -&gt; Shanghai : 700&#8364; (avion)<br />
-New-York -&gt; P&#233;kin : 800&#8364; (avion)<br />
-Moscou -&gt; Shanghai : 450&#8364; (avion)<br />
-P&#233;kin -&gt; Moscou : 300&#8364; (train)<br />
-Le Caire -&gt; Paris : 500&#8364; (avion)<br />
-Paris -&gt; Londres : 200&#8364; (train)</p>
-<p>Sachant que Bob est actuellement &#224; ... et que Alice se trouve &#224; ..., combien Bob devra-t-il d&#233;penser au minimum afin de rencontrer Alice ?</p>
+<p>Alice et Bob sont de tr&#232;s bons amis, cependant les deux voyagent beaucoup et ils aimeraient se rencontrer afin de discuter de leurs derni&#232;res aventures. A force de voyager, Alice et Bob n'ont plus &#233;norm&#233;ment d'argent, et Alice n'a pas de quoi payer pour rencontrer Bob. Ce dernier d&#233;cide donc de la rejoindre, et se renseigne sur les diff&#233;rents moyens de transports ainsi que leurs co&#251;ts. Son but est de voyager &#224; prix minime, pour &#233;conomiser dans de futurs voyages. Apr&#232;s une recherche sur son navigateur favori, Bob se retrouve avec les informations suivantes :</p>
+<table>
+<thead>
+<tr class="header">
+<th>D&#233;part</th>
+<th>Arriv&#233;e</th>
+<th>Co&#251;t</th>
+<th>Transport</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Shanghai</td>
+<td>P&#233;kin</td>
+<td>100&#8364;</td>
+<td>train</td>
+</tr>
+<tr class="even">
+<td>New-York</td>
+<td>Londres</td>
+<td>700&#8364;</td>
+<td>avion</td>
+</tr>
+<tr class="odd">
+<td>Paris</td>
+<td>Shanghai</td>
+<td>700&#8364;</td>
+<td>avion</td>
+</tr>
+<tr class="even">
+<td>New-York</td>
+<td>P&#233;kin</td>
+<td>800&#8364;</td>
+<td>avion</td>
+</tr>
+<tr class="odd">
+<td>Moscou</td>
+<td>Shanghai</td>
+<td>450&#8364;</td>
+<td>avion</td>
+</tr>
+<tr class="even">
+<td>P&#233;kin</td>
+<td>Moscou</td>
+<td>300&#8364;</td>
+<td>train</td>
+</tr>
+<tr class="odd">
+<td>Le Caire</td>
+<td>Paris</td>
+<td>500&#8364;</td>
+<td>avion</td>
+</tr>
+<tr class="even">
+<td>Moscou</td>
+<td>New-York</td>
+<td>700&#8364;</td>
+<td>avion</td>
+</tr>
+<tr class="odd">
+<td>Paris</td>
+<td>Londres</td>
+<td>200&#8364;</td>
+<td>train</td>
+</tr>
+<tr class="even">
+<td>Moscou</td>
+<td>Paris</td>
+<td>300&#8364;</td>
+<td>train</td>
+</tr>
+</tbody>
+</table>
+<p>Sachant que Bob est actuellement &#224; P&#233;kin et qu'Alice se trouve &#224; Londres, combien Bob devra-t-il d&#233;penser au minimum afin de rencontrer Alice ?</p>
 </blockquote>
-<p>TODO : relire une derni&#232;re fois le sujet pour &#234;tre s&#251;r de la reformulation (car on risque de souvent revenir dessus donc mieux vaut qu'elle soit vraie). TODO : aucun d&#233;tail de r&#233;solution encore une fois, on reste sur la compr&#233;hension du sujet et c'est tout.</p>
+<p>Un exemple de reformulation utile de ce sujet :</p>
+<blockquote>
+<p>On nous un graphe orient&#233; pond&#233;r&#233; positivement.<br />
+On nous demande le plus court chemin entre deux n&#339;uds de ce graphe.</p>
+</blockquote>
+<p>Plus d'histoire, plus d'Alice et Bob, on garde uniquement le strict minimum, sans pour autant perdre des informations. Ici, l'entr&#233;e donn&#233;e par le sujet est un graphe implicite o&#249; chaque ville est un n&#339;ud et chaque trajet un arc. Le graphe est orient&#233; car on a une case &quot;D&#233;part&quot; et &quot;Arriv&#233;e&quot; ce qui semble indiquer une direction &#224; suivre. L'information du transport (avion ou train) est en r&#233;alit&#233; inutile &#224; notre probl&#232;me puisqu'on ne cherche qu'&#224; minimiser le co&#251;t, on l'omet donc de notre description. La pond&#233;ration du graphe simule le co&#251;t du trajet, or ce co&#251;t est toujours positif donc on le pr&#233;cise. Pour ce qui est de la sortie, on nous demande effectivement un plus court chemin reliant le n&#339;ud de d&#233;part (o&#249; se trouve Bob sur le graphe) et un n&#339;ud d'arriv&#233;e (o&#249; se trouve Alice).</p>
+<p>Une fois le sujet reformul&#233;, il peut &#234;tre int&#233;ressant de <strong>relire une derni&#232;re fois l'&#233;nonc&#233;</strong> pour s'assurer de la v&#233;racit&#233; de la reformulation. En effet, cette derni&#232;re sera l'&#233;l&#233;ment central de notre r&#233;flexion, donc il faut &#234;tre certain qu'elle est correcte car on basera toute notre m&#233;thode de recherche de l'algorithme dessus.</p>
+<p>Encore une fois, on est actuellement dans la compr&#233;hension du sujet et non dans la r&#233;solution. Ne vous lancez pas &#224; t&#234;te baiss&#233;e dans une id&#233;e d'algorithme tout de suite, attendez pour v&#233;rifier votre r&#233;flexion.</p>
 <h3 id="dimensions-et-contraintes">Dimensions et contraintes</h3>
-<p>TODO : ne pas mettre dimensions/contraintes dans reformulation</p>
+<p>Enfin, derni&#232;re sous &#233;tape qui concerne l'&#233;nonc&#233;, il faut noter sur votre feuille les <strong>dimensions</strong> et les <strong>contraintes</strong> du sujet.</p>
+<p>Une <strong>dimension</strong> est une donn&#233;e qu'on fournit dans l'&#233;nonc&#233; du probl&#232;me. Par exemple dans le cas du probl&#232;me d'Alice et Bob, on pourra avoir une liste de dimensions comme :</p>
+<blockquote>
+<p>Soit <span class="math inline">\(N\)</span> le nombre de villes o&#249; peuvent voyager Alice et Bob, <span class="math inline">\(1 &lt;= N &lt;= 200\)</span><br />
+Soit <span class="math inline">\(M\)</span> le prix d'un trajet, <span class="math inline">\(1 &lt;= M &lt;= 3000&#8364;\)</span><br />
+Soit <span class="math inline">\(K\)</span> le co&#251;t total du trajet de Bob pour rejoindre Alice, <span class="math inline">\(1 &lt;= K &lt;= 100000&#8364;\)</span></p>
+</blockquote>
+<p>On distingue plusieurs types de dimensions :</p>
+<ul>
+<li><strong>dimension d'entr&#233;e</strong> : une valeur qui va concerner directement l'entr&#233;e de votre programme (ex: <span class="math inline">\(N\)</span> ou <span class="math inline">\(M\)</span>)</li>
+<li><strong>dimension de sortie</strong> : une valeur qui va concerner directement la sortie de votre programme (ex: <span class="math inline">\(K\)</span>)</li>
+<li><strong>dimension implicite</strong> : une valeur implicite de l'&#233;nonc&#233; qui peut &#234;tre int&#233;ressante de noter (ex: )</li>
+</ul>
+<p>TODO : exemple dimension implicite</p>
+<p>Pour chaque dimension il est utile de mettre la borne minimale et maximale, qui sont la plupart du temps donn&#233;es par le sujet ou qu'on peut simplement trouver avec quelques calculs.</p>
+<p>Une <strong>contrainte</strong> est une limite impos&#233;e par l'&#233;nonc&#233;, concernant g&#233;n&#233;ralement le temps ou la m&#233;moire qu'on accorde &#224; votre programme. Ces derni&#232;res sont explicites, par exemple :</p>
+<blockquote>
+<p>Temps : 1s sur une machine &#224; 1Ghz<br />
+M&#233;moire : 32000 Ko</p>
+</blockquote>
+<p>Lister les dimensions et les contraintes vous permet de v&#233;rifier rapidement si votre algorithme est assez efficace. En effet, avec ces informations il suffit de calculer la complexit&#233; d'un algorithme pour se rendre compte instantan&#233;ment s'il respecte ou non le sujet.</p>
+<p><em>Attention &#224; ne pas mettre les dimensions ou les contraintes dans la reformulation, ce sont deux sous-&#233;tapes bien distinctes.</em></p>
 <h2 id="exemple">Exemple</h2>
+<p>Deuxi&#232;me &#233;tape de la m&#233;thode de r&#233;solution : <strong>r&#233;soudre des exemples &#224; la main</strong>. C'est &#224; mi-chemin entre compr&#233;hension du sujet et d&#233;but de r&#233;flexion, mais cette &#233;tape est cruciale et bien souvent trop peu r&#233;alis&#233;e.</p>
 <h3 id="repr&#233;sentation-graphique-du-probl&#232;me">Repr&#233;sentation graphique du probl&#232;me</h3>
+<p>Avant de se lancer dans la r&#233;solution d'exemples, on peut commencer par chercher une bonne repr&#233;sentation de notre probl&#232;me. Visualiser ce dernier nous permettra de trouver une solution bien plus facilement, mais encore une fois, il y a de nombreuses fa&#231;ons de repr&#233;senter une m&#234;me chose mais peu sont r&#233;ellement efficaces et utiles.</p>
+<p>Une bonne visualisation indique des informations indispensables, il ne faut surtout pas surcharger la figure car elle doit rester claire et pr&#233;cise. Cette repr&#233;sentation peut prendre diff&#233;rentes formes selon le sujet et le contexte : graphe, arbre, tableau, graphique 2D, etc.</p>
+<h3 id="r&#233;soudre-des-exemples-&#224;-la-main">R&#233;soudre des exemples &#224; la main</h3>
+<p>Maintenant que vous avez le sujet bien en t&#234;te, reformul&#233;, et correctement repr&#233;sent&#233; sur votre feuille, il faut r&#233;aliser plusieurs exemples de r&#233;solution.</p>
 <h2 id="algorithme">Algorithme</h2>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <h2 id="v&#233;rifier-le-pseudo-code">V&#233;rifier le pseudo-code</h2>
