@@ -2,8 +2,8 @@ Méthode de résolution
 =====================
 algo/general
 
-Publié le : 13/07/2016  
-*Modifié le : 13/07/2016*
+Publié le : 14/07/2016  
+*Modifié le : 14/07/2016*
 
 ## Introduction
 
@@ -69,9 +69,7 @@ On distingue plusieurs types de dimensions :
 
 - **dimension d'entrée** : une valeur qui va concerner directement l'entrée de votre programme (ex: $N$ ou $M$)
 - **dimension de sortie** : une valeur qui va concerner directement la sortie de votre programme (ex: $K$)
-- **dimension implicite** : une valeur implicite de l'énoncé qui peut être intéressante de noter (ex: )
-
-TODO : exemple dimension implicite
+- **dimension implicite** : une valeur implicite de l'énoncé qui peut être intéressante de noter (ex: si on fournit en entrée des coordonnées de points dans l'espace, une dimension implicite pourrait être la distance entre deux points)
 
 Pour chaque dimension il est utile de mettre la borne minimale et maximale, qui sont la plupart du temps données par le sujet ou qu'on peut simplement trouver avec quelques calculs.
 
@@ -86,7 +84,7 @@ Lister les dimensions et les contraintes vous permet de vérifier rapidement si 
 
 ## Exemple
 
-Deuxième étape de la méthode de résolution : **résoudre des exemples à la main**. C'est à mi-chemin entre compréhension du sujet et début de réflexion, mais cette étape est cruciale et bien souvent trop peu réalisée.
+Deuxième étape de la méthode de résolution : **résoudre des exemples à la main**. Désormais, on va se concentrer sur la partie résolution du problème et non plus dans la compréhension du sujet, vous devriez maintenant avoir ce dernier bien en tête et correctement reformulé en quelques phrases relativement courtes.
 
 ### Représentation graphique du problème
 
@@ -96,10 +94,25 @@ Une bonne visualisation indique des informations indispensables, il ne faut surt
 
 ### Résoudre des exemples à la main
 
-Maintenant que vous avez le sujet bien en tête, reformulé, et correctement représenté sur votre feuille, il faut réaliser plusieurs exemples de résolution.
+Trouver une solution est bien plus simple lorsqu'on essaie nous même de résoudre le problème plutôt que d'y réfléchir dans sa tête. En effet, notre cerveau est un outil très efficace pour ce genre de tâche, et se demander comment on ferrait personnellement pour résoudre le problème peut être un bon départ de réflexion. De plus, votre cerveau peut trouver rapidement des raccourcis pour éviter de répéter des mêmes opérations fastidieuses, et ceci nous aidera grandement pour trouver un algorithme efficace.
 
+Il est courant d'avoir des exemples dans l'énoncé du problème, mais il en faudra plus pour trouver l'algorithme. Cependant, générer plusieurs **bons exemples** est loin d'être facile. Les exemples doivent être tous assez différents les uns des autres pour généraliser l'algorithme et faire ressortir dès idées, pas trop longs pour ne pas perdre trop de temps (surtout pendant un concours de programmation), mais ni trop courts pour ne pas être inutiles.
+
+En plus d'aider à résoudre le problème et à trouver un algorithme, cette étape importante permet aussi de fournir des tests pour notre futur code (si les exemples à la main sont résolus correctement). De plus, on peut trouver des cas spéciaux ou des cas limites (en fonction des contraintes et des dimensions du problème) qui peuvent nous permettre de tester l'efficacité de l'algorithme.
 
 ## Algorithme
+
+Si à partir des exemples, vous n'avez encore aucunes réelles idées de l'algorithme à employer, il est possible d'utiliser différentes stratégies afin de changer d'approche.
+
+### Algorithme naïf
+
+Tout d'abord, on peut tenter d'améliorer l'algorithme naïf pour le rendre bien plus efficace. Un algorithme dit **naïf** est la méthode bourrin pour résoudre un problème, on ne se soucie pas des contraintes ou des dimensions, on veut juste résoudre le problème simplement. En général trouver cet algorithme très basique n'est pas compliqué, mais il va falloir l'améliorer pour le rendre plus efficace afin qu'il respecte les contraintes du sujet.
+
+
+
+### Supprimer, fixer, réduire
+
+### Changer de point de vue
 
 ## Pseudo-code
 

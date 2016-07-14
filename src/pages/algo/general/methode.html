@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="m&#233;thode-de-r&#233;solution">M&#233;thode de r&#233;solution</h1></a>
-<p>Publi&#233; le : 13/07/2016<br />
-<em>Modifi&#233; le : 13/07/2016</em></p>
+<p>Publi&#233; le : 14/07/2016<br />
+<em>Modifi&#233; le : 14/07/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#enonc&#233;">Enonc&#233;</a></li>
@@ -293,9 +293,8 @@ Soit <span class="math inline">\(K\)</span> le co&#251;t total du trajet de Bob 
 <ul>
 <li><strong>dimension d'entr&#233;e</strong> : une valeur qui va concerner directement l'entr&#233;e de votre programme (ex: <span class="math inline">\(N\)</span> ou <span class="math inline">\(M\)</span>)</li>
 <li><strong>dimension de sortie</strong> : une valeur qui va concerner directement la sortie de votre programme (ex: <span class="math inline">\(K\)</span>)</li>
-<li><strong>dimension implicite</strong> : une valeur implicite de l'&#233;nonc&#233; qui peut &#234;tre int&#233;ressante de noter (ex: )</li>
+<li><strong>dimension implicite</strong> : une valeur implicite de l'&#233;nonc&#233; qui peut &#234;tre int&#233;ressante de noter (ex: si on fournit en entr&#233;e des coordonn&#233;es de points dans l'espace, une dimension implicite pourrait &#234;tre la distance entre deux points)</li>
 </ul>
-<p>TODO : exemple dimension implicite</p>
 <p>Pour chaque dimension il est utile de mettre la borne minimale et maximale, qui sont la plupart du temps donn&#233;es par le sujet ou qu'on peut simplement trouver avec quelques calculs.</p>
 <p>Une <strong>contrainte</strong> est une limite impos&#233;e par l'&#233;nonc&#233;, concernant g&#233;n&#233;ralement le temps ou la m&#233;moire qu'on accorde &#224; votre programme. Ces derni&#232;res sont explicites, par exemple :</p>
 <blockquote>
@@ -305,13 +304,20 @@ M&#233;moire : 32000 Ko</p>
 <p>Lister les dimensions et les contraintes vous permet de v&#233;rifier rapidement si votre algorithme est assez efficace. En effet, avec ces informations il suffit de calculer la complexit&#233; d'un algorithme pour se rendre compte instantan&#233;ment s'il respecte ou non le sujet.</p>
 <p><em>Attention &#224; ne pas mettre les dimensions ou les contraintes dans la reformulation, ce sont deux sous-&#233;tapes bien distinctes.</em></p>
 <h2 id="exemple">Exemple</h2>
-<p>Deuxi&#232;me &#233;tape de la m&#233;thode de r&#233;solution : <strong>r&#233;soudre des exemples &#224; la main</strong>. C'est &#224; mi-chemin entre compr&#233;hension du sujet et d&#233;but de r&#233;flexion, mais cette &#233;tape est cruciale et bien souvent trop peu r&#233;alis&#233;e.</p>
+<p>Deuxi&#232;me &#233;tape de la m&#233;thode de r&#233;solution : <strong>r&#233;soudre des exemples &#224; la main</strong>. D&#233;sormais, on va se concentrer sur la partie r&#233;solution du probl&#232;me et non plus dans la compr&#233;hension du sujet, vous devriez maintenant avoir ce dernier bien en t&#234;te et correctement reformul&#233; en quelques phrases relativement courtes.</p>
 <h3 id="repr&#233;sentation-graphique-du-probl&#232;me">Repr&#233;sentation graphique du probl&#232;me</h3>
 <p>Avant de se lancer dans la r&#233;solution d'exemples, on peut commencer par chercher une bonne repr&#233;sentation de notre probl&#232;me. Visualiser ce dernier nous permettra de trouver une solution bien plus facilement, mais encore une fois, il y a de nombreuses fa&#231;ons de repr&#233;senter une m&#234;me chose mais peu sont r&#233;ellement efficaces et utiles.</p>
 <p>Une bonne visualisation indique des informations indispensables, il ne faut surtout pas surcharger la figure car elle doit rester claire et pr&#233;cise. Cette repr&#233;sentation peut prendre diff&#233;rentes formes selon le sujet et le contexte : graphe, arbre, tableau, graphique 2D, etc.</p>
 <h3 id="r&#233;soudre-des-exemples-&#224;-la-main">R&#233;soudre des exemples &#224; la main</h3>
-<p>Maintenant que vous avez le sujet bien en t&#234;te, reformul&#233;, et correctement repr&#233;sent&#233; sur votre feuille, il faut r&#233;aliser plusieurs exemples de r&#233;solution.</p>
+<p>Trouver une solution est bien plus simple lorsqu'on essaie nous m&#234;me de r&#233;soudre le probl&#232;me plut&#244;t que d'y r&#233;fl&#233;chir dans sa t&#234;te. En effet, notre cerveau est un outil tr&#232;s efficace pour ce genre de t&#226;che, et se demander comment on ferrait personnellement pour r&#233;soudre le probl&#232;me peut &#234;tre un bon d&#233;part de r&#233;flexion. De plus, votre cerveau peut trouver rapidement des raccourcis pour &#233;viter de r&#233;p&#233;ter des m&#234;mes op&#233;rations fastidieuses, et ceci nous aidera grandement pour trouver un algorithme efficace.</p>
+<p>Il est courant d'avoir des exemples dans l'&#233;nonc&#233; du probl&#232;me, mais il en faudra plus pour trouver l'algorithme. Cependant, g&#233;n&#233;rer plusieurs <strong>bons exemples</strong> est loin d'&#234;tre facile. Les exemples doivent &#234;tre tous assez diff&#233;rents les uns des autres pour g&#233;n&#233;raliser l'algorithme et faire ressortir d&#232;s id&#233;es, pas trop longs pour ne pas perdre trop de temps (surtout pendant un concours de programmation), mais ni trop courts pour ne pas &#234;tre inutiles.</p>
+<p>En plus d'aider &#224; r&#233;soudre le probl&#232;me et &#224; trouver un algorithme, cette &#233;tape importante permet aussi de fournir des tests pour notre futur code (si les exemples &#224; la main sont r&#233;solus correctement). De plus, on peut trouver des cas sp&#233;ciaux ou des cas limites (en fonction des contraintes et des dimensions du probl&#232;me) qui peuvent nous permettre de tester l'efficacit&#233; de l'algorithme.</p>
 <h2 id="algorithme">Algorithme</h2>
+<p>Si &#224; partir des exemples, vous n'avez encore aucunes r&#233;elles id&#233;es de l'algorithme &#224; employer, il est possible d'utiliser diff&#233;rentes strat&#233;gies afin de changer d'approche.</p>
+<h3 id="algorithme-na&#239;f">Algorithme na&#239;f</h3>
+<p>Tout d'abord, on peut tenter d'am&#233;liorer l'algorithme na&#239;f pour le rendre bien plus efficace. Un algorithme dit <strong>na&#239;f</strong> est la m&#233;thode bourrin pour r&#233;soudre un probl&#232;me, on ne se soucie pas des contraintes ou des dimensions, on veut juste r&#233;soudre le probl&#232;me simplement. En g&#233;n&#233;ral trouver cet algorithme tr&#232;s basique n'est pas compliqu&#233;, mais il va falloir l'am&#233;liorer pour le rendre plus efficace afin qu'il respecte les contraintes du sujet.</p>
+<h3 id="supprimer-fixer-r&#233;duire">Supprimer, fixer, r&#233;duire</h3>
+<h3 id="changer-de-point-de-vue">Changer de point de vue</h3>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <h2 id="v&#233;rifier-le-pseudo-code">V&#233;rifier le pseudo-code</h2>
 <h2 id="coder-lalgorithme">Coder l'algorithme</h2>
