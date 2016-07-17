@@ -14,7 +14,7 @@ Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à <napnac.ga@gmai
 
 Les pages de ce site sont écrites en [Markdown](https://en.wikipedia.org/wiki/Markdown), et converties grâce à un script fait maison en [sh](https://en.wikipedia.org/wiki/Bourne_shell) utilisant [pandoc](http://pandoc.org/). Les images et les schémas sont créés grâce à [LaTeX](https://en.wikipedia.org/wiki/LaTeX) et notamment grâce au package [tikz](http://www.texample.net/tikz/examples/). Toutes les expressions mathématiques intégrées dans les articles sont écrites en LaTeX aussi, et transformées grâce à [MathJax](https://www.mathjax.org/).
 
-Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à lire mon [article dédié](/projets/napnac.html) à ce sujet, ou bien à consulter les sources du projet sur la page Github : <https://github.com/napnac/napnac.ga>.
+Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à consulter les sources du projet sur la page Github : <https://github.com/napnac/napnac.ga>.
 
 Le site est sous licence [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 

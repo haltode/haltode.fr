@@ -9,7 +9,7 @@ L'entraînement est la clé pour maitriser une discipline (*"C'est en forgeant q
 
 En voici une liste non exhaustive :
 
-- [France IOI](http://www.france-ioi.org/index.php) : une référence francophone incontournable, je ne peux que recommander ce site car j'ai moi-même passé un an à m'entraîner pour les IOI grâce à cette association (en savoir plus : [projet IOI](/projets/ioi.html)).
+- [France IOI](http://www.france-ioi.org/index.php) : une référence francophone incontournable, je ne peux que recommander ce site car j'ai moi-même passé un an à m'entraîner pour les IOI grâce à cette association.
 - [USACO](http://www.usaco.org/) : quatre concours sont répartis dans l'année avec plusieurs niveaux de difficultés (bronze, argent, or, platine). C'est l'équivalent américain de l'association France IOI.
 - [Prologin](https://prologin.org/) : chaque année un concours national est organisé permettant aux 100 meilleurs de s'affronter dans un tournoi de trois jours pour coder la meilleure IA. Lors de ma première finale, ce fut trois jours exceptionnels et je vous invite fortement à y participer.
 - [Codeforces](http://codeforces.com/) : des concours de 2h quasiment toutes les semaines, et une banque d'exercice énorme pour s'entraîner dans toutes les catégories d'algorithmes.
