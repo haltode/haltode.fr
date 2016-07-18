@@ -2,10 +2,12 @@ Méthode de résolution
 =====================
 algo/general
 
-Publié le : 14/07/2016  
-*Modifié le : 14/07/2016*
+Publié le : 18/07/2016  
+*Modifié le : 18/07/2016*
 
 ## Introduction
+
+TODO : conseils persos
 
 Je ne le répèterai jamais assez, mais [France-IOI](http://www.france-ioi.org/) est la référence francophone en algorithmique, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu'elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices, mais de manière générale lorsqu'on cherche un algorithme pour résoudre un problème donné.
 
@@ -106,9 +108,21 @@ Si à partir des exemples, vous n'avez encore aucunes réelles idées de l'algor
 
 ### Algorithme naïf
 
-Tout d'abord, on peut tenter d'améliorer l'algorithme naïf pour le rendre bien plus efficace. Un algorithme dit **naïf** est la méthode bourrin pour résoudre un problème, on ne se soucie pas des contraintes ou des dimensions, on veut juste résoudre le problème simplement. En général trouver cet algorithme très basique n'est pas compliqué, mais il va falloir l'améliorer pour le rendre plus efficace afin qu'il respecte les contraintes du sujet.
+Un algorithme dit **naïf** est la première méthode bourrin qui vous vient à l'esprit quand on vous pose un problème, ce dernier ne se soucie pas des contraintes, des dimensions, ou autre, et cherche uniquement à résoudre l'énoncé. Par exemple, si l'on reprend notre reformulation du sujet :
 
+> On nous un graphe orienté pondéré positivement.  
+> On nous demande le plus court chemin entre deux nœuds de ce graphe.
 
+Imaginons qu'on ne connaisse aucun algorithme de plus court chemin sur un graphe, il faut donc qu'on arrive à en créer un nous même. L'algorithme naïf serait alors de tester bêtement tous les chemins et de sélectionner le plus court. Rien de plus simple, et même si cet algorithme est terriblement peu efficace, il est souvent très intéressant de partir de cela pour ensuite l'améliorer et découvrir un algorithme qui respecte les contraintes et les dimensions (c'est d'ailleurs la stratégie que j'adopte dans mon article sur l'algorithme de plus court chemin [Bellman-Ford](/algo/structure/graphe/plus_court_chemin/bellman_ford.html)).
+
+L'avantage de cette méthode est qu'il est évident de trouver l'algorithme naïf pour résoudre un problème, et que ses points faibles sont très rapidement soulignés lorsqu'on cherche à faire un exemple à la main avec ce dernier. En effet, on va vite remarquer ce que notre algorithme répète inutilement, et il suffit d'optimiser ces points en trouvant une méthode plus réfléchie et moins naïve.
+
+*Un ou deux exemples devraient suffir, pas besoin de recommencer entièrement l'étape précédente. En revanche, choisissez des exemples un minimum long pour avoir le temps de trouver ce que vous cherchez.*
+
+N'oubliez pas de calculer la complexité en temps et en mémoire de votre algorithme bourrin pour deux raisons principalement :
+
+- Il arrive que l'algorithme naïf soit une solution suffisante dans des cas simplistes. En concours, il est alors inutile de chercher à améliorer l'algorithme s'il respecte déjà les contraintes, d'autant plus que l'algorithme bourrin est souvent rapide et simple à programmer.
+- Connaître la complexité en temps et en mémoire permet de se rendre compte des améliorations nécessaires pour que le nouvel algorithme soit efficace.
 
 ### Supprimer, fixer, réduire
 

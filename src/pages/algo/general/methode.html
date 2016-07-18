@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="m&#233;thode-de-r&#233;solution">M&#233;thode de r&#233;solution</h1></a>
-<p>Publi&#233; le : 14/07/2016<br />
-<em>Modifi&#233; le : 14/07/2016</em></p>
+<p>Publi&#233; le : 18/07/2016<br />
+<em>Modifi&#233; le : 18/07/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#enonc&#233;">Enonc&#233;</a></li>
@@ -187,6 +187,7 @@ function toggle_visibility(id) {
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
+<p>TODO : conseils persos</p>
 <p>Je ne le r&#233;p&#232;terai jamais assez, mais <a href="http://www.france-ioi.org/">France-IOI</a> est la r&#233;f&#233;rence francophone en algorithmique, et une des choses qui distingue fortement cette plateforme est la m&#233;thode de r&#233;solution qu'elle cherche &#224; transmettre au travers de ses exercices. Cet article a pour but de pr&#233;senter cette m&#233;thode qui peut &#234;tre terriblement efficace si correctement maitris&#233;e. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices, mais de mani&#232;re g&#233;n&#233;rale lorsqu'on cherche un algorithme pour r&#233;soudre un probl&#232;me donn&#233;.</p>
 <p>Cependant, cette m&#233;thode peut para&#238;tre longue et fastidieuse au d&#233;but, et n&#233;cessite de l'<a href="/algo/general/entrainement.html">entra&#238;nement</a> ainsi que de la rigueur pour &#234;tre utilis&#233;e efficacement. La vitesse viendra avec la pratique et non en b&#226;clant les &#233;tapes de cette m&#233;thode. Il peut &#234;tre frustrant au d&#233;but de r&#233;soudre lentement un probl&#232;me, mais cela vous sera tr&#232;s utile dans le futur et vous serez capable de r&#233;aliser les diff&#233;rentes &#233;tapes de cette m&#233;thode bien plus rapidement gr&#226;ce &#224; votre exp&#233;rience.</p>
 <p>Pour commencer, il vous faut uniquement une feuille et un crayon.</p>
@@ -315,7 +316,19 @@ M&#233;moire : 32000 Ko</p>
 <h2 id="algorithme">Algorithme</h2>
 <p>Si &#224; partir des exemples, vous n'avez encore aucunes r&#233;elles id&#233;es de l'algorithme &#224; employer, il est possible d'utiliser diff&#233;rentes strat&#233;gies afin de changer d'approche.</p>
 <h3 id="algorithme-na&#239;f">Algorithme na&#239;f</h3>
-<p>Tout d'abord, on peut tenter d'am&#233;liorer l'algorithme na&#239;f pour le rendre bien plus efficace. Un algorithme dit <strong>na&#239;f</strong> est la m&#233;thode bourrin pour r&#233;soudre un probl&#232;me, on ne se soucie pas des contraintes ou des dimensions, on veut juste r&#233;soudre le probl&#232;me simplement. En g&#233;n&#233;ral trouver cet algorithme tr&#232;s basique n'est pas compliqu&#233;, mais il va falloir l'am&#233;liorer pour le rendre plus efficace afin qu'il respecte les contraintes du sujet.</p>
+<p>Un algorithme dit <strong>na&#239;f</strong> est la premi&#232;re m&#233;thode bourrin qui vous vient &#224; l'esprit quand on vous pose un probl&#232;me, ce dernier ne se soucie pas des contraintes, des dimensions, ou autre, et cherche uniquement &#224; r&#233;soudre l'&#233;nonc&#233;. Par exemple, si l'on reprend notre reformulation du sujet :</p>
+<blockquote>
+<p>On nous un graphe orient&#233; pond&#233;r&#233; positivement.<br />
+On nous demande le plus court chemin entre deux n&#339;uds de ce graphe.</p>
+</blockquote>
+<p>Imaginons qu'on ne connaisse aucun algorithme de plus court chemin sur un graphe, il faut donc qu'on arrive &#224; en cr&#233;er un nous m&#234;me. L'algorithme na&#239;f serait alors de tester b&#234;tement tous les chemins et de s&#233;lectionner le plus court. Rien de plus simple, et m&#234;me si cet algorithme est terriblement peu efficace, il est souvent tr&#232;s int&#233;ressant de partir de cela pour ensuite l'am&#233;liorer et d&#233;couvrir un algorithme qui respecte les contraintes et les dimensions (c'est d'ailleurs la strat&#233;gie que j'adopte dans mon article sur l'algorithme de plus court chemin <a href="/algo/structure/graphe/plus_court_chemin/bellman_ford.html">Bellman-Ford</a>).</p>
+<p>L'avantage de cette m&#233;thode est qu'il est &#233;vident de trouver l'algorithme na&#239;f pour r&#233;soudre un probl&#232;me, et que ses points faibles sont tr&#232;s rapidement soulign&#233;s lorsqu'on cherche &#224; faire un exemple &#224; la main avec ce dernier. En effet, on va vite remarquer ce que notre algorithme r&#233;p&#232;te inutilement, et il suffit d'optimiser ces points en trouvant une m&#233;thode plus r&#233;fl&#233;chie et moins na&#239;ve.</p>
+<p><em>Un ou deux exemples devraient suffir, pas besoin de recommencer enti&#232;rement l'&#233;tape pr&#233;c&#233;dente. En revanche, choisissez des exemples un minimum long pour avoir le temps de trouver ce que vous cherchez.</em></p>
+<p>N'oubliez pas de calculer la complexit&#233; en temps et en m&#233;moire de votre algorithme bourrin pour deux raisons principalement :</p>
+<ul>
+<li>Il arrive que l'algorithme na&#239;f soit une solution suffisante dans des cas simplistes. En concours, il est alors inutile de chercher &#224; am&#233;liorer l'algorithme s'il respecte d&#233;j&#224; les contraintes, d'autant plus que l'algorithme bourrin est souvent rapide et simple &#224; programmer.</li>
+<li>Conna&#238;tre la complexit&#233; en temps et en m&#233;moire permet de se rendre compte des am&#233;liorations n&#233;cessaires pour que le nouvel algorithme soit efficace.</li>
+</ul>
 <h3 id="supprimer-fixer-r&#233;duire">Supprimer, fixer, r&#233;duire</h3>
 <h3 id="changer-de-point-de-vue">Changer de point de vue</h3>
 <h2 id="pseudo-code">Pseudo-code</h2>
