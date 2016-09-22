@@ -2,8 +2,8 @@ Méthode de résolution
 =====================
 algo/general
 
-Publié le : 18/07/2016  
-*Modifié le : 18/07/2016*
+Publié le : 22/09/2016  
+*Modifié le : 22/09/2016*
 
 ## Introduction
 
@@ -100,7 +100,7 @@ Trouver une solution est bien plus simple lorsqu'on essaie nous même de résoud
 
 Il est courant d'avoir des exemples dans l'énoncé du problème, mais il en faudra plus pour trouver l'algorithme. Cependant, générer plusieurs **bons exemples** est loin d'être facile. Les exemples doivent être tous assez différents les uns des autres pour généraliser l'algorithme et faire ressortir dès idées, pas trop longs pour ne pas perdre trop de temps (surtout pendant un concours de programmation), mais ni trop courts pour ne pas être inutiles.
 
-En plus d'aider à résoudre le problème et à trouver un algorithme, cette étape importante permet aussi de fournir des tests pour notre futur code (si les exemples à la main sont résolus correctement). De plus, on peut trouver des cas spéciaux ou des cas limites (en fonction des contraintes et des dimensions du problème) qui peuvent nous permettre de tester l'efficacité de l'algorithme.
+En plus d'aider à résoudre le problème et à trouver un algorithme, cette étape importante permet aussi de fournir des tests pour notre futur code (si les exemples à la main sont résolus correctement). On peut trouver des **cas spéciaux** ou des **cas limites** (en fonction des contraintes et des dimensions du problème) qui peuvent nous permettre de tester l'efficacité de l'algorithme. Un exemple de cas limite pour le problème d'Alice et Bob serait une entrée avec des millions (voire des milliards) d'itinéraires possibles. L'idée est de tester si notre algorithme respecte ou non les contraintes du sujet.
 
 ## Algorithme
 
@@ -115,9 +115,9 @@ Un algorithme dit **naïf** est la première méthode bourrin qui vous vient à 
 
 Imaginons qu'on ne connaisse aucun algorithme de plus court chemin sur un graphe, il faut donc qu'on arrive à en créer un nous même. L'algorithme naïf serait alors de tester bêtement tous les chemins et de sélectionner le plus court. Rien de plus simple, et même si cet algorithme est terriblement peu efficace, il est souvent très intéressant de partir de cela pour ensuite l'améliorer et découvrir un algorithme qui respecte les contraintes et les dimensions (c'est d'ailleurs la stratégie que j'adopte dans mon article sur l'algorithme de plus court chemin [Bellman-Ford](/algo/structure/graphe/plus_court_chemin/bellman_ford.html)).
 
-L'avantage de cette méthode est qu'il est évident de trouver l'algorithme naïf pour résoudre un problème, et que ses points faibles sont très rapidement soulignés lorsqu'on cherche à faire un exemple à la main avec ce dernier. En effet, on va vite remarquer ce que notre algorithme répète inutilement, et il suffit d'optimiser ces points en trouvant une méthode plus réfléchie et moins naïve.
+L'avantage de cette méthode est qu'il est évident de trouver l'algorithme naïf pour résoudre un problème, et que ses points faibles sont très rapidement soulignés lorsqu'on cherche à réaliser un exemple à la main avec ce dernier. En effet, on va vite remarquer ce que notre algorithme répète inutilement, et il suffit d'optimiser ces points en trouvant une méthode plus réfléchie et moins naïve.
 
-*Un ou deux exemples devraient suffir, pas besoin de recommencer entièrement l'étape précédente. En revanche, choisissez des exemples un minimum long pour avoir le temps de trouver ce que vous cherchez.*
+*Un ou deux exemples devraient suffir, pas besoin de recommencer entièrement l'étape précédente. En revanche, choisissez des exemples un minimum long pour avoir le temps de trouver les points faibles.*
 
 N'oubliez pas de calculer la complexité en temps et en mémoire de votre algorithme bourrin pour deux raisons principalement :
 
@@ -126,9 +126,31 @@ N'oubliez pas de calculer la complexité en temps et en mémoire de votre algori
 
 ### Supprimer, fixer, réduire
 
+Simplifier le problème aide souvent à sa résolution, car on va trouver des idées pour un problème plus simple que l'on va réutiliser pour résoudre le problème plus compliqué. Pour cela, on peut faire un tableau des dimensions et essayer d'appliquer une des trois opérations (supprimer, fixer, réduire) en fonction de la pertinence de cette dernière. Retournons sur Alice et Bob :
+
 ### Changer de point de vue
 
 ## Pseudo-code
+
+Lorsqu'on cherche à résoudre un problème un minimum conséquent, on ne code jamais directement l'algorithme qu'on a en tête, mais on passe par une étape intermédiaire : le **pseudo-code**. Ce dernier est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est extrêmement importante car elle permet de se concentrer uniquement sur l'algorithme et non sur la manière dont vous allez le programmer. Vous le savez sans doute déjà, mais il est très rare de produire un code sans aucun bug du premier coup, et une étape de débugage est souvent obligatoire. Débuguer est loin d'être évident, et cette partie du problème peut prendre beaucoup de temps, il vaut donc mieux que l'algorithme soit valide avant de se lancer dans cette longue étape pour ne pas se rendre compte en plein milieu que notre algorithme est faux depuis le début.
+
+Il n'y a pas de règles de syntaxe pour le pseudo-code, et c'est ce qui le rend très personnel. Chacun a sa manière d'écrire du pseudo-code. Cependant, cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable. En effet, le pseudo-code permet de décrire un algorithme rapidement, et donc de tester sa validité efficacement.
+
+Au travers de mes articles, j'utiliserai toujours des pseudo-codes avant l'implémentation pour plusieurs raisons :
+
+- Un pseudo-code est écrit en français, et il permet d'appréhender l'algorithme abordé facilement.
+- Il ne dépend d'aucun langage de programmation (que ça soit au niveau de la syntaxe, ou encore des détails), donc que vous programmiez en C, en Python, en Ocaml, ou autre, vous pouvez très bien le lire, le comprendre et l'implémenter de votre côté.
+- S'il y a des améliorations ou des modifications à apporter à l'algorithme, le pseudo-code est très utile car on peut le modifier simplement pour mettre en place ces dernières.
+
+Même si le pseudo-code suit une syntaxe personnelle, il y a quelques règles qui sont intéressantes d'appliquer pour écrire un pseudo-code réellement utile :
+
+- Un pseudo-code se doit d'être concis, il ne s'agit pas ici de réécrire en français tout un programme informatique. On ne mettra que ce qui nous intéresse réellement, et uniquement ce qui concerne l'algorithme en lui même. Vu qu'il y a différentes façons de l'implémenter, on ne se souciera pas de tous ces détails et on laissera cela à réaliser pendant l'étape où l'on code.
+- Il est tout à fait inutile de décrire les entrées ou les sorties du programme, par exemple on écrira `Lire graphe` sans détailler plus la manière dont on lit ce dernier. De même, on écrira plutôt `Afficher tableau` au lieu d'écrire une boucle.
+- Notre pseudo-code doit faire ressortir les boucles, les fonctions et les éléments principaux de notre algorithme. C'est pourquoi on n'utilisera ces derniers outils uniquement quand ils concernent directement l'algorithme et non pas pour un détail d'implémentation encore une fois.
+- Tout comme il est normal d'[indenter](https://en.wikipedia.org/wiki/Indent_style) son code, il est essentiel d'indenter son pseudo-code pour faciliter la lecture. N'hésitez pas à laisser de la place sur votre feuille si vous devez ensuite rajouter des précisions.
+- Les variables sont des détails d'implémentation, il est donc inutile de les déclarer, en revanche préciser le type et la valeur d'initialisation peut être intéressant dans certains cas.
+- Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit être assez clair et écrit en français.
+- Il faut absolument éviter d'oublier des parties de l'algorithme en pensant que c'est des détails d'implémentation. Si une partie du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder.
 
 ## Vérifier le pseudo-code
 
