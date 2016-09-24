@@ -2,8 +2,8 @@ Méthode de résolution
 =====================
 algo/general
 
-Publié le : 22/09/2016  
-*Modifié le : 22/09/2016*
+Publié le : 24/09/2016  
+*Modifié le : 24/09/2016*
 
 ## Introduction
 
@@ -152,12 +152,42 @@ Même si le pseudo-code suit une syntaxe personnelle, il y a quelques règles qu
 - Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit être assez clair et écrit en français.
 - Il faut absolument éviter d'oublier des parties de l'algorithme en pensant que c'est des détails d'implémentation. Si une partie du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder.
 
+TODO : transition + fin partie
+
 ## Vérifier le pseudo-code
+
+Une fois le pseudo-code correctement établit, il faut une dernière étape de vérification (assez rapide) pour s'assurer au maximum d'avoir une solution valide avant de se lancer dans le code :
+
+- **Relire le sujet** afin d'être certain de bien répondre à ce dernier et de ne pas avoir inconsciemment dévié du problème initial lors de la recherche d'une solution.
+- **Vérifier avec des exemples** que le pseudo-code retourne bien la sortie attendue (réutilisez ceux de l'énoncé ou vos propres exemples que vous avez générés auparavant).
+- **Calculer la complexité en temps et en mémoire** à nouveau pour être convaincu de l'efficacité de l'algorithme.
+
+TODO : autres étapes ?
 
 ## Coder l'algorithme
 
+A partir de ce moment, vous devez être sûr de votre algorithme, car coder, tester et débuguer un programme est un processus qui peut être très long et c'est pour cela qu'il y a autant d'étapes avant de se mettre à coder. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, et si possible avec le moins de bug possible. Il a tout de même quelques méthodes à respecter pour éviter au mieux les bugs potentiels (ces conseils s'appliquent surtout lors de concours, et permettent aussi en général de gagner du temps) :
+
+- Ne cherchez surtout pas à optimiser votre programme lorsque vous êtes en train de l'écrire ! Comme le dit si bien [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) : *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."*. Inutile de chercher à optimiser des petites parties de votre code, car l'impact sera sans doute minime et vous risquez d'introduire plus de bugs.
+- Ne vous compliquez pas la tâche quand il y a une alternative plus simple. Par exemple, en concours il est rarement utile de faire une allocation dynamique qui prend parfois du temps et risque d'être mal effectuée, en revanche il est commun et bien plus pratique de déclarer les variables majeures du programme en tant que variable globale pour rendre bien plus simple le programme et éviter des bugs inutiles liés à l'allocation.
+- Utilisez de *bons* noms de variables et de fonctions pour ne pas se retrouver avec des noms de variables à une lettre partout dans votre code au risque de confondre. C'est plus une habitude à prendre, mais nommer correctement une variable peut se révéler plus dure qu'on ne le crois. Un nom correct doit être précis, clair et relativement concis.
+- N'hésitez pas à re-déclarer des variables au lieu de réutiliser d'anciennes qui non plus forcément de rapport (notamment dans les boucles, car il serait dommage de réutiliser une variable qui contient des restes indésirables et qui pourrait introduire un bug difficile à détecter).
+- TODO : plus de conseils (spécifique concours ?)
+
 ## Tester le code
+
+Créer un fichier pour chaque exemple que vous avez, et exécutez votre programme avec ces derniers pour s'assurer de la sortie. Il est souvent indispensable d'avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement avec un petit programme pour ne pas perdre du temps à le remplir à la main).
+
+Si vous faites une variante d'un ou plusieurs fichiers tests, n'oubliez surtout pas de le conserver dans un différent fichier car cela vous fait un test de plus pour vérifier votre programme.
+
+Enfin, la sortie des exemples est parfois une bonne manière de tester notre code, mais on peut aussi afficher le contenu des variables/structures de données principales pour confirmer que tout fonctionne parfaitement comme prévu.
 
 ## Débuguer le programme
 
+Malheureusement, il est rare de coder un code parfait directement, et cette chance diminue d'autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).
+
+TODO: dichotomie pour "isoler" le problème + gdb ?
+
 ## Conclusion
+
+TODO: liens fiches méthodes france-ioi

@@ -172,8 +172,8 @@ function toggle_visibility(id) {
       <!-- Page/Article -->
 
 <a href=""><h1 id="m&#233;thode-de-r&#233;solution">M&#233;thode de r&#233;solution</h1></a>
-<p>Publi&#233; le : 22/09/2016<br />
-<em>Modifi&#233; le : 22/09/2016</em></p>
+<p>Publi&#233; le : 24/09/2016<br />
+<em>Modifi&#233; le : 24/09/2016</em></p>
 <ul id="summary">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#enonc&#233;">Enonc&#233;</a></li>
@@ -351,11 +351,33 @@ On nous demande le plus court chemin entre deux n&#339;uds de ce graphe.</p>
 <li>Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit &#234;tre assez clair et &#233;crit en fran&#231;ais.</li>
 <li>Il faut absolument &#233;viter d'oublier des parties de l'algorithme en pensant que c'est des d&#233;tails d'impl&#233;mentation. Si une partie du pseudo-code est floue ou peu d&#233;taill&#233;e, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder.</li>
 </ul>
+<p>TODO : transition + fin partie</p>
 <h2 id="v&#233;rifier-le-pseudo-code">V&#233;rifier le pseudo-code</h2>
+<p>Une fois le pseudo-code correctement &#233;tablit, il faut une derni&#232;re &#233;tape de v&#233;rification (assez rapide) pour s'assurer au maximum d'avoir une solution valide avant de se lancer dans le code :</p>
+<ul>
+<li><strong>Relire le sujet</strong> afin d'&#234;tre certain de bien r&#233;pondre &#224; ce dernier et de ne pas avoir inconsciemment d&#233;vi&#233; du probl&#232;me initial lors de la recherche d'une solution.</li>
+<li><strong>V&#233;rifier avec des exemples</strong> que le pseudo-code retourne bien la sortie attendue (r&#233;utilisez ceux de l'&#233;nonc&#233; ou vos propres exemples que vous avez g&#233;n&#233;r&#233;s auparavant).</li>
+<li><strong>Calculer la complexit&#233; en temps et en m&#233;moire</strong> &#224; nouveau pour &#234;tre convaincu de l'efficacit&#233; de l'algorithme.</li>
+</ul>
+<p>TODO : autres &#233;tapes ?</p>
 <h2 id="coder-lalgorithme">Coder l'algorithme</h2>
+<p>A partir de ce moment, vous devez &#234;tre s&#251;r de votre algorithme, car coder, tester et d&#233;buguer un programme est un processus qui peut &#234;tre tr&#232;s long et c'est pour cela qu'il y a autant d'&#233;tapes avant de se mettre &#224; coder. Normalement, vous avez votre algorithme en t&#234;te, un pseudo-code clair et pr&#233;cis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est r&#233;uni pour coder efficacement, et si possible avec le moins de bug possible. Il a tout de m&#234;me quelques m&#233;thodes &#224; respecter pour &#233;viter au mieux les bugs potentiels (ces conseils s'appliquent surtout lors de concours, et permettent aussi en g&#233;n&#233;ral de gagner du temps) :</p>
+<ul>
+<li>Ne cherchez surtout pas &#224; optimiser votre programme lorsque vous &#234;tes en train de l'&#233;crire ! Comme le dit si bien <a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> : <em>&quot;We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil.&quot;</em>. Inutile de chercher &#224; optimiser des petites parties de votre code, car l'impact sera sans doute minime et vous risquez d'introduire plus de bugs.</li>
+<li>Ne vous compliquez pas la t&#226;che quand il y a une alternative plus simple. Par exemple, en concours il est rarement utile de faire une allocation dynamique qui prend parfois du temps et risque d'&#234;tre mal effectu&#233;e, en revanche il est commun et bien plus pratique de d&#233;clarer les variables majeures du programme en tant que variable globale pour rendre bien plus simple le programme et &#233;viter des bugs inutiles li&#233;s &#224; l'allocation.</li>
+<li>Utilisez de <em>bons</em> noms de variables et de fonctions pour ne pas se retrouver avec des noms de variables &#224; une lettre partout dans votre code au risque de confondre. C'est plus une habitude &#224; prendre, mais nommer correctement une variable peut se r&#233;v&#233;ler plus dure qu'on ne le crois. Un nom correct doit &#234;tre pr&#233;cis, clair et relativement concis.</li>
+<li>N'h&#233;sitez pas &#224; re-d&#233;clarer des variables au lieu de r&#233;utiliser d'anciennes qui non plus forc&#233;ment de rapport (notamment dans les boucles, car il serait dommage de r&#233;utiliser une variable qui contient des restes ind&#233;sirables et qui pourrait introduire un bug difficile &#224; d&#233;tecter).</li>
+<li>TODO : plus de conseils (sp&#233;cifique concours ?)</li>
+</ul>
 <h2 id="tester-le-code">Tester le code</h2>
+<p>Cr&#233;er un fichier pour chaque exemple que vous avez, et ex&#233;cutez votre programme avec ces derniers pour s'assurer de la sortie. Il est souvent indispensable d'avoir un fichier contenant un exemple de cas limite (vous pouvez le g&#233;n&#233;rer automatiquement avec un petit programme pour ne pas perdre du temps &#224; le remplir &#224; la main).</p>
+<p>Si vous faites une variante d'un ou plusieurs fichiers tests, n'oubliez surtout pas de le conserver dans un diff&#233;rent fichier car cela vous fait un test de plus pour v&#233;rifier votre programme.</p>
+<p>Enfin, la sortie des exemples est parfois une bonne mani&#232;re de tester notre code, mais on peut aussi afficher le contenu des variables/structures de donn&#233;es principales pour confirmer que tout fonctionne parfaitement comme pr&#233;vu.</p>
 <h2 id="d&#233;buguer-le-programme">D&#233;buguer le programme</h2>
+<p>Malheureusement, il est rare de coder un code parfait directement, et cette chance diminue d'autant plus que la complexit&#233; du probl&#232;me augmente. Savoir d&#233;buguer un programme rapidement et efficacement est donc un atout &#233;norme (surtout dans les concours de programmation).</p>
+<p>TODO: dichotomie pour &quot;isoler&quot; le probl&#232;me + gdb ?</p>
 <h2 id="conclusion">Conclusion</h2>
+<p>TODO: liens fiches m&#233;thodes france-ioi</p>
  
       <!-- ------------ -->
 
