@@ -2,14 +2,14 @@ Méthode de résolution
 =====================
 algo/general
 
-Publié le : 24/09/2016  
-*Modifié le : 24/09/2016*
+Publié le : 25/09/2016  
+*Modifié le : 25/09/2016*
 
 ## Introduction
 
 TODO : conseils persos
 
-Je ne le répèterai jamais assez, mais [France-IOI](http://www.france-ioi.org/) est la référence francophone en algorithmique, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu'elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices, mais de manière générale lorsqu'on cherche un algorithme pour résoudre un problème donné.
+Je ne le répèterai jamais assez, mais [France-IOI](http://www.france-ioi.org/) est **la référence francophone en algorithmique**, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu'elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices, mais de manière générale lorsqu'on cherche un algorithme pour résoudre un problème donné.
 
 Cependant, cette méthode peut paraître longue et fastidieuse au début, et nécessite de l'[entraînement](/algo/general/entrainement.html) ainsi que de la rigueur pour être utilisée efficacement. La vitesse viendra avec la pratique et non en bâclant les étapes de cette méthode. Il peut être frustrant au début de résoudre lentement un problème, mais cela vous sera très utile dans le futur et vous serez capable de réaliser les différentes étapes de cette méthode bien plus rapidement grâce à votre expérience.
 
@@ -23,7 +23,7 @@ Que ce soit un concours de programmation ou un problème que vous cherchez à r�
 
 ### Reformulation
 
-Une fois le sujet correctement lu et appréhendé, il est crucial de le **reformuler en quelques phrases** (deux ou trois en général suffisent, il ne s'agit pas de réécrire le problème ici). Ceci vous permet dans un premier temps de vérifier votre compréhension vis-à-vis de l'énoncé, mais aussi de le décrire efficacement et de manière concise. Supprimez tous les détails inutiles, et concentrez-vous sur ce qu'on vous demande concrètement de faire. Vous pouvez vous aider en écrivant deux phrases types, "On nous donne..." et "On nous demande...", puis si nécessaire notez les points importants à ne pas oublier ou spécifiques au sujet. Attention cependant, car **l'étape de reformulation ne doit pas dériver du sujet** (en le simplifiant ou en le généralisant par exemple), elle doit le décrire parfaitement comme si vous expliquiez l'énoncé à une personne.
+Une fois le sujet correctement lu et appréhendé, il est crucial de le **reformuler en quelques phrases** (deux ou trois en général suffisent, il ne s'agit pas ici de réécrire le problème). Ceci vous permet dans un premier temps de vérifier votre compréhension vis-à-vis de l'énoncé, mais aussi de le décrire efficacement et de manière concise. Supprimez tous les détails inutiles, et concentrez-vous sur ce qu'on vous demande concrètement de faire. Vous pouvez vous aider en écrivant deux phrases types, "On nous donne..." et "On nous demande...", puis si nécessaire notez les points importants à ne pas oublier ou spécifiques au sujet. Attention cependant, car **l'étape de reformulation ne doit pas dériver du sujet** (en le simplifiant ou en le généralisant par exemple), elle doit le décrire parfaitement comme si vous expliquiez l'énoncé à une personne.
 
 Il est très courant dans un concours de programmation d'avoir une histoire qui accompagne le sujet, et l'étape de reformulation permet d'écarter cette dernière en explicitant le problème de manière crue et non imagée. Il faut arriver à se **détacher le plus possible de l'histoire** et de décrire le problème d'un point de vue purement algorithmique.
 
@@ -124,15 +124,29 @@ N'oubliez pas de calculer la complexité en temps et en mémoire de votre algori
 - Il arrive que l'algorithme naïf soit une solution suffisante dans des cas simplistes. En concours, il est alors inutile de chercher à améliorer l'algorithme s'il respecte déjà les contraintes, d'autant plus que l'algorithme bourrin est souvent rapide et simple à programmer.
 - Connaître la complexité en temps et en mémoire permet de se rendre compte des améliorations nécessaires pour que le nouvel algorithme soit efficace.
 
-### Supprimer, fixer, réduire
+### Simplifier le problème
 
-Simplifier le problème aide souvent à sa résolution, car on va trouver des idées pour un problème plus simple que l'on va réutiliser pour résoudre le problème plus compliqué. Pour cela, on peut faire un tableau des dimensions et essayer d'appliquer une des trois opérations (supprimer, fixer, réduire) en fonction de la pertinence de cette dernière. Retournons sur Alice et Bob :
+Si vous bloquez sur le sujet, essayez de le simplifier car cela permettra de faire ressortir plus d'idées qui sont souvent très utiles pour le problème original. Pour cela, on réalise un tableau des dimensions fondamentales du sujet, et on essaie d'appliquer différentes opérations sur chaque dimensions :
+
+- **Supprimer** : l'auteur d'un problème peut rajouter des dimensions afin de rendre un sujet plus complexe, il peut donc être judicieux de supprimer entièrement une dimension pour rendre le processus de réflexion plus simple et plus efficace. Prenons un exemple où l'on vous fournit des intervalles de temps, on pourrait supprimer une dimension en faisant en sorte d'utiliser des points fixes dans le temps au lieu d'intervalle.
+- **Fixer** : pour mieux généraliser le problème, on peut fixer une ou plusieurs dimensions à des valeurs bien précises. Par exemple, si le sujet implique des rectangles à dimensions variables, que se passe-t-il si tous les rectangles ont la même largeur et la même hauteur ? Ou encore, si tous les rectangles deviennent des carrés ?
+- **Réduire** : si on n'arrive pas à trouver un algorithme assez efficace, il faut commencer avec un algorithme plus simple mais moins intelligent (attention ici on ne veut pas retomber sur l'algorithme naïf). Réduire des dimensions par 2, 10, etc. peut aider à trouver un début d'algorithme, qu'on pourra ensuite améliorer.
 
 ### Changer de point de vue
 
+Enfin, si vous n'avez vraiment aucunes idées correctes, c'est que votre point de vue n'est pas bon. Tentez de résoudre le problème avec des algorithmes *classiques*, car souvent deux sujets peuvent sembler totalement différent mais en réalité il est possible de les représenter grâce à une seule même structure et ainsi de les résoudre pratiquement de la même façon. Les sujets impliquant des graphes dit *implicites* en sont l'exemple parfait. Imaginez qu'on vous donne un nombre $N$ et un nombre $M$, ainsi que différentes opérations mathématiques (comme ajouter $A$, soustraire $B$, ou encore multiplier $C$), et vous devez déterminer s'il est possible d'utiliser les opérations données pour passer du nombre $N$ au nombre $M$. Présenté comme ceci, on ne se doute pas qu'il s'agit en réalité d'un problème de graphe, mais lorsqu'on adopte ce nouveau point de vue, on se rend compte qu'on peut représenter ce problème sous la forme d'un graphe où chaque nœud correspond à un résultat, et chaque arc est une opération. Le but apparaît alors comme trivial, on veut se rendre d'un nœud de départ $N$ au nœud d'arrivée $M$, on applique donc un simple [algorithme de parcours de graphe](/algo/structure/graphe/parcours.html).
+
+Le fait d'avoir changé totalement de point de vue nous a fait découvrir une nouvelle façon de représenter le problème, et il est tout à fait possible de faire la même chose pour d'autre algorithme classique (comme la [programmation dynamique](/algo/general/approche/dynamique.html), l'approche du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), etc.).
+
 ## Pseudo-code
 
-Lorsqu'on cherche à résoudre un problème un minimum conséquent, on ne code jamais directement l'algorithme qu'on a en tête, mais on passe par une étape intermédiaire : le **pseudo-code**. Ce dernier est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est extrêmement importante car elle permet de se concentrer uniquement sur l'algorithme et non sur la manière dont vous allez le programmer. Vous le savez sans doute déjà, mais il est très rare de produire un code sans aucun bug du premier coup, et une étape de débugage est souvent obligatoire. Débuguer est loin d'être évident, et cette partie du problème peut prendre beaucoup de temps, il vaut donc mieux que l'algorithme soit valide avant de se lancer dans cette longue étape pour ne pas se rendre compte en plein milieu que notre algorithme est faux depuis le début.
+Vous avez enfin trouvé dans votre tête l'algorithme recherché, cependant lorsqu'on cherche à résoudre un problème un minimum conséquent, **on ne code jamais directement** mais on passe par une étape intermédiaire : le pseudo-code. Avant d'expliquer concrètement ce qu'est le pseudo-code, j'aimerais vraiment m'attarder sur l'importance de ce dernier qui est souvent trop négligé (surtout pendant des concours).
+
+Imaginons que vous venez de trouver l'algorithme. Vous avez votre idée en tête et vous décidez tout de suite de passer à l'étape de programmation car vous pensez que la partie pseudo-code est inutile et que vous avez toutes les informations nécessaires pour résoudre correctement le sujet. Comme vous n'avez aucune réelle structure, vous programmez ce qui vous viens en premier en tête quand vous pensez à votre algorithme, cependant au fur et à mesure que vous codez vous vous rendez compte qu'il faudra ajouter/supprimer/changer telle ou telle partie du programme à cause de détails auxquels vous n'avez pas pensé avant. Vous allez donc passer beaucoup de temps à réécrire ou à bidouiller votre programme afin de prendre en compte ces changements, et ceci va résulter en un code souvent sale et mal structuré (voire carrément faux). Or l'étape de débugage est fondamentale et débuguer ce genre de code est un cauchemar qui ne fini en général pas très bien. Après avoir perdu **énormément** de temps à corriger vos erreurs (si vous arrivez au bout de cette étape), vous vous rendez compte en testant votre algorithme qu'il n'est tout simplement pas assez efficace et que sa complexité en temps ne satisfait pas les contraintes de l'énoncé.
+
+Cet exemple peut paraître exagéré mais il est en réalité très fréquent en concours (bien plus qu'on ne le croit). Maintenant, regardons de plus près l'utilité du pseudo-code.
+
+Le pseudo-code est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est **extrêmement importante** car elle permet de se concentrer uniquement sur l'algorithme et non sur la manière dont vous allez le programmer. De plus, ceci vous permet de structurer correctement votre idée, ce qui ensuite permettra de coder le programme en quelques minutes seulement.
 
 Il n'y a pas de règles de syntaxe pour le pseudo-code, et c'est ce qui le rend très personnel. Chacun a sa manière d'écrire du pseudo-code. Cependant, cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable. En effet, le pseudo-code permet de décrire un algorithme rapidement, et donc de tester sa validité efficacement.
 
@@ -140,6 +154,7 @@ Au travers de mes articles, j'utiliserai toujours des pseudo-codes avant l'impl�
 
 - Un pseudo-code est écrit en français, et il permet d'appréhender l'algorithme abordé facilement.
 - Il ne dépend d'aucun langage de programmation (que ça soit au niveau de la syntaxe, ou encore des détails), donc que vous programmiez en C, en Python, en Ocaml, ou autre, vous pouvez très bien le lire, le comprendre et l'implémenter de votre côté.
+- Le pseudo-code apporte une réelle structure ce qui est extrêmement pratique quand on veut implémenter un algorithme.
 - S'il y a des améliorations ou des modifications à apporter à l'algorithme, le pseudo-code est très utile car on peut le modifier simplement pour mettre en place ces dernières.
 
 Même si le pseudo-code suit une syntaxe personnelle, il y a quelques règles qui sont intéressantes d'appliquer pour écrire un pseudo-code réellement utile :
@@ -150,9 +165,9 @@ Même si le pseudo-code suit une syntaxe personnelle, il y a quelques règles qu
 - Tout comme il est normal d'[indenter](https://en.wikipedia.org/wiki/Indent_style) son code, il est essentiel d'indenter son pseudo-code pour faciliter la lecture. N'hésitez pas à laisser de la place sur votre feuille si vous devez ensuite rajouter des précisions.
 - Les variables sont des détails d'implémentation, il est donc inutile de les déclarer, en revanche préciser le type et la valeur d'initialisation peut être intéressant dans certains cas.
 - Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit être assez clair et écrit en français.
-- Il faut absolument éviter d'oublier des parties de l'algorithme en pensant que c'est des détails d'implémentation. Si une partie du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder.
+- Il faut absolument éviter d'oublier des parties de l'algorithme en pensant que ce sont des détails d'implémentation. Si une partie du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder.
 
-TODO : transition + fin partie
+TODO : vérifier étape complète + transition/fin partie + mixer étape "vérifier le pseudo-code" ?
 
 ## Vérifier le pseudo-code
 
@@ -166,10 +181,10 @@ TODO : autres étapes ?
 
 ## Coder l'algorithme
 
-A partir de ce moment, vous devez être sûr de votre algorithme, car coder, tester et débuguer un programme est un processus qui peut être très long et c'est pour cela qu'il y a autant d'étapes avant de se mettre à coder. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, et si possible avec le moins de bug possible. Il a tout de même quelques méthodes à respecter pour éviter au mieux les bugs potentiels (ces conseils s'appliquent surtout lors de concours, et permettent aussi en général de gagner du temps) :
+A partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long et c'est pour cela qu'il y a autant d'étapes avant de se mettre à coder. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, et si possible avec le moins de bug possible. Il y a tout de même quelques méthodes à respecter pour éviter au mieux les bugs potentiels (ces conseils s'appliquent surtout lors de concours où le temps est limité) :
 
 - Ne cherchez surtout pas à optimiser votre programme lorsque vous êtes en train de l'écrire ! Comme le dit si bien [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) : *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."*. Inutile de chercher à optimiser des petites parties de votre code, car l'impact sera sans doute minime et vous risquez d'introduire plus de bugs.
-- Ne vous compliquez pas la tâche quand il y a une alternative plus simple. Par exemple, en concours il est rarement utile de faire une allocation dynamique qui prend parfois du temps et risque d'être mal effectuée, en revanche il est commun et bien plus pratique de déclarer les variables majeures du programme en tant que variable globale pour rendre bien plus simple le programme et éviter des bugs inutiles liés à l'allocation.
+- Ne vous compliquez pas la tâche quand il y a une alternative plus simple. Par exemple, en concours il est rarement utile de faire une allocation dynamique qui prend parfois du temps et risque d'être mal effectuée, en revanche il est commun et bien plus pratique de déclarer les variables majeures du programme en tant que variable globale pour rendre bien plus simple le programme et éviter des bugs inutiles liés à l'allocation et à la libération de la mémoire.
 - Utilisez de *bons* noms de variables et de fonctions pour ne pas se retrouver avec des noms de variables à une lettre partout dans votre code au risque de confondre. C'est plus une habitude à prendre, mais nommer correctement une variable peut se révéler plus dure qu'on ne le crois. Un nom correct doit être précis, clair et relativement concis.
 - N'hésitez pas à re-déclarer des variables au lieu de réutiliser d'anciennes qui non plus forcément de rapport (notamment dans les boucles, car il serait dommage de réutiliser une variable qui contient des restes indésirables et qui pourrait introduire un bug difficile à détecter).
 - TODO : plus de conseils (spécifique concours ?)
