@@ -2,8 +2,8 @@ Méthode de résolution
 =====================
 algo/general
 
-Publié le : 25/09/2016  
-*Modifié le : 25/09/2016*
+Publié le : 03/10/2016  
+*Modifié le : 03/10/2016*
 
 ## Introduction
 
@@ -48,7 +48,7 @@ Voici un exemple de sujet très simple, ainsi qu'une reformulation de ce dernier
 
 Un exemple de reformulation utile de ce sujet :
 
-> On nous un graphe orienté pondéré positivement.  
+> On nous donne un graphe orienté pondéré positivement.  
 > On nous demande le plus court chemin entre deux nœuds de ce graphe.
 
 Plus d'histoire, plus d'Alice et Bob, on garde uniquement le strict minimum, sans pour autant perdre des informations. Ici, l'entrée donnée par le sujet est un graphe implicite où chaque ville est un nœud et chaque trajet un arc. Le graphe est orienté car on a une case "Départ" et "Arrivée" ce qui semble indiquer une direction à suivre. L'information du transport (avion ou train) est en réalité inutile à notre problème puisqu'on ne cherche qu'à minimiser le coût, on l'omet donc de notre description. La pondération du graphe simule le coût du trajet, or ce coût est toujours positif donc on le précise. Pour ce qui est de la sortie, on nous demande effectivement un plus court chemin reliant le nœud de départ (où se trouve Bob sur le graphe) et un nœud d'arrivée (où se trouve Alice).
@@ -110,14 +110,14 @@ Si à partir des exemples, vous n'avez encore aucunes réelles idées de l'algor
 
 Un algorithme dit **naïf** est la première méthode bourrin qui vous vient à l'esprit quand on vous pose un problème, ce dernier ne se soucie pas des contraintes, des dimensions, ou autre, et cherche uniquement à résoudre l'énoncé. Par exemple, si l'on reprend notre reformulation du sujet :
 
-> On nous un graphe orienté pondéré positivement.  
+> On nous donne un graphe orienté pondéré positivement.  
 > On nous demande le plus court chemin entre deux nœuds de ce graphe.
 
 Imaginons qu'on ne connaisse aucun algorithme de plus court chemin sur un graphe, il faut donc qu'on arrive à en créer un nous même. L'algorithme naïf serait alors de tester bêtement tous les chemins et de sélectionner le plus court. Rien de plus simple, et même si cet algorithme est terriblement peu efficace, il est souvent très intéressant de partir de cela pour ensuite l'améliorer et découvrir un algorithme qui respecte les contraintes et les dimensions (c'est d'ailleurs la stratégie que j'adopte dans mon article sur l'algorithme de plus court chemin [Bellman-Ford](/algo/structure/graphe/plus_court_chemin/bellman_ford.html)).
 
 L'avantage de cette méthode est qu'il est évident de trouver l'algorithme naïf pour résoudre un problème, et que ses points faibles sont très rapidement soulignés lorsqu'on cherche à réaliser un exemple à la main avec ce dernier. En effet, on va vite remarquer ce que notre algorithme répète inutilement, et il suffit d'optimiser ces points en trouvant une méthode plus réfléchie et moins naïve.
 
-*Un ou deux exemples devraient suffir, pas besoin de recommencer entièrement l'étape précédente. En revanche, choisissez des exemples un minimum long pour avoir le temps de trouver les points faibles.*
+*Un ou deux exemples devraient suffire, pas besoin de recommencer entièrement l'étape précédente. En revanche, choisissez des exemples un minimum long pour avoir le temps de trouver les points faibles.*
 
 N'oubliez pas de calculer la complexité en temps et en mémoire de votre algorithme bourrin pour deux raisons principalement :
 
@@ -126,15 +126,15 @@ N'oubliez pas de calculer la complexité en temps et en mémoire de votre algori
 
 ### Simplifier le problème
 
-Si vous bloquez sur le sujet, essayez de le simplifier car cela permettra de faire ressortir plus d'idées qui sont souvent très utiles pour le problème original. Pour cela, on réalise un tableau des dimensions fondamentales du sujet, et on essaie d'appliquer différentes opérations sur chaque dimensions :
+Si vous bloquez sur le sujet, essayez de le simplifier car cela permettra de faire ressortir plus d'idées qui sont souvent très utiles pour le problème original. Pour cela, on réalise un tableau des dimensions fondamentales du sujet, et on essaie d'appliquer différentes opérations sur chaque dimension :
 
 - **Supprimer** : l'auteur d'un problème peut rajouter des dimensions afin de rendre un sujet plus complexe, il peut donc être judicieux de supprimer entièrement une dimension pour rendre le processus de réflexion plus simple et plus efficace. Prenons un exemple où l'on vous fournit des intervalles de temps, on pourrait supprimer une dimension en faisant en sorte d'utiliser des points fixes dans le temps au lieu d'intervalle.
 - **Fixer** : pour mieux généraliser le problème, on peut fixer une ou plusieurs dimensions à des valeurs bien précises. Par exemple, si le sujet implique des rectangles à dimensions variables, que se passe-t-il si tous les rectangles ont la même largeur et la même hauteur ? Ou encore, si tous les rectangles deviennent des carrés ?
-- **Réduire** : si on n'arrive pas à trouver un algorithme assez efficace, il faut commencer avec un algorithme plus simple mais moins intelligent (attention ici on ne veut pas retomber sur l'algorithme naïf). Réduire des dimensions par 2, 10, etc. peut aider à trouver un début d'algorithme, qu'on pourra ensuite améliorer.
+- **Réduire** : si on n'arrive pas à trouver un algorithme assez efficace, il faut commencer par un algorithme plus simple mais moins intelligent (attention ici on ne veut pas retomber sur l'algorithme naïf). Réduire des dimensions par 2, 10, etc. peut aider à trouver un début d'algorithme, qu'on pourra ensuite améliorer.
 
 ### Changer de point de vue
 
-Enfin, si vous n'avez vraiment aucunes idées correctes, c'est que votre point de vue n'est pas bon. Tentez de résoudre le problème avec des algorithmes *classiques*, car souvent deux sujets peuvent sembler totalement différent mais en réalité il est possible de les représenter grâce à une seule même structure et ainsi de les résoudre pratiquement de la même façon. Les sujets impliquant des graphes dit *implicites* en sont l'exemple parfait. Imaginez qu'on vous donne un nombre $N$ et un nombre $M$, ainsi que différentes opérations mathématiques (comme ajouter $A$, soustraire $B$, ou encore multiplier $C$), et vous devez déterminer s'il est possible d'utiliser les opérations données pour passer du nombre $N$ au nombre $M$. Présenté comme ceci, on ne se doute pas qu'il s'agit en réalité d'un problème de graphe, mais lorsqu'on adopte ce nouveau point de vue, on se rend compte qu'on peut représenter ce problème sous la forme d'un graphe où chaque nœud correspond à un résultat, et chaque arc est une opération. Le but apparaît alors comme trivial, on veut se rendre d'un nœud de départ $N$ au nœud d'arrivée $M$, on applique donc un simple [algorithme de parcours de graphe](/algo/structure/graphe/parcours.html).
+Enfin, si vous n'avez vraiment aucunes idées correctes, c'est que votre point de vue n'est pas bon. Tentez de résoudre le problème avec des algorithmes *classiques*, car souvent deux sujets peuvent sembler totalement différents mais en réalité il est possible de les représenter grâce à une seule même structure et ainsi de les résoudre pratiquement de la même façon. Les sujets impliquant des graphes dit *implicites* en sont l'exemple parfait. Imaginez qu'on vous donne un nombre $N$ et un nombre $M$, ainsi que différentes opérations mathématiques (comme ajouter $A$, soustraire $B$, ou encore multiplier $C$), et vous devez déterminer s'il est possible d'utiliser les opérations données pour passer du nombre $N$ au nombre $M$. Présenté comme ceci, on ne se doute pas qu'il s'agît en réalité d'un problème de graphe, mais lorsqu'on adopte ce nouveau point de vue, on se rend compte qu'on peut représenter ce problème sous la forme d'un graphe où chaque nœud correspond à un résultat, et chaque arc est une opération. Le but apparaît alors comme trivial, on veut se rendre d'un nœud de départ $N$ au nœud d'arrivée $M$, on applique donc un simple [algorithme de parcours de graphe](/algo/structure/graphe/parcours.html).
 
 Le fait d'avoir changé totalement de point de vue nous a fait découvrir une nouvelle façon de représenter le problème, et il est tout à fait possible de faire la même chose pour d'autre algorithme classique (comme la [programmation dynamique](/algo/general/approche/dynamique.html), l'approche du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms), etc.).
 
@@ -142,13 +142,13 @@ Le fait d'avoir changé totalement de point de vue nous a fait découvrir une no
 
 Vous avez enfin trouvé dans votre tête l'algorithme recherché, cependant lorsqu'on cherche à résoudre un problème un minimum conséquent, **on ne code jamais directement** mais on passe par une étape intermédiaire : le pseudo-code. Avant d'expliquer concrètement ce qu'est le pseudo-code, j'aimerais vraiment m'attarder sur l'importance de ce dernier qui est souvent trop négligé (surtout pendant des concours).
 
-Imaginons que vous venez de trouver l'algorithme. Vous avez votre idée en tête et vous décidez tout de suite de passer à l'étape de programmation car vous pensez que la partie pseudo-code est inutile et que vous avez toutes les informations nécessaires pour résoudre correctement le sujet. Comme vous n'avez aucune réelle structure, vous programmez ce qui vous viens en premier en tête quand vous pensez à votre algorithme, cependant au fur et à mesure que vous codez vous vous rendez compte qu'il faudra ajouter/supprimer/changer telle ou telle partie du programme à cause de détails auxquels vous n'avez pas pensé avant. Vous allez donc passer beaucoup de temps à réécrire ou à bidouiller votre programme afin de prendre en compte ces changements, et ceci va résulter en un code souvent sale et mal structuré (voire carrément faux). Or l'étape de débugage est fondamentale et débuguer ce genre de code est un cauchemar qui ne fini en général pas très bien. Après avoir perdu **énormément** de temps à corriger vos erreurs (si vous arrivez au bout de cette étape), vous vous rendez compte en testant votre algorithme qu'il n'est tout simplement pas assez efficace et que sa complexité en temps ne satisfait pas les contraintes de l'énoncé.
+Imaginons que vous venez de trouver l'algorithme. Vous avez votre idée en tête et vous décidez tout de suite de passer à l'étape de programmation car vous pensez que la partie pseudo-code est inutile et que vous avez toutes les informations nécessaires pour résoudre correctement le sujet. Comme vous n'avez aucune réelle structure, vous programmez ce qui vous vient en premier quand vous pensez à votre algorithme, cependant au fur et à mesure que vous codez vous vous rendez compte qu'il faudra ajouter/supprimer/changer telle ou telle partie du programme à cause de détails auxquels vous n'avez pas pensé avant. Vous allez donc passer beaucoup de temps à réécrire ou à bidouiller votre programme afin de prendre en compte ces changements, et ceci va résulter en un code souvent sale et mal structuré (voire carrément faux). Or l'étape de débugage est fondamentale et débuguer ce genre de code est un cauchemar qui ne finit en général pas très bien. Après avoir perdu **énormément** de temps à corriger vos erreurs (si vous arrivez au bout de cette étape), vous vous rendez compte en testant votre algorithme qu'il n'est tout simplement pas assez efficace et que sa complexité en temps ne satisfait pas les contraintes de l'énoncé.
 
 Cet exemple peut paraître exagéré mais il est en réalité très fréquent en concours (bien plus qu'on ne le croit). Maintenant, regardons de plus près l'utilité du pseudo-code.
 
 Le pseudo-code est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est **extrêmement importante** car elle permet de se concentrer uniquement sur l'algorithme et non sur la manière dont vous allez le programmer. De plus, ceci vous permet de structurer correctement votre idée, ce qui ensuite permettra de coder le programme en quelques minutes seulement.
 
-Il n'y a pas de règles de syntaxe pour le pseudo-code, et c'est ce qui le rend très personnel. Chacun a sa manière d'écrire du pseudo-code. Cependant, cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable. En effet, le pseudo-code permet de décrire un algorithme rapidement, et donc de tester sa validité efficacement.
+Il n'y a pas de règles de syntaxe pour le pseudo-code, et c'est ce qui le rend très personnel. Chacun a sa manière d'écrire du pseudo-code. Cependant, cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez-vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable. En effet, le pseudo-code permet de décrire un algorithme rapidement, et donc de tester sa validité efficacement.
 
 Au travers de mes articles, j'utiliserai toujours des pseudo-codes avant l'implémentation pour plusieurs raisons :
 
@@ -159,7 +159,7 @@ Au travers de mes articles, j'utiliserai toujours des pseudo-codes avant l'impl�
 
 Même si le pseudo-code suit une syntaxe personnelle, il y a quelques règles qui sont intéressantes d'appliquer pour écrire un pseudo-code réellement utile :
 
-- Un pseudo-code se doit d'être concis, il ne s'agit pas ici de réécrire en français tout un programme informatique. On ne mettra que ce qui nous intéresse réellement, et uniquement ce qui concerne l'algorithme en lui même. Vu qu'il y a différentes façons de l'implémenter, on ne se souciera pas de tous ces détails et on laissera cela à réaliser pendant l'étape où l'on code.
+- Un pseudo-code se doit d'être concis, il ne s'agit pas ici de réécrire en français tout un programme informatique. On ne mettra que ce qui nous intéresse réellement, et uniquement ce qui concerne l'algorithme en lui-même. Vu qu'il y a différentes façons de l'implémenter, on ne se souciera pas de tous ces détails et on laissera cela à réaliser pendant l'étape où l'on code.
 - Il est tout à fait inutile de décrire les entrées ou les sorties du programme, par exemple on écrira `Lire graphe` sans détailler plus la manière dont on lit ce dernier. De même, on écrira plutôt `Afficher tableau` au lieu d'écrire une boucle.
 - Notre pseudo-code doit faire ressortir les boucles, les fonctions et les éléments principaux de notre algorithme. C'est pourquoi on n'utilisera ces derniers outils uniquement quand ils concernent directement l'algorithme et non pas pour un détail d'implémentation encore une fois.
 - Tout comme il est normal d'[indenter](https://en.wikipedia.org/wiki/Indent_style) son code, il est essentiel d'indenter son pseudo-code pour faciliter la lecture. N'hésitez pas à laisser de la place sur votre feuille si vous devez ensuite rajouter des précisions.
@@ -167,9 +167,38 @@ Même si le pseudo-code suit une syntaxe personnelle, il y a quelques règles qu
 - Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit être assez clair et écrit en français.
 - Il faut absolument éviter d'oublier des parties de l'algorithme en pensant que ce sont des détails d'implémentation. Si une partie du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder.
 
-TODO : vérifier étape complète + transition/fin partie + mixer étape "vérifier le pseudo-code" ?
+A titre d'exemple, voici mon pseudo-code allant avec notre problème de voyage entre Alice et Bob :
 
-## Vérifier le pseudo-code
+```nohighlight
+Lire le graphe orienté pondéré positivement
+
+coût_min = Dijkstra(Pékin, Londres)
+
+Afficher coût_min
+
+
+Dijkstra (départ, arrivée) :
+
+   départ.coût = 0
+   Enfiler le nœud de départ
+
+   Tant que la file à priorité n'est pas vide
+      Défiler le nœud au début de la file
+
+      Si c'est le nœud d'arrivée
+         Retourner nœud.coût
+
+      Marquer le nœud comme visité
+      Pour chaque voisin du nœud
+         Si le voisin n'est pas visité
+            voisin.coût = nœud.coût + coût_arc
+            Enfiler le voisin
+```
+J'utilise ici l'[algorithme de Dijkstra](/algo/structure/graphe/plus_court_chemin/dijkstra.html) en tant qu'algorithme de plus court chemin sur mon graphe.
+
+*En général en concours, lorsqu'on utilise un algorithme aussi classique que celui de Dijkstra par exemple, et que ce dernier ne contient aucunes modifications majeures, on peut se permettre pour gagner du temps de ne pas détailler ladite fonction dans le pseudo-code (à condition de savoir la coder parfaitement sans aucuns doutes).*
+
+### Vérifier le pseudo-code
 
 Une fois le pseudo-code correctement établit, il faut une dernière étape de vérification (assez rapide) pour s'assurer au maximum d'avoir une solution valide avant de se lancer dans le code :
 
@@ -177,29 +206,31 @@ Une fois le pseudo-code correctement établit, il faut une dernière étape de v
 - **Vérifier avec des exemples** que le pseudo-code retourne bien la sortie attendue (réutilisez ceux de l'énoncé ou vos propres exemples que vous avez générés auparavant).
 - **Calculer la complexité en temps et en mémoire** à nouveau pour être convaincu de l'efficacité de l'algorithme.
 
-TODO : autres étapes ?
-
 ## Coder l'algorithme
 
-A partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long et c'est pour cela qu'il y a autant d'étapes avant de se mettre à coder. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, et si possible avec le moins de bug possible. Il y a tout de même quelques méthodes à respecter pour éviter au mieux les bugs potentiels (ces conseils s'appliquent surtout lors de concours où le temps est limité) :
+A partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long si les étapes précédentes ne sont pas correctement suivies. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, rapidement, et si possible avec le moins de bug possible. Il y a tout de même quelques méthodes à respecter pour éviter au mieux les bugs potentiels (ces conseils s'appliquent surtout lors de concours où le temps est limité) :
 
 - Ne cherchez surtout pas à optimiser votre programme lorsque vous êtes en train de l'écrire ! Comme le dit si bien [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) : *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."*. Inutile de chercher à optimiser des petites parties de votre code, car l'impact sera sans doute minime et vous risquez d'introduire plus de bugs.
 - Ne vous compliquez pas la tâche quand il y a une alternative plus simple. Par exemple, en concours il est rarement utile de faire une allocation dynamique qui prend parfois du temps et risque d'être mal effectuée, en revanche il est commun et bien plus pratique de déclarer les variables majeures du programme en tant que variable globale pour rendre bien plus simple le programme et éviter des bugs inutiles liés à l'allocation et à la libération de la mémoire.
-- Utilisez de *bons* noms de variables et de fonctions pour ne pas se retrouver avec des noms de variables à une lettre partout dans votre code au risque de confondre. C'est plus une habitude à prendre, mais nommer correctement une variable peut se révéler plus dure qu'on ne le crois. Un nom correct doit être précis, clair et relativement concis.
+- Utilisez de *bons* noms de variables et de fonctions pour ne pas se retrouver avec des noms de variables à une lettre partout dans votre code au risque de confondre. C'est plus une habitude à prendre, mais nommer correctement une variable peut se révéler plus dur qu'on ne le croit. Un nom correct doit être précis, clair et relativement concis.
 - N'hésitez pas à re-déclarer des variables au lieu de réutiliser d'anciennes qui non plus forcément de rapport (notamment dans les boucles, car il serait dommage de réutiliser une variable qui contient des restes indésirables et qui pourrait introduire un bug difficile à détecter).
 - TODO : plus de conseils (spécifique concours ?)
 
+Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une rapide comparaison du pseudo-code et du programme pour vérifier de n'avoir rien oublié (vu que les deux devraient normalement avoir la même structure).
+
 ## Tester le code
 
-Créer un fichier pour chaque exemple que vous avez, et exécutez votre programme avec ces derniers pour s'assurer de la sortie. Il est souvent indispensable d'avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement avec un petit programme pour ne pas perdre du temps à le remplir à la main).
+Une fois l'algorithme codé, il est nécessaire de s'assurer de la validité du programme.
 
-Si vous faites une variante d'un ou plusieurs fichiers tests, n'oubliez surtout pas de le conserver dans un différent fichier car cela vous fait un test de plus pour vérifier votre programme.
+Créez un fichier pour chaque exemple que vous possédez, et exécutez votre programme avec ces derniers pour s'assurer de la sortie. Il est souvent indispensable d'avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement avec un petit programme pour ne pas perdre du temps à le remplir à la main).
 
-Enfin, la sortie des exemples est parfois une bonne manière de tester notre code, mais on peut aussi afficher le contenu des variables/structures de données principales pour confirmer que tout fonctionne parfaitement comme prévu.
+Si vous faites une variante d'un ou plusieurs fichiers tests, n'oubliez surtout pas de le conserver dans un fichier différent de celui original car cela vous donne un test supplémentaire pour vérifier votre programme (dans le cas où vous allez ensuite modifier ce dernier).
+
+Enfin, la sortie des exemples est une bonne manière de tester notre code, mais on peut aussi afficher le contenu des variables/structures de données principales pour confirmer que tout fonctionne parfaitement.
 
 ## Débuguer le programme
 
-Malheureusement, il est rare de coder un code parfait directement, et cette chance diminue d'autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).
+Malheureusement, il est rare de coder un code sans bug directement, et cette chance diminue d'autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).
 
 TODO: dichotomie pour "isoler" le problème + gdb ?
 
