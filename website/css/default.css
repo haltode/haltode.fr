@@ -88,11 +88,11 @@ table tr:nth-child(2n) {
 
 /* ---- Image and caption ---- */
 
-.figure {
+figure {
    text-align: center;
 }
 
-.caption {
+figcaption {
    font-style: italic;
    text-align: center;
 }
