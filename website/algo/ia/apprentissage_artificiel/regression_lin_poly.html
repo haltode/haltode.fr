@@ -87,9 +87,11 @@
 </tbody>
 </table>
 <p>On peut représenter ce tableau grâce à un graphique en deux dimensions très simple :</p>
-<p><img alt="Exemple de données récoltées" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png" /></p>
+<figure><img alt="Exemple de données récoltées" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png" /><figcaption>Exemple de données récoltées</figcaption>
+</figure>
 <p>Ce qu&rsquo;on cherche à faire dans notre problème c&rsquo;est d&rsquo;<strong>extrapoler</strong>, c&rsquo;est-à-dire généraliser grâce aux données obtenues afin de prédire un résultat. En tant qu&rsquo;humain, on pourrait facilement faire une bonne généralisation comme ceci :</p>
-<p><img alt="Exemple de généralisation" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png" /></p>
+<figure><img alt="Exemple de généralisation" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png" /><figcaption>Exemple de généralisation</figcaption>
+</figure>
 <p>On a une fonction linéaire basique, qu&rsquo;on peut ensuite utiliser graphiquement pour trouver à partir de la puissance d&rsquo;un ordinateur, une bonne estimation de son prix.</p>
 <p>Cependant, du point de vue d&rsquo;une personne, il est facile de trouver un lien entre les données dans le but de généraliser, mais comment un algorithme peut-il reproduire ce comportement ? Qu&rsquo;est-ce qui fait qu&rsquo;une fonction (linéaire, polynomiale, etc.) est une bonne généralisation de notre problème ?</p>
 <p>Avant de se lancer dans la recherche d&rsquo;un algorithme d&rsquo;apprentissage artificiel, il faut définir ses caractéristiques. Dans notre problème, on a un ensemble de données sous la forme d&rsquo;entrées et de sorties correspondantes, nous sommes donc dans un <strong>apprentissage supervisé</strong>. De plus, la sortie qu&rsquo;on cherche est une valeur numérique, notre problème appartient alors au domaine de la <strong>régression</strong>. Une fois qu&rsquo;on connaît ces deux informations essentielles, on peut décider de l&rsquo;algorithme à utiliser en fonction de nos besoins et de nos ressources. Dans notre situation on souhaiterait faire une généralisation sous la forme d&rsquo;une fonction linéaire, la méthode à employer est donc : la <strong>régression linéaire</strong>.</p>
@@ -150,7 +152,8 @@
 <p>Vu qu&rsquo;il y a $m$ exemples en entrée, on va faire la moyenne de toutes les différences au carré pour prendre chaque exemple en compte dans notre fonction d&rsquo;erreur :</p>
 <p>$\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$</p>
 <p>Si on reprend la généralisation qu&rsquo;on a faite à la main, la différence que l&rsquo;on calcule dans notre expression correspond aux parties vertes sur ce schéma :</p>
-<p><img alt="Exemple de calcul de différence entre estimation et réalité" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png" /></p>
+<figure><img alt="Exemple de calcul de différence entre estimation et réalité" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png" /><figcaption>Exemple de calcul de différence entre estimation et réalité</figcaption>
+</figure>
 <p>On notera cette fonction $J$, qu&rsquo;on appelle aussi l&rsquo;<strong>estimateur des moindres carrés</strong> :</p>
 <p>$J(\theta) = \frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$</p>
 <p>Par convention, et pour simplifier nos futurs calculs, on divise le résultat obtenu par 2 :</p>
@@ -158,7 +161,8 @@
 <p>Cette fonction d&rsquo;erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu&rsquo;ils utilisent. Il est d&rsquo;ailleurs possible de démontrer que cette fonction est un estimateur optimal sous certaines hypothèses grâce au <a href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem">théorème de Gauss-Markov</a>, c&rsquo;est pour cela qu&rsquo;elle est utilisée quasiment dans tous les cas de régression linéaire/polynomiale.</p>
 <p>Grâce à cela, on peut enfin définir concrètement ce que signifie &ldquo;trouver le meilleur modèle&rdquo;. Cela revient à trouver des paramètres $\theta$ qui <strong>minimisent</strong> la fonction d&rsquo;erreur utilisée.</p>
 <p>Si l&rsquo;on affiche graphiquement la fonction d&rsquo;erreur pour notre problème, on obtient ceci :</p>
-<p><img alt="Exemple de représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /></p>
+<figure><img alt="Exemple de représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /><figcaption>Exemple de représentation graphique de la fonction d&rsquo;erreur</figcaption>
+</figure>
 <p>Sur ce graphique représentant $J$ en fonction de $\theta_{0}$ et $\theta_{1}$, on remarque clairement les valeurs de $\theta$ pour lesquelles la fonction d&rsquo;erreur est minimisée. Cependant, il va falloir trouver un algorithme qui calcule ces valeurs automatiquement, car on ne pourra pas toujours faire de représentation graphique (lorsqu&rsquo;on a beaucoup d&rsquo;attributs en entrée par exemple).</p>
 <h2>Algorithmes</h2>
 <p>On a réussi à définir mathématiquement l&rsquo;objectif de la régression linéaire grâce à notre fonction d&rsquo;erreur. Désormais il faut donc minimiser cette fonction avec les paramètres $\theta$.</p>
@@ -175,18 +179,23 @@
 <p>$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_1^2 + \theta_{3}x_1^3$</p>
 <p>Il est aussi courant d&rsquo;ajouter d&rsquo;autres termes que de simples puissances, comme des exponentiations, des logarithmes, des racines carrées, des fonctions trigonométriques, etc. dans le but de modéliser des fonctions avec un aspect particulier pour bien coller à nos données.</p>
 <p>Si possible, afficher les données sur un graphique est la meilleure chose à faire afin de pouvoir visualiser quels types d&rsquo;attributs il nous faut pour notre fonction d&rsquo;hypothèse. Sinon, il est toujours envisageable de tester plusieurs combinaisons et de voir laquelle est la meilleure en fonction du résultat de la fonction d&rsquo;erreur.</p>
-<p><img alt="Exemple de régression polynomiale sur des données non-linéaires" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" /></p>
+<figure><img alt="Exemple de régression polynomiale sur des données non-linéaires" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" /><figcaption>Exemple de régression polynomiale sur des données non-linéaires</figcaption>
+</figure>
 <h2>Problèmes</h2>
 <p>Dans le domaine de l&rsquo;apprentissage artificiel, il y a un problème commun à de très nombreux algorithmes : le <strong>surapprentissage</strong>.</p>
 <p>Dans un apprentissage supervisé, le but est de fournir à notre algorithme des exemples à partir desquels il peut généraliser le problème à résoudre. Cependant, il arrive que ce dernier ne généralise pas assez, et en vient à réciter par cœur les données fournies. Le problème est que notre programme va alors trouver la bonne réponse sur quasiment tous nos exemples, mais dès qu&rsquo;il verra une nouvelle entrée il répondra totalement à côté. Il n&rsquo;a pas réussi à généraliser, et il est tombé dans le cas par cas. Cette notion de surapprentissage (ou <em>overfitting</em> en anglais) est essentielle à comprendre car c&rsquo;est un problème extrêmement récurrent dans le domaine de l&rsquo;apprentissage artificiel, et spécialement dans le cadre d&rsquo;un apprentissage supervisé.</p>
 <p>Par exemple, prenons des données imaginaires :</p>
-<p><img alt="Exemple de données" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png" /></p>
+<figure><img alt="Exemple de données" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png" /><figcaption>Exemple de données</figcaption>
+</figure>
 <p>On pourrait tenter d&rsquo;utiliser une régression linéaire avec une fonction d&rsquo;hypothèse de la forme $h_{\theta}(x) = \theta_0 + \theta_1x_1$ :</p>
-<p><img alt="Tentative de régression linéaire" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png" /></p>
+<figure><img alt="Tentative de régression linéaire" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png" /><figcaption>Tentative de régression linéaire</figcaption>
+</figure>
 <p>On voit bien qu&rsquo;on arrive à une très mauvaise généralisation car il nous manque des attributs. Dans ce cas, on parle de <strong>sous-apprentissage</strong> (ou <em>underfitting</em> en anglais), c&rsquo;est une situation plus rare que le surapprentissage, et il suffit de rajouter des attributs pour contrer le problème. Essayons, avec une simple fonction polynomiale comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2$ :</p>
-<p><img alt="Une simple fonction polynomiale" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" /></p>
+<figure><img alt="Une simple fonction polynomiale" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" /><figcaption>Une simple fonction polynomiale</figcaption>
+</figure>
 <p>Notre modèle polynomial correspond bien à nos données et semble assez bien généraliser le problème. Cependant, que se passe-t-il si on avait rajouté plus d&rsquo;attributs ? Essayons avec une fonction polynomiale plus complexe comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots$ :</p>
-<p><img alt="Fonction polynomiale très complexe" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png" /></p>
+<figure><img alt="Fonction polynomiale très complexe" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png" /><figcaption>Fonction polynomiale très complexe</figcaption>
+</figure>
 <p>Le modèle essaie de coller au mieux à nos données au point de ne plus du tout généraliser le problème, on est tombé dans le surapprentissage. Notre programme s&rsquo;est trop bien adapté à nos données, et il n&rsquo;arrivera pas à prédire correctement la sortie de nouveaux exemples.</p>
 <p>L&rsquo;apprentissage supervisé est donc un domaine difficile car il faut arriver à trouver les attributs vraiment nécessaires à notre algorithme pour être le plus efficace possible, sans pour autant tomber dans le surapprentissage. Mais il existe des méthodes afin d&rsquo;éviter au plus ce problème si contraignant, comme la <strong>régularisation</strong>.</p>
 <h3>Régularisation</h3>

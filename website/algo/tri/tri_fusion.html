@@ -70,7 +70,8 @@
 <p>1, 3, 5, 6, 8, 9 -&gt; le tableau ne contient plus de sous tableaux, il est donc trié.</p>
 <p>1, 3, 5, 6, 8, 9</p>
 <p>Pour résumer les deux étapes du tri :</p>
-<p><img alt="Exemple de tri fusion" src="/img/algo/tri/tri_fusion/exemple_tri.png" /></p>
+<figure><img alt="Exemple de tri fusion" src="/img/algo/tri/tri_fusion/exemple_tri.png" /><figcaption>Exemple de tri fusion</figcaption>
+</figure>
 <p>Les éléments en bleu correspondent à l&rsquo;état du tableau après la première étape, et les éléments en vert après la deuxième étape.</p>
 <h2>Pseudo-code</h2>
 <p>Voici le pseudo-code du tri fusion :</p>
@@ -105,7 +106,8 @@ fusionner (début, milieu, fin) :
 </ul>
 <h2>Complexité</h2>
 <p>Pour démontrer la complexité du tri fusion, visualisons la découpe du tableau réalisée dans la fonction <code>triFusion</code> lors des appels récursifs :</p>
-<p><img alt="Calcul de la complexité" src="/img/algo/recherche/dichotomie/calcul_complexite.png" /></p>
+<figure><img alt="Calcul de la complexité" src="/img/algo/recherche/dichotomie/calcul_complexite.png" /><figcaption>Calcul de la complexité</figcaption>
+</figure>
 <p>Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu&rsquo;il faut comprendre c&rsquo;est que tous les sous tableaux d&rsquo;une même profondeur formeront toujours un unique tableau contenant $N$ éléments ($N$ étant la taille du tableau de départ), puisqu&rsquo;on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C&rsquo;est très important car on appelle notre fonction <code>fusionner</code> à chaque nœud, or cette fonction s&rsquo;exécute en temps linéaire de $O(N)$ avec $N$ la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu&rsquo;à chaque profondeur on aura appelé notre fonction <code>fusionner</code> sur $N$ éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède $\log _2 N$ profondeurs (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikipédia</a>), ce qui nous donne finalement une complexité en $O(N \log _2 N)$.</p>
 <h2>Implémentation</h2>
 <p>Une implémentation en C du tri fusion :</p>

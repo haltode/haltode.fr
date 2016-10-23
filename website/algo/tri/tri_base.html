@@ -101,7 +101,8 @@
 </table>
 <p>On atteint le nombre maximum de chiffre, notre tableau est donc trié :</p>
 <p>2, 19, 36, 56, 74, 87.</p>
-<p><img alt="Exemple de tri par base" src="/img/algo/tri/tri_base/exemple_tri.png" /></p>
+<figure><img alt="Exemple de tri par base" src="/img/algo/tri/tri_base/exemple_tri.png" /><figcaption>Exemple de tri par base</figcaption>
+</figure>
 <p>J&rsquo;ai découpé les chiffres des nombres pour bien voir le tri de chacun, en bleu on retrouve nos étapes intermédiaires consistantes à trier en fonction d&rsquo;un chiffre en particulier, et en vert notre tableau final trié.</p>
 <h2>Pseudo-code</h2>
 <p>Le pseudo-code du tri par base :</p>
@@ -198,7 +199,8 @@ int main(void)
 <li>Pour avoir le <em>ième</em> chiffre d&rsquo;un nombre entier, on le divise par <code>iExp</code> (qui représente $10^i$ et prend donc les valeurs : 1, 10, 100, etc.) et on applique un <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 10 dessus (dans le cas où <code>iExp</code> est égal à 1).</li>
 <li>Là où notre algorithme diffère du tri par dénombrement est qu&rsquo;on veut le rendre stable, or on a vu que la stabilité n&rsquo;est pas une notion du tri par dénombrement, on utilise donc un tableau de dix files (car on a dix possibilités de chiffre allant de 0 à 9), dans lequel on va ranger les nombres du tableau en fonction du chiffre que l&rsquo;on étudie. Par exemple, si l&rsquo;on se trouve dans le premier tour de boucle de notre fonction <code>triBase</code>, on veut alors trier le tableau en fonction du chiffre des unités des nombres, on va donc ranger tous les nombres avec comme chiffre des unités 0 dans la file du tableau à l&rsquo;indice 0, tous les nombres avec comme unité 1 dans la file du tableau à l&rsquo;indice 1, etc. Le fait qu&rsquo;on utilise une file nous permet d&rsquo;ajouter une stabilité au tri car si un élément se trouve avant un autre dans le tableau, le principe même de la file garanti que cet élément se trouvera avant lui dans la file, et qu&rsquo;on y accédera avant. Ensuite pour trier à partir de ce tableau de files, on a juste à parcourir tous les chiffres et à défiler les éléments de chaque file pour s&rsquo;assurer d&rsquo;avoir un tableau trié en fonction du chiffre demandé grâce à un tri stable en un temps linéaire. Une représentation du tableau de files avec notre exemple du début lors du tri par unité :</li>
 </ul>
-<p><img alt="Exemple de tableau de files" src="/img/algo/tri/tri_base/exemple_tableau_files.png" /></p>
+<figure><img alt="Exemple de tableau de files" src="/img/algo/tri/tri_base/exemple_tableau_files.png" /><figcaption>Exemple de tableau de files</figcaption>
+</figure>
 <p>L&rsquo;entrée de notre exemple :</p>
 <pre><code class="nohighlight">6
 56 87 2 36 74 19

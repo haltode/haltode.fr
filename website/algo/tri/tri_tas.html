@@ -56,13 +56,16 @@
 <h2>Exemple</h2>
 <p>On prend la suite de nombres suivante que l’on va trier dans l’ordre croissant avec le tri par tas : 1, 9, 3, 7, 6, 1, 4.</p>
 <p><em>1ère étape</em> : créer le tas (max dans notre cas)</p>
-<p><img alt="Tas max correspondant au tableau" src="/img/algo/tri/tri_tas/exemple_tas_max.png" /></p>
+<figure><img alt="Tas max correspondant au tableau" src="/img/algo/tri/tri_tas/exemple_tas_max.png" /><figcaption>Tas max correspondant au tableau</figcaption>
+</figure>
 <p><em>2ème étape</em> : parcourir le tas pour trier les éléments</p>
 <p>Pour trier les éléments grâce à notre tas, on retire la racine à chaque tour (l&rsquo;élément le plus grand de notre tas, et donc de notre tableau), on le range à sa place définitive, et on entasse le dernier élément du tas pour combler le trou de la racine mais aussi respecter les règles d&rsquo;un tas.</p>
-<p><img alt="1er tour" src="/img/algo/tri/tri_tas/exemple_tour1.png" /></p>
+<figure><img alt="1er tour" src="/img/algo/tri/tri_tas/exemple_tour1.png" /><figcaption>1er tour</figcaption>
+</figure>
 <p>La racine du tas (en vert) est placée dans le tableau <em>(1)</em> et le dernier élément (en bleu) va remplacer la racine <em>(2)</em>, mais il ne faut pas oublier de l&rsquo;entasser pour respecter les règles du tas max <em>(3)</em>.</p>
 <p>On continue ces opérations tant que le tas contient des éléments :</p>
-<p><img alt="Exemple de tri par tas" src="/img/algo/tri/tri_tas/exemple_tour2.png" /></p>
+<figure><img alt="Exemple de tri par tas" src="/img/algo/tri/tri_tas/exemple_tour2.png" /><figcaption>Exemple de tri par tas</figcaption>
+</figure>
 <h2>Pseudo-code</h2>
 <p>Voici le pseudo-code du tri par tas :</p>
 <pre><code class="nohighlight">triTas :
@@ -157,7 +160,8 @@ int main(void)
 <h3>Smoothsort</h3>
 <p>Le <em>smoothsort</em> est une variante du tri par tas permettant d&rsquo;améliorer la complexité en temps dans le meilleur des cas en $O(N)$ (lorsque les nombres en entrée sont déjà triés ou quasi triés par exemple). Ce tri est assez complexe, et même s&rsquo;il a une meilleure approche d&rsquo;un point de vue théorique, il sera peu utilisé en pratique, tout comme le tri par tas comparé au tri rapide.</p>
 <p>Le principe du smoothsort est de baser le tri non plus sur un seul tas, mais sur plusieurs de différentes tailles. Cette nouvelle structure de données est un <strong>tas de Léonard</strong>, car elle s&rsquo;appuie sur la <a href="https://en.wikipedia.org/wiki/Leonardo_number">suite de Léonard</a>.</p>
-<p><img alt="Exemple de tas de Léonard (en bleu les racines des sous-arbres)" src="/img/algo/tri/tri_tas/exemple_tas_leonard.png" /></p>
+<figure><img alt="Exemple de tas de Léonard (en bleu les racines des sous-arbres)" src="/img/algo/tri/tri_tas/exemple_tas_leonard.png" /><figcaption>Exemple de tas de Léonard (en bleu les racines des sous-arbres)</figcaption>
+</figure>
 <p>Cet ensemble a des propriétés spécifiques (sur la taille des sous-arbres, l&rsquo;ordre d&rsquo;apparition des racines, etc.), rendant les opérations d&rsquo;insertion et de suppression assez longues à décrire et à expliquer. Il faudrait un article à part entier pour évoquer ce curieux algorithme de tri, et si ce dernier vous intéresse je vous recommande fortement cette page qui traite en profondeur du sujet : <a href="http://www.keithschwarz.com/smoothsort/">Smoothsort Demystified</a>.</p>
 <h2>Conclusion</h2>
 <p>Le tri par tas est donc un algorithme de tri efficace en $O(N \log _2 N)$ non stable mais en place. En pratique, cet algorithme est moins utilisé que le tri rapide, même si en théorie il a une meilleure complexité dans le pire des cas ainsi qu&rsquo;une amélioration intéressante : le <em>smoothsort</em>. Il sert en revanche à l&rsquo;amélioration du tri rapide, dans sa variante l&rsquo;<a href="/algo/tri/tri_rapide.html#introsort">introsort</a> et reste donc un algorithme de tri essentiel à connaître.</p>

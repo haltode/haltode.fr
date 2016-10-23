@@ -3,6 +3,9 @@ import jinja2
 import markdown
 import os
 
+# Python-Markdown third party extension
+import figureAltCaption
+
 
 ARTICLES_DIR = 'articles'
 TEMPLATES_DIR = 'templates'
@@ -41,7 +44,9 @@ def render_articles():
             'markdown.extensions.admonition',
             'markdown.extensions.extra',
             'markdown.extensions.meta',
-            'markdown.extensions.smarty'
+            'markdown.extensions.smarty',
+            # Third party extension
+            'figureAltCaption'
         })
 
         # Transform the article as a unique string

@@ -54,7 +54,8 @@
 <p>Naturellement, on pourrait prendre une carte et tracer des traits entre chaque ville de l&rsquo;itinéraire afin de pouvoir le représenter, mais comment le faire comprendre à un ordinateur pour qu&rsquo;il puisse le manipuler ? Nous avons donc besoin d&rsquo;une structure de données flexible, permettant de visualiser des chemins entre différents points : le graphe.</p>
 <h2>Principe d&rsquo;un graphe</h2>
 <p>On peut définir un graphe comme étant un ensemble de <strong>nœuds</strong> (ou de sommets) étant reliés par des <strong>arcs</strong> (ou des arêtes, des chemins).</p>
-<p><img alt="Exemple de graphe" src="/img/algo/structure/graphe/graphe_exemple.png" /></p>
+<figure><img alt="Exemple de graphe" src="/img/algo/structure/graphe/graphe_exemple.png" /><figcaption>Exemple de graphe</figcaption>
+</figure>
 <p>En anglais, on parle de <em>nodes</em> ou <em>vertices</em> pour les nœuds, et d&rsquo;<em>edges</em> ou <em>arcs</em> pour les arêtes.</p>
 <p>Pour information, si deux nœuds sont reliés par un arc on dit qu&rsquo;ils sont <strong>voisins</strong>. De plus, le <strong>degré entrant</strong> d&rsquo;un nœud correspond au nombre d&rsquo;arcs arrivant sur ce nœud, et il en est de même pour le <strong>degré sortant</strong> correspondant alors au nombre d&rsquo;arcs sortant du nœud.</p>
 <h2>Caractéristiques</h2>
@@ -115,8 +116,10 @@
 <h3>Matrice d&rsquo;adjacence</h3>
 <p>Une matrice d&rsquo;adjacence est comme son nom l&rsquo;indique un tableau 2D qui permet de représenter des arcs entre deux nœuds. On peut utiliser un tableau 2D de booléen (<code>true</code> = arc, <code>false</code> = pas d&rsquo;arc), ou bien un tableau 2D d&rsquo;entier (ou de flottant) qui permet alors de stocker les pondérations des arcs ($x$ = pondération de l&rsquo;arc, 0 = pas d&rsquo;arc).</p>
 <p>Voici un exemple de matrice d&rsquo;adjacence (j&rsquo;ai utilisé le premier graphe de l&rsquo;article pour construire la matrice) :</p>
-<p><img alt="Exemple de matrice d'adjacence" src="/img/algo/structure/graphe/exemple_matrice_adjacence.png" /></p>
-<p><img alt="Graphe correspondant à la matrice d'adjacence" src="/img/algo/structure/graphe/graphe_exemple.png" /></p>
+<figure><img alt="Exemple de matrice d'adjacence" src="/img/algo/structure/graphe/exemple_matrice_adjacence.png" /><figcaption>Exemple de matrice d&rsquo;adjacence</figcaption>
+</figure>
+<figure><img alt="Graphe correspondant à la matrice d'adjacence" src="/img/algo/structure/graphe/graphe_exemple.png" /><figcaption>Graphe correspondant à la matrice d&rsquo;adjacence</figcaption>
+</figure>
 <p>Rien de bien compliqué pour l&rsquo;implémenter :</p>
 <pre><code class="c">int graphe[NB_NOEUD_MAX][NB_NOEUD_MAX];
 </code></pre>
@@ -131,7 +134,8 @@
 <h3>Liste d&rsquo;adjacence</h3>
 <p>On peut utiliser une variante de la matrice d&rsquo;adjacence afin d&rsquo;économiser de la mémoire (mais cette représentation requiert un temps en $O(N)$ pour savoir si deux nœuds sont voisins ou pour connaître la pondération d&rsquo;un arc). Cette solution consiste à utiliser un tableau de <a href="/algo/structure/liste_chainee.html">listes chaînées</a>, chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).</p>
 <p>Voici par exemple la liste d&rsquo;adjacence qui représente de nouveau le premier graphe de l&rsquo;article :</p>
-<p><img alt="Exemple de liste d'adjacence" src="/img/algo/structure/graphe/exemple_liste_adjacence.png" /></p>
+<figure><img alt="Exemple de liste d'adjacence" src="/img/algo/structure/graphe/exemple_liste_adjacence.png" /><figcaption>Exemple de liste d&rsquo;adjacence</figcaption>
+</figure>
 <p>Pour l&rsquo;implémentation, j&rsquo;utilise les <a href="http://www.cplusplus.com/reference/vector/vector/">vector</a> du C++ au lieu de recoder à la main la liste chaînée en C (même si on peut tout à fait le faire, recoder des structures de données basiques peut être une perte de temps, notamment pendant un concours de programmation) :</p>
 <pre><code class="cpp">vector &lt;Voisin&gt; graphe[NB_NOEUD_MAX];
 </code></pre>
@@ -145,7 +149,8 @@
 <h3>Liste d&rsquo;arcs</h3>
 <p>Enfin on peut utiliser une dernière solution, en représentant tous les arcs du graphe dans une liste chaînée.</p>
 <p>Voici l&rsquo;exemple d&rsquo;une liste d&rsquo;arcs (toujours sur le même graphe) :</p>
-<p><img alt="Exemple de liste d'arcs" src="/img/algo/structure/graphe/exemple_liste_arcs.png" /></p>
+<figure><img alt="Exemple de liste d'arcs" src="/img/algo/structure/graphe/exemple_liste_arcs.png" /><figcaption>Exemple de liste d&rsquo;arcs</figcaption>
+</figure>
 <p>De même que pour la liste d&rsquo;adjacence, j&rsquo;utilise les <code>vector</code> :</p>
 <pre><code class="cpp">vector &lt;Arc&gt; graphe;
 </code></pre>

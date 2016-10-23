@@ -118,9 +118,11 @@ int main(void)
 </tbody>
 </table>
 <p>On remarque que le temps nécessaire au programme afin de calculer le résultat croît <strong>très rapidement</strong>, et cela est dû au fait que notre implémentation a une complexité en temps <a href="https://en.wikipedia.org/wiki/Time_complexity#Exponential_time"><strong>exponentielle</strong></a>.</p>
-<p><img alt="Représentation graphique de la croissance exponentielle" src="/img/algo/general/approche/dynamique/representation_exp.png" /></p>
+<figure><img alt="Représentation graphique de la croissance exponentielle" src="/img/algo/general/approche/dynamique/representation_exp.png" /><figcaption>Représentation graphique de la croissance exponentielle</figcaption>
+</figure>
 <p>La lenteur du programme vient donc du nombre d&rsquo;appels récursifs qui est exponentiel. Prenons l&rsquo;exemple du calcul du 5ème terme de la suite :</p>
-<p><img alt="Appels récursifs effectués pour calculer le 5ème terme" src="/img/algo/general/approche/dynamique/appels_fib5.png" /></p>
+<figure><img alt="Appels récursifs effectués pour calculer le 5ème terme" src="/img/algo/general/approche/dynamique/appels_fib5.png" /><figcaption>Appels récursifs effectués pour calculer le 5ème terme</figcaption>
+</figure>
 <p>Plusieurs appels sont répétés inutilement ici (<code>f(2)</code> et <code>f(3)</code> notamment), et ce nombre de répétitions ne fait qu&rsquo;augmenter au fur et à mesure que l&rsquo;entrée s&rsquo;agrandit. Cela résulte donc en une implémentation <strong>extrêmement lente</strong>.</p>
 <p>Voici le même programme, mais dynamisé cette fois ci :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
@@ -188,12 +190,14 @@ int main(void)
 <p><em>Les résultats du programme face à ces entrées ne sont pas corrects car ils sont tellement immenses qu&rsquo;on ne peut pas les stocker dans nos simples variables.</em></p>
 <p>On est désormais capable de trouver le résultat sur des entrées bien plus grandes en moins d&rsquo;une seconde (ce qui aurait pris une <em>infinité</em> de temps sur notre ancien programme). Notre implémentation n&rsquo;a pas de complexité exponentielle, et elle est donc bien plus efficace que l&rsquo;originale.</p>
 <p>Pour bien comparer, voici l&rsquo;exemple du calcul du 5ème terme, mais version dynamique :</p>
-<p><img alt="Appels récursifs effectués pour calculer le 5ème terme de manière dynamique" src="/img/algo/general/approche/dynamique/appels_fib5_dynamique.png" /></p>
+<figure><img alt="Appels récursifs effectués pour calculer le 5ème terme de manière dynamique" src="/img/algo/general/approche/dynamique/appels_fib5_dynamique.png" /><figcaption>Appels récursifs effectués pour calculer le 5ème terme de manière dynamique</figcaption>
+</figure>
 <p>On calcule uniquement ce dont on a besoin une fois, et on le réutilise ensuite (les nœuds bleus représentent les nœuds déjà calculés pour lesquels on connaît directement le résultat).</p>
 <h2>Optimisation</h2>
 <p>La programmation dynamique est un excellent exemple de compromis entre <strong>complexité en temps</strong> et <strong>complexité en mémoire</strong> d&rsquo;un algorithme. En effet, on sacrifie de la mémoire pour stocker notre tableau qui retiendra des résultats, afin de ne pas recalculer lesdits résultats plusieurs fois et ainsi sauver du temps. Il faut donc bien prendre en compte les deux facteurs du temps et de la mémoire car dans certains cas (et en fonction des ressources à disposition), on préférera privilégier l&rsquo;un par rapport à l&rsquo;autre.</p>
 <p>Cependant, il est parfois possible d&rsquo;optimiser l&rsquo;espace mémoire utilisé par notre algorithme dynamique, résultant en un algorithme ayant une complexité en temps et en mémoire extrêmement intéressante. Pour cela, il va falloir changer notre manière de programmer notre algorithme dynamique. L&rsquo;approche <strong>récursive</strong> qu&rsquo;on avait précédemment utilisée était dite <strong>descendante</strong> dans le sens où on divise notre gros problème en sous-problème jusqu&rsquo;à arriver à un problème de base à résoudre. Une autre manière de voir le problème est de façon <strong>itérative</strong> en partant d&rsquo;un problème simple pour le complexifier au fur et à mesure qu&rsquo;on avance, c&rsquo;est une méthode dite <strong>ascendante</strong>. Et dans notre cas, cette dernière peut nous offrir des avantages énormes en mémoire car en rendant notre problème de plus en plus compliqué (jusqu&rsquo;à arriver au problème initial), on peut se débarrasser des problèmes très simples et garder uniquement ceux nécessaire à la construction du plus gros problème. Il est impossible de faire ça avec l&rsquo;approche descendante, car cette méthode a besoin à tout instant des sous-problèmes pour décomposer le problème initial puis pour le résoudre.</p>
-<p><img alt="Comparaison des deux méthodes" src="/img/algo/general/approche/dynamique/comparaison_methodes.png" /></p>
+<figure><img alt="Comparaison des deux méthodes" src="/img/algo/general/approche/dynamique/comparaison_methodes.png" /><figcaption>Comparaison des deux méthodes</figcaption>
+</figure>
 <p>J&rsquo;ai représenté deux tableaux en 2D fictifs représentant le stockage des calculs pour notre algorithme dynamique. A gauche, la méthode descendante, qui dépend donc de tous les éléments précédents pour former le résultat final. Et à droite, la méthode ascendante, qui elle ne dépend pas toujours de tous les résultats précédents (ici le résultat nécessite uniquement les deux derniers), on peut donc économiser une bonne partie du tableau qui n&rsquo;est plus utile de garder.</p>
 <p>Si l&rsquo;on reprend notre exemple de la suite de Fibonacci, quand on a calculé disons le 5ème terme, il est tout à fait inutile de garder en mémoire les termes 2 et 3 car le 6ème terme nécessitera uniquement le 5ème et le 4ème termes. Ceci signifie qu&rsquo;à tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.</p>
 <pre><code class="c">#include &lt;stdio.h&gt;

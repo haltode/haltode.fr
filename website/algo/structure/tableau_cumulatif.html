@@ -56,10 +56,12 @@
 <p>Dans notre algorithme naïf, on utilise lors de nos parcours les informations récoltées uniquement pour répondre à une seule question parmi des milliards. Ceci nous oblige à repasser sur des parties du tableau déjà parcourue (voir le tableau en entier), résultant en un temps d&rsquo;exécution trop élevé.</p>
 <p>L&rsquo;idée du tableau cumulatif (<em>summed area table</em> en anglais) est de parcourir une seule fois notre tableau entièrement, et d&rsquo;utiliser les données récoltées pour ensuite répondre à n&rsquo;importe quel type de question à propos de somme d&rsquo;éléments contigus.</p>
 <p>On peut très simplement expliquer son principe grâce à la géométrie et aux intervalles :</p>
-<p><img alt="Explication géométrique du tableau cumulatif" src="/img/algo/structure/tableau_cumulatif/explication_geo.png" /></p>
+<figure><img alt="Explication géométrique du tableau cumulatif" src="/img/algo/structure/tableau_cumulatif/explication_geo.png" /><figcaption>Explication géométrique du tableau cumulatif</figcaption>
+</figure>
 <p>La partie verte dans le premier rectangle représente la question posée, et on voit qu&rsquo;on peut retrouver exactement la même partie en utilisant deux sous parties du rectangle commençant toutes les deux au même endroit. L&rsquo;avantage de pouvoir décomposer n&rsquo;importe quelle sous partie du rectangle en deux autres ayant un début commun, est qu&rsquo;on réduit alors le nombre de possibilités de sous parties. En effet, avec un début et une fin variables le nombre d&rsquo;intervalles possibles est d&rsquo;environ $N^2$ (avec $N$ le nombre d&rsquo;éléments du rectangle), alors qu&rsquo;avec un début d&rsquo;intervalle fixe et uniquement une fin variable on arrive à $N$ possibilités de sous parties.</p>
 <p>Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un début fixe et une fin variable, afin de pouvoir connaitre rapidement n&rsquo;importe quelle sous partie de notre tableau d&rsquo;éléments.</p>
-<p><img alt="Intervalles nécessaires pour répondre à toutes les questions" src="/img/algo/structure/tableau_cumulatif/representation_inter.png" /></p>
+<figure><img alt="Intervalles nécessaires pour répondre à toutes les questions" src="/img/algo/structure/tableau_cumulatif/representation_inter.png" /><figcaption>Intervalles nécessaires pour répondre à toutes les questions</figcaption>
+</figure>
 <h2>Exemple</h2>
 <p>Afin de parfaitement comprendre l&rsquo;utilisation d&rsquo;un tableau cumulatif, prenons l&rsquo;exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
 <p><em>1ère étape</em> : créer notre tableau cumulatif</p>
@@ -185,9 +187,11 @@ int main(void)
 <p>Il est possible de répondre à des questions plus générales que sur la somme d&rsquo;éléments, pour cela il suffit que notre opération possède une opération &ldquo;inverse&rdquo;. Par exemple, l&rsquo;inverse de l&rsquo;addition est la soustraction (c&rsquo;est d&rsquo;ailleurs ce qu&rsquo;on utilise dans notre tableau cumulatif, l&rsquo;addition pour le construire, et la soustraction pour répondre aux questions), et l&rsquo;inverse de la multiplication est la division. Il est donc possible de modifier le comportement de notre tableau cumulatif pour prendre en compte le produit d&rsquo;une suite de nombre, la soustraction d&rsquo;éléments contigus, etc. Le principe reste exactement le même, il suffit juste de changer la manière de construire et de répondre aux questions en fonction de l&rsquo;opération choisie.</p>
 <h3>Tableau cumulatif 2D</h3>
 <p>Le tableau cumulatif ne se limite pas à une seule dimension, on peut l&rsquo;utiliser sur deux dimensions :</p>
-<p><img alt="Exemple de représentation d'un tableau cumulatif 2D" src="/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png" /></p>
+<figure><img alt="Exemple de représentation d'un tableau cumulatif 2D" src="/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png" /><figcaption>Exemple de représentation d&rsquo;un tableau cumulatif 2D</figcaption>
+</figure>
 <p>Le principe est toujours le même, mais il faut adapter nos fonctions qui construisent et répondent aux questions, pour qu&rsquo;elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Ici on remarque bien sur notre image que l&rsquo;on cherche à retrouver n&rsquo;importe quelle sous partie du rectangle en ayant un coin fixe (le coin en haut à gauche dans notre cas), pour de nouveau réduire le nombre de possibilités. Ce schéma nous montre comment répondre à une question sur un tableau cumulatif 2D, mais il faut surtout l&rsquo;initialiser correctement afin de pouvoir l&rsquo;utiliser :</p>
-<p><img alt="Initialisation du tableau cumulatif 2D" src="/img/algo/structure/tableau_cumulatif/init_tableau2D.png" /></p>
+<figure><img alt="Initialisation du tableau cumulatif 2D" src="/img/algo/structure/tableau_cumulatif/init_tableau2D.png" /><figcaption>Initialisation du tableau cumulatif 2D</figcaption>
+</figure>
 <p>Une implémentation d&rsquo;un tableau cumulatif 2D en C :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
