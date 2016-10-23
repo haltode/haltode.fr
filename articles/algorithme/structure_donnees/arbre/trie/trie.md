@@ -1,6 +1,4 @@
-Trie
-====
-algo/structure/arbre
-
-Publié le :  
-*Modifié le :*
+Path: algo/structure/arbre
+Title: Trie
+Published:
+Modified:

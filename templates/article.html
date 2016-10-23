@@ -1,0 +1,12 @@
+{% extends "default.html" %}
+
+{% block content %}
+
+<a href=""><h1>{{ title }}</h1></a>
+
+<p>Publié le : {{ published }}</p>
+<p>Modifié le : {{ modified }}</p>
+
+{{ html_content }}
+
+{% endblock content %}

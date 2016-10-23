@@ -1,9 +1,7 @@
-Parcours d'un graphe
-====================
-algo/structure/graphe
-
-Publié le : 07/12/2015  
-*Modifié le : 13/12/2015*
+Path: algo/structure/graphe
+Title: Parcours d'un graphe
+Published: 07/12/2015
+Modified: 13/12/2015
 
 ## Introduction
 
@@ -63,28 +61,85 @@ On peut implémenter un DFS de deux manières différentes, même si on a plutô
 
 Une implémentation récursive en C++ (j'utilise le C++ afin d'avoir les `vector` pour représenter notre graphe) :
 
-[INSERT]
-dfs_recursif.cpp
+```cpp
+#include <cstdio>
+#include <vector>
+using namespace std;
+
+const int NB_NOEUD_MAX = 1000;
+
+vector <int> graphe[NB_NOEUD_MAX];
+bool dejaVu[NB_NOEUD_MAX];
+
+void DFS(int noeud)
+{
+   printf("%d\n", noeud);
+
+   dejaVu[noeud] = true;
+
+   int iVoisin;
+   for(iVoisin = 0; iVoisin < graphe[noeud].size(); ++iVoisin)
+      if(!dejaVu[graphe[noeud][iVoisin]])
+         DFS(graphe[noeud][iVoisin]);
+}
+
+int main(void)
+{
+   int nbArc;
+   int iArc;
+
+   scanf("%d\n", &nbArc);
+   for(iArc = 0; iArc < nbArc; ++iArc) {
+      int noeud1, noeud2;       
+      scanf("%d %d\n", &noeud1, &noeud2);
+      graphe[noeud1].push_back(noeud2);
+   }
+   
+   DFS(1);
+
+   return 0;
+}
+```
 
 Si en entrée on donne notre graphe (celui de l'exemple et sous forme d'une liste d'arcs) :
 
-[INSERT]
-dfs_test01.in
+```nohighlight
+8
+1 2
+1 6
+1 7
+2 3
+2 4
+4 5
+7 8
+7 9
+```
 
 On obtient bien en sortie :
 
-[INSERT]
-dfs_test01_recursif.out
+```nohighlight
+1 2 3 4 5 6 7 8 9
+```
 
 Et pour vous montrer que l'ordre d'un parcours en profondeur peut changer selon l'ordre des voisins visités, prenons le même graphe mais avec un ordre différent dans sa description (l'ordre inverse) :
 
-[INSERT]
-dfs_test02.in
+```nohighlight
+8
+1 7
+1 6
+1 2
+7 9
+7 8
+2 4
+2 3
+4 5
+```
 
 En sortie cette fois on a :
 
-[INSERT]
-dfs_test02_recursif.out
+```nohighlight
+1 7 9 8 6 2 4 5 3
+```
 
 #### Itératif
 
@@ -92,28 +147,96 @@ Il est rare d'implémenter de façon itérative un parcours en profondeur, mais 
 
 Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel. En effet lorsqu'on visite un nœud, on veut visiter tout de suite ses voisins, il faut donc les placer dans l'ordre de visite avant les autres nœuds, on va donc les empiler afin de les parcourir d'abord.
 
-[INSERT]
-dfs_iteratif.cpp
+```cpp
+#include <cstdio>
+#include <vector>
+#include <stack>
+using namespace std;
+
+const int NB_NOEUD_MAX = 1000;
+
+vector <int> graphe[NB_NOEUD_MAX];
+bool dejaVu[NB_NOEUD_MAX];
+
+void DFS(int debut)
+{
+   stack <int> pile;
+   int actuel;
+   int iVoisin;
+
+   pile.push(debut);
+
+   while(!pile.empty()) {
+      actuel = pile.top();
+      pile.pop();
+
+      printf("%d\n", actuel);
+
+      dejaVu[actuel] = true;
+
+      for(iVoisin = 0; iVoisin < graphe[actuel].size(); ++iVoisin)
+         if(!dejaVu[graphe[actuel][iVoisin]])
+            pile.push(graphe[actuel][iVoisin]);
+   }
+}
+
+int main(void)
+{
+   int nbArc;
+   int iArc;
+
+   scanf("%d\n", &nbArc);
+   for(iArc = 0; iArc < nbArc; ++iArc) {
+      int noeud1, noeud2;       
+      scanf("%d %d\n", &noeud1, &noeud2);
+      graphe[noeud1].push_back(noeud2);
+   }
+   
+   DFS(1);
+
+   return 0;
+}
+```
 
 En entrée :
 
-[INSERT]
-dfs_test01.in
+```nohighlight
+8
+1 2
+1 6
+1 7
+2 3
+2 4
+4 5
+7 8
+7 9
+```
 
 Et la sortie affichée :
 
-[INSERT]
-dfs_test01_iteratif.out
+```nohighlight
+1 7 9 8 6 2 4 5 3
+```
 
 Et si on donne notre entrée modifiée (à l'envers) :
 
-[INSERT]
-dfs_test02.in
+```nohighlight
+8
+1 7
+1 6
+1 2
+7 9
+7 8
+2 4
+2 3
+4 5
+```
 
 On a en sortie cette fois :
 
-[INSERT]
-dfs_test02_iteratif.out
+```nohighlight
+1 2 3 4 5 6 7 8 9
+```
 
 Vous constatez donc que la pile "inverse" l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin dès qu'on en a trouvé un non visité (comme le fait la version récursive), mais on les empile tous, et ils vont donc se superposer (ce qui va "inverser" l'ordre car c'est le principe d'une pile : le dernier arrivé, le premier sorti).
 
@@ -167,18 +290,76 @@ Comme pour le parcours en profondeur, si notre sortie est le dernier nœud que l
 
 L'implémentation du parcours en largeur en C++ (afin d'avoir le type `queue` et `vector`) :
 
-[INSERT]
-bfs.cpp
+```cpp
+#include <cstdio>
+#include <vector>
+#include <queue>
+using namespace std;
+
+const int NB_NOEUD_MAX = 1000;
+
+vector <int> graphe[NB_NOEUD_MAX];
+bool dejaVu[NB_NOEUD_MAX];
+
+void BFS(int debut)
+{
+   queue <int> file;
+   int actuel;
+   int iVoisin;
+
+   file.push(debut);
+
+   while(!file.empty()) {
+      actuel = file.front();
+      file.pop();
+
+      printf("%d\n", actuel);
+
+      dejaVu[actuel] = true;
+
+      for(iVoisin = 0; iVoisin < graphe[actuel].size(); ++iVoisin)
+         if(!dejaVu[graphe[actuel][iVoisin]])
+            file.push(graphe[actuel][iVoisin]);
+   }
+}
+
+int main(void)
+{
+   int nbArc;
+   int iArc;
+
+   scanf("%d\n", &nbArc);
+   for(iArc = 0; iArc < nbArc; ++iArc) {
+      int noeud1, noeud2;       
+      scanf("%d %d\n", &noeud1, &noeud2);
+      graphe[noeud1].push_back(noeud2);
+   }
+
+   BFS(1);
+
+   return 0;
+}
+```
 
 Notre graphe :
 
-[INSERT]
-bfs_test01.in
+```nohighlight
+8
+1 2
+1 3
+1 4
+2 5
+2 6
+4 7
+4 8
+6 9
+```
 
 La sortie :
 
-[INSERT]
-bfs_test01.out
+```nohighlight
+1 2 3 4 5 6 7 8 9
+```
 
 ## Conclusion
 

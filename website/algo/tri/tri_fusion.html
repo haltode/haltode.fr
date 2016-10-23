@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="/css/default.css">
+
+      <!-- Font/Icon -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext">
+      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+      <!-- Syntax highlighting -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async 
+              src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <title>Tri fusion - napnac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      
+
+<a href=""><h1>Tri fusion</h1></a>
+
+<p>Publié le : 10/05/2014</p>
+<p>Modifié le : 13/12/2015</p>
+
+<h2>Introduction</h2>
+<p>Le tri fusion (<em>merge sort</em> en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité $O(N \log _2 N)$, il se base sur le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>. Cet algorithme est <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais ne s’exécute pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
+<h2>Principe de l’algorithme</h2>
+<p>L&rsquo;algorithme se compose de deux parties distinctes :</p>
+<ul>
+<li><strong>Diviser</strong> : on divise récursivement le tableau, c&rsquo;est-à-dire qu&rsquo;on va couper le tableau en deux sous tableaux et recommencer cette opération sur ces derniers jusqu&rsquo;à ce que chaque sous tableau ne contienne plus qu&rsquo;un seul élément.</li>
+<li><strong>Fusionner</strong> : une fois notre tableau divisé en $N$ sous tableaux ($N$ étant le nombre d&rsquo;éléments), on fusionne deux à deux les tableaux en réorganisant les éléments dans l&rsquo;ordre du tri (croissant ou décroissant).</li>
+</ul>
+<p>L&rsquo;intérêt de diviser pour ensuite fusionner est que créer un tableau trié à partir de deux sous tableaux peut s&rsquo;effectuer en temps linéaire. C&rsquo;est ce point en particulier qui fait la rapidité du tri fusion.</p>
+<h2>Exemple</h2>
+<p>Prenons comme exemple la suite de nombre : 5, 1, 3, 8, 9, 6 que l’on veut trier avec le tri fusion dans l’ordre croissant :</p>
+<p><em>1ère étape</em> : diviser</p>
+<p>5, 1, 3 | 8, 9, 6 -&gt; on divise le tableau en deux.</p>
+<p>5, | 1, 3 | 8 | 9, 6 -&gt; on divise en deux les sous tableaux.</p>
+<p>5 | 1 | 3 | 8 | 9 | 6 -&gt; chaque sous tableau est de nouveau divisé pour n&rsquo;avoir plus qu&rsquo;un seul élément.</p>
+<p><em>2ème étape</em> : fusionner</p>
+<p>1, 5 | 3, 8 | 6, 9  -&gt; on prend deux sous tableaux adjacents que l&rsquo;on fusionne en les ordonnant.</p>
+<p>1, 3, 5, 8 | 6, 9 -&gt; on continue la fusion des sous tableaux.</p>
+<p>1, 3, 5, 6, 8, 9 -&gt; le tableau ne contient plus de sous tableaux, il est donc trié.</p>
+<p>1, 3, 5, 6, 8, 9</p>
+<p>Pour résumer les deux étapes du tri :</p>
+<p><img alt="Exemple de tri fusion" src="//static.napnac.ga/img/algo/tri/tri_fusion/exemple_tri.png" /></p>
+<p>Les éléments en bleu correspondent à l&rsquo;état du tableau après la première étape, et les éléments en vert après la deuxième étape.</p>
+<h2>Pseudo-code</h2>
+<p>Voici le pseudo-code du tri fusion :</p>
+<pre><code class="nohighlight">triFusion (début, fin) :
+
+   Si le tableau a un seul élément
+      Arrêter
+   Sinon
+      triFusion(début, milieu)
+      triFusion(milieu + 1, fin)
+
+      fusionner(début, milieu, fin)
+
+fusionner (début, milieu, fin) :
+
+   A -&gt; éléments du tableau de début à milieu
+   B -&gt; éléments du tableau de milieu + 1 à fin
+
+   Pour i allant de début à fin
+      Si A[indexA] &lt;= B[indexB]
+         Tableau[i] = A[indexA]
+         Incrémenter indexA 
+      Sinon
+         Tableau[i] = B[indexB]
+         Incrémenter indexB
+</code></pre>
+
+<p>Ce pseudo-code est relativement simple :</p>
+<ul>
+<li>Dans la fonction <code>triFusion</code>, on utilise la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">récursivité</a> pour découper puis fusionner notre tableau, et on arrête les appels récursifs lorsque le sous tableau que l&rsquo;on traite n&rsquo;a plus qu&rsquo;un seul élément.</li>
+<li>La fonction <code>fusionner</code> est assez explicite, elle nous permet de créer à partir de deux sous tableaux triés, un tableau lui aussi trié en temps linéaire.</li>
+</ul>
+<h2>Complexité</h2>
+<p>Pour démontrer la complexité du tri fusion, visualisons la découpe du tableau réalisée dans la fonction <code>triFusion</code> lors des appels récursifs :</p>
+<p><img alt="Calcul de la complexité" src="//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png" /></p>
+<p>Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu&rsquo;il faut comprendre c&rsquo;est que tous les sous tableaux d&rsquo;une même profondeur formeront toujours un unique tableau contenant $N$ éléments ($N$ étant la taille du tableau de départ), puisqu&rsquo;on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C&rsquo;est très important car on appelle notre fonction <code>fusionner</code> à chaque nœud, or cette fonction s&rsquo;exécute en temps linéaire de $O(N)$ avec $N$ la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu&rsquo;à chaque profondeur on aura appelé notre fonction <code>fusionner</code> sur $N$ éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède $\log _2 N$ profondeurs (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikipédia</a>), ce qui nous donne finalement une complexité en $O(N \log _2 N)$.</p>
+<h2>Implémentation</h2>
+<p>Une implémentation en C du tri fusion :</p>
+<pre><code class="c">#include &lt;stdio.h&gt; 
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+
+void fusion(int debut, int milieu, int fin)
+{
+   int A[milieu - debut + 1];
+   int B[fin - milieu];
+   int iTab, indexA, indexB;
+
+   for(indexA = 0, iTab = debut; iTab &lt;= milieu; ++indexA, ++iTab)
+      A[indexA] = tableau[iTab];
+   for(indexB = 0, iTab = milieu + 1; iTab &lt;= fin; ++indexB, ++iTab)
+      B[indexB] = tableau[iTab];
+
+   indexA = 0;
+   indexB = 0;
+
+   for(iTab = debut; iTab &lt;= fin; ++iTab) {
+      if(indexA == milieu - debut + 1) {
+         tableau[iTab] = B[indexB];
+         ++indexB;
+      }
+      else if(indexB == fin - milieu) {
+         tableau[iTab] = A[indexA];
+         ++indexA;
+      }
+      else if(A[indexA] &lt;= B[indexB]) {
+         tableau[iTab] = A[indexA];
+         ++indexA;
+      }
+      else {
+         tableau[iTab] = B[indexB];
+         ++indexB;
+      }
+   }
+}
+
+void triFusion(int debut, int fin)
+{
+   if(debut != fin) {
+      int milieu = (debut + fin) / 2;
+
+      triFusion(debut, milieu);
+      triFusion(milieu + 1, fin);
+
+      fusion(debut, milieu, fin); 
+   }
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf(&quot;%d\n&quot;, &amp;taille);
+
+   for(iTab = 0; iTab &lt; taille; ++iTab)
+      scanf(&quot;%d &quot;, &amp;tableau[iTab]);
+
+   triFusion(0, taille - 1);
+
+   for(iTab = 0; iTab &lt; taille; ++iTab)
+      printf(&quot;%d &quot;, tableau[iTab]);
+   printf(&quot;\n&quot;);
+
+   return 0;
+}
+</code></pre>
+
+<p>Il faut faire attention dans notre fonction <code>fusion</code> à bien vérifier qu&rsquo;on a encore des éléments dans les tableaux A et B avant de les copier (si on arrive à la fin d&rsquo;un des deux tableaux, on remplit le reste avec l&rsquo;autre).</p>
+<p>L&rsquo;entrée du programme :</p>
+<pre><code class="nohighlight">6
+5 1 3 8 9 6
+</code></pre>
+
+<p>Et en sortie, notre tableau trié :</p>
+<pre><code class="nohighlight">1 3 5 6 8 9
+</code></pre>
+
+<h2>Améliorations et variantes</h2>
+<h3>Liste chaînée</h3>
+<p>Les <a href="/algo/structure/liste_chainee.html">listes chaînées</a> sont effectivement un bon moyen d&rsquo;implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.</p>
+<p>La complexité en temps reste la même, mais la complexité en mémoire est améliorée.</p>
+<h2>Conclusion</h2>
+<p>Le tri fusion est donc un algorithme de tri efficace, qui a pour complexité $O(N \log _2 N)$. Cependant, cet algorithme est finalement peu utilisé en pratique à cause du <a href="/algo/tri/tri_rapide.html">tri rapide</a> qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilité d&rsquo;améliorations, etc.).</p>
+
+
+
+      <footer>
+         <br>
+         <hr>
+         <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
+         <br>
+      </footer>
+
+   </body>
+</html>

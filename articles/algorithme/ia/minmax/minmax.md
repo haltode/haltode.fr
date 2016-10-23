@@ -1,6 +1,4 @@
-Algorithme min-max
-==================
-algo/ia
-
-Publié le :  
-*Modifié le :*
+Path: algo/ia
+Title: Algorithme min-max
+Published:
+Modified:

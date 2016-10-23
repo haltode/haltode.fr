@@ -1,6 +1,4 @@
-Table de hachage
-================
-algo/structure
-
-Publié le :  
-*Modifié le :*
+Path: algo/structure
+Title: Table de hachage
+Published:
+Modified:

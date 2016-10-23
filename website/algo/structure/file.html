@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="/css/default.css">
+
+      <!-- Font/Icon -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext">
+      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+      <!-- Syntax highlighting -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async 
+              src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <title>File - napnac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      
+
+<a href=""><h1>File</h1></a>
+
+<p>Publié le : 08/06/2014</p>
+<p>Modifié le : 28/11/2015</p>
+
+<h2>Introduction</h2>
+<p>Comment un centre d&rsquo;appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si d&rsquo;autres appellent à leur tour ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d&rsquo;attente, et cette structure s&rsquo;appelle justement : la file.</p>
+<h2>Principe de la file</h2>
+<p>Une file (<em>queue</em> en anglais) est une structure de données de type <strong>FIFO</strong> (<strong>F</strong>irst <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>premier entré premier sorti</em>). Elle fonctionne exactement comme une file d’attente dans un magasin :</p>
+<ul>
+<li>Le premier client arrivé dans la file sera le premier servi.</li>
+<li>Le dernier client arrivé sera le dernier servi.</li>
+</ul>
+<p>Voici comment on pourrait représenter une file :</p>
+<p><img alt="Exemple de représentation d'une file" src="//static.napnac.ga/img/algo/structure/file/exemple_file.png" /></p>
+<p>L’action d’ajouter un élément dans la file est appelée : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
+<p><img alt="Un nouvel élément est enfilé" src="//static.napnac.ga/img/algo/structure/file/exemple_ajout.png" /></p>
+<p>L’action d’enlever un élément de la file est appelée : <strong>défiler</strong> (ou <em>dequeue</em> en anglais) :</p>
+<p><img alt="Un élément est défilé" src="//static.napnac.ga/img/algo/structure/file/exemple_suppression.png" /></p>
+<p>Comme la fin de la file est située &ldquo;à gauche&rdquo;, notre premier élément pointera vers <code>NULL</code> pour indiquer le début de la file (et non la fin comme pour une <a href="/algo/structure/liste_chainee.html">liste chaînée</a>, ou une <a href="/algo/structure/pile.html">pile</a>).</p>
+<p>Pour représenter une file, on peut utiliser une <a href="/algo/structure/liste_chainee.html">liste chaînée</a> car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d&rsquo;opérations que nécessaires). Cependant, on peut encore améliorer l&rsquo;implémentation de notre file, en utilisant une <a href="/algo/structure/liste_chainee.html#liste-doublement-chaînée">liste doublement chaînée</a>. En effet, si l&rsquo;on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu&rsquo;avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.</p>
+<h2>Quelques fonctions pour manipuler une file</h2>
+<p>Des fonctions de base sont nécessaires afin de bien manipuler une file.</p>
+<pre><code class="nohighlight">créerFile :
+   Initialiser les pointeurs de début et de fin à NULL
+supprimerFile :
+   Pour chaque élément de la file
+      Supprimer l'élément actuel
+
+enfiler (élément) :
+   Faire pointer l'élément suivant du nouvel élément vers la fin
+   Faire pointer l'élément précédent du nouvel élément vers NULL
+   Mettre à jour le pointeur de fin
+défiler :
+   Sauvegarder les données de l'élément en début de file
+   Supprimer cet élément
+   Faire pointer l'élément suivant du nouveau premier élément vers NULL 
+   Mettre à jour le pointeur de début
+   Retourner les données sauvegardées
+
+estVide :
+   Si les deux pointeurs de début et de fin pointent vers NULL
+      Retourner vrai
+   Sinon
+      Retourner faux
+</code></pre>
+
+<h2>Complexité</h2>
+<p>Soit $N$ le nombre d&rsquo;éléments de la file.</p>
+<ul>
+<li><code>créerFile</code> : $O(1)$</li>
+<li><code>supprimerFile</code> : $O(N)$</li>
+<li><code>enfiler</code> : $O(1)$</li>
+<li><code>défiler</code> : $O(1)$</li>
+<li><code>estVide</code> : $O(1)$</li>
+</ul>
+<h2>Implémentation</h2>
+<p>Le lien vers une implémentation en C d’une file :</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct Noeud Noeud;
+struct Noeud 
+{
+   int donnee;
+   Noeud *suivant;
+   Noeud *precedent;
+};
+
+typedef struct File File;
+struct File
+{
+   Noeud *debut;
+   Noeud *fin;
+};
+
+int estVide(File *file);
+
+void creerFile(File *file)
+{
+   file-&gt;debut = NULL;
+   file-&gt;fin = NULL;
+}
+
+void supprimerFile(File *file)
+{
+   Noeud *iFile;
+
+   for(iFile = file-&gt;fin; iFile != NULL; ) {
+      Noeud *temp;
+
+      temp = iFile-&gt;suivant;
+      free(iFile);
+      iFile = temp;
+   }
+}
+
+void enfiler(File *file, int donnee)
+{
+   Noeud *nouveau;
+
+   nouveau = malloc(sizeof(Noeud));
+   nouveau-&gt;suivant = file-&gt;fin;
+   nouveau-&gt;precedent = NULL;
+   nouveau-&gt;donnee = donnee;
+
+   if(estVide(file)) {
+      file-&gt;debut = file-&gt;fin = nouveau;
+      return;
+   }
+   else {
+      file-&gt;fin-&gt;precedent = nouveau;
+      file-&gt;fin = nouveau;
+   }
+}
+
+int defiler(File *file)
+{
+   Noeud *temp;
+   int donnee;
+
+   temp = file-&gt;debut-&gt;precedent;
+   donnee = file-&gt;debut-&gt;donnee;
+   free(file-&gt;debut);
+   file-&gt;debut = temp;
+   file-&gt;debut-&gt;suivant = NULL;
+
+   return donnee;
+}
+
+int estVide(File *file)
+{
+   if(file-&gt;debut == NULL &amp;&amp; file-&gt;fin == NULL)
+      return 1;
+   else
+      return 0;
+}
+
+int main(void)
+{
+   File file;
+
+   creerFile(&amp;file);
+
+   enfiler(&amp;file, 42);
+   // 42
+   enfiler(&amp;file, 9);
+   // 9 42
+
+   int retour = defiler(&amp;file);
+   // retour = 42
+
+   supprimerFile(&amp;file);
+
+   return 0;
+}
+</code></pre>
+
+<h3>STL</h3>
+<p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation et des fonctions permettant de manipuler une file : <a href="http://www.cplusplus.com/reference/queue/queue/">http://www.cplusplus.com/reference/queue/queue/</a> </p>
+<h2>File à priorité</h2>
+<p>Une file à priorité (<em>priority queue</em> en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> pour trouver le plus court chemin entre deux nœuds d&rsquo;un <a href="/algo/structure/graphe.html">graphe</a> pondéré positivement. Chaque élément se voit attribuer une <strong>clé</strong>, permettant d&rsquo;organiser la file (d&rsquo;où le nom de file à <strong>priorité</strong>). On peut ensuite rapidement récupérer l&rsquo;élément avec la priorité la plus élevée.</p>
+<p>On implémente une file à priorité grâce à un <a href="/algo/structure/arbre/tas.html">tas</a> (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <a href="http://www.cplusplus.com/reference/queue/priority_queue/">http://www.cplusplus.com/reference/queue/priority_queue/</a>.</p>
+<p>Notez qu&rsquo;il ne faut pas confondre file à priorité et tas. En effet, même si les deux notions semblent exactement pareil en pratique, en théorie une file à priorité est un type de donnée <strong>abstrait</strong>, alors que le tas est une structure de données <strong>réelle</strong> et <strong>concrète</strong>.</p>
+<h2>Conclusion</h2>
+<p>La file permet donc d&rsquo;implémenter un comportement de file d&rsquo;attente, qui est pratique dans de nombreuses situations :</p>
+<ul>
+<li>Quand votre ordinateur doit gérer plusieurs tâches à la fois, une file s&rsquo;avère très utile pour stocker les opérations afin de les traiter par ordre d&rsquo;arrivée ensuite. Il peut aussi implémenter une file à priorité afin d&rsquo;exécuter les tâches importantes voir urgentes en premier.</li>
+<li>Si un serveur est débordé par les requêtes, une file sera adaptée pour renvoyer l&rsquo;information aux personnes dans l&rsquo;ordre d&rsquo;arrivée pour ne pas faire attendre trop longtemps le client.</li>
+<li>De même si un centre d&rsquo;appel est occupé, les clients seront pris en charge (par un opérateur qui vient de se libérer) grâce à une file en fonction de l&rsquo;ordre d&rsquo;arrivée (premier arrivé, premier servi).</li>
+</ul>
+
+
+
+      <footer>
+         <br>
+         <hr>
+         <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
+         <br>
+      </footer>
+
+   </body>
+</html>

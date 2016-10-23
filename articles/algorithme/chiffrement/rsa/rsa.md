@@ -1,9 +1,7 @@
-RSA
-===
-algo/chiffrement
-
-Publié le : 31/05/2014  
-*Modifié le : 02/02/2016*
+Path: algo/chiffrement
+Title: RSA
+Published: 31/05/2014
+Modified: 02/02/2016
 
 ## Introduction
 
@@ -94,18 +92,68 @@ On connait $e$, $m$, et on cherche $d$ :
 
 On remarque que cette expression est de la forme de l'[identité de Bézout](https://en.wikipedia.org/wiki/B%C3%A9zout's_identity) $ax + by = pgcd(a, b)$ avec $a = e$, $b = m$, $x = d$, $y = -q$, et $e$ et $m$ sont premiers entre eux donc $pgcd(a, b) = 1$. Or on peut trouver les coefficients $x$ et $y$ (et donc $d$, qui nous intéresse) grâce à l'[algorithme d'Euclide étendu](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm). Une implémentation de cet algorithme pour ceux que ça intéresse :
 
-[INSERT]
-algo_euclide_etendu.c
+```c
+#include <stdio.h>
+
+void euclideEtendu(int a, int b)
+{
+   int r0, r1;
+   int s0, s1;
+   int t0, t1;
+   int i;
+   int q, r, s, t;
+
+   r0 = a;
+   s0 = 1;
+   t0 = 0;
+
+   r1 = b;
+   s1 = 0;
+   t1 = 1;
+
+   r = 42;
+   for(i = 2; r != 0; ++i) {
+      q = r0 / r1;
+      r = r0 - q * r1;
+      s = s0 - q * s1;
+      t = t0 - q * t1;
+
+      r0 = r1;
+      r1 = r;
+      s0 = s1;
+      s1 = s;
+      t0 = t1;
+      t1 = t;
+   }
+
+   printf("x = %d\n", s0);
+   printf("y = %d\n", t0);
+}
+
+int main(void)
+{
+   int a, b;
+   scanf("%d %d\n", &a, &b);
+
+   euclideEtendu(a, b);   
+
+   return 0;
+}
+```
 
 L'entrée :
 
-[INSERT]
-test01.in
+```nohighlight
+7
+8160
+```
 
 La sortie :
 
-[INSERT]
-test01.out
+```nohighlight
+x = -3497
+y = 3
+```
 
 On trouve grâce au dernier programme :
 
@@ -215,18 +263,185 @@ Cet algorithme nous permet donc de travailler avec des nombres bien plus petits 
 
 Une implémentation en C de l'algorithme de RSA :
 
-[INSERT]
-rsa.c
+```c
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define TAILLE_MAX 1000
+
+unsigned long long message[TAILLE_MAX];
+int taille;
+// Clé
+int p, q;
+int n;
+int m;
+int e, d;
+
+int PGCD(int a, int b)
+{
+   int r;
+
+   while(b != 0) {
+      r = a % b;
+      a = b;
+      b = r;
+   }
+
+   return a;
+}
+
+int euclideEtendu(int a, int b)
+{
+   int r0, r1;
+   int s0, s1;
+   int t0, t1;
+   int i;
+   int q, r, s, t;
+
+   r0 = a;
+   s0 = 1;
+   t0 = 0;
+
+   r1 = b;
+   s1 = 0;
+   t1 = 1;
+
+   r = 42;
+   for(i = 2; r != 0; ++i) {
+      q = r0 / r1;
+      r = r0 - q * r1;
+      s = s0 - q * s1;
+      t = t0 - q * t1;
+
+      r0 = r1;
+      r1 = r;
+      s0 = s1;
+      s1 = s;
+      t0 = t1;
+      t1 = t;
+   }
+
+   return s0;
+}
+
+void clePublique(void)
+{
+   static int premier[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 
+      47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 
+      131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,
+      211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283,
+      293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383,
+      389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467,
+      479, 487, 491, 499, 503, 509, 521, 523, 541};
+
+   /*do
+     {
+     p = premier[rand() % 100];
+     q = premier[rand() % 100];
+
+     } while(p == q);*/
+
+   p = 61;
+   q = 137;
+
+   n = p * q;
+   m = (p - 1) * (q - 1);
+
+   for(e = 2; PGCD(e, m) != 1; ++e)
+      ;
+}
+
+void clePrivee(void)
+{
+   d = euclideEtendu(e, m);
+   while(d < 0)
+      d += m;
+}
+
+void chiffrement(void)
+{
+   int iMessage, iExp;
+   int lettre;
+
+   for(iMessage = 0; iMessage < taille; ++iMessage) {
+      // Exponentiation modulaire
+      lettre = message[iMessage];
+      message[iMessage] = 1;
+      for(iExp = 1; iExp <= e; ++iExp)
+         message[iMessage] = (message[iMessage] * lettre) % n;
+   }
+}
+
+void dechiffrement(void)
+{
+   int iMessage, iExp;
+   int lettre;
+
+   for(iMessage = 0; iMessage < taille; ++iMessage) {
+      // Exponentiation modulaire
+      lettre = message[iMessage];
+      message[iMessage] = 1;
+      for(iExp = 1; iExp <= d; ++iExp)
+         message[iMessage] = (message[iMessage] * lettre) % n;
+   }
+}
+
+int main(void)
+{
+   char iCar;
+   int iMessage;
+
+   // Lit le message et le transforme en nombre 
+   iMessage = 0;
+   do
+   {
+      scanf("%c", &iCar);
+      if(iCar != '\n') {
+         message[iMessage] = (unsigned long long)iCar;
+         ++iMessage;
+      }
+   } while(iCar != '\n');
+   taille = iMessage;
+
+   // Génère le couple de clé
+   srand(time(NULL));
+   clePublique();
+   clePrivee();
+
+   printf("Cle publique : %d %d\n", n, e);
+   printf("Cle privee : %d %d\n", n, d);
+
+   // Chiffre le message et l'affiche comme une suite de nombre
+   chiffrement();
+   for(iMessage = 0; iMessage < taille; ++iMessage)
+      printf("%llu ", message[iMessage]);
+   printf("\n");
+
+   // Déchiffre le message et l'affiche comme une chaîne
+   dechiffrement();
+   for(iMessage = 0; iMessage < taille; ++iMessage)
+      printf("%c", (char)message[iMessage]);
+   printf("\n");
+
+   return 0;
+}
+```
 
 Le message d'entrée :
 
-[INSERT]
-test02.in
+```nohighlight
+Bienvenue
+```
 
 La sortie :
 
-[INSERT]
-test02.out
+```nohighlight
+Cle publique : 8357 7
+Cle privee : 8357 4663
+2546 824 4962 8071 2160 4962 8071 5933 4962 
+Bienvenue
+```
 
 Quelques remarques sur le code :
 
@@ -307,20 +522,58 @@ J'utilise la notation [hexadécimale](https://en.wikipedia.org/wiki/Hexadecimal)
 
 En C par exemple, il est facile de convertir une chaîne en un nombre hexadécimal et inversement :
 
-[INSERT]
-hexadecimal.c
+```c
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define TAILLE_MAX 1000
+
+int main(void)
+{
+   char message[TAILLE_MAX];
+   char hexa[TAILLE_MAX * 2];
+   char caractere[8];
+   int iMessage, ihexa;
+
+   scanf("%[^\n]s\n", message);
+
+   // Transformation du message en une chaîne représentant notre nombre hexadécimal
+   for(iMessage = 0; message[iMessage] != '\0'; ++iMessage) {
+      sprintf(caractere, "%x", message[iMessage]);
+      strcat(hexa, caractere);
+   }
+   printf("0x%s\n", hexa);
+
+   // Transformation en une chaîne de caractère lisible
+   for(ihexa = 0; hexa[ihexa] != '\0'; ihexa += 2) {
+      char lettre[3];
+      lettre[0] = hexa[ihexa];
+      lettre[1] = hexa[ihexa + 1];
+      lettre[2] = '\0';
+
+      printf("%c", (int)strtoul(lettre, NULL, 16));
+   }
+   printf("\n");
+
+   return 0;
+}
+```
 
 On peut utiliser le spécificateur `x` dans [`printf`](http://www.cplusplus.com/reference/cstdio/printf/) afin de convertir notre lettre en nombre hexadécimal. De même, on peut utiliser [`stroul`](http://www.cplusplus.com/reference/cstdlib/strtoul/) afin de convertir notre nombre hexadécimal en base 10 et de l'afficher comme un caractère.
 
 En entrée par exemple du programme :
 
-[INSERT]
-test03.in
+```nohighlight
+Code
+```
 
 On obtient bien en sortie notre message sous forme d'un nombre hexadécimal :
 
-[INSERT]
-test03.out
+```nohighlight
+0x436f6465
+Code
+```
 
 Cependant quand notre message est important, le nombre obtenu est beaucoup trop grand pour être chiffré, il faut alors découper notre message en plusieurs sous nombres hexadécimaux au lieu d'un seul et appliquer le même principe de chiffrement/déchiffrement.
 

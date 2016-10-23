@@ -1,9 +1,7 @@
-Tableau cumulatif
-=================
-algo/structure
-
-Publié le : 21/11/2015  
-*Modifié le : 05/12/2015*
+Path: algo/structure
+Title: Tableau cumulatif
+Published: 21/11/2015
+Modified: 05/12/2015
 
 ## Introduction
 
@@ -72,18 +70,73 @@ Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de 
 
 Une implémentation en C d'un tableau cumulatif et de son utilisation :
 
-[INSERT]
-tableau_cumulatif.c
+```c
+#include <stdio.h>
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int cumulatif[TAILLE_MAX];
+int nbElement;
+
+void initTab(void)
+{
+   int iEle;
+
+   scanf("%d\n", &nbElement);
+   for(iEle = 0; iEle < nbElement; ++iEle)
+      scanf("%d ", &tableau[iEle]);
+}
+
+void initCumulatif(void)
+{
+   int iEle;
+   int dernier;
+
+   dernier = 0;
+   for(iEle = 0; iEle < nbElement; ++iEle) {
+      cumulatif[iEle] = tableau[iEle] + dernier;
+      dernier = cumulatif[iEle];
+   }
+}
+
+int somme(int debut, int fin)
+{
+   if(debut == 0)
+      return cumulatif[fin];
+   else
+      return cumulatif[fin] - cumulatif[debut - 1];
+}
+
+int main(void)
+{
+   initTab();
+   initCumulatif();
+
+   printf("%d\n", somme(2, 5));
+   printf("%d\n", somme(0, 3));
+   printf("%d\n", somme(3, 4));
+   printf("%d\n", somme(0, 5));
+
+   return 0;
+}
+```
 
 L'entrée :
 
-[INSERT]
-test01.in
+```nohighlight
+6
+26 42 1 89 3 7
+```
 
 La sortie :
 
-[INSERT]
-test01.out
+```nohighlight
+100
+158
+92
+168
+```
 
 Quelques remarques sur le code :
 
@@ -109,18 +162,94 @@ Le principe est toujours le même, mais il faut adapter nos fonctions qui constr
 
 Une implémentation d'un tableau cumulatif 2D en C :
 
-[INSERT]
-tableau_cumulatif2D.c
+```c
+#include <stdio.h>
+
+#define NB_LIG_MAX 1000
+#define NB_COL_MAX 1000
+
+int tableau[NB_LIG_MAX][NB_COL_MAX];
+int cumulatif[NB_LIG_MAX][NB_COL_MAX];
+int nbLig, nbCol;
+
+void initTab(void)
+{
+   int iLig, iCol;
+
+   scanf("%d %d\n", &nbLig, &nbCol);
+   for(iLig = 0; iLig < nbLig; ++iLig) {
+      for(iCol = 0; iCol < nbCol; ++iCol)
+         scanf("%d ", &tableau[iLig][iCol]);
+      scanf("\n");
+   }
+}
+
+void initCumulatif(void)
+{
+   int iLig, iCol;
+
+   for(iLig = 0; iLig < nbLig; ++iLig) {
+      for(iCol = 0; iCol < nbCol; ++iCol) {
+         cumulatif[iLig][iCol] = tableau[iLig][iCol];
+
+         if(iLig - 1 >= 0)
+            cumulatif[iLig][iCol] += cumulatif[iLig - 1][iCol];
+         if(iCol - 1 >= 0)
+            cumulatif[iLig][iCol] += cumulatif[iLig][iCol - 1];
+         if(iLig - 1 >= 0 && iCol - 1 >= 0)
+            cumulatif[iLig][iCol] -= cumulatif[iLig - 1][iCol - 1];
+      }
+   }
+}
+
+int somme(int lig1, int col1, int lig2, int col2)
+{
+   int resultat;
+
+   resultat = cumulatif[lig2][col2];
+
+   if(col1 - 1 >= 0)
+      resultat -= cumulatif[lig2][col1 - 1];
+   if(lig1 - 1 >= 0)
+      resultat -= cumulatif[lig1 - 1][col2];
+   if(lig1 - 1 >= 0 && col1 - 1 >= 0)
+      resultat += cumulatif[lig1 - 1][col1 - 1];
+
+   return resultat;
+}
+
+int main(void)
+{
+   initTab();
+   initCumulatif();
+
+   printf("%d\n", somme(1, 1, 2, 2));
+   printf("%d\n", somme(0, 0, 3, 3));
+   printf("%d\n", somme(0, 0, 0, 3));
+   printf("%d\n", somme(3, 1, 3, 3));
+
+   return 0;
+}
+```
 
 L'entrée : 
 
-[INSERT]
-test02.in
+```nohighlight
+4 4
+4 6 8 9
+1 8 5 9
+7 2 3 3
+6 1 4 7
+```
 
 On obtient en sortie :
 
-[INSERT]
-test02.out
+```nohighlight
+18
+83
+27
+12
+```
 
 Le tableau cumulatif 2D ressemble à cela pour l'entrée :
 

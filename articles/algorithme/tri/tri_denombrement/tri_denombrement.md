@@ -1,9 +1,7 @@
-Tri par dénombrement
-====================
-algo/tri
-
-Publié le : 05/07/2014  
-*Modifié le : 02/02/2016*
+Path: algo/tri
+Title: Tri par dénombrement
+Published: 05/07/2014
+Modified: 02/02/2016
 
 ## Introduction
 
@@ -71,20 +69,75 @@ La complexité finale de notre algorithme est donc $O(N + M)$, soit une complexi
 
 L'implémentation en C du tri par dénombrement :
 
-[INSERT]
-tri_denombrement.c
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+
+void triDenombrement(void)
+{
+   int iTab, iEffectif;
+   int max;
+   int *effectif;
+
+   max = -42;
+   for(iTab = 0; iTab < taille; ++iTab)
+      if(tableau[iTab] > max)
+         max = tableau[iTab];
+
+   effectif = calloc(max + 1, sizeof(int));
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      ++effectif[tableau[iTab]];
+
+   for(iEffectif = 0, iTab = 0; iEffectif <= max; ++iEffectif) {
+      int iCopie;
+      for(iCopie = 0; iCopie < effectif[iEffectif]; ++iCopie) {
+         tableau[iTab] = iEffectif;
+         ++iTab;
+      }
+   }
+
+   free(effectif);
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf("%d\n", &taille);
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
+
+   triDenombrement();
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      printf("%d ", tableau[iTab]);
+   printf("\n");
+
+   return 0;
+}
+```
 
 J'utilise la fonction [`calloc`](http://www.cplusplus.com/reference/cstdlib/calloc/) lors de l'allocation afin d'avoir mon tableau directement initialisé à 0.
 
 Notre tableau en entrée :
 
-[INSERT]
-test01.in
+```nohighlight
+7
+8 6 1 3 8 1 1
+```
 
 La sortie obtenue :
 
-[INSERT]
-test01.out
+```nohighlight
+1 1 1 3 6 8 8
+```
 
 ## Conclusion
 

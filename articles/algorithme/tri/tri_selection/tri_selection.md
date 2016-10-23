@@ -1,9 +1,7 @@
-Tri par sélection
-=================
-algo/tri
-
-Publié le : 30/04/2014  
-*Modifié le : 08/12/2015*
+Path: algo/tri
+Title: Tri par sélection
+Published: 30/04/2014
+Modified: 08/12/2015
 
 ## Introduction
 
@@ -72,18 +70,71 @@ Sa complexité est donc légèrement inférieure à $N^2$, cependant cette diff�
 
 Une implémentation en C de l'algorithme du tri par sélection :
 
-[INSERT]
-tri_selection.c
+```c
+#include <stdio.h>
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+
+void echanger(int index1, int index2)
+{
+   int temp;
+
+   temp = tableau[index1];
+   tableau[index1] = tableau[index2];
+   tableau[index2] = temp;
+}
+
+void triSelection(void)
+{
+   int iElement, iTab;
+   int min;
+
+   for(iElement = 0; iElement < taille; ++iElement) {
+      min = iElement;
+
+      for(iTab = iElement + 1; iTab < taille; ++iTab)
+         if(tableau[iTab] < tableau[min])
+            min = iTab;
+
+      if(min != iElement)
+         echanger(iElement, min);
+   }
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf("%d\n", &taille);
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
+
+   triSelection();
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      printf("%d ", tableau[iTab]);
+   printf("\n");
+
+   return 0;
+}
+```
 
 L'entrée du programme :
 
-[INSERT]
-test01.in
+```nohighlight
+4
+6 1 9 3
+```
 
 Et la sortie attendue :
 
-[INSERT]
-test01.out
+```nohighlight
+1 3 6 9
+```
 
 ## Améliorations et variantes
 

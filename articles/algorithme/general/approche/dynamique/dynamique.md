@@ -1,9 +1,7 @@
-Algorithme dynamique
-====================
-algo/general/approche
-
-Publié le : 03/04/2016  
-*Modifié le : 29/04/2016*
+Path: algo/general/approche
+Title: Algorithme dynamique
+Published: 03/04/2016
+Modified: 29/04/2016
 
 ## Introduction
 
@@ -26,8 +24,26 @@ En réalité, vous utilisez ce principe très souvent sans même vous en rendre 
 
 Voici un exemple de fonction en C calculant le `n`ième terme de la [suite de Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_sequence):
 
-[INSERT]
-fibonacci.c
+```c
+#include <stdio.h>
+
+unsigned long long fibonacci(int n)
+{
+   if(n <= 1)
+      return n;
+   return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main(void)
+{
+   int n;
+   
+   scanf("%d\n", &n);
+   printf("%lld\n", fibonacci(n));
+
+   return 0;
+}
+```
 
 J'utilise le type `unsigned long long` car on risque d'avoir des nombres très grands à manipuler. Maintenant, testons l'efficacité du programme sur différentes entrées (les résultats varient bien entendu en fonction de l'ordinateur que vous utilisez) :
 
@@ -52,8 +68,40 @@ Plusieurs appels sont répétés inutilement ici (`f(2)` et `f(3)` notamment), e
 
 Voici le même programme, mais dynamisé cette fois ci :
 
-[INSERT]
-fibonacci_dyn.c
+```c
+#include <stdio.h>
+
+#define N_MAX 100000
+#define PAS_CALCULE -1
+
+long long resultat[N_MAX + 1];
+
+long long fibonacci(int n)
+{
+   if(n <= 1)
+      return n;
+   if(resultat[n] != PAS_CALCULE)
+      return resultat[n];
+
+   resultat[n] = fibonacci(n - 1) + fibonacci(n - 2);
+   return resultat[n];
+}
+
+int main(void)
+{
+   int n;
+   int iRes;
+   
+   scanf("%d\n", &n);
+
+   for(iRes = 0; iRes <= n; ++iRes)
+      resultat[iRes] = PAS_CALCULE;
+
+   printf("%lld\n", fibonacci(n));
+
+   return 0;
+}
+```
 
 On a désormais un tableau qui va retenir les résultats qu'on a déjà calculés pour éviter de faire des appels récursifs supplémentaires qui sont finalement inutiles. Ce tableau est initialisé avec la valeur `PAS_CALCULE` pour différencier le cas où on a déjà calculé le résultat et celui où on ne l'a pas encore fait (j'utilise -1 car je sais que tous les termes de cette suite sont supérieurs ou égaux à 0, il faut donc faire attention à utiliser `long long` et non pas `unsigned long long` ici), puis dans notre fonction `fibonacci` on rajoute un test pour voir si on connaît le résultat pour le `n`ème terme de la suite, si c'est le cas on le retourne directement, sinon on le calcule et on le stocke dans le tableau.
 
@@ -88,8 +136,42 @@ J'ai représenté deux tableaux en 2D fictifs représentant le stockage des calc
 
 Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calculé disons le 5ème terme, il est tout à fait inutile de garder en mémoire les termes 2 et 3 car le 6ème terme nécessitera uniquement le 5ème et le 4ème termes. Ceci signifie qu'à tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.
 
-[INSERT]
-fibonacci_dyn_opti.c
+```c
+#include <stdio.h>
+
+#define PAS_CALCULE -1
+
+unsigned long long fibonacci(int n)
+{
+   unsigned long long prochain, actuel, dernier;
+   int iTerme;
+
+   actuel = 1;
+   dernier = 0;
+
+   for(iTerme = 2; iTerme <= n; ++iTerme) {
+      prochain = actuel + dernier;
+
+      dernier = actuel;
+      actuel = prochain;
+   }
+
+   return actuel;
+}
+
+int main(void)
+{
+   int n;
+   
+   scanf("%d\n", &n);
+   if(n == 0)
+      printf("0\n");
+   else
+      printf("%lld\n", fibonacci(n));
+
+   return 0;
+}
+```
 
 Notre programme est désormais écrit de manière itérative (avec une simple boucle), ce qui fait qu'on a uniquement besoin des deux derniers termes `actuel` et `dernier`, afin de calculer `prochain`. On n'utilise pas de tableau ici, mais dans le cas où il faudrait plus que deux précédents éléments pour calculer le prochain, un tableau serait sans doute plus judicieux.
 

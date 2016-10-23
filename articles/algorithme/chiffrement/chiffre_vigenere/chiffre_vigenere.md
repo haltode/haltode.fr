@@ -1,9 +1,7 @@
-Chiffre de Vigenère
-===================
-algo/chiffrement
-
-Publié le : 28/05/2014  
-*Modifié le : 20/12/2015*
+Path: algo/chiffrement
+Title: Chiffre de Vigenère
+Published: 28/05/2014
+Modified: 20/12/2015
 
 ## Introduction
 
@@ -61,20 +59,92 @@ déchiffrer :
 
 Une implémentation en C du chiffre de Vigenère :
 
-[INSERT]
-chiffre_vigenere.c
+```c
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+#define TAILLE_MAX 10000
+
+char message[TAILLE_MAX];
+char cle[TAILLE_MAX];
+int tailleCle;
+
+void chiffrement(void)
+{
+   int iTab, iCle;
+
+   for(iTab = 0, iCle = 0; message[iTab] != '\0'; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo, lettreCle;
+         typo = (isupper(message[iTab])) ? 'A' : 'a';
+         lettreCle = tolower(cle[iCle]) - 'a';
+         iCle = (iCle + 1) % tailleCle;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] + lettreCle) % 26 + 26) % 26;
+         message[iTab] += typo;
+      }
+   }
+}
+
+void dechiffrement(void)
+{
+   int iTab, iCle;
+
+   for(iTab = 0, iCle = 0; message[iTab] != '\0'; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo, lettreCle;
+         typo = (isupper(message[iTab])) ? 'A' : 'a';
+         lettreCle = tolower(cle[iCle]) - 'a';
+         iCle = (iCle + 1) % tailleCle;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - lettreCle) % 26 + 26) % 26;
+         message[iTab] += typo;
+      }
+   }
+}
+
+void viderBuffer(void)
+{
+   int c;
+   c = 0;
+   while(c != '\n' && c != EOF)
+      c = getchar();
+}
+
+int main(void)
+{
+   scanf("%[^\n]s\n", message);
+   viderBuffer();
+   scanf("%[^\n]s\n", cle);
+   tailleCle = strlen(cle);
+
+   chiffrement();
+   printf("%s\n", message);
+   dechiffrement();
+   printf("%s\n", message);
+
+   return 0;
+}
+```
 
 Notez qu'au lieu de créer une seconde clé de chiffrement de la taille du message, on peut tout simplement utiliser un indice que l'on réinitialise à 0 à chaque fois qu'il a atteint le bout de la clé (grâce à `% tailleCle`).
 
 Notre message et notre clé :
 
-[INSERT]
-test01.in
+```nohighlight
+Programmation
+Linux
+```
 
 Le chiffrement et le déchiffrement :
 
-[INSERT]
-test01.out
+```nohighlight
+Azbaoluzuqtwa
+Programmation
+```
 
 ## Cassage
 
@@ -87,8 +157,9 @@ Il nous faut donc de nouvelles méthodes, afin de casser cet algorithme réputé
 
 Notre objectif est de casser le message ci-dessus qui a été chiffré en utilisant le chiffre de Vigenère :
 
-[INSERT]
-test02.in
+```nohighlight
+wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp
+```
 
 Les seules informations que l'on a sont que toutes les majuscules ont été transformées en minuscules, tous les accents par des lettres non accentuées, et les espaces et signes de ponctuations ont été enlevés.
 
@@ -142,15 +213,119 @@ Pour chaque sous chaine, on note l'écart jusqu'à la prochaine occurrence de la
 
 Une implémentation en C du test de Kasiski :
 
-[INSERT]
-test_kasiski.c
+```c
+#include <stdio.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <string.h>
+
+#define TAILLE_MAX 10000
+#define NB_POSSIBILITE_MAX 10000
+
+char message[TAILLE_MAX];
+int tailleMessage;
+
+int nbPossibilite[NB_POSSIBILITE_MAX];
+int possibiliteMax;
+
+int chercherOccurrence(char chaine[], int taille, int debut)
+{
+   int iDebut;
+
+   for(iDebut = debut; iDebut < tailleMessage - taille + 1; ++iDebut) {
+      int iTab, iChaine;
+
+      iTab = iDebut;
+      iChaine = 0;
+      while(iTab < tailleMessage - taille + 1 &&
+            chaine[iChaine] == message[iTab]) {
+         ++iTab;
+         ++iChaine;
+      }
+
+      if(iChaine == taille)
+         return iDebut;
+   }
+
+   return -1;
+}
+
+void ajouterTaillePossible(int ecart)
+{
+   int iDiv;
+
+   for(iDiv = 2; iDiv <= ecart; ++iDiv) {
+      if(ecart % iDiv == 0) {
+         ++nbPossibilite[iDiv];
+         if(nbPossibilite[iDiv] > nbPossibilite[possibiliteMax])
+            possibiliteMax = iDiv;
+      }
+   }
+}
+
+void testKasiski(void)
+{
+   int iTaille, iDebut;
+   bool trouve;
+
+   iTaille = 3;
+   trouve = true;
+
+   while(trouve) {
+      trouve = false;
+
+      for(iDebut = 0; iDebut < tailleMessage - iTaille + 1; ++iDebut) {
+         char chaine[iTaille + 1];
+         int iTab;
+         int occurrence;
+
+         for(iTab = 0; iTab < iTaille; ++iTab)
+            chaine[iTab] = message[iDebut + iTab];
+         chaine[iTab] = '\0';
+
+         occurrence = chercherOccurrence(chaine, iTaille, iDebut + iTaille);
+         if(occurrence != -1) {
+            int ecart;
+
+            ecart =  occurrence - iDebut;
+            trouve = true;
+
+            //printf("%s %d\n", chaine, ecart);
+
+            ajouterTaillePossible(ecart);
+         }
+      }
+
+      ++iTaille;
+   }
+}
+
+int main(void)
+{
+   scanf("%s\n", message);
+   tailleMessage = strlen(message);
+
+   possibiliteMax = 0;
+   testKasiski();
+
+   /*int iDiv;
+   for(iDiv = 0; iDiv < NB_POSSIBILITE_MAX; ++iDiv)
+      if(nbPossibilite[iDiv] != 0)
+         printf("%d : %d\n", iDiv, nbPossibilite[iDiv]);*/
+
+   printf("%d\n", possibiliteMax);
+
+   return 0;
+}
+```
 
 Tout d'abord, on commence à chercher des sous chaines d'une taille de trois caractères minimum car les sous chaines de deux caractères ne sont pas réellement efficaces et représentatives (ça peut simplement être un coup de chance). Ensuite, la recherche de sous chaine n'est pas optimisée car le but de cette implémentation est de montrer comment appliquer le test de Kasiski. Si vous voulez casser un texte plus important, je vous conseille de revoir la recherche de sous chaine en vous aidant d'algorithmes plus efficaces comme [KMP](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm), [Rabin-Karp](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm), ou encore [Z](http://codeforces.com/blog/entry/3107). Le code s'exécute instantanément dans notre exemple, mais sur des textes aussi grands que des livres, il risque de prendre plus de temps s'il n'est pas optimisé.
 
 La sortie de l'implémentation (j'ai commenté l'affichage des sous chaines/écart, et celui du tableau des possibilités car sinon plus de 1000 lignes sont affichées en sortie) :
 
-[INSERT]
-test02.out
+```nohighlight
+5
+```
 
 ### Déduire la clé
 
@@ -165,8 +340,13 @@ On va alors découper le message chiffré en plusieurs catégories de lettres :
 
 Notre message découpé en 5 lignes :
 
-[INSERT]
-test03.out
+```nohighlight
+1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy
+2 : mnlauavwiluzqvuwvbcmiciqvumaximqkzumvdbamuaimvbabmmmnmctwkbpmwbyauycbtamziakmtvqcapcbamcvizumqbtmiwtxblbmmbwgqcamvalawaqalzimmmqwqxvzqwdqzimamvitmxctdmmqttbmimmicbtmbtbmktmmqiutvlqmcmcviqcqmmfbgbzabpzbmimcmmzlbaibmiwtcvmpitvqbmmkqwzczvazizxnuqwcakvminuqcmmqwawmmtcutmdmqaaiiamdvqmiccvmgdmzmicuvtoctdaqbaaamybmbbjvmqlvbmumxiwqimimaviawaqmmlaquwciizll
+3 : ffrqorragrrnfgrhrpizynqgbrfrciacryoebbrffrcszvrgnayzvafrzrynfanhnnhferbffiygqyqbearcqnevfhqnqrrqfavrnerrysvarzvcranrrhdrghyaffaaaargrehveyaffrrfranyrnzqryrsoizoarvngvnrcbnghfavvfhrgagrrfgggzhqefregerynqagrftrvbyhbfehrspzrflfibfarehnaaasbhqnbrdheiefaebrdchqaagvetrrrbfvfprfgadgrggoarvqagrpffaerirrerefnrvgqzhearbeabiegeerrcivdeyzyvparvfaggeqarhvevnre
+4 : wkjylmynymyhyzopgyyyfhyymynhiyhimyunohhimluiykllyhychnkovmylumwyfhczylhwfcucyymhjiziygffidbcylmcjwnxlyzyfcpwtipuhuhwymohjjuwggminwozpolwyuwnyfmmyymyumjylyjufyjlhkygwhfyyghynymngymxucnlmfyyiulyywayjuyucywnlnoguoynolxnmzyjhkufyogmmylmdiyisdbllwomluyfcolwoylyxxfauuufhhdnicnimwolhyilhiplnllfuimmmcmhmmcjfmhluycinlcccocuuiunhiykolugumywhnyxhyuywuldfuxfy
+5 : errkbxpxqxpzplkbbdokbqcaxpjoozbrpzqbppljrdoozrobobkffmroolppsiqaiaklzzqeblqnpjnqoppfibxpklrpojqqbbbfxixpbkbojflozfzxqabkblcbblnrsrsxbkiqzcbmriqbippbrqfobbbflzfffrkblrrirjdofoibjfqbqpboqfbofibkmbrkxkmyicbborbliqpbpbpbpopbqraroplkppbblpjrblrizxbmlfaxokzxbobprbxbirziqafbcbiicxflqofffrfxxlxborixgqffblbbfaafokprbooqnnbfprpqoozrffcboqcxbmqobfmjlrabbiflp
+```
 
 Finalement, on peut dire que chaque ligne a été chiffrée à l'aide d'un simple chiffre de César, puisque toutes les lettres d'une même ligne sont chiffrées avec la même lettre de la clé, et cette lettre peut être vue comme un simple nombre. Une fois que l'on sait cela, on peut effectuer une analyse fréquentielle pour trouver la clé de chiffrement, comme pour le chiffre de César, sur chacune des lignes découpées.
 
@@ -188,25 +368,122 @@ La clé apparait alors à la verticale en lisant simplement la correspondance de
 
 L'implémentation en C de l'analyse fréquentielle :
 
-[INSERT]
-trouver_cle.c
+```c
+#include <stdio.h>
+
+#define TAILLE_MAX 10000
+#define LONG_CLE_MAX 100
+
+char message[TAILLE_MAX];
+int longueurCle;
+
+char decoupe[LONG_CLE_MAX][TAILLE_MAX];
+int iDecoupe[LONG_CLE_MAX];
+
+int frequence[LONG_CLE_MAX][26];
+int frequenceMax[LONG_CLE_MAX];
+
+char cle[LONG_CLE_MAX];
+
+void decouperMessage(void)
+{
+   int iTab, iLettre, iCle;
+
+   for(iTab = 0; message[iTab] != '\0'; ++iTab) {
+      iLettre = iTab % longueurCle;
+      decoupe[iLettre][iDecoupe[iLettre]] = message[iTab];
+      ++iDecoupe[iLettre];
+   }
+
+   for(iCle = 0; iCle < longueurCle; ++iCle) {
+      printf("%d : ", iCle + 1);
+      for(iTab = 0; iTab < iDecoupe[iCle]; ++iTab)
+         printf("%c", decoupe[iCle][iTab]);
+      printf("\n");
+   }
+
+   printf("\n");
+}
+
+void analyseFreq(void)
+{
+   int iCle, iTab, iLettre;
+
+   for(iCle = 0; iCle < longueurCle; ++iCle) {
+      for(iTab = 0; iTab < iDecoupe[iCle]; ++iTab) {
+         iLettre = decoupe[iCle][iTab] - 'a';
+
+         ++frequence[iCle][iLettre];
+         if(frequence[iCle][iLettre] > frequence[iCle][frequenceMax[iCle]])
+            frequenceMax[iCle] = iLettre;
+      }
+   }
+
+   for(iCle = 0; iCle < longueurCle; ++iCle)
+      printf("%d : %c\n", iCle + 1, frequenceMax[iCle] + 'a');
+
+   printf("\n");
+}
+
+void deduireCle(void)
+{
+   int iCle;
+
+   for(iCle = 0; iCle < longueurCle; ++iCle) {
+      cle[iCle] = (frequenceMax[iCle] + 'a') - ('e' - 'a');
+      if(cle[iCle] < 'a')
+         cle[iCle] += 26;
+   }
+
+   cle[iCle] = '\0';
+}
+
+int main(void)
+{
+   scanf("%s\n", message);
+   scanf("%d\n", &longueurCle);
+
+   decouperMessage();
+   analyseFreq();
+   deduireCle();
+
+   printf("%s\n", cle);
+
+   return 0;
+}
+```
 
 Le programme prend en entrée le message chiffré et la longueur de clé précédemment trouvée, et retourne en sortie la découpe du message, les lettres les plus utilisées pour chaque ligne, et la clé de chiffrement :
 
-[INSERT]
-test04.out
+```nohighlight
+1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy
+2 : mnlauavwiluzqvuwvbcmiciqvumaximqkzumvdbamuaimvbabmmmnmctwkbpmwbyauycbtamziakmtvqcapcbamcvizumqbtmiwtxblbmmbwgqcamvalawaqalzimmmqwqxvzqwdqzimamvitmxctdmmqttbmimmicbtmbtbmktmmqiutvlqmcmcviqcqmmfbgbzabpzbmimcmmzlbaibmiwtcvmpitvqbmmkqwzczvazizxnuqwcakvminuqcmmqwawmmtcutmdmqaaiiamdvqmiccvmgdmzmicuvtoctdaqbaaamybmbbjvmqlvbmumxiwqimimaviawaqmmlaquwciizll
+3 : ffrqorragrrnfgrhrpizynqgbrfrciacryoebbrffrcszvrgnayzvafrzrynfanhnnhferbffiygqyqbearcqnevfhqnqrrqfavrnerrysvarzvcranrrhdrghyaffaaaargrehveyaffrrfranyrnzqryrsoizoarvngvnrcbnghfavvfhrgagrrfgggzhqefregerynqagrftrvbyhbfehrspzrflfibfarehnaaasbhqnbrdheiefaebrdchqaagvetrrrbfvfprfgadgrggoarvqagrpffaerirrerefnrvgqzhearbeabiegeerrcivdeyzyvparvfaggeqarhvevnre
+4 : wkjylmynymyhyzopgyyyfhyymynhiyhimyunohhimluiykllyhychnkovmylumwyfhczylhwfcucyymhjiziygffidbcylmcjwnxlyzyfcpwtipuhuhwymohjjuwggminwozpolwyuwnyfmmyymyumjylyjufyjlhkygwhfyyghynymngymxucnlmfyyiulyywayjuyucywnlnoguoynolxnmzyjhkufyogmmylmdiyisdbllwomluyfcolwoylyxxfauuufhhdnicnimwolhyilhiplnllfuimmmcmhmmcjfmhluycinlcccocuuiunhiykolugumywhnyxhyuywuldfuxfy
+5 : errkbxpxqxpzplkbbdokbqcaxpjoozbrpzqbppljrdoozrobobkffmroolppsiqaiaklzzqeblqnpjnqoppfibxpklrpojqqbbbfxixpbkbojflozfzxqabkblcbblnrsrsxbkiqzcbmriqbippbrqfobbbflzfffrkblrrirjdofoibjfqbqpboqfbofibkmbrkxkmyicbborbliqpbpbpbpopbqraroplkppbblpjrblrizxbmlfaxokzxbobprbxbirziqafbcbiicxflqofffrfxxlxborixgqffblbbfaafokprbooqnnbfprpqoozrffcboqcxbmqobfmjlrabbiflp
+
+1 : p
+2 : m
+3 : r
+4 : y
+5 : b
+
+linux
+```
 
 ### Déchiffrer le message
 
 Désormais, on connait la clé de chiffrement que l'auteur du message a employée pour chiffrer ce texte :
 
-[INSERT]
-test02.in
+```nohighlight
+wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp
+```
 
 On déchiffre le message :
 
-[INSERT]
-test05.out
+```nohighlight
+leschefsquidepuisdenombreusesanneessontalatetedesarmeesfrancaisesontformeungouvernementcegouvernementalleguantladefaitedenosarmeessestmisenrapportaveclennemipourcesserlecombatafficheayantsuivilappeldujuinafficheplacardeeaulendemaindelappeldujuinlafficheatouslesfrancaisplacardeesurlesmursdelondrescertesnousavonsetenoussommessubmergesparlaforcemecaniqueterrestreetaeriennedelennemiinfinimentplusqueleurnombrecesontlescharslesavionslatactiquedesallemandsquinousfontreculercesontlescharslesavionslatactiquedesallemandsquiontsurprisnoschefsaupointdelesamenerlaouilsensontaujourdhuimaislederniermotestilditlesperancedoitelledisparastreladefaiteestelledefinitivenoncroyezmoimoiquivousparleenconnaissancedecauseetvousdisqueriennestperdupourlafrancelesmemesmoyensquinousontvaincuspeuventfairevenirunjourlavictoirecarlafrancenestpasseuleellenestpasseuleellenestpasseuleelleaunvasteempirederriereelleellepeutfaireblocaveclempirebritanniquequitientlameretcontinuelalutteellepeutcommelangleterreutilisersanslimiteslimmenseindustriedesetatsuniscetteguerrenestpaslimiteeauterritoiremalheureuxdenotrepayscetteguerrenestpastrancheeparlabatailledefrancecetteguerreestuneguerremondialetouteslesfautestouslesretardstouteslessouffrancesnempechentpasquilyadansluniverstouslesmoyensnecessairespourecraserunjournosennemisfoudroyesaujourdhuiparlaforcemecaniquenouspourronsvaincredanslavenirparuneforcemecaniquesuperieureledestindumondeestlamoigeneraldegaulleactuellementalondresjinvitelesofficiersetlessoldatsfrancaisquisetrouvententerritoirebritanniqueouquiviendraientasytrouveravecleursarmesousansleursarmesjinvitelesingenieursetlesouvriersspecialistesdesindustriesdarmementquisetrouvententerritoirebritanniqueouquiviendraientasytrouverasemettreenrapportavecmoiquoiquilarrivelaflammedelaresistancefrancaisenedoitpasseteindreetneseteindrapasdemaincommeaujourdhuijeparleraialaradiodelondres
+```
 
 On rajoute les majuscules, les accents, puis la ponctuation et notre texte apparait :
 

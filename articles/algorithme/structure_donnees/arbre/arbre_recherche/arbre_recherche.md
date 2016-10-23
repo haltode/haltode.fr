@@ -1,6 +1,4 @@
-Arbre de recherche
-==================
-algo/structure/arbre
-
-Publié le :  
-*Modifié le :*
+Path: algo/structure/arbre
+Title: Arbre de recherche
+Published:
+Modified:

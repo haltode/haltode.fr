@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="/css/default.css">
+
+      <!-- Font/Icon -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext">
+      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+      <!-- Syntax highlighting -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async 
+              src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <title>Chiffre de César - napnac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      
+
+<a href=""><h1>Chiffre de César</h1></a>
+
+<p>Publié le : 21/05/2014</p>
+<p>Modifié le : 14/12/2015</p>
+
+<h2>Introduction</h2>
+<p>Les premiers algorithmes de chiffrement ne datent pas de Jules César, mais ce dernier va instaurer un système au sein de son empire, afin de communiquer sans que personnes ne puissent intercepter ses messages secrets. Pour cela, il utilisait une méthode très simple qui consistait à décaler chaque lettre de trois rangs vers la droite dans l&rsquo;alphabet pour que le message paraisse alors incompréhensible, à part pour la personne connaissant l&rsquo;astuce. L&rsquo;empereur a ainsi donné le nom à l&rsquo;un des premiers algorithmes de chiffrement : le chiffre de César.</p>
+<h2>Principe de l’algorithme</h2>
+<p>Le chiffre de César (aussi appelé <em>chiffrement par décalage</em>) utilise une <a href="https://en.wikipedia.org/wiki/Substitution_cipher">substitution mono-alphabétique</a> pour chiffrer et déchiffrer un message, c’est-à-dire que l’on décale de $x$ rangs vers la droite dans l’alphabet la lettre du <strong>message en clair</strong> (= non chiffré) lors du chiffrement, et de $x$ rangs vers la gauche lors du déchiffrement. On appelle $x$ la <strong>clé de chiffrement</strong>, et cette dernière doit être la même pour le chiffrement et le déchiffrement car le chiffre de César est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement symétrique</a>.</p>
+<h2>Exemple</h2>
+<p>Prenons le mot &ldquo;Linux&rdquo;, que l’on va chiffrer puis déchiffrer à l’aide du chiffre de César et avec une clé de chiffrement de 2.</p>
+<p><img alt="Exemple de chiffrement" src="//static.napnac.ga/img/algo/chiffrement/chiffre_cesar/exemple_chiffrement.png" /></p>
+<p>On a deux alphabets représentés, un normal et un autre décalé de 2 rangs vers la droite (car c&rsquo;est notre clé de chiffrement). Cette représentation permet de facilement visualiser le décalage puisqu&rsquo;il suffit de regarder la case correspondante dans le nouvel alphabet pour chiffrer notre message. Chaque lettre (représentée en bleu) de notre message en clair aura donc une lettre équivalente (représentée en vert) dans le nouvel alphabet.</p>
+<p><img alt="Exemple de déchiffrement" src="//static.napnac.ga/img/algo/chiffrement/chiffre_cesar/exemple_dechiffrement.png" /></p>
+<p>De la même manière, pour le déchiffrement il suffit de faire correspondre les lettres de notre nouvel alphabet, à celui normal afin de lire notre message chiffré.</p>
+<h2>Pseudo-code</h2>
+<p>Le pseudo-code du chiffre de César est très simple :</p>
+<pre><code class="nohighlight">chiffrer :
+
+   Pour chaque caractère du message
+      Si c'est une lettre
+         Décaler cette lettre de x rangs vers la droite
+
+déchiffrer :
+
+   Pour chaque caractère du message
+      Si c'est une lettre
+         Décaler cette lettre de x rangs vers la gauche 
+</code></pre>
+
+<p>Il faut cependant faire attention à une chose, lorsqu&rsquo;on dépasse la lettre Z pendant le chiffrement, il faut pouvoir revenir au début de l&rsquo;alphabet, comme une sorte de boucle, et inversement avec la lettre A lors du déchiffrement.</p>
+<h2>Implémentation</h2>
+<p>Une implémentation en C du chiffre de César :</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+#define TAILLE_MAX 1000
+
+char message[TAILLE_MAX];
+int cle;
+
+void chiffrement(void)
+{
+   int iTab;
+
+   for(iTab = 0; message[iTab] != '\0'; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo;
+         typo = (isupper(message[iTab])) ? 'A' : 'a';
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] + cle) % 26 + 26) % 26;
+         message[iTab] += typo;
+      }
+   }
+}
+
+void dechiffrement(void)
+{
+   int iTab;
+
+   for(iTab = 0; message[iTab] != '\0'; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo;
+         typo = (isupper(message[iTab])) ? 'A' : 'a';
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - cle) % 26 + 26) % 26;
+         message[iTab] += typo;
+      }
+   }
+}
+
+int main(void)
+{
+   scanf(&quot;%[^\n]s\n&quot;, message);
+   scanf(&quot;%d\n&quot;, &amp;cle);
+
+   chiffrement();
+   printf(&quot;%s\n&quot;, message);
+   dechiffrement();
+   printf(&quot;%s\n&quot;, message);
+
+   return 0;
+}
+</code></pre>
+
+<p>Pour décaler notre lettre, on récupère déjà son rang dans l&rsquo;alphabet pour simplifier les calculs (d&rsquo;où le <code>- typo</code> et le <code>+ typo</code>), puis on ajoute (pour le chiffrement) ou on enlève (pour le déchiffrement) la valeur de la clé, et ensuite on applique un <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour ne pas dépasser le Z et revenir au début dans ce cas. Cependant, en C, le modulo négatif est particulier, par exemple $-3 \mod 2 = -1$, il faut donc rajouter 26 au cas où le résultat est négatif (pour le rendre positif), et ensuite on applique de nouveau notre modulo 26.</p>
+<p>En entrée de notre programme :</p>
+<pre><code class="nohighlight">Linux
+2
+</code></pre>
+
+<p>Et la sortie :</p>
+<pre><code class="nohighlight">Nkpwz
+Linux
+</code></pre>
+
+<h2>Cassage</h2>
+<p>Cet algorithme de chiffrement possède cependant des failles, et il est tout à fait possible de le <strong>casser</strong>, c&rsquo;est-à-dire d&rsquo;obtenir le message original sans posséder la clé de chiffrement.</p>
+<h3>Force brute</h3>
+<p>L&rsquo;attaque par force brute (<em>brute force attack</em> en anglais) consiste simplement à tester toutes les possibilités de clé de chiffrement une par une, jusqu&rsquo;à trouver la bonne.</p>
+<p>Le problème avec le chiffre de César est qu&rsquo;il n&rsquo;existe en réalité que 26 uniques possibilités de clé de chiffrement. En effet, si l&rsquo;on utilise une clé supérieure à 26 cela revient à utiliser une clé de $x \mod 26$, par exemple si je chiffre le mot &ldquo;Linux&rdquo; avec une clé de chiffrement de 28 j&rsquo;obtiens exactement le même résultat qu&rsquo;avec ma clé de 2 car $28 \mod 26 = 2$. Il est de même pour les clés négatives, si j&rsquo;utilise une clé de -1 cela revient à utiliser une clé de 25.</p>
+<p>Notre attaque nécessite donc l&rsquo;analyse d&rsquo;uniquement 26 clés de chiffrement, ce qui n&rsquo;est rien pour un ordinateur qui peut faire des milliards d&rsquo;opérations à la seconde :</p>
+<pre><code class="nohighlight">forceBrute :
+
+   Pour chaque clé allant de 1 à 26, à pas de 1
+      déchiffrer(message)
+      Afficher message déchiffré
+</code></pre>
+
+<p>Une implémentation en C de cette attaque :</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+#define TAILLE_MAX 1000
+
+char message[TAILLE_MAX];
+char copie[TAILLE_MAX];
+
+void dechiffrement(int cle)
+{
+   int iTab;
+
+   for(iTab = 0; copie[iTab] != '\0'; ++iTab) {
+      if(isalpha(copie[iTab])) {
+         char typo;
+         typo = (isupper(copie[iTab])) ? 'A' : 'a';
+
+         copie[iTab] -= typo;
+         copie[iTab] = ((copie[iTab] - cle) % 26 + 26) % 26;
+         copie[iTab] += typo;
+      }
+   }
+}
+
+void forceBrute(void)
+{
+   int iCle;
+   for(iCle = 1; iCle &lt; 26; ++iCle) {
+      strcpy(copie, message);
+      dechiffrement(iCle);
+      printf(&quot;Cle de %d : %s\n&quot;, iCle, copie);
+   }
+}
+
+int main(void)
+{
+   scanf(&quot;%[^\n]s\n&quot;, message);
+
+   forceBrute();
+
+   return 0;
+}
+</code></pre>
+
+<p>Un exemple de message chiffré en entrée :</p>
+<pre><code class="nohighlight">Nkpwz
+</code></pre>
+
+<p>Et la sortie obtenue :</p>
+<pre><code class="nohighlight">Cle de 1 : Mjovy
+Cle de 2 : Linux
+Cle de 3 : Khmtw
+Cle de 4 : Jglsv
+Cle de 5 : Ifkru
+Cle de 6 : Hejqt
+Cle de 7 : Gdips
+Cle de 8 : Fchor
+Cle de 9 : Ebgnq
+Cle de 10 : Dafmp
+Cle de 11 : Czelo
+Cle de 12 : Bydkn
+Cle de 13 : Axcjm
+Cle de 14 : Zwbil
+Cle de 15 : Yvahk
+Cle de 16 : Xuzgj
+Cle de 17 : Wtyfi
+Cle de 18 : Vsxeh
+Cle de 19 : Urwdg
+Cle de 20 : Tqvcf
+Cle de 21 : Spube
+Cle de 22 : Rotad
+Cle de 23 : Qnszc
+Cle de 24 : Pmryb
+Cle de 25 : Olqxa
+</code></pre>
+
+<p>Ici vu qu&rsquo;il n&rsquo;y a que 26 possibilités, on se contente d&rsquo;afficher tous les messages déchiffrés pour que l&rsquo;utilisateur voit directement lequel ressemble à du français (on pourrait aussi implémenter un système qui différencie des phrases en français de phrases sans aucuns sens, mais l&rsquo;implémentation se focalise uniquement sur l&rsquo;attaque).</p>
+<p>Cette méthode est assez bourrin, car tester toutes les combinaisons possibles est souvent une mauvaise idée, cependant dans notre cas où on sait qu’il n’y a que 26 possibilités à tester, cette méthode devient tout de suite le choix parfait pour casser le chiffre de César. En plus d’être extrêmement rapide, elle est aussi très simple à mettre en place car une simple boucle suffit.</p>
+<h3>Analyse fréquentielle</h3>
+<p>L&rsquo;analyse fréquentielle (<em>frequency analysis</em> en anglais) examine la fréquence d&rsquo;apparition des lettres employées dans le message chiffré afin d&rsquo;en deviner la clé pour le déchiffrer ensuite.</p>
+<p>Cette attaque est possible sur le chiffre de César car c&rsquo;est un système de chiffrement à <strong>substitution mono-alphabétique</strong> ce qui signifie que si l’on chiffre plusieurs fois la lettre A avec une même clé de chiffrement $x$, alors la lettre chiffrée sera toujours la même. Ce type de système s’oppose donc à la <strong>substitution poly-alphabétique</strong> utilisée par le <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigenère</a> par exemple. De plus, l&rsquo;analyse fréquentielle repose sur le fait que chaque langue possède des lettres plus utilisées que d&rsquo;autres (en français par exemple la lettre E est plus utilisée que la lettre D, la lettre H l&rsquo;est moins que la lettre O, etc.).</p>
+<p>On peut donc analyser la fréquence d&rsquo;apparition de chaque lettre dans notre message chiffré, et en déduire la lettre correspondante dans le message clair en établissant un lien avec les lettres les plus utilisées en français (on suppose ici que notre message a été écrit en français avant d&rsquo;être chiffré).</p>
+<p>Par exemple, si dans notre message chiffré on remarque que la lettre M est la plus utilisée, on peut en déduire que c&rsquo;est la lettre E dans notre message clair. Ce qui signifie que l&rsquo;on peut calculer la différence de rangs entre les deux lettres pour avoir la clé de chiffrement (si M correspond effectivement à E). Pour confirmer notre hypothèse, on peut continuer en cherchant la différence de rangs entre la deuxième lettre la plus utilisée en français (le A) et la deuxième lettre la plus employée dans notre message chiffré. Si les deux clés correspondent, il y a alors de fortes chances que ce soit la bonne clé de chiffrement.</p>
+<p>Le pseudo-code de l’attaque par analyse fréquentielle :</p>
+<pre><code class="nohighlight">analyseFréquentielle :
+
+   Déterminer le nombre d’occurrence de chaque lettre
+   Déduire la clé de chiffrement la plus probable
+   Déchiffrer le message avec la clé trouvée
+</code></pre>
+
+<p>Sur de petits textes, cette attaque risque de ne pas bien fonctionner car notre méthode repose sur des statistiques et si on n&rsquo;a pas assez de données, on ne devinera pas forcément la clé du premier coup, alors que sur un long texte la première clé affichée est très souvent la bonne.</p>
+<p>L&rsquo;attaque codée en C :</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+#define TAILLE_MAX 1000
+#define NB_LETTRE 26
+
+char message[TAILLE_MAX];
+int cle;
+
+void dechiffrement(void)
+{
+   int iTab;
+
+   for(iTab = 0; message[iTab] != '\0'; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo;
+         typo = (isupper(message[iTab])) ? 'A' : 'a';
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - cle) % 26 + 26) % 26;
+         message[iTab] += typo;
+      }
+   }
+}
+
+void analyseFrequentielle(void)
+{
+   int occurrence[NB_LETTRE];
+   int iLettre, iMax;
+
+   for(iLettre = 0; iLettre &lt; NB_LETTRE; ++iLettre)
+      occurrence[iLettre] = 0;
+   for(iLettre = 0; message[iLettre] != '\0'; ++iLettre) {
+      if(isalpha(message[iLettre])) {
+         char typo;
+         typo = (isupper(message[iLettre])) ? 'A' : 'a';
+         ++occurrence[message[iLettre] - typo];
+      }
+   }
+
+
+   iMax = 0;
+   for(iLettre = 0; iLettre &lt; NB_LETTRE; ++iLettre)
+      if(occurrence[iLettre] &gt; occurrence[iMax])
+         iMax = iLettre;
+
+   cle = 'e' - (iMax + 'a');
+   if(cle &lt; 0)
+      cle = -cle;
+}
+
+int main(void)
+{
+   scanf(&quot;%[^\n]s\n&quot;, message);
+
+   analyseFrequentielle();
+   dechiffrement();
+   printf(&quot;Cle de %d : \n\n%s\n&quot;, cle, message);
+
+   return 0;
+}
+</code></pre>
+
+<p>Un texte chiffré en entrée :</p>
+<pre><code class="nohighlight">Lb ex mxqmx xlm xvkbm xg yktgvtbl, xm jn'be vhgmbxgm tllxs wx vtktvmxkxl, e'tgterlx ykxjnxgmbxeex xlm tllxs ybtuex xm whggx xg zxgxkte et uhggx vex wn ikxfbxk vhni. Ex ikhzktffx gx mxlmx jnx ex ikxfbxk kxlnemtm wx vex (jnb xlm et ienl ikhutuex), ftbl hg ihnkktbm itk xqxfiex tfxebhkxk e'tgterlx xg l'tiinrtgm lnk ienlbxnkl kxlnemtml wx vexl xm lb vxl wxkgbxkl vhkkxlihgwxgm tehkl be r tnkt ubxg ienl wx vatgvxl jnx vx lhbm et uhggx vex.
+</code></pre>
+
+<p>Le texte déchiffré :</p>
+<pre><code class="nohighlight">Cle de 19 : 
+
+Si le texte est ecrit en francais, et qu'il contient assez de caracteres, l'analyse frequentielle est assez fiable et donne en general la bonne cle du premier coup. Le programme ne teste que le premier resultat de cle (qui est la plus probable), mais on pourrait par exemple ameliorer l'analyse en s'appuyant sur plusieurs resultats de cles et si ces derniers correspondent alors il y aura bien plus de chances que ce soit la bonne cle.
+</code></pre>
+
+<p>Cette méthode d&rsquo;attaque n&rsquo;est pas réellement adaptée au chiffre de César puisqu&rsquo;on peut simplement utiliser l&rsquo;attaque par force brute, cependant d&rsquo;autres algorithmes de chiffrement n&rsquo;ont pas aussi peu de possibilités de clés que le chiffre de César, et casser ces derniers nécessite donc une attaque plus réfléchie et plus intelligente comme l&rsquo;analyse fréquentielle.</p>
+<h2>Conclusion</h2>
+<p>La cryptanalyse n&rsquo;existait pas encore à l&rsquo;époque de Jules César, et ce dernier pouvait donc être serein en utilisant un système aussi simple et peu sécurisé qu&rsquo;est le chiffre de César. Cet algorithme n&rsquo;est plus utilisé depuis bien longtemps, mais a permis de base de réflexion à d&rsquo;autres algorithmes plus efficaces comme le <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigenère</a>.</p>
+
+
+
+      <footer>
+         <br>
+         <hr>
+         <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
+         <br>
+      </footer>
+
+   </body>
+</html>

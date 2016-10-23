@@ -1,9 +1,7 @@
-Tri à bulles
-============
-algo/tri
-
-Publié le : 29/04/2014  
-*Modifié le : 07/12/2015*
+Path: algo/tri
+Title: Tri à bulles
+Published: 29/04/2014
+Modified: 07/12/2015
 
 ## Introduction
 
@@ -76,18 +74,64 @@ On se retrouve donc avec $N^2$ tours, soit une complexité finale en $O(N^2)$.
 
 L’implémentation est aussi simple que le pseudo-code :
 
-[INSERT]
-tri_bulles.c
+```c
+#include <stdio.h>
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+
+void echanger(int index1, int index2)
+{
+   int temp;
+
+   temp = tableau[index1];
+   tableau[index1] = tableau[index2];
+   tableau[index2] = temp;
+}
+
+void triBulles(void)
+{
+   int iElement, iTab;
+
+   for(iElement = 0; iElement < taille; ++iElement)
+      for(iTab = 0; iTab < taille - 1; ++iTab)
+         if(tableau[iTab] > tableau[iTab + 1])
+            echanger(iTab, iTab + 1);
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf("%d\n", &taille);
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
+
+   triBulles();
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      printf("%d ", tableau[iTab]);
+   printf("\n");
+
+   return 0;
+}
+```
 
 En entrée notre tableau :
 
-[INSERT]
-test01.in
+```nohighlight
+5
+8 7 1 4 6
+```
 
 Et on obtient bien en sortie le tableau trié :
 
-[INSERT]
-test01.out
+```nohighlight
+1 4 6 7 8
+```
 
 ## Améliorations et variantes
 

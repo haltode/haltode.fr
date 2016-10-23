@@ -1,6 +1,4 @@
-Algorithme glouton
-==================
-algo/general/approche
-
-Publié le :  
-*Modifié le :*
+Path: algo/general/approche
+Title: Algorithme glouton
+Published:
+Modified:

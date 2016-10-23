@@ -1,9 +1,7 @@
-Introduction aux algorithmes
-============================
-algo/general
-
-Publié le : 26/12/2015  
-*Modifié le : 11/07/2016*
+Path: algo/general
+Title: Introduction aux algorithmes
+Published: 26/12/2015
+Modified: 11/07/2016
 
 ## Introduction
 

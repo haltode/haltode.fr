@@ -1,9 +1,7 @@
-Algorithme de Bellman-Ford
-==========================
-algo/structure/graphe/plus_court_chemin
-
-Publié le : 10/07/2016  
-*Modifié le : 10/07/2016*
+Path: algo/structure/graphe/plus_court_chemin
+Title: Algorithme de Bellman-Ford
+Published: 10/07/2016
+Modified: 10/07/2016
 
 ## Introduction
 
@@ -234,28 +232,113 @@ Cette complexité en temps est légèrement moins efficace que celle de l'algori
 
 L'implémentation en C++ de l'algorithme de Bellman-Ford :
 
-[INSERT]
-bellman_ford.cpp
+```cpp
+#include <cstdio>
+#include <vector>
+using namespace std;
+
+struct Arc
+{
+   int noeud1;
+   int noeud2;
+   int poids;
+};
+
+const int NB_NOEUD_MAX = 1000;
+const int INFINI       = 1000000000;
+
+vector <Arc> arcs;
+int nbNoeud, nbArc;
+
+void bellmanFord(int depart, int arrivee)
+{
+   int plusCourtChemin[NB_NOEUD_MAX];
+   int iEtape, iArc;
+   int iNoeud;
+   bool modification;
+
+   for(iNoeud = 0; iNoeud < NB_NOEUD_MAX; ++iNoeud)
+      plusCourtChemin[iNoeud] = INFINI;
+   plusCourtChemin[arrivee] = 0;
+
+   modification = false;
+   for(iEtape = 0; iEtape <= nbNoeud; ++iEtape) {
+      modification = false;
+      for(iArc = 0; iArc < arcs.size(); ++iArc) {
+         int noeud1, noeud2;
+         int cheminVoisin;
+         noeud1 = arcs[iArc].noeud1;
+         noeud2 = arcs[iArc].noeud2;
+         cheminVoisin = arcs[iArc].poids + plusCourtChemin[noeud2];
+         if(cheminVoisin < plusCourtChemin[noeud1]) {
+            plusCourtChemin[noeud1] = cheminVoisin;
+            modification = true;
+         }
+      }
+   }
+
+   if(modification)
+      printf("Cycle ameliorant !\n");
+   else
+      printf("%d\n", plusCourtChemin[depart]);
+}
+
+int main(void)
+{
+   int depart, arrivee;
+   int iArc;
+
+   scanf("%d %d\n", &depart, &arrivee);
+   scanf("%d %d\n", &nbNoeud, &nbArc);
+
+   for(iArc = 0; iArc < nbArc; ++iArc) {
+      Arc nouveau;
+      scanf("%d %d %d\n", &nouveau.noeud1, &nouveau.noeud2, &nouveau.poids);
+      arcs.push_back(nouveau);
+   }
+
+   bellmanFord(depart, arrivee);
+   return 0;
+}
+```
 
 En entrée, on donne sur la première ligne le nœud de départ et d'arrivée pour le plus court chemin, puis sur la seconde ligne le nombre de nœuds et d'arcs du graphe, avant de terminer sur la liste d'arcs :
 
-[INSERT]
-test01.in
+```nohighlight
+1 5
+5 7
+1 2 2
+1 3 -1
+2 3 3
+2 4 -2
+3 4 2
+3 5 2
+4 5 -4
+```
 
 La sortie attendue sur le graphe précédemment étudié :
 
-[INSERT]
-test01.out
+```nohighlight
+-4
+```
 
 On teste avec notre exemple de graphe contenant un cycle améliorant :
 
-[INSERT]
-test02.in
+```nohighlight
+1 4
+4 5
+1 2 -2
+2 3 1
+2 4 3
+3 1 -2
+3 4 -4
+```
 
 Le cycle est bien détecté par l'algorithme :
 
-[INSERT]
-test02.out
+```nohighlight
+Cycle ameliorant !
+```
 
 ## Conclusion
 

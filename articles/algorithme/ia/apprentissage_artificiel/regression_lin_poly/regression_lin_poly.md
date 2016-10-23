@@ -1,9 +1,7 @@
-Régression linéaire/polynomiale
-===============================
-algo/ia/apprentissage_artificiel
-
-Publié le : 25/04/2016  
-*Modifié le : 25/04/2016*
+Path: algo/ia/apprentissage_artificiel
+Title: Régression linéaire/polynomiale
+Published: 25/04/2016
+Modified: 25/04/2016
 
 ## Introduction
 

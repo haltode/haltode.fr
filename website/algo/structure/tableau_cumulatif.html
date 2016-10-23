@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="/css/default.css">
+
+      <!-- Font/Icon -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext">
+      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+      <!-- Syntax highlighting -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async 
+              src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <title>Tableau cumulatif - napnac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      
+
+<a href=""><h1>Tableau cumulatif</h1></a>
+
+<p>Publié le : 21/11/2015</p>
+<p>Modifié le : 05/12/2015</p>
+
+<h2>Introduction</h2>
+<p>Je vous donne un tableau possédant des trilliards d&rsquo;éléments, et je vous pose des milliards de questions de la forme : Quelle est la somme des éléments compris entre l&rsquo;indice $i$ et $j$ du tableau (avec $i &lt; j$) ? La première idée d&rsquo;algorithme naïf que l&rsquo;on peut avoir, est de parcourir pour chaque question les éléments situés entre les indices donnés, et d&rsquo;augmenter une variable <code>somme</code> au fur et à mesure du parcours.</p>
+<p>Cependant notre solution est bien trop longue pour le cas extrême donné en entrée, à cause des nombreux parcours que l&rsquo;on réalise. Il nous faut donc une solution plus efficace, et une structure adaptée nous permettant de faire moins de parcours inutiles et ainsi raccourcir notre temps d&rsquo;exécution : le tableau cumulatif.</p>
+<h2>Principe du tableau cumulatif</h2>
+<p>Dans notre algorithme naïf, on utilise lors de nos parcours les informations récoltées uniquement pour répondre à une seule question parmi des milliards. Ceci nous oblige à repasser sur des parties du tableau déjà parcourue (voir le tableau en entier), résultant en un temps d&rsquo;exécution trop élevé.</p>
+<p>L&rsquo;idée du tableau cumulatif (<em>summed area table</em> en anglais) est de parcourir une seule fois notre tableau entièrement, et d&rsquo;utiliser les données récoltées pour ensuite répondre à n&rsquo;importe quel type de question à propos de somme d&rsquo;éléments contigus.</p>
+<p>On peut très simplement expliquer son principe grâce à la géométrie et aux intervalles :</p>
+<p><img alt="Explication géométrique du tableau cumulatif" src="//static.napnac.ga/img/algo/structure/tableau_cumulatif/explication_geo.png" /></p>
+<p>La partie verte dans le premier rectangle représente la question posée, et on voit qu&rsquo;on peut retrouver exactement la même partie en utilisant deux sous parties du rectangle commençant toutes les deux au même endroit. L&rsquo;avantage de pouvoir décomposer n&rsquo;importe quelle sous partie du rectangle en deux autres ayant un début commun, est qu&rsquo;on réduit alors le nombre de possibilités de sous parties. En effet, avec un début et une fin variables le nombre d&rsquo;intervalles possibles est d&rsquo;environ $N^2$ (avec $N$ le nombre d&rsquo;éléments du rectangle), alors qu&rsquo;avec un début d&rsquo;intervalle fixe et uniquement une fin variable on arrive à $N$ possibilités de sous parties.</p>
+<p>Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un début fixe et une fin variable, afin de pouvoir connaitre rapidement n&rsquo;importe quelle sous partie de notre tableau d&rsquo;éléments.</p>
+<p><img alt="Intervalles nécessaires pour répondre à toutes les questions" src="//static.napnac.ga/img/algo/structure/tableau_cumulatif/representation_inter.png" /></p>
+<h2>Exemple</h2>
+<p>Afin de parfaitement comprendre l&rsquo;utilisation d&rsquo;un tableau cumulatif, prenons l&rsquo;exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
+<p><em>1ère étape</em> : créer notre tableau cumulatif</p>
+<p>A partir de la suite de nombres, on va créer un tableau cumulatif qui contiendra tous nos intervalles nécessaires, c&rsquo;est-à-dire dans la première case l&rsquo;élément 1, dans la deuxième case l&rsquo;élément 1 + 2, dans la troisième case l&rsquo;élément 1 + 2 + 3, etc.</p>
+<table>
+<thead>
+<tr>
+<th>Tableau cumulatif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>26</td>
+</tr>
+<tr>
+<td>26, 68</td>
+</tr>
+<tr>
+<td>26, 68, 69</td>
+</tr>
+<tr>
+<td>26, 68, 69, 158</td>
+</tr>
+<tr>
+<td>26, 68, 69, 158, 161</td>
+</tr>
+<tr>
+<td>26, 68, 69, 158, 161, 168</td>
+</tr>
+</tbody>
+</table>
+<p><em>2ème étape</em> : répondre aux questions grâce au tableau cumulatif</p>
+<p>On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l&rsquo;on va utiliser pour répondre à des questions du type quelle est la somme des éléments du tableau original entre deux indices $i$ et $j$ donnés. Il faut juste faire attention à une chose, c&rsquo;est d&rsquo;utiliser comme indice de début d&rsquo;intervalle $i - 1$ et non $i$ car sinon notre premier élément ne sera pas inclus.</p>
+<hr />
+<p>Début ($i$)     Fin ($j$)       Tableau                             Tableau cumulatif                            Réponse
+-------------- --------------    ----------------------------------- -------------------------------------------  ------------------------------------------------------------------
+      3              6           26, 42, <strong>1</strong>, <strong>89</strong>, <strong>3</strong>, <strong>7</strong> 26, <strong>68</strong>, 69, 158, 161, <strong>168</strong>            On soustrait l&rsquo;élément $j$ (6ème) et l&rsquo;élément $i - 1$ (2ème) soit 
+                                                                                                                  168 - 68 = 100 (or 1 + 89 + 3 + 7 = 100) </p>
+<pre><code>  1              4           **26**, **42**, **1**, **89**, 3, 7 26, 68, 69, **158**, 161, 168                Ici l'indice 0 correspond à un résultat de 0, on a donc 158 - 0 =
+                                                                                                              158 (or 26 + 42 + 1 + 89 = 158)
+
+  4              5           26, 42, 1, **89**, **3**, 7         26, 68, **69**, 158, **161**, 168            161 - 69 = 92 (or 89 + 3 = 92)
+
+  1              6           **26**, **42**, **1**, **89**, **3  26, 68, 69, 158, 161, **168**                168 - 0 = 168 (or 26 + 42 + 1 + 89 + 3 + 7 = 168)
+                             **, **7**
+</code></pre>
+<hr />
+<h2>Complexité</h2>
+<p>Si l&rsquo;on reprend notre énoncé dans l&rsquo;introduction, on nous donne un tableau de taille $N$, et $M$ questions du type : Quelle est la somme des éléments de $i$ à $j$ dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en $O(N \times M)$ (lorsqu&rsquo;on parcourt à chaque fois le tableau en entier, soit quand $i = 0$ et $j = N$ pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en $O(N + M)$ car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d&rsquo;accéder au tableau cumulatif (donc opération en $O(1)$).</p>
+<h2>Implémentation</h2>
+<p>Une implémentation en C d&rsquo;un tableau cumulatif et de son utilisation :</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int cumulatif[TAILLE_MAX];
+int nbElement;
+
+void initTab(void)
+{
+   int iEle;
+
+   scanf(&quot;%d\n&quot;, &amp;nbElement);
+   for(iEle = 0; iEle &lt; nbElement; ++iEle)
+      scanf(&quot;%d &quot;, &amp;tableau[iEle]);
+}
+
+void initCumulatif(void)
+{
+   int iEle;
+   int dernier;
+
+   dernier = 0;
+   for(iEle = 0; iEle &lt; nbElement; ++iEle) {
+      cumulatif[iEle] = tableau[iEle] + dernier;
+      dernier = cumulatif[iEle];
+   }
+}
+
+int somme(int debut, int fin)
+{
+   if(debut == 0)
+      return cumulatif[fin];
+   else
+      return cumulatif[fin] - cumulatif[debut - 1];
+}
+
+int main(void)
+{
+   initTab();
+   initCumulatif();
+
+   printf(&quot;%d\n&quot;, somme(2, 5));
+   printf(&quot;%d\n&quot;, somme(0, 3));
+   printf(&quot;%d\n&quot;, somme(3, 4));
+   printf(&quot;%d\n&quot;, somme(0, 5));
+
+   return 0;
+}
+</code></pre>
+
+<p>L&rsquo;entrée :</p>
+<pre><code class="nohighlight">6
+26 42 1 89 3 7
+</code></pre>
+
+<p>La sortie :</p>
+<pre><code class="nohighlight">100
+158
+92
+168
+</code></pre>
+
+<p>Quelques remarques sur le code :</p>
+<ul>
+<li>Il faut faire attention avec les indices des tableaux qui commencent à 0 en C.</li>
+<li>Pour initialiser le tableau cumulatif, je réutilise les sommes d&rsquo;éléments précédents que j&rsquo;ai déjà calculées pour créer les prochaines afin d&rsquo;avoir une complexité linéaire dans ma fonction <code>initCumulatif</code>.</li>
+<li>Dans la fonction <code>somme</code>, j&rsquo;admets que <code>debut</code> est inférieur à <code>fin</code> et que les indices ne sont pas en dehors du tableau pour simplifier le code.</li>
+</ul>
+<h2>Variantes</h2>
+<h3>Autres opérations que la somme</h3>
+<p>Il est possible de répondre à des questions plus générales que sur la somme d&rsquo;éléments, pour cela il suffit que notre opération possède une opération &ldquo;inverse&rdquo;. Par exemple, l&rsquo;inverse de l&rsquo;addition est la soustraction (c&rsquo;est d&rsquo;ailleurs ce qu&rsquo;on utilise dans notre tableau cumulatif, l&rsquo;addition pour le construire, et la soustraction pour répondre aux questions), et l&rsquo;inverse de la multiplication est la division. Il est donc possible de modifier le comportement de notre tableau cumulatif pour prendre en compte le produit d&rsquo;une suite de nombre, la soustraction d&rsquo;éléments contigus, etc. Le principe reste exactement le même, il suffit juste de changer la manière de construire et de répondre aux questions en fonction de l&rsquo;opération choisie.</p>
+<h3>Tableau cumulatif 2D</h3>
+<p>Le tableau cumulatif ne se limite pas à une seule dimension, on peut l&rsquo;utiliser sur deux dimensions :</p>
+<p><img alt="Exemple de représentation d'un tableau cumulatif 2D" src="//static.napnac.ga/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png" /></p>
+<p>Le principe est toujours le même, mais il faut adapter nos fonctions qui construisent et répondent aux questions, pour qu&rsquo;elles puissent fonctionner sur un tableau cumulatif en deux dimensions. Ici on remarque bien sur notre image que l&rsquo;on cherche à retrouver n&rsquo;importe quelle sous partie du rectangle en ayant un coin fixe (le coin en haut à gauche dans notre cas), pour de nouveau réduire le nombre de possibilités. Ce schéma nous montre comment répondre à une question sur un tableau cumulatif 2D, mais il faut surtout l&rsquo;initialiser correctement afin de pouvoir l&rsquo;utiliser :</p>
+<p><img alt="Initialisation du tableau cumulatif 2D" src="//static.napnac.ga/img/algo/structure/tableau_cumulatif/init_tableau2D.png" /></p>
+<p>Une implémentation d&rsquo;un tableau cumulatif 2D en C :</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+
+#define NB_LIG_MAX 1000
+#define NB_COL_MAX 1000
+
+int tableau[NB_LIG_MAX][NB_COL_MAX];
+int cumulatif[NB_LIG_MAX][NB_COL_MAX];
+int nbLig, nbCol;
+
+void initTab(void)
+{
+   int iLig, iCol;
+
+   scanf(&quot;%d %d\n&quot;, &amp;nbLig, &amp;nbCol);
+   for(iLig = 0; iLig &lt; nbLig; ++iLig) {
+      for(iCol = 0; iCol &lt; nbCol; ++iCol)
+         scanf(&quot;%d &quot;, &amp;tableau[iLig][iCol]);
+      scanf(&quot;\n&quot;);
+   }
+}
+
+void initCumulatif(void)
+{
+   int iLig, iCol;
+
+   for(iLig = 0; iLig &lt; nbLig; ++iLig) {
+      for(iCol = 0; iCol &lt; nbCol; ++iCol) {
+         cumulatif[iLig][iCol] = tableau[iLig][iCol];
+
+         if(iLig - 1 &gt;= 0)
+            cumulatif[iLig][iCol] += cumulatif[iLig - 1][iCol];
+         if(iCol - 1 &gt;= 0)
+            cumulatif[iLig][iCol] += cumulatif[iLig][iCol - 1];
+         if(iLig - 1 &gt;= 0 &amp;&amp; iCol - 1 &gt;= 0)
+            cumulatif[iLig][iCol] -= cumulatif[iLig - 1][iCol - 1];
+      }
+   }
+}
+
+int somme(int lig1, int col1, int lig2, int col2)
+{
+   int resultat;
+
+   resultat = cumulatif[lig2][col2];
+
+   if(col1 - 1 &gt;= 0)
+      resultat -= cumulatif[lig2][col1 - 1];
+   if(lig1 - 1 &gt;= 0)
+      resultat -= cumulatif[lig1 - 1][col2];
+   if(lig1 - 1 &gt;= 0 &amp;&amp; col1 - 1 &gt;= 0)
+      resultat += cumulatif[lig1 - 1][col1 - 1];
+
+   return resultat;
+}
+
+int main(void)
+{
+   initTab();
+   initCumulatif();
+
+   printf(&quot;%d\n&quot;, somme(1, 1, 2, 2));
+   printf(&quot;%d\n&quot;, somme(0, 0, 3, 3));
+   printf(&quot;%d\n&quot;, somme(0, 0, 0, 3));
+   printf(&quot;%d\n&quot;, somme(3, 1, 3, 3));
+
+   return 0;
+}
+</code></pre>
+
+<p>L&rsquo;entrée : </p>
+<pre><code class="nohighlight">4 4
+4 6 8 9
+1 8 5 9
+7 2 3 3
+6 1 4 7
+</code></pre>
+
+<p>On obtient en sortie :</p>
+<pre><code class="nohighlight">18
+83
+27
+12
+</code></pre>
+
+<p>Le tableau cumulatif 2D ressemble à cela pour l&rsquo;entrée :</p>
+<pre><code class="nohighlight">4 10 18 27
+5 19 32 50
+12 28 44 65
+18 35 55 83
+</code></pre>
+
+<p>Le code suit exactement les deux schémas pour l&rsquo;initialisation et pour l&rsquo;utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en $O(N^2)$ pour l&rsquo;initialisation et $O(M)$ pour la réponse, contre une complexité pour la réponse de $O(N^2 \times M)$ pour l&rsquo;algorithme naïf.</p>
+<h3>Tableau cumulatif à N dimensions ?</h3>
+<p>Nous avons vu qu&rsquo;il était possible de créer un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur $N$ dimensions ? Techniquement, cela est possible, mais la représentation de $N$ dimensions risque d&rsquo;être très complexe et il sera alors difficile de visualiser le comportement de notre tableau cumulatif (initialisation et accès pour répondre aux questions). De plus, il est assez rare d&rsquo;avoir besoin d&rsquo;un tableau cumulatif au-delà de 3 dimensions, vu que nous ne percevons pas la 4ème.</p>
+<h2>Conclusion</h2>
+<p>Le tableau cumulatif est donc une structure de données permettant de connaître la somme d&rsquo;éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l&rsquo;utiliser pour d&rsquo;autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (ou même $N$) dimensions.</p>
+
+
+
+      <footer>
+         <br>
+         <hr>
+         <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
+         <br>
+      </footer>
+
+   </body>
+</html>

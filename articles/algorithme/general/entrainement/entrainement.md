@@ -1,9 +1,7 @@
-Comment et où s'entraîner ?
-===========================
-algo/general
-
-Publié le : 26/12/2015  
-*Modifié le : 29/03/2016*
+Path: algo/general
+Title: Comment et où s'entraîner ?
+Published: 26/12/2015
+Modified: 29/03/2016
 
 L'entraînement est la clé pour maitriser une discipline (*"C'est en forgeant qu'on devient forgeron"*), et en algorithmique cela ne peut être que vrai. Apprendre par la pratique est essentiel dans ce domaine, et de nombreux sites existent contenant des exercices, ainsi que plusieurs concours en ligne accessibles à tous.
 

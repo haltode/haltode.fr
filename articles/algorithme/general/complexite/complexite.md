@@ -1,6 +1,4 @@
-Analyse de la complexité des algorithmes
-========================================
-algo/general
-
-Publié le :  
-*Modifié le :*
+Path: algo/general
+Title: Analyse de la complexité des algorithmes
+Published:
+Modified:

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="/css/default.css">
+
+      <!-- Font/Icon -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext">
+      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+      <!-- Syntax highlighting -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async 
+              src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <title>Arbre - napnac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      
+
+<a href=""><h1>Arbre</h1></a>
+
+<p>Publié le : 29/11/2015</p>
+<p>Modifié le : 01/12/2015</p>
+
+<h2>Introduction</h2>
+<p>Une famille de lapin, dont le père s&rsquo;appelle Bob et la mère Alice, ont des enfants, qui a leurs tours auront des enfants, qui se marieront et auront aussi des enfants. Comment organiser cette famille afin de visualiser qui est marié avec qui, qui sont les parents, qui sont les enfants, combien un couple a-t-il d&rsquo;enfants, etc. ? Vous connaissez sans doute déjà la réponse, dans notre cas on utilisera un <a href="https://en.wikipedia.org/wiki/Family_tree">arbre généalogique</a>, vous en avez forcément déjà vu et/ou construit, et cette structure devrait vous être familière.</p>
+<p>Mais je vais vous présenter une structure de données plus large que l&rsquo;arbre généalogique, qui permet de répondre à de nombreux autres problèmes et qui possède beaucoup de variantes : l&rsquo;arbre.</p>
+<h2>Principe d&rsquo;un arbre</h2>
+<p>Un arbre (<em>tree</em> en anglais) est une structure de données permettant de représenter une hiérarchie. Chaque élément d&rsquo;un arbre est appelé un <strong>nœud</strong>, et ils peuvent être reliés par des <strong>arêtes</strong> à plusieurs nœuds enfants qu&rsquo;on appelle <strong>fils</strong> (le nœud parent est appelé <strong>père</strong>, et le premier nœud de l&rsquo;arbre est la <strong>racine</strong>, c&rsquo;est le seul élément ne possédant pas de père). Si le nœud ne possède aucun fils, on parle alors de <strong>feuille</strong>.</p>
+<p><img alt="Exemple d'arbre" src="//static.napnac.ga/img/algo/structure/arbre/exemple_arbre.png" /></p>
+<p>La <strong>profondeur</strong> d&rsquo;un nœud est le nombre de nœuds le séparant de la racine, et la <strong>hauteur</strong> d&rsquo;un arbre est simplement la profondeur maximale de ses nœuds.</p>
+<p>Finalement, un arbre peut être vu comme un <a href="/algo/structure/graphe.html">graphe</a> particulier (c&rsquo;est-à-dire orienté, acyclique et avec comme contrainte que chaque nœud ne possède pas plus d&rsquo;un père).</p>
+<h2>Implémentation</h2>
+<p>Comme nous avons vu qu&rsquo;un arbre est un graphe particulier, on peut donc l&rsquo;implémenter de la même façon, je vous invite donc à lire la partie <a href="/algo/structure/graphe.html#implémentation">Implémentation</a> de mon article sur les graphes pour voir et comprendre les différentes possibilités (matrice d&rsquo;adjacence, liste d&rsquo;adjacence et liste d&rsquo;arcs).</p>
+<h2>Parcourir un arbre</h2>
+<p>De même, parcourir un arbre revient à parcourir un graphe, on peut donc utiliser les deux algorithmes de parcours de graphe :</p>
+<ul>
+<li><a href="/algo/structure/graphe/parcours.html#le-parcours-en-profondeur">Parcours en profondeur</a> : DFS (<em>Depth First Search</em>)</li>
+<li><a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">Parcours en largeur</a> : BFS (<em>Breadth First Search</em>)</li>
+</ul>
+<h2>Variantes</h2>
+<p>Un arbre possède énormément de variantes, qui elles même possèdent des sous variantes, c&rsquo;est ce qui rend cette structure de données si importante à connaître et à maitriser :</p>
+<ul>
+<li><a href="/algo/structure/arbre/arbre_binaire.html">Arbre binaire</a> : aucun nœud ne peut avoir plus de deux fils (d&rsquo;où son nom d&rsquo;arbre <strong>binaire</strong>), ceci est la base de beaucoup d&rsquo;autres variantes possédant des applications en termes de recherche, de tri, de stockage, etc.</li>
+<li><a href="/algo/structure/arbre/tas.html">Tas</a> : un arbre organisé selon différentes règles afin d&rsquo;être soit maximal, soit minimal, utile pour chercher le plus grand/plus petit élément dans un tableau rapidement. </li>
+<li><a href="/algo/structure/arbre/arbre_recherche.html">Arbre de recherche</a> : un arbre facilitant la recherche d&rsquo;éléments, ce dernier possède plusieurs sous variantes plus ou moins optimisées en fonction des différents besoins et des données.</li>
+<li><a href="/algo/structure/arbre/trie.html">Trie</a> : un arbre dit <em>préfixe</em>, qui stocke des chaînes de caractères (ou de simple caractère) dans ses nœuds, ce qui est pratique pour implémenter un dictionnaire de mots, ou pour faire un tri lexicographique. </li>
+</ul>
+<h2>Conclusion</h2>
+<p>L&rsquo;arbre est donc une structure de données élémentaire (que l&rsquo;on peut considérer comme un graphe avec des propriétés spécifiques), s&rsquo;appliquant dans plusieurs domaines et permettant d&rsquo;implémenter une hiérarchie :</p>
+<ul>
+<li>Votre système de fichier doit sans doute utiliser un arbre pour représenter les dossiers, les sous dossiers et les fichiers de votre disque dur. Sous <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> par exemple, la racine de votre ordinateur est <code>/</code>, et vous pouvez accéder à vos fichiers en indiquant la liste de dossiers à suivre en partant de la racine <code>/home/utilisateur/Documents/.../fichier</code>.</li>
+<li>Pour rechercher des éléments, un arbre peut être une structure très intéressante, permettant une recherche en $O(\log _2 N)$, il est d&rsquo;ailleurs la base d&rsquo;algorithmes de tris (comme le <a href="/algo/tri/tri_tas.html">tri par tas</a>).</li>
+<li>Quand vous tapez une phrase et que votre moteur de recherche la complète, il utilise sans doute un arbre (et plus particulièrement un trie), afin de stocker efficacement les différentes possibilités de recherche en fonction de différents critères (nombre de fois recherché, nombre de liens en rapport, etc.).</li>
+<li><a href="https://en.wikipedia.org/wiki/Parsing">Parser</a> une expression peut être compliqué, et un arbre semble parfaitement adapté pour pratiquer une analyse syntaxique sur des expressions (en mathématiques par exemple, pour interpréter une expression non parenthésée et en gérant les cas de priorités d&rsquo;opérations).</li>
+<li>Dans un routeur, une <a href="https://en.wikipedia.org/wiki/Routing_table">table de routage</a> sera utilisée afin de joindre un autre réseau, et cette dernière utilise un arbre pour stocker les informations sans trop utiliser de mémoire (à la manière du dictionnaire, c&rsquo;est-à-dire grâce à des préfixes).</li>
+</ul>
+
+
+
+      <footer>
+         <br>
+         <hr>
+         <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
+         <br>
+      </footer>
+
+   </body>
+</html>

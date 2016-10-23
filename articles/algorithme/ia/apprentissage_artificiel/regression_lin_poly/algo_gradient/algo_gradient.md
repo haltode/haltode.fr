@@ -1,9 +1,7 @@
-Algorithme du gradient
-======================
-algo/ia/apprentissage_artificiel/regression_lin_poly
-
-Publié le : 19/04/2016  
-*Modifié le : 19/04/2016*
+Path: algo/ia/apprentissage_artificiel/regression_lin_poly
+Title: Algorithme du gradient
+Published: 19/04/2016
+Modified: 19/04/2016
 
 ## Introduction
 
@@ -135,18 +133,80 @@ Voici le code en Python pour l'algorithme du gradient :
 
 *J'utilise Python afin d'avoir accès à des librairies scientifiques comme [numpy](http://www.numpy.org/) pour les matrices et [matplotlib](http://matplotlib.org/) pour les graphiques.*
 
-[INSERT]
-algo_gradient.py
+```py
+import numpy as np
+
+
+# x = exemple d'entrée
+# y = exemple de sortie
+# m = nombre d'exemples
+# n = nombre d'attributs
+# theta = coefficients de notre fonction d'hypothese
+
+class regression_lineaire:
+
+    def __init__(self, entree):
+        with open(entree) as f:
+            self.m, self.n = map(int, f.readline().split())
+
+        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=(list(range(self.n))), ndmin=2))
+        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=([self.n]), ndmin=2))
+
+        # Ajoute une colonne de 1 au début de notre matrice x
+        col = np.ones((self.m, 1))
+        self.x = np.matrix(np.hstack((col, self.x)))
+        self.n = self.n + 1
+
+    def algo_gradient(self, alpha, nb_tour_max):
+        # Initialise à 0 les coefficients de la fonction d'hypothese
+        self.theta = np.matrix(np.zeros((self.n, 1)))
+
+        for _ in range(nb_tour_max):
+            # Pour faire la mise à jour instantanée des coefficients :
+            # 1. On calcule d'abord les résultats dans des variables temporaires
+            temp = np.zeros((self.n, 1))
+            for j in range(self.n):
+                somme = 0.0
+                for i in range(self.m):
+                    hypothese = float(self.x[i] * self.theta)
+                    somme = somme + ((hypothese - self.y[i]) * self.x.item((i, j)))
+                temp[j] = self.theta[j] - alpha * (1 / self.m) * somme
+
+            # 2. Puis on copie les résultats dans nos coefficients
+            for j in range(self.n):
+                self.theta[j] = temp[j]
+
+
+ia = regression_lineaire("test01.in")
+ia.algo_gradient(0.01, 400)
+
+print("Coefficients de la fonction d'hypothese :\n")
+for j in range(ia.n):
+    print("theta ", j, " : ", float(ia.theta[j]))
+```
 
 Notre fichier d'entrée contient sur la première ligne le nombre $m$ d'exemples, puis le nombre $n$ d'attributs. Sur les $m$ prochaines lignes, on retrouve une liste de nombre dont la dernière colonne correspond à $y$ et les autres à $x$. J'ai repris notre exemple de l'introduction pour construire le fichier d'entrée (les unités sont toujours en centaine d'opérations et en centaine d'euros) :
 
-[INSERT]
-test01.in
+```nohighlight
+6 1
+1.73 1.94
+4.07 2.87
+5.34 5.01
+7.14 6.74
+9.56 7.71
+12.26 8.6
+```
 
 En sortie on obtient les coefficients $\theta$ de notre fonction d'hypothèse :
 
-[INSERT]
-test01.out
+```nohighlight
+Coefficients de la fonction d'hypothese :
+
+theta  0  :  0.5764647547614207
+theta  1  :  0.7219164912370313
+```
 
 Vu qu'on a uniquement un attribut (la puissance d'un ordinateur), on peut représenter notre fonction d'hypothèse et nos données en entrée sur un graphique 2D :
 
@@ -156,8 +216,24 @@ On obtient bien une généralisation efficace sous forme de fonction linéaire q
 
 Le code utilisé pour réaliser cette sortie :
 
-[INSERT]
-sortie_graphique.py
+```py
+import matplotlib.pyplot as plt
+
+# Récupère dans des listes les valeurs de x, y, et de notre approximation de y
+x = np.array(ia.x[:,1]).tolist()
+x = [float(i[0]) for i in x]
+
+y = np.array(ia.y).tolist()
+y = [float(i[0]) for i in y]
+
+y_approx = np.array(ia.x * ia.theta).tolist()
+y_approx = [float(i[0]) for i in y_approx]
+
+# Affiche les points donnés en entrée, ainsi que notre modèle linéaire
+plt.plot(x, y, '+')
+plt.plot(x, y_approx, 'r-')
+plt.show()
+```
 
 ## Améliorations
 
@@ -212,15 +288,62 @@ self.x = (self.x - np.mean(self.x)) / np.std(self.x)
 
 Notre sortie n'est alors plus la même puisque nos valeurs ont été changées pour être sur une échelle similaire :
 
-[INSERT]
-test01_fs.out
+```nohighlight
+Coefficients de la fonction d'hypothese :
+
+theta  0  :  5.379994218974877
+theta  1  :  2.3208884389927897
+```
 
 ![Sortie graphique après opération de feature scaling](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/sortie_prog_feature_scaling.png)
 
 Le code final avec les deux améliorations :
 
-[INSERT]
-algo_gradient_vect_fs.py
+```py
+import numpy as np
+
+
+# x = exemple d'entrée
+# y = exemple de sortie
+# m = nombre d'exemples
+# n = nombre d'attributs
+# theta = coefficients de notre fonction d'hypothese
+
+class regression_lineaire:
+
+    def __init__(self, entree):
+        with open(entree) as f:
+            self.m, self.n = map(int, f.readline().split())
+
+        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=(list(range(self.n))), ndmin=2))
+        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=([self.n]), ndmin=2))
+
+        # Feature scaling
+        self.x = (self.x - np.mean(self.x)) / np.std(self.x)
+
+        # Ajoute une colonne de 1 au début de notre matrice x
+        col = np.ones((self.m, 1))
+        self.x = np.matrix(np.hstack((col, self.x)))
+        self.n = self.n + 1
+
+    def algo_gradient(self, alpha, nb_tour_max):
+        # Initialise à 0 les coefficients de la fonction d'hypothese
+        self.theta = np.matrix(np.zeros((self.n, 1)))
+
+        for _ in range(nb_tour_max):
+            derivee = np.transpose(self.x) * (self.x * self.theta - self.y)
+            self.theta = self.theta - alpha * (1 / self.m) * derivee
+
+
+ia = regression_lineaire("test01.in")
+ia.algo_gradient(0.01, 400)
+
+print("Coefficients de la fonction d'hypothese :\n")
+for j in range(ia.n):
+    print("theta ", j, " : ", float(ia.theta[j]))
+```
 
 ## Conclusion
 

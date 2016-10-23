@@ -1,9 +1,7 @@
-Algorithme de Dijkstra
-======================
-algo/structure/graphe/plus_court_chemin
-
-Publié le : 22/05/2016  
-*Modifié le : 22/05/2016*
+Path: algo/structure/graphe/plus_court_chemin
+Title: Algorithme de Dijkstra
+Published: 22/05/2016
+Modified: 22/05/2016
 
 ## Principe
 
@@ -86,18 +84,112 @@ Enfin, on peut encore améliorer notre complexité en temps si l'on utilise une 
 
 Une implémentation en C++ (pour avoir [`priority_queue`](http://www.cplusplus.com/reference/queue/priority_queue/)) de cet algorithme (sans les améliorations de complexité proposées dans la dernière partie) :
 
-[INSERT]
-dijkstra.cpp
+```cpp
+#include <cstdio>
+#include <vector>
+#include <queue>
+using namespace std;
+
+struct Noeud
+{
+   int index;
+   int distance;
+
+   bool operator < (const Noeud &autre) const
+   {
+      if(distance < autre.distance)
+         return false;
+      else
+         return true;
+   }
+};
+
+const int NB_NOEUD_MAX = 1000;
+
+vector <Noeud> voisin[NB_NOEUD_MAX];
+bool dejaVu[NB_NOEUD_MAX];
+
+int dijkstra(int depart, int arrivee)
+{
+   priority_queue <Noeud> file;
+   Noeud initial, actuel;
+   int iVoisin;
+
+   initial.index = depart;
+   initial.distance = 0;
+
+   file.push(initial);
+   while(!file.empty()) {
+      actuel = file.top();
+      file.pop();
+
+      if(actuel.index == arrivee)
+         return actuel.distance;
+      if(dejaVu[actuel.index])
+         continue;
+
+      dejaVu[actuel.index] = true;
+      for(iVoisin = 0; iVoisin < voisin[actuel.index].size(); ++iVoisin) {
+         if(!dejaVu[voisin[actuel.index][iVoisin].index]) {
+            Noeud nouveau;
+            nouveau.index = voisin[actuel.index][iVoisin].index;
+            nouveau.distance =   actuel.distance +
+                                 voisin[actuel.index][iVoisin].distance;
+            file.push(nouveau);
+         }
+      }
+   }
+
+   return -1;
+}
+
+int main(void)
+{
+   int depart, arrivee;
+   int nbArc;
+   int iArc;
+
+   scanf("%d %d\n", &depart, &arrivee);
+   scanf("%d\n", &nbArc);
+
+   for(iArc = 0; iArc < nbArc; ++iArc) {
+      int noeud1, noeud2, distance;
+      Noeud nouveau;
+      scanf("%d %d %d\n", &noeud1, &noeud2, &distance);
+      nouveau.distance = distance;
+
+      nouveau.index = noeud2;
+      voisin[noeud1].push_back(nouveau);
+      nouveau.index = noeud1;
+      voisin[noeud2].push_back(nouveau);
+   }
+
+   printf("%d\n", dijkstra(depart, arrivee));
+
+   return 0;
+}
+```
 
 En entrée, pour décrire notre graphe on va d'abord indiquer le nœud de départ et d'arrivée, puis le nombre d'arcs et enfin la liste de ces derniers du style `nœud1 nœud2 poids` (qu'on appelle aussi [liste d'arcs](/algo/structure/graphe.html#liste-darcs)):
 
-[INSERT]
-test01.in
+```nohighlight
+1 6
+8
+1 2 1
+1 3 1
+2 3 3
+2 6 10
+3 4 2
+3 5 4
+4 6 4
+5 6 3
+```
 
 Et le plus court chemin en sortie :
 
-[INSERT]
-test01.out
+```nohighlight
+7
+```
 
 La structure du code est identique à celle du parcours en profondeur, on doit juste utiliser une structure afin de représenter nos nœuds (du graphe, et de notre file) et aussi décrire l'opérateur `<` pour que l'implémentation de la `priority_queue` puisse fonctionner correctement en fonction de la variable `distance` de chacun des nœuds.
 

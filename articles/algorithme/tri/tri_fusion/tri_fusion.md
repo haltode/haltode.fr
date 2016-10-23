@@ -1,9 +1,7 @@
-Tri fusion
-==========
-algo/tri
-
-Publié le : 10/05/2014  
-*Modifié le : 13/12/2015*
+Path: algo/tri
+Title: Tri fusion
+Published: 10/05/2014
+Modified: 13/12/2015
 
 ## Introduction
 
@@ -92,20 +90,93 @@ Les deux appels récursifs sont représentés par une séparation du tableau act
 
 Une implémentation en C du tri fusion :
 
-[INSERT]
-tri_fusion.c
+```c
+#include <stdio.h> 
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+
+void fusion(int debut, int milieu, int fin)
+{
+   int A[milieu - debut + 1];
+   int B[fin - milieu];
+   int iTab, indexA, indexB;
+
+   for(indexA = 0, iTab = debut; iTab <= milieu; ++indexA, ++iTab)
+      A[indexA] = tableau[iTab];
+   for(indexB = 0, iTab = milieu + 1; iTab <= fin; ++indexB, ++iTab)
+      B[indexB] = tableau[iTab];
+
+   indexA = 0;
+   indexB = 0;
+
+   for(iTab = debut; iTab <= fin; ++iTab) {
+      if(indexA == milieu - debut + 1) {
+         tableau[iTab] = B[indexB];
+         ++indexB;
+      }
+      else if(indexB == fin - milieu) {
+         tableau[iTab] = A[indexA];
+         ++indexA;
+      }
+      else if(A[indexA] <= B[indexB]) {
+         tableau[iTab] = A[indexA];
+         ++indexA;
+      }
+      else {
+         tableau[iTab] = B[indexB];
+         ++indexB;
+      }
+   }
+}
+
+void triFusion(int debut, int fin)
+{
+   if(debut != fin) {
+      int milieu = (debut + fin) / 2;
+
+      triFusion(debut, milieu);
+      triFusion(milieu + 1, fin);
+
+      fusion(debut, milieu, fin); 
+   }
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf("%d\n", &taille);
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
+
+   triFusion(0, taille - 1);
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      printf("%d ", tableau[iTab]);
+   printf("\n");
+
+   return 0;
+}
+```
 
 Il faut faire attention dans notre fonction `fusion` à bien vérifier qu'on a encore des éléments dans les tableaux A et B avant de les copier (si on arrive à la fin d'un des deux tableaux, on remplit le reste avec l'autre).
 
 L'entrée du programme :
 
-[INSERT]
-test01.in
+```nohighlight
+6
+5 1 3 8 9 6
+```
 
 Et en sortie, notre tableau trié :
 
-[INSERT]
-test01.out
+```nohighlight
+1 3 5 6 8 9
+```
 
 ## Améliorations et variantes
 

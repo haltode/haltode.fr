@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="/css/default.css">
+
+      <!-- Font/Icon -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&#38;subset=latin,latin-ext">
+      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+      <!-- Syntax highlighting -->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github-gist.min.css">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+
+      <!-- Renders LaTeX expression -->
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript" async 
+              src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+      </script>
+
+      <title>Plus court chemin - napnac</title>
+   </head>
+
+   <body>
+      <header>
+         <a href="/">
+            <img src="/img/logo.png" alt="Logo du site" height="100" width="300">
+         </a>
+      </header>
+
+      <nav>
+         <ul id="main_menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+            <li><a href="/projets.html">Projets</a></li>
+            <li><a href="/a_propos.html">A propos</a></li>
+         </ul>
+      </nav>
+
+      
+
+<a href=""><h1>Plus court chemin</h1></a>
+
+<p>Publié le : 22/05/2016</p>
+<p>Modifié le : 22/05/2016</p>
+
+<h2>Introduction</h2>
+<p>Comment votre GPS peut-il connaître le plus court chemin entre Paris et Grenoble aussi facilement ? De manière générale, on peut se demander comment calculer l&rsquo;itinéraire entre deux points donnés d&rsquo;une carte de telle sorte que la distance soit minimale ? On pourrait aller encore plus loin dans la généralisation, en représentant notre carte comme un <a href="/algo/structure/graphe.html">graphe</a> et en transformant la question en : quel est le plus court chemin entre un nœud A et B dans un graphe pondéré ?</p>
+<p>Il existe différentes manières de répondre à cette question, et la réponse varie souvent en fonction du graphe donné en entrée de notre algorithme (pondéré positivement, négativement, dense, creux, etc.). Savoir reconnaître un problème de plus court chemin est donc important, et utiliser le bon algorithme l&rsquo;est encore plus. Ces algorithmes ne se limitent pas à la création d&rsquo;un simple GPS rudimentaire, mais peuvent aller bien plus loin et servent de base à de nombreuses autres applications.</p>
+<h2>Algorithmes</h2>
+<p>Une liste non exhaustive d&rsquo;algorithmes essentiels permettant de résoudre le problème du plus court chemin :</p>
+<ul>
+<li><a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html"><strong>Dijkstra</strong></a> : un algorithme <strong>glouton</strong> efficace, avec une complexité en temps de $O(M \log _2 M)$ (avec $M$ le nombre d&rsquo;arcs du graphe), mais qui ne fonctionne que sur des graphes pondérés positivement.</li>
+<li><a href="/algo/structure/graphe/plus_court_chemin/bellman_ford.html"><strong>Bellman-Ford</strong></a> : un algorithme <strong>dynamique</strong> applicable sur n&rsquo;importe quel type de pondération d&rsquo;un graphe, mais avec une complexité en temps légèrement plus lente de $O(NM)$ (avec $N$ le nombre de nœuds du graphe).</li>
+<li><strong>Floyd-Warshall</strong> :</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Le problème du plus court chemin est extrêmement commun en algorithmique. On le retrouve dans beaucoup de domaines divers :</p>
+<ul>
+<li><strong>GPS</strong> : comme évoqué en introduction, une carte routière est sans doute l&rsquo;exemple le plus explicite lorsqu&rsquo;on parle de plus court chemin. On souhaite chercher un trajet entre deux villes, et on peut utiliser différents graphes pondérés en fonction du critère de sélection (chemin le plus rapide en temps, chemin le plus court en distance, etc.).</li>
+<li><strong>Jeu</strong> : dans les jeux vidéos, il est très courant de retrouver des graphes pondérés. Que ce soit pour déplacer des unités de manière intelligente en fonction de la carte (on parle alors de <em>pathfinding</em>), ou encore pour prendre des décisions selon différents critères qui peuvent influencer le reste de la partie, un algorithme de plus court chemin est très utile à connaître.</li>
+<li><strong>Internet</strong> : lorsque deux machines communiquent entre elles sur Internet, elles passent obligatoirement par différents serveurs (à moins qu&rsquo;elles soient directement reliées entre elles, mais ce n&rsquo;est pas le cas ici). Il est fondamental de pouvoir choisir le chemin à prendre afin d&rsquo;avoir un délai de communication minimal. On peut alors voir ce problème comme une forme de plus court chemin où les serveurs représenteraient des nœuds du graphe, et les pondérations seraient le délai de communication.</li>
+<li><strong>Transport</strong> : quand on livre un colis, il y a souvent plusieurs moyens de transport à notre disposition. Chacun permet de se rendre d&rsquo;un point A à un point B, coûte une certaine somme d&rsquo;argent et met une durée prédéfinie pour se déplacer. On peut représenter ce problème sous forme d&rsquo;un graphe pondéré, et le but de l&rsquo;entreprise serait de trouver un chemin entre A et B pouvant alterner les formes de transports et minimisant par exemple le temps de trajet (en général, une entreprise cherchera aussi à minimiser le coût de transport).</li>
+<li><strong>Finance</strong> : on a vu les cycles améliorants comme un concept péjoratif, cependant ils sont parfois très utiles comme en finance, où trouver ce genre de cycle peut être avantageux et permet de gagner de l&rsquo;argent facilement. Si l&rsquo;on imagine un graphe pondéré de multiples transactions bancaires (par exemple lorsque vous convertissez des euros en dollars), si on arrive à trouver un cycle améliorant dans ce graphe, cela signifie qu&rsquo;on peut convertir en &ldquo;boucle&rdquo; et gagner encore plus d&rsquo;argent à chaque tour.</li>
+<li><strong>Génétique</strong> : lorsqu&rsquo;on a deux chaînes d&rsquo;ADN sous la forme d&rsquo;une suite de nucléotides comme &ldquo;AGGCTATGGC&rdquo; et &ldquo;ATGCAATGCC&rdquo;, et que l&rsquo;on souhaite trouver le nombre minimum de mutations à appliquer à une chaîne pour se retrouver avec l&rsquo;autre, on peut utiliser un algorithme de plus court chemin. Ce problème n&rsquo;est pas restreint au domaine de la génétique, et il est assez fréquent de vouloir transformer une chaîne en une autre en un minimum d&rsquo;opérations. Le graphe représenterait les différents états de la chaîne, et les arcs pourraient être une opération (avec comme pondération le coût de cette transformation). On peut aussi appliquer cette idée de graphe implicite à des nombres, ou tout autre forme de structure pouvant subir des modifications diverses (ajout, suppression, transformation, etc.).</li>
+</ul>
+<p>Les applications des algorithmes de plus court chemin sont très vastes, et il est fondamental d&rsquo;en comprendre l&rsquo;utilité. Ce problème de plus court chemin dans un graphe introduit aussi de nouveaux énoncés, comme le fameux problème du <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem"><strong>voyageur de commerce</strong></a> qui consiste à trouver un plus court chemin parcourant tous les nœuds d&rsquo;un graphe pondéré une seule fois seulement, en finissant le trajet sur le nœud de départ. Cette question, d&rsquo;apparence assez simpliste, représente en réalité un problème dit <a href="https://en.wikipedia.org/wiki/NP-completeness">NP-complet</a> pour lequel on ne connaît pas de solution en un temps polynomial. Ce n&rsquo;est pas le <a href="https://en.wikipedia.org/wiki/List_of_NP-complete_problems">seul problème dans cette catégorie</a>, et les utilisations connexes du plus court chemin sont loin d&rsquo;être toutes aussi triviales qu&rsquo;on peut l&rsquo;imaginer.</p>
+
+
+
+      <footer>
+         <br>
+         <hr>
+         <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
+         <br>
+      </footer>
+
+   </body>
+</html>

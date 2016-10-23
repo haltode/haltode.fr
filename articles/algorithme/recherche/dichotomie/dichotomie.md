@@ -1,9 +1,7 @@
-Dichotomie
-==========
-algo/recherche
-
-Publié le : 28/06/2014  
-*Modifié le : 14/01/2016*
+Path: algo/recherche
+Title: Dichotomie
+Published: 28/06/2014
+Modified: 14/01/2016
 
 ## Introduction
 
@@ -90,35 +88,127 @@ Dans ces implémentations, je suppose que l'élément appartient bien au tableau
 
 L'implémentation récursive en C de la recherche :
 
-[INSERT]
-dichotomie_recursif.c
+```c
+#include <stdio.h>
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+int recherche;
+
+int dichotomie(int debut, int fin)
+{
+   int milieu;
+   milieu = (debut + fin) / 2;
+
+   if(recherche > tableau[milieu])
+      return dichotomie(milieu + 1, fin);
+   else if(recherche < tableau[milieu])
+      return dichotomie(debut, milieu - 1);
+   else
+      return milieu;
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf("%d\n", &taille);
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
+   scanf("\n");
+
+   scanf("%d\n", &recherche);
+
+   printf("%d\n", dichotomie(0, taille - 1) + 1);
+
+   return 0;
+}
+```
 
 Si on donne notre tableau en entrée, ainsi que l'élément qu'on recherche :
 
-[INSERT]
-test01.in
+```nohighlight
+11
+1 8 15 42 99 160 380 512 678 952 1304
+512
+```
 
 On obtient bien en sortie :
 
-[INSERT]
-test01.out
+```nohighlight
+8
+```
 
 ### Itératif
 
 La version itérative en C :
 
-[INSERT]
-dichotomie_iteratif.c
+```c
+#include <stdio.h>
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+int recherche;
+
+int dichotomie(void)
+{
+   int debut, milieu, fin;
+
+   debut = 0;
+   fin = taille - 1;
+
+   do
+   {
+      milieu = (debut + fin) / 2;
+
+      if(recherche > tableau[milieu])
+         debut = milieu + 1;
+      else if(recherche < tableau[milieu])
+         fin = milieu - 1;
+      else
+         return milieu;
+
+   } while(tableau[milieu] != recherche);
+
+   return -1;
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf("%d\n", &taille);
+
+   for(iTab = 0; iTab < taille; ++iTab)
+      scanf("%d ", &tableau[iTab]);
+   scanf("\n");
+
+   scanf("%d\n", &recherche);
+
+   printf("%d\n", dichotomie() + 1);
+
+   return 0;
+}
+```
 
 Le tableau et l'élément recherché :
 
-[INSERT]
-test01.in
+```nohighlight
+11
+1 8 15 42 99 160 380 512 678 952 1304
+512
+```
 
 Et la sortie obtenue :
 
-[INSERT]
-test01.out
+```nohighlight
+8
+```
 
 ### C/C++
 

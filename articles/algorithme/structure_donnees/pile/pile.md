@@ -1,9 +1,7 @@
-Pile
-====
-algo/structure
-
-Publié le : 08/06/2014  
-*Modifié le : 28/11/2015*
+Path: algo/structure
+Title: Pile
+Published: 08/06/2014
+Modified: 28/11/2015
 
 ## Introduction
 
@@ -100,15 +98,143 @@ Soit $N$ le nombre d'éléments de la pile.
 
 ### Liste chaînée
 
-[INSERT]
-pile_liste_chainee.c
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Noeud Noeud;
+struct Noeud
+{
+   Noeud *suivant;
+   int donnee;
+};
+
+typedef Noeud *Pile;
+
+void creerPile(Pile *pile)
+{
+   *pile = NULL;
+}
+
+void supprimerPile(Pile *pile)
+{
+   Noeud *iPile;
+
+   for(iPile = *pile; iPile != NULL; ) {
+      Noeud *temp;
+
+      temp = iPile->suivant;
+      free(iPile);
+      iPile = temp;
+   }
+}
+
+void empiler(Pile *pile, int donnee)
+{
+   Noeud *nouveau;
+
+   nouveau = malloc(sizeof(Noeud));
+   nouveau->suivant = *pile;
+   nouveau->donnee = donnee;
+
+   *pile = nouveau;
+}
+
+int depiler(Pile *pile)
+{
+   Noeud *temp;
+   int donnee;
+
+   temp = (*pile)->suivant;
+   donnee = (*pile)->donnee;
+   free(*pile);
+   *pile = temp;
+
+   return donnee;
+}
+
+int estVide(Pile *pile)
+{
+   if(*pile == NULL)
+      return 1;
+   else
+      return 0;
+}
+
+int main(void)
+{
+   Pile pile;
+
+   creerPile(&pile);
+
+   empiler(&pile, 42);
+   // 42
+   empiler(&pile, 9);
+   // 9
+   // 42
+
+   int retour = depiler(&pile);
+   // retour = 9
+
+   supprimerPile(&pile);
+
+   return 0;
+}
+```
 
 Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les [listes chaînées](/algo/structure/liste_chainee.html) pour bien comprendre le code.
 
 ### Tableau
 
-[INSERT]
-pile_tableau.c
+```c
+#include <stdio.h>
+
+#define TAILLE_MAX 256
+
+int pile[TAILLE_MAX];
+int PP;
+
+void creerPile(void)
+{
+   PP = 0;
+}
+
+void empiler(int donnee)
+{
+   pile[PP] = donnee;
+   ++PP;
+}
+
+int depiler(void)
+{
+   --PP;
+   return pile[PP];
+}
+
+int estVidePile(void)
+{
+   if(PP == 0)
+      return 1;
+   else
+      return 0;
+}
+
+int main(void)
+{
+   creerPile();
+
+   empiler(42);
+   // 42
+   empiler(9);
+   // 9
+   // 42
+
+   int retour = depiler();
+   // retour = 9
+
+   return 0;
+}
+```
 
 Cette implémentation est facile à comprendre et à utiliser.
 

@@ -1,9 +1,7 @@
-Equation normale
-================
-algo/ia/apprentissage_artificiel/regression_lin_poly
-
-Publié le : 20/04/2016  
-*Modifié le : 20/04/2016*
+Path: algo/ia/apprentissage_artificiel/regression_lin_poly
+Title: Equation normale
+Published: 20/04/2016
+Modified: 20/04/2016
 
 ## Introduction
 
@@ -79,20 +77,67 @@ Il est donc peu envisageable d'implémenter la méthode de l'équation normale l
 
 Le code en Python permettant de calculer les paramètres $\theta$ avec l'équation normale :
 
-[INSERT]
-equation_normale.py
+```py
+import numpy as np
+
+
+# x = exemple d'entrée
+# y = exemple de sortie
+# m = nombre d'exemples
+# n = nombre d'attributs
+# theta = coefficients de notre fonction d'hypothese
+
+class regression_lineaire:
+
+    def __init__(self, entree):
+        with open(entree) as f:
+            self.m, self.n = map(int, f.readline().split())
+
+        self.x = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=(list(range(self.n))), ndmin=2))
+        self.y = np.matrix(np.loadtxt(entree, skiprows=1,
+                            usecols=([self.n]), ndmin=2))
+
+        # Ajoute une colonne de 1 au début de notre matrice x
+        col = np.ones((self.m, 1))
+        self.x = np.matrix(np.hstack((col, self.x)))
+        self.n = self.n + 1
+
+    def equation_normale(self):
+        x_t = np.transpose(self.x)
+        self.theta = (x_t * self.x).I * x_t * self.y
+
+
+ia = regression_lineaire("test01.in")
+ia.equation_normale()
+
+print("Coefficients de la fonction d'hypothese :\n")
+for j in range(ia.n):
+    print("theta ", j, " : ", float(ia.theta[j]))
+```
 
 Afin d'optimiser légèrement le programme, la matrice transposée de $x$ est stockée dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la même opération, même si ce n'est pas l'une des plus couteuses).
 
 En entrée de notre programme, on donne le même fichier que pour l'algorithme du gradient :
 
-[INSERT]
-test01.in
+```nohighlight
+6 1
+1.73 1.94
+4.07 2.87
+5.34 5.01
+7.14 6.74
+9.56 7.71
+12.26 8.6
+```
 
 En sortie en revanche, on obtient des paramètres $\theta$ différents car l'initialisation de $\theta$, le coefficient d'apprentissage, le nombre d'itérations maximum et l'opération de *feature scaling* influent sur le résultat :
 
-[INSERT]
-test01.out
+```nohighlight
+Coefficients de la fonction d'hypothese :
+
+theta  0  :  0.9424111325332967
+theta  1  :  0.678691601117212
+```
 
 Et voici la représentation graphique de notre fonction d'hypothèse trouvée (le code utilisé est le même que celui pour l'algorithme du gradient) :
 

@@ -1,9 +1,7 @@
-Chiffre de Vernam
-=================
-algo/chiffrement
-
-Publié le : 29/05/2014  
-*Modifié le : 20/12/2015*
+Path: algo/chiffrement
+Title: Chiffre de Vernam
+Published: 29/05/2014
+Modified: 20/12/2015
 
 ## Introduction
 
@@ -44,23 +42,124 @@ Pour savoir si on a déjà utilisé une clé, plusieurs solutions s'offrent à n
 
 L'implémentation en C d'un programme générant une clé de chiffrement pour le chiffre de Vernam :
 
-[INSERT]
-generer_cle.c
+```c
+#include <stdio.h>
+#include <ctype.h>
+#include <time.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+#define TAILLE_MAX 1000
+#define NB_CLE_MAX 1000
+
+char message[TAILLE_MAX];
+char cle[TAILLE_MAX];
+
+char utilisee[NB_CLE_MAX][TAILLE_MAX];
+int nbCle;
+
+void initCleUtilisee(void)
+{
+   FILE *fichierCle;
+
+   fichierCle = fopen("cle_utilisee.txt", "r");
+
+   nbCle = 0;
+   while(fscanf(fichierCle, "%s\n", utilisee[nbCle]) != EOF)
+      ++nbCle;
+
+   fclose(fichierCle);
+}
+
+bool estDejaUtilisee(void)
+{
+   int iCle;
+
+   for(iCle = 0; iCle < nbCle; ++iCle)
+      if(strcmp(cle, utilisee[iCle]) == 0)
+         return true;
+
+   return false;
+}
+
+void creerCle(void)
+{
+   int iCle, iLettre;
+
+   do
+   {
+      iCle = 0;
+
+      for(iLettre = 0; message[iLettre] != '\0'; ++iLettre) {
+         if(isalpha(message[iLettre])) {
+            cle[iCle] = (rand() % 26) + 'a';
+            ++iCle;
+         }
+      } 
+
+      cle[iCle] = '\0';
+
+   } while(estDejaUtilisee());
+}
+
+void ajouterCle(void)
+{
+   FILE *fichierCle;
+
+   fichierCle = fopen("cle_utilisee.txt", "a");
+   fprintf(fichierCle, "%s\n", cle);
+   fclose(fichierCle);
+}
+
+int main(void)
+{
+   scanf("%[^\n]s\n", message);
+
+   srand(time(NULL));
+
+   initCleUtilisee();
+   creerCle();
+
+   printf("%s\n", cle);
+   ajouterCle();
+
+   return 0;
+}
+```
 
 En entrée :
 
-[INSERT]
-test01.in
+```nohighlight
+Algorithme
+```
 
 La sortie que j'ai obtenue (elle change à chaque fois) :
 
-[INSERT]
-test01.out
+```nohighlight
+shrtvsgviw
+```
 
 Le fichier de clés qui ont déjà été générées (et donc inutilisable maintenant) :
 
-[INSERT]
-cle_utilisee.txt
+```nohighlight
+dovcexdoba
+ckdexeiezr
+zmagzxogpx
+unrhlaiurn
+imizbftejl
+ewqeuyhcro
+concvckybe
+oplngklamk
+mwesglgezw
+ervpcfgzqj
+jyivvrlokb
+duunlvvlkt
+amyopgkotw
+wfwwnvpjvn
+qssplvtpkj
+shrtvsgviw
+```
 
 J'utilise une simple recherche (et non une recherche dichotomique) car le nombre de clés que je vais manipuler est assez faible (j'ai fixé une limite virtuelle à 1000 clés).
 
