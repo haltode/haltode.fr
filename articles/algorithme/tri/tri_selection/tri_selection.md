@@ -40,7 +40,7 @@ Prenons désormais comme exemple la suite de nombres suivante : 6, 1, 9, 3. Trio
 
 Ce tri se décompose réellement en deux étapes distinctes :
 
-![Exemple de tri par sélection](//static.napnac.ga/img/algo/tri/tri_selection/exemple_tri.png)
+![Exemple de tri par sélection](/img/algo/tri/tri_selection/exemple_tri.png)
 
 A chaque tour, on cherche le minimum dans l'espace non trié du tableau (le minimum est représenté en bleu, et la partie non triée en blanc), ensuite on déplace cet élément à sa place définitive (représentée en vert). En faisant cela pour chaque élément du tableau, ce dernier se retrouve trié au bout de $N$ tours maximum ($N$ étant la taille du tableau).
 

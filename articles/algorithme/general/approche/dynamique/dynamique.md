@@ -58,11 +58,11 @@ J'utilise le type `unsigned long long` car on risque d'avoir des nombres très g
 
 On remarque que le temps nécessaire au programme afin de calculer le résultat croît **très rapidement**, et cela est dû au fait que notre implémentation a une complexité en temps [**exponentielle**](https://en.wikipedia.org/wiki/Time_complexity#Exponential_time).
 
-![Représentation graphique de la croissance exponentielle](//static.napnac.ga/img/algo/general/approche/dynamique/representation_exp.png)
+![Représentation graphique de la croissance exponentielle](/img/algo/general/approche/dynamique/representation_exp.png)
 
 La lenteur du programme vient donc du nombre d'appels récursifs qui est exponentiel. Prenons l'exemple du calcul du 5ème terme de la suite :
 
-![Appels récursifs effectués pour calculer le 5ème terme](//static.napnac.ga/img/algo/general/approche/dynamique/appels_fib5.png)
+![Appels récursifs effectués pour calculer le 5ème terme](/img/algo/general/approche/dynamique/appels_fib5.png)
 
 Plusieurs appels sont répétés inutilement ici (`f(2)` et `f(3)` notamment), et ce nombre de répétitions ne fait qu'augmenter au fur et à mesure que l'entrée s'agrandit. Cela résulte donc en une implémentation **extrêmement lente**.
 
@@ -120,7 +120,7 @@ On est désormais capable de trouver le résultat sur des entrées bien plus gra
 
 Pour bien comparer, voici l'exemple du calcul du 5ème terme, mais version dynamique :
 
-![Appels récursifs effectués pour calculer le 5ème terme de manière dynamique](//static.napnac.ga/img/algo/general/approche/dynamique/appels_fib5_dynamique.png)
+![Appels récursifs effectués pour calculer le 5ème terme de manière dynamique](/img/algo/general/approche/dynamique/appels_fib5_dynamique.png)
 
 On calcule uniquement ce dont on a besoin une fois, et on le réutilise ensuite (les nœuds bleus représentent les nœuds déjà calculés pour lesquels on connaît directement le résultat).
 
@@ -130,7 +130,7 @@ La programmation dynamique est un excellent exemple de compromis entre **complex
 
 Cependant, il est parfois possible d'optimiser l'espace mémoire utilisé par notre algorithme dynamique, résultant en un algorithme ayant une complexité en temps et en mémoire extrêmement intéressante. Pour cela, il va falloir changer notre manière de programmer notre algorithme dynamique. L'approche **récursive** qu'on avait précédemment utilisée était dite **descendante** dans le sens où on divise notre gros problème en sous-problème jusqu'à arriver à un problème de base à résoudre. Une autre manière de voir le problème est de façon **itérative** en partant d'un problème simple pour le complexifier au fur et à mesure qu'on avance, c'est une méthode dite **ascendante**. Et dans notre cas, cette dernière peut nous offrir des avantages énormes en mémoire car en rendant notre problème de plus en plus compliqué (jusqu'à arriver au problème initial), on peut se débarrasser des problèmes très simples et garder uniquement ceux nécessaire à la construction du plus gros problème. Il est impossible de faire ça avec l'approche descendante, car cette méthode a besoin à tout instant des sous-problèmes pour décomposer le problème initial puis pour le résoudre.
 
-![Comparaison des deux méthodes](//static.napnac.ga/img/algo/general/approche/dynamique/comparaison_methodes.png)
+![Comparaison des deux méthodes](/img/algo/general/approche/dynamique/comparaison_methodes.png)
 
 J'ai représenté deux tableaux en 2D fictifs représentant le stockage des calculs pour notre algorithme dynamique. A gauche, la méthode descendante, qui dépend donc de tous les éléments précédents pour former le résultat final. Et à droite, la méthode ascendante, qui elle ne dépend pas toujours de tous les résultats précédents (ici le résultat nécessite uniquement les deux derniers), on peut donc économiser une bonne partie du tableau qui n'est plus utile de garder.
 

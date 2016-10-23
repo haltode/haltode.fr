@@ -18,15 +18,15 @@ Une pile (*stack* en anglais) est une structure de données de type **LIFO** (**
 
 C’est le principe LIFO, lorsqu’on ajoute un élément sur une pile il est en haut, et lorsqu’on retire un élément on prend le dernier ajouté (celui tout en haut).
 
-![Exemple de représentation d'une pile](//static.napnac.ga/img/algo/structure/pile/exemple_pile.png)
+![Exemple de représentation d'une pile](/img/algo/structure/pile/exemple_pile.png)
 
 L’action d’ajouter un élément dans la pile est appelée : **empiler** (ou *push* en anglais) :
 
-![Un nouvel élément est empilé](//static.napnac.ga/img/algo/structure/pile/exemple_ajout.png)
+![Un nouvel élément est empilé](/img/algo/structure/pile/exemple_ajout.png)
 
 L’action d’enlever un élément de la pile est appelée : **dépiler** (ou *pop* en anglais) :
 
-![Un élément est dépilé](//static.napnac.ga/img/algo/structure/pile/exemple_suppression.png)
+![Un élément est dépilé](/img/algo/structure/pile/exemple_suppression.png)
 
 Pour représenter une pile, je vais vous présenter deux moyens :
 

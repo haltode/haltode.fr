@@ -59,24 +59,24 @@
 <p>Notre but est de chercher une fonction d&rsquo;hypothèse efficace, et ceci revient à trouver les coefficients $\theta$ de $h_{\theta}$ qui minimisent la fonction d&rsquo;erreur $J$. Pour rappel, notre fonction d&rsquo;erreur ressemble à cela :</p>
 <p>$J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$</p>
 <p>Et si on reprend l&rsquo;exemple du prix de l&rsquo;ordinateur, et qu&rsquo;on affiche $J$ en fonction de $\theta_0$ et $\theta_1$, on obtenait ce graphique en trois dimensions :</p>
-<p><img alt="Représentation graphique de la fonction d'erreur" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /></p>
+<p><img alt="Représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /></p>
 <p>On va donc appliquer notre algorithme du gradient (<em>gradient descent</em> en anglais) afin de résoudre notre problème de minimisation.</p>
 <h2>Principe</h2>
 <p>L&rsquo;idée de l&rsquo;algorithme est de commencer avec des paramètres initiaux $\theta$ (en général on utilise 0), puis d&rsquo;adapter ces derniers avec le résultat obtenu par notre fonction d&rsquo;erreur, afin de minimiser $J$ et arriver à un <strong>minimum local</strong>. Il est possible que ce minimum local, soit le <strong>minimum global</strong> de notre fonction d&rsquo;erreur, mais l&rsquo;algorithme ne le garantit pas car le résultat dépendra de l&rsquo;initialisation des coefficients $\theta$.</p>
 <p>Il est plus difficile de visualiser l&rsquo;idée de l&rsquo;algorithme sur notre précédent graphique en 3D, alors on va utiliser un graphique 2D spécial qui trace les contours (on appelle cela un <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm"><em>contour plot</em></a> en anglais) :</p>
-<p><img alt="Contour plot de notre graphique" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/contour_plot.png" /></p>
+<p><img alt="Contour plot de notre graphique" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/contour_plot.png" /></p>
 <p>Les contours représentent $J$ en fonction de nos deux coefficients $\theta_{0}$ et $\theta_{1}$. La croix rouge correspond au minimum de la fonction d&rsquo;erreur, et c&rsquo;est le point qu&rsquo;on cherche à atteindre.</p>
 <p>L&rsquo;algorithme du gradient va procéder ainsi :</p>
-<p><img alt="Exemple du fonctionnement de l'algorithme du gradient" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_algo_gradient.png" /></p>
+<p><img alt="Exemple du fonctionnement de l'algorithme du gradient" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_algo_gradient.png" /></p>
 <p>On part d&rsquo;un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l&rsquo;algorithme réalise-t-il ces pas ? Comment est-ce qu&rsquo;il décide de l&rsquo;amplitude, ou encore de la direction à emprunter ?</p>
 <p>Pour comprendre l&rsquo;algorithme, on peut imaginer que ce dernier utilise la &ldquo;pente&rdquo; de la représentation de la fonction pour décider du prochain point à explorer. Par exemple sur notre graphique en 3D, il suffit d&rsquo;imaginer une boule qu&rsquo;on place sur la figure et qui va rouler jusqu&rsquo;à arriver dans un creux ou une surface assez plane. Mathématiquement parlant, la décision du prochain point à parcourir se fera grâce à la <a href="https://en.wikipedia.org/wiki/Partial_derivative"><strong>dérivée partielle</strong></a> de la fonction $J$ au point actuel de notre algorithme.</p>
 <p>Simplifions notre problème avec un exemple de fonction $J$ prenant uniquement un paramètre $\theta_{0}$ :</p>
-<p><img alt="Exemple simplifié de l'algorithme du gradient" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie.png" /></p>
+<p><img alt="Exemple simplifié de l'algorithme du gradient" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie.png" /></p>
 <p>On initialise l&rsquo;algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée partielle de la fonction $J$ en ce point :</p>
-<p><img alt="Initialisation" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_init.png" /></p>
+<p><img alt="Initialisation" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_init.png" /></p>
 <p>La dérivée partielle est la droite en bleue, et on remarque que le coefficient directeur de la tangente est <strong>négatif</strong> et <strong>important</strong>, notre algorithme va donc <strong>augmenter</strong> $\theta_{0}$ de manière <strong>importante</strong>.</p>
 <p>On peut continuer ainsi jusqu&rsquo;à tomber sur le minimum de notre fonction :</p>
-<p><img alt="Reste de l'algorithme" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_reste.png" /></p>
+<p><img alt="Reste de l'algorithme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_reste.png" /></p>
 <p>Même si on a vu que notre algorithme ne trouvera pas toujours le minimum global de la fonction, un minimum local est toujours intéressant, et sur des problèmes très complexes cela sera beaucoup plus efficace à utiliser qu&rsquo;une approximation faite à la main.</p>
 <h2>Pseudo-code</h2>
 <p>Maintenant qu&rsquo;on a vu le principe, il faut le décrire de manière concrète et mathématique.</p>
@@ -113,12 +113,12 @@ Tant qu'on n'a pas dépassé la limite de tours
 </ul>
 <h2>Coefficient d&rsquo;apprentissage</h2>
 <p>Il est primordial de bien choisir le coefficient d&rsquo;apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement (en anglais on utilise le terme d&rsquo;<em>overshoot</em>), et ceci peut l&rsquo;amener à faire de mauvais choix comme :</p>
-<p><img alt="Exemple de conséquence d'un coefficient d'apprentissage élevé" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_eleve.png" /></p>
+<p><img alt="Exemple de conséquence d'un coefficient d'apprentissage élevé" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_eleve.png" /></p>
 <p>L&rsquo;algorithme risque alors de ne pas converger, voire de <strong>diverger</strong>. </p>
 <p>A l&rsquo;inverse, une vitesse d&rsquo;apprentissage trop faible rendra notre algorithme terriblement lent :</p>
-<p><img alt="Exemple de conséquence d'un coefficient d'apprentissage faible" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_faible.png" /></p>
+<p><img alt="Exemple de conséquence d'un coefficient d'apprentissage faible" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_faible.png" /></p>
 <p>Pour choisir une valeur adaptée à notre problème, il faut en essayer différentes (0.001, 0.01, 0.1, 1, 10, etc.) tout en créant un graphique représentant l&rsquo;évolution de notre minimisation de $J$ en fonction du nombre d&rsquo;itérations de l&rsquo;algorithme. Si vous avez bien choisi le coefficient, vous devriez voir un graphique semblable à ceci :</p>
-<p><img alt="Exemple de coefficient adapté" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_bon.png" /></p>
+<p><img alt="Exemple de coefficient adapté" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_bon.png" /></p>
 <p>On remarque bien que notre algorithme minimise bien la fonction d&rsquo;erreur au fur et à mesure qu&rsquo;il itère, ce qui signifie que notre vitesse d&rsquo;apprentissage est adaptée à notre problème.</p>
 <h2>Implémentation</h2>
 <p>Voici le code en Python pour l&rsquo;algorithme du gradient :</p>
@@ -194,7 +194,7 @@ theta  1  :  0.7219164912370313
 </code></pre>
 
 <p>Vu qu&rsquo;on a uniquement un attribut (la puissance d&rsquo;un ordinateur), on peut représenter notre fonction d&rsquo;hypothèse et nos données en entrée sur un graphique 2D :</p>
-<p><img alt="Sortie graphique du programme" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/sortie_prog_algo_gradient.png" /></p>
+<p><img alt="Sortie graphique du programme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/sortie_prog_algo_gradient.png" /></p>
 <p>On obtient bien une généralisation efficace sous forme de fonction linéaire qui ressemble fortement à celle qu&rsquo;un humain peut faire à la main (même si celle que l&rsquo;ordinateur a calculé est plus précise que celle faite à la main).</p>
 <p>Le code utilisé pour réaliser cette sortie :</p>
 <pre><code class="py">import matplotlib.pyplot as plt
@@ -234,9 +234,9 @@ plt.show()
 <p>Le code est beaucoup plus concis de cette manière, ce qui rend sa lecture plus facile et agréable.</p>
 <h3><em>Feature scaling</em></h3>
 <p>Dans le cas de généralisation d&rsquo;un problème avec plusieurs attributs, il est possible que l&rsquo;échelle de valeurs possibles soit très différente d&rsquo;un attribut à un autre. Par exemple, dans l&rsquo;estimation du prix d&rsquo;un ordinateur, le nombre d&rsquo;opérations que l&rsquo;ordinateur effectue à la seconde représente un nombre bien plus important que le nombre de ventilateurs à l&rsquo;intérieur de la machine. Si on affiche un <em>contour plot</em> dans cette situation, on verrait ce phénomène :</p>
-<p><img alt="Echelles différentes au sein des attributs" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_differentes.png" /></p>
+<p><img alt="Echelles différentes au sein des attributs" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_differentes.png" /></p>
 <p>Le problème ici est que notre algorithme du gradient va mettre beaucoup plus de temps à converger vers un minimum, car on a de longs et fins contours. A l&rsquo;inverse, si on arrive à rendre les échelles similaires, on aurait plutôt un graphique qui ressemble à cela :</p>
-<p><img alt="Echelles similaires" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_similaires.png" /></p>
+<p><img alt="Echelles similaires" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_similaires.png" /></p>
 <p>Notre algorithme va alors converger bien plus rapidement.</p>
 <p>Pour réaliser cette opération dite de <a href="https://en.wikipedia.org/wiki/Feature_scaling"><em>feature scaling</em></a> en anglais, on utilise une méthode de <a href="https://en.wikipedia.org/wiki/Feature_scaling#Standardization">standardisation</a> (aussi appelée <em>mean normalization</em> dans notre cas). Le but est d&rsquo;avoir toutes nos valeurs de $x$, tel qu&rsquo;on a approximativement $-1 \leq x \leq 1$. On va donc modifier chaque valeur $i$ de $x$ :</p>
 <p>$x_i = \frac{x_i - \bar{x_i}}{\sigma_i}$</p>
@@ -253,7 +253,7 @@ theta  0  :  5.379994218974877
 theta  1  :  2.3208884389927897
 </code></pre>
 
-<p><img alt="Sortie graphique après opération de feature scaling" src="//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/sortie_prog_feature_scaling.png" /></p>
+<p><img alt="Sortie graphique après opération de feature scaling" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/sortie_prog_feature_scaling.png" /></p>
 <p>Le code final avec les deux améliorations :</p>
 <pre><code class="py">import numpy as np
 

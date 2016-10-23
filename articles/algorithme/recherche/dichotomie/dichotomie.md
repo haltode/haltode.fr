@@ -37,7 +37,7 @@ Prenons un tableau trié : 1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304. Nous
 
 Pour résumé le principe :
 
-![Exemple de dichotomie](//static.napnac.ga/img/algo/recherche/dichotomie/exemple_dichotomie.png)
+![Exemple de dichotomie](/img/algo/recherche/dichotomie/exemple_dichotomie.png)
 
 L'élément en bleu est celui du milieu que l'on compare, et ensuite on choisit la bonne portion du tableau (en vert) en fonction de cette comparaison pour couper notre intervalle en deux à chaque tour.
 
@@ -74,7 +74,7 @@ dichotomie (début, fin) :
 
 Pour calculer la complexité en temps de la recherche dichotomique, on peut visualiser la décomposition des intervalles grâce à un [arbre](/algo/structure/arbre.html) :
 
-![Calcul de la complexité](//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png)
+![Calcul de la complexité](/img/algo/recherche/dichotomie/calcul_complexite.png)
 
 Chaque opération possible est représentée dans notre arbre, c'est-à-dire qu'à chaque tour on coupe notre tableau (qu'on note $n$) en deux. On voit qu'on arrive à une profondeur maximale de l'arbre en $\log _2 N$ avec $N$ la taille de notre tableau (pour en savoir plus sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)), la complexité de la recherche dichotomique est donc dans le pire des cas en $O(\log _2 N)$.
 

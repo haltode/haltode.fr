@@ -55,14 +55,14 @@
 <p>Le chiffre de Vigenère est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement symétrique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphabétique</a> pour chiffrer et déchiffrer le message secret. Ceci signifie que la clé de chiffrement est une chaîne de caractères, et c&rsquo;est là-dessus que repose la sécurité de l&rsquo;algorithme, car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).</p>
 <h2>Exemple</h2>
 <p>Prenons comme message secret le mot &ldquo;Programmation&rdquo;, et comme clé de chiffrement &ldquo;Linux&rdquo;. La première étape à faire est de rendre notre clé aussi longue que notre message à chiffrer, pour cela, on répète simplement autant de fois la clé que nécessaire :</p>
-<p><img alt="Visualisation de la clé de chiffrement complète" src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png" /></p>
+<p><img alt="Visualisation de la clé de chiffrement complète" src="/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png" /></p>
 <p>Désormais on peut chiffrer chaque lettre de notre message :</p>
-<p><img alt="Exemple de chiffrement" src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png" /></p>
+<p><img alt="Exemple de chiffrement" src="/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png" /></p>
 <p>Le rang dans l&rsquo;alphabet commence à 0 (et non 1) car $26 \mod 26 = 0$, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l&rsquo;additionne à la lettre correspondante de la clé. On n&rsquo;oublie pas d&rsquo;appliquer notre <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour revenir au début de l&rsquo;alphabet si on dépasse Z.</p>
 <p>Pour le déchiffrement, l&rsquo;idée est la même sauf qu&rsquo;on soustrait au lieu d&rsquo;ajouter le rang de la lettre de la clé :</p>
-<p><img alt="Exemple de déchiffrement" src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png" /></p>
+<p><img alt="Exemple de déchiffrement" src="/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png" /></p>
 <p>On peut utiliser cette méthode mais de manière plus visuelle afin de chiffrer et déchiffrer nos messages :</p>
-<p><img alt="Table de Vigenère" src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png" /></p>
+<p><img alt="Table de Vigenère" src="/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png" /></p>
 <p>La <strong>table de Vigenère</strong> consiste à énumérer toutes les possibilités de décalage lors du chiffrement et du déchiffrement. Les lettres du message clair sont représentées par les colonnes, tandis que celles de la clé sont représentées par les lignes. Pour chiffrer une lettre, on regarde l&rsquo;intersection de la colonne correspondante à la lettre du message clair, et de la ligne correspondante à lettre de la clé. Pour déchiffrer une lettre, on regarde sur la ligne correspondante de la clé jusqu&rsquo;à trouver la lettre chiffrée qui se trouvera sur la colonne de la lettre déchiffrée.</p>
 <h2>Pseudo-code</h2>
 <p>Le pseudo-code du chiffre de Vigenère :</p>
@@ -854,9 +854,9 @@ int main(void)
 </code></pre>
 
 <p>La lettre la plus utilisée ici est le P, on peut donc faire une correspondance entre l&rsquo;alphabet normal et l&rsquo;alphabet chiffré, nous permettant de trouver la première lettre de la clé de chiffrement, le L :</p>
-<p><img alt="Exemple de correspondance" src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png" /></p>
+<p><img alt="Exemple de correspondance" src="/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png" /></p>
 <p>Si on applique ce principe à chacune de nos lignes on obtient :</p>
-<p><img alt="Recherche de clé de chiffrement" src="//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png" /></p>
+<p><img alt="Recherche de clé de chiffrement" src="/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png" /></p>
 <p>La clé apparait alors à la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffré. En effet la lettre A représente la lettre 0 de l&rsquo;alphabet et donc la correspondance représente le décalage utilisé (c&rsquo;est-à-dire la clé) pour créer l&rsquo;alphabet chiffré.</p>
 <p>L&rsquo;implémentation en C de l&rsquo;analyse fréquentielle :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;

@@ -141,7 +141,7 @@ theta  1  :  0.678691601117212
 
 Et voici la représentation graphique de notre fonction d'hypothèse trouvée (le code utilisé est le même que celui pour l'algorithme du gradient) :
 
-![Sortie graphique du programme](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale/sortie_prog.png)
+![Sortie graphique du programme](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale/sortie_prog.png)
 
 ## Conclusion
 

@@ -58,11 +58,11 @@
 <li>Le dernier client arrivé sera le dernier servi.</li>
 </ul>
 <p>Voici comment on pourrait représenter une file :</p>
-<p><img alt="Exemple de représentation d'une file" src="//static.napnac.ga/img/algo/structure/file/exemple_file.png" /></p>
+<p><img alt="Exemple de représentation d'une file" src="/img/algo/structure/file/exemple_file.png" /></p>
 <p>L’action d’ajouter un élément dans la file est appelée : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
-<p><img alt="Un nouvel élément est enfilé" src="//static.napnac.ga/img/algo/structure/file/exemple_ajout.png" /></p>
+<p><img alt="Un nouvel élément est enfilé" src="/img/algo/structure/file/exemple_ajout.png" /></p>
 <p>L’action d’enlever un élément de la file est appelée : <strong>défiler</strong> (ou <em>dequeue</em> en anglais) :</p>
-<p><img alt="Un élément est défilé" src="//static.napnac.ga/img/algo/structure/file/exemple_suppression.png" /></p>
+<p><img alt="Un élément est défilé" src="/img/algo/structure/file/exemple_suppression.png" /></p>
 <p>Comme la fin de la file est située &ldquo;à gauche&rdquo;, notre premier élément pointera vers <code>NULL</code> pour indiquer le début de la file (et non la fin comme pour une <a href="/algo/structure/liste_chainee.html">liste chaînée</a>, ou une <a href="/algo/structure/pile.html">pile</a>).</p>
 <p>Pour représenter une file, on peut utiliser une <a href="/algo/structure/liste_chainee.html">liste chaînée</a> car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d&rsquo;opérations que nécessaires). Cependant, on peut encore améliorer l&rsquo;implémentation de notre file, en utilisant une <a href="/algo/structure/liste_chainee.html#liste-doublement-chaînée">liste doublement chaînée</a>. En effet, si l&rsquo;on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu&rsquo;avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.</p>
 <h2>Quelques fonctions pour manipuler une file</h2>

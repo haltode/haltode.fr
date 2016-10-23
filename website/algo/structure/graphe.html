@@ -54,7 +54,7 @@
 <p>Naturellement, on pourrait prendre une carte et tracer des traits entre chaque ville de l&rsquo;itinéraire afin de pouvoir le représenter, mais comment le faire comprendre à un ordinateur pour qu&rsquo;il puisse le manipuler ? Nous avons donc besoin d&rsquo;une structure de données flexible, permettant de visualiser des chemins entre différents points : le graphe.</p>
 <h2>Principe d&rsquo;un graphe</h2>
 <p>On peut définir un graphe comme étant un ensemble de <strong>nœuds</strong> (ou de sommets) étant reliés par des <strong>arcs</strong> (ou des arêtes, des chemins).</p>
-<p><img alt="Exemple de graphe" src="//static.napnac.ga/img/algo/structure/graphe/graphe_exemple.png" /></p>
+<p><img alt="Exemple de graphe" src="/img/algo/structure/graphe/graphe_exemple.png" /></p>
 <p>En anglais, on parle de <em>nodes</em> ou <em>vertices</em> pour les nœuds, et d&rsquo;<em>edges</em> ou <em>arcs</em> pour les arêtes.</p>
 <p>Pour information, si deux nœuds sont reliés par un arc on dit qu&rsquo;ils sont <strong>voisins</strong>. De plus, le <strong>degré entrant</strong> d&rsquo;un nœud correspond au nombre d&rsquo;arcs arrivant sur ce nœud, et il en est de même pour le <strong>degré sortant</strong> correspondant alors au nombre d&rsquo;arcs sortant du nœud.</p>
 <h2>Caractéristiques</h2>
@@ -71,42 +71,42 @@
 <tr>
 <td>Orienté</td>
 <td>Si les arcs ont un sens (représenté par une flèche), le graphe est orienté.</td>
-<td><img alt="Graphe orienté" src="//static.napnac.ga/img/algo/structure/graphe/graphe_oriente.png" /></td>
+<td><img alt="Graphe orienté" src="/img/algo/structure/graphe/graphe_oriente.png" /></td>
 </tr>
 <tr>
 <td>Non orienté</td>
 <td>Dans ce cas, on peut parcourir le graphe dans les deux sens.</td>
-<td><img alt="Graphe non orienté" src="//static.napnac.ga/img/algo/structure/graphe/graphe_non_oriente.png" /></td>
+<td><img alt="Graphe non orienté" src="/img/algo/structure/graphe/graphe_non_oriente.png" /></td>
 </tr>
 <tr>
 <td>Pondéré / non pondéré</td>
 <td>Un graphe est pondéré si ses arcs ont un <strong>poids</strong> (par exemple la distance en km entre deux villes).</td>
-<td><img alt="Graphe pondéré" src="//static.napnac.ga/img/algo/structure/graphe/graphe_pondere.png" /></td>
+<td><img alt="Graphe pondéré" src="/img/algo/structure/graphe/graphe_pondere.png" /></td>
 </tr>
 <tr>
 <td>Cyclique</td>
 <td>Un graphe est cyclique s&rsquo;il contient des chemins finissant là où ils ont commencé (des cycles).</td>
-<td><img alt="Graphe cyclique" src="//static.napnac.ga/img/algo/structure/graphe/graphe_cyclique.png" /></td>
+<td><img alt="Graphe cyclique" src="/img/algo/structure/graphe/graphe_cyclique.png" /></td>
 </tr>
 <tr>
 <td>Acyclique</td>
 <td>Lorsque le graphe ne contient aucun cycle, il est acyclique.</td>
-<td><img alt="Graphe acyclique" src="//static.napnac.ga/img/algo/structure/graphe/graphe_acyclique.png" /></td>
+<td><img alt="Graphe acyclique" src="/img/algo/structure/graphe/graphe_acyclique.png" /></td>
 </tr>
 <tr>
 <td>Dense</td>
 <td>Si le nombre d&rsquo;arcs est proche du nombre maximum d&rsquo;arcs possibles de ce graphe, il est dense.</td>
-<td><img alt="Graphe dense" src="//static.napnac.ga/img/algo/structure/graphe/graphe_dense.png" /></td>
+<td><img alt="Graphe dense" src="/img/algo/structure/graphe/graphe_dense.png" /></td>
 </tr>
 <tr>
 <td>Creux</td>
 <td>Au contraire, si le nombre d&rsquo;arcs est faible par rapport au nombre de nœuds, il est caractérisé de creux.</td>
-<td><img alt="Graphe creux" src="//static.napnac.ga/img/algo/structure/graphe/graphe_creux.png" /></td>
+<td><img alt="Graphe creux" src="/img/algo/structure/graphe/graphe_creux.png" /></td>
 </tr>
 <tr>
 <td>Connexe / non connexe</td>
 <td>Un graphe est dit connexe s&rsquo;il existe un chemin (de un ou plusieurs nœuds) reliant chaque paire de nœuds possible.</td>
-<td><img alt="Graphe connexe" src="//static.napnac.ga/img/algo/structure/graphe/graphe_connexe.png" /></td>
+<td><img alt="Graphe connexe" src="/img/algo/structure/graphe/graphe_connexe.png" /></td>
 </tr>
 </tbody>
 </table>
@@ -115,8 +115,8 @@
 <h3>Matrice d&rsquo;adjacence</h3>
 <p>Une matrice d&rsquo;adjacence est comme son nom l&rsquo;indique un tableau 2D qui permet de représenter des arcs entre deux nœuds. On peut utiliser un tableau 2D de booléen (<code>true</code> = arc, <code>false</code> = pas d&rsquo;arc), ou bien un tableau 2D d&rsquo;entier (ou de flottant) qui permet alors de stocker les pondérations des arcs ($x$ = pondération de l&rsquo;arc, 0 = pas d&rsquo;arc).</p>
 <p>Voici un exemple de matrice d&rsquo;adjacence (j&rsquo;ai utilisé le premier graphe de l&rsquo;article pour construire la matrice) :</p>
-<p><img alt="Exemple de matrice d'adjacence" src="//static.napnac.ga/img/algo/structure/graphe/exemple_matrice_adjacence.png" /></p>
-<p><img alt="Graphe correspondant à la matrice d'adjacence" src="//static.napnac.ga/img/algo/structure/graphe/graphe_exemple.png" /></p>
+<p><img alt="Exemple de matrice d'adjacence" src="/img/algo/structure/graphe/exemple_matrice_adjacence.png" /></p>
+<p><img alt="Graphe correspondant à la matrice d'adjacence" src="/img/algo/structure/graphe/graphe_exemple.png" /></p>
 <p>Rien de bien compliqué pour l&rsquo;implémenter :</p>
 <pre><code class="c">int graphe[NB_NOEUD_MAX][NB_NOEUD_MAX];
 </code></pre>
@@ -131,7 +131,7 @@
 <h3>Liste d&rsquo;adjacence</h3>
 <p>On peut utiliser une variante de la matrice d&rsquo;adjacence afin d&rsquo;économiser de la mémoire (mais cette représentation requiert un temps en $O(N)$ pour savoir si deux nœuds sont voisins ou pour connaître la pondération d&rsquo;un arc). Cette solution consiste à utiliser un tableau de <a href="/algo/structure/liste_chainee.html">listes chaînées</a>, chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).</p>
 <p>Voici par exemple la liste d&rsquo;adjacence qui représente de nouveau le premier graphe de l&rsquo;article :</p>
-<p><img alt="Exemple de liste d'adjacence" src="//static.napnac.ga/img/algo/structure/graphe/exemple_liste_adjacence.png" /></p>
+<p><img alt="Exemple de liste d'adjacence" src="/img/algo/structure/graphe/exemple_liste_adjacence.png" /></p>
 <p>Pour l&rsquo;implémentation, j&rsquo;utilise les <a href="http://www.cplusplus.com/reference/vector/vector/">vector</a> du C++ au lieu de recoder à la main la liste chaînée en C (même si on peut tout à fait le faire, recoder des structures de données basiques peut être une perte de temps, notamment pendant un concours de programmation) :</p>
 <pre><code class="cpp">vector &lt;Voisin&gt; graphe[NB_NOEUD_MAX];
 </code></pre>
@@ -145,7 +145,7 @@
 <h3>Liste d&rsquo;arcs</h3>
 <p>Enfin on peut utiliser une dernière solution, en représentant tous les arcs du graphe dans une liste chaînée.</p>
 <p>Voici l&rsquo;exemple d&rsquo;une liste d&rsquo;arcs (toujours sur le même graphe) :</p>
-<p><img alt="Exemple de liste d'arcs" src="//static.napnac.ga/img/algo/structure/graphe/exemple_liste_arcs.png" /></p>
+<p><img alt="Exemple de liste d'arcs" src="/img/algo/structure/graphe/exemple_liste_arcs.png" /></p>
 <p>De même que pour la liste d&rsquo;adjacence, j&rsquo;utilise les <code>vector</code> :</p>
 <pre><code class="cpp">vector &lt;Arc&gt; graphe;
 </code></pre>

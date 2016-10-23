@@ -15,21 +15,21 @@ Le chiffre de Vigenère est un [chiffrement symétrique](https://en.wikipedia.or
 
 Prenons comme message secret le mot "Programmation", et comme clé de chiffrement "Linux". La première étape à faire est de rendre notre clé aussi longue que notre message à chiffrer, pour cela, on répète simplement autant de fois la clé que nécessaire :
 
-![Visualisation de la clé de chiffrement complète](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png)
+![Visualisation de la clé de chiffrement complète](/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png)
 
 Désormais on peut chiffrer chaque lettre de notre message :
 
-![Exemple de chiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png)
+![Exemple de chiffrement](/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png)
 
 Le rang dans l'alphabet commence à 0 (et non 1) car $26 \mod 26 = 0$, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l'additionne à la lettre correspondante de la clé. On n'oublie pas d'appliquer notre [modulo](https://en.wikipedia.org/wiki/Modulo_operation) 26 pour revenir au début de l'alphabet si on dépasse Z.
 
 Pour le déchiffrement, l'idée est la même sauf qu'on soustrait au lieu d'ajouter le rang de la lettre de la clé :
 
-![Exemple de déchiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png)
+![Exemple de déchiffrement](/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png)
 
 On peut utiliser cette méthode mais de manière plus visuelle afin de chiffrer et déchiffrer nos messages :
 
-![Table de Vigenère](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png)
+![Table de Vigenère](/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png)
 
 La **table de Vigenère** consiste à énumérer toutes les possibilités de décalage lors du chiffrement et du déchiffrement. Les lettres du message clair sont représentées par les colonnes, tandis que celles de la clé sont représentées par les lignes. Pour chiffrer une lettre, on regarde l'intersection de la colonne correspondante à la lettre du message clair, et de la ligne correspondante à lettre de la clé. Pour déchiffrer une lettre, on regarde sur la ligne correspondante de la clé jusqu'à trouver la lettre chiffrée qui se trouvera sur la colonne de la lettre déchiffrée.
 
@@ -358,11 +358,11 @@ On cherche pour chaque ligne, la lettre apparaissant le plus, puis l'on déduit 
 
 La lettre la plus utilisée ici est le P, on peut donc faire une correspondance entre l'alphabet normal et l'alphabet chiffré, nous permettant de trouver la première lettre de la clé de chiffrement, le L :
 
-![Exemple de correspondance](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png)
+![Exemple de correspondance](/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png)
 
 Si on applique ce principe à chacune de nos lignes on obtient :
 
-![Recherche de clé de chiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png)
+![Recherche de clé de chiffrement](/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png)
 
 La clé apparait alors à la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffré. En effet la lettre A représente la lettre 0 de l'alphabet et donc la correspondance représente le décalage utilisé (c'est-à-dire la clé) pour créer l'alphabet chiffré.
 

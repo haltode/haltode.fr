@@ -15,11 +15,11 @@ Le chiffre de César (aussi appelé *chiffrement par décalage*) utilise une [su
 
 Prenons le mot "Linux", que l’on va chiffrer puis déchiffrer à l’aide du chiffre de César et avec une clé de chiffrement de 2.
 
-![Exemple de chiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_cesar/exemple_chiffrement.png)
+![Exemple de chiffrement](/img/algo/chiffrement/chiffre_cesar/exemple_chiffrement.png)
 
 On a deux alphabets représentés, un normal et un autre décalé de 2 rangs vers la droite (car c'est notre clé de chiffrement). Cette représentation permet de facilement visualiser le décalage puisqu'il suffit de regarder la case correspondante dans le nouvel alphabet pour chiffrer notre message. Chaque lettre (représentée en bleu) de notre message en clair aura donc une lettre équivalente (représentée en vert) dans le nouvel alphabet.
 
-![Exemple de déchiffrement](//static.napnac.ga/img/algo/chiffrement/chiffre_cesar/exemple_dechiffrement.png)
+![Exemple de déchiffrement](/img/algo/chiffrement/chiffre_cesar/exemple_dechiffrement.png)
 
 De la même manière, pour le déchiffrement il suffit de faire correspondre les lettres de notre nouvel alphabet, à celui normal afin de lire notre message chiffré.
 

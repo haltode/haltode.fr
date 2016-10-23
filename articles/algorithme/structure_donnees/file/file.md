@@ -16,15 +16,15 @@ Une file (*queue* en anglais) est une structure de données de type **FIFO** (**
 
 Voici comment on pourrait représenter une file :
 
-![Exemple de représentation d'une file](//static.napnac.ga/img/algo/structure/file/exemple_file.png)
+![Exemple de représentation d'une file](/img/algo/structure/file/exemple_file.png)
 
 L’action d’ajouter un élément dans la file est appelée : **enfiler** (ou *enqueue* en anglais) :
 
-![Un nouvel élément est enfilé](//static.napnac.ga/img/algo/structure/file/exemple_ajout.png)
+![Un nouvel élément est enfilé](/img/algo/structure/file/exemple_ajout.png)
 
 L’action d’enlever un élément de la file est appelée : **défiler** (ou *dequeue* en anglais) :
 
-![Un élément est défilé](//static.napnac.ga/img/algo/structure/file/exemple_suppression.png)
+![Un élément est défilé](/img/algo/structure/file/exemple_suppression.png)
 
 Comme la fin de la file est située "à gauche", notre premier élément pointera vers `NULL` pour indiquer le début de la file (et non la fin comme pour une [liste chaînée](/algo/structure/liste_chainee.html), ou une [pile](/algo/structure/pile.html)).
 

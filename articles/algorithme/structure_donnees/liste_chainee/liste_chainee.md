@@ -16,7 +16,7 @@ Une liste chaînée (*linked list* en anglais) est une structure de données aut
 - **Des données** : ces données peuvent être de n'importe quels types (entier, flottant, chaîne de caractère, etc.), et il peut en y avoir autant que possible par élément.
 - **Un pointeur** : ce pointeur pointe vers l'élément suivant de la liste, et permet de lier les nœuds entre eux.
 
-![Exemple de représentation d'une liste chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_chainee.png)
+![Exemple de représentation d'une liste chaînée](/img/algo/structure/liste_chainee/exemple_liste_chainee.png)
 
 Le dernier pointeur de la liste chaînée pointe sur la valeur `NULL`, pour indiquer la fin de la liste.
 
@@ -27,9 +27,9 @@ Les deux structures de données sont différentes, et ont leurs avantages et leu
 - **Tableau** : les éléments sont contigus en mémoire, la taille du tableau ne change pas et est connue à l'avance, l'ajout et la suppression d'un élément du tableau sont des opérations couteuses en temps et en mémoire, en revanche on peut aisément accéder à un élément du tableau en temps constant (par exemple en C : `tableau[2]`).
 - **Liste chaînée** : les éléments ne sont pas contigus en mémoire, la taille peut varier, on peut facilement insérer/supprimer des éléments de la liste en temps constant, mais on ne peut pas accéder à un élément précis de la liste instantanément (il faut parcourir la liste jusqu'à cet élément).
 
-![Exemple d'ajout d'un élément dans une liste chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_ajout.png)
+![Exemple d'ajout d'un élément dans une liste chaînée](/img/algo/structure/liste_chainee/exemple_ajout.png)
 
-![Exemple de suppression d'un élément dans une liste chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_suppression.png)
+![Exemple de suppression d'un élément dans une liste chaînée](/img/algo/structure/liste_chainee/exemple_suppression.png)
 
 ## Quelques fonctions pour manipuler les listes chaînées
 
@@ -258,7 +258,7 @@ La liste double chaînée (*doubly linked list*) consiste à ce que chaque élé
 
 Cette structure est légèrement plus coûteuse en mémoire et en opération, mais rend le déplacement au sein de la liste plus pratique car on peut la parcourir dans les deux sens et on peut insérer/supprimer des éléments avant d'autres et non uniquement après.
 
-![Exemple de représentation d'une liste doublement chaînée](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png)
+![Exemple de représentation d'une liste doublement chaînée](/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png)
 
 La structure d'une liste doublement chaînée ressemble à cela :
 
@@ -280,7 +280,7 @@ La liste doublement chaînée est notamment la base de la [file](/algo/structure
 
 La liste chaînée circulaire (*circular linked list*) est une liste chaînée ne possédant pas de fin. En effet, le pointeur de fin de liste pointe vers le début de la liste formant ainsi un cycle.
  
-![Exemple de représentation d'une liste chaînée circulaire](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png)
+![Exemple de représentation d'une liste chaînée circulaire](/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png)
 
 On peut utiliser cette variante de la liste chaînée pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jeu de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste chaînée circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.
 
@@ -288,7 +288,7 @@ On peut utiliser cette variante de la liste chaînée pour stocker par exemple l
 
 Une liste doublement chaînée circulaire (*doubly circular linked list*) est simplement un regroupement des deux dernières variantes.
 
-![Exemple de représentation d'une liste doublement chaînée circulaire](//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png)
+![Exemple de représentation d'une liste doublement chaînée circulaire](/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png)
 
 ### D'autres variantes plus complexes
 

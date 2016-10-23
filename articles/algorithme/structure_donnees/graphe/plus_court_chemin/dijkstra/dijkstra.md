@@ -11,37 +11,37 @@ L'algorithme de Dijkstra est sans doute l'un des algorithmes de plus court chemi
 
 Soit le graphe suivant :
 
-![Exemple de graphe pondéré positivement](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_graphe.png)
+![Exemple de graphe pondéré positivement](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_graphe.png)
 
 On souhaite trouver le plus court chemin pour aller du nœud de départ (en bleu) au nœud d'arrivée (en vert).
 
 L'algorithme de Dijkstra commence par le nœud de départ (1), et examine ses voisins :
 
-![Tour 1 de l'algorithme](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_1.png)
+![Tour 1 de l'algorithme](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_1.png)
 
 Le nœud en bleu représente désormais le nœud en tête de notre file à priorité, et j'ai aussi indiqué la distance parcourue depuis le nœud initial en indice. Le nœud 1 possède deux arcs qui représentent donc deux possibilités pour le moment. L'algorithme prend en compte la distance depuis le nœud de départ ainsi que le poids des arcs pour choisir le prochain nœud à visiter. Les différentes combinaisons actuellement sont donc : 0 + 1 (nœud 1 vers nœud 2) et 0 + 1 (1 vers 3). Dans notre cas les deux nœuds sont équivalents en termes d'efficacité, mais notre implémentation doit bien choisir lequel parcourir et nous imaginerons que l'on visite le nœud 2 (le nœud 3 menant directement au plus court chemin, il est plus intéressant de voir comment notre algorithme va rectifier son tir). Notre file à priorité contient donc les nœuds 2 et 3 (le 1 a été retiré), mais le 2 apparait avant c'est donc celui-ci qu'on va visiter au prochain tour :
 
-![Tour 2](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_2.png)
+![Tour 2](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_2.png)
 
 Notre algorithme nous mène au nœud 2, avec comme distance totale 1. Le point très important ici, est que lors du dernier tour, on avait deux choix possibles d'arcs à emprunter, en choisissant l'un des deux on n'oublie pas de conserver l'autre au cas où justement ce n'est pas le chemin le plus optimal qu'on vient de prendre. Et la file à priorité est le point essentiel car cette structure se chargera de faire remonter automatiquement le nœud 3 en tête si ce dernier devient finalement un choix plus intéressant. Lorsqu'on ajoute les voisins du nœud 2 à notre file, on doit choisir entre : 0 + 1 (nœud 1 vers 3), 1 + 3 (2 vers 3), ou 1 + 10 (2 vers 6). On voit que le minimum est atteint pour 0 + 1, soit le nœud 1 vers le 3. Notre file à priorité ne possède donc plus le nœud 2, et a en tête le nœud 3 qu'on parcourt lors du prochain tour :
 
-![Tour 3](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_3.png)
+![Tour 3](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_3.png)
 
 Nous sommes au nœud 3 avec une distance totale depuis le nœud de départ de 1, comme d'habitude on va chercher à comparer nos anciennes possibilités à celles qui se sont rajoutées (les voisins de 3). L'algorithme doit donc choisir entre : 1 + 2 (nœud 3 vers 4), 1 + 4 (3 vers 5), 1 + 3 (2 vers 3), et 1 + 10 (2 vers 6). Le choix avec une distance minimale est donc le premier : allant du nœud 3 vers le nœud 4. On continue l'algorithme :
 
-![Tour 4](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_4.png)
+![Tour 4](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_4.png)
 
 On se retrouve avec un nouvel arc disponible, et on va comparer de nouveau les différents chemins possibles : 3 + 4 (nœud 4 vers 6), 1 + 4 (3 vers 5), 1 + 3 (2 vers 3), et 1 + 10 (2 vers 6). L'algorithme choisit donc le chemin 2 vers 3 : 
 
-![Tour 5](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_5.png)
+![Tour 5](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_5.png)
 
 Cependant lorsqu'on arrive sur le nœud 3, on s'aperçoit qu'on a déjà visité ce nœud (il est donc tout à fait inutile de recommencer cette opération), et l'algorithme va immédiatement choisir un autre chemin entre : 3 + 4 (nœud 4 vers 6), 1 + 4 (3 vers 5), et 1 + 10 (2 vers 6). Le chemin choisi est donc celui reliant le nœud 3 au 5 :
 
-![Tour 6](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_6.png)
+![Tour 6](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_6.png)
 
 Comme auparavant, on prend en compte le nouvel arc possible et on choisit entre : 3 + 4 (nœud 4 vers 6), 5 + 3 (5 vers 6) et 1 + 10 (2 vers 6). Le premier choix étant celui avec le plus petit résultat, c'est ce qu'on décide de réaliser :
 
-![Tour 7](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_7.png)
+![Tour 7](/img/algo/structure/graphe/plus_court_chemin/dijkstra/exemple_tour_7.png)
 
 On arrive au nœud vert (celui d'arrivée), notre algorithme a donc terminé et on a trouvé le plus court chemin pour s'y rendre (les autres possibilités restantes étant forcément des chemins avec une plus longue distance).
 
@@ -197,7 +197,7 @@ La structure du code est identique à celle du parcours en profondeur, on doit j
 
 J'ai précisé au début de mes explications que l'algorithme de Dijkstra ne s'appliquait que sur des graphes pondérés positivement (ou nul), mais pourquoi ? Voici tout d'abord un contre-exemple pour prouver cette propriété :
 
-![Graphe pondéré négativement](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/contre_exemple.png)
+![Graphe pondéré négativement](/img/algo/structure/graphe/plus_court_chemin/dijkstra/contre_exemple.png)
 
 Regardons ce qui se passe si on utilise notre algorithme pour trouver le plus court chemin entre le nœud 1 et 4 :
 
@@ -213,7 +213,7 @@ L'algorithme de Dijkstra ne fonctionne donc pas sur ce genre de graphe, et ceci 
 
 On pourrait penser qu'une solution face à ce problème serait de rajouter à tous les arcs un certain poids afin de les rendre positifs, mais encore une fois cette idée ne fonctionne pas :
 
-![Contre-exemple](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/dijkstra/contre_exemple2.png)
+![Contre-exemple](/img/algo/structure/graphe/plus_court_chemin/dijkstra/contre_exemple2.png)
 
 A gauche un graphe avec des pondérations négatives, et à droite l'équivalent mais cette fois on a rajouté 4 à chaque poids pour n'avoir que des arcs positifs ou nuls. On veut dans les deux cas trouver le plus court chemin entre les nœuds 1 et 4 et on voit clairement que dans notre graphe original, le chemin optimal est 1, 2, 3, 4, mais dans notre nouveau graphe avec le changement de pondération, le chemin 1, 4 est plus optimal. Il n'est donc pas possible d'utiliser l'algorithme de Dijkstra sur un graphe qui n'a pas naturellement de pondérations positives ou nulles.
 

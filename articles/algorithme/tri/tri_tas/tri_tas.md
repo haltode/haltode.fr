@@ -17,19 +17,19 @@ On prend la suite de nombres suivante que l’on va trier dans l’ordre croissa
 
 *1ère étape* : créer le tas (max dans notre cas)
 
-![Tas max correspondant au tableau](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tas_max.png)
+![Tas max correspondant au tableau](/img/algo/tri/tri_tas/exemple_tas_max.png)
 
 *2ème étape* : parcourir le tas pour trier les éléments
 
 Pour trier les éléments grâce à notre tas, on retire la racine à chaque tour (l'élément le plus grand de notre tas, et donc de notre tableau), on le range à sa place définitive, et on entasse le dernier élément du tas pour combler le trou de la racine mais aussi respecter les règles d'un tas.
 
-![1er tour](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour1.png)
+![1er tour](/img/algo/tri/tri_tas/exemple_tour1.png)
 
 La racine du tas (en vert) est placée dans le tableau *(1)* et le dernier élément (en bleu) va remplacer la racine *(2)*, mais il ne faut pas oublier de l'entasser pour respecter les règles du tas max *(3)*.
 
 On continue ces opérations tant que le tas contient des éléments :
 
-![Exemple de tri par tas](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tour2.png)
+![Exemple de tri par tas](/img/algo/tri/tri_tas/exemple_tour2.png)
 
 ## Pseudo-code
 
@@ -149,7 +149,7 @@ Le *smoothsort* est une variante du tri par tas permettant d'améliorer la compl
 
 Le principe du smoothsort est de baser le tri non plus sur un seul tas, mais sur plusieurs de différentes tailles. Cette nouvelle structure de données est un **tas de Léonard**, car elle s'appuie sur la [suite de Léonard](https://en.wikipedia.org/wiki/Leonardo_number).
 
-![Exemple de tas de Léonard (en bleu les racines des sous-arbres)](//static.napnac.ga/img/algo/tri/tri_tas/exemple_tas_leonard.png)
+![Exemple de tas de Léonard (en bleu les racines des sous-arbres)](/img/algo/tri/tri_tas/exemple_tas_leonard.png)
 
 Cet ensemble a des propriétés spécifiques (sur la taille des sous-arbres, l'ordre d'apparition des racines, etc.), rendant les opérations d'insertion et de suppression assez longues à décrire et à expliquer. Il faudrait un article à part entier pour évoquer ce curieux algorithme de tri, et si ce dernier vous intéresse je vous recommande fortement cette page qui traite en profondeur du sujet : [Smoothsort Demystified](http://www.keithschwarz.com/smoothsort/).
 

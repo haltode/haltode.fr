@@ -29,7 +29,7 @@ Pour mettre en place un algorithme dynamique correctement, il est essentiel de r
 
 Avant de se plonger dans le pseudo-code, il faut noter que le problème du plus court chemin sur un graphe pondéré positivement et négativement introduit un nouveau souci : les **cycles améliorants** (ou *negative cycle* en anglais). En effet, vu qu'une pondération peut désormais être négative, il est possible de tomber dans une boucle infinie (qu'on appelle plus précisément un cycle améliorant) qui va sans cesse diminuer la distance parcourue. Ceci pose un réel problème puisqu'on peut améliorer la distance à chaque fois qu'on passe dans ce cycle, et il existera toujours un meilleur chemin à emprunter. Lorsqu'un graphe contient ce genre de cycle, il n'y a pas de solution à cause de cette boucle infinie, il faut donc pouvoir le détecter.
 
-![Exemple de cycle améliorant](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_cycle_ameliorant.png)
+![Exemple de cycle améliorant](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_cycle_ameliorant.png)
 
 Sur cet exemple de graphe (avec le nœud de départ en bleu, et celui d'arrivée en vert), on remarque que le chemin surligné en rouge est un cycle améliorant. En effet, dès qu'on parcourt ce cycle, la distance parcourue en sortie sera toujours inférieure à celle en entrée, d'où l'intérêt de le visiter à nouveau afin de diminuer encore la distance, et ainsi de suite, ce qui entraine une boucle infinie. Il est impossible de trouver le plus court chemin entre le nœud 1 et 4 dans ce graphe, car on peut améliorer la distance parcourue à l'infini sans jamais arriver au nœud en vert.
 
@@ -121,15 +121,15 @@ Plusieurs points importants à comprendre dans cette version itérative de l'alg
 
 Avant de réaliser l'économie de mémoire, attardons-nous légèrement sur ce dernier pseudo-code afin de bien comprendre comment effectuer cette amélioration. Prenons l'exemple de ce graphe (ne contenant pas de cycle améliorant pour simplifier la chose), et appliquons notre nouveau pseudo-code itératif dessus pour bien l'appréhender :
 
-![Exemple de graphe orienté et pondéré](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_graphe_pseudo_code_iteratif.png)
+![Exemple de graphe orienté et pondéré](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_graphe_pseudo_code_iteratif.png)
 
 On cherche le plus court chemin entre le nœud 1 (en bleu) et le nœud 5 (en vert), et notre tableau `plusCourtChemin` initial ressemble donc à cela :
 
-![Etat initial du tableau `plusCourtChemin`](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png)
+![Etat initial du tableau `plusCourtChemin`](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png)
 
 Maintenant qu'on a initialisé notre tableau, on peut commencer à le remplir. Pour rappel, chaque case de ce tableau représente la longueur du plus court chemin reliant un nœud au nœud d'arrivée :
 
-![Etape 0](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_0.png)
+![Etape 0](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_0.png)
 
 La partie du pseudo-code nous concernant ici est la suivante :
 
@@ -157,7 +157,7 @@ Finalement, le premier tour de boucle va uniquement calculer des chemins (on n'e
 
 On recommence notre procédé sur les différents nœuds, mais cette fois on peut réutiliser les anciennes valeurs :
 
-![Etape 1](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_1.png)
+![Etape 1](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_1.png)
 
 Pour le nœud 1, le seul de ses deux voisins à posséder des informations est le nœud 3. On a donc pas d'autres choix de chemin reliant le nœud 1 et 5 que celui-ci pour le moment.
 
@@ -169,7 +169,7 @@ Enfin le nœud 4 n'a pas d'autres voisins que le nœud 5 donc aucuns autres choi
 
 On continue comme ceci jusqu'à avoir rempli tout notre tableau :
 
-![Etat final du tableau](//static.napnac.ga/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_final_pseudo_code_iteratif.png)
+![Etat final du tableau](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_final_pseudo_code_iteratif.png)
 
 Désormais on connait le plus court chemin du graphe reliant le nœud 1 à 5, soit -4, et au passage on a aussi grâce à ce tableau les plus courts chemins de tous les nœuds allant à 5.
 

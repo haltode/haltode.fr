@@ -58,7 +58,7 @@
 <li><strong>Des données</strong> : ces données peuvent être de n&rsquo;importe quels types (entier, flottant, chaîne de caractère, etc.), et il peut en y avoir autant que possible par élément.</li>
 <li><strong>Un pointeur</strong> : ce pointeur pointe vers l&rsquo;élément suivant de la liste, et permet de lier les nœuds entre eux.</li>
 </ul>
-<p><img alt="Exemple de représentation d'une liste chaînée" src="//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_chainee.png" /></p>
+<p><img alt="Exemple de représentation d'une liste chaînée" src="/img/algo/structure/liste_chainee/exemple_liste_chainee.png" /></p>
 <p>Le dernier pointeur de la liste chaînée pointe sur la valeur <code>NULL</code>, pour indiquer la fin de la liste.</p>
 <h2>Différence avec les tableaux</h2>
 <p>Les deux structures de données sont différentes, et ont leurs avantages et leurs inconvénients, aucune n&rsquo;est meilleure que l&rsquo;autre mais il faut savoir quand utiliser la bonne structure au bon moment :</p>
@@ -66,8 +66,8 @@
 <li><strong>Tableau</strong> : les éléments sont contigus en mémoire, la taille du tableau ne change pas et est connue à l&rsquo;avance, l&rsquo;ajout et la suppression d&rsquo;un élément du tableau sont des opérations couteuses en temps et en mémoire, en revanche on peut aisément accéder à un élément du tableau en temps constant (par exemple en C : <code>tableau[2]</code>).</li>
 <li><strong>Liste chaînée</strong> : les éléments ne sont pas contigus en mémoire, la taille peut varier, on peut facilement insérer/supprimer des éléments de la liste en temps constant, mais on ne peut pas accéder à un élément précis de la liste instantanément (il faut parcourir la liste jusqu&rsquo;à cet élément).</li>
 </ul>
-<p><img alt="Exemple d'ajout d'un élément dans une liste chaînée" src="//static.napnac.ga/img/algo/structure/liste_chainee/exemple_ajout.png" /></p>
-<p><img alt="Exemple de suppression d'un élément dans une liste chaînée" src="//static.napnac.ga/img/algo/structure/liste_chainee/exemple_suppression.png" /></p>
+<p><img alt="Exemple d'ajout d'un élément dans une liste chaînée" src="/img/algo/structure/liste_chainee/exemple_ajout.png" /></p>
+<p><img alt="Exemple de suppression d'un élément dans une liste chaînée" src="/img/algo/structure/liste_chainee/exemple_suppression.png" /></p>
 <h2>Quelques fonctions pour manipuler les listes chaînées</h2>
 <p>Pour manipuler correctement les listes chaînées, il faut connaître quelques fonctions basiques pour ajouter un élément, le supprimer, rechercher un élément précis dans la liste, etc.</p>
 <pre><code class="nohighlight">créerListe :
@@ -282,7 +282,7 @@ int main(void)
 <li>Un pointeur vers le <strong>précédent</strong> élément.</li>
 </ul>
 <p>Cette structure est légèrement plus coûteuse en mémoire et en opération, mais rend le déplacement au sein de la liste plus pratique car on peut la parcourir dans les deux sens et on peut insérer/supprimer des éléments avant d&rsquo;autres et non uniquement après.</p>
-<p><img alt="Exemple de représentation d'une liste doublement chaînée" src="//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png" /></p>
+<p><img alt="Exemple de représentation d'une liste doublement chaînée" src="/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee.png" /></p>
 <p>La structure d&rsquo;une liste doublement chaînée ressemble à cela :</p>
 <pre><code class="c">typedef struct Noeud Noeud;
 struct Noeud
@@ -298,11 +298,11 @@ typedef Noeud *Liste;
 <p>La liste doublement chaînée est notamment la base de la <a href="/algo/structure/file.html">file</a> et permet une implémentation efficace de cette structure.</p>
 <h3>Liste chaînée circulaire</h3>
 <p>La liste chaînée circulaire (<em>circular linked list</em>) est une liste chaînée ne possédant pas de fin. En effet, le pointeur de fin de liste pointe vers le début de la liste formant ainsi un cycle.</p>
-<p><img alt="Exemple de représentation d'une liste chaînée circulaire" src="//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png" /></p>
+<p><img alt="Exemple de représentation d'une liste chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png" /></p>
 <p>On peut utiliser cette variante de la liste chaînée pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jeu de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste chaînée circulaire permettrait de stocker l&rsquo;ordre de jeu des joueurs facilement.</p>
 <h3>Liste doublement chaînée circulaire</h3>
 <p>Une liste doublement chaînée circulaire (<em>doubly circular linked list</em>) est simplement un regroupement des deux dernières variantes.</p>
-<p><img alt="Exemple de représentation d'une liste doublement chaînée circulaire" src="//static.napnac.ga/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png" /></p>
+<p><img alt="Exemple de représentation d'une liste doublement chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png" /></p>
 <h3>D&rsquo;autres variantes plus complexes</h3>
 <p>En plus de ces variantes assez &ldquo;courantes&rdquo;, on peut retrouver d&rsquo;autres variantes plus compliquées mais qui peuvent toujours servir :</p>
 <ul>

@@ -69,7 +69,7 @@
 <p><strong>380</strong>, 512 : 512 &gt; 380, on continue dans la partie supérieure de l&rsquo;intervalle.</p>
 <p>512 : notre intervalle ne contient plus qu&rsquo;un seul élément, c&rsquo;est donc forcément celui qu&rsquo;on recherche.</p>
 <p>Pour résumé le principe :</p>
-<p><img alt="Exemple de dichotomie" src="//static.napnac.ga/img/algo/recherche/dichotomie/exemple_dichotomie.png" /></p>
+<p><img alt="Exemple de dichotomie" src="/img/algo/recherche/dichotomie/exemple_dichotomie.png" /></p>
 <p>L&rsquo;élément en bleu est celui du milieu que l&rsquo;on compare, et ensuite on choisit la bonne portion du tableau (en vert) en fonction de cette comparaison pour couper notre intervalle en deux à chaque tour.</p>
 <h2>Pseudo-code</h2>
 <p>On peut faire le pseudo-code suivant d&rsquo;un algorithme de la dichotomie :</p>
@@ -97,7 +97,7 @@
 
 <h2>Complexité</h2>
 <p>Pour calculer la complexité en temps de la recherche dichotomique, on peut visualiser la décomposition des intervalles grâce à un <a href="/algo/structure/arbre.html">arbre</a> :</p>
-<p><img alt="Calcul de la complexité" src="//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png" /></p>
+<p><img alt="Calcul de la complexité" src="/img/algo/recherche/dichotomie/calcul_complexite.png" /></p>
 <p>Chaque opération possible est représentée dans notre arbre, c&rsquo;est-à-dire qu&rsquo;à chaque tour on coupe notre tableau (qu&rsquo;on note $n$) en deux. On voit qu&rsquo;on arrive à une profondeur maximale de l&rsquo;arbre en $\log _2 N$ avec $N$ la taille de notre tableau (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikipédia</a>), la complexité de la recherche dichotomique est donc dans le pire des cas en $O(\log _2 N)$.</p>
 <p>Pour vous faire comprendre à quel point cette recherche est efficace, imaginons que vous possédez une bibliothèque numérique de $N$ livres tous triés en fonction du titre par ordre alphabétique. Votre machine sur laquelle vous faites vos recherches de livres est très lente, et peut effectuer uniquement 2000 opérations à la seconde (aujourd&rsquo;hui les ordinateurs classiques peuvent en effectuer plusieurs milliards&hellip;). Si vous implémentez une recherche dichotomique, il vous faudra environ plus de livres qu&rsquo;il n&rsquo;y a de particules dans un billion d&rsquo;univers visible pour que votre machine prenne plus de temps qu&rsquo;un clignement d&rsquo;œil.</p>
 <h2>Implémentation</h2>

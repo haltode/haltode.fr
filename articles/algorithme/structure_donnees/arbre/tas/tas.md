@@ -18,7 +18,7 @@ Le tas (ou *heap* en anglais), sera la plupart du temps implémenté comme un **
 
 Dans notre arbre binaire maximal, le père d'un nœud est le maximum des deux nœuds (autrement dit, c'est soit l'un soit l'autre), dans un tas binaire, le père d'un nœud n'est pas un double de ses enfants, mais au contraire un autre nœud indépendant qui respecte une propriété spécifique au tas (**tas minimal** : alors le père a une valeur inférieure ou égale à celles de ses fils, et **tas maximal** : le père a une valeur supérieure ou égale à celles de ses fils).
 
-![Exemple de tas maximal](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_tas_max.png)
+![Exemple de tas maximal](/img/algo/structure/arbre/tas/exemple_tas_max.png)
 
 Ce tas max peut par exemple représenter le tableau situé en dessous, et le fait qu'il soit maximal nous permet de dire avec certitude que sa racine est l'élément maximum du tableau (de même un tas min aura à la racine l'élément minimum du tableau).
 
@@ -26,13 +26,13 @@ Ce tas max peut par exemple représenter le tableau situé en dessous, et le fai
 
 Un tas ne peut pas avoir de "trous" dedans, seul le dernier étage de l'arbre peut ne pas être rempli en entier. Lorsqu'on veut insérer un nouvel élément, on a donc pas d'autres choix que de le placer à la première place libre que l'on trouve dans le tas. Cependant, ce nouvel élément ne respecte pas les propriétés du tas, et il va falloir effectuer des modifications afin d'avoir une structure cohérente. Pour cela, on applique le même principe que lors d'un changement d'une valeur dans un arbre binaire maximal, c'est-à-dire que l'on va modifier tous les nœuds parents tant que les propriétés du tas ne sont pas respectées.
 
-![Exemple d'insertion d'un nouvel élément dans un tas maximal](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png)
+![Exemple d'insertion d'un nouvel élément dans un tas maximal](/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png)
 
 On souhaite insérer la valeur 11 (en vert) dans notre tas maximal, on le place donc sur la première place libre, puis on l'échange avec son père tant que ce dernier est plus petit que 11 (car c'est un tas maximal). A la fin, 11 a été inséré, et notre tas respecte bien les propriétés d'un tas max.
 
 La deuxième opération principale d'un tas est l'extraction de son minimum/maximum (en fonction du tas). On a vu que cette valeur se trouve forcément à la racine, mais comment reboucher le trou qu'on vient de faire ? Une solution consiste à prendre le dernier élément du tas, et de le déplacer à la racine. Vu que c'est une feuille, on peut très bien le bouger de place sans inconvénient, cependant on ne respecte plus les propriétés du tas. On va donc **entasser** cet élément pour qu'il se retrouve à sa bonne place :
 
-![Exemple d'extraction du maximum dans un tas](//static.napnac.ga/img/algo/structure/arbre/tas/exemple_extraction_tas_max.png)
+![Exemple d'extraction du maximum dans un tas](/img/algo/structure/arbre/tas/exemple_extraction_tas_max.png)
 
 On extrait 42 qui est le maximum de notre tas, et on insère la dernière valeur à la place de la racine pour boucher le trou (c'est le 4 en vert). Pour entasser notre élément et respecter les caractéristiques d'un tas max, on échange le nœud avec le maximum de ses deux fils tant qu'on peut (pour un tas min, on échange avec le minimum de ses deux fils). Grâce à cela, on a reconstitué notre tas maximum, car le 4 est de nouveau a une place qui respecte les propriétés.
 

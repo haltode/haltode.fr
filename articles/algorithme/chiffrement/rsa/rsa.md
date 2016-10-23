@@ -197,11 +197,11 @@ Les caractères seront représentés par des nombres grâce à la [table ASCII](
 
 Notre message correspond donc à ceci selon la table ASCII :
 
-![Transformation du message en nombre](//static.napnac.ga/img/algo/chiffrement/rsa/exemple_message_ascii.png)
+![Transformation du message en nombre](/img/algo/chiffrement/rsa/exemple_message_ascii.png)
 
 Le message chiffré :
 
-![Exemple de chiffrement](//static.napnac.ga/img/algo/chiffrement/rsa/exemple_chiffrement.png)
+![Exemple de chiffrement](/img/algo/chiffrement/rsa/exemple_chiffrement.png)
 
 On se retrouve avec un message ressemblant à ceci 
 
@@ -211,7 +211,7 @@ On se retrouve avec un message ressemblant à ceci
 
 Que l'on peut déchiffrer :
 
-![Exemple de déchiffrement](//static.napnac.ga/img/algo/chiffrement/rsa/exemple_dechiffrement.png)
+![Exemple de déchiffrement](/img/algo/chiffrement/rsa/exemple_dechiffrement.png)
 
 On retrouve bien nos valeurs numériques que l'on peut facilement transformer en caractères pour former notre message original.
 
@@ -647,7 +647,7 @@ Un article spécialement sur l'attaque de Wiener (et en français), montre comme
 
 Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). A première vue, il n'y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu'une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.
 
-![Démonstration de cette propriété](//static.napnac.ga/img/algo/chiffrement/rsa/demonstration_facto_n.png)
+![Démonstration de cette propriété](/img/algo/chiffrement/rsa/demonstration_facto_n.png)
 
 La démonstration vient de *Twenty Years of Attacks on the RSA Cryptosystem* de Dan Boneh, que vous pouvez retrouver en pdf sur Internet.
 

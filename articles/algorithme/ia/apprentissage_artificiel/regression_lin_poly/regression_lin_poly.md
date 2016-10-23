@@ -20,11 +20,11 @@ Vous souhaitez estimer le prix d'un ordinateur en fonction de différents facteu
 
 On peut représenter ce tableau grâce à un graphique en deux dimensions très simple :
 
-![Exemple de données récoltées](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png)
+![Exemple de données récoltées](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png)
 
 Ce qu'on cherche à faire dans notre problème c'est d'**extrapoler**, c'est-à-dire généraliser grâce aux données obtenues afin de prédire un résultat. En tant qu'humain, on pourrait facilement faire une bonne généralisation comme ceci :
 
-![Exemple de généralisation](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png)
+![Exemple de généralisation](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png)
 
 On a une fonction linéaire basique, qu'on peut ensuite utiliser graphiquement pour trouver à partir de la puissance d'un ordinateur, une bonne estimation de son prix.
 
@@ -82,7 +82,7 @@ $\frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
 Si on reprend la généralisation qu'on a faite à la main, la différence que l'on calcule dans notre expression correspond aux parties vertes sur ce schéma :
 
-![Exemple de calcul de différence entre estimation et réalité](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png)
+![Exemple de calcul de différence entre estimation et réalité](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png)
 
 On notera cette fonction $J$, qu'on appelle aussi l'**estimateur des moindres carrés** :
 
@@ -98,7 +98,7 @@ Grâce à cela, on peut enfin définir concrètement ce que signifie "trouver le
 
 Si l'on affiche graphiquement la fonction d'erreur pour notre problème, on obtient ceci :
 
-![Exemple de représentation graphique de la fonction d'erreur](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png)
+![Exemple de représentation graphique de la fonction d'erreur](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png)
 
 Sur ce graphique représentant $J$ en fonction de $\theta_{0}$ et $\theta_{1}$, on remarque clairement les valeurs de $\theta$ pour lesquelles la fonction d'erreur est minimisée. Cependant, il va falloir trouver un algorithme qui calcule ces valeurs automatiquement, car on ne pourra pas toujours faire de représentation graphique (lorsqu'on a beaucoup d'attributs en entrée par exemple).
 
@@ -127,7 +127,7 @@ Il est aussi courant d'ajouter d'autres termes que de simples puissances, comme 
 
 Si possible, afficher les données sur un graphique est la meilleure chose à faire afin de pouvoir visualiser quels types d'attributs il nous faut pour notre fonction d'hypothèse. Sinon, il est toujours envisageable de tester plusieurs combinaisons et de voir laquelle est la meilleure en fonction du résultat de la fonction d'erreur.
 
-![Exemple de régression polynomiale sur des données non-linéaires](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png)
+![Exemple de régression polynomiale sur des données non-linéaires](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png)
 
 ## Problèmes
 
@@ -137,19 +137,19 @@ Dans un apprentissage supervisé, le but est de fournir à notre algorithme des 
 
 Par exemple, prenons des données imaginaires :
 
-![Exemple de données](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png)
+![Exemple de données](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png)
 
 On pourrait tenter d'utiliser une régression linéaire avec une fonction d'hypothèse de la forme $h_{\theta}(x) = \theta_0 + \theta_1x_1$ :
 
-![Tentative de régression linéaire](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png)
+![Tentative de régression linéaire](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png)
 
 On voit bien qu'on arrive à une très mauvaise généralisation car il nous manque des attributs. Dans ce cas, on parle de **sous-apprentissage** (ou *underfitting* en anglais), c'est une situation plus rare que le surapprentissage, et il suffit de rajouter des attributs pour contrer le problème. Essayons, avec une simple fonction polynomiale comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2$ :
 
-![Une simple fonction polynomiale](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png)
+![Une simple fonction polynomiale](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png)
 
 Notre modèle polynomial correspond bien à nos données et semble assez bien généraliser le problème. Cependant, que se passe-t-il si on avait rajouté plus d'attributs ? Essayons avec une fonction polynomiale plus complexe comme $h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots$ :
 
-![Fonction polynomiale très complexe](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png)
+![Fonction polynomiale très complexe](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png)
 
 Le modèle essaie de coller au mieux à nos données au point de ne plus du tout généraliser le problème, on est tombé dans le surapprentissage. Notre programme s'est trop bien adapté à nos données, et il n'arrivera pas à prédire correctement la sortie de nouveaux exemples.
 

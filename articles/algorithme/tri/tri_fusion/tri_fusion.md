@@ -40,7 +40,7 @@ Prenons comme exemple la suite de nombre : 5, 1, 3, 8, 9, 6 que l’on veut trie
 
 Pour résumer les deux étapes du tri :
 
-![Exemple de tri fusion](//static.napnac.ga/img/algo/tri/tri_fusion/exemple_tri.png)
+![Exemple de tri fusion](/img/algo/tri/tri_fusion/exemple_tri.png)
 
 Les éléments en bleu correspondent à l'état du tableau après la première étape, et les éléments en vert après la deuxième étape.
 
@@ -82,7 +82,7 @@ Ce pseudo-code est relativement simple :
 
 Pour démontrer la complexité du tri fusion, visualisons la découpe du tableau réalisée dans la fonction `triFusion` lors des appels récursifs :
 
-![Calcul de la complexité](//static.napnac.ga/img/algo/recherche/dichotomie/calcul_complexite.png)
+![Calcul de la complexité](/img/algo/recherche/dichotomie/calcul_complexite.png)
 
 Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une même profondeur formeront toujours un unique tableau contenant $N$ éléments ($N$ étant la taille du tableau de départ), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C'est très important car on appelle notre fonction `fusionner` à chaque nœud, or cette fonction s'exécute en temps linéaire de $O(N)$ avec $N$ la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu'à chaque profondeur on aura appelé notre fonction `fusionner` sur $N$ éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède $\log _2 N$ profondeurs (pour en savoir plus sur le logarithme : [lien de la page Wikipédia](https://en.wikipedia.org/wiki/Logarithm)), ce qui nous donne finalement une complexité en $O(N \log _2 N)$.
 

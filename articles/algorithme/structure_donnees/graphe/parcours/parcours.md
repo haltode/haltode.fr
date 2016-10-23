@@ -11,7 +11,7 @@ Le parcours d'un [graphe](/algo/structure/graphe.html) est une opération essent
 
 Vous vous trouvez dans un labyrinthe contenant de nombreux chemins possibles, et vous cherchez la sortie alors que vous ne connaissez aucunes indications sur ce labyrinthe. Tout d'abord, on peut représenter notre labyrinthe comme un graphe dit *implicite*, qui sera non pondéré (chaque arc aura alors une distance de *1* unité). En effet, chaque intersection sera représentée par un nœud du graphe, et chaque chemin par un arc. L'entrée et la sortie du labyrinthe sont juste de simples nœuds distincts du graphe, et le fait de trouver la sortie du labyrinthe, revient à trouver un chemin reliant le nœud d'entrée au nœud de sortie : 
 
-![Exemple de représentation d'un labyrinthe sous forme de graphe](//static.napnac.ga/img/algo/structure/graphe/dfs/labyrinthe_graphe.png)
+![Exemple de représentation d'un labyrinthe sous forme de graphe](/img/algo/structure/graphe/dfs/labyrinthe_graphe.png)
 
 Vu qu'on ne connait rien sur ce labyrinthe, il est impossible de deviner le chemin nous permettant d'arriver à la sortie puisque ça pourrait être n'importe lequel du graphe. On peut donc tout simplement essayer chacun des chemins jusqu'à trouver le bon. Ce parcours est alors qualifié de : parcours en profondeur.
 
@@ -25,7 +25,7 @@ Dans notre cas du labyrinthe, on essaie un chemin jusqu'à être bloqué, puis o
 
 La meilleure manière de comprendre ce type de parcours est de le visualiser :
 
-![Exemple de DFS sur un graphe](//static.napnac.ga/img/algo/structure/graphe/dfs/exemple_dfs.png)
+![Exemple de DFS sur un graphe](/img/algo/structure/graphe/dfs/exemple_dfs.png)
 
 Ce graphe représente notre labyrinthe, et chaque nœud correspond à l'ordre de parcours du DFS (la flèche montre uniquement comment agit un parcours en profondeur en entier sur notre graphe).
 
@@ -246,7 +246,7 @@ Vous vous retrouvez face à l'entrée du labyrinthe, mais cette fois ci vous che
 
 Essayons tout d'abord de voir si on peut réutiliser un algorithme de parcours en profondeur pour résoudre notre problème :
 
-![Exemple de labyrinthe](//static.napnac.ga/img/algo/structure/graphe/bfs/dfs_vs_bfs.png)
+![Exemple de labyrinthe](/img/algo/structure/graphe/bfs/dfs_vs_bfs.png)
 
 Dans cet exemple, on fait un DFS sur notre graphe et à cause de l'ordre de parcours des voisins on arrive à la sortie (le nœud vert) en passant par les nœuds 2, 3 et 4 alors qu'on peut y accéder en passant uniquement par le nœud 6. Bien sûr notre DFS aurait pu passer par le nœud 6 en premier et ainsi atteindre la sortie le plus rapidement possible, mais cet exemple montre l'un des problèmes du DFS pour ce genre d'exercice, c'est que le résultat de l'algorithme dépend de l'ordre de parcours des voisins qui peut totalement changer en fonction de l'implémentation mais aussi en fonction du graphe. Il nous faut donc un algorithme de parcours qui ne dépend d'aucuns de ces facteurs, et qui nous permet de trouver le chemin le plus court sur un graphe non pondéré : le parcours en largeur.
 
@@ -260,7 +260,7 @@ Cela permet donc de trouver le plus court chemin sur un graphe **non pondéré**
 
 Avec le même graphe que pour le DFS, mais en appliquant un BFS dessus :
 
-![Exemple de BFS sur un graphe](//static.napnac.ga/img/algo/structure/graphe/bfs/exemple_bfs.png)
+![Exemple de BFS sur un graphe](/img/algo/structure/graphe/bfs/exemple_bfs.png)
 
 De même, chaque nœud représente l'ordre de parcours dans le graphe, et on retrouve bien cette idée de parcours par couche.
 

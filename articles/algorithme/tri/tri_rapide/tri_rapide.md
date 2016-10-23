@@ -30,7 +30,7 @@ Prenons 5, 9, 7, 3, 8 comme suite de nombres, et trions la dans l'ordre croissan
 
 3, 5, 7, 8, 9
 
-![Exemple de tri rapide](//static.napnac.ga/img/algo/tri/tri_rapide/exemple_tri.png)
+![Exemple de tri rapide](/img/algo/tri/tri_rapide/exemple_tri.png)
 
 Sur cette image, à chaque tour on choisit notre pivot (en bleu), on sépare notre tableau en trois parties en réorganisant les éléments selon le pivot (qui est désormais bien placé et en vert), puis on recommence l'opération. A la fin du deuxième tour, nos sous tableaux qui ne sont pas des pivots (en blanc) ne contiennent plus qu'un seul élément, ils sont donc triés, comme le reste du tableau.
 

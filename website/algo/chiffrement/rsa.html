@@ -184,15 +184,15 @@ $d = 4663$</p>
 $f&rsquo;(x) = x^d \mod n$</p>
 <p>Les caractères seront représentés par des nombres grâce à la <a href="https://en.wikipedia.org/wiki/ASCII">table ASCII</a> permettant de résoudre les relations mathématiques (on imagine dans notre cas que les caractères du message sont tous présents dans la table ASCII pour simplifier le problème).</p>
 <p>Notre message correspond donc à ceci selon la table ASCII :</p>
-<p><img alt="Transformation du message en nombre" src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_message_ascii.png" /></p>
+<p><img alt="Transformation du message en nombre" src="/img/algo/chiffrement/rsa/exemple_message_ascii.png" /></p>
 <p>Le message chiffré :</p>
-<p><img alt="Exemple de chiffrement" src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_chiffrement.png" /></p>
+<p><img alt="Exemple de chiffrement" src="/img/algo/chiffrement/rsa/exemple_chiffrement.png" /></p>
 <p>On se retrouve avec un message ressemblant à ceci </p>
 <pre><code class="nohighlight">2546 824 4962 8071 2160 4962 8071 5933 4962 
 </code></pre>
 
 <p>Que l&rsquo;on peut déchiffrer :</p>
-<p><img alt="Exemple de déchiffrement" src="//static.napnac.ga/img/algo/chiffrement/rsa/exemple_dechiffrement.png" /></p>
+<p><img alt="Exemple de déchiffrement" src="/img/algo/chiffrement/rsa/exemple_dechiffrement.png" /></p>
 <p>On retrouve bien nos valeurs numériques que l&rsquo;on peut facilement transformer en caractères pour former notre message original.</p>
 <h2>Pseudo-code</h2>
 <p>Le pseudo-code de l&rsquo;algorithme RSA :</p>
@@ -561,7 +561,7 @@ Code
 <p>Un article spécialement sur l&rsquo;attaque de Wiener (et en français), montre comment utiliser l&rsquo;algorithme des fractions continues : <a href="http://www.jannaud.fr/static/download/Travail/rapportwiener.pdf">Attaque de clés RSA par la méthode de Wiener</a>.</p>
 <h3>Module de chiffrement commun</h3>
 <p>Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). A première vue, il n&rsquo;y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu&rsquo;une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.</p>
-<p><img alt="Démonstration de cette propriété" src="//static.napnac.ga/img/algo/chiffrement/rsa/demonstration_facto_n.png" /></p>
+<p><img alt="Démonstration de cette propriété" src="/img/algo/chiffrement/rsa/demonstration_facto_n.png" /></p>
 <p>La démonstration vient de <em>Twenty Years of Attacks on the RSA Cryptosystem</em> de Dan Boneh, que vous pouvez retrouver en pdf sur Internet.</p>
 <p>Et voici un exemple concret de l&rsquo;utilisation de cette propriété pour factoriser $n$ : <a href="http://www.di-mgt.com.au/rsa_factorize_n.html">How to factorize N given d</a>.</p>
 <h3>Attaque sur les implémentations</h3>

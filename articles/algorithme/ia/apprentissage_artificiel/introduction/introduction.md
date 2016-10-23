@@ -34,19 +34,19 @@ Avec ces différents types d'apprentissages apparait plusieurs algorithmes, mais
 
 L'apprentissage artificiel utilise les mathématiques afin de résoudre ces problèmes, par exemple un exercice de classification pourrait être représenté graphiquement par la séparation efficace (grâce à une ligne, courbe, etc.) de deux ensembles distincts :
 
-![Exemple de classification](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_classification.png)
+![Exemple de classification](/img/algo/ia/apprentissage_artificiel/intro/exemple_classification.png)
 
 Les deux paramètres de l'entrée sont l'axe x et l'axe y, et les sorties sont les classes correspondantes (rond ou croix).
 
 Dans un problème de régression, on cherchera par exemple à généraliser l'entrée (l'axe x dans notre cas) à l'aide d'une fonction, ici elle est linéaire, mais on peut trouver des fonctions polynomiales complexes pour créer des modèles plus sophistiqués :
 
-![Exemple de régression](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_regression.png)
+![Exemple de régression](/img/algo/ia/apprentissage_artificiel/intro/exemple_regression.png)
 
 Ce modèle nous permettra de générer une sortie (l'axe y) sur de nouveaux paramètres, en utilisant la fonction calculée (ici elle sera donc de la forme $y = ax + b$).
 
 Enfin, un exemple de partitionnement serait de regrouper des points entre eux, et de les différencier en groupe, comme ici avec trois différents clusters (rouge, bleu, et vert) :
 
-![Exemple de partitionnement](//static.napnac.ga/img/algo/ia/apprentissage_artificiel/intro/exemple_partitionnement.png)
+![Exemple de partitionnement](/img/algo/ia/apprentissage_artificiel/intro/exemple_partitionnement.png)
 
 ## Domaine d'application
 

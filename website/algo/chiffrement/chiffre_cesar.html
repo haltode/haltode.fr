@@ -55,9 +55,9 @@
 <p>Le chiffre de César (aussi appelé <em>chiffrement par décalage</em>) utilise une <a href="https://en.wikipedia.org/wiki/Substitution_cipher">substitution mono-alphabétique</a> pour chiffrer et déchiffrer un message, c’est-à-dire que l’on décale de $x$ rangs vers la droite dans l’alphabet la lettre du <strong>message en clair</strong> (= non chiffré) lors du chiffrement, et de $x$ rangs vers la gauche lors du déchiffrement. On appelle $x$ la <strong>clé de chiffrement</strong>, et cette dernière doit être la même pour le chiffrement et le déchiffrement car le chiffre de César est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement symétrique</a>.</p>
 <h2>Exemple</h2>
 <p>Prenons le mot &ldquo;Linux&rdquo;, que l’on va chiffrer puis déchiffrer à l’aide du chiffre de César et avec une clé de chiffrement de 2.</p>
-<p><img alt="Exemple de chiffrement" src="//static.napnac.ga/img/algo/chiffrement/chiffre_cesar/exemple_chiffrement.png" /></p>
+<p><img alt="Exemple de chiffrement" src="/img/algo/chiffrement/chiffre_cesar/exemple_chiffrement.png" /></p>
 <p>On a deux alphabets représentés, un normal et un autre décalé de 2 rangs vers la droite (car c&rsquo;est notre clé de chiffrement). Cette représentation permet de facilement visualiser le décalage puisqu&rsquo;il suffit de regarder la case correspondante dans le nouvel alphabet pour chiffrer notre message. Chaque lettre (représentée en bleu) de notre message en clair aura donc une lettre équivalente (représentée en vert) dans le nouvel alphabet.</p>
-<p><img alt="Exemple de déchiffrement" src="//static.napnac.ga/img/algo/chiffrement/chiffre_cesar/exemple_dechiffrement.png" /></p>
+<p><img alt="Exemple de déchiffrement" src="/img/algo/chiffrement/chiffre_cesar/exemple_dechiffrement.png" /></p>
 <p>De la même manière, pour le déchiffrement il suffit de faire correspondre les lettres de notre nouvel alphabet, à celui normal afin de lire notre message chiffré.</p>
 <h2>Pseudo-code</h2>
 <p>Le pseudo-code du chiffre de César est très simple :</p>

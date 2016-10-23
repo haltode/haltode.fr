@@ -7,17 +7,17 @@ Modified: 14/01/2016
 
 Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir tous les éléments et les comparer afin de trouver le maximum, cet algorithme naïf a une complexité linéaire en $O(N)$ avec $N$ la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos $N$ éléments pour chercher le maximum, mais peut-on faire mieux ? Une des premières idées qui peut vous venir à l'esprit serait d'utiliser une variable en plus du tableau qui contient le maximum actuel, on l'initialise avec le maximum qu'on a trouvé en parcourant le tableau, et ensuite dès qu'on effectue une modification on compare cette variable aux valeurs que l'on change pour la mettre à jour. Cependant cette méthode, qui peut paraitre bien au premier coup d'œil, ne fonctionne pas dans tous les cas. Si la valeur que l'on change dans le tableau est l'ancien maximum (et donc la valeur de notre variable externe), alors il se peut que le nouveau maximum ne soit plus la valeur qu'on a changée mais une autre contenue dans le reste du tableau :
 
-![Contre-exemple de l'algorithme proposé](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/contre_exemple_intro.png)
+![Contre-exemple de l'algorithme proposé](/img/algo/structure/arbre/arbre_binaire/contre_exemple_intro.png)
 
 Dans cet exemple, on part du tableau 8, 3, 14, 42, 2, 0 qu'on a parcouru et dont on a retenu la valeur maximale (en vert) dans notre variable à part : 42. Cependant, quand on change le maximum actuel par un nombre plus petit (7 dans notre cas), la variable externe ne change pas puisque 7 < 42 alors que le maximum du tableau n'est plus le même (c'est 14 désormais). Cet algorithme est donc invalide, et il nous en faut un nouveau pour trouver rapidement le maximum d'un tableau dynamique.
 
 Une autre idée serait de diviser notre gros problème en plus petits sous problèmes. Au lieu de se demander quel est le maximum de tout le tableau, on peut commencer par se demander quel est le maximum entre les deux premiers éléments du tableau, puis entre les deux suivants, etc. Une fois qu'on a tous ces maximums, on a divisé le nombre d'éléments à visiter par deux pour répondre à notre problème initial puisque désormais on peut simplement parcourir les maximums locaux pour trouver le maximum du tableau. Mais on peut continuer de diviser notre problème, en trouvant les maximums des maximums, etc. jusqu'à arriver à la valeur maximale contenue dans le tableau.
 
-![Représentation des sous problèmes](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png)
+![Représentation des sous problèmes](/img/algo/structure/arbre/arbre_binaire/representation_probleme_intro.png)
 
 Les éléments en bleus représentent notre tableau initial, et l'élément en vert est le maximum du tableau trouvé grâce à notre méthode. On commence en bas avec notre tableau, et on monte progressivement en prenant à chaque fois les maximums deux à deux. Cette structure s'apparente à un [arbre](/algo/structure/arbre.html), mais a la particularité de ne pas posséder plus de deux fils par nœud (car on compare les éléments deux à deux à chaque fois). Cette propriété nous permet de démontrer qu'il suffit dans le pire des cas $log _2 N$ changements (en savoir plus sur les [logarithmes](https://en.wikipedia.org/wiki/Logarithm)) pour modifier le maximum du tableau (et donc la racine de l'arbre). C'est-à-dire que lorsqu'on modifie des valeurs, il suffit uniquement de modifier les pères des nœuds affectés, et de simplement remonter petit à petit à la racine en recalculant uniquement les maximums locaux nécessaires. Or, la hauteur de cet arbre est dans le pire des cas de $log _2 N$, notre algorithme a donc une complexité en $O(\log _2 N)$ pour trouver le maximum d'un tableau dynamique.
 
-![Changement d'une valeur dans notre tableau](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/changement_valeur_intro.png)
+![Changement d'une valeur dans notre tableau](/img/algo/structure/arbre/arbre_binaire/changement_valeur_intro.png)
 
 Pour changer une valeur dans notre tableau (ici le 1 devient un 11), on change aussi les nœuds de l'arbre en remontant tant que le maximum local a changé.
 
@@ -27,7 +27,7 @@ Cette structure de données porte un nom : un arbre binaire (et plus particuliè
 
 Un arbre binaire (ou *binary tree* en anglais) est un type d'[arbre](/algo/structure/arbre.html) spécifique avec comme contrainte de ne pas avoir plus de deux fils par nœuds. On appelle alors les deux fils d'un nœud le *fils gauche* et le *fils droit*.
 
-![Exemple d'arbre binaire](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_arbre_binaire.png)
+![Exemple d'arbre binaire](/img/algo/structure/arbre/arbre_binaire/exemple_arbre_binaire.png)
 
 Cette structure de données a l'avantage d'être très modulable et on peut lui appliquer différentes propriétés afin d'en changer son comportement, en voici quelques-unes :
 
@@ -41,7 +41,7 @@ Cette structure de données a l'avantage d'être très modulable et on peut lui 
 
 Dans un arbre binaire, ajouter et supprimer un élément est relativement simple, il suffit uniquement de respecter les propriétés de l'arbre utilisé. Dans notre cas, on utilise un arbre binaire normal :
 
-![Exemple d'insertion de nœuds dans un arbre binaire](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_insertion_noeud.png)
+![Exemple d'insertion de nœuds dans un arbre binaire](/img/algo/structure/arbre/arbre_binaire/exemple_insertion_noeud.png)
 
 Ajouter un nœud suit une logique, on cherche à ne pas faire de "trous" dans notre arbre binaire, et on va donc combler tant que possible les espaces vides dans l'ordre (les nœuds en verts représentent le nouveau nœud à chaque étape).
 
@@ -51,7 +51,7 @@ Pour la suppression d'un nœud, il y a trois cas possibles :
 - Soit le nœud possède un fils, on remplace alors ce nœud par son unique fils.
 - Soit le nœud a deux fils, et il faut décider quel nœud va remplacer le père, c'est assez ambigu car on ne peut pas réellement choisir dans un arbre binaire normal puisque les deux fils peuvent tous les deux remplacer le nœud parent, il faut donc choisir à l'avance selon ses propres critères. Heureusement, ce n'est pas toujours le cas et lorsque notre arbre binaire a des propriétés (ce qui arrivera souvent), on peut alors décider quel nœud choisir afin de remplacer le père, en fonction desdites propriétés.
 
-![Différents cas de suppression de nœuds dans un arbre binaire](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_suppression_noeud.png)
+![Différents cas de suppression de nœuds dans un arbre binaire](/img/algo/structure/arbre/arbre_binaire/exemple_suppression_noeud.png)
 
 Dans le premier cas, *C* est une feuille, il n'y a donc aucuns soucis pour le supprimer. Dans le deuxième cas, *B* a un fils *D*, lorsqu'on supprime *B* on le remplace donc par *D*.
 
@@ -87,7 +87,7 @@ Une autre implémentation consiste à utiliser un simple tableau, permettant un 
 
 Pour stocker notre arbre binaire, on va prendre chaque élément de l'arbre profondeur par profondeur (de gauche à droite), et les placer dans le tableau dans cet ordre. 
 
-![Exemple de représentation d'un arbre binaire dans un tableau](//static.napnac.ga/img/algo/structure/arbre/arbre_binaire/exemple_imple_tableau.png)
+![Exemple de représentation d'un arbre binaire dans un tableau](/img/algo/structure/arbre/arbre_binaire/exemple_imple_tableau.png)
 
 Ce tableau permet notamment un accès rapide, et un parcours facile grâce à sa manière de stocker les nœuds qui nous renseigne sur qui est le père/fils gauche/fils droit d'un nœud :
 
