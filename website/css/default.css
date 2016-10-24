@@ -103,6 +103,12 @@ figure {
    margin-top: 2em;
 }
 
+figure img {
+   max-width: 100%;
+   height: auto;
+   width: auto\9;    /* Internet Explorer 8 */
+}
+
 figcaption {
    margin-top: 1.5em;
    margin-bottom: 2em;
