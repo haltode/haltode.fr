@@ -29,7 +29,7 @@ Le principe du tableau cumulatif est justement de calculer tous les intervalles 
 
 Afin de parfaitement comprendre l'utilisation d'un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.
 
-*1ère étape* : créer notre tableau cumulatif
+### Créer le tableau cumulatif
 
 A partir de la suite de nombres, on va créer un tableau cumulatif qui contiendra tous nos intervalles nécessaires, c'est-à-dire dans la première case l'élément 1, dans la deuxième case l'élément 1 + 2, dans la troisième case l'élément 1 + 2 + 3, etc.
 
@@ -42,25 +42,41 @@ A partir de la suite de nombres, on va créer un tableau cumulatif qui contiendr
 | 26, 68, 69, 158, 161      |
 | 26, 68, 69, 158, 161, 168 |
 
-*2ème étape* : répondre aux questions grâce au tableau cumulatif
+### Répondre aux questions grâce au tableau
 
 On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l'on va utiliser pour répondre à des questions du type quelle est la somme des éléments du tableau original entre deux indices $i$ et $j$ donnés. Il faut juste faire attention à une chose, c'est d'utiliser comme indice de début d'intervalle $i - 1$ et non $i$ car sinon notre premier élément ne sera pas inclus.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Début ($i$)     Fin ($j$)       Tableau                             Tableau cumulatif                            Réponse
--------------- --------------    ----------------------------------- -------------------------------------------  ------------------------------------------------------------------
-      3              6           26, 42, **1**, **89**, **3**, **7** 26, **68**, 69, 158, 161, **168**            On soustrait l'élément $j$ (6ème) et l'élément $i - 1$ (2ème) soit 
-                                                                                                                  168 - 68 = 100 (or 1 + 89 + 3 + 7 = 100) 
+*Question 1* : $i = 3$ et $j = 6$
 
-      1              4           **26**, **42**, **1**, **89**, 3, 7 26, 68, 69, **158**, 161, 168                Ici l'indice 0 correspond à un résultat de 0, on a donc 158 - 0 =
-                                                                                                                  158 (or 26 + 42 + 1 + 89 = 158)
+| Tableau                             | Tableau cumulatif                 |
+| -------                             | -----------------                 |
+| 26, 42, **1**, **89**, **3**, **7** | 26, **68**, 69, 158, 161, **168** |
 
-      4              5           26, 42, 1, **89**, **3**, 7         26, 68, **69**, 158, **161**, 168            161 - 69 = 92 (or 89 + 3 = 92) 
+On soustrait l'élément $j$ (6ème) et l'élément $i - 1$ (2ème), soit 168 - 68 = 100. Or on a bien dans notre tableau initial 1 + 89 + 3 + 7 = 100, la réponse est donc correcte.
 
-      1              6           **26**, **42**, **1**, **89**, **3  26, 68, 69, 158, 161, **168**                168 - 0 = 168 (or 26 + 42 + 1 + 89 + 3 + 7 = 168)
-                                 **, **7**
+*Question 2* : $i = 1$ et $j = 4$
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tableau                             | Tableau cumulatif             |
+| -------                             | -----------------             |
+| **26**, **42**, **1**, **89**, 3, 7 | 26, 68, 69, **158**, 161, 168 |
+
+Ici l'indice 0 correspond à un résultat de 0, on a donc 158 - 0 = 158. Encore une fois, dans notre tableau,  on retrouve bien le même résultat : 26 + 42 + 1 + 89 = 158.
+
+*Question 3* : $i = 4$ et $j = 5$
+
+| Tableau                     | Tableau cumulatif                 |
+| -------                     | -----------------                 |
+| 26, 42, 1, **89**, **3**, 7 | 26, 68, **69**, 158, **161**, 168 |
+
+On a : 161 - 69 = 92 (or 89 + 3 = 92).
+
+*Question 4* : $i = 1$ et $j = 6$
+
+| Tableau                                     | Tableau cumulatif             |
+| -------                                     | -----------------             |
+| **26**, **42**, **1**, **89**, **3**, **7** | 26, 68, 69, 158, 161, **168** |
+
+De même : 168 - 0 = 168 (or 26 + 42 + 1 + 89 + 3 + 7 = 168).
 
 ## Complexité
 

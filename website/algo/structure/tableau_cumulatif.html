@@ -63,7 +63,7 @@
 </figure>
 <h2>Exemple</h2>
 <p>Afin de parfaitement comprendre l&rsquo;utilisation d&rsquo;un tableau cumulatif, prenons l&rsquo;exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
-<p><em>1ère étape</em> : créer notre tableau cumulatif</p>
+<h3>Créer le tableau cumulatif</h3>
 <p>A partir de la suite de nombres, on va créer un tableau cumulatif qui contiendra tous nos intervalles nécessaires, c&rsquo;est-à-dire dans la première case l&rsquo;élément 1, dans la deuxième case l&rsquo;élément 1 + 2, dans la troisième case l&rsquo;élément 1 + 2 + 3, etc.</p>
 <table>
 <thead>
@@ -92,22 +92,72 @@
 </tr>
 </tbody>
 </table>
-<p><em>2ème étape</em> : répondre aux questions grâce au tableau cumulatif</p>
+<h3>Répondre aux questions grâce au tableau</h3>
 <p>On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l&rsquo;on va utiliser pour répondre à des questions du type quelle est la somme des éléments du tableau original entre deux indices $i$ et $j$ donnés. Il faut juste faire attention à une chose, c&rsquo;est d&rsquo;utiliser comme indice de début d&rsquo;intervalle $i - 1$ et non $i$ car sinon notre premier élément ne sera pas inclus.</p>
-<hr />
-<p>Début ($i$)     Fin ($j$)       Tableau                             Tableau cumulatif                            Réponse
--------------- --------------    ----------------------------------- -------------------------------------------  ------------------------------------------------------------------
-      3              6           26, 42, <strong>1</strong>, <strong>89</strong>, <strong>3</strong>, <strong>7</strong> 26, <strong>68</strong>, 69, 158, 161, <strong>168</strong>            On soustrait l&rsquo;élément $j$ (6ème) et l&rsquo;élément $i - 1$ (2ème) soit 
-                                                                                                                  168 - 68 = 100 (or 1 + 89 + 3 + 7 = 100) </p>
-<pre><code>  1              4           **26**, **42**, **1**, **89**, 3, 7 26, 68, 69, **158**, 161, 168                Ici l'indice 0 correspond à un résultat de 0, on a donc 158 - 0 =
-                                                                                                              158 (or 26 + 42 + 1 + 89 = 158)
-
-  4              5           26, 42, 1, **89**, **3**, 7         26, 68, **69**, 158, **161**, 168            161 - 69 = 92 (or 89 + 3 = 92)
-
-  1              6           **26**, **42**, **1**, **89**, **3  26, 68, 69, 158, 161, **168**                168 - 0 = 168 (or 26 + 42 + 1 + 89 + 3 + 7 = 168)
-                             **, **7**
-</code></pre>
-<hr />
+<p><em>Question 1</em> : $i = 3$ et $j = 6$</p>
+<table>
+<thead>
+<tr>
+<th>Tableau</th>
+<th>Tableau cumulatif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>26, 42, <strong>1</strong>, <strong>89</strong>, <strong>3</strong>, <strong>7</strong></td>
+<td>26, <strong>68</strong>, 69, 158, 161, <strong>168</strong></td>
+</tr>
+</tbody>
+</table>
+<p>On soustrait l&rsquo;élément $j$ (6ème) et l&rsquo;élément $i - 1$ (2ème), soit 168 - 68 = 100. Or on a bien dans notre tableau initial 1 + 89 + 3 + 7 = 100, la réponse est donc correcte.</p>
+<p><em>Question 2</em> : $i = 1$ et $j = 4$</p>
+<table>
+<thead>
+<tr>
+<th>Tableau</th>
+<th>Tableau cumulatif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>26</strong>, <strong>42</strong>, <strong>1</strong>, <strong>89</strong>, 3, 7</td>
+<td>26, 68, 69, <strong>158</strong>, 161, 168</td>
+</tr>
+</tbody>
+</table>
+<p>Ici l&rsquo;indice 0 correspond à un résultat de 0, on a donc 158 - 0 = 158. Encore une fois, dans notre tableau,  on retrouve bien le même résultat : 26 + 42 + 1 + 89 = 158.</p>
+<p><em>Question 3</em> : $i = 4$ et $j = 5$</p>
+<table>
+<thead>
+<tr>
+<th>Tableau</th>
+<th>Tableau cumulatif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>26, 42, 1, <strong>89</strong>, <strong>3</strong>, 7</td>
+<td>26, 68, <strong>69</strong>, 158, <strong>161</strong>, 168</td>
+</tr>
+</tbody>
+</table>
+<p>On a : 161 - 69 = 92 (or 89 + 3 = 92).</p>
+<p><em>Question 4</em> : $i = 1$ et $j = 6$</p>
+<table>
+<thead>
+<tr>
+<th>Tableau</th>
+<th>Tableau cumulatif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>26</strong>, <strong>42</strong>, <strong>1</strong>, <strong>89</strong>, <strong>3</strong>, <strong>7</strong></td>
+<td>26, 68, 69, 158, 161, <strong>168</strong></td>
+</tr>
+</tbody>
+</table>
+<p>De même : 168 - 0 = 168 (or 26 + 42 + 1 + 89 + 3 + 7 = 168).</p>
 <h2>Complexité</h2>
 <p>Si l&rsquo;on reprend notre énoncé dans l&rsquo;introduction, on nous donne un tableau de taille $N$, et $M$ questions du type : Quelle est la somme des éléments de $i$ à $j$ dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en $O(N \times M)$ (lorsqu&rsquo;on parcourt à chaque fois le tableau en entier, soit quand $i = 0$ et $j = N$ pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en $O(N + M)$ car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d&rsquo;accéder au tableau cumulatif (donc opération en $O(1)$).</p>
 <h2>Implémentation</h2>
