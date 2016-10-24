@@ -1,7 +1,7 @@
-Path: algo/structure
-Title: Graphe
-Published: 20/06/2015
-Modified: 01/12/2015
+Path: algo/structure  
+Title: Graphe  
+Published: 20/06/2015  
+Modified: 01/12/2015  
 
 ## Introduction
 

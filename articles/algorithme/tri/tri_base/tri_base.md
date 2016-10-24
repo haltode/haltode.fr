@@ -1,7 +1,7 @@
-Path: algo/tri
-Title: Tri par base
-Published: 05/03/2016
-Modified: 05/03/2016
+Path: algo/tri  
+Title: Tri par base  
+Published: 05/03/2016  
+Modified: 05/03/2016  
 
 ## Introduction
 

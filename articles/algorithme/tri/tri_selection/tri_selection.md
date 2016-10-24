@@ -1,7 +1,7 @@
-Path: algo/tri
-Title: Tri par sélection
-Published: 30/04/2014
-Modified: 08/12/2015
+Path: algo/tri  
+Title: Tri par sélection  
+Published: 30/04/2014  
+Modified: 08/12/2015  
 
 ## Introduction
 

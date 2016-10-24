@@ -1,4 +1,4 @@
-Path: algo/structure
-Title: Table de hachage
-Published:
-Modified:
+Path: algo/structure  
+Title: Table de hachage  
+Published:  
+Modified:  

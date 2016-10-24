@@ -1,7 +1,7 @@
-Path: algo/recherche
-Title: Dichotomie
-Published: 28/06/2014
-Modified: 14/01/2016
+Path: algo/recherche  
+Title: Dichotomie  
+Published: 28/06/2014  
+Modified: 14/01/2016  
 
 ## Introduction
 

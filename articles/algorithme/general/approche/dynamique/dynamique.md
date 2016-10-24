@@ -1,7 +1,7 @@
-Path: algo/general/approche
-Title: Algorithme dynamique
-Published: 03/04/2016
-Modified: 29/04/2016
+Path: algo/general/approche  
+Title: Algorithme dynamique  
+Published: 03/04/2016  
+Modified: 29/04/2016  
 
 ## Introduction
 

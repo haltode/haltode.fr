@@ -1,7 +1,7 @@
-Path: algo/structure
-Title: Liste chaînée
-Published: 08/06/2014
-Modified: 16/01/2016
+Path: algo/structure  
+Title: Liste chaînée  
+Published: 08/06/2014  
+Modified: 16/01/2016  
 
 ## Introduction
 

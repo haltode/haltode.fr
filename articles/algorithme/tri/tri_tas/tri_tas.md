@@ -1,7 +1,7 @@
-Path: algo/tri
-Title: Tri par tas
-Published: 14/05/2014
-Modified: 29/04/2016
+Path: algo/tri  
+Title: Tri par tas  
+Published: 14/05/2014  
+Modified: 29/04/2016  
 
 ## Introduction
 

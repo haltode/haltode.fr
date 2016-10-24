@@ -1,7 +1,7 @@
-Path: algo/structure/graphe/plus_court_chemin
-Title: Algorithme de Dijkstra
-Published: 22/05/2016
-Modified: 22/05/2016
+Path: algo/structure/graphe/plus_court_chemin  
+Title: Algorithme de Dijkstra  
+Published: 22/05/2016  
+Modified: 22/05/2016  
 
 ## Principe
 

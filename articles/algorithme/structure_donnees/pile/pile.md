@@ -1,7 +1,7 @@
-Path: algo/structure
-Title: Pile
-Published: 08/06/2014
-Modified: 28/11/2015
+Path: algo/structure  
+Title: Pile  
+Published: 08/06/2014  
+Modified: 28/11/2015  
 
 ## Introduction
 

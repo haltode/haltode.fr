@@ -1,7 +1,7 @@
-Path: algo/structure/graphe
-Title: Plus court chemin
-Published: 22/05/2016
-Modified: 22/05/2016
+Path: algo/structure/graphe  
+Title: Plus court chemin  
+Published: 22/05/2016  
+Modified: 22/05/2016  
 
 ## Introduction
 

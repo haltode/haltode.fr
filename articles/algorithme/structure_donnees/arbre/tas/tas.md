@@ -1,7 +1,7 @@
-Path: algo/structure/arbre
-Title: Tas
-Published: 11/01/2016
-Modified: 22/01/2016
+Path: algo/structure/arbre  
+Title: Tas  
+Published: 11/01/2016  
+Modified: 22/01/2016  
 
 ## Introduction
 

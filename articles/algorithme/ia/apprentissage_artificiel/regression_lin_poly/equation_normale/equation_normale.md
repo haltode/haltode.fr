@@ -1,7 +1,7 @@
-Path: algo/ia/apprentissage_artificiel/regression_lin_poly
-Title: Equation normale
-Published: 20/04/2016
-Modified: 20/04/2016
+Path: algo/ia/apprentissage_artificiel/regression_lin_poly  
+Title: Equation normale  
+Published: 20/04/2016  
+Modified: 20/04/2016  
 
 ## Introduction
 
