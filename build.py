@@ -25,11 +25,6 @@ def render_page(template, path, **metadata):
 
 
 def render_core_pages():
-    render_page(template='accueil.html', path='accueil.html', title='Bienvenue !')
-    render_page(template='liste_articles.html', path='articles.html', title='Articles')
-    render_page(template='projets.html', path='projets.html', title='Projets')
-    render_page(template='a_propos.html', path='a_propos.html', title='A propos')
-
     render_page(template='erreur_404.html', path='erreur_404.html', title='Erreur 404')
     render_page(template='erreur_50x.html', path='erreur_50x.html', title='Erreur')
 
