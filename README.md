@@ -1,6 +1,17 @@
 # napnac.fr
 
-This is my personal website (in French) where I post articles about algorithms, and about my projects. All the articles are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), and then converted with a home made script (in [sh](https://en.wikipedia.org/wiki/Bourne_shell)) into HTML pages (using [pandoc](http://pandoc.org/)). The website is hosted on my raspberry pi, which is running an [nginx](http://nginx.org/) server. I currently have a free domain name, but I will probably buy one later, and all the DNS config are handled by [CloudFlare](https://www.cloudflare.com/).
+This is my personal website (in French) where I post articles about algorithms, and my projects. All the articles are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), and then converted with a home made script into HTML pages.
+
+## Conversion script
+
+The script `build.py` uses different Python librairies:
+
+- [Markdown](https://pypi.python.org/pypi/Markdown): to convert Markdown content into HTML pages.
+- [Jinja](http://jinja.pocoo.org/): to create templates for the future HTML pages.
+
+## Server
+
+The website is hosted on my [Raspberry Pi](https://www.raspberrypi.org/), which is running an [nginx](http://nginx.org/) server. As for the SSL/TLS certificate, I use [Let's Encrypt](https://letsencrypt.org/).
 
 ## License
 
