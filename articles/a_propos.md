@@ -9,7 +9,7 @@ Je suis Thibault (ou napnac), un jeune programmeur de 16 ans, passionné d'infor
 
 ## Comment me contacter ?
 
-Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à MAIL ou consulter mon compte Twitter : [napnac](https://twitter.com/napnac).
+Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à `napnac arobase napnac point fr` ou consulter mon compte Twitter : [napnac](https://twitter.com/napnac).
 
 ## Site
 
