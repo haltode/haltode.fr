@@ -2,11 +2,16 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
 body {
-   margin: 0 auto;
-   max-width: 50em;
+   background-color: #fafafa;
    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
    line-height: 1.5;
-   padding: 4em 1em;
+}
+
+#page {
+   background-color: #ffffff;
+   margin: 0 auto;
+   max-width: 50em;
+   padding: 4em 5em;
 }
 
 /* ---- Titles ---- */
