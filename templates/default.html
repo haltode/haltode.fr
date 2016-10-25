@@ -28,19 +28,16 @@
    <body>
       <div id="page">
          <header>
-            <a href="/">
-               <img src="/img/logo.png" alt="Logo du site" height="100" width="300">
-            </a>
-         </header>
-
-         <nav>
-            <ul id="main_menu">
-               <li><a href="/">Accueil</a></li>
-               <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">A propos</a></li>
-            </ul>
-         </nav>
+            <div id="menu">
+	       <ul>
+		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
+		  <li><a href="/">Accueil</a></li>
+		  <li><a href="/articles.html">Articles</a></li>
+		  <li><a href="/projets.html">Projets</a></li>
+		  <li><a href="/a_propos.html">A propos</a></li>
+	       </ul>
+	    </div>
+	 </header>
 
          {% block content %}
          {% endblock content %}
