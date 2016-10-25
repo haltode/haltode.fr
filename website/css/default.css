@@ -47,29 +47,29 @@ body {
 
 h1 {
    text-align: center;
-   color: #DE4834;
+   color: #de4834;
    margin-top: 1em;
    padding-top: 1em;
    padding-bottom: 1em;
 }
 
 h2 {
-   color: #DE4834;
+   color: #de4834;
    margin-top: 1em;
    padding-top: 1em;
 }
 
 h3, h4, h5, h6 {
-   color: #DE4834;
+   color: #de4834;
    margin-top: 0.5em;
    padding-top: 0.5em;
 }
 
-/* ---- Link ---- */
+/* ---- Links ---- */
 
 a {
    text-decoration: none;
-   color: #2E64FE;
+   color: #2e64fe;
 }
 
 /* ---- List ---- */
@@ -111,7 +111,7 @@ table tr:nth-child(2n) {
    background-color: #f8f8f8;
 }
 
-/* ---- Image and caption ---- */
+/* ---- Images and captions ---- */
 
 figure {
    text-align: center;
