@@ -44,6 +44,26 @@
 <h1>Régression linéaire/polynomiale</h1>
 
 <p>Publié le : 25/04/2016<br><i>Modifié le : 25/04/2016</i></p>
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe">Principe</a></li>
+<li><a href="#fonction-derreur">Fonction d&rsquo;erreur</a></li>
+<li><a href="#algorithmes">Algorithmes</a></li>
+<li><a href="#regression-polynomiale">Régression polynomiale</a></li>
+<li><a href="#problemes">Problèmes</a><ul>
+<li><a href="#regularisation">Régularisation</a><ul>
+<li><a href="#algorithme-du-gradient">Algorithme du gradient</a></li>
+<li><a href="#equation-normale">Equation normale</a></li>
+<li><a href="#parametre-de-regularisation">Paramètre de régularisation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
 
 <h2 id="introduction">Introduction</h2>
 <p>Vous souhaitez estimer le prix d&rsquo;un ordinateur en fonction de différents facteurs (puissance, mémoire, stockage, batterie, etc.), cependant la tâche se complique au fur et à mesure que vous rajoutez des possibilités, et vous décidez alors d&rsquo;employer un algorithme d&rsquo;apprentissage artificiel pour faire le travail à votre place. Afin de prendre un exemple simple, on va dire que vous estimez le prix d&rsquo;un ordinateur uniquement en fonction de sa puissance de calcul. Dans l&rsquo;<a href="/algo/ia/apprentissage_artificiel/introduction.html">introduction à la matière</a>, on a vu que récolter des données utiles est une étape importante dans un processus d&rsquo;apprentissage, et vous avez alors noté la puissance et le prix de différents ordinateurs dans un tableau :</p>

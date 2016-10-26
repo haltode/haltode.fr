@@ -60,6 +60,12 @@ def render_articles():
         for key, value in metadata.items():
             metadata[key] = ''.join(value)
 
+        # We don't want the TOC for pages like homepage
+        if not metadata['path']:
+            insert_toc = False
+        else:
+            insert_toc = True
+
         # Extract the metadata
         path = os.path.join(metadata['path'], os.path.basename(article))
         path = path.replace('.md', '.html')
@@ -67,8 +73,13 @@ def render_articles():
         published = metadata['published']
         modified = metadata['modified']
 
-        render_page(template=article_template, path=path, html_content=html,
-                    title=title, published=published, modified=modified)
+        if insert_toc:
+            render_page(template=article_template, path=path, html_content=html,
+                        title=title, published=published, modified=modified,
+                        toc=md.toc)
+        else:
+            render_page(template=article_template, path=path, html_content=html,
+                        title=title, published=published, modified=modified)
 
 
 print("Rendering core pages...")

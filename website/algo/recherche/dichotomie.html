@@ -44,6 +44,23 @@
 <h1>Dichotomie</h1>
 
 <p>Publié le : 28/06/2014<br><i>Modifié le : 14/01/2016</i></p>
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-de-la-dichotomie">Principe de la dichotomie</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a></li>
+<li><a href="#complexite">Complexité</a></li>
+<li><a href="#implementation">Implémentation</a><ul>
+<li><a href="#recursif">Récursif</a></li>
+<li><a href="#iteratif">Itératif</a></li>
+<li><a href="#cc">C/C++</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
 
 <h2 id="introduction">Introduction</h2>
 <p>Si je vous donne un annuaire téléphonique contenant plusieurs milliers de coordonnées, et que je vous demande de trouver une personne, normalement en quelques secondes vous y arrivez. Même si je rajoute plusieurs millions de personnes dans l&rsquo;annuaire, vous devriez toujours être capable de repérer n&rsquo;importe qui en moins d&rsquo;une minute. Mais comment faire pour qu&rsquo;un ordinateur nous remplace pour effectuer cette tâche ? Comment concrétiser l&rsquo;algorithme que vous utilisez (sans le savoir) pour qu&rsquo;un ordinateur le comprenne ? Votre cerveau est un outil incroyable qui n&rsquo;aime pas faire des actions répétitives, et il essaiera naturellement de trouver une façon plus rapide de résoudre un problème. Vous n&rsquo;auriez pas idée de commencer par regarder toutes les personnes avec un prénom en &ldquo;A&rdquo; si vous savez que la personne que vous cherchez est &ldquo;Jean&rdquo;. Ce que vous faites plutôt, c&rsquo;est que vous divisez l&rsquo;intervalle de recherche à partir d&rsquo;un résultat, vous ouvrez par exemple une page au hasard qui devrait correspondre à peu près à la lettre que vous cherchez, et vous affinez au fur et à mesure en fonction du mot de la page. Votre méthode se base sur une caractéristique très importante de votre annuaire : il est <strong>trié</strong> par ordre alphabétique.</p>

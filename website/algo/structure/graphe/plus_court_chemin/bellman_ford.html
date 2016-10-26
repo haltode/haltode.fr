@@ -44,6 +44,25 @@
 <h1>Algorithme de Bellman-Ford</h1>
 
 <p>Publié le : 10/07/2016<br><i>Modifié le : 10/07/2016</i></p>
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe">Principe</a></li>
+<li><a href="#exemple">Exemple</a></li>
+<li><a href="#pseudo-code">Pseudo-code</a><ul>
+<li><a href="#cycle-ameliorant">Cycle améliorant</a></li>
+<li><a href="#version-recursive">Version récursive</a></li>
+<li><a href="#version-dynamique-recursive">Version dynamique récursive</a></li>
+<li><a href="#version-dynamique-iterative">Version dynamique itérative</a></li>
+<li><a href="#detection-de-cycles-ameliorants">Détection de cycles améliorants</a></li>
+</ul>
+</li>
+<li><a href="#complexite">Complexité</a></li>
+<li><a href="#implementation">Implémentation</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
 
 <h2 id="introduction">Introduction</h2>
 <p>L&rsquo;approche gloutonne de l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> est excellente car elle permet d&rsquo;aborder le problème du plus court chemin de manière intelligente, ce qui lui donne une complexité en temps intéressante, tout en étant optimale. Cependant, elle ne s&rsquo;applique pas à toutes les configurations de graphes (par exemple ceux avec des pondérations négatives), et il nous faut donc un nouvel algorithme pour gérer ces cas.</p>

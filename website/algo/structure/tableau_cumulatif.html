@@ -44,6 +44,27 @@
 <h1>Tableau cumulatif</h1>
 
 <p>Publié le : 21/11/2015<br><i>Modifié le : 05/12/2015</i></p>
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#principe-du-tableau-cumulatif">Principe du tableau cumulatif</a></li>
+<li><a href="#exemple">Exemple</a><ul>
+<li><a href="#creer-le-tableau-cumulatif">Créer le tableau cumulatif</a></li>
+<li><a href="#repondre-aux-questions-grace-au-tableau">Répondre aux questions grâce au tableau</a></li>
+</ul>
+</li>
+<li><a href="#complexite">Complexité</a></li>
+<li><a href="#implementation">Implémentation</a></li>
+<li><a href="#variantes">Variantes</a><ul>
+<li><a href="#autres-operations-que-la-somme">Autres opérations que la somme</a></li>
+<li><a href="#tableau-cumulatif-2d">Tableau cumulatif 2D</a></li>
+<li><a href="#tableau-cumulatif-a-n-dimensions">Tableau cumulatif à N dimensions ?</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+
 
 <h2 id="introduction">Introduction</h2>
 <p>Je vous donne un tableau possédant des trilliards d&rsquo;éléments, et je vous pose des milliards de questions de la forme : Quelle est la somme des éléments compris entre l&rsquo;indice $i$ et $j$ du tableau (avec $i &lt; j$) ? La première idée d&rsquo;algorithme naïf que l&rsquo;on peut avoir, est de parcourir pour chaque question les éléments situés entre les indices donnés, et d&rsquo;augmenter une variable <code>somme</code> au fur et à mesure du parcours.</p>
