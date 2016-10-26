@@ -4,8 +4,7 @@
 
 <h1>{{ title }}</h1>
 
-{% if published %}<p>Publié le : {{ published }}</p>{% endif %}
-{% if modified %}<p>Modifié le : {{ modified }}</p>{% endif %}
+{% if published %}<p>Publié le : {{ published }}<br><i>Modifié le : {{ modified }}</i></p>{% endif %}
 
 {{ html_content }}
 
