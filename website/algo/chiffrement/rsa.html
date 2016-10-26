@@ -39,15 +39,13 @@
 	    </div>
 	 </header>
 
-         
 
 <h1>RSA</h1>
 
-<p>Publié le : 31/05/2014<br><i>Modifié le : 02/02/2016</i></p>
-<div class="toc">
+<p>Publié le : 31/05/2014<br><i>Modifié le : 02/02/2016</i></p><div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#principe-de-lalgorithme">Principe de l&rsquo;algorithme</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
 <li><a href="#exemple">Exemple</a><ul>
 <li><a href="#generation-des-cles">Génération des clés</a></li>
 <li><a href="#chiffrementdechiffrement">Chiffrement/Déchiffrement</a></li>
@@ -63,8 +61,8 @@
 </ul>
 </li>
 <li><a href="#cassage">Cassage</a><ul>
-<li><a href="#lattaque-de-lhomme-du-milieu">L&rsquo;attaque de l&rsquo;homme du milieu</a></li>
-<li><a href="#attaque-dhastad">Attaque d&rsquo;Håstad</a></li>
+<li><a href="#lattaque-de-lhomme-du-milieu">L'attaque de l'homme du milieu</a></li>
+<li><a href="#attaque-dhastad">Attaque d'Håstad</a></li>
 <li><a href="#attaque-de-wiener">Attaque de Wiener</a></li>
 <li><a href="#module-de-chiffrement-commun">Module de chiffrement commun</a></li>
 <li><a href="#attaque-sur-les-implementations">Attaque sur les implémentations</a><ul>
@@ -77,7 +75,6 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 
 <h2 id="introduction">Introduction</h2>
 <p>Tous les algorithmes de chiffrement <strong>symétriques</strong> ont un problème commun : la transmission de clé. Quel que soit l&rsquo;algorithme utilisé, si la clé est interceptée par l&rsquo;ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire et l&rsquo;expéditeur du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, et même impossible dans certains cas (par exemple avec Internet, c&rsquo;est compliqué d&rsquo;aller voir physiquement le responsable de chaque serveur pour qu&rsquo;il vous transmette une clé), il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements <strong>asymétriques</strong>.</p>
@@ -634,7 +631,6 @@ lors de la 32c3 :</p>
 <p><a href="http://www.youtube.com/watch?v=424LHQQB2DE"><img alt="Quantum Cryptography [32c3]" src="http://img.youtube.com/vi/424LHQQB2DE/0.jpg" /></a></p>
 <p>Mais avec cette nouvelle technologie, se développe aussi les <a href="https://en.wikipedia.org/wiki/Quantum_computing"><strong>ordinateurs quantiques</strong></a>, basés sur les lois de la <a href="https://en.wikipedia.org/wiki/Quantum_mechanics">physique quantique</a> et qui pourrait permettre théoriquement de casser n&rsquo;importe quel système cryptographique moderne en très peu de temps. En effet, nos ordinateurs utilisent des phénomènes physiques dit classiques, possédant un seul <em>état physique</em> à la fois (0 ou 1 dans le cas des bits), mais les ordinateurs quantiques sont capables de prendre plusieurs états différents <strong>en même temps</strong>, grâce aux propriétés de la <a href="https://en.wikipedia.org/wiki/Quantum_superposition">superposition</a> ou encore de l&rsquo;<a href="https://en.wikipedia.org/wiki/Quantum_entanglement">intrication</a>. Ceci permettrait notamment de faire un nombre d&rsquo;opérations considérables en une fraction de seconde car au lieu de les faire une par une, on pourrait théoriquement toutes les faire en même temps. Cette idée est loin d&rsquo;être nouvelle, et en 1994, Peter Shor présenta l&rsquo;<a href="https://en.wikipedia.org/wiki/Shor's_algorithm">algorithme de Shor</a> qui permet de factoriser un nombre entier en un temps polynomial sur un ordinateur quantique. Pour le moment, nous sommes encore <strong>loin</strong> d&rsquo;utiliser l&rsquo;algorithme de Shor sur un ordinateur quantique pour casser des clés de chiffrement modernes, et même encore loin d&rsquo;avoir un ordinateur quantique fiable et assez stable. Mais il faut savoir que cette technologie se développe rapidement, on entend beaucoup parler du fameux ordinateur quantique de <a href="https://en.wikipedia.org/wiki/D-Wave_Systems">D-Wave</a>, et même si certains tests de rapidité sont assez <a href="http://news.mit.edu/2015/3q-scott-aaronson-google-quantum-computing-paper-1211">controversés</a>, ce domaine reste extrêmement intéressant et plein de potentiel pour de futures applications. Les ordinateurs quantiques nous permettraient de résoudre une quantité énorme de problèmes dont la solution nécessite trop de temps pour de simples ordinateurs non quantiques. Mais dans le domaine de la cryptographie, ce genre de technologie pose problème en termes de sécurité car nos systèmes de chiffrement actuels reposent sur des problèmes mathématiques que l&rsquo;on ne sait pas résoudre rapidement avec des ordinateurs normaux (factorisation, <a href="https://en.wikipedia.org/wiki/Discrete_logarithm">logarithme discret</a>, <a href="https://en.wikipedia.org/wiki/Elliptic_curve_cryptography">courbes elliptiques</a>), et des chercheurs commencent donc déjà à chercher des algorithmes capables de résister à des attaques faites sur un ordinateur quantique pour se préparer au mieux à l&rsquo;arrivée de ce genre d&rsquo;ordinateur et à la cryptographie <strong>post-quantique</strong>. Si le sujet vous intéresse, voici une petite introduction à la matière lors d&rsquo;une conférence :</p>
 <p><a href="http://www.youtube.com/watch?v=6XeBvdm8vao"><img alt="Post-quantum cryptography [32c3]" src="http://img.youtube.com/vi/6XeBvdm8vao/0.jpg" /></a></p>
-
 
 
          <footer>

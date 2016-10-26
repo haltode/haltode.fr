@@ -12,6 +12,9 @@ TEMPLATES_DIR = 'templates'
 WEBSITE_DIR = 'website'
 
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATES_DIR))
+# To get rid of useless empty lines in the html output
+jinja_env.trim_blocks = True
+jinja_env.lstrip_blocks = True
 default_template = jinja_env.get_template('default.html')
 
 

@@ -39,12 +39,10 @@
 	    </div>
 	 </header>
 
-         
 
 <h1>Dichotomie</h1>
 
-<p>Publié le : 28/06/2014<br><i>Modifié le : 14/01/2016</i></p>
-<div class="toc">
+<p>Publié le : 28/06/2014<br><i>Modifié le : 14/01/2016</i></p><div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-dichotomie">Principe de la dichotomie</a></li>
@@ -60,7 +58,6 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 
 <h2 id="introduction">Introduction</h2>
 <p>Si je vous donne un annuaire téléphonique contenant plusieurs milliers de coordonnées, et que je vous demande de trouver une personne, normalement en quelques secondes vous y arrivez. Même si je rajoute plusieurs millions de personnes dans l&rsquo;annuaire, vous devriez toujours être capable de repérer n&rsquo;importe qui en moins d&rsquo;une minute. Mais comment faire pour qu&rsquo;un ordinateur nous remplace pour effectuer cette tâche ? Comment concrétiser l&rsquo;algorithme que vous utilisez (sans le savoir) pour qu&rsquo;un ordinateur le comprenne ? Votre cerveau est un outil incroyable qui n&rsquo;aime pas faire des actions répétitives, et il essaiera naturellement de trouver une façon plus rapide de résoudre un problème. Vous n&rsquo;auriez pas idée de commencer par regarder toutes les personnes avec un prénom en &ldquo;A&rdquo; si vous savez que la personne que vous cherchez est &ldquo;Jean&rdquo;. Ce que vous faites plutôt, c&rsquo;est que vous divisez l&rsquo;intervalle de recherche à partir d&rsquo;un résultat, vous ouvrez par exemple une page au hasard qui devrait correspondre à peu près à la lettre que vous cherchez, et vous affinez au fur et à mesure en fonction du mot de la page. Votre méthode se base sur une caractéristique très importante de votre annuaire : il est <strong>trié</strong> par ordre alphabétique.</p>
@@ -245,7 +242,6 @@ int main(void)
 <li>L&rsquo;étude de fonction monotone : si on connait une fonction mathématique respectant $f(x) \leq f(y)$ avec $x &lt; y$, on peut appliquer une recherche dichotomique (pour l&rsquo;intervalle $[x, y]$) sur les éléments de cette fonction puisqu&rsquo;elle respecte le principe de l&rsquo;algorithme.</li>
 <li>Trouver un bug dans son programme : ça peut paraitre surprenant, mais il m&rsquo;arrive d&rsquo;utiliser l&rsquo;idée de la recherche dichotomique pour situer un bug dans mon programme. Notre intervalle de recherche au début est le code entier (on peut commencer par un plus petit intervalle si notre code est très long), et on va chercher à le réduire petit à petit en éliminant des parties que l&rsquo;on considère justes. Finalement, on se retrouve avec un intervalle assez restreint pour trouver l&rsquo;origine du bug et pouvoir ainsi le fixer.</li>
 </ul>
-
 
 
          <footer>

@@ -39,23 +39,20 @@
 	    </div>
 	 </header>
 
-         
 
 <h1>Algorithme de Dijkstra</h1>
 
-<p>Publié le : 22/05/2016<br><i>Modifié le : 22/05/2016</i></p>
-<div class="toc">
+<p>Publié le : 22/05/2016<br><i>Modifié le : 22/05/2016</i></p><div class="toc">
 <ul>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#complexite">Complexité</a></li>
 <li><a href="#implementation">Implémentation</a></li>
-<li><a href="#cas-dutilisation">Cas d&rsquo;utilisation</a></li>
+<li><a href="#cas-dutilisation">Cas d'utilisation</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 
 <h2 id="principe">Principe</h2>
 <p>L&rsquo;algorithme de Dijkstra est sans doute l&rsquo;un des algorithmes de plus court chemin le plus connu. Ce dernier se base sur le <a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">parcours en largeur</a> afin de trouver le plus court chemin dans un graphe pondéré <strong>positivement</strong> (ce point est très important, mais nous y reviendrons plus en détails après). On sait qu&rsquo;un parcours en largeur permet de trouver le plus court chemin sur un graphe non pondéré (où on associe chaque arc avec une longueur arbitraire de 1 unité) et qu&rsquo;il utilise une file pour stocker les éléments afin de les parcourir profondeur par profondeur. L&rsquo;algorithme de Dijkstra s&rsquo;appuie sur la même idée, sauf qu&rsquo;il ne va pas utiliser une simple file (car tous les arcs n&rsquo;ont pas la même pondération) mais une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a>. Cette dernière permet de toujours avoir le nœud avec la distance minimale par rapport au départ en tête de file, et garantie alors qu&rsquo;on a trouvé le plus court chemin lorsqu&rsquo;on atteint le nœud de sortie. La file à priorité a aussi l&rsquo;avantage d&rsquo;être une structure de données très efficace et rapide, ce qui rend notre algorithme d&rsquo;autant plus intéressant.</p>
@@ -264,7 +261,6 @@ int main(void)
 <li>Il ne peut pas être utilisé sur des graphes pondérés négativement. Dans ce cas, il faut avoir recours à d&rsquo;autres algorithmes de recherche de plus court chemin, comme celui de <a href="/algo/structure/graphe/plus_court_chemin/bellman_ford.html"><strong>Bellman-Ford</strong></a>.</li>
 <li>Il ne fait aucunes différences entre les multiples chemins qu&rsquo;il emprunte, c&rsquo;est-à-dire qu&rsquo;il ne va jamais en favoriser un par rapport à un autre. En effet ceci peut être un problème, car en fonction du graphe en entrée, si un chemin semble optimal au début il est très probable qu&rsquo;il soit, ou mène, au plus court chemin. C&rsquo;est ce qu&rsquo;essaie d&rsquo;améliorer la variante de l&rsquo;algorithme appelée : <strong>A*</strong>. Cette dernière fonctionne exactement comme l&rsquo;algorithme de Dijkstra, mais utilise une technique dite <a href="https://en.wikipedia.org/wiki/Heuristic"><strong>heuristique</strong></a> lors de la sélection du prochain nœud à visiter. Cette fonction heuristique doit estimer la distance qu&rsquo;il y a entre le prochain nœud et l&rsquo;arrivée. Cela peut sembler étrange de devoir estimer cette distance, puisqu&rsquo;on ne peut pas garantir sa véracité, mais c&rsquo;est le principe même d&rsquo;une heuristique. Cette variante est très utilisée en pratique, notamment dans les jeux vidéos, car elle permet d&rsquo;obtenir de très bons résultats rapidement. Des algorithmes qui se basent sur des heuristiques sont en réalité très fréquents, car même si peu efficace en théorie (il est facile de trouver des exemples où l&rsquo;algorithme A*  est lent) ils se basent sur le fait qu&rsquo;en pratique, on ne trouve pas ces cas aussi spécifiques, et ils gagnent ainsi du temps pour obtenir un résultat très proche de la réalité. La question bien sûr est : comment choisir la fonction heuristique ? Cela dépend d&rsquo;énormément de facteurs, mais voici un article regroupant différentes idées très intéressantes et utiles dans beaucoup de cas : <a href="http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html">A* ’s Use of the Heuristic</a>.</li>
 </ul>
-
 
 
          <footer>

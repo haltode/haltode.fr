@@ -39,12 +39,10 @@
 	    </div>
 	 </header>
 
-         
 
 <h1>Tri rapide</h1>
 
-<p>Publié le : 10/05/2014<br><i>Modifié le : 22/01/2016</i></p>
-<div class="toc">
+<p>Publié le : 10/05/2014<br><i>Modifié le : 22/01/2016</i></p><div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l’algorithme</a></li>
@@ -54,14 +52,13 @@
 <li><a href="#implementation">Implémentation</a></li>
 <li><a href="#ameliorations-et-variantes">Améliorations et variantes</a><ul>
 <li><a href="#choix-du-pivot">Choix du pivot</a></li>
-<li><a href="#melange-dalgorithme">Mélange d&rsquo;algorithme</a></li>
+<li><a href="#melange-dalgorithme">Mélange d'algorithme</a></li>
 <li><a href="#introsort">Introsort</a></li>
 </ul>
 </li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 
 <h2 id="introduction">Introduction</h2>
 <p>Le tri rapide (<em>quicksort</em> en anglais) est un algorithme de tri par comparaison, son fonctionnement est plutôt simple à comprendre et il est très utilisé sur de grandes entrées. En effet, il a pour complexité moyenne $O(N \log _2 N)$ et $O(N^2)$ dans le pire des cas. Cependant, même si cet algorithme est lent dans le pire des cas, il est plus utilisé en pratique que d’autres tris comme le <a href="/algo/tri/tri_fusion.html">tri par fusion</a> qui a une complexité dans le pire des cas en $O(N \log _2 N)$. C’est un algorithme <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non stable</a> mais <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
@@ -184,7 +181,6 @@ int main(void)
 <p>Dans le même genre que d&rsquo;utiliser un algorithme quadratique sur de petites entrées, l&rsquo;introsort utilise un mix de tri rapide et de <a href="/algo/tri/tri_tas.html">tri par tas</a> afin de contrer un problème de lenteur dû au nombre d&rsquo;appels récursifs importants du tri rapide. Une fois que ce nombre a dépassé une certaine limite, le travail est assuré par le tri par tas pour améliorer le temps d&rsquo;exécution et ne pas exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d&rsquo;appel</a>. Grâce à cela, notre temps d&rsquo;exécution dans le pire des cas est de $O(N \log _2 N)$.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Le tri rapide est donc un algorithme de tri efficace, qui a une complexité en $O(N \log _2 N)$ et $O(N^2)$ dans le pire des cas (ce qui est assez rare en pratique, et peut être amélioré). Cependant, cet algorithme est très utilisé de nos jours grâce à sa rapidité (jusqu&rsquo;à deux fois plus rapide que le tri par tas pour des raisons de cache, et dans la plupart du temps plus efficace que le tri fusion grâce à ses améliorations). Cet algorithme est aussi utilisé comme fonction de tri de base dans les librairies standards (comme en C ou en C++).</p>
-
 
 
          <footer>

@@ -39,15 +39,13 @@
 	    </div>
 	 </header>
 
-         
 
 <h1>Chiffre de Vernam</h1>
 
-<p>Publié le : 29/05/2014<br><i>Modifié le : 20/12/2015</i></p>
-<div class="toc">
+<p>Publié le : 29/05/2014<br><i>Modifié le : 20/12/2015</i></p><div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#principe-de-lalgorithme">Principe de l&rsquo;algorithme</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#implementation">Implémentation</a></li>
@@ -56,7 +54,6 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 
 <h2 id="introduction">Introduction</h2>
 <p>Le chiffre de Vernam est considéré comme une amélioration significative du <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigenère</a> car cet algorithme de chiffrement est théoriquement impossible à casser. Cependant, aucuns systèmes de chiffrement n&rsquo;est parfait, et même si ce dernier semble sécurisé, il n&rsquo;est pas toujours facile de remplir les conditions pour avoir un message chiffré totalement sûr.</p>
@@ -213,7 +210,6 @@ shrtvsgviw
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>Le chiffre de Vernam est donc un algorithme de chiffrement symétrique offrant une sécurité optimale si les contraintes de cet algorithme sont respectées. Mais pour que son efficacité soit à son maximum, il faut disposer d&rsquo;importantes ressources afin de créer un générateur totalement aléatoire, mais aussi un système assurant une utilisation unique des clés de chiffrement générées. Cependant, même avec un algorithme de chiffrement incassable, un problème persiste au niveau de l&rsquo;échange de clé. En effet, tous les algorithmes de chiffrement symétriques nécessitent un échange de clé entre les deux personnes souhaitant communiquer afin de pouvoir chiffrer et déchiffrer les messages échangés. Mais c&rsquo;est justement cet échange qui pose problème, car comment être sûr que personne d&rsquo;autre ne connait la clé ? Comment la transmettre en toute sécurité ? L&rsquo;intérêt d&rsquo;un algorithme de chiffrement symétrique est donc limité, car si notre adversaire connait la clé de chiffrement, on aura beau mettre en place un algorithme de chiffrement incassable comme le chiffre de Vernam, il pourra sans aucunes difficultés comprendre les messages secrets. C&rsquo;est pourquoi des mathématiciens ont travaillé sur de nouveaux algorithmes dit <strong>asymétriques</strong> (comme le <a href="/algo/chiffrement/rsa.html">RSA</a>), ne nécessitant alors aucun échange de clé et rendant les communications secrètes bien plus sûres.</p>
-
 
 
          <footer>

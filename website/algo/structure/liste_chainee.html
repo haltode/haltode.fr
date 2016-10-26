@@ -39,12 +39,10 @@
 	    </div>
 	 </header>
 
-         
 
 <h1>Liste chaînée</h1>
 
-<p>Publié le : 08/06/2014<br><i>Modifié le : 16/01/2016</i></p>
-<div class="toc">
+<p>Publié le : 08/06/2014<br><i>Modifié le : 16/01/2016</i></p><div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-liste-chainee">Principe de la liste chaînée</a></li>
@@ -56,13 +54,12 @@
 <li><a href="#liste-doublement-chainee">Liste doublement chaînée</a></li>
 <li><a href="#liste-chainee-circulaire">Liste chaînée circulaire</a></li>
 <li><a href="#liste-doublement-chainee-circulaire">Liste doublement chaînée circulaire</a></li>
-<li><a href="#dautres-variantes-plus-complexes">D&rsquo;autres variantes plus complexes</a></li>
+<li><a href="#dautres-variantes-plus-complexes">D'autres variantes plus complexes</a></li>
 </ul>
 </li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 
 <h2 id="introduction">Introduction</h2>
 <p>Imaginons un tableau contenant des milliards d&rsquo;éléments. Comment supprimer un élément en plein milieu du tableau ? Pourquoi pas créer un deuxième tableau dans lequel on recopie toutes nos valeurs (sauf celles que l&rsquo;on veut supprimer) ? Cela marche bien, mais cette opération est longue et coûteuse en mémoire. On peut essayer de décaler le tableau en réécrivant sur la valeur que l&rsquo;on veut supprimer, grâce à ça on fait des économies de mémoire mais cela prend beaucoup de temps. Et comment ajouter un élément dans notre tableau ? De même, on peut recréer un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel élément. On peut aussi faire des économies de mémoire en décalant les éléments vers la droite pour laisser un espace au milieu afin d&rsquo;insérer notre nouvel élément. Cependant, cette solution prend trop de temps et ceci nous pousse à comprendre que les tableaux ne sont pas adaptés à toutes les situations.</p>
@@ -336,7 +333,6 @@ typedef Noeud *Liste;
 <h2 id="conclusion">Conclusion</h2>
 <p>La liste chaînée est donc une structure de données très souple, et efficace pour insérer et supprimer des éléments simplement. De plus, on peut la modifier afin de créer de nouvelles structures de données différentes comme la liste doublement chaînée, la liste chaînée circulaire, mais aussi pour créer une <a href="/algo/structure/pile.html">pile</a> ou encore une <a href="/algo/structure/file.html">file</a>.</p>
 <p>Les listes chaînées sont aussi la base de structures de données plus complexes comme les <a href="/algo/structure/arbre.html">arbres</a>, les <a href="/algo/structure/graphe.html">graphes</a>, les <a href="/algo/structure/table_hachage.html">tables de hachage</a> et de nombreuses variantes de listes chaînées existent.</p>
-
 
 
          <footer>

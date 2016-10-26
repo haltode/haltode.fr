@@ -39,12 +39,10 @@
 	    </div>
 	 </header>
 
-         
 
 <h1>Tri par dénombrement</h1>
 
-<p>Publié le : 05/07/2014<br><i>Modifié le : 02/02/2016</i></p>
-<div class="toc">
+<p>Publié le : 05/07/2014<br><i>Modifié le : 02/02/2016</i></p><div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l’algorithme</a></li>
@@ -56,7 +54,6 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 
 <h2 id="introduction">Introduction</h2>
 <p>Le tri par dénombrement (<em>counting sort</em> en anglais) est l’un des algorithmes de tri le plus rapide, et pourtant il est loin d&rsquo;être compliqué, même s&rsquo;il a quelques restrictions et défauts. Le tri s&rsquo;exécute en un temps linéaire, mais uniquement sur des nombres entiers. La particularité du tri est qu&rsquo;il est la base d&rsquo;autres algorithmes de tri en temps linéaires, permettant de s&rsquo;adapter aux besoins en temps et en mémoire.</p>
@@ -225,7 +222,6 @@ int main(void)
 
 <h2 id="conclusion">Conclusion</h2>
 <p>Le tri par dénombrement est donc un algorithme de tri assez restrictif (il ne travaille qu&rsquo;avec des nombres entiers), et doit obliger des compromis de mémoire pour avoir une complexité en temps linéaire. Cependant, quand on connait l&rsquo;entrée, on peut utiliser cet algorithme afin d&rsquo;avoir un temps d&rsquo;exécution très rapide, mais on peut aussi changer le fonctionnement de ce tri afin d&rsquo;améliorer la complexité en mémoire, sans trop impacter la complexité en temps, et c&rsquo;est ce que fait le <a href="/algo/tri/tri_base.html">tri par base</a> qui est un autre algorithme en temps linéaire inspiré du tri par dénombrement. On le retrouve aussi dans le <a href="https://en.wikipedia.org/wiki/Bucket_sort">tri par paquets</a> qui permet de faire des améliorations de manières générales en temps et en mémoire à ce dernier.</p>
-
 
 
          <footer>
