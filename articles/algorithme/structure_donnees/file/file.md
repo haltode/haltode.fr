@@ -28,7 +28,7 @@ L’action d’enlever un élément de la file est appelée : **défiler** (ou *
 
 Comme la fin de la file est située "à gauche", notre premier élément pointera vers `NULL` pour indiquer le début de la file (et non la fin comme pour une [liste chaînée](/algo/structure/liste_chainee.html), ou une [pile](/algo/structure/pile.html)).
 
-Pour représenter une file, on peut utiliser une [liste chaînée](/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d'opérations que nécessaires). Cependant, on peut encore améliorer l'implémentation de notre file, en utilisant une [liste doublement chaînée](/algo/structure/liste_chainee.html#liste-doublement-chaînée). En effet, si l'on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu'avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.
+Pour représenter une file, on peut utiliser une [liste chaînée](/algo/structure/liste_chainee.html) car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d'opérations que nécessaires). Cependant, on peut encore améliorer l'implémentation de notre file, en utilisant une [liste doublement chaînée](/algo/structure/liste_chainee.html#liste-doublement-chainee). En effet, si l'on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu'avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.
 
 ## Quelques fonctions pour manipuler une file
 

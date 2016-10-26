@@ -45,15 +45,15 @@
 
 <p>Publié le : 03/10/2016<br><i>Modifié le : 03/10/2016</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>TODO : conseils persos</p>
 <p>Je ne le répèterai jamais assez, mais <a href="http://www.france-ioi.org/">France-IOI</a> est <strong>la référence francophone en algorithmique</strong>, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu&rsquo;elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s&rsquo;applique pas uniquement pour des concours ou des exercices, mais de manière générale lorsqu&rsquo;on cherche un algorithme pour résoudre un problème donné.</p>
 <p>Cependant, cette méthode peut paraître longue et fastidieuse au début, et nécessite de l&rsquo;<a href="/algo/general/entrainement.html">entraînement</a> ainsi que de la rigueur pour être utilisée efficacement. La vitesse viendra avec la pratique et non en bâclant les étapes de cette méthode. Il peut être frustrant au début de résoudre lentement un problème, mais cela vous sera très utile dans le futur et vous serez capable de réaliser les différentes étapes de cette méthode bien plus rapidement grâce à votre expérience.</p>
 <p>Pour commencer, il vous faut uniquement une feuille et un crayon.</p>
-<h2>Enoncé</h2>
-<h3>Lecture</h3>
+<h2 id="enonce">Enoncé</h2>
+<h3 id="lecture">Lecture</h3>
 <p>Que ce soit un concours de programmation ou un problème que vous cherchez à résoudre, la première étape est de <strong>lire attentivement l&rsquo;énoncé</strong>, et de ne surtout pas se précipiter. Cela peut paraitre évidant, mais c&rsquo;est une erreur commune de se tromper dans la lecture du sujet, alors qu&rsquo;il est facile d&rsquo;éviter ceci. Relisez plusieurs fois ce dernier jusqu&rsquo;à l&rsquo;avoir en tête, et essayer de vous concentrer sur le sujet et non sur l&rsquo;algorithme pour l&rsquo;instant. Il est fréquent de commencer à lire le sujet et d&rsquo;avoir une idée d&rsquo;algorithme en tête qu&rsquo;on cherche à développer, mais cette dernière n&rsquo;est quasiment jamais la bonne car on n&rsquo;a pas toutes les informations à propos de l&rsquo;énoncé. <strong>Ne cherchez pas de solutions au problème pour l&rsquo;instant</strong>, votre premier objectif est de comprendre parfaitement le sujet et de n&rsquo;avoir aucuns doutes dessus. Commencer à chercher aussi tôt ne ferra que vous perturber, vous emmêler ou encore pire, vous induire en erreur.</p>
-<h3>Reformulation</h3>
+<h3 id="reformulation">Reformulation</h3>
 <p>Une fois le sujet correctement lu et appréhendé, il est crucial de le <strong>reformuler en quelques phrases</strong> (deux ou trois en général suffisent, il ne s&rsquo;agit pas ici de réécrire le problème). Ceci vous permet dans un premier temps de vérifier votre compréhension vis-à-vis de l&rsquo;énoncé, mais aussi de le décrire efficacement et de manière concise. Supprimez tous les détails inutiles, et concentrez-vous sur ce qu&rsquo;on vous demande concrètement de faire. Vous pouvez vous aider en écrivant deux phrases types, &ldquo;On nous donne&hellip;&rdquo; et &ldquo;On nous demande&hellip;&rdquo;, puis si nécessaire notez les points importants à ne pas oublier ou spécifiques au sujet. Attention cependant, car <strong>l&rsquo;étape de reformulation ne doit pas dériver du sujet</strong> (en le simplifiant ou en le généralisant par exemple), elle doit le décrire parfaitement comme si vous expliquiez l&rsquo;énoncé à une personne.</p>
 <p>Il est très courant dans un concours de programmation d&rsquo;avoir une histoire qui accompagne le sujet, et l&rsquo;étape de reformulation permet d&rsquo;écarter cette dernière en explicitant le problème de manière crue et non imagée. Il faut arriver à se <strong>détacher le plus possible de l&rsquo;histoire</strong> et de décrire le problème d&rsquo;un point de vue purement algorithmique.</p>
 <p>Voici un exemple de sujet très simple, ainsi qu&rsquo;une reformulation de ce dernier :</p>
@@ -141,7 +141,7 @@ On nous demande le plus court chemin entre deux nœuds de ce graphe.</p>
 <p>Plus d&rsquo;histoire, plus d&rsquo;Alice et Bob, on garde uniquement le strict minimum, sans pour autant perdre des informations. Ici, l&rsquo;entrée donnée par le sujet est un graphe implicite où chaque ville est un nœud et chaque trajet un arc. Le graphe est orienté car on a une case &ldquo;Départ&rdquo; et &ldquo;Arrivée&rdquo; ce qui semble indiquer une direction à suivre. L&rsquo;information du transport (avion ou train) est en réalité inutile à notre problème puisqu&rsquo;on ne cherche qu&rsquo;à minimiser le coût, on l&rsquo;omet donc de notre description. La pondération du graphe simule le coût du trajet, or ce coût est toujours positif donc on le précise. Pour ce qui est de la sortie, on nous demande effectivement un plus court chemin reliant le nœud de départ (où se trouve Bob sur le graphe) et un nœud d&rsquo;arrivée (où se trouve Alice).</p>
 <p>Une fois le sujet reformulé, il peut être intéressant de <strong>relire une dernière fois l&rsquo;énoncé</strong> pour s&rsquo;assurer de la véracité de la reformulation. En effet, cette dernière sera l&rsquo;élément central de notre réflexion, donc il faut être certain qu&rsquo;elle est correcte car on basera toute notre méthode de recherche de l&rsquo;algorithme dessus.</p>
 <p>Encore une fois, on est actuellement dans la compréhension du sujet et non dans la résolution. Ne vous lancez pas à tête baissée dans une idée d&rsquo;algorithme tout de suite, attendez pour vérifier votre réflexion.</p>
-<h3>Dimensions et contraintes</h3>
+<h3 id="dimensions-et-contraintes">Dimensions et contraintes</h3>
 <p>Enfin, dernière sous étape qui concerne l&rsquo;énoncé, il faut noter sur votre feuille les <strong>dimensions</strong> et les <strong>contraintes</strong> du sujet.</p>
 <p>Une <strong>dimension</strong> est une donnée qu&rsquo;on fournit dans l&rsquo;énoncé du problème. Par exemple dans le cas du problème d&rsquo;Alice et Bob, on pourra avoir une liste de dimensions comme :</p>
 <blockquote>
@@ -163,18 +163,18 @@ Mémoire : 32000 Ko</p>
 </blockquote>
 <p>Lister les dimensions et les contraintes vous permet de vérifier rapidement si votre algorithme est assez efficace. En effet, avec ces informations il suffit de calculer la complexité d&rsquo;un algorithme pour se rendre compte instantanément s&rsquo;il respecte ou non le sujet.</p>
 <p><em>Attention à ne pas mettre les dimensions ou les contraintes dans la reformulation, ce sont deux sous-étapes bien distinctes.</em></p>
-<h2>Exemple</h2>
+<h2 id="exemple">Exemple</h2>
 <p>Deuxième étape de la méthode de résolution : <strong>résoudre des exemples à la main</strong>. Désormais, on va se concentrer sur la partie résolution du problème et non plus dans la compréhension du sujet, vous devriez maintenant avoir ce dernier bien en tête et correctement reformulé en quelques phrases relativement courtes.</p>
-<h3>Représentation graphique du problème</h3>
+<h3 id="representation-graphique-du-probleme">Représentation graphique du problème</h3>
 <p>Avant de se lancer dans la résolution d&rsquo;exemples, on peut commencer par chercher une bonne représentation de notre problème. Visualiser ce dernier nous permettra de trouver une solution bien plus facilement, mais encore une fois, il y a de nombreuses façons de représenter une même chose mais peu sont réellement efficaces et utiles.</p>
 <p>Une bonne visualisation indique des informations indispensables, il ne faut surtout pas surcharger la figure car elle doit rester claire et précise. Cette représentation peut prendre différentes formes selon le sujet et le contexte : graphe, arbre, tableau, graphique 2D, etc.</p>
-<h3>Résoudre des exemples à la main</h3>
+<h3 id="resoudre-des-exemples-a-la-main">Résoudre des exemples à la main</h3>
 <p>Trouver une solution est bien plus simple lorsqu&rsquo;on essaie nous même de résoudre le problème plutôt que d&rsquo;y réfléchir dans sa tête. En effet, notre cerveau est un outil très efficace pour ce genre de tâche, et se demander comment on ferrait personnellement pour résoudre le problème peut être un bon départ de réflexion. De plus, votre cerveau peut trouver rapidement des raccourcis pour éviter de répéter des mêmes opérations fastidieuses, et ceci nous aidera grandement pour trouver un algorithme efficace.</p>
 <p>Il est courant d&rsquo;avoir des exemples dans l&rsquo;énoncé du problème, mais il en faudra plus pour trouver l&rsquo;algorithme. Cependant, générer plusieurs <strong>bons exemples</strong> est loin d&rsquo;être facile. Les exemples doivent être tous assez différents les uns des autres pour généraliser l&rsquo;algorithme et faire ressortir dès idées, pas trop longs pour ne pas perdre trop de temps (surtout pendant un concours de programmation), mais ni trop courts pour ne pas être inutiles.</p>
 <p>En plus d&rsquo;aider à résoudre le problème et à trouver un algorithme, cette étape importante permet aussi de fournir des tests pour notre futur code (si les exemples à la main sont résolus correctement). On peut trouver des <strong>cas spéciaux</strong> ou des <strong>cas limites</strong> (en fonction des contraintes et des dimensions du problème) qui peuvent nous permettre de tester l&rsquo;efficacité de l&rsquo;algorithme. Un exemple de cas limite pour le problème d&rsquo;Alice et Bob serait une entrée avec des millions (voire des milliards) d&rsquo;itinéraires possibles. L&rsquo;idée est de tester si notre algorithme respecte ou non les contraintes du sujet.</p>
-<h2>Algorithme</h2>
+<h2 id="algorithme">Algorithme</h2>
 <p>Si à partir des exemples, vous n&rsquo;avez encore aucunes réelles idées de l&rsquo;algorithme à employer, il est possible d&rsquo;utiliser différentes stratégies afin de changer d&rsquo;approche.</p>
-<h3>Algorithme naïf</h3>
+<h3 id="algorithme-naif">Algorithme naïf</h3>
 <p>Un algorithme dit <strong>naïf</strong> est la première méthode bourrin qui vous vient à l&rsquo;esprit quand on vous pose un problème, ce dernier ne se soucie pas des contraintes, des dimensions, ou autre, et cherche uniquement à résoudre l&rsquo;énoncé. Par exemple, si l&rsquo;on reprend notre reformulation du sujet :</p>
 <blockquote>
 <p>On nous donne un graphe orienté pondéré positivement.<br />
@@ -188,17 +188,17 @@ On nous demande le plus court chemin entre deux nœuds de ce graphe.</p>
 <li>Il arrive que l&rsquo;algorithme naïf soit une solution suffisante dans des cas simplistes. En concours, il est alors inutile de chercher à améliorer l&rsquo;algorithme s&rsquo;il respecte déjà les contraintes, d&rsquo;autant plus que l&rsquo;algorithme bourrin est souvent rapide et simple à programmer.</li>
 <li>Connaître la complexité en temps et en mémoire permet de se rendre compte des améliorations nécessaires pour que le nouvel algorithme soit efficace.</li>
 </ul>
-<h3>Simplifier le problème</h3>
+<h3 id="simplifier-le-probleme">Simplifier le problème</h3>
 <p>Si vous bloquez sur le sujet, essayez de le simplifier car cela permettra de faire ressortir plus d&rsquo;idées qui sont souvent très utiles pour le problème original. Pour cela, on réalise un tableau des dimensions fondamentales du sujet, et on essaie d&rsquo;appliquer différentes opérations sur chaque dimension :</p>
 <ul>
 <li><strong>Supprimer</strong> : l&rsquo;auteur d&rsquo;un problème peut rajouter des dimensions afin de rendre un sujet plus complexe, il peut donc être judicieux de supprimer entièrement une dimension pour rendre le processus de réflexion plus simple et plus efficace. Prenons un exemple où l&rsquo;on vous fournit des intervalles de temps, on pourrait supprimer une dimension en faisant en sorte d&rsquo;utiliser des points fixes dans le temps au lieu d&rsquo;intervalle.</li>
 <li><strong>Fixer</strong> : pour mieux généraliser le problème, on peut fixer une ou plusieurs dimensions à des valeurs bien précises. Par exemple, si le sujet implique des rectangles à dimensions variables, que se passe-t-il si tous les rectangles ont la même largeur et la même hauteur ? Ou encore, si tous les rectangles deviennent des carrés ?</li>
 <li><strong>Réduire</strong> : si on n&rsquo;arrive pas à trouver un algorithme assez efficace, il faut commencer par un algorithme plus simple mais moins intelligent (attention ici on ne veut pas retomber sur l&rsquo;algorithme naïf). Réduire des dimensions par 2, 10, etc. peut aider à trouver un début d&rsquo;algorithme, qu&rsquo;on pourra ensuite améliorer.</li>
 </ul>
-<h3>Changer de point de vue</h3>
+<h3 id="changer-de-point-de-vue">Changer de point de vue</h3>
 <p>Enfin, si vous n&rsquo;avez vraiment aucunes idées correctes, c&rsquo;est que votre point de vue n&rsquo;est pas bon. Tentez de résoudre le problème avec des algorithmes <em>classiques</em>, car souvent deux sujets peuvent sembler totalement différents mais en réalité il est possible de les représenter grâce à une seule même structure et ainsi de les résoudre pratiquement de la même façon. Les sujets impliquant des graphes dit <em>implicites</em> en sont l&rsquo;exemple parfait. Imaginez qu&rsquo;on vous donne un nombre $N$ et un nombre $M$, ainsi que différentes opérations mathématiques (comme ajouter $A$, soustraire $B$, ou encore multiplier $C$), et vous devez déterminer s&rsquo;il est possible d&rsquo;utiliser les opérations données pour passer du nombre $N$ au nombre $M$. Présenté comme ceci, on ne se doute pas qu&rsquo;il s&rsquo;agît en réalité d&rsquo;un problème de graphe, mais lorsqu&rsquo;on adopte ce nouveau point de vue, on se rend compte qu&rsquo;on peut représenter ce problème sous la forme d&rsquo;un graphe où chaque nœud correspond à un résultat, et chaque arc est une opération. Le but apparaît alors comme trivial, on veut se rendre d&rsquo;un nœud de départ $N$ au nœud d&rsquo;arrivée $M$, on applique donc un simple <a href="/algo/structure/graphe/parcours.html">algorithme de parcours de graphe</a>.</p>
 <p>Le fait d&rsquo;avoir changé totalement de point de vue nous a fait découvrir une nouvelle façon de représenter le problème, et il est tout à fait possible de faire la même chose pour d&rsquo;autre algorithme classique (comme la <a href="/algo/general/approche/dynamique.html">programmation dynamique</a>, l&rsquo;approche du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>, etc.).</p>
-<h2>Pseudo-code</h2>
+<h2 id="pseudo-code">Pseudo-code</h2>
 <p>Vous avez enfin trouvé dans votre tête l&rsquo;algorithme recherché, cependant lorsqu&rsquo;on cherche à résoudre un problème un minimum conséquent, <strong>on ne code jamais directement</strong> mais on passe par une étape intermédiaire : le pseudo-code. Avant d&rsquo;expliquer concrètement ce qu&rsquo;est le pseudo-code, j&rsquo;aimerais vraiment m&rsquo;attarder sur l&rsquo;importance de ce dernier qui est souvent trop négligé (surtout pendant des concours).</p>
 <p>Imaginons que vous venez de trouver l&rsquo;algorithme. Vous avez votre idée en tête et vous décidez tout de suite de passer à l&rsquo;étape de programmation car vous pensez que la partie pseudo-code est inutile et que vous avez toutes les informations nécessaires pour résoudre correctement le sujet. Comme vous n&rsquo;avez aucune réelle structure, vous programmez ce qui vous vient en premier quand vous pensez à votre algorithme, cependant au fur et à mesure que vous codez vous vous rendez compte qu&rsquo;il faudra ajouter/supprimer/changer telle ou telle partie du programme à cause de détails auxquels vous n&rsquo;avez pas pensé avant. Vous allez donc passer beaucoup de temps à réécrire ou à bidouiller votre programme afin de prendre en compte ces changements, et ceci va résulter en un code souvent sale et mal structuré (voire carrément faux). Or l&rsquo;étape de débugage est fondamentale et débuguer ce genre de code est un cauchemar qui ne finit en général pas très bien. Après avoir perdu <strong>énormément</strong> de temps à corriger vos erreurs (si vous arrivez au bout de cette étape), vous vous rendez compte en testant votre algorithme qu&rsquo;il n&rsquo;est tout simplement pas assez efficace et que sa complexité en temps ne satisfait pas les contraintes de l&rsquo;énoncé.</p>
 <p>Cet exemple peut paraître exagéré mais il est en réalité très fréquent en concours (bien plus qu&rsquo;on ne le croit). Maintenant, regardons de plus près l&rsquo;utilité du pseudo-code.</p>
@@ -249,14 +249,14 @@ Dijkstra (départ, arrivée) :
 
 <p>J&rsquo;utilise ici l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> en tant qu&rsquo;algorithme de plus court chemin sur mon graphe.</p>
 <p><em>En général en concours, lorsqu&rsquo;on utilise un algorithme aussi classique que celui de Dijkstra par exemple, et que ce dernier ne contient aucunes modifications majeures, on peut se permettre pour gagner du temps de ne pas détailler ladite fonction dans le pseudo-code (à condition de savoir la coder parfaitement sans aucuns doutes).</em></p>
-<h3>Vérifier le pseudo-code</h3>
+<h3 id="verifier-le-pseudo-code">Vérifier le pseudo-code</h3>
 <p>Une fois le pseudo-code correctement établit, il faut une dernière étape de vérification (assez rapide) pour s&rsquo;assurer au maximum d&rsquo;avoir une solution valide avant de se lancer dans le code :</p>
 <ul>
 <li><strong>Relire le sujet</strong> afin d&rsquo;être certain de bien répondre à ce dernier et de ne pas avoir inconsciemment dévié du problème initial lors de la recherche d&rsquo;une solution.</li>
 <li><strong>Vérifier avec des exemples</strong> que le pseudo-code retourne bien la sortie attendue (réutilisez ceux de l&rsquo;énoncé ou vos propres exemples que vous avez générés auparavant).</li>
 <li><strong>Calculer la complexité en temps et en mémoire</strong> à nouveau pour être convaincu de l&rsquo;efficacité de l&rsquo;algorithme.</li>
 </ul>
-<h2>Coder l&rsquo;algorithme</h2>
+<h2 id="coder-lalgorithme">Coder l&rsquo;algorithme</h2>
 <p>A partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long si les étapes précédentes ne sont pas correctement suivies. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, rapidement, et si possible avec le moins de bug possible. Il y a tout de même quelques méthodes à respecter pour éviter au mieux les bugs potentiels (ces conseils s&rsquo;appliquent surtout lors de concours où le temps est limité) :</p>
 <ul>
 <li>Ne cherchez surtout pas à optimiser votre programme lorsque vous êtes en train de l&rsquo;écrire ! Comme le dit si bien <a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> : <em>&ldquo;We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil.&rdquo;</em>. Inutile de chercher à optimiser des petites parties de votre code, car l&rsquo;impact sera sans doute minime et vous risquez d&rsquo;introduire plus de bugs.</li>
@@ -266,15 +266,15 @@ Dijkstra (départ, arrivée) :
 <li>TODO : plus de conseils (spécifique concours ?)</li>
 </ul>
 <p>Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une rapide comparaison du pseudo-code et du programme pour vérifier de n&rsquo;avoir rien oublié (vu que les deux devraient normalement avoir la même structure).</p>
-<h2>Tester le code</h2>
+<h2 id="tester-le-code">Tester le code</h2>
 <p>Une fois l&rsquo;algorithme codé, il est nécessaire de s&rsquo;assurer de la validité du programme.</p>
 <p>Créez un fichier pour chaque exemple que vous possédez, et exécutez votre programme avec ces derniers pour s&rsquo;assurer de la sortie. Il est souvent indispensable d&rsquo;avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement avec un petit programme pour ne pas perdre du temps à le remplir à la main).</p>
 <p>Si vous faites une variante d&rsquo;un ou plusieurs fichiers tests, n&rsquo;oubliez surtout pas de le conserver dans un fichier différent de celui original car cela vous donne un test supplémentaire pour vérifier votre programme (dans le cas où vous allez ensuite modifier ce dernier).</p>
 <p>Enfin, la sortie des exemples est une bonne manière de tester notre code, mais on peut aussi afficher le contenu des variables/structures de données principales pour confirmer que tout fonctionne parfaitement.</p>
-<h2>Débuguer le programme</h2>
+<h2 id="debuguer-le-programme">Débuguer le programme</h2>
 <p>Malheureusement, il est rare de coder un code sans bug directement, et cette chance diminue d&rsquo;autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).</p>
 <p>TODO: dichotomie pour &ldquo;isoler&rdquo; le problème + gdb ?</p>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>TODO: liens fiches méthodes france-ioi</p>
 
 

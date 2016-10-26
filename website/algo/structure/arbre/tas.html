@@ -45,20 +45,20 @@
 
 <p>Publié le : 11/01/2016<br><i>Modifié le : 22/01/2016</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>Vous avez une liste d&rsquo;éléments qui est vide au départ, et deux types d&rsquo;opérations sont possibles dessus :</p>
 <ul>
 <li>Insérer une valeur dans la liste.</li>
 <li>Extraire le maximum (ou le minimum, le problème reste le même) de la liste.</li>
 </ul>
 <p>On a vu dans l&rsquo;introduction de mon article sur les <a href="/algo/structure/arbre/arbre_binaire.html">arbres binaires</a>, comment trouver le maximum dans un tableau dynamique. On pourrait utiliser la même méthode (que l&rsquo;on change légèrement), et la même structure, afin d&rsquo;avoir une complexité en temps efficace de $O(\log _2 N)$. Cependant, qu&rsquo;en est-il de la complexité en mémoire ? Que se passe-t-il si j&rsquo;ai des milliards de milliards d&rsquo;opérations ? En effet, on crée de nombreuses fois des doublons afin d&rsquo;avoir notre arbre binaire maximal final, mais peut-on faire autrement ? C&rsquo;est là qu&rsquo;on découvre le <strong>tas</strong>, une structure permettant de faire des recherches rapides, des comparaisons efficaces, et qui prend peu de place. On peut comprendre qu&rsquo;avec tous ces avantages, le tas est une structure de données énormément utilisée, importante à connaître et qui peut s&rsquo;avérer très utile quand on arrive aux limites des arbres binaires max/min (ce qui est notre cas dans cet exemple).</p>
-<h2>Principe du tas</h2>
+<h2 id="principe-du-tas">Principe du tas</h2>
 <p>Le tas (ou <em>heap</em> en anglais), sera la plupart du temps implémenté comme un <strong>tas binaire</strong>, c&rsquo;est-à-dire qu&rsquo;il est construit sur la forme d&rsquo;un arbre binaire. C&rsquo;est sur cette structure que l&rsquo;on va donc se concentrer dans cet article, mais sachez qu&rsquo;il est possible de créer des tas basés sur des arbres autres que binaires.</p>
 <p>Dans notre arbre binaire maximal, le père d&rsquo;un nœud est le maximum des deux nœuds (autrement dit, c&rsquo;est soit l&rsquo;un soit l&rsquo;autre), dans un tas binaire, le père d&rsquo;un nœud n&rsquo;est pas un double de ses enfants, mais au contraire un autre nœud indépendant qui respecte une propriété spécifique au tas (<strong>tas minimal</strong> : alors le père a une valeur inférieure ou égale à celles de ses fils, et <strong>tas maximal</strong> : le père a une valeur supérieure ou égale à celles de ses fils).</p>
 <figure><img alt="Exemple de tas maximal" src="/img/algo/structure/arbre/tas/exemple_tas_max.png" /><figcaption>Exemple de tas maximal</figcaption>
 </figure>
 <p>Ce tas max peut par exemple représenter le tableau situé en dessous, et le fait qu&rsquo;il soit maximal nous permet de dire avec certitude que sa racine est l&rsquo;élément maximum du tableau (de même un tas min aura à la racine l&rsquo;élément minimum du tableau).</p>
-<h2>Opérations sur un tas</h2>
+<h2 id="operations-sur-un-tas">Opérations sur un tas</h2>
 <p>Un tas ne peut pas avoir de &ldquo;trous&rdquo; dedans, seul le dernier étage de l&rsquo;arbre peut ne pas être rempli en entier. Lorsqu&rsquo;on veut insérer un nouvel élément, on a donc pas d&rsquo;autres choix que de le placer à la première place libre que l&rsquo;on trouve dans le tas. Cependant, ce nouvel élément ne respecte pas les propriétés du tas, et il va falloir effectuer des modifications afin d&rsquo;avoir une structure cohérente. Pour cela, on applique le même principe que lors d&rsquo;un changement d&rsquo;une valeur dans un arbre binaire maximal, c&rsquo;est-à-dire que l&rsquo;on va modifier tous les nœuds parents tant que les propriétés du tas ne sont pas respectées.</p>
 <figure><img alt="Exemple d'insertion d'un nouvel élément dans un tas maximal" src="/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png" /><figcaption>Exemple d&rsquo;insertion d&rsquo;un nouvel élément dans un tas maximal</figcaption>
 </figure>
@@ -67,7 +67,7 @@
 <figure><img alt="Exemple d'extraction du maximum dans un tas" src="/img/algo/structure/arbre/tas/exemple_extraction_tas_max.png" /><figcaption>Exemple d&rsquo;extraction du maximum dans un tas</figcaption>
 </figure>
 <p>On extrait 42 qui est le maximum de notre tas, et on insère la dernière valeur à la place de la racine pour boucher le trou (c&rsquo;est le 4 en vert). Pour entasser notre élément et respecter les caractéristiques d&rsquo;un tas max, on échange le nœud avec le maximum de ses deux fils tant qu&rsquo;on peut (pour un tas min, on échange avec le minimum de ses deux fils). Grâce à cela, on a reconstitué notre tas maximum, car le 4 est de nouveau a une place qui respecte les propriétés.</p>
-<h2>Pseudo-code</h2>
+<h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code des deux opérations du tas max :</p>
 <pre><code class="nohighlight">insertion (nœud) :
 
@@ -106,10 +106,10 @@ extraction :
    Retourner l'ancienne racine
 </code></pre>
 
-<h2>Complexité</h2>
+<h2 id="complexite">Complexité</h2>
 <p>Notre tas binaire est basé sur un arbre binaire, il a donc une hauteur maximale de $\log _2 N$ avec $N$ le nombre d&rsquo;éléments du tas. Pour l&rsquo;insertion d&rsquo;un élément, on fait dans le pire des cas remonter le nœud jusqu&rsquo;à la racine et donc on effectue $\log _2 N$ opérations. Pareil pour l&rsquo;extraction du min/max, on fait dans le pire des cas $\log _2 N$ échanges, résultant dans les deux cas en une complexité en $O(\log _2 N)$.</p>
 <p>Pour ce qui est de la complexité en mémoire, il n&rsquo;y a aucuns doublons, on occupe donc uniquement l&rsquo;espace nécessaire pour stocker $N$ éléments.</p>
-<h2>Implémentation</h2>
+<h2 id="implementation">Implémentation</h2>
 <p>Une implémentation en C d&rsquo;un tas max :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
@@ -200,7 +200,7 @@ void afficher(void)
 
 <p><em>Pour représenter mon tas, j&rsquo;utilise un simple tableau comme vu dans les implémentations d&rsquo;arbre binaire (<a href="/algo/structure/arbre/arbre_binaire.html#tableau">lien</a>).</em></p>
 <p>J&rsquo;implémente un tas maximal, mais la version minimale du tas est quasiment la même, il suffit de changer <code>tas[noeud] &gt; tas[pere]</code>, <code>tas[noeud] &lt; tas[gauche] || tas[noeud] &lt; tas[droit]</code> ainsi que la fonction <code>max</code>. Le code est plutôt simple, mais j&rsquo;utilise une petite astuce pour afficher le tas (la fonction <code>afficher</code> est juste là pour débugger en général, et voir si le tas est bien celui attendu). Pour afficher mon tas, je sais qu&rsquo;il faut effectuer un retour à la ligne lorsque le nœud est le 1er, le 3ème, le 7ème, 15ème, etc. et tous ces nombres sont des puissances de 2 si l&rsquo;on rajoute 1. De ce fait, on peut utiliser des <a href="https://en.wikipedia.org/wiki/Bitwise_operation">opérations bit à bit</a> afin de vérifier si <code>noeud + 1</code> est une puissance de 2, et si c&rsquo;est le cas, on a terminé l&rsquo;étage actuel du tas. C&rsquo;est loin d&rsquo;être indispensable à la compréhension du code, mais c&rsquo;est toujours intéressant à savoir.</p>
-<p>En C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) a une implémentation d&rsquo;une <a href="/algo/structure/file.html#file-à-priorité">file à priorité</a> utilisant un tas max : <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>. Il est possible d&rsquo;utiliser cette structure afin d&rsquo;avoir un tas min, en redéfinissant l&rsquo;opérateur <code>&lt;</code> nous permettant de changer l&rsquo;ordre de priorité dans le tas :</p>
+<p>En C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) a une implémentation d&rsquo;une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a> utilisant un tas max : <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>. Il est possible d&rsquo;utiliser cette structure afin d&rsquo;avoir un tas min, en redéfinissant l&rsquo;opérateur <code>&lt;</code> nous permettant de changer l&rsquo;ordre de priorité dans le tas :</p>
 <pre><code class="cpp">#include &lt;queue&gt;
 
 struct Element
@@ -218,10 +218,10 @@ struct Element
 priority_queue &lt;Element&gt; tasMin;
 </code></pre>
 
-<h2>Variantes</h2>
+<h2 id="variantes">Variantes</h2>
 <p>Le tas possède beaucoup de variantes, certaines sont plus utiles que d&rsquo;autres, et en général on choisit la plus appropriée en fonction des données que l&rsquo;on reçoit, mais aussi par rapport aux opérations que l&rsquo;on souhaite effectuer dessus. On peut déjà citer toutes les différentes versions du tas : <strong>binaire</strong>, <strong>ternaire</strong>, et même de façon plus globale <strong>n-aire</strong>. Il est aussi possible de découper notre tas en plusieurs sous arbres de tailles spécifiques, suivant un ordre précis, et permettant des améliorations théoriques de la complexité des opérations. Je dis bien théorique, car en pratique les implémentations ne sont pas spécialement plus rapides que des tas binaires classiques, ce sont donc des structures peu utilisées en pratique, mais qu&rsquo;on peut retrouver dans certaines améliorations d&rsquo;algorithmes. Les plus connus sont le <a href="https://en.wikipedia.org/wiki/Fibonacci_heap"><strong>tas de Fibonacci</strong></a>, le <a href="https://en.wikipedia.org/wiki/Binomial_heap"><strong>tas binomial</strong></a>, ou encore <a href="https://en.wikipedia.org/wiki/Pairing_heap">le tas jumelé</a> mais on peut voir ce principe dans l&rsquo;amélioration du tri par tas : le <a href="/algo/tri/tri_tas.html#smoothsort">smoothsort</a>. Enfin, il y a différentes variantes qui s&rsquo;appuient sur l&rsquo;idée d&rsquo;un tas, mais la modifie afin de proposer des avantages précis pour des algorithmes ou bien des opérations, comme le <a href="https://en.wikipedia.org/wiki/Weak_heap"><strong>tas faible</strong></a> qui se concentre sur le tri principalement.</p>
-<h2>Conclusion</h2>
-<p>Le tas est donc une structure de données adaptée aux opérations de recherche de minimum/maximum, et de tri. On le retrouve à la base du <a href="/algo/tri/tri_tas.html">tri par tas</a>, mais aussi dans la création d&rsquo;une <a href="/algo/structure/file.html#file-à-priorité">file à priorité</a> qui elle sert dans l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de plus court chemin de Dijkstra</a> par exemple. Des variantes de tas permettent aussi des améliorations dans plusieurs catégories d&rsquo;algorithmes, et cette structure de données peut très vite créer d&rsquo;autres structures complexes et puissantes avec des complexités en temps et en mémoire faibles.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tas est donc une structure de données adaptée aux opérations de recherche de minimum/maximum, et de tri. On le retrouve à la base du <a href="/algo/tri/tri_tas.html">tri par tas</a>, mais aussi dans la création d&rsquo;une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a> qui elle sert dans l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de plus court chemin de Dijkstra</a> par exemple. Des variantes de tas permettent aussi des améliorations dans plusieurs catégories d&rsquo;algorithmes, et cette structure de données peut très vite créer d&rsquo;autres structures complexes et puissantes avec des complexités en temps et en mémoire faibles.</p>
 
 
 

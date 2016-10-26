@@ -21,7 +21,7 @@ Finalement, un arbre peut être vu comme un [graphe](/algo/structure/graphe.html
 
 ## Implémentation
 
-Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'implémenter de la même façon, je vous invite donc à lire la partie [Implémentation](/algo/structure/graphe.html#implémentation) de mon article sur les graphes pour voir et comprendre les différentes possibilités (matrice d'adjacence, liste d'adjacence et liste d'arcs).
+Comme nous avons vu qu'un arbre est un graphe particulier, on peut donc l'implémenter de la même façon, je vous invite donc à lire la partie [Implémentation](/algo/structure/graphe.html#implementation) de mon article sur les graphes pour voir et comprendre les différentes possibilités (matrice d'adjacence, liste d'adjacence et liste d'arcs).
 
 ## Parcourir un arbre
 

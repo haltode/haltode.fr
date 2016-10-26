@@ -45,24 +45,24 @@
 
 <p>Publié le : 10/07/2016<br><i>Modifié le : 10/07/2016</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>L&rsquo;approche gloutonne de l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> est excellente car elle permet d&rsquo;aborder le problème du plus court chemin de manière intelligente, ce qui lui donne une complexité en temps intéressante, tout en étant optimale. Cependant, elle ne s&rsquo;applique pas à toutes les configurations de graphes (par exemple ceux avec des pondérations négatives), et il nous faut donc un nouvel algorithme pour gérer ces cas.</p>
-<h2>Principe</h2>
+<h2 id="principe">Principe</h2>
 <p>Reprenons depuis le début. On a un graphe pondéré (positivement ou négativement), et on cherche le plus court chemin entre deux nœuds distincts. Une approche <strong>naïve</strong> serait d&rsquo;explorer toutes les combinaisons possibles de chemin et de choisir celle qui obtient une pondération totale minimale. Le problème ici est évidemment la complexité en temps exponentielle. Dans ce genre de situation, il est fondamental de se poser cette question : qu&rsquo;est-ce qui rend notre algorithme si lent ? Lorsqu&rsquo;on explore toutes les possibilités de chemins, on repasse très souvent sur d&rsquo;anciens nœuds et arcs, ce qui nous fait parcourir notre graphe plusieurs fois inutilement.</p>
 <p>Désormais, on connaît la raison de la lenteur de notre précédent algorithme, et il faut alors chercher à améliorer ce point, si possible, ou bien à changer de concept. L&rsquo;algorithme de Bellman-Ford va améliorer l&rsquo;algorithme naïf, en utilisant une approche différente du problème : la <a href="/algo/general/approche/dynamique.html"><strong>programmation dynamique</strong></a>. L&rsquo;idée est justement de ne pas repasser plusieurs fois sur des parties du graphe, mais plutôt de garder les informations utiles en mémoire à l&rsquo;aide d&rsquo;un algorithme dynamique, et de les réutiliser intelligemment.</p>
 <p><em>Il est intéressant de noter que <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a>, l&rsquo;un des inventeurs de cet algorithme, est le père fondateur de la programmation dynamique.</em></p>
-<h2>Exemple</h2>
+<h2 id="exemple">Exemple</h2>
 <p>Un exemple de l&rsquo;algorithme de Bellman-Ford serait assez peu intéressant car il n&rsquo;adopte pas de stratégie particulière au niveau du parcours du graphe (contrairement à l&rsquo;algorithme de Dijkstra). Il se contente uniquement de tester chaque possibilité de chemin avec une <strong>implémentation dynamique</strong> le rendant plus rapide qu&rsquo;une implémentation naïve. Cependant, nous allons voir un exemple au travers du pseudo-code afin de comprendre son fonctionnement.</p>
-<h2>Pseudo-code</h2>
+<h2 id="pseudo-code">Pseudo-code</h2>
 <p><em>Pour appréhender au mieux cette partie, il est nécessaire d&rsquo;être familier à la programmation dynamique (ou au moins d&rsquo;en connaître la base). Si ce n&rsquo;est pas le cas, je vous renvoie vers mon <a href="/algo/general/approche/dynamique.html">article sur le sujet</a>.</em></p>
 <p>Pour mettre en place un algorithme dynamique correctement, il est essentiel de rédiger la version récursive d&rsquo;abord afin d&rsquo;établir explicitement la récursion pour bien comprendre ce que cherche à réaliser l&rsquo;algorithme. Nous allons donc procéder par étape pour ce pseudo-code, en commençant par la version récursive naïve, puis nous l&rsquo;améliorerons petit à petit grâce à un algorithme dynamique.</p>
-<h3>Cycle améliorant</h3>
+<h3 id="cycle-ameliorant">Cycle améliorant</h3>
 <p>Avant de se plonger dans le pseudo-code, il faut noter que le problème du plus court chemin sur un graphe pondéré positivement et négativement introduit un nouveau souci : les <strong>cycles améliorants</strong> (ou <em>negative cycle</em> en anglais). En effet, vu qu&rsquo;une pondération peut désormais être négative, il est possible de tomber dans une boucle infinie (qu&rsquo;on appelle plus précisément un cycle améliorant) qui va sans cesse diminuer la distance parcourue. Ceci pose un réel problème puisqu&rsquo;on peut améliorer la distance à chaque fois qu&rsquo;on passe dans ce cycle, et il existera toujours un meilleur chemin à emprunter. Lorsqu&rsquo;un graphe contient ce genre de cycle, il n&rsquo;y a pas de solution à cause de cette boucle infinie, il faut donc pouvoir le détecter.</p>
 <figure><img alt="Exemple de cycle améliorant" src="/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_cycle_ameliorant.png" /><figcaption>Exemple de cycle améliorant</figcaption>
 </figure>
 <p>Sur cet exemple de graphe (avec le nœud de départ en bleu, et celui d&rsquo;arrivée en vert), on remarque que le chemin surligné en rouge est un cycle améliorant. En effet, dès qu&rsquo;on parcourt ce cycle, la distance parcourue en sortie sera toujours inférieure à celle en entrée, d&rsquo;où l&rsquo;intérêt de le visiter à nouveau afin de diminuer encore la distance, et ainsi de suite, ce qui entraine une boucle infinie. Il est impossible de trouver le plus court chemin entre le nœud 1 et 4 dans ce graphe, car on peut améliorer la distance parcourue à l&rsquo;infini sans jamais arriver au nœud en vert.</p>
 <p>Pour contrer cela, on va imposer une limite de recherche à notre récursion qui ne pourra pas dépasser l&rsquo;exploration de $K$ nœuds. Une limite de $N$ nœuds maximum à explorer permet à notre algorithme de ne jamais tomber dans une boucle infinie (avec $N$ le nombre de nœuds du graphe), puisqu&rsquo;un plus court chemin, qui ne contient pas de cycle améliorant, ne passe jamais plus de deux fois par un même nœud. On peut désormais reformuler clairement notre problème de plus court chemin entre un nœud A et B, en un problème cherchant à minimiser la distance entre A et B en réalisant $K$ étapes au maximum. La reformulation du problème est importante puisqu&rsquo;elle nous donne une idée plus claire de l&rsquo;approche naïve que l&rsquo;on va réaliser dans un premier temps.</p>
-<h3>Version récursive</h3>
+<h3 id="version-recursive">Version récursive</h3>
 <p>Voici un premier pseudo-code simplifié de la récursion (on suppose que le graphe en entrée est orienté et ne possède pas de cycles améliorantes pour établir une première idée de l&rsquo;algorithme général).</p>
 <pre><code class="nohighlight">Bellman-Ford (nbEtape, nœud) :
 
@@ -81,7 +81,7 @@
 </code></pre>
 
 <p>Ce pseudo-code traduit une simple récursion permettant d&rsquo;explorer tous les chemins en moins de <code>nbEtape</code> jusqu&rsquo;à l&rsquo;arrivée, tout en sélectionnant le plus court d&rsquo;entre eux. Pour cela, l&rsquo;algorithme utilise une simple boucle sur tous les voisins d&rsquo;un nœud ainsi qu&rsquo;une variable <code>cheminMin</code> qu&rsquo;on actualise pour toujours avoir le chemin avec la pondération minimale entre tous les choix possibles.</p>
-<h3>Version dynamique récursive</h3>
+<h3 id="version-dynamique-recursive">Version dynamique récursive</h3>
 <p>Maintenant, on passe à l&rsquo;étape de dynamisation de cet algorithme puisque ce dernier est terriblement lent et possède une complexité en temps exponentielle car il ne fait que répéter des appels récursifs inutilement. On va donc créer un tableau 2D stockant le plus court chemin pour tous les paramètres possibles de notre fonction, afin de ne jamais avoir à recalculer le résultat d&rsquo;un même appel.</p>
 <pre><code class="nohighlight">plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialisé à -1)
 
@@ -110,7 +110,7 @@ Bellman-Ford (nbEtape, nœud) :
 <li>Une <strong>condition</strong> au début de notre récursion afin de vérifier si la valeur n&rsquo;a pas déjà été calculée (et si c&rsquo;est le cas, on la retourne directement).</li>
 <li>Une <strong>mise à jour</strong> du tableau après avoir trouvé une nouvelle valeur.</li>
 </ul>
-<h3>Version dynamique itérative</h3>
+<h3 id="version-dynamique-iterative">Version dynamique itérative</h3>
 <p>Une fois qu&rsquo;on a réussi à obtenir une complexité en temps non exponentielle (puisque désormais on ne parcourt pas inutilement des parties du graphe), il est toujours intéressant de tenter de réduire notre complexité en mémoire si possible. Dans notre dernier pseudo-code, on a une complexité mémoire de l&rsquo;ordre de $O(KN)$, ce qui est équivalent à du $O(N^2)$, car on choisit la limite $K$, tel que $K = N$ pour éviter les cycles améliorants. Cet ordre de grandeur est tout à fait correct en termes d&rsquo;espace mémoire, surtout vu le gain de temps qu&rsquo;on acquiert grâce au tableau, mais il peut être encore largement amélioré.</p>
 <p>Le passage à la version itérative de l&rsquo;algorithme dynamique est essentiel à cette réduction de l&rsquo;espace mémoire utilisé :</p>
 <pre><code class="nohighlight">Bellman-Ford :
@@ -187,7 +187,7 @@ Bellman-Ford (nbEtape, nœud) :
 </code></pre>
 
 <p>En plus de réaliser une optimisation de l&rsquo;espace mémoire, on facilite la lecture du pseudo-code en utilisant plus que deux boucles imbriquées à la place de trois. En effet, au lieu de parcourir les nœuds puis leurs voisins respectifs dans deux boucles imbriquées, on peut se contenter de visiter les arcs du graphe pour effectuer la même opération. Il ne faut pas oublier de lire le graphe en entrée comme une <a href="/algo/structure/graphe.html#liste-darcs">liste d&rsquo;arcs</a> pour permettre de parcourir tous les arcs en une seule boucle.</p>
-<h3>Détection de cycles améliorants</h3>
+<h3 id="detection-de-cycles-ameliorants">Détection de cycles améliorants</h3>
 <p>Notre pseudo-code n&rsquo;est pas terminé, il nous reste encore la détection de cycles améliorants dans notre graphe, mais vu qu&rsquo;on a simplifié et amélioré grandement notre pseudo-code, ce problème de cycles va être simple à gérer.</p>
 <p>Pour détecter un cycle améliorant, il suffit de détecter si un chemin emprunte plus de $N$ nœuds, et on peut très facilement réaliser ce test en regardant si le tableau <code>plusCourtChemin</code> a été modifié une fois la limite atteinte (on va donc réaliser un tour de boucle en plus). Si c&rsquo;est le cas, on sait que le graphe contient un cycle améliorant :</p>
 <pre><code class="nohighlight">Bellman-Ford :
@@ -211,10 +211,10 @@ Bellman-Ford (nbEtape, nœud) :
 </code></pre>
 
 <p>On a désormais le pseudo-code définitif de l&rsquo;algorithme de Bellman-Ford.</p>
-<h2>Complexité</h2>
+<h2 id="complexite">Complexité</h2>
 <p>L&rsquo;avantage de passer de l&rsquo;approche récursive à l&rsquo;approche itérative dans un algorithme dynamique, est qu&rsquo;on peut simplement trouver la complexité en temps de ce dernier. En effet, les deux boucles imbriquées nous permettent de calculer une complexité en temps de $O(NM)$ avec $N$ le nombre de nœuds du graphe, et $M$ le nombre d&rsquo;arcs (puisqu&rsquo;on sait que pour éviter un cycle améliorant il suffit que $K = N$).</p>
 <p>Cette complexité en temps est légèrement moins efficace que celle de l&rsquo;algorithme de Dijkstra, mais reste raisonnable vu la complexité exponentielle de l&rsquo;algorithme naïf. Surtout que l&rsquo;algorithme de Dijkstra ne permet pas de réaliser le calcul du plus court chemin sur des graphes pondérés négativement, et que l&rsquo;algorithme de Bellman-Ford gère le cas des cycles améliorants de manière très simple et élégante.</p>
-<h2>Implémentation</h2>
+<h2 id="implementation">Implémentation</h2>
 <p>L&rsquo;implémentation en C++ de l&rsquo;algorithme de Bellman-Ford :</p>
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
@@ -315,7 +315,7 @@ int main(void)
 <pre><code class="nohighlight">Cycle ameliorant !
 </code></pre>
 
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>L&rsquo;algorithme de Bellman-Ford offre donc une toute nouvelle approche au problème du plus court chemin grâce à la programmation dynamique. Ceci lui permet d&rsquo;être applicable sur tous types de graphes pondérés, contrairement à l&rsquo;algorithme de Dijkstra qui n&rsquo;est employé que sur des graphes pondérés positivement. De plus, le problème des cycles améliorants est facilement résolu avec cet algorithme, rendant le code simple et concis. En revanche, on notera une complexité en temps de $O(NM)$, plus lente que celle de Dijkstra en $O(M \log _2 M)$. Il est donc nécessaire de bien choisir l&rsquo;algorithme à employer en fonction du graphe en entrée, afin d&rsquo;avoir une complexité en temps et en mémoire optimale.</p>
 <p>On a pu remarquer que l&rsquo;algorithme de Bellman-Ford nous informe non seulement du plus court chemin entre le nœud de départ et le nœud d&rsquo;arrivée, mais aussi des plus courts chemins de tous les autres nœuds vers celui d&rsquo;arrivée. Mais que se passe-t-il si on désire connaître les plus courts chemins entre tous les nœuds du graphe ? Est-ce qu&rsquo;on devrait réaliser $N$ fois l&rsquo;algorithme de Bellman-Ford ? Ou encore $N$ fois l&rsquo;algorithme de Dijkstra ? On se doute rapidement que cette méthode n&rsquo;est pas efficace, et cette question est en réalité un problème à part entière dans la catégorie des plus courts chemins. On a alors su développer des algorithmes bien spécifiques à ce type de problème, comme l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/floyd_warshall.html">algorithme de Floyd-Warshall</a>, qui nous permet d&rsquo;obtenir une complexité en temps plus intéressante. Connaître les plus courts chemins entre tous les nœuds d&rsquo;un graphe est extrêmement utile dans de nombreux cas. On pourrait par exemple modéliser un problème de la vie de tous les jours sous forme d&rsquo;un graphe implicite, afin de déterminer des relations ou des liens entre les différents nœuds.</p>
 

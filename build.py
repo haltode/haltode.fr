@@ -40,6 +40,7 @@ def render_articles():
             'markdown.extensions.extra',
             'markdown.extensions.meta',
             'markdown.extensions.smarty',
+            'markdown.extensions.toc',
             # Third party extension
             'figureAltCaption'
         })

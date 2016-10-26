@@ -45,9 +45,9 @@
 
 <p>Publié le : 01/05/2014<br><i>Modifié le : 08/12/2015</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>Le tri par insertion (<em>insertion sort</em> en anglais) est un algorithme de tri par comparaison simple, et intuitif mais toujours avec une complexité en $O(N^2)$. Vous l’avez sans doute déjà utilisé sans même vous en rendre compte : lorsque vous triez des cartes par exemple. C’est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a>, <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>, et le plus rapide en pratique sur une entrée de petite taille.</p>
-<h2>Principe de l’algorithme</h2>
+<h2 id="principe-de-lalgorithme">Principe de l’algorithme</h2>
 <p>Le principe du tri par insertion est de trier les éléments du tableau comme avec des cartes :</p>
 <ul>
 <li>On prend nos cartes mélangées dans notre main.</li>
@@ -55,7 +55,7 @@
 <li>On prend au fur et à mesure, une carte dans l’ensemble non trié et on l’insère à sa bonne place dans l’ensemble de carte triée.</li>
 <li>On répète cette opération tant qu’il y a des cartes dans l’ensemble non trié.</li>
 </ul>
-<h2>Exemple</h2>
+<h2 id="exemple">Exemple</h2>
 <p>Prenons comme exemple la suite de nombre suivante : 9, 2, 7, 1 que l’on veut trier en ordre croissant avec l’algorithme du tri par insertion :</p>
 <p><em>1er tour</em> :</p>
 <p>9 | <strong>2</strong>, 7, 1 -&gt; à gauche la partie triée du tableau (le premier élément est considéré comme trié puisqu&rsquo;il est seul dans cette partie), à droite la partie non triée. On prend le premier élément de la partie non triée, 2, et on l&rsquo;insère à sa place dans la partie triée, c&rsquo;est-à-dire à gauche de 9.</p>
@@ -69,7 +69,7 @@
 <figure><img alt="Exemple de tri par insertion" src="/img/algo/tri/tri_insertion/exemple_tri.png" /><figcaption>Exemple de tri par insertion</figcaption>
 </figure>
 <p>La partie verte du tableau est la partie triée, l&rsquo;élément en bleu est le prochain élément non trié à placer et la partie blanche est la partie non triée.</p>
-<h2>Pseudo-code</h2>
+<h2 id="pseudo-code">Pseudo-code</h2>
 <pre><code class="nohighlight">triInsertion :
 
    Pour chaque élément non trié du tableau
@@ -78,14 +78,14 @@
       Placer notre élément à sa place dans le trou ainsi créé
 </code></pre>
 
-<h2>Complexité</h2>
+<h2 id="complexite">Complexité</h2>
 <p>L’algorithme du tri par insertion a une complexité de $O(N^2)$ :</p>
 <ul>
 <li>La première boucle parcourt $N – 1$ tours, ici on notera plutôt $N$ tours car le $– 1$ n’est pas très important.</li>
 <li>Décaler les éléments de la partie triée prend $i$ tours (avec $i$ variant de 0 à $N$).</li>
 </ul>
 <p>Dans le pire des cas on parcourt $N^2$ tours, donc le tri par insertion a une complexité en temps de $O(N^2)$.</p>
-<h2>Implémentation</h2>
+<h2 id="implementation">Implémentation</h2>
 <p>L’implémentation en C du tri par insertion :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
@@ -142,10 +142,10 @@ int main(void)
 <pre><code class="nohighlight">1 2 7 9
 </code></pre>
 
-<h2>Améliorations et variantes</h2>
-<h3>Utiliser des listes chaînées</h3>
+<h2 id="ameliorations-et-variantes">Améliorations et variantes</h2>
+<h3 id="utiliser-des-listes-chainees">Utiliser des listes chaînées</h3>
 <p>Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu&rsquo;on peut utiliser des <a href="/algo/structure/liste_chainee.html">listes chaînées</a> afin de contrer ce problème. Les listes chaînées permettent d&rsquo;insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.</p>
-<h3>Tri Shell</h3>
+<h3 id="tri-shell">Tri Shell</h3>
 <p>Le tri par insertion est un algorithme de tri très efficace sur des entrées quasiment triées, et on peut utiliser cette propriété intéressante du tri pour l&rsquo;améliorer. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu&rsquo;on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.</p>
 <p>Pour calculer cet écart, on utilise cette formule :</p>
 <p>$Ecart(N) = 3 \times Ecart(N - 1) + 1$<br />
@@ -163,7 +163,7 @@ $Ecart(3) = 3 \times Ecart(2) + 1 = 3 \times 4 + 1 = 13$</p>
 1, 3, 2, 9, 5, 8 -&gt; plus d’échange possible avec un écart de 4.</p>
 <p>On répète cette opération tant qu&rsquo;il nous reste des écarts, dans notre cas c&rsquo;est la fin de la première étape du tri. Maintenant notre tableau est réorganisé et quasi trié, on peut donc lui appliquer un tri par insertion.</p>
 <p>Malheureusement, le tri Shell reste avec une complexité quadratique dans le pire des cas, mais est une bonne amélioration de manière général.</p>
-<h3>Dichotomie</h3>
+<h3 id="dichotomie">Dichotomie</h3>
 <p>Le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l&rsquo;emplacement où insérer notre élément grâce à la <a href="/algo/recherche/dichotomie.html">dichotomie</a> (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).</p>
 <p>Cette recherche consiste à utiliser la méthode du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>, on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : <em>début partie triée</em> -&gt;  <em>fin partie triée</em> :</p>
 <ul>
@@ -173,7 +173,7 @@ $Ecart(3) = 3 \times Ecart(2) + 1 = 3 \times 4 + 1 = 13$</p>
 </ul>
 <p>Une fois que l’intervalle ne contient plus qu’un seul élément, on a trouvé l’emplacement où insérer l&rsquo;élément à sa place. Grâce à cette amélioration, l’algorithme du tri par insertion a pour complexité $O(N \log _2 N)$.</p>
 <p><em>J&rsquo;ai expliqué ici très rapidement le principe de la dichotomie, j&rsquo;en parle plus longuement dans mon article à ce propos donc si vous n&rsquo;avez pas tout suivi, je vous conseille d&rsquo;aller le lire pour bien saisir ce concept fondamental en algorithmie.</em></p>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>L&rsquo;algorithme du tri par insertion est simple et relativement intuitif, même s&rsquo;il a une complexité en temps quadratique. Cet algorithme de tri reste très utilisé à cause de ses facultés à s&rsquo;exécuter en temps quasi linéaire sur des entrées déjà triées, et de manière très efficace sur de petites entrées en général (souvent plus performant, dans ce cas, que des algorithmes de tri en $O(N \log _2 N)$).</p>
 
 

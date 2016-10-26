@@ -45,10 +45,10 @@
 
 <p>Publié le : 08/06/2014<br><i>Modifié le : 28/11/2015</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>Prenons l&rsquo;exemple d&rsquo;une fonction dans un programme. Cette fonction peut appeler d&rsquo;autres fonctions qui à leurs tours appellent d&rsquo;autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l&rsquo;ordre d&rsquo;appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu&rsquo;une fonction a finie d&rsquo;être exécutée) ?</p>
 <p>Toutes ces questions nous amènent à penser qu&rsquo;il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d&rsquo;imbrication : la pile.</p>
-<h2>Principe de la pile</h2>
+<h2 id="principe-de-la-pile">Principe de la pile</h2>
 <p>Une pile (<em>stack</em> en anglais) est une structure de données de type <strong>LIFO</strong> (<strong>L</strong>ast <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>dernier arrivé premier sorti</em>). Elle fonctionne exactement comme une pile d’assiettes :</p>
 <ul>
 <li>Quand on ajoute une assiette sur la pile on l’ajoute en haut.</li>
@@ -68,9 +68,9 @@
 <li>Avec une <a href="/algo/structure/liste_chainee.html">liste chaînée</a>.</li>
 <li>Avec un tableau ainsi qu’un indice nous indiquant le prochain élément libre dans la pile. Cet indice est appelé pointeur de pile (ou <em>stack pointer</em> en anglais, souvent abrégé <em>SP</em>).</li>
 </ul>
-<h2>Quelques fonctions pour manipuler une pile</h2>
+<h2 id="quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</h2>
 <p>Comme pour une liste chaînée, il existe différentes fonctions de bases permettant de manipuler une pile.</p>
-<h3>Avec une liste chaînée</h3>
+<h3 id="avec-une-liste-chainee">Avec une liste chaînée</h3>
 <pre><code class="nohighlight">créerPile :
    Initialiser la pile à NULL
 supprimerPile :
@@ -92,7 +92,7 @@ estVide :
       Retourner faux
 </code></pre>
 
-<h3>Avec un tableau</h3>
+<h3 id="avec-un-tableau">Avec un tableau</h3>
 <pre><code class="nohighlight">créerPile :
    Créer un tableau d'une taille fixe et suffisamment grand pour la pile
    Initialiser le pointeur de pile (PP) à 0
@@ -113,7 +113,7 @@ estVide :
       Retourner faux
 </code></pre>
 
-<h2>Complexité</h2>
+<h2 id="complexite">Complexité</h2>
 <p>Soit $N$ le nombre d&rsquo;éléments de la pile.</p>
 <ul>
 <li><code>créerPile</code> : $O(1)$</li>
@@ -122,8 +122,8 @@ estVide :
 <li><code>dépiler</code> : $O(1)$</li>
 <li><code>estVide</code> : $O(1)$</li>
 </ul>
-<h2>Implémentation</h2>
-<h3>Liste chaînée</h3>
+<h2 id="implementation">Implémentation</h2>
+<h3 id="liste-chainee">Liste chaînée</h3>
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
@@ -208,7 +208,7 @@ int main(void)
 </code></pre>
 
 <p>Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l&rsquo;article sur les <a href="/algo/structure/liste_chainee.html">listes chaînées</a> pour bien comprendre le code.</p>
-<h3>Tableau</h3>
+<h3 id="tableau">Tableau</h3>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define TAILLE_MAX 256
@@ -259,9 +259,9 @@ int main(void)
 </code></pre>
 
 <p>Cette implémentation est facile à comprendre et à utiliser.</p>
-<h3>STL</h3>
+<h3 id="stl">STL</h3>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation et des fonctions permettant de manipuler une pile : <a href="http://www.cplusplus.com/reference/stack/stack/">http://www.cplusplus.com/reference/stack/stack/</a></p>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>La pile est donc une structure de données facile à implémenter et peut être pratique dans de nombreux domaines : </p>
 <ul>
 <li>Dans un éditeur : quand vous écrivez votre prochain article sur votre éditeur préféré, et que vous ne cessez de faire des <kbd>ctrl</kbd>+<kbd>z</kbd> et <kbd>ctrl</kbd>+<kbd>y</kbd> pour revenir en arrière/avant, vous utilisez en réalité une pile. Chaque opération va être empilée pour garder l&rsquo;ordre dans lequel vous les avez réalisées, et vous pouvez ainsi facilement parcourir la pile des opérations pour vous retrouver à tel moment précis de votre édition.</li>

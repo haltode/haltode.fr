@@ -45,7 +45,7 @@
 
 <p>Publié le : 03/04/2016<br><i>Modifié le : 29/04/2016</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>Le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a> est assez commun en algorithmique, et celui-ci repose sur une idée simple :</p>
 <ul>
 <li>Découper un problème compliqué en sous-problème plus simple (de manière <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">récursive</a>).</li>
@@ -53,10 +53,10 @@
 </ul>
 <p>Il y a de nombreux domaines dans laquelle cette méthode excelle (<a href="/algo/recherche/dichotomie.html">dichotomie</a>, <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, etc.), mais là où elle atteint ses limites c&rsquo;est lorsque les sous-problèmes rencontrés ne sont pas uniques. Dans ce cas, on en vient à recalculer beaucoup de sous-problèmes que l&rsquo;on a déjà résolus, ce qui rend notre programme très lent, voire inutilisable. </p>
 <p>La programmation dynamique est un moyen de pallier ce problème d&rsquo;efficacité du programme, en offrant une solution simple et facile à mettre en place.</p>
-<h2>Principe</h2>
+<h2 id="principe">Principe</h2>
 <p>La programmation dynamique (<em>dynamic programming</em> ou encore <em>dynamic optimization</em> en anglais) est une technique d&rsquo;optimisation d&rsquo;un algorithme visant à éviter de recalculer des sous-problèmes en stockant les résultats en mémoire. L&rsquo;idée est simple, mais le gain sur la complexité en temps peut être considérable, et cette technique est très largement utilisée dans de nombreux algorithmes.</p>
 <p>En réalité, vous utilisez ce principe très souvent sans même vous en rendre compte. Si je vous demande de me calculer le résultat de &ldquo;1 + 1 + 1 + 1 + 1 + 1 + 1 + 1&rdquo; vous mettrez un certain temps afin de trouver la somme des termes, mais si je rajoute &ldquo;+ 1&rdquo; à la fin de ce calcul, vous pouvez me répondre instantanément le résultat de la nouvelle expression. Vous avez naturellement stocké en mémoire le résultat de l&rsquo;expression originale, que vous avez ensuite réutilisé pour trouver le résultat d&rsquo;une nouvelle expression sans avoir besoin de refaire le calcul en entier.</p>
-<h2>Exemple</h2>
+<h2 id="exemple">Exemple</h2>
 <p>Voici un exemple de fonction en C calculant le <code>n</code>ième terme de la <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence">suite de Fibonacci</a>:</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
@@ -189,7 +189,7 @@ int main(void)
 <figure><img alt="Appels récursifs effectués pour calculer le 5ème terme de manière dynamique" src="/img/algo/general/approche/dynamique/appels_fib5_dynamique.png" /><figcaption>Appels récursifs effectués pour calculer le 5ème terme de manière dynamique</figcaption>
 </figure>
 <p>On calcule uniquement ce dont on a besoin une fois, et on le réutilise ensuite (les nœuds bleus représentent les nœuds déjà calculés pour lesquels on connaît directement le résultat).</p>
-<h2>Optimisation</h2>
+<h2 id="optimisation">Optimisation</h2>
 <p>La programmation dynamique est un excellent exemple de compromis entre <strong>complexité en temps</strong> et <strong>complexité en mémoire</strong> d&rsquo;un algorithme. En effet, on sacrifie de la mémoire pour stocker notre tableau qui retiendra des résultats, afin de ne pas recalculer lesdits résultats plusieurs fois et ainsi sauver du temps. Il faut donc bien prendre en compte les deux facteurs du temps et de la mémoire car dans certains cas (et en fonction des ressources à disposition), on préférera privilégier l&rsquo;un par rapport à l&rsquo;autre.</p>
 <p>Cependant, il est parfois possible d&rsquo;optimiser l&rsquo;espace mémoire utilisé par notre algorithme dynamique, résultant en un algorithme ayant une complexité en temps et en mémoire extrêmement intéressante. Pour cela, il va falloir changer notre manière de programmer notre algorithme dynamique. L&rsquo;approche <strong>récursive</strong> qu&rsquo;on avait précédemment utilisée était dite <strong>descendante</strong> dans le sens où on divise notre gros problème en sous-problème jusqu&rsquo;à arriver à un problème de base à résoudre. Une autre manière de voir le problème est de façon <strong>itérative</strong> en partant d&rsquo;un problème simple pour le complexifier au fur et à mesure qu&rsquo;on avance, c&rsquo;est une méthode dite <strong>ascendante</strong>. Et dans notre cas, cette dernière peut nous offrir des avantages énormes en mémoire car en rendant notre problème de plus en plus compliqué (jusqu&rsquo;à arriver au problème initial), on peut se débarrasser des problèmes très simples et garder uniquement ceux nécessaire à la construction du plus gros problème. Il est impossible de faire ça avec l&rsquo;approche descendante, car cette méthode a besoin à tout instant des sous-problèmes pour décomposer le problème initial puis pour le résoudre.</p>
 <figure><img alt="Comparaison des deux méthodes" src="/img/algo/general/approche/dynamique/comparaison_methodes.png" /><figcaption>Comparaison des deux méthodes</figcaption>
@@ -233,7 +233,7 @@ int main(void)
 </code></pre>
 
 <p>Notre programme est désormais écrit de manière itérative (avec une simple boucle), ce qui fait qu&rsquo;on a uniquement besoin des deux derniers termes <code>actuel</code> et <code>dernier</code>, afin de calculer <code>prochain</code>. On n&rsquo;utilise pas de tableau ici, mais dans le cas où il faudrait plus que deux précédents éléments pour calculer le prochain, un tableau serait sans doute plus judicieux.</p>
-<h2>Conseils d&rsquo;implémentation</h2>
+<h2 id="conseils-dimplementation">Conseils d&rsquo;implémentation</h2>
 <p>Quand on débute avec les algorithmes dynamiques, il est toujours préférable de procéder par étapes lorsqu&rsquo;on essaie de coder un nouvel algorithme :</p>
 <ul>
 <li>Coder la version récursive naïve : cela permet de bien établir la récursion qui sera l&rsquo;élément central de l&rsquo;algorithme.</li>
@@ -242,7 +242,7 @@ int main(void)
 </ul>
 <p>Une fois réellement à l&rsquo;aise, il est possible de sauter la première étape, pour aller directement à l&rsquo;approche qu&rsquo;on préfère (récursive ou itérative). Attention tout de même à ne pas aller trop vite au risque de perdre énormément de temps. Si vous choisissez la version récursive par exemple, il est quasiment tout le temps préférable de passer par la méthode naïve en premier pour vérifier rapidement la validité de votre algorithme. Dynamiser cette solution ne prend que quelques secondes, alors que repartir de zéro à cause d&rsquo;un mauvais départ vous prendra bien plus de temps.</p>
 <p>Il arrive aussi d&rsquo;avoir du mal à trouver la version dynamique de notre algorithme naïf, et c&rsquo;est souvent à cause de la récursion qui est mal définie. Pour s&rsquo;aider, on peut se dire que de manière générale, les paramètres de la fonction sont les <strong>situations</strong> (c&rsquo;est-à-dire les paramètres qu&rsquo;on utilisera en indice de notre tableau), et la valeur de retour sera l&rsquo;<strong>information</strong> (ce qu&rsquo;on stocke dans notre tableau).</p>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>Dynamiser un algorithme peut donc radicalement changer sa complexité en temps, et cette technique d&rsquo;optimisation peut s&rsquo;appliquer à la plupart des algorithmes récursifs qui cherchent une <strong>solution optimale</strong> parmi beaucoup d&rsquo;autres. On retrouve des algorithmes dynamiques de partout et dans tous les domaines car cette optimisation s&rsquo;applique à de très nombreux problèmes.</p>
 <p>Même si l&rsquo;idée de la programmation dynamique est très simple, programmer un algorithme dynamique peut être bien plus compliqué. Le seul moyen d&rsquo;être vraiment à l&rsquo;aise avec cette optimisation est de pratiquement <strong>énormément</strong>, sur des problèmes variés. Cette introduction sert uniquement d&rsquo;explication brève sur le sujet, mais voici d&rsquo;autres liens pouvant vous intéresser si vous souhaitez réellement en apprendre plus (il y a des <strong>tonnes</strong> d&rsquo;informations sur la programmation dynamique en ligne, donc n&rsquo;hésitez pas à faire plus de recherches si nécessaire) :</p>
 <ul>

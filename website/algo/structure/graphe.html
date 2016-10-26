@@ -45,16 +45,16 @@
 
 <p>Publié le : 20/06/2015<br><i>Modifié le : 01/12/2015</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>Supposons que je souhaite faire le tour de l&rsquo;Europe en passant par diverses villes de plusieurs pays. Comment représenter mon trajet ? Comment rajouter des contraintes supplémentaires si par exemple je désire faire un trajet défini, mais le plus court possible en termes de km ? Comment insérer ou supprimer une nouvelle destination dans mon voyage et surtout comment visualiser ce dernier ?</p>
 <p>Naturellement, on pourrait prendre une carte et tracer des traits entre chaque ville de l&rsquo;itinéraire afin de pouvoir le représenter, mais comment le faire comprendre à un ordinateur pour qu&rsquo;il puisse le manipuler ? Nous avons donc besoin d&rsquo;une structure de données flexible, permettant de visualiser des chemins entre différents points : le graphe.</p>
-<h2>Principe d&rsquo;un graphe</h2>
+<h2 id="principe-dun-graphe">Principe d&rsquo;un graphe</h2>
 <p>On peut définir un graphe comme étant un ensemble de <strong>nœuds</strong> (ou de sommets) étant reliés par des <strong>arcs</strong> (ou des arêtes, des chemins).</p>
 <figure><img alt="Exemple de graphe" src="/img/algo/structure/graphe/graphe_exemple.png" /><figcaption>Exemple de graphe</figcaption>
 </figure>
 <p>En anglais, on parle de <em>nodes</em> ou <em>vertices</em> pour les nœuds, et d&rsquo;<em>edges</em> ou <em>arcs</em> pour les arêtes.</p>
 <p>Pour information, si deux nœuds sont reliés par un arc on dit qu&rsquo;ils sont <strong>voisins</strong>. De plus, le <strong>degré entrant</strong> d&rsquo;un nœud correspond au nombre d&rsquo;arcs arrivant sur ce nœud, et il en est de même pour le <strong>degré sortant</strong> correspondant alors au nombre d&rsquo;arcs sortant du nœud.</p>
-<h2>Caractéristiques</h2>
+<h2 id="caracteristiques">Caractéristiques</h2>
 <p>Un graphe peut avoir de nombreuses caractéristiques différentes, en voici une liste que l&rsquo;on retrouve couramment :</p>
 <table>
 <thead>
@@ -107,9 +107,9 @@
 </tr>
 </tbody>
 </table>
-<h2>Implémentation</h2>
+<h2 id="implementation">Implémentation</h2>
 <p>On peut implémenter un graphe de différentes façons, en fonction de nos besoins mais aussi de nos capacités (en temps et en mémoire).</p>
-<h3>Matrice d&rsquo;adjacence</h3>
+<h3 id="matrice-dadjacence">Matrice d&rsquo;adjacence</h3>
 <p>Une matrice d&rsquo;adjacence est comme son nom l&rsquo;indique un tableau 2D qui permet de représenter des arcs entre deux nœuds. On peut utiliser un tableau 2D de booléen (<code>true</code> = arc, <code>false</code> = pas d&rsquo;arc), ou bien un tableau 2D d&rsquo;entier (ou de flottant) qui permet alors de stocker les pondérations des arcs ($x$ = pondération de l&rsquo;arc, 0 = pas d&rsquo;arc).</p>
 <p>Voici un exemple de matrice d&rsquo;adjacence (j&rsquo;ai utilisé le premier graphe de l&rsquo;article pour construire la matrice) :</p>
 <figure><img alt="Exemple de matrice d'adjacence" src="/img/algo/structure/graphe/exemple_matrice_adjacence.png" /><figcaption>Exemple de matrice d&rsquo;adjacence</figcaption>
@@ -127,7 +127,7 @@
 <li>Quel est le poids de l&rsquo;arc entre le nœud <em>C</em> et <em>D</em> ?</li>
 </ul>
 <p>La complexité en mémoire est en $O(N^2)$ (avec $N$ le nombre de nœuds du graphe), et la complexité pour accéder aux deux informations citées au-dessus est en $O(1)$ (puisqu&rsquo;il s&rsquo;agit d&rsquo;un tableau).</p>
-<h3>Liste d&rsquo;adjacence</h3>
+<h3 id="liste-dadjacence">Liste d&rsquo;adjacence</h3>
 <p>On peut utiliser une variante de la matrice d&rsquo;adjacence afin d&rsquo;économiser de la mémoire (mais cette représentation requiert un temps en $O(N)$ pour savoir si deux nœuds sont voisins ou pour connaître la pondération d&rsquo;un arc). Cette solution consiste à utiliser un tableau de <a href="/algo/structure/liste_chainee.html">listes chaînées</a>, chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).</p>
 <p>Voici par exemple la liste d&rsquo;adjacence qui représente de nouveau le premier graphe de l&rsquo;article :</p>
 <figure><img alt="Exemple de liste d'adjacence" src="/img/algo/structure/graphe/exemple_liste_adjacence.png" /><figcaption>Exemple de liste d&rsquo;adjacence</figcaption>
@@ -142,7 +142,7 @@
 <li>On n&rsquo;a pas assez de mémoire pour stocker une matrice d&rsquo;adjacence : la complexité en mémoire d&rsquo;une liste d&rsquo;adjacence est de  $O(N + M)$ (avec $M$ le nombre d&rsquo;arcs du graphe).</li>
 <li>On ne cherche pas à répondre aux questions du type tel nœud est-il voisin à tel autre nœud ? Ou encore quel est le poids de tel arc entre ces deux nœuds ? Mais plutôt lorsqu&rsquo;on cherche à parcourir le graphe plus rapidement qu&rsquo;en utilisant une matrice d&rsquo;adjacence. En effet, dans une liste d&rsquo;adjacence il n&rsquo;y a que les voisins du nœud en question, alors que dans la matrice tous les nœuds sont représentés.</li>
 </ul>
-<h3>Liste d&rsquo;arcs</h3>
+<h3 id="liste-darcs">Liste d&rsquo;arcs</h3>
 <p>Enfin on peut utiliser une dernière solution, en représentant tous les arcs du graphe dans une liste chaînée.</p>
 <p>Voici l&rsquo;exemple d&rsquo;une liste d&rsquo;arcs (toujours sur le même graphe) :</p>
 <figure><img alt="Exemple de liste d'arcs" src="/img/algo/structure/graphe/exemple_liste_arcs.png" /><figcaption>Exemple de liste d&rsquo;arcs</figcaption>
@@ -153,13 +153,13 @@
 
 <p>La structure <code>Arc</code> contient l&rsquo;index des deux nœuds ainsi que la pondération de l&rsquo;arc (si c&rsquo;est un graphe pondéré).</p>
 <p>Une liste d&rsquo;arcs est plus rarement utilisée pour représenter un graphe, mais peut s&rsquo;avérer très utile lorsqu&rsquo;on n&rsquo;a pas assez de mémoire (à cause du nombre trop élevé de nœuds) pour représenter le graphe avec une matrice d&rsquo;adjacence ou même une liste d&rsquo;adjacence. On utilise donc une liste d&rsquo;arcs avec une complexité en mémoire de $O(M)$.</p>
-<h2>Parcourir un graphe</h2>
+<h2 id="parcourir-un-graphe">Parcourir un graphe</h2>
 <p>Afin de parcourir notre graphe, on peut utiliser deux algorithmes différents :</p>
 <ul>
 <li><a href="/algo/structure/graphe/parcours.html#le-parcours-en-profondeur">Parcours en profondeur</a> : DFS (<em>Depth First Search</em>)</li>
 <li><a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">Parcours en largeur</a> : BFS (<em>Breadth First Search</em>)</li>
 </ul>
-<h2>Opérations utiles sur un graphe</h2>
+<h2 id="operations-utiles-sur-un-graphe">Opérations utiles sur un graphe</h2>
 <p>Voici une liste non exhaustive d&rsquo;opérations utiles lorsqu&rsquo;on manipule un graphe : </p>
 <ul>
 <li>Détection de cycle</li>
@@ -170,7 +170,7 @@
 <li>Arbre couvrant minimal</li>
 <li>Composante fortement connexe</li>
 </ul>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>Un graphe est une structure de données incontournable, utilisée dans de très nombreux problèmes (plus ou moins complexes) de la vie de tous les jours et dans beaucoup de domaines différents comme :</p>
 <ul>
 <li>La planification de tâches</li>

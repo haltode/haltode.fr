@@ -45,13 +45,13 @@
 
 <p>Publié le : 20/04/2016<br><i>Modifié le : 20/04/2016</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>Contrairement à l&rsquo;<a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">algorithme du gradient</a> l&rsquo;équation normale est une expression mathématique et non pas un algorithme itératif, qui permet de résoudre notre problème de <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a> en trouvant les valeurs de $\theta$ pour lesquelles notre fonction $J$ est minimisée.</p>
-<h2>Principe</h2>
+<h2 id="principe">Principe</h2>
 <p>L&rsquo;équation normale est définie comme ceci :</p>
 <p>$\theta = (x^\intercal x)^{-1} x^\intercal y$</p>
 <p>On peut grâce à cela calculer directement $\theta$ qui permet d&rsquo;obtenir notre fonction d&rsquo;hypothèse tel que $h_{\theta} \simeq y$.</p>
-<h2>Démonstration</h2>
+<h2 id="demonstration">Démonstration</h2>
 <p>Reprenons notre fonction d&rsquo;hypothèse :</p>
 <p>$h_{\theta} = x\theta$</p>
 <p>Ainsi que notre fonction d&rsquo;erreur :</p>
@@ -76,11 +76,11 @@
 <p>Si la matrice résultant du calcul de $x^\intercal x$ est <strong>inversible</strong>, alors on peut multiplier les deux côtés par l&rsquo;inverse de cette dernière et ainsi affirmer que :</p>
 <p>$\theta = (x^\intercal x)^{-1} x^\intercal y$</p>
 <p>On retrouve bien notre équation normale.</p>
-<h2>Complexité</h2>
+<h2 id="complexite">Complexité</h2>
 <p>La raison pour laquelle cette méthode n&rsquo;est pas tout le temps utilisée est assez simple : la <strong>rapidité</strong>.</p>
 <p>En effet, le produit matriciel est encore un problème ouvert car on ne sait pas s&rsquo;il existe de meilleurs algorithmes que ceux employés aujourd&rsquo;hui. L&rsquo;algorithme naïf de multiplication matriciel a une complexité en temps de $O(N^3)$ avec $N$ le nombre de lignes des matrices, cependant, les autres algorithmes n&rsquo;ont pas une complexité si différente ($O(N^{2.807})$ pour l&rsquo;<a href="https://en.wikipedia.org/wiki/Strassen_algorithm">algorithme de Strassen</a> ou encore $O(N^{2.376})$ pour l&rsquo;<a href="https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm">algorithme de Coppersmith-Winograd</a>).</p>
 <p>Il est donc peu envisageable d&rsquo;implémenter la méthode de l&rsquo;équation normale lorsqu&rsquo;on a environ $n &gt; 10000$.</p>
-<h2>Implémentation</h2>
+<h2 id="implementation">Implémentation</h2>
 <p>Le code en Python permettant de calculer les paramètres $\theta$ avec l&rsquo;équation normale :</p>
 <pre><code class="py">import numpy as np
 
@@ -141,7 +141,7 @@ theta  1  :  0.678691601117212
 <p>Et voici la représentation graphique de notre fonction d&rsquo;hypothèse trouvée (le code utilisé est le même que celui pour l&rsquo;algorithme du gradient) :</p>
 <figure><img alt="Sortie graphique du programme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale/sortie_prog.png" /><figcaption>Sortie graphique du programme</figcaption>
 </figure>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>La méthode de l&rsquo;équation normale est donc plus précise que celle de l&rsquo;algorithme du gradient car elle calcule le minimum global de la fonction d&rsquo;erreur en déterminant $\theta$ directement avec une relation mathématique. Cependant, on ne peut pas employer cette équation tout le temps car elle a une complexité en temps trop élevée, ce qui la rend quasiment inutilisable sur des entrées où $n &gt; 10000$.</p>
 
 

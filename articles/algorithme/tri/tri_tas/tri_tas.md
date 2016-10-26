@@ -49,7 +49,7 @@ triTas :
 
 La complexité de l’algorithme du tri par tas est en $O(N \log _2 N)$. En effet, la boucle principale parcourt $N$ tours ($N$ étant la taille du tableau), et appelle à chaque tour une fonction pour entasser qui a une complexité logarithmique.
 
-*Si vous n’avez pas lu mon article sur le [tri rapide](/algo/tri/tri_rapide.html), je vous conseille au moins de lire la partie [complexité](/algo/tri/tri_rapide.html#complexité) dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.*
+*Si vous n’avez pas lu mon article sur le [tri rapide](/algo/tri/tri_rapide.html), je vous conseille au moins de lire la partie [complexité](/algo/tri/tri_rapide.html#complexite) dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.*
 
 ## Implémentation
 
@@ -141,7 +141,7 @@ On parcourt le tableau à l'envers afin d'échanger la racine actuelle avec l'é
 
 ### Mélange d'algorithme
 
-Comme pour le tri rapide, le tri par tas peut être mélangé avec un autre algorithme de tri lorsque le tableau possède peu d’éléments afin de le rendre plus efficace. Pour en savoir plus à ce sujet, je vous invite à lire la partie [mélange d'algorithme](/algo/tri/tri_rapide.html#mélange-dalgorithme) de mon article sur le tri rapide.
+Comme pour le tri rapide, le tri par tas peut être mélangé avec un autre algorithme de tri lorsque le tableau possède peu d’éléments afin de le rendre plus efficace. Pour en savoir plus à ce sujet, je vous invite à lire la partie [mélange d'algorithme](/algo/tri/tri_rapide.html#melange-dalgorithme) de mon article sur le tri rapide.
 
 ### Smoothsort
 

@@ -45,10 +45,10 @@
 
 <p>Publié le : 08/06/2014<br><i>Modifié le : 16/01/2016</i></p>
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>Imaginons un tableau contenant des milliards d&rsquo;éléments. Comment supprimer un élément en plein milieu du tableau ? Pourquoi pas créer un deuxième tableau dans lequel on recopie toutes nos valeurs (sauf celles que l&rsquo;on veut supprimer) ? Cela marche bien, mais cette opération est longue et coûteuse en mémoire. On peut essayer de décaler le tableau en réécrivant sur la valeur que l&rsquo;on veut supprimer, grâce à ça on fait des économies de mémoire mais cela prend beaucoup de temps. Et comment ajouter un élément dans notre tableau ? De même, on peut recréer un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel élément. On peut aussi faire des économies de mémoire en décalant les éléments vers la droite pour laisser un espace au milieu afin d&rsquo;insérer notre nouvel élément. Cependant, cette solution prend trop de temps et ceci nous pousse à comprendre que les tableaux ne sont pas adaptés à toutes les situations.</p>
 <p>Face à ces problèmes de temps, et de mémoire, on a besoin d&rsquo;une nouvelle structure de données souple, dynamique, et qui nous permet d&rsquo;insérer et de supprimer des éléments facilement : la liste chaînée.</p>
-<h2>Principe de la liste chaînée</h2>
+<h2 id="principe-de-la-liste-chainee">Principe de la liste chaînée</h2>
 <p>Une liste chaînée (<em>linked list</em> en anglais) est une structure de données auto référentielle, c&rsquo;est-à-dire que chacun de ses éléments pointe vers l&rsquo;élément suivant que l&rsquo;on appelle des <strong>nœuds</strong> (<em>node</em>). A partir de cette définition on peut déjà établir le contenu d&rsquo;un élément d&rsquo;une liste chaînée :</p>
 <ul>
 <li><strong>Des données</strong> : ces données peuvent être de n&rsquo;importe quels types (entier, flottant, chaîne de caractère, etc.), et il peut en y avoir autant que possible par élément.</li>
@@ -57,7 +57,7 @@
 <figure><img alt="Exemple de représentation d'une liste chaînée" src="/img/algo/structure/liste_chainee/exemple_liste_chainee.png" /><figcaption>Exemple de représentation d&rsquo;une liste chaînée</figcaption>
 </figure>
 <p>Le dernier pointeur de la liste chaînée pointe sur la valeur <code>NULL</code>, pour indiquer la fin de la liste.</p>
-<h2>Différence avec les tableaux</h2>
+<h2 id="difference-avec-les-tableaux">Différence avec les tableaux</h2>
 <p>Les deux structures de données sont différentes, et ont leurs avantages et leurs inconvénients, aucune n&rsquo;est meilleure que l&rsquo;autre mais il faut savoir quand utiliser la bonne structure au bon moment :</p>
 <ul>
 <li><strong>Tableau</strong> : les éléments sont contigus en mémoire, la taille du tableau ne change pas et est connue à l&rsquo;avance, l&rsquo;ajout et la suppression d&rsquo;un élément du tableau sont des opérations couteuses en temps et en mémoire, en revanche on peut aisément accéder à un élément du tableau en temps constant (par exemple en C : <code>tableau[2]</code>).</li>
@@ -67,7 +67,7 @@
 </figure>
 <figure><img alt="Exemple de suppression d'un élément dans une liste chaînée" src="/img/algo/structure/liste_chainee/exemple_suppression.png" /><figcaption>Exemple de suppression d&rsquo;un élément dans une liste chaînée</figcaption>
 </figure>
-<h2>Quelques fonctions pour manipuler les listes chaînées</h2>
+<h2 id="quelques-fonctions-pour-manipuler-les-listes-chainees">Quelques fonctions pour manipuler les listes chaînées</h2>
 <p>Pour manipuler correctement les listes chaînées, il faut connaître quelques fonctions basiques pour ajouter un élément, le supprimer, rechercher un élément précis dans la liste, etc.</p>
 <pre><code class="nohighlight">créerListe :
    Initialiser la liste à NULL
@@ -104,7 +104,7 @@ estVide :
       Retourner faux
 </code></pre>
 
-<h2>Complexité</h2>
+<h2 id="complexite">Complexité</h2>
 <p>Soit $N$ le nombre d&rsquo;éléments de la liste chaînée.</p>
 <ul>
 <li><code>créerListe</code> : $O(1)$</li>
@@ -117,7 +117,7 @@ estVide :
 <li><code>supprimerElément</code> : $O(N)$</li>
 <li><code>estVide</code> : $O(1)$</li>
 </ul>
-<h2>Implémentation</h2>
+<h2 id="implementation">Implémentation</h2>
 <p>Une implémentation en C des fonctions présentées au-dessus :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
@@ -272,9 +272,9 @@ int main(void)
 
 <p>Le code est relativement simple à comprendre et à utiliser, une connaissance des pointeurs est cependant nécessaire.</p>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation de liste chaînée ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/">http://www.cplusplus.com/reference/list/list/</a>.</p>
-<h2>Variantes de la liste chaînée</h2>
+<h2 id="variantes-de-la-liste-chainee">Variantes de la liste chaînée</h2>
 <p>Il existe plusieurs variantes de la liste chaînée qui sont pratiques dans certains problèmes précis.</p>
-<h3>Liste doublement chaînée</h3>
+<h3 id="liste-doublement-chainee">Liste doublement chaînée</h3>
 <p>La liste double chaînée (<em>doubly linked list</em>) consiste à ce que chaque élément de la liste possède deux pointeurs :</p>
 <ul>
 <li>Un pointeur vers le <strong>prochain</strong> élément.</li>
@@ -296,16 +296,16 @@ typedef Noeud *Liste;
 </code></pre>
 
 <p>La liste doublement chaînée est notamment la base de la <a href="/algo/structure/file.html">file</a> et permet une implémentation efficace de cette structure.</p>
-<h3>Liste chaînée circulaire</h3>
+<h3 id="liste-chainee-circulaire">Liste chaînée circulaire</h3>
 <p>La liste chaînée circulaire (<em>circular linked list</em>) est une liste chaînée ne possédant pas de fin. En effet, le pointeur de fin de liste pointe vers le début de la liste formant ainsi un cycle.</p>
 <figure><img alt="Exemple de représentation d'une liste chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png" /><figcaption>Exemple de représentation d&rsquo;une liste chaînée circulaire</figcaption>
 </figure>
 <p>On peut utiliser cette variante de la liste chaînée pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jeu de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste chaînée circulaire permettrait de stocker l&rsquo;ordre de jeu des joueurs facilement.</p>
-<h3>Liste doublement chaînée circulaire</h3>
+<h3 id="liste-doublement-chainee-circulaire">Liste doublement chaînée circulaire</h3>
 <p>Une liste doublement chaînée circulaire (<em>doubly circular linked list</em>) est simplement un regroupement des deux dernières variantes.</p>
 <figure><img alt="Exemple de représentation d'une liste doublement chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png" /><figcaption>Exemple de représentation d&rsquo;une liste doublement chaînée circulaire</figcaption>
 </figure>
-<h3>D&rsquo;autres variantes plus complexes</h3>
+<h3 id="dautres-variantes-plus-complexes">D&rsquo;autres variantes plus complexes</h3>
 <p>En plus de ces variantes assez &ldquo;courantes&rdquo;, on peut retrouver d&rsquo;autres variantes plus compliquées mais qui peuvent toujours servir :</p>
 <ul>
 <li><strong>Liste à enjambements</strong> (<em>skip list</em>) : ensemble de listes chaînées stockées &ldquo;parallèlement&rdquo; et qui permet de sauter des éléments en fonction de nos besoins, pratique pour trier et rechercher (<a href="https://en.wikipedia.org/wiki/Skip_list">https://en.wikipedia.org/wiki/Skip_list</a>).</li>
@@ -314,7 +314,7 @@ typedef Noeud *Liste;
 <li><strong>Liste chaînée déroulée</strong> (<em>unrolled linked list</em>) : cette variante stocke plusieurs éléments au lieu d&rsquo;un seul par nœud, et fait office de compromis entre un tableau et une liste que l&rsquo;on peut modifier pour qu&rsquo;elle se rapproche plus de l&rsquo;un que de l&rsquo;autre selon les besoins (<a href="https://en.wikipedia.org/wiki/Unrolled_linked_list">https://en.wikipedia.org/wiki/Unrolled_linked_list</a>).</li>
 <li><strong>VList</strong> : comme la précédente, c&rsquo;est un compromis qui stocke des tableaux d&rsquo;éléments plutôt qu&rsquo;un unique élément dans chaque nœud, excepté que cette fois ci les tableaux sont de tailles variables contrairement à une liste chaînée déroulée où les tableaux sont tous de la même taille (<a href="https://en.wikipedia.org/wiki/VList">https://en.wikipedia.org/wiki/VList</a>).</li>
 </ul>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>La liste chaînée est donc une structure de données très souple, et efficace pour insérer et supprimer des éléments simplement. De plus, on peut la modifier afin de créer de nouvelles structures de données différentes comme la liste doublement chaînée, la liste chaînée circulaire, mais aussi pour créer une <a href="/algo/structure/pile.html">pile</a> ou encore une <a href="/algo/structure/file.html">file</a>.</p>
 <p>Les listes chaînées sont aussi la base de structures de données plus complexes comme les <a href="/algo/structure/arbre.html">arbres</a>, les <a href="/algo/structure/graphe.html">graphes</a>, les <a href="/algo/structure/table_hachage.html">tables de hachage</a> et de nombreuses variantes de listes chaînées existent.</p>
 
