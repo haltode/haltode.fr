@@ -151,3 +151,11 @@ pre {
 .nohighlight {
    padding-left: 0px;      /* Remove auto padding from highlight.js */
 }
+
+/* ---- Blockquotes ---- */
+
+blockquote {
+   background: #f5f7f9;
+   padding: 0.1em 1em;
+   border-left: 2px solid #69c;
+}
