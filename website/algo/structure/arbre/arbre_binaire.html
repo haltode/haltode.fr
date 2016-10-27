@@ -42,7 +42,8 @@
 
 <h1>Arbre binaire</h1>
 
-<p>Publié le : 27/12/2015<br><i>Modifié le : 14/01/2016</i></p><div class="toc">
+<p>Publié le : 27/12/2015<br><i>Modifié le : 14/01/2016</i></p>
+<div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#definition">Définition</a></li>
@@ -58,7 +59,6 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 <h2 id="introduction">Introduction</h2>
 <p>Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir tous les éléments et les comparer afin de trouver le maximum, cet algorithme naïf a une complexité linéaire en $O(N)$ avec $N$ la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos $N$ éléments pour chercher le maximum, mais peut-on faire mieux ? Une des premières idées qui peut vous venir à l&rsquo;esprit serait d&rsquo;utiliser une variable en plus du tableau qui contient le maximum actuel, on l&rsquo;initialise avec le maximum qu&rsquo;on a trouvé en parcourant le tableau, et ensuite dès qu&rsquo;on effectue une modification on compare cette variable aux valeurs que l&rsquo;on change pour la mettre à jour. Cependant cette méthode, qui peut paraitre bien au premier coup d&rsquo;œil, ne fonctionne pas dans tous les cas. Si la valeur que l&rsquo;on change dans le tableau est l&rsquo;ancien maximum (et donc la valeur de notre variable externe), alors il se peut que le nouveau maximum ne soit plus la valeur qu&rsquo;on a changée mais une autre contenue dans le reste du tableau :</p>
 <figure><img alt="Contre-exemple de l'algorithme proposé" src="/img/algo/structure/arbre/arbre_binaire/contre_exemple_intro.png" /><figcaption>Contre-exemple de l&rsquo;algorithme proposé</figcaption>

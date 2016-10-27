@@ -42,7 +42,8 @@
 
 <h1>Tableau cumulatif</h1>
 
-<p>Publié le : 21/11/2015<br><i>Modifié le : 05/12/2015</i></p><div class="toc">
+<p>Publié le : 21/11/2015<br><i>Modifié le : 05/12/2015</i></p>
+<div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tableau-cumulatif">Principe du tableau cumulatif</a></li>
@@ -62,7 +63,6 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 <h2 id="introduction">Introduction</h2>
 <p>Je vous donne un tableau possédant des trilliards d&rsquo;éléments, et je vous pose des milliards de questions de la forme : Quelle est la somme des éléments compris entre l&rsquo;indice $i$ et $j$ du tableau (avec $i &lt; j$) ? La première idée d&rsquo;algorithme naïf que l&rsquo;on peut avoir, est de parcourir pour chaque question les éléments situés entre les indices donnés, et d&rsquo;augmenter une variable <code>somme</code> au fur et à mesure du parcours.</p>
 <p>Cependant notre solution est bien trop longue pour le cas extrême donné en entrée, à cause des nombreux parcours que l&rsquo;on réalise. Il nous faut donc une solution plus efficace, et une structure adaptée nous permettant de faire moins de parcours inutiles et ainsi raccourcir notre temps d&rsquo;exécution : le tableau cumulatif.</p>

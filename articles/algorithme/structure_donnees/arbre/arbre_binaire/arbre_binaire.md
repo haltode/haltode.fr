@@ -3,6 +3,8 @@ Title: Arbre binaire
 Published: 27/12/2015  
 Modified: 14/01/2016  
 
+[TOC]
+
 ## Introduction
 
 Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir tous les éléments et les comparer afin de trouver le maximum, cet algorithme naïf a une complexité linéaire en $O(N)$ avec $N$ la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos $N$ éléments pour chercher le maximum, mais peut-on faire mieux ? Une des premières idées qui peut vous venir à l'esprit serait d'utiliser une variable en plus du tableau qui contient le maximum actuel, on l'initialise avec le maximum qu'on a trouvé en parcourant le tableau, et ensuite dès qu'on effectue une modification on compare cette variable aux valeurs que l'on change pour la mettre à jour. Cependant cette méthode, qui peut paraitre bien au premier coup d'œil, ne fonctionne pas dans tous les cas. Si la valeur que l'on change dans le tableau est l'ancien maximum (et donc la valeur de notre variable externe), alors il se peut que le nouveau maximum ne soit plus la valeur qu'on a changée mais une autre contenue dans le reste du tableau :

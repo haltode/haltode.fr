@@ -3,6 +3,8 @@ Title: Tri à bulles
 Published: 29/04/2014  
 Modified: 07/12/2015  
 
+[TOC]
+
 ## Introduction
 
 Le tri à bulles (*bubble sort* en anglais) est un algorithme de tri par comparaison très simple à comprendre et à implémenter, cependant c’est l’un des algorithmes de tri les plus inefficaces. En effet, il a une complexité en temps quadratique : $O(N^2)$. Cet algorithme est très peu utilisé à cause de sa complexité trop lente, mais c’est un bon exemple pour commencer à travailler sur des algorithmes de tri. Il faut noter que le tri à bulles est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) et [sur place](https://en.wikipedia.org/wiki/In-place_algorithm).

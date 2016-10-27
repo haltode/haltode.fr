@@ -3,6 +3,8 @@ Title: Arbre
 Published: 29/11/2015  
 Modified: 01/12/2015  
 
+[TOC]
+
 ## Introduction
 
 Une famille de lapin, dont le père s'appelle Bob et la mère Alice, ont des enfants, qui a leurs tours auront des enfants, qui se marieront et auront aussi des enfants. Comment organiser cette famille afin de visualiser qui est marié avec qui, qui sont les parents, qui sont les enfants, combien un couple a-t-il d'enfants, etc. ? Vous connaissez sans doute déjà la réponse, dans notre cas on utilisera un [arbre généalogique](https://en.wikipedia.org/wiki/Family_tree), vous en avez forcément déjà vu et/ou construit, et cette structure devrait vous être familière.

@@ -3,6 +3,8 @@ Title: Algorithme dynamique
 Published: 03/04/2016  
 Modified: 29/04/2016  
 
+[TOC]
+
 ## Introduction
 
 Le principe du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms) est assez commun en algorithmique, et celui-ci repose sur une idée simple :

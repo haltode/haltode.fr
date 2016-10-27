@@ -42,15 +42,16 @@
 
 <h1>Graphe</h1>
 
-<p>Publié le : 20/06/2015<br><i>Modifié le : 01/12/2015</i></p><div class="toc">
+<p>Publié le : 20/06/2015<br><i>Modifié le : 01/12/2015</i></p>
+<div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#principe-dun-graphe">Principe d'un graphe</a></li>
+<li><a href="#principe-dun-graphe">Principe d&rsquo;un graphe</a></li>
 <li><a href="#caracteristiques">Caractéristiques</a></li>
 <li><a href="#implementation">Implémentation</a><ul>
-<li><a href="#matrice-dadjacence">Matrice d'adjacence</a></li>
-<li><a href="#liste-dadjacence">Liste d'adjacence</a></li>
-<li><a href="#liste-darcs">Liste d'arcs</a></li>
+<li><a href="#matrice-dadjacence">Matrice d&rsquo;adjacence</a></li>
+<li><a href="#liste-dadjacence">Liste d&rsquo;adjacence</a></li>
+<li><a href="#liste-darcs">Liste d&rsquo;arcs</a></li>
 </ul>
 </li>
 <li><a href="#parcourir-un-graphe">Parcourir un graphe</a></li>
@@ -58,7 +59,6 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-
 <h2 id="introduction">Introduction</h2>
 <p>Supposons que je souhaite faire le tour de l&rsquo;Europe en passant par diverses villes de plusieurs pays. Comment représenter mon trajet ? Comment rajouter des contraintes supplémentaires si par exemple je désire faire un trajet défini, mais le plus court possible en termes de km ? Comment insérer ou supprimer une nouvelle destination dans mon voyage et surtout comment visualiser ce dernier ?</p>
 <p>Naturellement, on pourrait prendre une carte et tracer des traits entre chaque ville de l&rsquo;itinéraire afin de pouvoir le représenter, mais comment le faire comprendre à un ordinateur pour qu&rsquo;il puisse le manipuler ? Nous avons donc besoin d&rsquo;une structure de données flexible, permettant de visualiser des chemins entre différents points : le graphe.</p>

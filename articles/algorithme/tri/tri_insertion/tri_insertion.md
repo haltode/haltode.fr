@@ -3,6 +3,8 @@ Title: Tri par insertion
 Published: 01/05/2014  
 Modified: 08/12/2015  
 
+[TOC]
+
 ## Introduction
 
 Le tri par insertion (*insertion sort* en anglais) est un algorithme de tri par comparaison simple, et intuitif mais toujours avec une complexité en $O(N^2)$. Vous l’avez sans doute déjà utilisé sans même vous en rendre compte : lorsque vous triez des cartes par exemple. C’est un algorithme de tri [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), [en place](https://en.wikipedia.org/wiki/In-place_algorithm), et le plus rapide en pratique sur une entrée de petite taille.

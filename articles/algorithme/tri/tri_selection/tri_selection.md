@@ -3,6 +3,8 @@ Title: Tri par sélection
 Published: 30/04/2014  
 Modified: 08/12/2015  
 
+[TOC]
+
 ## Introduction
 
 Le tri par sélection (*selection sort* en anglais) est un algorithme de tri par comparaison simple, mais assez inefficace sur une entrée trop importante, c’est un algorithme non [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais qui trie [en place](https://en.wikipedia.org/wiki/In-place_algorithm). Il a pour complexité algorithmique $O(N^2)$ comme le [tri à bulles](/algo/tri/tri_bulles.html).

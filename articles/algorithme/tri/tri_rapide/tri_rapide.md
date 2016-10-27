@@ -3,6 +3,8 @@ Title: Tri rapide
 Published: 10/05/2014  
 Modified: 22/01/2016  
 
+[TOC]
+
 ## Introduction
 
 Le tri rapide (*quicksort* en anglais) est un algorithme de tri par comparaison, son fonctionnement est plutôt simple à comprendre et il est très utilisé sur de grandes entrées. En effet, il a pour complexité moyenne $O(N \log _2 N)$ et $O(N^2)$ dans le pire des cas. Cependant, même si cet algorithme est lent dans le pire des cas, il est plus utilisé en pratique que d’autres tris comme le [tri par fusion](/algo/tri/tri_fusion.html) qui a une complexité dans le pire des cas en $O(N \log _2 N)$. C’est un algorithme [non stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais [en place](https://en.wikipedia.org/wiki/In-place_algorithm).

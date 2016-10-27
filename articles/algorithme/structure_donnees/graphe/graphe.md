@@ -3,6 +3,8 @@ Title: Graphe
 Published: 20/06/2015  
 Modified: 01/12/2015  
 
+[TOC]
+
 ## Introduction
 
 Supposons que je souhaite faire le tour de l'Europe en passant par diverses villes de plusieurs pays. Comment représenter mon trajet ? Comment rajouter des contraintes supplémentaires si par exemple je désire faire un trajet défini, mais le plus court possible en termes de km ? Comment insérer ou supprimer une nouvelle destination dans mon voyage et surtout comment visualiser ce dernier ?

@@ -3,6 +3,8 @@ Title: Tri fusion
 Published: 10/05/2014  
 Modified: 13/12/2015  
 
+[TOC]
+
 ## Introduction
 
 Le tri fusion (*merge sort* en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité $O(N \log _2 N)$, il se base sur le principe du [diviser pour régner](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms). Cet algorithme est [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais ne s’exécute pas [en place](https://en.wikipedia.org/wiki/In-place_algorithm).

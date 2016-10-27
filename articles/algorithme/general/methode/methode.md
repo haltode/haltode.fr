@@ -3,6 +3,8 @@ Title: Méthode de résolution
 Published: 03/10/2016  
 Modified: 03/10/2016  
 
+[TOC]
+
 ## Introduction
 
 TODO : conseils persos

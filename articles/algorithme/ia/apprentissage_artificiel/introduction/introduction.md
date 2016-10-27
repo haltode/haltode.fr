@@ -3,6 +3,8 @@ Title: Introduction à l'apprentissage artificiel
 Published: 07/04/2016  
 Modified: 25/04/2016  
 
+[TOC]
+
 ## Introduction
 
 Si vous suivez régulièrement les nouvelles dans le domaine de l'informatique, vous êtes sans doute déjà tombé sur un article parlant d'un programme utilisant le principe d'apprentissage artificiel (ou *machine learning* en anglais) afin de résoudre efficacement une tâche qui parait compliquée voire impossible pour un ordinateur. Si ce n'est pas le cas, il suffit de taper "machine learning" dans un moteur de recherche et regarder les résultats dans la section "actualités" pour apercevoir un nombre impressionnant d'articles récents à ce propos et sur des thèmes très variés. Mais qu'est-ce que l'apprentissage artificiel ? Dans quel domaine peut-on l'appliquer ? Et surtout quels sont concrètement les algorithmes mis en place par ce type d'apprentissage ?

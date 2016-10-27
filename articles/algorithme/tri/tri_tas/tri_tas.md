@@ -3,6 +3,8 @@ Title: Tri par tas
 Published: 14/05/2014  
 Modified: 29/04/2016  
 
+[TOC]
+
 ## Introduction
 
 Le tri par tas (*heapsort* en anglais) est un algorithme de tri par comparaison, plutôt efficace et qui a une complexité en $O(N \log _2 N)$. C’est un algorithme de tri [non stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) mais [en place](https://en.wikipedia.org/wiki/In-place_algorithm).

@@ -3,6 +3,8 @@ Title: Tri par dénombrement
 Published: 05/07/2014  
 Modified: 02/02/2016  
 
+[TOC]
+
 ## Introduction
 
 Le tri par dénombrement (*counting sort* en anglais) est l’un des algorithmes de tri le plus rapide, et pourtant il est loin d'être compliqué, même s'il a quelques restrictions et défauts. Le tri s'exécute en un temps linéaire, mais uniquement sur des nombres entiers. La particularité du tri est qu'il est la base d'autres algorithmes de tri en temps linéaires, permettant de s'adapter aux besoins en temps et en mémoire.

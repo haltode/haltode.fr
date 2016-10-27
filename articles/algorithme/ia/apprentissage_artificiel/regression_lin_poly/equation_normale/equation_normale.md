@@ -3,6 +3,8 @@ Title: Equation normale
 Published: 20/04/2016  
 Modified: 20/04/2016  
 
+[TOC]
+
 ## Introduction
 
 Contrairement à l'[algorithme du gradient](/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html) l'équation normale est une expression mathématique et non pas un algorithme itératif, qui permet de résoudre notre problème de [régression linéaire](/algo/ia/apprentissage_artificiel/regression_lin_poly.html) en trouvant les valeurs de $\theta$ pour lesquelles notre fonction $J$ est minimisée.
