@@ -8,10 +8,10 @@ Liste de mes différents projets personnels que vous pouvez retrouver sur mon Gi
 | Date/Durée | Projet | Description |
 | :--------- | ------ | :---------- |
 | 09/2016 <br> *(En cours)* | [yaos](https://github.com/napnac/yaos) | Un petit système d'exploitation 32 bits |
-| 03/2016 <br> *(~1 semaine)* | [mlai](https://github.com/napnac/mlai) | Implémentation basique de différents algorithmes de machine learning |
-| 03/2016 <br> *(~1 semaine)* | [lispy](https://github.com/napnac/lispy) | Langage de programmation minimaliste inspiré de Lisp |
+| 03/2016 <br> *(1 semaine)* | [mlai](https://github.com/napnac/mlai) | Implémentation basique de différents algorithmes de machine learning |
+| 03/2016 <br> *(1 semaine)* | [lispy](https://github.com/napnac/lispy) | Langage de programmation minimaliste inspiré de Lisp |
 | 01/2016 <br> *(2 semaines)* | [pornote](https://github.com/napnac/pornote) | Un site web parodique de Pronote, pour échanger les devoirs entre les classes |
-| 09/2014 <br> *(1 an)* | Entraînement IOI | Mon entraînement dans le but de participer pour les [IOI](http://ioinformatics.org/index.shtml) |
+| 09/2014 <br> *(1 an)* | Entraînement IOI | Mon entraînement dans le but de participer aux [IOI](http://ioinformatics.org/index.shtml) |
 | 02/2014 <br> *(3 mois)* | [NandToTetris](https://github.com/napnac/NandToTetris) | Un ordinateur émulé accompagné d'un compilateur et d'un mini-OS |
 | 10/2013 <br> *(4 mois)* | [Rhyddid](https://github.com/napnac/Rhyddid) | Rogue-like construit entièrement en console |
 | 06/2013 <br> *(4 mois)* | [ASCII Funfair](https://github.com/napnac/ASCII-Funfair) | Programme regroupant différents jeux connus, en solo et en multijoueur |
