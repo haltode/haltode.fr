@@ -39,7 +39,6 @@ def render_articles():
 
     for article in articles:
         md = markdown.Markdown(extensions={
-            'markdown.extensions.admonition',
             'markdown.extensions.extra',
             'markdown.extensions.meta',
             'markdown.extensions.smarty',

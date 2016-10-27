@@ -7,7 +7,6 @@ This is my personal website (in French) where I post articles about algorithms, 
 The script `build.py` uses different Python librairies:
 
 - [Markdown](https://pypi.python.org/pypi/Markdown): to convert Markdown content into HTML pages, with the following extensions:
-   - [Admonition](https://pythonhosted.org/Markdown/extensions/admonition.html): adds rST-style admonitions
    - [Extra](https://pythonhosted.org/Markdown/extensions/extra.html): compilation of useful various extensions
    - [Meta-Data](https://pythonhosted.org/Markdown/extensions/meta_data.html): defines meta-data about an article
    - [SmartyPants](https://pythonhosted.org/Markdown/extensions/smarty.html): converts ASCII symbol to their HTML entity equivalents
