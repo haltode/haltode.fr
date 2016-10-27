@@ -5,7 +5,7 @@ Modified:
 
 ## Présentation
 
-Je suis Thibault (ou napnac), un jeune programmeur de 16 ans, passionné d'informatique et de nouvelles technologies. Je programme en C principalement, et même si j'ai quelques notions dans d'autres langages, je souhaite en apprendre plus dans le futur. J'écris des articles assez régulièrement sur des thèmes très variés mais touchant toujours à l'informatique.
+Je suis Thibault (ou napnac), un jeune programmeur de 17 ans, passionné d'informatique et de nouvelles technologies. Je programme en C principalement, et même si j'ai quelques notions dans d'autres langages, je souhaite en apprendre plus dans le futur. J'écris des articles assez régulièrement sur des thèmes très variés mais touchant toujours à l'informatique.
 
 ## Comment me contacter ?
 

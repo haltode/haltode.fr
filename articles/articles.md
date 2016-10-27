@@ -43,7 +43,7 @@ La liste des articles publiés :
          - [Chiffre de Vernam](/algo/chiffrement/chiffre_vernam.html)
          - [RSA](/algo/chiffrement/rsa.html)
 
-    - IA :
+    - Intelligence Artificielle :
 
          - Apprentissage artificiel :
             
