@@ -85,6 +85,15 @@ def render_articles():
                         title=title, published=published, modified=modified)
 
 
+def clean():
+    pages = glob.iglob(WEBSITE_DIR + '/**/*.html', recursive=True)
+    for page in pages:
+        os.remove(page)
+
+
+print("Cleaning...")
+clean()
+
 print("Rendering core pages...")
 render_core_pages()
 
