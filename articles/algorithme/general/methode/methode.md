@@ -15,7 +15,7 @@ Cependant, cette méthode peut paraître longue et fastidieuse au début, et né
 
 Pour commencer, il vous faut uniquement une feuille et un crayon.
 
-*Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'apréhender et d'appliquer cette méthode.*
+*Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'appréhender et d'appliquer cette méthode.*
 
 ## Enoncé
 
@@ -119,7 +119,7 @@ Imaginons qu'on ne connaisse aucun algorithme de plus court chemin sur un graphe
 
 L'avantage de cette méthode est qu'il est évident de trouver l'algorithme naïf pour résoudre un problème, et que ses points faibles sont très rapidement soulignés lorsqu'on cherche à réaliser un exemple à la main avec ce dernier. En effet, on va vite remarquer ce que notre algorithme répète inutilement, et il suffit d'optimiser ces points en trouvant une méthode plus réfléchie et moins naïve.
 
-*Un ou deux exemples devraient suffire, pas besoin de recommencer entièrement l'étape précédente. En revanche, choisissez des exemples un minimum long pour avoir le temps de trouver les points faibles.*
+*Un ou deux exemples devraient suffire, pas besoin de recommencer entièrement l'étape précédente. En revanche, choisissez des exemples un minimum longs pour avoir le temps de trouver les points faibles.*
 
 N'oubliez pas de calculer la complexité en temps et en mémoire de votre algorithme bourrin pour deux raisons principalement :
 
