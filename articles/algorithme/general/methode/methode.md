@@ -1,7 +1,7 @@
 Path: algo/general  
 Title: Méthode de résolution  
-Published: 03/10/2016  
-Modified: 03/10/2016  
+Published: 27/10/2016  
+Modified: 27/10/2016  
 
 [TOC]
 
@@ -15,6 +15,8 @@ Cependant, cette méthode peut paraître longue et fastidieuse au début, et né
 
 Pour commencer, il vous faut uniquement une feuille et un crayon.
 
+*Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'apréhender et d'appliquer cette méthode.*
+
 ## Enoncé
 
 ### Lecture
@@ -25,7 +27,7 @@ Que ce soit un concours de programmation ou un problème que vous cherchez à r�
 
 Une fois le sujet correctement lu et appréhendé, il est crucial de le **reformuler en quelques phrases** (deux ou trois en général suffisent, il ne s'agit pas ici de réécrire le problème). Ceci vous permet dans un premier temps de vérifier votre compréhension vis-à-vis de l'énoncé, mais aussi de le décrire efficacement et de manière concise. Supprimez tous les détails inutiles, et concentrez-vous sur ce qu'on vous demande concrètement de faire. Vous pouvez vous aider en écrivant deux phrases types, "On nous donne..." et "On nous demande...", puis si nécessaire notez les points importants à ne pas oublier ou spécifiques au sujet. Attention cependant, car **l'étape de reformulation ne doit pas dériver du sujet** (en le simplifiant ou en le généralisant par exemple), elle doit le décrire parfaitement comme si vous expliquiez l'énoncé à une personne.
 
-Il est très courant dans un concours de programmation d'avoir une histoire qui accompagne le sujet, et l'étape de reformulation permet d'écarter cette dernière en explicitant le problème de manière crue et non imagée. Il faut arriver à se **détacher le plus possible de l'histoire** et de décrire le problème d'un point de vue purement algorithmique.
+Il est très courant dans un concours de programmation d'avoir une histoire qui accompagne le sujet, et l'étape de reformulation permet d'écarter cette dernière en explicitant le problème de manière crue et non imagée. Il faut arriver à se détacher le plus possible de l'histoire et décrire le problème d'un point de vue purement algorithmique.
 
 Voici un exemple de sujet très simple, ainsi qu'une reformulation de ce dernier :
 
@@ -59,9 +61,9 @@ Encore une fois, on est actuellement dans la compréhension du sujet et non dans
 
 ### Dimensions et contraintes
 
-Enfin, dernière sous étape qui concerne l'énoncé, il faut noter sur votre feuille les **dimensions** et les **contraintes** du sujet.
+Enfin, dernière sous étape qui concerne l'énoncé, il faut noter sur votre feuille les dimensions et les contraintes du sujet.
 
-Une **dimension** est une donnée qu'on fournit dans l'énoncé du problème. Par exemple dans le cas du problème d'Alice et Bob, on pourra avoir une liste de dimensions comme :
+Une **dimension** est une donnée qu'on fournit dans l'énoncé du problème. Dans l'exemple d'Alice et Bob, on pourrait avoir la liste de dimensions suivante :
 
 > Soit $N$ le nombre de villes où peuvent voyager Alice et Bob, $1 <= N <= 200$  
 > Soit $M$ le prix d'un trajet, $1 <= M <= 3000$€  
@@ -73,7 +75,7 @@ On distingue plusieurs types de dimensions :
 - **dimension de sortie** : une valeur qui va concerner directement la sortie de votre programme (ex: $K$)
 - **dimension implicite** : une valeur implicite de l'énoncé qui peut être intéressante de noter (ex: si on fournit en entrée des coordonnées de points dans l'espace, une dimension implicite pourrait être la distance entre deux points)
 
-Pour chaque dimension il est utile de mettre la borne minimale et maximale, qui sont la plupart du temps données par le sujet ou qu'on peut simplement trouver avec quelques calculs.
+Pour chaque dimension il est utile de mettre la borne minimale et maximale, qui sont la plupart du temps données par le sujet ou qu'on peut simplement calculer.
 
 Une **contrainte** est une limite imposée par l'énoncé, concernant généralement le temps ou la mémoire qu'on accorde à votre programme. Ces dernières sont explicites, par exemple :
 
@@ -90,7 +92,7 @@ Deuxième étape de la méthode de résolution : **résoudre des exemples à la 
 
 ### Représentation graphique du problème
 
-Avant de se lancer dans la résolution d'exemples, on peut commencer par chercher une bonne représentation de notre problème. Visualiser ce dernier nous permettra de trouver une solution bien plus facilement, mais encore une fois, il y a de nombreuses façons de représenter une même chose mais peu sont réellement efficaces et utiles.
+Avant de se lancer dans la résolution d'exemples, on peut commencer par chercher une bonne graphique représentation de notre problème. Visualiser ce dernier nous permettra de trouver une solution bien plus facilement, mais encore une fois, il y a de nombreuses façons de représenter une même chose mais peu sont réellement efficaces et utiles.
 
 Une bonne visualisation indique des informations indispensables, il ne faut surtout pas surcharger la figure car elle doit rester claire et précise. Cette représentation peut prendre différentes formes selon le sujet et le contexte : graphe, arbre, tableau, graphique 2D, etc.
 
@@ -98,9 +100,9 @@ Une bonne visualisation indique des informations indispensables, il ne faut surt
 
 Trouver une solution est bien plus simple lorsqu'on essaie nous même de résoudre le problème plutôt que d'y réfléchir dans sa tête. En effet, notre cerveau est un outil très efficace pour ce genre de tâche, et se demander comment on ferrait personnellement pour résoudre le problème peut être un bon départ de réflexion. De plus, votre cerveau peut trouver rapidement des raccourcis pour éviter de répéter des mêmes opérations fastidieuses, et ceci nous aidera grandement pour trouver un algorithme efficace.
 
-Il est courant d'avoir des exemples dans l'énoncé du problème, mais il en faudra plus pour trouver l'algorithme. Cependant, générer plusieurs **bons exemples** est loin d'être facile. Les exemples doivent être tous assez différents les uns des autres pour généraliser l'algorithme et faire ressortir dès idées, pas trop longs pour ne pas perdre trop de temps (surtout pendant un concours de programmation), mais ni trop courts pour ne pas être inutiles.
+Il est courant d'avoir des exemples dans l'énoncé du problème, mais il en faudra plus pour trouver l'algorithme. Cependant, générer plusieurs **bons exemples** est loin d'être facile. Les exemples doivent être tous assez différents les uns des autres pour généraliser l'algorithme et faire ressortir des idées, pas trop longs pour ne pas perdre trop de temps (surtout pendant un concours de programmation), mais ni trop courts pour ne pas être inutiles.
 
-En plus d'aider à résoudre le problème et à trouver un algorithme, cette étape importante permet aussi de fournir des tests pour notre futur code (si les exemples à la main sont résolus correctement). On peut trouver des **cas spéciaux** ou des **cas limites** (en fonction des contraintes et des dimensions du problème) qui peuvent nous permettre de tester l'efficacité de l'algorithme. Un exemple de cas limite pour le problème d'Alice et Bob serait une entrée avec des millions (voire des milliards) d'itinéraires possibles. L'idée est de tester si notre algorithme respecte ou non les contraintes du sujet.
+En plus d'aider à résoudre le problème et à trouver un algorithme, cette étape importante permet aussi de fournir des tests pour notre futur code (si les exemples à la main sont résolus correctement). On peut trouver des **cas spéciaux** ou des **cas limites** (en fonction des contraintes et des dimensions du problème) qui peuvent nous permettre de tester l'efficacité de l'algorithme. Un exemple de cas limite pour le problème d'Alice et Bob serait une entrée avec des millions (voire des milliards) d'itinéraires possibles. L'objectif de ce genre d'exemple est de tester si notre algorithme respecte ou non les contraintes du sujet.
 
 ## Algorithme
 
@@ -108,7 +110,7 @@ Si à partir des exemples, vous n'avez encore aucunes réelles idées de l'algor
 
 ### Algorithme naïf
 
-Un algorithme dit **naïf** est la première méthode bourrin qui vous vient à l'esprit quand on vous pose un problème, ce dernier ne se soucie pas des contraintes, des dimensions, ou autre, et cherche uniquement à résoudre l'énoncé. Par exemple, si l'on reprend notre reformulation du sujet :
+Un algorithme dit **naïf** est la première méthode bourrin qui vous vient à l'esprit lorsqu'on vous pose un problème. Ce dernier ne se soucie pas des contraintes, des dimensions, ou autre, et cherche uniquement à résoudre l'énoncé. Par exemple, si l'on reprend notre reformulation du sujet :
 
 > On nous donne un graphe orienté pondéré positivement.  
 > On nous demande le plus court chemin entre deux nœuds de ce graphe.
@@ -140,15 +142,15 @@ Le fait d'avoir changé totalement de point de vue nous a fait découvrir une no
 
 ## Pseudo-code
 
-Vous avez enfin trouvé dans votre tête l'algorithme recherché, cependant lorsqu'on cherche à résoudre un problème un minimum conséquent, **on ne code jamais directement** mais on passe par une étape intermédiaire : le pseudo-code. Avant d'expliquer concrètement ce qu'est le pseudo-code, j'aimerais vraiment m'attarder sur l'importance de ce dernier qui est souvent trop négligé (surtout pendant des concours).
+Vous avez enfin trouvé dans votre tête l'algorithme recherché, cependant lorsqu'on veut résoudre un problème un minimum conséquent, **on ne code jamais directement** mais on passe par une étape intermédiaire : le pseudo-code. Avant d'expliquer concrètement ce qu'est le pseudo-code, j'aimerais vraiment m'attarder sur l'importance de ce dernier qui est souvent trop négligé (surtout pendant des concours).
 
 Imaginons que vous venez de trouver l'algorithme. Vous avez votre idée en tête et vous décidez tout de suite de passer à l'étape de programmation car vous pensez que la partie pseudo-code est inutile et que vous avez toutes les informations nécessaires pour résoudre correctement le sujet. Comme vous n'avez aucune réelle structure, vous programmez ce qui vous vient en premier quand vous pensez à votre algorithme, cependant au fur et à mesure que vous codez vous vous rendez compte qu'il faudra ajouter/supprimer/changer telle ou telle partie du programme à cause de détails auxquels vous n'avez pas pensé avant. Vous allez donc passer beaucoup de temps à réécrire ou à bidouiller votre programme afin de prendre en compte ces changements, et ceci va résulter en un code souvent sale et mal structuré (voire carrément faux). Or l'étape de débugage est fondamentale et débuguer ce genre de code est un cauchemar qui ne finit en général pas très bien. Après avoir perdu **énormément** de temps à corriger vos erreurs (si vous arrivez au bout de cette étape), vous vous rendez compte en testant votre algorithme qu'il n'est tout simplement pas assez efficace et que sa complexité en temps ne satisfait pas les contraintes de l'énoncé.
 
-Cet exemple peut paraître exagéré mais il est en réalité très fréquent en concours (bien plus qu'on ne le croit). Maintenant, regardons de plus près l'utilité du pseudo-code.
+Cet exemple de scénario peut paraître exagéré mais il est en réalité très fréquent en concours (bien plus qu'on ne le croit). Maintenant, regardons de plus près l'utilité du pseudo-code.
 
-Le pseudo-code est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est **extrêmement importante** car elle permet de se concentrer uniquement sur l'algorithme et non sur la manière dont vous allez le programmer. De plus, ceci vous permet de structurer correctement votre idée, ce qui ensuite permettra de coder le programme en quelques minutes seulement.
+Le pseudo-code est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est **extrêmement importante** car elle permet de se concentrer uniquement sur l'algorithme et non sur la manière dont vous allez le programmer. De plus, ceci vous permet de structurer correctement vos idées, ce qui ensuite permettra de coder le programme en quelques minutes seulement.
 
-Il n'y a pas de règles de syntaxe pour le pseudo-code, et c'est ce qui le rend très personnel. Chacun a sa manière d'écrire du pseudo-code. Cependant, cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez-vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable. En effet, le pseudo-code permet de décrire un algorithme rapidement, et donc de tester sa validité efficacement.
+Il n'y a pas de règles de syntaxe pour le pseudo-code, et c'est ce qui le rend très personnel (chacun a sa manière d'en écrire). Cependant, cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez-vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable. En effet, le pseudo-code permet de décrire un algorithme rapidement, et donc de tester sa validité efficacement.
 
 Au travers de mes articles, j'utiliserai toujours des pseudo-codes avant l'implémentation pour plusieurs raisons :
 
