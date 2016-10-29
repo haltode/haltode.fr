@@ -1,7 +1,7 @@
 Path: algo/general  
 Title: Méthode de résolution  
-Published: 27/10/2016  
-Modified: 27/10/2016  
+Published: 29/10/2016  
+Modified: 29/10/2016  
 
 [TOC]
 
@@ -14,6 +14,8 @@ Je ne le répèterai jamais assez, mais [France-IOI](http://www.france-ioi.org/)
 Cependant, cette méthode peut paraître longue et fastidieuse au début, et nécessite de l'[entraînement](/algo/general/entrainement.html) ainsi que de la rigueur pour être utilisée efficacement. La vitesse viendra avec la pratique et non en bâclant les étapes de cette méthode. Il peut être frustrant au début de résoudre lentement un problème, mais cela vous sera très utile dans le futur et vous serez capable de réaliser les différentes étapes de cette méthode bien plus rapidement grâce à votre expérience.
 
 Pour commencer, il vous faut uniquement une feuille et un crayon.
+
+TODO: pré-requis ? (niveau basique d'algo + complexité)
 
 *Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'appréhender et d'appliquer cette méthode.*
 
@@ -144,30 +146,28 @@ Le fait d'avoir changé totalement de point de vue nous a fait découvrir une no
 
 Vous avez enfin trouvé dans votre tête l'algorithme recherché, cependant lorsqu'on veut résoudre un problème un minimum conséquent, **on ne code jamais directement** mais on passe par une étape intermédiaire : le pseudo-code. Avant d'expliquer concrètement ce qu'est le pseudo-code, j'aimerais vraiment m'attarder sur l'importance de ce dernier qui est souvent trop négligé (surtout pendant des concours).
 
-Imaginons que vous venez de trouver l'algorithme. Vous avez votre idée en tête et vous décidez tout de suite de passer à l'étape de programmation car vous pensez que la partie pseudo-code est inutile et que vous avez toutes les informations nécessaires pour résoudre correctement le sujet. Comme vous n'avez aucune réelle structure, vous programmez ce qui vous vient en premier quand vous pensez à votre algorithme, cependant au fur et à mesure que vous codez vous vous rendez compte qu'il faudra ajouter/supprimer/changer telle ou telle partie du programme à cause de détails auxquels vous n'avez pas pensé avant. Vous allez donc passer beaucoup de temps à réécrire ou à bidouiller votre programme afin de prendre en compte ces changements, et ceci va résulter en un code souvent sale et mal structuré (voire carrément faux). Or l'étape de débugage est fondamentale et débuguer ce genre de code est un cauchemar qui ne finit en général pas très bien. Après avoir perdu **énormément** de temps à corriger vos erreurs (si vous arrivez au bout de cette étape), vous vous rendez compte en testant votre algorithme qu'il n'est tout simplement pas assez efficace et que sa complexité en temps ne satisfait pas les contraintes de l'énoncé.
+Imaginons que vous venez de trouver l'algorithme. Vous avez votre idée en tête ainsi que toutes les informations pour résoudre le sujet, et vous décidez donc de passer directement à l'étape de programmation car vous jugez la partie pseudo-code inutile. Comme vous n'avez aucune réelle structure, vous programmez ce qui vous vient en premier à l'esprit, cependant au fur et à mesure que vous codez vous vous rendez compte qu'il faudra ajouter/supprimer/changer telle ou telle partie du programme à cause de détails auxquels vous n'avez pas pensé auparavant. Vous allez donc passer beaucoup de temps à réécrire ou à bidouiller votre code afin de prendre en compte ces changements, et ceci va résulter en un programme souvent sale et mal structuré (voire carrément faux). Or l'étape de débugage est fondamentale et débuguer ce genre de code est un cauchemar qui ne finit en général pas très bien. Après avoir perdu **énormément** de temps à corriger vos erreurs (si vous arrivez au bout de cette étape), vous vous rendez compte en testant votre algorithme qu'il n'est tout simplement pas assez efficace et que sa complexité en temps ne satisfait pas les contraintes de l'énoncé.
 
 Cet exemple de scénario peut paraître exagéré mais il est en réalité très fréquent en concours (bien plus qu'on ne le croit). Maintenant, regardons de plus près l'utilité du pseudo-code.
 
-Le pseudo-code est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est **extrêmement importante** car elle permet de se concentrer uniquement sur l'algorithme et non sur la manière dont vous allez le programmer. De plus, ceci vous permet de structurer correctement vos idées, ce qui ensuite permettra de coder le programme en quelques minutes seulement.
+### Définition
 
-Il n'y a pas de règles de syntaxe pour le pseudo-code, et c'est ce qui le rend très personnel (chacun a sa manière d'en écrire). Cependant, cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez-vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable. En effet, le pseudo-code permet de décrire un algorithme rapidement, et donc de tester sa validité efficacement.
+Le pseudo-code est une manière d'établir un algorithme sur le papier, sans se soucier des détails d'implémentation ou du quelconque langage utilisé ensuite. Cette étape est extrêmement importante car elle permet de se concentrer **uniquement sur l'algorithme** et non sur la manière dont vous allez le programmer. De plus, cela structure correctement vos idées, ce qui vous permettra de coder le programme en quelques minutes seulement (ce n'est donc en aucun cas une perte de temps). On peut voir le pseudo-code comme le plan d'une dissertation, qui sans ce dernier serait maladroite, non structurée et qui pourrait porter à confusion.
 
-Au travers de mes articles, j'utiliserai toujours des pseudo-codes avant l'implémentation pour plusieurs raisons :
+L'avantage énorme d'un pseudo-code est qu'il est assez court (une vingtaine de lignes suffisent en général pour les sujets les plus difficiles) et moins rigoureux qu'un programme informatique, on peut donc faire plusieurs ébauches ou carrément changer totalement d'algorithme en quelques instants (ce qui prendrait **bien plus de temps** si l'on programmait à chaque fois notre nouvelle idée). Cette étape est en réalité un gain de temps considérable, ainsi qu'un moyen efficace de vérifier et de structurer les différents prototypes d'algorithme pour résoudre un sujet.
 
-- Un pseudo-code est écrit en français, et il permet d'appréhender l'algorithme abordé facilement.
-- Il ne dépend d'aucun langage de programmation (que ça soit au niveau de la syntaxe, ou encore des détails), donc que vous programmiez en C, en Python, en Ocaml, ou autre, vous pouvez très bien le lire, le comprendre et l'implémenter de votre côté.
-- Le pseudo-code apporte une réelle structure ce qui est extrêmement pratique quand on veut implémenter un algorithme.
-- S'il y a des améliorations ou des modifications à apporter à l'algorithme, le pseudo-code est très utile car on peut le modifier simplement pour mettre en place ces dernières.
+De plus, un bon pseudo-code aide à réduire les risques de bugs dans notre futur programme car on aura déjà établi la structure du code ainsi que la manière d'implémenter notre algorithme. On réduit alors encore une fois le temps perdu à débuguer ce qui est toujours avantageux.
 
-Même si le pseudo-code suit une syntaxe personnelle, il y a quelques règles qui sont intéressantes d'appliquer pour écrire un pseudo-code réellement utile :
+### Ecriture
 
-- Un pseudo-code se doit d'être concis, il ne s'agit pas ici de réécrire en français tout un programme informatique. On ne mettra que ce qui nous intéresse réellement, et uniquement ce qui concerne l'algorithme en lui-même. Vu qu'il y a différentes façons de l'implémenter, on ne se souciera pas de tous ces détails et on laissera cela à réaliser pendant l'étape où l'on code.
-- Il est tout à fait inutile de décrire les entrées ou les sorties du programme, par exemple on écrira `Lire graphe` sans détailler plus la manière dont on lit ce dernier. De même, on écrira plutôt `Afficher tableau` au lieu d'écrire une boucle.
-- Notre pseudo-code doit faire ressortir les boucles, les fonctions et les éléments principaux de notre algorithme. C'est pourquoi on n'utilisera ces derniers outils uniquement quand ils concernent directement l'algorithme et non pas pour un détail d'implémentation encore une fois.
+Il n'y a pas de règles de syntaxe pour le pseudo-code et c'est ce qui le rend très personnel, chacun a sa manière d'en écrire, cependant il y a quelques méthodes qui sont intéressantes de suivre afin de constituer un pseudo-code réellement utile :
+
+- Un pseudo-code se doit d'être concis, il ne s'agit pas ici de réécrire en français tout un programme informatique. On ne mettra que ce qui nous intéresse réellement, et uniquement ce qui concerne l'algorithme en lui-même. Vu qu'il y a différentes façons de l'implémenter, **on ne se souciera pas des détails d'implémentation** (qui seront déterminés dans une prochaine étape).
+- En revanche, il faut faire attention à ne surtout pas oublier des parties de l'algorithme en pensant que ce sont des détails d'implémentation. Si une portion du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder. Le plus dur dans l'écriture du pseudo-code est le juste milieu entre simplification et exhaustivité, car il doit être à la fois simple pour permettre ensuite de programmer rapidement et facilement, mais aussi complet afin de décrire entièrement notre algorithme.
+- Notre pseudo-code doit faire **ressortir les éléments principaux de notre algorithme** (structures de données, boucles, fonctions, etc.). C'est pourquoi on utilisera ces outils uniquement quand ils concernent directement l'algorithme. Par exemple, les entrées et les sorties de notre programme ne sont que des détails et on écrira `Lire graphe` sans détailler davantage, ou encore `Afficher tableau` au lieu d'une boucle.
 - Tout comme il est normal d'[indenter](https://en.wikipedia.org/wiki/Indent_style) son code, il est essentiel d'indenter son pseudo-code pour faciliter la lecture. N'hésitez pas à laisser de la place sur votre feuille si vous devez ensuite rajouter des précisions.
 - Les variables sont des détails d'implémentation, il est donc inutile de les déclarer, en revanche préciser le type et la valeur d'initialisation peut être intéressant dans certains cas.
 - Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit être assez clair et écrit en français.
-- Il faut absolument éviter d'oublier des parties de l'algorithme en pensant que ce sont des détails d'implémentation. Si une partie du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder.
 
 A titre d'exemple, voici mon pseudo-code allant avec notre problème de voyage entre Alice et Bob :
 
@@ -196,11 +196,20 @@ Dijkstra (départ, arrivée) :
             voisin.coût = nœud.coût + coût_arc
             Enfiler le voisin
 ```
+
 J'utilise ici l'[algorithme de Dijkstra](/algo/structure/graphe/plus_court_chemin/dijkstra.html) en tant qu'algorithme de plus court chemin sur mon graphe.
 
-*En général en concours, lorsqu'on utilise un algorithme aussi classique que celui de Dijkstra par exemple, et que ce dernier ne contient aucunes modifications majeures, on peut se permettre pour gagner du temps de ne pas détailler ladite fonction dans le pseudo-code (à condition de savoir la coder parfaitement sans aucuns doutes).*
+*En général pendant un concours, lorsqu'on utilise un algorithme aussi classique que celui de Dijkstra, et que ce dernier ne contient aucunes modifications majeures, on peut se permettre pour gagner du temps de ne pas détailler ladite fonction dans le pseudo-code (à condition de savoir la coder parfaitement sans aucuns doutes).*
 
-### Vérifier le pseudo-code
+Au travers de mes articles, j'utiliserai toujours des pseudo-codes avant l'implémentation pour plusieurs raisons :
+
+- Un pseudo-code est écrit en français, et il permet d'appréhender l'algorithme abordé facilement.
+- Il ne dépend d'aucun langage de programmation (que ça soit au niveau de la syntaxe, ou encore des détails), donc que vous programmiez en C, en Python, en Ocaml, ou autre, vous pouvez très bien le lire, le comprendre et l'implémenter de votre côté.
+- Le pseudo-code apporte une réelle structure ce qui est extrêmement pratique quand on veut implémenter correctement un algorithme.
+
+Cette étape qui peut paraître pénible voire inutile, est **essentielle**, et pratiquer l'écriture du pseudo-code est une bonne habitude, surtout lorsqu'on débute. Forcez-vous si nécessaire à en écrire au début, même si ça peut paraître trivial sur des problèmes simples, vous verrez qu'ensuite cela sera indispensable.
+
+### Vérification
 
 Une fois le pseudo-code correctement établit, il faut une dernière étape de vérification (assez rapide) pour s'assurer au maximum d'avoir une solution valide avant de se lancer dans le code :
 
