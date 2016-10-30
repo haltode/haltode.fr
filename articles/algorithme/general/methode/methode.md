@@ -1,7 +1,7 @@
 Path: algo/general  
 Title: Méthode de résolution  
-Published: 29/10/2016  
-Modified: 29/10/2016  
+Published: 30/10/2016  
+Modified: 30/10/2016  
 
 [TOC]
 
@@ -16,6 +16,7 @@ Cependant, cette méthode peut paraître longue et fastidieuse au début, et né
 Pour commencer, il vous faut uniquement une feuille et un crayon.
 
 TODO: pré-requis ? (niveau basique d'algo + complexité)
+TODO: insister sur le côté concours de programmation (même si la démarche intellectuelle peut aider dans d'autres domaines)
 
 *Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'appréhender et d'appliquer cette méthode.*
 
@@ -165,7 +166,7 @@ Il n'y a pas de règles de syntaxe pour le pseudo-code et c'est ce qui le rend t
 - Un pseudo-code se doit d'être concis, il ne s'agit pas ici de réécrire en français tout un programme informatique. On ne mettra que ce qui nous intéresse réellement, et uniquement ce qui concerne l'algorithme en lui-même. Vu qu'il y a différentes façons de l'implémenter, **on ne se souciera pas des détails d'implémentation** (qui seront déterminés dans une prochaine étape).
 - En revanche, il faut faire attention à ne surtout pas oublier des parties de l'algorithme en pensant que ce sont des détails d'implémentation. Si une portion du pseudo-code est floue ou peu détaillée, et qu'elle concerne directement l'algorithme, il faut la travailler davantage avant de coder. Le plus dur dans l'écriture du pseudo-code est le juste milieu entre simplification et exhaustivité, car il doit être à la fois simple pour permettre ensuite de programmer rapidement et facilement, mais aussi complet afin de décrire entièrement notre algorithme.
 - Notre pseudo-code doit faire **ressortir les éléments principaux de notre algorithme** (structures de données, boucles, fonctions, etc.). C'est pourquoi on utilisera ces outils uniquement quand ils concernent directement l'algorithme. Par exemple, les entrées et les sorties de notre programme ne sont que des détails et on écrira `Lire graphe` sans détailler davantage, ou encore `Afficher tableau` au lieu d'une boucle.
-- Tout comme il est normal d'[indenter](https://en.wikipedia.org/wiki/Indent_style) son code, il est essentiel d'indenter son pseudo-code pour faciliter la lecture. N'hésitez pas à laisser de la place sur votre feuille si vous devez ensuite rajouter des précisions.
+- Tout comme il est normal d'[indenter](https://en.wikipedia.org/wiki/Indent_style) son code, il est essentiel **d'indenter son pseudo-code** pour faciliter la lecture. N'hésitez pas à laisser de la place sur votre feuille si vous devez ensuite rajouter des précisions.
 - Les variables sont des détails d'implémentation, il est donc inutile de les déclarer, en revanche préciser le type et la valeur d'initialisation peut être intéressant dans certains cas.
 - Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit être assez clair et écrit en français.
 
@@ -219,15 +220,16 @@ Une fois le pseudo-code correctement établit, il faut une dernière étape de v
 
 ## Coder l'algorithme
 
-A partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long si les étapes précédentes ne sont pas correctement suivies. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, rapidement, et si possible avec le moins de bug possible. Il y a tout de même quelques méthodes à respecter pour éviter au mieux les bugs potentiels (ces conseils s'appliquent surtout lors de concours où le temps est limité) :
+A partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long si les étapes précédentes ne sont pas correctement suivies. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, rapidement, et si possible avec le moins de bug possible. Il y a tout de même quelques astuces à respecter pour éviter au mieux les potentielles erreurs (ces conseils s'appliquent principalement lors de concours où le temps est limité) :
 
-- Ne cherchez surtout pas à optimiser votre programme lorsque vous êtes en train de l'écrire ! Comme le dit si bien [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) : *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."*. Inutile de chercher à optimiser des petites parties de votre code, car l'impact sera sans doute minime et vous risquez d'introduire plus de bugs.
-- Ne vous compliquez pas la tâche quand il y a une alternative plus simple. Par exemple, en concours il est rarement utile de faire une allocation dynamique qui prend parfois du temps et risque d'être mal effectuée, en revanche il est commun et bien plus pratique de déclarer les variables majeures du programme en tant que variable globale pour rendre bien plus simple le programme et éviter des bugs inutiles liés à l'allocation et à la libération de la mémoire.
-- Utilisez de *bons* noms de variables et de fonctions pour ne pas se retrouver avec des noms de variables à une lettre partout dans votre code au risque de confondre. C'est plus une habitude à prendre, mais nommer correctement une variable peut se révéler plus dur qu'on ne le croit. Un nom correct doit être précis, clair et relativement concis.
-- N'hésitez pas à re-déclarer des variables au lieu de réutiliser d'anciennes qui non plus forcément de rapport (notamment dans les boucles, car il serait dommage de réutiliser une variable qui contient des restes indésirables et qui pourrait introduire un bug difficile à détecter).
-- TODO : plus de conseils (spécifique concours ?)
+- **Ne cherchez surtout pas à optimiser votre programme lorsque vous êtes en train de l'écrire !** Comme le dit si bien [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) : *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil"*. Inutile de chercher à optimiser des petites parties de votre code, car l'impact sur la complexité en temps et en mémoire sera sans doute minime et vous risquez d'introduire plus de bugs.
+- Ne vous compliquez pas la tâche quand il y a une alternative plus simple. En concours, le but est de créer **le programme le plus simple possible** (pour réduire le nombre d'erreurs). Par exemple, il est rarement utile de faire une allocation dynamique qui prend du temps et risque d'être mal effectuée, en revanche il est commun et bien plus pratique de déclarer les variables majeures du programme en tant que variable globale pour simplifier le programme et éviter des bugs inutiles liés à l'allocation et à la libération de la mémoire.
+- Utilisez de *bons* noms de variables et de fonctions pour ne pas se retrouver avec des noms à une lettre comme `i` et `j` partout dans votre code (au risque de confondre et de s'emmêler dans l'algorithme). C'est plus une habitude à prendre, mais nommer correctement une variable peut se révéler plus dur qu'on ne le croit. Un nom correct doit être précis, clair et relativement concis. On préfèrera largement `for(iNoeud = 0; iNoeud < nbNoeud; ++iNoeud)` que `for(i = 0; i < n; ++i)` car on voit directement de quoi l'on parle et ce que contiennent les variables.
+- N'hésitez pas à re-déclarer des variables au lieu de réutiliser d'anciennes qui non plus forcément de rapport (notamment dans les boucles, car il serait dommage de réutiliser une variable qui contient des restes indésirables et qui pourrait introduire un bug très difficile à détecter).
 
-Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une rapide comparaison du pseudo-code et du programme pour vérifier de n'avoir rien oublié (vu que les deux devraient normalement avoir la même structure).
+Dans mes articles, encore une fois, j'essaie le plus souvent possible de suivre cette méthode. Vous pouvez donc retrouver facilement plusieurs exemples d'une application concrète de ces conseils.
+
+Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une **rapide comparaison du pseudo-code et du programme** pour vérifier de n'avoir rien oublié (vu que les deux devraient avoir une structure commune).
 
 ## Tester le code
 
