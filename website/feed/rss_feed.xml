@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+   <channel>
+      <title>Articles de napnac.fr</title>
+      <link>https://napnac.fr/</link>
+      <description>Les derniers articles publiés sur napnac.fr</description>
+      <language>fr-fr</language>
+      <lastBuildDate>dim. oct. 30 10:51:53 CET 2016</lastBuildDate>
+
+      <item>
+         <title>Test flux RSS</title>
+         <link>https://napnac.fr/</link>
+         <description>Test du flux RSS</description>
+      </item>
+
+   </channel>
+
+</rss>
