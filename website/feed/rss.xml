@@ -13,6 +13,7 @@
          <title>Test flux RSS</title>
          <link>https://napnac.fr/</link>
          <guid>https://napnac.fr/</guid>
+         <pubDate>Sun, 30 Oct 2016 11:10:19 +0100</pubDate>
          <description>Test du flux RSS</description>
       </item>
 
