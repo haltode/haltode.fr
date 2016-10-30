@@ -5,14 +5,17 @@
    <link href="https://napnac.fr/" rel="alternate"></link>
    <link href="https://napnac.fr/feed/atom.xml" rel="self"></link>
    <id>https://napnac.fr/</id>
-   <updated>2016-10-30 11:23:45+01:00</updated>
+   <updated>2016-10-30T11:31:15+01:00</updated>
    <subtitle>Les derniers articles publiés sur napnac.fr</subtitle>
 
    <entry>
       <title>Test Flux Atom</title>
       <link href="https://napnac.fr/" rel="alternate"></link>
-      <published>2016-10-30 11:23:45+01:00</published>
+      <published>2016-10-30T11:31:15+01:00</published>
       <id>https://napnac.fr/</id>
+      <author>
+         <name>napnac</name>
+      </author>
       <summary type="html">Test du Flux Atom</summary>
    </entry>
 
