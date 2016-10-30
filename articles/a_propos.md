@@ -11,9 +11,12 @@ Je suis Thibault (ou napnac), un jeune programmeur de 17 ans, passionné d'infor
 
 Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à `napnac arobase napnac point fr` ou consulter mon compte Twitter : [napnac](https://twitter.com/napnac).
 
-## Flux RSS
+## Flux RSS/Atom
 
-Afin d'être notifié lors de l'ajout d'un nouvel article, vous pouvez suivre le flux RSS suivant : <https://napnac.fr/feed/rss_feed.xml>.
+Afin d'être notifié lors de l'ajout d'un nouvel article, vous pouvez suivre l'un des flux suivants :
+
+- RSS : <https://napnac.fr/feed/rss.xml>
+- Atom : <https://napnac.fr/feed/atom.xml>
 
 ## Site
 

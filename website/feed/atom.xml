@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr-fr">
+
+   <title>Articles de napnac.fr</title>
+   <link href="https://napnac.fr/" rel="alternate"></link>
+   <link href="https://napnac.fr/feed/atom.xml" rel="self"></link>
+   <id>https://napnac.fr/</id>
+   <updated>2016-10-30 11:23:45+01:00</updated>
+   <subtitle>Les derniers articles publiés sur napnac.fr</subtitle>
+
+   <entry>
+      <title>Test Flux Atom</title>
+      <link href="https://napnac.fr/" rel="alternate"></link>
+      <published>2016-10-30 11:23:45+01:00</published>
+      <id>https://napnac.fr/</id>
+      <summary type="html">Test du Flux Atom</summary>
+   </entry>
+
+</feed>

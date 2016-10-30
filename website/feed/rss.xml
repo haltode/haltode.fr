@@ -5,7 +5,7 @@
       <title>Articles de napnac.fr</title>
       <link>https://napnac.fr/</link>
       <description>Les derniers articles publiés sur napnac.fr</description>
-      <atom:link href="https://napnac.fr/feed/rss_feed.xml" rel="self"></atom:link>
+      <atom:link href="https://napnac.fr/feed/rss.xml" rel="self"></atom:link>
       <language>fr-fr</language>
       <lastBuildDate>Sun, 30 Oct 2016 11:10:19 +0100</lastBuildDate>
 
