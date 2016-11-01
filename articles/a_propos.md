@@ -22,7 +22,7 @@ Afin d'être notifié lors de l'ajout d'un nouvel article, vous pouvez suivre l'
 
 Les pages de ce site sont écrites en [Markdown](https://en.wikipedia.org/wiki/Markdown), puis converties grâce à un [programme fait maison](https://github.com/napnac/napnac.fr/blob/master/build.py) en Python. Les images et les schémas sont créés grâce à [LaTeX](https://en.wikipedia.org/wiki/LaTeX) et notamment grâce au package [tikz](http://www.texample.net/tikz/examples/). Toutes les expressions mathématiques intégrées dans les articles sont écrites en LaTeX aussi, et transformées grâce à [MathJax](https://www.mathjax.org/).
 
-Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à consulter les sources du projet sur la page Github : <https://github.com/napnac/napnac.fr>.
+Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à consulter les sources du projet sur la page GitHub : <https://github.com/napnac/napnac.fr>.
 
 Le site est sous licence [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -34,4 +34,4 @@ Voici une liste des outils les plus importants que j'utilise quotidiennement sur
 - **Editeur** : [Vim](http://www.vim.org/)
 - **Logiciel de gestion de versions** : [Git](https://git-scm.com/)
 
-Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste détaillée de mes outils sur mon Github : <https://github.com/napnac/Dotfiles>
+Vous pouvez d'ailleurs retrouver tous mes fichiers de configuration et la liste détaillée de mes outils sur mon GitHub : <https://github.com/napnac/Dotfiles>
