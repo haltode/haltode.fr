@@ -42,7 +42,7 @@
 
 <h1>Méthode de résolution</h1>
 
-<p>Publié le : 30/10/2016<br><i>Modifié le : 30/10/2016</i></p>
+<p>Publié le : 01/11/2016<br><i>Modifié le : 01/11/2016</i></p>
 <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
@@ -300,17 +300,21 @@ Dijkstra (départ, arrivée) :
 <li>N&rsquo;hésitez pas à re-déclarer des variables au lieu de réutiliser d&rsquo;anciennes qui non plus forcément de rapport (notamment dans les boucles, car il serait dommage de réutiliser une variable qui contient des restes indésirables et qui pourrait introduire un bug très difficile à détecter).</li>
 </ul>
 <p>Dans mes articles, encore une fois, j&rsquo;essaie le plus souvent possible de suivre cette méthode. Vous pouvez donc retrouver facilement plusieurs exemples d&rsquo;une application concrète de ces conseils.</p>
-<p>Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une <strong>rapide comparaison du pseudo-code et du programme</strong> pour vérifier de n&rsquo;avoir rien oublié (vu que les deux devraient avoir une structure commune).</p>
+<p>Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une rapide comparaison du pseudo-code et du programme pour vérifier de n&rsquo;avoir rien oublié (vu que les deux devraient avoir une structure commune).</p>
 <h2 id="tester-le-code">Tester le code</h2>
-<p>Une fois l&rsquo;algorithme codé, il est nécessaire de s&rsquo;assurer de la validité du programme.</p>
-<p>Créez un fichier pour chaque exemple que vous possédez, et exécutez votre programme avec ces derniers pour s&rsquo;assurer de la sortie. Il est souvent indispensable d&rsquo;avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement avec un petit programme pour ne pas perdre du temps à le remplir à la main).</p>
-<p>Si vous faites une variante d&rsquo;un ou plusieurs fichiers tests, n&rsquo;oubliez surtout pas de le conserver dans un fichier différent de celui original car cela vous donne un test supplémentaire pour vérifier votre programme (dans le cas où vous allez ensuite modifier ce dernier).</p>
+<p>Une fois l&rsquo;algorithme codé, il est nécessaire de s&rsquo;assurer de la <strong>validité du programme</strong>.</p>
+<p>Créez un fichier pour chaque exemple que vous possédez, et exécutez votre programme avec ces derniers pour s&rsquo;assurer de la sortie. Il est souvent indispensable d&rsquo;avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement en quelques lignes de code pour ne pas perdre du temps à le remplir à la main).</p>
+<p>Si vous faites des variantes d&rsquo;un ou plusieurs fichiers tests, n&rsquo;oubliez pas de les conserver dans des fichiers à part car cela vous donne des tests supplémentaires pour vérifier votre programme.</p>
 <p>Enfin, la sortie des exemples est une bonne manière de tester notre code, mais on peut aussi afficher le contenu des variables/structures de données principales pour confirmer que tout fonctionne parfaitement.</p>
 <h2 id="debuguer-le-programme">Débuguer le programme</h2>
-<p>Malheureusement, il est rare de coder un code sans bug directement, et cette chance diminue d&rsquo;autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).</p>
-<p>TODO: dichotomie pour &ldquo;isoler&rdquo; le problème + gdb ?</p>
+<p>Malheureusement, il est rare de coder du premier coup sans bug, et cette chance diminue d&rsquo;autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).</p>
+<p>Avant de vous lancer dans le code à tête baissée, il faut trouver l&rsquo;exemple d&rsquo;entrée le plus simple possible qui fasse planter votre programme (vous pouvez utiliser vos différents exemples des étapes précédentes pour vous aider). Cela aura l&rsquo;avantage énorme de simplifier grandement la recherche du problème, et ceci représente un potentiel gain de temps non négligeable (surtout que le débugage peut être une étape très longue).</p>
+<p>Afficher ce que contiennent les variables importantes de l&rsquo;algorithme est primordial pour trouver d&rsquo;où vient l&rsquo;erreur (attention à ne pas afficher trop d&rsquo;informations inutiles non plus, ce qui risquerait de vous faire perdre du temps). Il est aussi possible de raisonner par <a href="/algo/recherche/dichotomie.html">dichotomie</a> pour localiser le bug, en s&rsquo;assurant des endroits du programme qui fonctionnent correctement puis en affinant les recherches jusqu&rsquo;à réduire l&rsquo;intervalle à une ou plusieurs lignes de code.</p>
+<p>Enfin, dans des cas précis comme une <a href="https://en.wikipedia.org/wiki/Segmentation_fault">erreur de segmentation</a>, on peut avoir recours à des outils externes (comme <a href="https://www.gnu.org/software/gdb/">gdb</a> pour le C et le C++ principalement), mais ces derniers sont complexes et si vous ne savez pas correctement les utiliser cela sera plus une perte de temps qu&rsquo;autre chose. De manière générale, on évitera d&rsquo;utiliser ces outils pour débuguer un programme aussi court que le nôtre, mais sachez qu&rsquo;ils peuvent être utiles dans des situations particulières.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>TODO: liens fiches méthodes france-ioi</p>
+<p>Il n&rsquo;y a pas de méthode miraculeuse pour résoudre un sujet, mais ces différentes étapes ont pour but de maximiser vos chances de trouver la solution à votre problème. Même si plusieurs des conseils étaient orientés pour des concours de programmation, cette manière globale de réfléchir est applicable à bien d&rsquo;autres domaines (on peut notamment penser aux mathématiques).</p>
+<p>Encore une fois, cette approche de résolution n&rsquo;est pas la mienne, mais c&rsquo;est l&rsquo;interprétation que je fais de la méthode de <a href="http://www.france-ioi.org/">France-IOI</a>. Je vous invite fortement à lire leurs propres documents sur le sujet (onglet &ldquo;Méthode&rdquo; de la partie &ldquo;Cours et problèmes&rdquo;) afin d&rsquo;étudier les différentes étapes d&rsquo;un point de vue différent (même si dans l&rsquo;ensemble les idées sont communes).</p>
+<p>J&rsquo;insiste aussi sur le fait que cette méthode de résolution nécessite <a href="/algo/general/entrainement.html"><strong>beaucoup d&rsquo;entraînement</strong></a>, et qu&rsquo;il ne faut surtout pas sauter ou bâcler des étapes, mais au contraire les réaliser le plus sérieusement possible. Avec la pratique, des automatismes se créeront et vous prendrez de moins en moins de temps à effectuer chacune des étapes, mais en attendant il faut être patient et rigoureux.</p>
 
 
          <footer>

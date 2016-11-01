@@ -1,7 +1,7 @@
 Path: algo/general  
 Title: Méthode de résolution  
-Published: 30/10/2016  
-Modified: 30/10/2016  
+Published: 01/11/2016  
+Modified: 01/11/2016  
 
 [TOC]
 
@@ -229,24 +229,32 @@ A partir de ce moment, vous devez être sûr de votre algorithme car coder, test
 
 Dans mes articles, encore une fois, j'essaie le plus souvent possible de suivre cette méthode. Vous pouvez donc retrouver facilement plusieurs exemples d'une application concrète de ces conseils.
 
-Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une **rapide comparaison du pseudo-code et du programme** pour vérifier de n'avoir rien oublié (vu que les deux devraient avoir une structure commune).
+Lorsque vous avez terminé de coder, vous pouvez éventuellement faire une rapide comparaison du pseudo-code et du programme pour vérifier de n'avoir rien oublié (vu que les deux devraient avoir une structure commune).
 
 ## Tester le code
 
-Une fois l'algorithme codé, il est nécessaire de s'assurer de la validité du programme.
+Une fois l'algorithme codé, il est nécessaire de s'assurer de la **validité du programme**.
 
-Créez un fichier pour chaque exemple que vous possédez, et exécutez votre programme avec ces derniers pour s'assurer de la sortie. Il est souvent indispensable d'avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement avec un petit programme pour ne pas perdre du temps à le remplir à la main).
+Créez un fichier pour chaque exemple que vous possédez, et exécutez votre programme avec ces derniers pour s'assurer de la sortie. Il est souvent indispensable d'avoir un fichier contenant un exemple de cas limite (vous pouvez le générer automatiquement en quelques lignes de code pour ne pas perdre du temps à le remplir à la main).
 
-Si vous faites une variante d'un ou plusieurs fichiers tests, n'oubliez surtout pas de le conserver dans un fichier différent de celui original car cela vous donne un test supplémentaire pour vérifier votre programme (dans le cas où vous allez ensuite modifier ce dernier).
+Si vous faites des variantes d'un ou plusieurs fichiers tests, n'oubliez pas de les conserver dans des fichiers à part car cela vous donne des tests supplémentaires pour vérifier votre programme.
 
 Enfin, la sortie des exemples est une bonne manière de tester notre code, mais on peut aussi afficher le contenu des variables/structures de données principales pour confirmer que tout fonctionne parfaitement.
 
 ## Débuguer le programme
 
-Malheureusement, il est rare de coder un code sans bug directement, et cette chance diminue d'autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).
+Malheureusement, il est rare de coder du premier coup sans bug, et cette chance diminue d'autant plus que la complexité du problème augmente. Savoir débuguer un programme rapidement et efficacement est donc un atout énorme (surtout dans les concours de programmation).
 
-TODO: dichotomie pour "isoler" le problème + gdb ?
+Avant de vous lancer dans le code à tête baissée, il faut trouver l'exemple d'entrée le plus simple possible qui fasse planter votre programme (vous pouvez utiliser vos différents exemples des étapes précédentes pour vous aider). Cela aura l'avantage énorme de simplifier grandement la recherche du problème, et ceci représente un potentiel gain de temps non négligeable (surtout que le débugage peut être une étape très longue).
+
+Afficher ce que contiennent les variables importantes de l'algorithme est primordial pour trouver d'où vient l'erreur (attention à ne pas afficher trop d'informations inutiles non plus, ce qui risquerait de vous faire perdre du temps). Il est aussi possible de raisonner par [dichotomie](/algo/recherche/dichotomie.html) pour localiser le bug, en s'assurant des endroits du programme qui fonctionnent correctement puis en affinant les recherches jusqu'à réduire l'intervalle à une ou plusieurs lignes de code.
+
+Enfin, dans des cas précis comme une [erreur de segmentation](https://en.wikipedia.org/wiki/Segmentation_fault), on peut avoir recours à des outils externes (comme [gdb](https://www.gnu.org/software/gdb/) pour le C et le C++ principalement), mais ces derniers sont complexes et si vous ne savez pas correctement les utiliser cela sera plus une perte de temps qu'autre chose. De manière générale, on évitera d'utiliser ces outils pour débuguer un programme aussi court que le nôtre, mais sachez qu'ils peuvent être utiles dans des situations particulières.
 
 ## Conclusion
 
-TODO: liens fiches méthodes france-ioi
+Il n'y a pas de méthode miraculeuse pour résoudre un sujet, mais ces différentes étapes ont pour but de maximiser vos chances de trouver la solution à votre problème. Même si plusieurs des conseils étaient orientés pour des concours de programmation, cette manière globale de réfléchir est applicable à bien d'autres domaines (on peut notamment penser aux mathématiques).
+
+Encore une fois, cette approche de résolution n'est pas la mienne, mais c'est l'interprétation que je fais de la méthode de [France-IOI](http://www.france-ioi.org/). Je vous invite fortement à lire leurs propres documents sur le sujet (onglet "Méthode" de la partie "Cours et problèmes") afin d'étudier les différentes étapes d'un point de vue différent (même si dans l'ensemble les idées sont communes).
+
+J'insiste aussi sur le fait que cette méthode de résolution nécessite [**beaucoup d'entraînement**](/algo/general/entrainement.html), et qu'il ne faut surtout pas sauter ou bâcler des étapes, mais au contraire les réaliser le plus sérieusement possible. Avec la pratique, des automatismes se créeront et vous prendrez de moins en moins de temps à effectuer chacune des étapes, mais en attendant il faut être patient et rigoureux.
