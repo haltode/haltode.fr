@@ -1,24 +1,19 @@
 Path: algo/general  
 Title: Méthode de résolution  
-Published: 01/11/2016  
-Modified: 01/11/2016  
+Published: 08/11/2016  
+Modified: 08/11/2016  
 
 [TOC]
 
 ## Introduction
 
-TODO : conseils persos
-
-Je ne le répèterai jamais assez, mais [France-IOI](http://www.france-ioi.org/) est **la référence francophone en algorithmique**, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu'elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices, mais de manière générale lorsqu'on cherche un algorithme pour résoudre un problème donné.
+Je ne le répèterai jamais assez, mais [France-IOI](http://www.france-ioi.org/) est **la référence francophone en algorithmique**, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu'elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices (même si les conseils donnés ici sont assez orientés concours de programmation), mais de manière générale lorsqu'on cherche un algorithme pour résoudre un problème donné.
 
 Cependant, cette méthode peut paraître longue et fastidieuse au début, et nécessite de l'[entraînement](/algo/general/entrainement.html) ainsi que de la rigueur pour être utilisée efficacement. La vitesse viendra avec la pratique et non en bâclant les étapes de cette méthode. Il peut être frustrant au début de résoudre lentement un problème, mais cela vous sera très utile dans le futur et vous serez capable de réaliser les différentes étapes de cette méthode bien plus rapidement grâce à votre expérience.
 
-Pour commencer, il vous faut uniquement une feuille et un crayon.
+Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'appréhender et d'appliquer cette méthode. Mais il n'y a pas énormément de prérequis non de plus, dans le sens où un niveau basique en algorithmique et en [analyse de complexité](/algo/general/complexite.html) suffit pour commencer.
 
-TODO: pré-requis ? (niveau basique d'algo + complexité)
-TODO: insister sur le côté concours de programmation (même si la démarche intellectuelle peut aider dans d'autres domaines)
-
-*Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'appréhender et d'appliquer cette méthode.*
+En plus de votre ordinateur, vous n'aurez besoin que de feuilles et d'un crayon.
 
 ## Enoncé
 
