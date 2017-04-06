@@ -22,7 +22,7 @@
               src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
-      <title>{{ title }} - napnac</title>
+      <title>{{ metadata['title'] }} - napnac</title>
    </head>
 
    <body>
@@ -39,8 +39,12 @@
 	    </div>
 	 </header>
 
-         {% block content %}
-         {% endblock content %}
+         <h1>{{ metadata['title'] }}</h1>
+
+         {% block extra_metadata %}
+         {% endblock extra_metadata %}
+
+         {{ html_content }}
 
          <footer>
             <br>

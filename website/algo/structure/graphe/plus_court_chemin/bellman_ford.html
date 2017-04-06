@@ -39,11 +39,13 @@
 	    </div>
 	 </header>
 
+         <h1>Algorithme de Bellman-Ford</h1>
 
-<h1>Algorithme de Bellman-Ford</h1>
 
 <p>Publié le : 10/07/2016<br><i>Modifié le : 10/07/2016</i></p>
-<div class="toc">
+
+
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -334,7 +336,6 @@ int main(void)
 <h2 id="conclusion">Conclusion</h2>
 <p>L&rsquo;algorithme de Bellman-Ford offre donc une toute nouvelle approche au problème du plus court chemin grâce à la programmation dynamique. Ceci lui permet d&rsquo;être applicable sur tous types de graphes pondérés, contrairement à l&rsquo;algorithme de Dijkstra qui n&rsquo;est employé que sur des graphes pondérés positivement. De plus, le problème des cycles améliorants est facilement résolu avec cet algorithme, rendant le code simple et concis. En revanche, on notera une complexité en temps de $O(NM)$, plus lente que celle de Dijkstra en $O(M \log _2 M)$. Il est donc nécessaire de bien choisir l&rsquo;algorithme à employer en fonction du graphe en entrée, afin d&rsquo;avoir une complexité en temps et en mémoire optimale.</p>
 <p>On a pu remarquer que l&rsquo;algorithme de Bellman-Ford nous informe non seulement du plus court chemin entre le nœud de départ et le nœud d&rsquo;arrivée, mais aussi des plus courts chemins de tous les autres nœuds vers celui d&rsquo;arrivée. Mais que se passe-t-il si on désire connaître les plus courts chemins entre tous les nœuds du graphe ? Est-ce qu&rsquo;on devrait réaliser $N$ fois l&rsquo;algorithme de Bellman-Ford ? Ou encore $N$ fois l&rsquo;algorithme de Dijkstra ? On se doute rapidement que cette méthode n&rsquo;est pas efficace, et cette question est en réalité un problème à part entière dans la catégorie des plus courts chemins. On a alors su développer des algorithmes bien spécifiques à ce type de problème, comme l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/floyd_warshall.html">algorithme de Floyd-Warshall</a>, qui nous permet d&rsquo;obtenir une complexité en temps plus intéressante. Connaître les plus courts chemins entre tous les nœuds d&rsquo;un graphe est extrêmement utile dans de nombreux cas. On pourrait par exemple modéliser un problème de la vie de tous les jours sous forme d&rsquo;un graphe implicite, afin de déterminer des relations ou des liens entre les différents nœuds.</p>
-
 
          <footer>
             <br>

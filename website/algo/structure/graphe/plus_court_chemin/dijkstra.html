@@ -39,11 +39,13 @@
 	    </div>
 	 </header>
 
+         <h1>Algorithme de Dijkstra</h1>
 
-<h1>Algorithme de Dijkstra</h1>
 
 <p>Publié le : 22/05/2016<br><i>Modifié le : 22/05/2016</i></p>
-<div class="toc">
+
+
+         <div class="toc">
 <ul>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#exemple">Exemple</a></li>
@@ -222,29 +224,29 @@ int main(void)
 <table>
 <thead>
 <tr>
-<th>Tour</th>
-<th>Nœud actuel</th>
-<th>Distance totale</th>
+<th align="center">Tour</th>
+<th align="center">Nœud actuel</th>
+<th align="center">Distance totale</th>
 <th>Choix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
 <td><strong>0 + 1 (1 vers 2)</strong> ou 0 + 10 (1 vers 3)</td>
 </tr>
 <tr>
-<td>2</td>
-<td>2</td>
-<td>1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
 <td><strong>1 - 100 (2 vers 4)</strong> ou 0 + 10 (1 vers 3)</td>
 </tr>
 <tr>
-<td>3</td>
-<td>4</td>
-<td>-99</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">-99</td>
 <td></td>
 </tr>
 </tbody>
@@ -261,7 +263,6 @@ int main(void)
 <li>Il ne peut pas être utilisé sur des graphes pondérés négativement. Dans ce cas, il faut avoir recours à d&rsquo;autres algorithmes de recherche de plus court chemin, comme celui de <a href="/algo/structure/graphe/plus_court_chemin/bellman_ford.html"><strong>Bellman-Ford</strong></a>.</li>
 <li>Il ne fait aucunes différences entre les multiples chemins qu&rsquo;il emprunte, c&rsquo;est-à-dire qu&rsquo;il ne va jamais en favoriser un par rapport à un autre. En effet ceci peut être un problème, car en fonction du graphe en entrée, si un chemin semble optimal au début il est très probable qu&rsquo;il soit, ou mène, au plus court chemin. C&rsquo;est ce qu&rsquo;essaie d&rsquo;améliorer la variante de l&rsquo;algorithme appelée : <strong>A*</strong>. Cette dernière fonctionne exactement comme l&rsquo;algorithme de Dijkstra, mais utilise une technique dite <a href="https://en.wikipedia.org/wiki/Heuristic"><strong>heuristique</strong></a> lors de la sélection du prochain nœud à visiter. Cette fonction heuristique doit estimer la distance qu&rsquo;il y a entre le prochain nœud et l&rsquo;arrivée. Cela peut sembler étrange de devoir estimer cette distance, puisqu&rsquo;on ne peut pas garantir sa véracité, mais c&rsquo;est le principe même d&rsquo;une heuristique. Cette variante est très utilisée en pratique, notamment dans les jeux vidéos, car elle permet d&rsquo;obtenir de très bons résultats rapidement. Des algorithmes qui se basent sur des heuristiques sont en réalité très fréquents, car même si peu efficace en théorie (il est facile de trouver des exemples où l&rsquo;algorithme A*  est lent) ils se basent sur le fait qu&rsquo;en pratique, on ne trouve pas ces cas aussi spécifiques, et ils gagnent ainsi du temps pour obtenir un résultat très proche de la réalité. La question bien sûr est : comment choisir la fonction heuristique ? Cela dépend d&rsquo;énormément de facteurs, mais voici un article regroupant différentes idées très intéressantes et utiles dans beaucoup de cas : <a href="http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html">A* ’s Use of the Heuristic</a>.</li>
 </ul>
-
 
          <footer>
             <br>

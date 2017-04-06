@@ -39,11 +39,13 @@
 	    </div>
 	 </header>
 
+         <h1>Tas</h1>
 
-<h1>Tas</h1>
 
 <p>Publié le : 11/01/2016<br><i>Modifié le : 22/01/2016</i></p>
-<div class="toc">
+
+
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tas">Principe du tas</a></li>
@@ -232,7 +234,6 @@ priority_queue &lt;Element&gt; tasMin;
 <p>Le tas possède beaucoup de variantes, certaines sont plus utiles que d&rsquo;autres, et en général on choisit la plus appropriée en fonction des données que l&rsquo;on reçoit, mais aussi par rapport aux opérations que l&rsquo;on souhaite effectuer dessus. On peut déjà citer toutes les différentes versions du tas : <strong>binaire</strong>, <strong>ternaire</strong>, et même de façon plus globale <strong>n-aire</strong>. Il est aussi possible de découper notre tas en plusieurs sous arbres de tailles spécifiques, suivant un ordre précis, et permettant des améliorations théoriques de la complexité des opérations. Je dis bien théorique, car en pratique les implémentations ne sont pas spécialement plus rapides que des tas binaires classiques, ce sont donc des structures peu utilisées en pratique, mais qu&rsquo;on peut retrouver dans certaines améliorations d&rsquo;algorithmes. Les plus connus sont le <a href="https://en.wikipedia.org/wiki/Fibonacci_heap"><strong>tas de Fibonacci</strong></a>, le <a href="https://en.wikipedia.org/wiki/Binomial_heap"><strong>tas binomial</strong></a>, ou encore <a href="https://en.wikipedia.org/wiki/Pairing_heap">le tas jumelé</a> mais on peut voir ce principe dans l&rsquo;amélioration du tri par tas : le <a href="/algo/tri/tri_tas.html#smoothsort">smoothsort</a>. Enfin, il y a différentes variantes qui s&rsquo;appuient sur l&rsquo;idée d&rsquo;un tas, mais la modifie afin de proposer des avantages précis pour des algorithmes ou bien des opérations, comme le <a href="https://en.wikipedia.org/wiki/Weak_heap"><strong>tas faible</strong></a> qui se concentre sur le tri principalement.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Le tas est donc une structure de données adaptée aux opérations de recherche de minimum/maximum, et de tri. On le retrouve à la base du <a href="/algo/tri/tri_tas.html">tri par tas</a>, mais aussi dans la création d&rsquo;une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a> qui elle sert dans l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de plus court chemin de Dijkstra</a> par exemple. Des variantes de tas permettent aussi des améliorations dans plusieurs catégories d&rsquo;algorithmes, et cette structure de données peut très vite créer d&rsquo;autres structures complexes et puissantes avec des complexités en temps et en mémoire faibles.</p>
-
 
          <footer>
             <br>
