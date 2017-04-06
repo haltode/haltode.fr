@@ -1,7 +1,5 @@
 Path:  
 Title: Erreur 404  
-Published:  
-Modified:  
 
 ## Oups !
 

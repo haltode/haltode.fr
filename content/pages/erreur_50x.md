@@ -1,7 +1,5 @@
 Path:  
 Title: Erreur  
-Published:  
-Modified:  
 
 ## Oups !
 

@@ -1,7 +1,5 @@
 Path:  
 Title: Bienvenue !  
-Published:  
-Modified:  
 
 ## Qui suis-je ?
 

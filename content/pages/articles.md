@@ -1,7 +1,5 @@
 Path:  
 Title: Articles  
-Published:  
-Modified:  
 
 La liste des articles publiés :
 

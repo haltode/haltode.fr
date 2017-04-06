@@ -1,7 +1,5 @@
 Path:  
 Title: Projets  
-Published:  
-Modified:  
 
 Liste de mes différents projets personnels que vous pouvez retrouver sur ma [page GitHub](https://github.com/napnac) :
 

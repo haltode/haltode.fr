@@ -1,7 +1,5 @@
 Path:  
 Title: A propos  
-Published:  
-Modified:  
 
 ## Présentation
 
