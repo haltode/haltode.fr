@@ -77,23 +77,8 @@ def render_articles():
     basic_rendering(ARTICLE_TEMPLATE, ARTICLE_DIR)
 
 
-def clean():
-    files = get_path_files(WEBSITE_DIR, 'html')
-    for f in files:
-        os.remove(f)
-
-
-print("Cleaning...")
-clean()
-
 print("Rendering pages...")
 render_pages()
 print("Rendering articles...")
 render_articles()
 print("Done!")
-
-print("Testing server? [Y/n]")
-choice = input()
-if choice == 'Y' or choice == 'y' or choice == '':
-    import subprocess
-    subprocess.call("scripts/test_server.sh", shell=True)
