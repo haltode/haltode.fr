@@ -19,7 +19,7 @@
          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
       </script>
       <script type="text/javascript" async 
-              src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+              src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
       <title>Régression linéaire/polynomiale - napnac</title>
@@ -150,7 +150,7 @@
 </tbody>
 </table>
 <p>Nos matrices ressembleront à ceci :</p>
-<p>$x = \begin{bmatrix} 112 &amp; 4 \ 203 &amp; 6 \ 158 &amp; 5 \ 98 &amp; 3 \ 143 &amp; 4 \end{bmatrix}$ $y = \begin{bmatrix} 253 \ 760 \ 558 \ 243 \ 302 \end{bmatrix}$</p>
+<p>$x = \begin{bmatrix} 112 &amp; 4 \\ 203 &amp; 6 \\ 158 &amp; 5 \\ 98 &amp; 3 \\ 143 &amp; 4 \end{bmatrix}$ $y = \begin{bmatrix} 253 \\ 760 \\ 558 \\ 243 \\ 302 \end{bmatrix}$</p>
 <p>Le <strong>modèle</strong> qu&rsquo;on cherche à construire est une fonction linéaire, qu&rsquo;on notera :</p>
 <p>$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n$</p>
 <p>$\theta$ correspond aux coefficients de notre fonction qui prend $n$ <strong>attributs</strong> (ou <em>feature</em> en anglais). Les attributs sont les différentes colonnes de $x$ (la puissance d&rsquo;un ordinateur, la taille d&rsquo;un appartement, le nombre de pièces, etc.) et c&rsquo;est sur quoi se base l&rsquo;algorithme pour généraliser le problème qu&rsquo;on lui donne. Il est très important de bien choisir les attributs, et de renseigner uniquement ceux qui ont une réelle influence sur le résultat, mais sans pour autant en donner trop peu à l&rsquo;algorithme.</p>
@@ -232,7 +232,7 @@
 <p>On a obtenu cette formule de la même manière que pour l&rsquo;ancienne, c&rsquo;est-à-dire en calculant la dérivée partielle de la fonction d&rsquo;erreur.</p>
 <h4 id="equation-normale">Equation normale</h4>
 <p>Pour l&rsquo;équation normale, on applique de nouveau notre démonstration mais sur notre nouvelle fonction d&rsquo;erreur, ce qui nous donne le résultat suivant :</p>
-<p>$\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\ &amp;1\ &amp;&amp;1 \ &amp;&amp;&amp;\ddots \ &amp;&amp;&amp;&amp;1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y$</p>
+<p>$\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\\ &amp;1\\ &amp;&amp;1 \\ &amp;&amp;&amp;\ddots \\ &amp;&amp;&amp;&amp;1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y$</p>
 <p>On retrouve notre paramètre de régularisation $\lambda$, ainsi qu&rsquo;une matrice de taille $(n + 1)\times(n + 1)$ assez spéciale composée de 1 uniquement dans la diagonale en partant de la deuxième colonne (le reste de la matrice contient des 0). Cette matrice est en réalité une <a href="https://en.wikipedia.org/wiki/Identity_matrix">matrice identité</a> sans le premier terme en haut à gauche (en rapport avec $\theta_0$ qui n&rsquo;est pas pénalisé).</p>
 <h4 id="parametre-de-regularisation">Paramètre de régularisation</h4>
 <p>Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement pénalisés qu&rsquo;on risque d&rsquo;avoir une fonction d&rsquo;hypothèse trop simple pour notre problème. A l&rsquo;inverse, un paramètre $\lambda$ trop petit ne va pas assez pénaliser les coefficients avec des degrés élevés ce qui n&rsquo;atténuera pas notre problème de surapprentissage et sera donc inutile.</p>
