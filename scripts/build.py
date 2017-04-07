@@ -43,7 +43,6 @@ def read_markdown(path):
     md = markdown.Markdown(extensions={
         'markdown.extensions.extra',
         'markdown.extensions.meta',
-        'markdown.extensions.smarty',
         TocExtension(marker=''),
         # Third party extension
         'figureAltCaption'

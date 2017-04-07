@@ -92,17 +92,17 @@
 <h2 id="exemple">Exemple</h2>
 <p>Prenons comme exemple la suite de nombre suivante : 9, 2, 7, 1 que l’on veut trier en ordre croissant avec l’algorithme du tri par insertion :</p>
 <p><em>1er tour</em> :</p>
-<p>9 | <strong>2</strong>, 7, 1 -&gt; à gauche la partie triée du tableau (le premier élément est considéré comme trié puisqu&rsquo;il est seul dans cette partie), à droite la partie non triée. On prend le premier élément de la partie non triée, 2, et on l&rsquo;insère à sa place dans la partie triée, c&rsquo;est-à-dire à gauche de 9.</p>
+<p>9 | <strong>2</strong>, 7, 1 -&gt; à gauche la partie triée du tableau (le premier élément est considéré comme trié puisqu'il est seul dans cette partie), à droite la partie non triée. On prend le premier élément de la partie non triée, 2, et on l'insère à sa place dans la partie triée, c'est-à-dire à gauche de 9.</p>
 <p><em>2ème tour</em> :</p>
 <p>2, 9 | <strong>7</strong>, 1 -&gt; on prend 7, et on le place entre 2 et 9 dans la partie triée.</p>
 <p><em>3ème tour</em> :</p>
 <p>2, 7, 9 | <strong>1</strong> -&gt; on continue avec 1 que l’on place au début de la première partie.</p>
 <p>1, 2, 7, 9</p>
-<p>Pour insérer un élément dans la partie triée, on parcourt de droite à gauche tant que l&rsquo;élément est plus grand que celui que l&rsquo;on souhaite insérer.</p>
-<p>Pour résumer l&rsquo;idée de l&rsquo;algorithme :</p>
+<p>Pour insérer un élément dans la partie triée, on parcourt de droite à gauche tant que l'élément est plus grand que celui que l'on souhaite insérer.</p>
+<p>Pour résumer l'idée de l'algorithme :</p>
 <figure><img alt="Exemple de tri par insertion" src="/img/algo/tri/tri_insertion/exemple_tri.png" /><figcaption>Exemple de tri par insertion</figcaption>
 </figure>
-<p>La partie verte du tableau est la partie triée, l&rsquo;élément en bleu est le prochain élément non trié à placer et la partie blanche est la partie non triée.</p>
+<p>La partie verte du tableau est la partie triée, l'élément en bleu est le prochain élément non trié à placer et la partie blanche est la partie non triée.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <pre><code class="nohighlight">triInsertion :
 
@@ -167,7 +167,7 @@ int main(void)
 }
 </code></pre>
 
-<p>L&rsquo;entrée du tri :</p>
+<p>L'entrée du tri :</p>
 <pre><code class="nohighlight">4
 9 2 7 1
 </code></pre>
@@ -178,37 +178,37 @@ int main(void)
 
 <h2 id="ameliorations-et-variantes">Améliorations et variantes</h2>
 <h3 id="utiliser-des-listes-chainees">Utiliser des listes chaînées</h3>
-<p>Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu&rsquo;on peut utiliser des <a href="/algo/structure/liste_chainee.html">listes chaînées</a> afin de contrer ce problème. Les listes chaînées permettent d&rsquo;insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.</p>
+<p>Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu'on peut utiliser des <a href="/algo/structure/liste_chainee.html">listes chaînées</a> afin de contrer ce problème. Les listes chaînées permettent d'insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.</p>
 <h3 id="tri-shell">Tri Shell</h3>
-<p>Le tri par insertion est un algorithme de tri très efficace sur des entrées quasiment triées, et on peut utiliser cette propriété intéressante du tri pour l&rsquo;améliorer. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu&rsquo;on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.</p>
+<p>Le tri par insertion est un algorithme de tri très efficace sur des entrées quasiment triées, et on peut utiliser cette propriété intéressante du tri pour l'améliorer. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu'on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.</p>
 <p>Pour calculer cet écart, on utilise cette formule :</p>
 <p>$Ecart(N) = 3 \times Ecart(N - 1) + 1$<br />
 avec $Ecart(0) = 0$</p>
-<p>Par exemple, on souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l&rsquo;ordre croissant :</p>
+<p>Par exemple, on souhaite trier la suite de nombres : 5, 8, 2, 9, 1, 3 dans l'ordre croissant :</p>
 <p>On calcule les écarts tant que le résultat est inférieur à la taille du tableau.</p>
 <p>$Ecart(0) = 0$<br />
 $Ecart(1) = 3 \times Ecart(0) + 1 = 3 \times 0 + 1 = 1$<br />
 $Ecart(2) = 3 \times Ecart(1) + 1 = 3 \times 1 + 1 = 4$<br />
 $Ecart(3) = 3 \times Ecart(2) + 1 = 3 \times 4 + 1 = 13$</p>
-<p>On a donc deux écarts que l&rsquo;on peut utiliser : 1 et 4 (13 étant supérieur au nombre d&rsquo;éléments du tableau). Cependant appliquer un écart de 1 revient à faire un tri par insertion normal, on utilisera donc uniquement l&rsquo;écart de 4 dans cet exemple.</p>
+<p>On a donc deux écarts que l'on peut utiliser : 1 et 4 (13 étant supérieur au nombre d'éléments du tableau). Cependant appliquer un écart de 1 revient à faire un tri par insertion normal, on utilisera donc uniquement l'écart de 4 dans cet exemple.</p>
 <p>On compare ensuite chaque élément du tableau écarté de quatre éléments :</p>
 <p><strong>5</strong>, 8, 2, 9, <strong>1</strong>, 3 -&gt; on voit que 5 est supérieur à 1, on les échange.<br />
 1, <strong>8</strong>, 2, 9, 5, <strong>3</strong> -&gt; on voit que 8 est supérieur à 3, on les échange.<br />
 1, 3, 2, 9, 5, 8 -&gt; plus d’échange possible avec un écart de 4.</p>
-<p>On répète cette opération tant qu&rsquo;il nous reste des écarts, dans notre cas c&rsquo;est la fin de la première étape du tri. Maintenant notre tableau est réorganisé et quasi trié, on peut donc lui appliquer un tri par insertion.</p>
+<p>On répète cette opération tant qu'il nous reste des écarts, dans notre cas c'est la fin de la première étape du tri. Maintenant notre tableau est réorganisé et quasi trié, on peut donc lui appliquer un tri par insertion.</p>
 <p>Malheureusement, le tri Shell reste avec une complexité quadratique dans le pire des cas, mais est une bonne amélioration de manière général.</p>
 <h3 id="dichotomie">Dichotomie</h3>
-<p>Le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l&rsquo;emplacement où insérer notre élément grâce à la <a href="/algo/recherche/dichotomie.html">dichotomie</a> (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).</p>
+<p>Le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la <a href="/algo/recherche/dichotomie.html">dichotomie</a> (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).</p>
 <p>Cette recherche consiste à utiliser la méthode du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>, on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : <em>début partie triée</em> -&gt;  <em>fin partie triée</em> :</p>
 <ul>
 <li>On teste si l’élément situé au milieu de notre intervalle est inférieur à l’élément que l’on veut insérer.</li>
 <li>Si c’est le cas on recommence l’opération mais cette fois ci avec cet intervalle : <em>milieu ancien inter</em> -&gt; <em>fin ancien inter</em>.</li>
 <li>Sinon on recommence mais avec l’intervalle suivant : <em>début ancien inter</em> -&gt; <em>milieu ancien inter</em>.</li>
 </ul>
-<p>Une fois que l’intervalle ne contient plus qu’un seul élément, on a trouvé l’emplacement où insérer l&rsquo;élément à sa place. Grâce à cette amélioration, l’algorithme du tri par insertion a pour complexité $O(N \log _2 N)$.</p>
-<p><em>J&rsquo;ai expliqué ici très rapidement le principe de la dichotomie, j&rsquo;en parle plus longuement dans mon article à ce propos donc si vous n&rsquo;avez pas tout suivi, je vous conseille d&rsquo;aller le lire pour bien saisir ce concept fondamental en algorithmie.</em></p>
+<p>Une fois que l’intervalle ne contient plus qu’un seul élément, on a trouvé l’emplacement où insérer l'élément à sa place. Grâce à cette amélioration, l’algorithme du tri par insertion a pour complexité $O(N \log _2 N)$.</p>
+<p><em>J'ai expliqué ici très rapidement le principe de la dichotomie, j'en parle plus longuement dans mon article à ce propos donc si vous n'avez pas tout suivi, je vous conseille d'aller le lire pour bien saisir ce concept fondamental en algorithmie.</em></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>L&rsquo;algorithme du tri par insertion est simple et relativement intuitif, même s&rsquo;il a une complexité en temps quadratique. Cet algorithme de tri reste très utilisé à cause de ses facultés à s&rsquo;exécuter en temps quasi linéaire sur des entrées déjà triées, et de manière très efficace sur de petites entrées en général (souvent plus performant, dans ce cas, que des algorithmes de tri en $O(N \log _2 N)$).</p>
+<p>L'algorithme du tri par insertion est simple et relativement intuitif, même s'il a une complexité en temps quadratique. Cet algorithme de tri reste très utilisé à cause de ses facultés à s'exécuter en temps quasi linéaire sur des entrées déjà triées, et de manière très efficace sur de petites entrées en général (souvent plus performant, dans ce cas, que des algorithmes de tri en $O(N \log _2 N)$).</p>
 
          <footer>
             <br>

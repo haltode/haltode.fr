@@ -77,7 +77,7 @@
 
 
          <h2 id="introduction">Introduction</h2>
-<p>Comment un centre d&rsquo;appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si d&rsquo;autres appellent à leur tour ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d&rsquo;attente, et cette structure s&rsquo;appelle justement : la file.</p>
+<p>Comment un centre d'appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si d'autres appellent à leur tour ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d'attente, et cette structure s'appelle justement : la file.</p>
 <h2 id="principe-de-la-file">Principe de la file</h2>
 <p>Une file (<em>queue</em> en anglais) est une structure de données de type <strong>FIFO</strong> (<strong>F</strong>irst <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>premier entré premier sorti</em>). Elle fonctionne exactement comme une file d’attente dans un magasin :</p>
 <ul>
@@ -85,7 +85,7 @@
 <li>Le dernier client arrivé sera le dernier servi.</li>
 </ul>
 <p>Voici comment on pourrait représenter une file :</p>
-<figure><img alt="Exemple de représentation d'une file" src="/img/algo/structure/file/exemple_file.png" /><figcaption>Exemple de représentation d&rsquo;une file</figcaption>
+<figure><img alt="Exemple de représentation d'une file" src="/img/algo/structure/file/exemple_file.png" /><figcaption>Exemple de représentation d'une file</figcaption>
 </figure>
 <p>L’action d’ajouter un élément dans la file est appelée : <strong>enfiler</strong> (ou <em>enqueue</em> en anglais) :</p>
 <figure><img alt="Un nouvel élément est enfilé" src="/img/algo/structure/file/exemple_ajout.png" /><figcaption>Un nouvel élément est enfilé</figcaption>
@@ -93,8 +93,8 @@
 <p>L’action d’enlever un élément de la file est appelée : <strong>défiler</strong> (ou <em>dequeue</em> en anglais) :</p>
 <figure><img alt="Un élément est défilé" src="/img/algo/structure/file/exemple_suppression.png" /><figcaption>Un élément est défilé</figcaption>
 </figure>
-<p>Comme la fin de la file est située &ldquo;à gauche&rdquo;, notre premier élément pointera vers <code>NULL</code> pour indiquer le début de la file (et non la fin comme pour une <a href="/algo/structure/liste_chainee.html">liste chaînée</a>, ou une <a href="/algo/structure/pile.html">pile</a>).</p>
-<p>Pour représenter une file, on peut utiliser une <a href="/algo/structure/liste_chainee.html">liste chaînée</a> car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d&rsquo;opérations que nécessaires). Cependant, on peut encore améliorer l&rsquo;implémentation de notre file, en utilisant une <a href="/algo/structure/liste_chainee.html#liste-doublement-chainee">liste doublement chaînée</a>. En effet, si l&rsquo;on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu&rsquo;avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.</p>
+<p>Comme la fin de la file est située "à gauche", notre premier élément pointera vers <code>NULL</code> pour indiquer le début de la file (et non la fin comme pour une <a href="/algo/structure/liste_chainee.html">liste chaînée</a>, ou une <a href="/algo/structure/pile.html">pile</a>).</p>
+<p>Pour représenter une file, on peut utiliser une <a href="/algo/structure/liste_chainee.html">liste chaînée</a> car les tableaux ne sont pas du tout adaptés à ce genre de structure de données (soit on gaspille de la mémoire, soit on réalise plus d'opérations que nécessaires). Cependant, on peut encore améliorer l'implémentation de notre file, en utilisant une <a href="/algo/structure/liste_chainee.html#liste-doublement-chainee">liste doublement chaînée</a>. En effet, si l'on utilise une liste simplement chaînée, il faut parcourir la liste pour défiler un élément, alors qu'avec une liste doublement chaînée et deux pointeurs (un vers le début et un vers la fin), on peut enfiler et défiler en temps constant.</p>
 <h2 id="quelques-fonctions-pour-manipuler-une-file">Quelques fonctions pour manipuler une file</h2>
 <p>Des fonctions de base sont nécessaires afin de bien manipuler une file.</p>
 <pre><code class="nohighlight">créerFile :
@@ -122,7 +122,7 @@ estVide :
 </code></pre>
 
 <h2 id="complexite">Complexité</h2>
-<p>Soit $N$ le nombre d&rsquo;éléments de la file.</p>
+<p>Soit $N$ le nombre d'éléments de la file.</p>
 <ul>
 <li><code>créerFile</code> : $O(1)$</li>
 <li><code>supprimerFile</code> : $O(N)$</li>
@@ -235,15 +235,15 @@ int main(void)
 <h3 id="stl">STL</h3>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation et des fonctions permettant de manipuler une file : <a href="http://www.cplusplus.com/reference/queue/queue/">http://www.cplusplus.com/reference/queue/queue/</a> </p>
 <h2 id="file-a-priorite">File à priorité</h2>
-<p>Une file à priorité (<em>priority queue</em> en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l&rsquo;<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> pour trouver le plus court chemin entre deux nœuds d&rsquo;un <a href="/algo/structure/graphe.html">graphe</a> pondéré positivement. Chaque élément se voit attribuer une <strong>clé</strong>, permettant d&rsquo;organiser la file (d&rsquo;où le nom de file à <strong>priorité</strong>). On peut ensuite rapidement récupérer l&rsquo;élément avec la priorité la plus élevée.</p>
+<p>Une file à priorité (<em>priority queue</em> en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> pour trouver le plus court chemin entre deux nœuds d'un <a href="/algo/structure/graphe.html">graphe</a> pondéré positivement. Chaque élément se voit attribuer une <strong>clé</strong>, permettant d'organiser la file (d'où le nom de file à <strong>priorité</strong>). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.</p>
 <p>On implémente une file à priorité grâce à un <a href="/algo/structure/arbre/tas.html">tas</a> (max ou min en fonction des besoins), et si vous programmez en C++ la STL fournit aussi une implémentation : <a href="http://www.cplusplus.com/reference/queue/priority_queue/">http://www.cplusplus.com/reference/queue/priority_queue/</a>.</p>
-<p>Notez qu&rsquo;il ne faut pas confondre file à priorité et tas. En effet, même si les deux notions semblent exactement pareil en pratique, en théorie une file à priorité est un type de donnée <strong>abstrait</strong>, alors que le tas est une structure de données <strong>réelle</strong> et <strong>concrète</strong>.</p>
+<p>Notez qu'il ne faut pas confondre file à priorité et tas. En effet, même si les deux notions semblent exactement pareil en pratique, en théorie une file à priorité est un type de donnée <strong>abstrait</strong>, alors que le tas est une structure de données <strong>réelle</strong> et <strong>concrète</strong>.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>La file permet donc d&rsquo;implémenter un comportement de file d&rsquo;attente, qui est pratique dans de nombreuses situations :</p>
+<p>La file permet donc d'implémenter un comportement de file d'attente, qui est pratique dans de nombreuses situations :</p>
 <ul>
-<li>Quand votre ordinateur doit gérer plusieurs tâches à la fois, une file s&rsquo;avère très utile pour stocker les opérations afin de les traiter par ordre d&rsquo;arrivée ensuite. Il peut aussi implémenter une file à priorité afin d&rsquo;exécuter les tâches importantes voir urgentes en premier.</li>
-<li>Si un serveur est débordé par les requêtes, une file sera adaptée pour renvoyer l&rsquo;information aux personnes dans l&rsquo;ordre d&rsquo;arrivée pour ne pas faire attendre trop longtemps le client.</li>
-<li>De même si un centre d&rsquo;appel est occupé, les clients seront pris en charge (par un opérateur qui vient de se libérer) grâce à une file en fonction de l&rsquo;ordre d&rsquo;arrivée (premier arrivé, premier servi).</li>
+<li>Quand votre ordinateur doit gérer plusieurs tâches à la fois, une file s'avère très utile pour stocker les opérations afin de les traiter par ordre d'arrivée ensuite. Il peut aussi implémenter une file à priorité afin d'exécuter les tâches importantes voir urgentes en premier.</li>
+<li>Si un serveur est débordé par les requêtes, une file sera adaptée pour renvoyer l'information aux personnes dans l'ordre d'arrivée pour ne pas faire attendre trop longtemps le client.</li>
+<li>De même si un centre d'appel est occupé, les clients seront pris en charge (par un opérateur qui vient de se libérer) grâce à une file en fonction de l'ordre d'arrivée (premier arrivé, premier servi).</li>
 </ul>
 
          <footer>

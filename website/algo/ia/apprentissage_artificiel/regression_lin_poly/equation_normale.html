@@ -73,42 +73,42 @@
 
 
          <h2 id="introduction">Introduction</h2>
-<p>Contrairement à l&rsquo;<a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">algorithme du gradient</a> l&rsquo;équation normale est une expression mathématique et non pas un algorithme itératif, qui permet de résoudre notre problème de <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a> en trouvant les valeurs de $\theta$ pour lesquelles notre fonction $J$ est minimisée.</p>
+<p>Contrairement à l'<a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">algorithme du gradient</a> l'équation normale est une expression mathématique et non pas un algorithme itératif, qui permet de résoudre notre problème de <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a> en trouvant les valeurs de $\theta$ pour lesquelles notre fonction $J$ est minimisée.</p>
 <h2 id="principe">Principe</h2>
-<p>L&rsquo;équation normale est définie comme ceci :</p>
+<p>L'équation normale est définie comme ceci :</p>
 <p>$\theta = (x^\intercal x)^{-1} x^\intercal y$</p>
-<p>On peut grâce à cela calculer directement $\theta$ qui permet d&rsquo;obtenir notre fonction d&rsquo;hypothèse tel que $h_{\theta} \simeq y$.</p>
+<p>On peut grâce à cela calculer directement $\theta$ qui permet d'obtenir notre fonction d'hypothèse tel que $h_{\theta} \simeq y$.</p>
 <h2 id="demonstration">Démonstration</h2>
-<p>Reprenons notre fonction d&rsquo;hypothèse :</p>
+<p>Reprenons notre fonction d'hypothèse :</p>
 <p>$h_{\theta} = x\theta$</p>
-<p>Ainsi que notre fonction d&rsquo;erreur :</p>
+<p>Ainsi que notre fonction d'erreur :</p>
 <p>$J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$</p>
-<p>Vu que $x$ et $\theta$ sont deux matrices, on peut se permettre de réécrire notre fonction $J$ en utilisant des opérations matricielles et en remplaçant la fonction d&rsquo;hypothèse par son contenu :</p>
+<p>Vu que $x$ et $\theta$ sont deux matrices, on peut se permettre de réécrire notre fonction $J$ en utilisant des opérations matricielles et en remplaçant la fonction d'hypothèse par son contenu :</p>
 <p>$J(\theta) = \frac{1}{2m} (x\theta - y)^\intercal (x\theta - y)$</p>
 <p>Or, soit $A$ et $B$ deux matrices on a $(A + B)^\intercal = A^\intercal + B^\intercal$, donc :</p>
 <p>$J(\theta) = \frac{1}{2m} ((x\theta)^\intercal - y^\intercal)(x\theta - y)$</p>
-<p>Plus loin dans la démonstration on va dériver cette fonction puis la comparer à 0, le facteur $\frac{1}{2m}$ sera donc inutile et il n&rsquo;y a pas besoin de le garder ici :</p>
+<p>Plus loin dans la démonstration on va dériver cette fonction puis la comparer à 0, le facteur $\frac{1}{2m}$ sera donc inutile et il n'y a pas besoin de le garder ici :</p>
 <p>$J(\theta) = ((x\theta)^\intercal - y^\intercal)(x\theta - y)$</p>
 <p>Développons les deux facteurs :</p>
 <p>$J(\theta) = (x\theta)^\intercal x\theta - (x\theta)^\intercal y - y^\intercal (x\theta) + y^\intercal y$</p>
-<p>On sait que $y$ est un vecteur et que le résultat de la multiplication matricielle $x\theta$ l&rsquo;est aussi, l&rsquo;ordre de multiplication des deux ne change donc rien et on peut simplifier $- (x\theta)^\intercal y - y^\intercal (x\theta)$ en $-2(x\theta)^\intercal y$ :</p>
+<p>On sait que $y$ est un vecteur et que le résultat de la multiplication matricielle $x\theta$ l'est aussi, l'ordre de multiplication des deux ne change donc rien et on peut simplifier $- (x\theta)^\intercal y - y^\intercal (x\theta)$ en $-2(x\theta)^\intercal y$ :</p>
 <p>$J(\theta) = (x\theta)^\intercal x\theta -2(x\theta)^\intercal y + y^\intercal y$</p>
 <p>On peut continuer de développer notre expression puisque $(AB)^\intercal = B^\intercal A^\intercal$ :</p>
 <p>$J(\theta) = \theta^\intercal x^\intercal x\theta - 2(x\theta)^\intercal y + y^\intercal y$</p>
 <p>Pour trouver $\theta$ à partir de cette expression, il faut <a href="http://eli.thegreenplace.net/2015/the-normal-equation-and-matrix-calculus/">dériver</a> la fonction $J$ et comparer le résultat à 0. On obtient :</p>
 <p>$\frac{\partial J}{\partial\theta} = 2x^\intercal x\theta - 2x^\intercal y$</p>
 <p>$2x^\intercal x\theta - 2x^\intercal y = 0$</p>
-<p>On ajoute $2x^\intercal y$ de chaque côté de l&rsquo;équation, et on divise par deux l&rsquo;expression :</p>
+<p>On ajoute $2x^\intercal y$ de chaque côté de l'équation, et on divise par deux l'expression :</p>
 <p>$x^\intercal x\theta = x^\intercal y$</p>
-<p>Si la matrice résultant du calcul de $x^\intercal x$ est <strong>inversible</strong>, alors on peut multiplier les deux côtés par l&rsquo;inverse de cette dernière et ainsi affirmer que :</p>
+<p>Si la matrice résultant du calcul de $x^\intercal x$ est <strong>inversible</strong>, alors on peut multiplier les deux côtés par l'inverse de cette dernière et ainsi affirmer que :</p>
 <p>$\theta = (x^\intercal x)^{-1} x^\intercal y$</p>
 <p>On retrouve bien notre équation normale.</p>
 <h2 id="complexite">Complexité</h2>
-<p>La raison pour laquelle cette méthode n&rsquo;est pas tout le temps utilisée est assez simple : la <strong>rapidité</strong>.</p>
-<p>En effet, le produit matriciel est encore un problème ouvert car on ne sait pas s&rsquo;il existe de meilleurs algorithmes que ceux employés aujourd&rsquo;hui. L&rsquo;algorithme naïf de multiplication matriciel a une complexité en temps de $O(N^3)$ avec $N$ le nombre de lignes des matrices, cependant, les autres algorithmes n&rsquo;ont pas une complexité si différente ($O(N^{2.807})$ pour l&rsquo;<a href="https://en.wikipedia.org/wiki/Strassen_algorithm">algorithme de Strassen</a> ou encore $O(N^{2.376})$ pour l&rsquo;<a href="https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm">algorithme de Coppersmith-Winograd</a>).</p>
-<p>Il est donc peu envisageable d&rsquo;implémenter la méthode de l&rsquo;équation normale lorsqu&rsquo;on a environ $n &gt; 10000$.</p>
+<p>La raison pour laquelle cette méthode n'est pas tout le temps utilisée est assez simple : la <strong>rapidité</strong>.</p>
+<p>En effet, le produit matriciel est encore un problème ouvert car on ne sait pas s'il existe de meilleurs algorithmes que ceux employés aujourd'hui. L'algorithme naïf de multiplication matriciel a une complexité en temps de $O(N^3)$ avec $N$ le nombre de lignes des matrices, cependant, les autres algorithmes n'ont pas une complexité si différente ($O(N^{2.807})$ pour l'<a href="https://en.wikipedia.org/wiki/Strassen_algorithm">algorithme de Strassen</a> ou encore $O(N^{2.376})$ pour l'<a href="https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm">algorithme de Coppersmith-Winograd</a>).</p>
+<p>Il est donc peu envisageable d'implémenter la méthode de l'équation normale lorsqu'on a environ $n &gt; 10000$.</p>
 <h2 id="implementation">Implémentation</h2>
-<p>Le code en Python permettant de calculer les paramètres $\theta$ avec l&rsquo;équation normale :</p>
+<p>Le code en Python permettant de calculer les paramètres $\theta$ avec l'équation normale :</p>
 <pre><code class="py">import numpy as np
 
 
@@ -147,8 +147,8 @@ for j in range(ia.n):
     print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))
 </code></pre>
 
-<p>Afin d&rsquo;optimiser légèrement le programme, la matrice transposée de $x$ est stockée dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la même opération, même si ce n&rsquo;est pas l&rsquo;une des plus couteuses).</p>
-<p>En entrée de notre programme, on donne le même fichier que pour l&rsquo;algorithme du gradient :</p>
+<p>Afin d'optimiser légèrement le programme, la matrice transposée de $x$ est stockée dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la même opération, même si ce n'est pas l'une des plus couteuses).</p>
+<p>En entrée de notre programme, on donne le même fichier que pour l'algorithme du gradient :</p>
 <pre><code class="nohighlight">6 1
 1.73 1.94
 4.07 2.87
@@ -158,18 +158,18 @@ for j in range(ia.n):
 12.26 8.6
 </code></pre>
 
-<p>En sortie en revanche, on obtient des paramètres $\theta$ différents car l&rsquo;initialisation de $\theta$, le coefficient d&rsquo;apprentissage, le nombre d&rsquo;itérations maximum et l&rsquo;opération de <em>feature scaling</em> influent sur le résultat :</p>
+<p>En sortie en revanche, on obtient des paramètres $\theta$ différents car l'initialisation de $\theta$, le coefficient d'apprentissage, le nombre d'itérations maximum et l'opération de <em>feature scaling</em> influent sur le résultat :</p>
 <pre><code class="nohighlight">Coefficients de la fonction d'hypothese :
 
 theta  0  :  0.9424111325332967
 theta  1  :  0.678691601117212
 </code></pre>
 
-<p>Et voici la représentation graphique de notre fonction d&rsquo;hypothèse trouvée (le code utilisé est le même que celui pour l&rsquo;algorithme du gradient) :</p>
+<p>Et voici la représentation graphique de notre fonction d'hypothèse trouvée (le code utilisé est le même que celui pour l'algorithme du gradient) :</p>
 <figure><img alt="Sortie graphique du programme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale/sortie_prog.png" /><figcaption>Sortie graphique du programme</figcaption>
 </figure>
 <h2 id="conclusion">Conclusion</h2>
-<p>La méthode de l&rsquo;équation normale est donc plus précise que celle de l&rsquo;algorithme du gradient car elle calcule le minimum global de la fonction d&rsquo;erreur en déterminant $\theta$ directement avec une relation mathématique. Cependant, on ne peut pas employer cette équation tout le temps car elle a une complexité en temps trop élevée, ce qui la rend quasiment inutilisable sur des entrées où $n &gt; 10000$.</p>
+<p>La méthode de l'équation normale est donc plus précise que celle de l'algorithme du gradient car elle calcule le minimum global de la fonction d'erreur en déterminant $\theta$ directement avec une relation mathématique. Cependant, on ne peut pas employer cette équation tout le temps car elle a une complexité en temps trop élevée, ce qui la rend quasiment inutilisable sur des entrées où $n &gt; 10000$.</p>
 
          <footer>
             <br>

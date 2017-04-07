@@ -82,7 +82,7 @@
          <h2 id="introduction">Introduction</h2>
 <p>Le tri à bulles (<em>bubble sort</em> en anglais) est un algorithme de tri par comparaison très simple à comprendre et à implémenter, cependant c’est l’un des algorithmes de tri les plus inefficaces. En effet, il a une complexité en temps quadratique : $O(N^2)$. Cet algorithme est très peu utilisé à cause de sa complexité trop lente, mais c’est un bon exemple pour commencer à travailler sur des algorithmes de tri. Il faut noter que le tri à bulles est un algorithme de tri <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> et <a href="https://en.wikipedia.org/wiki/In-place_algorithm">sur place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l’algorithme</h2>
-<p>Le tri à bulles consiste à <em>remonter</em> les éléments du tableau à trier jusqu’à leurs places définitives, comme des bulles qui remontent d&rsquo;un liquide (d’où son nom de tri à bulles). L’algorithme compare chaque paire d’élément du tableau, et les échange si besoin en fonction du tri (croissant ou décroissant).</p>
+<p>Le tri à bulles consiste à <em>remonter</em> les éléments du tableau à trier jusqu’à leurs places définitives, comme des bulles qui remontent d'un liquide (d’où son nom de tri à bulles). L’algorithme compare chaque paire d’élément du tableau, et les échange si besoin en fonction du tri (croissant ou décroissant).</p>
 <h2 id="exemple">Exemple</h2>
 <p>Si l’on prend 8, 7, 1, 4, 6 comme suite de nombres, et que l’on utilise l’algorithme du tri à bulles pour trier cette suite dans l’ordre croissant, voici comment l’algorithme fonctionne :</p>
 <p><em>1er tour</em> :</p>
@@ -105,11 +105,11 @@
 1, 4, 6, <strong>7</strong>, <strong>8</strong><br />
 7 &lt; 8 donc on laisse  </p>
 <p>1, 4, 6, 7, 8  </p>
-<p>Notre algorithme va en réalité effectuer $N$ tours de boucle (avec $N$ étant la taille du tableau), sauf qu&rsquo;ici au bout de deux tours notre tableau est déjà trié, l&rsquo;algorithme va donc continuer de parcourir mais en ne changeant rien puisque chaque paire de nombre est bien placée.</p>
-<p>Pour résumer l&rsquo;idée de l&rsquo;algorithme :</p>
+<p>Notre algorithme va en réalité effectuer $N$ tours de boucle (avec $N$ étant la taille du tableau), sauf qu'ici au bout de deux tours notre tableau est déjà trié, l'algorithme va donc continuer de parcourir mais en ne changeant rien puisque chaque paire de nombre est bien placée.</p>
+<p>Pour résumer l'idée de l'algorithme :</p>
 <figure><img alt="Exemple de tri à bulles" src="/img/algo/tri/tri_bulles/exemple_tri.png" /><figcaption>Exemple de tri à bulles</figcaption>
 </figure>
-<p>Les éléments en bleu sont ceux qu&rsquo;on compare à chaque itération, la partie verte représente la partie du tableau dont on est sûr qu&rsquo;elle est triée. A chaque tour, on compare chaque paire dans la partie non triée du tableau, si la paire ne respecte pas l&rsquo;ordre de tri (dans notre cas croissant), on échange les éléments et on continue.</p>
+<p>Les éléments en bleu sont ceux qu'on compare à chaque itération, la partie verte représente la partie du tableau dont on est sûr qu'elle est triée. A chaque tour, on compare chaque paire dans la partie non triée du tableau, si la paire ne respecte pas l'ordre de tri (dans notre cas croissant), on échange les éléments et on continue.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Voici le pseudo-code très simple de l’algorithme du tri à bulles :</p>
 <pre><code class="nohighlight">triBulles :
@@ -183,7 +183,7 @@ int main(void)
 </code></pre>
 
 <h2 id="ameliorations-et-variantes">Améliorations et variantes</h2>
-<h3 id="arreter-le-tri-quand-cest-possible">Arrêter le tri quand c&rsquo;est possible</h3>
+<h3 id="arreter-le-tri-quand-cest-possible">Arrêter le tri quand c'est possible</h3>
 <p>On peut améliorer le tri à bulles en faisant en sorte qu’il s’arrête lorsque le tableau est trié, et qu’il ne parcourt pas d’autres tours inutilement. Pour cela, il suffit de vérifier si l’on effectue un échange ou pas dans le tour de boucle actuel, si ce n’est pas le cas le tableau est donc trié, on peut alors sortir de la boucle.</p>
 <pre><code class="nohighlight">Faire
    tableauPasTrié -&gt; faux
@@ -196,7 +196,7 @@ int main(void)
 Tant que tableauPasTrié est vrai
 </code></pre>
 
-<p>La complexité reste en $O(N^2)$, puisque les quelques tours de boucle que l&rsquo;on a gagnés dans certains cas ne vont pas être assez conséquents pour influer sur la complexité en temps de l&rsquo;algorithme.</p>
+<p>La complexité reste en $O(N^2)$, puisque les quelques tours de boucle que l'on a gagnés dans certains cas ne vont pas être assez conséquents pour influer sur la complexité en temps de l'algorithme.</p>
 <h3 id="tri-a-bulles-bidirectionnel">Tri à bulles bidirectionnel</h3>
 <p>Le tri à bulles bidirectionnel (<em>bidirectional bubble sort</em>) est une variante qui consiste à trier dans les deux directions (d’où son nom). Là où le tri à bulles parcourt seulement de gauche à droite (ou de droite à gauche, ça n’importe pas), le tri à bulles bidirectionnel parcourt de gauche à droite <strong>et</strong> de droite à gauche. Cela permet d’optimiser le tri de certains éléments comme les petits éléments situés en fin de tableau, le tri à bulles les ramène d’un seul emplacement à chaque tour de boucle, alors que le tri à bulles bidirectionnel les ramène en un seul tour.</p>
 <p>Par exemple avec la suite de nombres suivante : 2, 3, 4, 5, 1. On voit que tous les éléments sont triés sauf le dernier, on va donc se concentrer dessus pour comparer les deux tris :</p>
@@ -258,7 +258,7 @@ Tant que tableauPasTrié est vrai
 </tr>
 </tbody>
 </table>
-<p>Dans cet exemple, le tri à bulles bidirectionnel n’a besoin que d&rsquo;un seul tour de boucle alors que le tri à bulles en a besoin de quatre.</p>
+<p>Dans cet exemple, le tri à bulles bidirectionnel n’a besoin que d'un seul tour de boucle alors que le tri à bulles en a besoin de quatre.</p>
 <p>Le pseudo-code du tri à bulles bidirectionnel :</p>
 <pre><code class="nohighlight">Faire
    tableauPasTrié -&gt; faux
@@ -278,7 +278,7 @@ Tant que tableauPasTrié est vrai
 
 <p>Cette variante peut être encore optimisée, en retenant l’endroit où le dernier échange s’est effectué pour ne pas aller plus loin (car c’est inutile), cependant cet algorithme a toujours pour complexité $O(N^2)$.</p>
 <h3 id="tri-a-peigne">Tri à peigne</h3>
-<p>Une autre variante du tri à bulles appelée le tri à peigne (<em>comb sort</em> en anglais), permet à l’algorithme du tri à bulles d’être bien plus efficace et ainsi rivaliser avec des algorithmes plus performants comme le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, le <a href="/algo/tri/tri_fusion.html">tri fusion</a>, ou encore le <a href="/algo/tri/tri_tas.html">tri par tas</a>. Cet algorithme va comparer des éléments du tableau à un certain intervalle au lieu de comparer les éléments voisins. En effet, cette technique permet d’éliminer le problème du petit élément situé à la fin du tableau qui remonte lentement jusqu’à sa place initiale, et souvent rend les comparaisons entre éléments plus judicieuses. Un intervalle optimal est initialisé avec une valeur de $N / 1.3$ (cette valeur est reconnue comme étant une des plus optimales pour ce tri), et à chaque tour on divise de nouveau par 1.3 l&rsquo;intervalle tant qu&rsquo;il est supérieur à 1.</p>
+<p>Une autre variante du tri à bulles appelée le tri à peigne (<em>comb sort</em> en anglais), permet à l’algorithme du tri à bulles d’être bien plus efficace et ainsi rivaliser avec des algorithmes plus performants comme le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, le <a href="/algo/tri/tri_fusion.html">tri fusion</a>, ou encore le <a href="/algo/tri/tri_tas.html">tri par tas</a>. Cet algorithme va comparer des éléments du tableau à un certain intervalle au lieu de comparer les éléments voisins. En effet, cette technique permet d’éliminer le problème du petit élément situé à la fin du tableau qui remonte lentement jusqu’à sa place initiale, et souvent rend les comparaisons entre éléments plus judicieuses. Un intervalle optimal est initialisé avec une valeur de $N / 1.3$ (cette valeur est reconnue comme étant une des plus optimales pour ce tri), et à chaque tour on divise de nouveau par 1.3 l'intervalle tant qu'il est supérieur à 1.</p>
 <pre><code class="nohighlight">Faire
    tableauPasTrié -&gt; faux
    intervalle -&gt; intervalle / 1.3 (valeur entière)
@@ -296,7 +296,7 @@ Tant que tableauPasTrié est vrai OU intervalle est supérieur à 1
 
 <p>La complexité moyenne de ce tri est $O(N \log _2 N)$, mais peut-être dans le pire des cas en $O(N^2)$ bien qu’en pratique c’est peu probable.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri à bulles est certes un algorithme de tri assez lent (complexité en $O(N^2)$), mais reste une idée facile à comprendre et à implémenter. De plus, quelques améliorations le rendent plus rapide jusqu&rsquo;à même avoir une complexité en $O(N \log _2 N)$. Cependant en pratique, ce tri est très peu employé à cause de ses utilisations trop précises et qui sont uniquement sur des données spécifiques, que vous ne rencontrerez sans doute jamais.</p>
+<p>Le tri à bulles est certes un algorithme de tri assez lent (complexité en $O(N^2)$), mais reste une idée facile à comprendre et à implémenter. De plus, quelques améliorations le rendent plus rapide jusqu'à même avoir une complexité en $O(N \log _2 N)$. Cependant en pratique, ce tri est très peu employé à cause de ses utilisations trop précises et qui sont uniquement sur des données spécifiques, que vous ne rencontrerez sans doute jamais.</p>
 
          <footer>
             <br>

@@ -65,7 +65,7 @@
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
-<li><a href="#coefficient-dapprentissage">Coefficient d&rsquo;apprentissage</a></li>
+<li><a href="#coefficient-dapprentissage">Coefficient d'apprentissage</a></li>
 <li><a href="#implementation">Implémentation</a></li>
 <li><a href="#ameliorations">Améliorations</a><ul>
 <li><a href="#vectorization">Vectorization</a></li>
@@ -78,54 +78,54 @@
 
 
          <h2 id="introduction">Introduction</h2>
-<p>Dans le cadre d&rsquo;une <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a>, on cherche à définir une fonction d&rsquo;hypothèse proche de la réalité et de la forme :</p>
+<p>Dans le cadre d'une <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a>, on cherche à définir une fonction d'hypothèse proche de la réalité et de la forme :</p>
 <p>$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n$</p>
-<p>Par convention et pour simplifier le code, il n&rsquo;est pas rare de rajouter un attribut $x_0 = 1$, afin de remplacer notre fonction par :</p>
+<p>Par convention et pour simplifier le code, il n'est pas rare de rajouter un attribut $x_0 = 1$, afin de remplacer notre fonction par :</p>
 <p>$h_{\theta}(x) = \displaystyle\sum_{i=0}^{n} \theta_{i}x_{i}$</p>
-<p>Cependant, $\theta$ et $x$ sont deux matrices, et le calcul de la fonction d&rsquo;hypothèse pourrait s&rsquo;écrire sous la forme d&rsquo;un simple <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> :</p>
+<p>Cependant, $\theta$ et $x$ sont deux matrices, et le calcul de la fonction d'hypothèse pourrait s'écrire sous la forme d'un simple <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> :</p>
 <p>$h_{\theta}(x) = \theta^\intercal x = x \theta$</p>
-<p>Notre but est de chercher une fonction d&rsquo;hypothèse efficace, et ceci revient à trouver les coefficients $\theta$ de $h_{\theta}$ qui minimisent la fonction d&rsquo;erreur $J$. Pour rappel, notre fonction d&rsquo;erreur ressemble à cela :</p>
+<p>Notre but est de chercher une fonction d'hypothèse efficace, et ceci revient à trouver les coefficients $\theta$ de $h_{\theta}$ qui minimisent la fonction d'erreur $J$. Pour rappel, notre fonction d'erreur ressemble à cela :</p>
 <p>$J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$</p>
-<p>Et si on reprend l&rsquo;exemple du prix de l&rsquo;ordinateur, et qu&rsquo;on affiche $J$ en fonction de $\theta_0$ et $\theta_1$, on obtenait ce graphique en trois dimensions :</p>
-<figure><img alt="Représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /><figcaption>Représentation graphique de la fonction d&rsquo;erreur</figcaption>
+<p>Et si on reprend l'exemple du prix de l'ordinateur, et qu'on affiche $J$ en fonction de $\theta_0$ et $\theta_1$, on obtenait ce graphique en trois dimensions :</p>
+<figure><img alt="Représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /><figcaption>Représentation graphique de la fonction d'erreur</figcaption>
 </figure>
 <p>On va donc appliquer notre algorithme du gradient (<em>gradient descent</em> en anglais) afin de résoudre notre problème de minimisation.</p>
 <h2 id="principe">Principe</h2>
-<p>L&rsquo;idée de l&rsquo;algorithme est de commencer avec des paramètres initiaux $\theta$ (en général on utilise 0), puis d&rsquo;adapter ces derniers avec le résultat obtenu par notre fonction d&rsquo;erreur, afin de minimiser $J$ et arriver à un <strong>minimum local</strong>. Il est possible que ce minimum local, soit le <strong>minimum global</strong> de notre fonction d&rsquo;erreur, mais l&rsquo;algorithme ne le garantit pas car le résultat dépendra de l&rsquo;initialisation des coefficients $\theta$.</p>
-<p>Il est plus difficile de visualiser l&rsquo;idée de l&rsquo;algorithme sur notre précédent graphique en 3D, alors on va utiliser un graphique 2D spécial qui trace les contours (on appelle cela un <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm"><em>contour plot</em></a> en anglais) :</p>
+<p>L'idée de l'algorithme est de commencer avec des paramètres initiaux $\theta$ (en général on utilise 0), puis d'adapter ces derniers avec le résultat obtenu par notre fonction d'erreur, afin de minimiser $J$ et arriver à un <strong>minimum local</strong>. Il est possible que ce minimum local, soit le <strong>minimum global</strong> de notre fonction d'erreur, mais l'algorithme ne le garantit pas car le résultat dépendra de l'initialisation des coefficients $\theta$.</p>
+<p>Il est plus difficile de visualiser l'idée de l'algorithme sur notre précédent graphique en 3D, alors on va utiliser un graphique 2D spécial qui trace les contours (on appelle cela un <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm"><em>contour plot</em></a> en anglais) :</p>
 <figure><img alt="Contour plot de notre graphique" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/contour_plot.png" /><figcaption>Contour plot de notre graphique</figcaption>
 </figure>
-<p>Les contours représentent $J$ en fonction de nos deux coefficients $\theta_{0}$ et $\theta_{1}$. La croix rouge correspond au minimum de la fonction d&rsquo;erreur, et c&rsquo;est le point qu&rsquo;on cherche à atteindre.</p>
-<p>L&rsquo;algorithme du gradient va procéder ainsi :</p>
-<figure><img alt="Exemple du fonctionnement de l'algorithme du gradient" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_algo_gradient.png" /><figcaption>Exemple du fonctionnement de l&rsquo;algorithme du gradient</figcaption>
+<p>Les contours représentent $J$ en fonction de nos deux coefficients $\theta_{0}$ et $\theta_{1}$. La croix rouge correspond au minimum de la fonction d'erreur, et c'est le point qu'on cherche à atteindre.</p>
+<p>L'algorithme du gradient va procéder ainsi :</p>
+<figure><img alt="Exemple du fonctionnement de l'algorithme du gradient" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_algo_gradient.png" /><figcaption>Exemple du fonctionnement de l'algorithme du gradient</figcaption>
 </figure>
-<p>On part d&rsquo;un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l&rsquo;algorithme réalise-t-il ces pas ? Comment est-ce qu&rsquo;il décide de l&rsquo;amplitude, ou encore de la direction à emprunter ?</p>
-<p>Pour comprendre l&rsquo;algorithme, on peut imaginer que ce dernier utilise la &ldquo;pente&rdquo; de la représentation de la fonction pour décider du prochain point à explorer. Par exemple sur notre graphique en 3D, il suffit d&rsquo;imaginer une boule qu&rsquo;on place sur la figure et qui va rouler jusqu&rsquo;à arriver dans un creux ou une surface assez plane. Mathématiquement parlant, la décision du prochain point à parcourir se fera grâce à la <a href="https://en.wikipedia.org/wiki/Partial_derivative"><strong>dérivée partielle</strong></a> de la fonction $J$ au point actuel de notre algorithme.</p>
+<p>On part d'un point initial sur le graphique, et on fait des pas de plus en plus petits afin de se rapprocher du minimum de la fonction. Cependant, comment l'algorithme réalise-t-il ces pas ? Comment est-ce qu'il décide de l'amplitude, ou encore de la direction à emprunter ?</p>
+<p>Pour comprendre l'algorithme, on peut imaginer que ce dernier utilise la "pente" de la représentation de la fonction pour décider du prochain point à explorer. Par exemple sur notre graphique en 3D, il suffit d'imaginer une boule qu'on place sur la figure et qui va rouler jusqu'à arriver dans un creux ou une surface assez plane. Mathématiquement parlant, la décision du prochain point à parcourir se fera grâce à la <a href="https://en.wikipedia.org/wiki/Partial_derivative"><strong>dérivée partielle</strong></a> de la fonction $J$ au point actuel de notre algorithme.</p>
 <p>Simplifions notre problème avec un exemple de fonction $J$ prenant uniquement un paramètre $\theta_{0}$ :</p>
-<figure><img alt="Exemple simplifié de l'algorithme du gradient" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie.png" /><figcaption>Exemple simplifié de l&rsquo;algorithme du gradient</figcaption>
+<figure><img alt="Exemple simplifié de l'algorithme du gradient" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie.png" /><figcaption>Exemple simplifié de l'algorithme du gradient</figcaption>
 </figure>
-<p>On initialise l&rsquo;algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée partielle de la fonction $J$ en ce point :</p>
+<p>On initialise l'algorithme avec un point tel que $\theta_{0} = 0$, et on calcule la dérivée partielle de la fonction $J$ en ce point :</p>
 <figure><img alt="Initialisation" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_init.png" /><figcaption>Initialisation</figcaption>
 </figure>
 <p>La dérivée partielle est la droite en bleue, et on remarque que le coefficient directeur de la tangente est <strong>négatif</strong> et <strong>important</strong>, notre algorithme va donc <strong>augmenter</strong> $\theta_{0}$ de manière <strong>importante</strong>.</p>
-<p>On peut continuer ainsi jusqu&rsquo;à tomber sur le minimum de notre fonction :</p>
-<figure><img alt="Reste de l'algorithme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_reste.png" /><figcaption>Reste de l&rsquo;algorithme</figcaption>
+<p>On peut continuer ainsi jusqu'à tomber sur le minimum de notre fonction :</p>
+<figure><img alt="Reste de l'algorithme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_reste.png" /><figcaption>Reste de l'algorithme</figcaption>
 </figure>
-<p>Même si on a vu que notre algorithme ne trouvera pas toujours le minimum global de la fonction, un minimum local est toujours intéressant, et sur des problèmes très complexes cela sera beaucoup plus efficace à utiliser qu&rsquo;une approximation faite à la main.</p>
+<p>Même si on a vu que notre algorithme ne trouvera pas toujours le minimum global de la fonction, un minimum local est toujours intéressant, et sur des problèmes très complexes cela sera beaucoup plus efficace à utiliser qu'une approximation faite à la main.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
-<p>Maintenant qu&rsquo;on a vu le principe, il faut le décrire de manière concrète et mathématique.</p>
-<p>Tant que l&rsquo;algorithme ne converge pas, on met à jour tous nos coefficients $\theta$ pour $j$ allant de 0 à $n$ :</p>
+<p>Maintenant qu'on a vu le principe, il faut le décrire de manière concrète et mathématique.</p>
+<p>Tant que l'algorithme ne converge pas, on met à jour tous nos coefficients $\theta$ pour $j$ allant de 0 à $n$ :</p>
 <p>$\theta_{j} = \theta_{j} - \alpha\frac{\partial}{\partial\theta_{j}}J(\theta)$</p>
-<p>$\alpha$ est notre <strong>vitesse d&rsquo;apprentissage</strong> qui sert à réguler la rapidité de la convergence. La dérivée partielle de $J$ est représentée par $\frac{\partial}{\partial\theta_{j}}J(\theta)$, et lorsqu&rsquo;on <a href="https://math.stackexchange.com/questions/70728/partial-derivative-in-gradient-descent-for-two-variables/189792#189792">calcule cette dérivée</a> on obtient l&rsquo;expression suivante :</p>
+<p>$\alpha$ est notre <strong>vitesse d'apprentissage</strong> qui sert à réguler la rapidité de la convergence. La dérivée partielle de $J$ est représentée par $\frac{\partial}{\partial\theta_{j}}J(\theta)$, et lorsqu'on <a href="https://math.stackexchange.com/questions/70728/partial-derivative-in-gradient-descent-for-two-variables/189792#189792">calcule cette dérivée</a> on obtient l'expression suivante :</p>
 <p>$\frac{\partial}{\partial\theta_{j}}J(\theta) = \frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}$</p>
 <p>Notre formule développée est donc :</p>
 <p>$\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}$</p>
-<p>Dans notre détail de l&rsquo;algorithme du gradient, il y a un point très important à ne pas négliger : la mise à jour de manière <strong>instantanée</strong>. Vu que notre expression dépend elle-même de $\theta$, on ne peut pas se permettre de modifier certaines valeurs lorsqu&rsquo;on met à jour nos coefficients un à un, il faut donc procéder en deux étapes bien distinctes :</p>
+<p>Dans notre détail de l'algorithme du gradient, il y a un point très important à ne pas négliger : la mise à jour de manière <strong>instantanée</strong>. Vu que notre expression dépend elle-même de $\theta$, on ne peut pas se permettre de modifier certaines valeurs lorsqu'on met à jour nos coefficients un à un, il faut donc procéder en deux étapes bien distinctes :</p>
 <ul>
 <li>Mettre à jour nos valeurs en utilisant des variables temporaires.</li>
 <li>Copier le contenu de ces variables temporaires dans nos coefficients.</li>
 </ul>
-<p>Si l&rsquo;on garde notre exemple avec un attribut, on aurait ces opérations à effectuer :</p>
+<p>Si l'on garde notre exemple avec un attribut, on aurait ces opérations à effectuer :</p>
 <p>$temp0 = \theta_{0} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{i0}$</p>
 <p>$temp1 = \theta_{1} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{i1}$</p>
 <p>$\theta_{0} = temp0$</p>
@@ -140,26 +140,26 @@ Tant qu'on n'a pas dépassé la limite de tours
       theta[j] = temp[j]
 </code></pre>
 
-<p>Notre boucle principale n&rsquo;utilise plus la condition de convergence de notre algorithme du gradient pour plusieurs raisons :</p>
+<p>Notre boucle principale n'utilise plus la condition de convergence de notre algorithme du gradient pour plusieurs raisons :</p>
 <ul>
-<li>Lorsqu&rsquo;on atteint un minimum local (ou global), l&rsquo;algorithme va automatiquement s&rsquo;arrêter car il ne met plus à jour les coefficients $\theta$ vu que notre tangente sera horizontale.</li>
-<li>Il est préférable de fixer un nombre de tours maximum à l&rsquo;algorithme car sinon ce dernier peut prendre énormément de temps à converger et il est plus intéressant de pouvoir contrôler la durée de calcul afin d&rsquo;étudier la progression de notre algorithme du gradient.</li>
+<li>Lorsqu'on atteint un minimum local (ou global), l'algorithme va automatiquement s'arrêter car il ne met plus à jour les coefficients $\theta$ vu que notre tangente sera horizontale.</li>
+<li>Il est préférable de fixer un nombre de tours maximum à l'algorithme car sinon ce dernier peut prendre énormément de temps à converger et il est plus intéressant de pouvoir contrôler la durée de calcul afin d'étudier la progression de notre algorithme du gradient.</li>
 </ul>
-<h2 id="coefficient-dapprentissage">Coefficient d&rsquo;apprentissage</h2>
-<p>Il est primordial de bien choisir le coefficient d&rsquo;apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement (en anglais on utilise le terme d&rsquo;<em>overshoot</em>), et ceci peut l&rsquo;amener à faire de mauvais choix comme :</p>
-<figure><img alt="Exemple de conséquence d'un coefficient d'apprentissage élevé" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_eleve.png" /><figcaption>Exemple de conséquence d&rsquo;un coefficient d&rsquo;apprentissage élevé</figcaption>
+<h2 id="coefficient-dapprentissage">Coefficient d'apprentissage</h2>
+<p>Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement (en anglais on utilise le terme d'<em>overshoot</em>), et ceci peut l'amener à faire de mauvais choix comme :</p>
+<figure><img alt="Exemple de conséquence d'un coefficient d'apprentissage élevé" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_eleve.png" /><figcaption>Exemple de conséquence d'un coefficient d'apprentissage élevé</figcaption>
 </figure>
-<p>L&rsquo;algorithme risque alors de ne pas converger, voire de <strong>diverger</strong>. </p>
-<p>A l&rsquo;inverse, une vitesse d&rsquo;apprentissage trop faible rendra notre algorithme terriblement lent :</p>
-<figure><img alt="Exemple de conséquence d'un coefficient d'apprentissage faible" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_faible.png" /><figcaption>Exemple de conséquence d&rsquo;un coefficient d&rsquo;apprentissage faible</figcaption>
+<p>L'algorithme risque alors de ne pas converger, voire de <strong>diverger</strong>. </p>
+<p>A l'inverse, une vitesse d'apprentissage trop faible rendra notre algorithme terriblement lent :</p>
+<figure><img alt="Exemple de conséquence d'un coefficient d'apprentissage faible" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_faible.png" /><figcaption>Exemple de conséquence d'un coefficient d'apprentissage faible</figcaption>
 </figure>
-<p>Pour choisir une valeur adaptée à notre problème, il faut en essayer différentes (0.001, 0.01, 0.1, 1, 10, etc.) tout en créant un graphique représentant l&rsquo;évolution de notre minimisation de $J$ en fonction du nombre d&rsquo;itérations de l&rsquo;algorithme. Si vous avez bien choisi le coefficient, vous devriez voir un graphique semblable à ceci :</p>
+<p>Pour choisir une valeur adaptée à notre problème, il faut en essayer différentes (0.001, 0.01, 0.1, 1, 10, etc.) tout en créant un graphique représentant l'évolution de notre minimisation de $J$ en fonction du nombre d'itérations de l'algorithme. Si vous avez bien choisi le coefficient, vous devriez voir un graphique semblable à ceci :</p>
 <figure><img alt="Exemple de coefficient adapté" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_bon.png" /><figcaption>Exemple de coefficient adapté</figcaption>
 </figure>
-<p>On remarque bien que notre algorithme minimise bien la fonction d&rsquo;erreur au fur et à mesure qu&rsquo;il itère, ce qui signifie que notre vitesse d&rsquo;apprentissage est adaptée à notre problème.</p>
+<p>On remarque bien que notre algorithme minimise bien la fonction d'erreur au fur et à mesure qu'il itère, ce qui signifie que notre vitesse d'apprentissage est adaptée à notre problème.</p>
 <h2 id="implementation">Implémentation</h2>
-<p>Voici le code en Python pour l&rsquo;algorithme du gradient :</p>
-<p><em>J&rsquo;utilise Python afin d&rsquo;avoir accès à des librairies scientifiques comme <a href="http://www.numpy.org/">numpy</a> pour les matrices et <a href="http://matplotlib.org/">matplotlib</a> pour les graphiques.</em></p>
+<p>Voici le code en Python pour l'algorithme du gradient :</p>
+<p><em>J'utilise Python afin d'avoir accès à des librairies scientifiques comme <a href="http://www.numpy.org/">numpy</a> pour les matrices et <a href="http://matplotlib.org/">matplotlib</a> pour les graphiques.</em></p>
 <pre><code class="py">import numpy as np
 
 
@@ -213,7 +213,7 @@ for j in range(ia.n):
     print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))
 </code></pre>
 
-<p>Notre fichier d&rsquo;entrée contient sur la première ligne le nombre $m$ d&rsquo;exemples, puis le nombre $n$ d&rsquo;attributs. Sur les $m$ prochaines lignes, on retrouve une liste de nombre dont la dernière colonne correspond à $y$ et les autres à $x$. J&rsquo;ai repris notre exemple de l&rsquo;introduction pour construire le fichier d&rsquo;entrée (les unités sont toujours en centaine d&rsquo;opérations et en centaine d&rsquo;euros) :</p>
+<p>Notre fichier d'entrée contient sur la première ligne le nombre $m$ d'exemples, puis le nombre $n$ d'attributs. Sur les $m$ prochaines lignes, on retrouve une liste de nombre dont la dernière colonne correspond à $y$ et les autres à $x$. J'ai repris notre exemple de l'introduction pour construire le fichier d'entrée (les unités sont toujours en centaine d'opérations et en centaine d'euros) :</p>
 <pre><code class="nohighlight">6 1
 1.73 1.94
 4.07 2.87
@@ -223,17 +223,17 @@ for j in range(ia.n):
 12.26 8.6
 </code></pre>
 
-<p>En sortie on obtient les coefficients $\theta$ de notre fonction d&rsquo;hypothèse :</p>
+<p>En sortie on obtient les coefficients $\theta$ de notre fonction d'hypothèse :</p>
 <pre><code class="nohighlight">Coefficients de la fonction d'hypothese :
 
 theta  0  :  0.5764647547614207
 theta  1  :  0.7219164912370313
 </code></pre>
 
-<p>Vu qu&rsquo;on a uniquement un attribut (la puissance d&rsquo;un ordinateur), on peut représenter notre fonction d&rsquo;hypothèse et nos données en entrée sur un graphique 2D :</p>
+<p>Vu qu'on a uniquement un attribut (la puissance d'un ordinateur), on peut représenter notre fonction d'hypothèse et nos données en entrée sur un graphique 2D :</p>
 <figure><img alt="Sortie graphique du programme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/sortie_prog_algo_gradient.png" /><figcaption>Sortie graphique du programme</figcaption>
 </figure>
-<p>On obtient bien une généralisation efficace sous forme de fonction linéaire qui ressemble fortement à celle qu&rsquo;un humain peut faire à la main (même si celle que l&rsquo;ordinateur a calculé est plus précise que celle faite à la main).</p>
+<p>On obtient bien une généralisation efficace sous forme de fonction linéaire qui ressemble fortement à celle qu'un humain peut faire à la main (même si celle que l'ordinateur a calculé est plus précise que celle faite à la main).</p>
 <p>Le code utilisé pour réaliser cette sortie :</p>
 <pre><code class="py">import matplotlib.pyplot as plt
 
@@ -255,11 +255,11 @@ plt.show()
 
 <h2 id="ameliorations">Améliorations</h2>
 <h3 id="vectorization"><em>Vectorization</em></h3>
-<p>Afin de simplifier le code, il serait utile d&rsquo;utiliser la même amélioration qu&rsquo;avec notre fonction d&rsquo;hypothèse : les opérations sur les matrices. Au lieu d&rsquo;appliquer des opérations sur les éléments d&rsquo;une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
+<p>Afin de simplifier le code, il serait utile d'utiliser la même amélioration qu'avec notre fonction d'hypothèse : les opérations sur les matrices. Au lieu d'appliquer des opérations sur les éléments d'une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
 <p>$\theta = \theta - \alpha\frac{1}{m}x^\intercal(h_{\theta}(x) - y)$</p>
-<p>Si on développe notre fonction d&rsquo;hypothèse on arrive à cette expression :</p>
+<p>Si on développe notre fonction d'hypothèse on arrive à cette expression :</p>
 <p>$\theta = \theta - \alpha\frac{1}{m}x^\intercal(x\theta - y)$</p>
-<p>Il n&rsquo;y a plus aucunes boucles, et uniquement des opérations matricielles. Notre fonction pour l&rsquo;algorithme du gradient devient donc dans notre code :</p>
+<p>Il n'y a plus aucunes boucles, et uniquement des opérations matricielles. Notre fonction pour l'algorithme du gradient devient donc dans notre code :</p>
 <pre><code class="python">def algo_gradient(self, alpha, nb_tour_max):
    # Initialise à 0 les coefficients de la fonction d'hypothese
    self.theta = np.matrix(np.zeros((self.n, 1)))
@@ -271,22 +271,22 @@ plt.show()
 
 <p>Le code est beaucoup plus concis de cette manière, ce qui rend sa lecture plus facile et agréable.</p>
 <h3 id="feature-scaling"><em>Feature scaling</em></h3>
-<p>Dans le cas de généralisation d&rsquo;un problème avec plusieurs attributs, il est possible que l&rsquo;échelle de valeurs possibles soit très différente d&rsquo;un attribut à un autre. Par exemple, dans l&rsquo;estimation du prix d&rsquo;un ordinateur, le nombre d&rsquo;opérations que l&rsquo;ordinateur effectue à la seconde représente un nombre bien plus important que le nombre de ventilateurs à l&rsquo;intérieur de la machine. Si on affiche un <em>contour plot</em> dans cette situation, on verrait ce phénomène :</p>
+<p>Dans le cas de généralisation d'un problème avec plusieurs attributs, il est possible que l'échelle de valeurs possibles soit très différente d'un attribut à un autre. Par exemple, dans l'estimation du prix d'un ordinateur, le nombre d'opérations que l'ordinateur effectue à la seconde représente un nombre bien plus important que le nombre de ventilateurs à l'intérieur de la machine. Si on affiche un <em>contour plot</em> dans cette situation, on verrait ce phénomène :</p>
 <figure><img alt="Echelles différentes au sein des attributs" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_differentes.png" /><figcaption>Echelles différentes au sein des attributs</figcaption>
 </figure>
-<p>Le problème ici est que notre algorithme du gradient va mettre beaucoup plus de temps à converger vers un minimum, car on a de longs et fins contours. A l&rsquo;inverse, si on arrive à rendre les échelles similaires, on aurait plutôt un graphique qui ressemble à cela :</p>
+<p>Le problème ici est que notre algorithme du gradient va mettre beaucoup plus de temps à converger vers un minimum, car on a de longs et fins contours. A l'inverse, si on arrive à rendre les échelles similaires, on aurait plutôt un graphique qui ressemble à cela :</p>
 <figure><img alt="Echelles similaires" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_similaires.png" /><figcaption>Echelles similaires</figcaption>
 </figure>
 <p>Notre algorithme va alors converger bien plus rapidement.</p>
-<p>Pour réaliser cette opération dite de <a href="https://en.wikipedia.org/wiki/Feature_scaling"><em>feature scaling</em></a> en anglais, on utilise une méthode de <a href="https://en.wikipedia.org/wiki/Feature_scaling#Standardization">standardisation</a> (aussi appelée <em>mean normalization</em> dans notre cas). Le but est d&rsquo;avoir toutes nos valeurs de $x$, tel qu&rsquo;on a approximativement $-1 \leq x \leq 1$. On va donc modifier chaque valeur $i$ de $x$ :</p>
+<p>Pour réaliser cette opération dite de <a href="https://en.wikipedia.org/wiki/Feature_scaling"><em>feature scaling</em></a> en anglais, on utilise une méthode de <a href="https://en.wikipedia.org/wiki/Feature_scaling#Standardization">standardisation</a> (aussi appelée <em>mean normalization</em> dans notre cas). Le but est d'avoir toutes nos valeurs de $x$, tel qu'on a approximativement $-1 \leq x \leq 1$. On va donc modifier chaque valeur $i$ de $x$ :</p>
 <p>$x_i = \frac{x_i - \bar{x_i}}{\sigma_i}$</p>
-<p>$\bar{x}$ représente la moyenne, et $\sigma$ est l&rsquo;<a href="https://fr.wikipedia.org/wiki/%C3%89cart_type">écart type</a> (qui nous sert à mesurer la dispersion de nos valeurs).</p>
-<p>Il faut en revanche faire attention à ne pas appliquer cela sur $x_0$ car cette valeur doit toujours être égale à 1, on réalisera donc l&rsquo;opération de feature scaling avant d&rsquo;ajouter notre colonne de 1 à $x$ :</p>
+<p>$\bar{x}$ représente la moyenne, et $\sigma$ est l'<a href="https://fr.wikipedia.org/wiki/%C3%89cart_type">écart type</a> (qui nous sert à mesurer la dispersion de nos valeurs).</p>
+<p>Il faut en revanche faire attention à ne pas appliquer cela sur $x_0$ car cette valeur doit toujours être égale à 1, on réalisera donc l'opération de feature scaling avant d'ajouter notre colonne de 1 à $x$ :</p>
 <pre><code class="python"># Feature scaling
 self.x = (self.x - np.mean(self.x)) / np.std(self.x)
 </code></pre>
 
-<p>Notre sortie n&rsquo;est alors plus la même puisque nos valeurs ont été changées pour être sur une échelle similaire :</p>
+<p>Notre sortie n'est alors plus la même puisque nos valeurs ont été changées pour être sur une échelle similaire :</p>
 <pre><code class="nohighlight">Coefficients de la fonction d'hypothese :
 
 theta  0  :  5.379994218974877
@@ -342,12 +342,12 @@ for j in range(ia.n):
 </code></pre>
 
 <h2 id="conclusion">Conclusion</h2>
-<p>L&rsquo;algorithme du gradient est donc un algorithme itératif servant à minimiser notre fonction d&rsquo;erreur $J$ afin de trouver les paramètres $\theta$ optimaux pour notre fonction d&rsquo;hypothèse. Cet algorithme est très utile sur des entrées extrêmement importantes car on peut contrôler son nombre d&rsquo;itérations ainsi que sa vitesse d&rsquo;apprentissage (qu&rsquo;il faut bien choisir au risque de réduire considérablement l&rsquo;efficacité de notre programme).</p>
-<p>Il faut savoir qu&rsquo;il existe différentes variantes de cet algorithme :</p>
+<p>L'algorithme du gradient est donc un algorithme itératif servant à minimiser notre fonction d'erreur $J$ afin de trouver les paramètres $\theta$ optimaux pour notre fonction d'hypothèse. Cet algorithme est très utile sur des entrées extrêmement importantes car on peut contrôler son nombre d'itérations ainsi que sa vitesse d'apprentissage (qu'il faut bien choisir au risque de réduire considérablement l'efficacité de notre programme).</p>
+<p>Il faut savoir qu'il existe différentes variantes de cet algorithme :</p>
 <ul>
-<li><strong>Batch gradient descent</strong> : la méthode qu&rsquo;on a rencontrée dans cet article, et qui utilise les $m$ exemples de l&rsquo;entrée à chaque itération.</li>
-<li><strong>Stochastic gradient descent</strong> : dans cette variante, on utilise uniquement un seul exemple afin de mettre à jour nos coefficients $\theta$. Le but est d&rsquo;éviter des minimums locaux peu intéressants dans des bases de données énormes, afin d&rsquo;arriver on l&rsquo;espère à un minimum local proche du minimum global (voire si possible égal). Un autre avantage est naturellement sa rapidité vu qu&rsquo;on utilise qu&rsquo;un seul exemple à chaque itération.</li>
-<li><strong>Mini-batch gradient descent</strong> : un mélange des deux dernières méthodes, qui consiste à utiliser un nombre $b$ d&rsquo;exemples afin d&rsquo;essayer de combiner les avantages des deux autres variantes.</li>
+<li><strong>Batch gradient descent</strong> : la méthode qu'on a rencontrée dans cet article, et qui utilise les $m$ exemples de l'entrée à chaque itération.</li>
+<li><strong>Stochastic gradient descent</strong> : dans cette variante, on utilise uniquement un seul exemple afin de mettre à jour nos coefficients $\theta$. Le but est d'éviter des minimums locaux peu intéressants dans des bases de données énormes, afin d'arriver on l'espère à un minimum local proche du minimum global (voire si possible égal). Un autre avantage est naturellement sa rapidité vu qu'on utilise qu'un seul exemple à chaque itération.</li>
+<li><strong>Mini-batch gradient descent</strong> : un mélange des deux dernières méthodes, qui consiste à utiliser un nombre $b$ d'exemples afin d'essayer de combiner les avantages des deux autres variantes.</li>
 </ul>
 
          <footer>

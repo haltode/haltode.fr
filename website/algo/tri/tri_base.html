@@ -74,14 +74,14 @@
 
 
          <h2 id="introduction">Introduction</h2>
-<p>Le tri par base (<em>radix sort</em> en anglais) est un algorithme de tri ayant une complexité en temps linéaire, qui fut inventé à l&rsquo;époque des trieuses de <a href="https://en.wikipedia.org/wiki/Punched_card">cartes perforées</a>, mais il est encore utilisé de nos jours dans les ordinateurs modernes. Cet algorithme nécessite un autre algorithme de tri pour fonctionner, et ce dernier doit obligatoirement être <a href="https://en.wikipedia.org/wiki/Punched_card">stable</a>.</p>
+<p>Le tri par base (<em>radix sort</em> en anglais) est un algorithme de tri ayant une complexité en temps linéaire, qui fut inventé à l'époque des trieuses de <a href="https://en.wikipedia.org/wiki/Punched_card">cartes perforées</a>, mais il est encore utilisé de nos jours dans les ordinateurs modernes. Cet algorithme nécessite un autre algorithme de tri pour fonctionner, et ce dernier doit obligatoirement être <a href="https://en.wikipedia.org/wiki/Punched_card">stable</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l’algorithme</h2>
-<p>L’algorithme est simple, on va trier successivement (à l’aide d’un algorithme de tri <strong>stable</strong>) tous les chiffres des nombres donnés en entrée en commençant par le chiffre le moins significatif jusqu&rsquo;au plus significatif.</p>
+<p>L’algorithme est simple, on va trier successivement (à l’aide d’un algorithme de tri <strong>stable</strong>) tous les chiffres des nombres donnés en entrée en commençant par le chiffre le moins significatif jusqu'au plus significatif.</p>
 <p>C’est-à-dire que pour des nombres entiers, on va trier tout d’abord les nombres en fonction du chiffre de l’unité, puis trier de nouveau en fonction du chiffre des dizaines, et ainsi de suite jusqu’à atteindre le nombre maximum de chiffre contenu dans un nombre.</p>
 <p>Il est important de noter que l’ordre de tri est défini dans l’algorithme de tri utilisé et non dans le tri par base en lui-même.</p>
 <h2 id="exemple">Exemple</h2>
 <p>Soit le tableau suivant que l’on souhaite trier dans l’ordre croissant en utilisant l’algorithme du tri par base : 56, 87, 2, 36, 74, 19.</p>
-<p>Tout d’abord, on remarque qu’il y a au maximum deux chiffres par nombre et que par conséquent on utilisera notre algorithme de tri stable seulement deux fois. On commence donc par trier cette suite de nombre en fonction du chiffre des unités, puis on recommence l&rsquo;opération sur le chiffre des dizaines :</p>
+<p>Tout d’abord, on remarque qu’il y a au maximum deux chiffres par nombre et que par conséquent on utilisera notre algorithme de tri stable seulement deux fois. On commence donc par trier cette suite de nombre en fonction du chiffre des unités, puis on recommence l'opération sur le chiffre des dizaines :</p>
 <table>
 <thead>
 <tr>
@@ -127,7 +127,7 @@
 <p>2, 19, 36, 56, 74, 87.</p>
 <figure><img alt="Exemple de tri par base" src="/img/algo/tri/tri_base/exemple_tri.png" /><figcaption>Exemple de tri par base</figcaption>
 </figure>
-<p>J&rsquo;ai découpé les chiffres des nombres pour bien voir le tri de chacun, en bleu on retrouve nos étapes intermédiaires consistantes à trier en fonction d&rsquo;un chiffre en particulier, et en vert notre tableau final trié.</p>
+<p>J'ai découpé les chiffres des nombres pour bien voir le tri de chacun, en bleu on retrouve nos étapes intermédiaires consistantes à trier en fonction d'un chiffre en particulier, et en vert notre tableau final trié.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Le pseudo-code du tri par base :</p>
 <pre><code class="nohighlight">triBase :
@@ -136,11 +136,11 @@
       Trier Tableau en fonction du chiffre i
 </code></pre>
 
-<p>Cela peut paraitre assez étrange d&rsquo;utiliser un autre algorithme de tri dans un algorithme de tri, mais si on se sert du <a href="/algo/tri/tri_denombrement.html">tri par dénombrement</a> on peut ainsi contrer plusieurs de ses défauts tout en gardant sa rapidité d&rsquo;exécution. Tout d&rsquo;abord, l&rsquo;espace mémoire utilisé est bien plus optimisé car on évite les &ldquo;trous&rdquo; dans le tableau des effectifs, et ensuite on peut désormais trier des nombres décimaux puisque chaque chiffre reste un nombre entier qu&rsquo;on peut employer avec le tri par dénombrement.</p>
+<p>Cela peut paraitre assez étrange d'utiliser un autre algorithme de tri dans un algorithme de tri, mais si on se sert du <a href="/algo/tri/tri_denombrement.html">tri par dénombrement</a> on peut ainsi contrer plusieurs de ses défauts tout en gardant sa rapidité d'exécution. Tout d'abord, l'espace mémoire utilisé est bien plus optimisé car on évite les "trous" dans le tableau des effectifs, et ensuite on peut désormais trier des nombres décimaux puisque chaque chiffre reste un nombre entier qu'on peut employer avec le tri par dénombrement.</p>
 <h2 id="complexite">Complexité</h2>
-<p>La complexité de ce tri dépend forcément de l&rsquo;algorithme de tri utilisé dans notre boucle principale, mais supposons qu&rsquo;on utilise, comme précédemment évoqué, le tri par dénombrement. Pour rappel, ce tri a une complexité en $O(N + M)$ avec $N$ la taille du tableau, et $M$ l&rsquo;élément maximum du tableau à trier. Soit $C$ le nombre de chiffres maximum d&rsquo;un nombre du tableau, on a donc une complexité en temps pour notre algorithme de tri par base en $O(C(N + M))$, cependant comme notre tri par dénombrement sera uniquement utilisé sur des chiffres, ces derniers ne dépasseront jamais 9 (si on utilise une notation décimale bien sûr), et $M$ devient alors une constante insignifiante dans le calcul de la complexité, que l&rsquo;on peut alors simplifier en $O(CN)$.</p>
+<p>La complexité de ce tri dépend forcément de l'algorithme de tri utilisé dans notre boucle principale, mais supposons qu'on utilise, comme précédemment évoqué, le tri par dénombrement. Pour rappel, ce tri a une complexité en $O(N + M)$ avec $N$ la taille du tableau, et $M$ l'élément maximum du tableau à trier. Soit $C$ le nombre de chiffres maximum d'un nombre du tableau, on a donc une complexité en temps pour notre algorithme de tri par base en $O(C(N + M))$, cependant comme notre tri par dénombrement sera uniquement utilisé sur des chiffres, ces derniers ne dépasseront jamais 9 (si on utilise une notation décimale bien sûr), et $M$ devient alors une constante insignifiante dans le calcul de la complexité, que l'on peut alors simplifier en $O(CN)$.</p>
 <h2 id="implementation">Implémentation</h2>
-<p>Pour implémenter le tri par base, il va tout d&rsquo;abord falloir modifier légèrement notre implémentation du tri par dénombrement car la notion de stabilité pour ce tri n&rsquo;a pas vraiment de sens puisqu&rsquo;on utilise des effectifs sans lien réel avec notre tableau.</p>
+<p>Pour implémenter le tri par base, il va tout d'abord falloir modifier légèrement notre implémentation du tri par dénombrement car la notion de stabilité pour ce tri n'a pas vraiment de sens puisqu'on utilise des effectifs sans lien réel avec notre tableau.</p>
 <p>Voici une implémentation en C++ du tri par base :</p>
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;cmath&gt;
@@ -217,15 +217,15 @@ int main(void)
 }
 </code></pre>
 
-<p>Le code est en C++ afin d&rsquo;avoir une implémentation facile d&rsquo;une <a href="/algo/structure/file.html">file</a> car nous en aurons besoin pour modifier notre algorithme de tri par dénombrement. Plusieurs remarques sur ce code :</p>
+<p>Le code est en C++ afin d'avoir une implémentation facile d'une <a href="/algo/structure/file.html">file</a> car nous en aurons besoin pour modifier notre algorithme de tri par dénombrement. Plusieurs remarques sur ce code :</p>
 <ul>
-<li>Pour trouver le maximum de chiffre d&rsquo;un nombre du tableau, on cherche l&rsquo;élément maximum puis on utilise un <a href="https://en.wikipedia.org/wiki/Logarithm">logarithme</a> de base 10 (que l&rsquo;on arrondit) afin d&rsquo;avoir son nombre de chiffres.</li>
-<li>Pour avoir le <em>ième</em> chiffre d&rsquo;un nombre entier, on le divise par <code>iExp</code> (qui représente $10^i$ et prend donc les valeurs : 1, 10, 100, etc.) et on applique un <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 10 dessus (dans le cas où <code>iExp</code> est égal à 1).</li>
-<li>Là où notre algorithme diffère du tri par dénombrement est qu&rsquo;on veut le rendre stable, or on a vu que la stabilité n&rsquo;est pas une notion du tri par dénombrement, on utilise donc un tableau de dix files (car on a dix possibilités de chiffre allant de 0 à 9), dans lequel on va ranger les nombres du tableau en fonction du chiffre que l&rsquo;on étudie. Par exemple, si l&rsquo;on se trouve dans le premier tour de boucle de notre fonction <code>triBase</code>, on veut alors trier le tableau en fonction du chiffre des unités des nombres, on va donc ranger tous les nombres avec comme chiffre des unités 0 dans la file du tableau à l&rsquo;indice 0, tous les nombres avec comme unité 1 dans la file du tableau à l&rsquo;indice 1, etc. Le fait qu&rsquo;on utilise une file nous permet d&rsquo;ajouter une stabilité au tri car si un élément se trouve avant un autre dans le tableau, le principe même de la file garanti que cet élément se trouvera avant lui dans la file, et qu&rsquo;on y accédera avant. Ensuite pour trier à partir de ce tableau de files, on a juste à parcourir tous les chiffres et à défiler les éléments de chaque file pour s&rsquo;assurer d&rsquo;avoir un tableau trié en fonction du chiffre demandé grâce à un tri stable en un temps linéaire. Une représentation du tableau de files avec notre exemple du début lors du tri par unité :</li>
+<li>Pour trouver le maximum de chiffre d'un nombre du tableau, on cherche l'élément maximum puis on utilise un <a href="https://en.wikipedia.org/wiki/Logarithm">logarithme</a> de base 10 (que l'on arrondit) afin d'avoir son nombre de chiffres.</li>
+<li>Pour avoir le <em>ième</em> chiffre d'un nombre entier, on le divise par <code>iExp</code> (qui représente $10^i$ et prend donc les valeurs : 1, 10, 100, etc.) et on applique un <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 10 dessus (dans le cas où <code>iExp</code> est égal à 1).</li>
+<li>Là où notre algorithme diffère du tri par dénombrement est qu'on veut le rendre stable, or on a vu que la stabilité n'est pas une notion du tri par dénombrement, on utilise donc un tableau de dix files (car on a dix possibilités de chiffre allant de 0 à 9), dans lequel on va ranger les nombres du tableau en fonction du chiffre que l'on étudie. Par exemple, si l'on se trouve dans le premier tour de boucle de notre fonction <code>triBase</code>, on veut alors trier le tableau en fonction du chiffre des unités des nombres, on va donc ranger tous les nombres avec comme chiffre des unités 0 dans la file du tableau à l'indice 0, tous les nombres avec comme unité 1 dans la file du tableau à l'indice 1, etc. Le fait qu'on utilise une file nous permet d'ajouter une stabilité au tri car si un élément se trouve avant un autre dans le tableau, le principe même de la file garanti que cet élément se trouvera avant lui dans la file, et qu'on y accédera avant. Ensuite pour trier à partir de ce tableau de files, on a juste à parcourir tous les chiffres et à défiler les éléments de chaque file pour s'assurer d'avoir un tableau trié en fonction du chiffre demandé grâce à un tri stable en un temps linéaire. Une représentation du tableau de files avec notre exemple du début lors du tri par unité :</li>
 </ul>
 <figure><img alt="Exemple de tableau de files" src="/img/algo/tri/tri_base/exemple_tableau_files.png" /><figcaption>Exemple de tableau de files</figcaption>
 </figure>
-<p>L&rsquo;entrée de notre exemple :</p>
+<p>L'entrée de notre exemple :</p>
 <pre><code class="nohighlight">6
 56 87 2 36 74 19
 </code></pre>
@@ -235,13 +235,13 @@ int main(void)
 </code></pre>
 
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri par base est donc un algorithme de tri très rapide qui s&rsquo;exécute en temps linéaire en se basant sur un autre algorithme de tri stable pour fonctionner. Il permet notamment de combler les avantages du tri par dénombrement, cependant ce n&rsquo;est pas pour cela que ce dernier est bien plus efficace que d&rsquo;autres algorithmes de tri en $O(N \log _2 N)$ comme le <a href="/algo/tri/tri_rapide.html">tri rapide</a> et ceci pour plusieurs raisons :</p>
+<p>Le tri par base est donc un algorithme de tri très rapide qui s'exécute en temps linéaire en se basant sur un autre algorithme de tri stable pour fonctionner. Il permet notamment de combler les avantages du tri par dénombrement, cependant ce n'est pas pour cela que ce dernier est bien plus efficace que d'autres algorithmes de tri en $O(N \log _2 N)$ comme le <a href="/algo/tri/tri_rapide.html">tri rapide</a> et ceci pour plusieurs raisons :</p>
 <ul>
-<li>Le tri par base exécute au maximum $C$ passes sur le tableau, ce qui est en général moins que pour le tri rapide, mais ces dernières seront plus longues à effectuer, rendant dans certains cas le tri rapide plus efficace que le tri par base, même s&rsquo;ils ont une complexité en temps différente.</li>
+<li>Le tri par base exécute au maximum $C$ passes sur le tableau, ce qui est en général moins que pour le tri rapide, mais ces dernières seront plus longues à effectuer, rendant dans certains cas le tri rapide plus efficace que le tri par base, même s'ils ont une complexité en temps différente.</li>
 <li>Les implémentations des deux algorithmes peuvent provoquer de gros changements sur les performances, mais leurs fonctionnements aussi car en général le tri rapide utilisera mieux la <a href="https://en.wikipedia.org/wiki/Cache_%28computing%29">mémoire cache</a> que le tri par base ce qui le rend plus utile dans certains cas.</li>
 <li>Notre algorithme implémenté ici avec la version du tri par dénombrement ne trie pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a> les éléments du tableau, et ceci peut poser des problèmes en termes de complexité en mémoire dans certains cas que ne posent pas le tri rapide par exemple.</li>
 </ul>
-<p>Encore une fois, le choix d&rsquo;un algorithme de tri par rapport à un autre dépend de multiples facteurs qu&rsquo;il faut prendre en compte, d&rsquo;autant plus que l&rsquo;entrée peut aussi jouer un grand rôle dans ce choix. Le tri par base reste tout de même utile grâce à sa complexité en temps linéaire efficace.</p>
+<p>Encore une fois, le choix d'un algorithme de tri par rapport à un autre dépend de multiples facteurs qu'il faut prendre en compte, d'autant plus que l'entrée peut aussi jouer un grand rôle dans ce choix. Le tri par base reste tout de même utile grâce à sa complexité en temps linéaire efficace.</p>
 
          <footer>
             <br>

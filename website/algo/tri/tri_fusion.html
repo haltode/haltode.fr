@@ -80,27 +80,27 @@
          <h2 id="introduction">Introduction</h2>
 <p>Le tri fusion (<em>merge sort</em> en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité $O(N \log _2 N)$, il se base sur le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>. Cet algorithme est <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais ne s’exécute pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l’algorithme</h2>
-<p>L&rsquo;algorithme se compose de deux parties distinctes :</p>
+<p>L'algorithme se compose de deux parties distinctes :</p>
 <ul>
-<li><strong>Diviser</strong> : on divise récursivement le tableau, c&rsquo;est-à-dire qu&rsquo;on va couper le tableau en deux sous tableaux et recommencer cette opération sur ces derniers jusqu&rsquo;à ce que chaque sous tableau ne contienne plus qu&rsquo;un seul élément.</li>
-<li><strong>Fusionner</strong> : une fois notre tableau divisé en $N$ sous tableaux ($N$ étant le nombre d&rsquo;éléments), on fusionne deux à deux les tableaux en réorganisant les éléments dans l&rsquo;ordre du tri (croissant ou décroissant).</li>
+<li><strong>Diviser</strong> : on divise récursivement le tableau, c'est-à-dire qu'on va couper le tableau en deux sous tableaux et recommencer cette opération sur ces derniers jusqu'à ce que chaque sous tableau ne contienne plus qu'un seul élément.</li>
+<li><strong>Fusionner</strong> : une fois notre tableau divisé en $N$ sous tableaux ($N$ étant le nombre d'éléments), on fusionne deux à deux les tableaux en réorganisant les éléments dans l'ordre du tri (croissant ou décroissant).</li>
 </ul>
-<p>L&rsquo;intérêt de diviser pour ensuite fusionner est que créer un tableau trié à partir de deux sous tableaux peut s&rsquo;effectuer en temps linéaire. C&rsquo;est ce point en particulier qui fait la rapidité du tri fusion.</p>
+<p>L'intérêt de diviser pour ensuite fusionner est que créer un tableau trié à partir de deux sous tableaux peut s'effectuer en temps linéaire. C'est ce point en particulier qui fait la rapidité du tri fusion.</p>
 <h2 id="exemple">Exemple</h2>
 <p>Prenons comme exemple la suite de nombre : 5, 1, 3, 8, 9, 6 que l’on veut trier avec le tri fusion dans l’ordre croissant :</p>
 <p><em>1ère étape</em> : diviser</p>
 <p>5, 1, 3 | 8, 9, 6 -&gt; on divise le tableau en deux.</p>
 <p>5, | 1, 3 | 8 | 9, 6 -&gt; on divise en deux les sous tableaux.</p>
-<p>5 | 1 | 3 | 8 | 9 | 6 -&gt; chaque sous tableau est de nouveau divisé pour n&rsquo;avoir plus qu&rsquo;un seul élément.</p>
+<p>5 | 1 | 3 | 8 | 9 | 6 -&gt; chaque sous tableau est de nouveau divisé pour n'avoir plus qu'un seul élément.</p>
 <p><em>2ème étape</em> : fusionner</p>
-<p>1, 5 | 3, 8 | 6, 9  -&gt; on prend deux sous tableaux adjacents que l&rsquo;on fusionne en les ordonnant.</p>
+<p>1, 5 | 3, 8 | 6, 9  -&gt; on prend deux sous tableaux adjacents que l'on fusionne en les ordonnant.</p>
 <p>1, 3, 5, 8 | 6, 9 -&gt; on continue la fusion des sous tableaux.</p>
 <p>1, 3, 5, 6, 8, 9 -&gt; le tableau ne contient plus de sous tableaux, il est donc trié.</p>
 <p>1, 3, 5, 6, 8, 9</p>
 <p>Pour résumer les deux étapes du tri :</p>
 <figure><img alt="Exemple de tri fusion" src="/img/algo/tri/tri_fusion/exemple_tri.png" /><figcaption>Exemple de tri fusion</figcaption>
 </figure>
-<p>Les éléments en bleu correspondent à l&rsquo;état du tableau après la première étape, et les éléments en vert après la deuxième étape.</p>
+<p>Les éléments en bleu correspondent à l'état du tableau après la première étape, et les éléments en vert après la deuxième étape.</p>
 <h2 id="pseudo-code">Pseudo-code</h2>
 <p>Voici le pseudo-code du tri fusion :</p>
 <pre><code class="nohighlight">triFusion (début, fin) :
@@ -129,14 +129,14 @@ fusionner (début, milieu, fin) :
 
 <p>Ce pseudo-code est relativement simple :</p>
 <ul>
-<li>Dans la fonction <code>triFusion</code>, on utilise la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">récursivité</a> pour découper puis fusionner notre tableau, et on arrête les appels récursifs lorsque le sous tableau que l&rsquo;on traite n&rsquo;a plus qu&rsquo;un seul élément.</li>
+<li>Dans la fonction <code>triFusion</code>, on utilise la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">récursivité</a> pour découper puis fusionner notre tableau, et on arrête les appels récursifs lorsque le sous tableau que l'on traite n'a plus qu'un seul élément.</li>
 <li>La fonction <code>fusionner</code> est assez explicite, elle nous permet de créer à partir de deux sous tableaux triés, un tableau lui aussi trié en temps linéaire.</li>
 </ul>
 <h2 id="complexite">Complexité</h2>
 <p>Pour démontrer la complexité du tri fusion, visualisons la découpe du tableau réalisée dans la fonction <code>triFusion</code> lors des appels récursifs :</p>
 <figure><img alt="Calcul de la complexité" src="/img/algo/recherche/dichotomie/calcul_complexite.png" /><figcaption>Calcul de la complexité</figcaption>
 </figure>
-<p>Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu&rsquo;il faut comprendre c&rsquo;est que tous les sous tableaux d&rsquo;une même profondeur formeront toujours un unique tableau contenant $N$ éléments ($N$ étant la taille du tableau de départ), puisqu&rsquo;on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C&rsquo;est très important car on appelle notre fonction <code>fusionner</code> à chaque nœud, or cette fonction s&rsquo;exécute en temps linéaire de $O(N)$ avec $N$ la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu&rsquo;à chaque profondeur on aura appelé notre fonction <code>fusionner</code> sur $N$ éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède $\log _2 N$ profondeurs (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikipédia</a>), ce qui nous donne finalement une complexité en $O(N \log _2 N)$.</p>
+<p>Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une même profondeur formeront toujours un unique tableau contenant $N$ éléments ($N$ étant la taille du tableau de départ), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C'est très important car on appelle notre fonction <code>fusionner</code> à chaque nœud, or cette fonction s'exécute en temps linéaire de $O(N)$ avec $N$ la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu'à chaque profondeur on aura appelé notre fonction <code>fusionner</code> sur $N$ éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède $\log _2 N$ profondeurs (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikipédia</a>), ce qui nous donne finalement une complexité en $O(N \log _2 N)$.</p>
 <h2 id="implementation">Implémentation</h2>
 <p>Une implémentation en C du tri fusion :</p>
 <pre><code class="c">#include &lt;stdio.h&gt; 
@@ -211,8 +211,8 @@ int main(void)
 }
 </code></pre>
 
-<p>Il faut faire attention dans notre fonction <code>fusion</code> à bien vérifier qu&rsquo;on a encore des éléments dans les tableaux A et B avant de les copier (si on arrive à la fin d&rsquo;un des deux tableaux, on remplit le reste avec l&rsquo;autre).</p>
-<p>L&rsquo;entrée du programme :</p>
+<p>Il faut faire attention dans notre fonction <code>fusion</code> à bien vérifier qu'on a encore des éléments dans les tableaux A et B avant de les copier (si on arrive à la fin d'un des deux tableaux, on remplit le reste avec l'autre).</p>
+<p>L'entrée du programme :</p>
 <pre><code class="nohighlight">6
 5 1 3 8 9 6
 </code></pre>
@@ -223,10 +223,10 @@ int main(void)
 
 <h2 id="ameliorations-et-variantes">Améliorations et variantes</h2>
 <h3 id="liste-chainee">Liste chaînée</h3>
-<p>Les <a href="/algo/structure/liste_chainee.html">listes chaînées</a> sont effectivement un bon moyen d&rsquo;implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.</p>
+<p>Les <a href="/algo/structure/liste_chainee.html">listes chaînées</a> sont effectivement un bon moyen d'implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.</p>
 <p>La complexité en temps reste la même, mais la complexité en mémoire est améliorée.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Le tri fusion est donc un algorithme de tri efficace, qui a pour complexité $O(N \log _2 N)$. Cependant, cet algorithme est finalement peu utilisé en pratique à cause du <a href="/algo/tri/tri_rapide.html">tri rapide</a> qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilité d&rsquo;améliorations, etc.).</p>
+<p>Le tri fusion est donc un algorithme de tri efficace, qui a pour complexité $O(N \log _2 N)$. Cependant, cet algorithme est finalement peu utilisé en pratique à cause du <a href="/algo/tri/tri_rapide.html">tri rapide</a> qui est meilleur dans de nombreux domaines (gestion du cache, nombre de comparaisons, possibilité d'améliorations, etc.).</p>
 
          <footer>
             <br>
