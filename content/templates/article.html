@@ -4,6 +4,8 @@
    <hr>
    <p>Publié le : {{ metadata['published'] }}<br>Modifié le : {{ metadata['modified'] }}</p>
 
-   <h4>Table des matières</h4>
-   {{ toc }}
+   {% if toc %}
+      <h4>Table des matières</h4>
+      {{ toc }}
+   {% endif %}
 {% endblock extra_info %}
