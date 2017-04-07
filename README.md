@@ -11,6 +11,9 @@ The script `build.py` uses different Python librairies:
    - [Meta-Data](https://pythonhosted.org/Markdown/extensions/meta_data.html): defines meta-data about an article
    - [Table of Contents](https://pythonhosted.org/Markdown/extensions/toc.html): generates a table of contents
    - (Third Party Extension) [figureAltCaption](https://github.com/jdittrich/figureAltCaption): adds captions to images
+   - These are the fixes I use, until Python Markdown 3 comes out:
+      - [Fix regression of single column tables](https://github.com/waylan/Python-Markdown/pull/540)
+      - [Add toc_depth parameter to toc extension](https://github.com/waylan/Python-Markdown/pull/431)
 - [Jinja](http://jinja.pocoo.org/): to create templates for the future HTML pages
 
 ## Server
