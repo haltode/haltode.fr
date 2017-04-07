@@ -35,9 +35,9 @@ body {
    padding-top: 0.5em;
 }
 
-#menu li a:hover, #menu li a:active {
-   text-decoration: underline;
-}
+/* #menu li a:hover, #menu li a:active { */
+/*    text-decoration: underline; */
+/* } */
 
 #info {
    padding-top: 0.5em;
@@ -80,6 +80,10 @@ h3, h4, h5, h6 {
 a {
    text-decoration: none;
    color: #2e64fe;
+}
+
+a:hover, a:active {
+   text-decoration: underline;
 }
 
 /* ---- List ---- */
@@ -141,6 +145,10 @@ figcaption {
 }
 
 /* ---- Font Awesome icons ---- */
+
+i {
+   margin-right: 0.2em;
+}
 
 .fa {
    color: #555555;
