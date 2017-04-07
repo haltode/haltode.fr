@@ -22,30 +22,45 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <title>Méthode de résolution - napnac</title>
    </head>
 
    <body>
-      <div id="page">
-         <header>
-            <div id="menu">
-	       <ul>
-		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
-		  <li><a href="/">Accueil</a></li>
-		  <li><a href="/articles.html">Articles</a></li>
-		  <li><a href="/projets.html">Projets</a></li>
-		  <li><a href="/a_propos.html">A propos</a></li>
-	       </ul>
-	    </div>
-	 </header>
+      <div id="sidebar">
+         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
 
+         <div id="menu">
+            <ul>
+               <li><a href="/">Accueil</a></li>
+               <li><a href="/articles.html">Articles</a></li>
+               <li><a href="/projets.html">Projets</a></li>
+               <li><a href="/a_propos.html">A propos</a></li>
+            </ul>
+         </div>
+
+         <div id="info">
+            <ul>
+               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+               <li><a href="https://github.com/napnac"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+               <li><i class="fa fa-envelope" aria-hidden="true"></i> napnac [at] domaine</li>
+               <li><i class="fa fa-rss" aria-hidden="true"></i> <a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
+            </ul>
+         </div>
+
+   <hr>
+   <div id="article_metadata">
+      <p>Publié le : 08/11/2016<br>Modifié le : 08/11/2016</p>
+   </div>
+      </div>
+
+      <div id="content">
          <h1>Méthode de résolution</h1>
 
-
-<p>Publié le : 08/11/2016<br><i>Modifié le : 08/11/2016</i></p>
-
-
-         <div class="toc">
+            <h3>Table des matières</h3>
+            <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#enonce">Enoncé</a><ul>
@@ -71,13 +86,15 @@
 <li><a href="#verification">Vérification</a></li>
 </ul>
 </li>
-<li><a href="#coder-lalgorithme">Coder l&rsquo;algorithme</a></li>
+<li><a href="#coder-lalgorithme">Coder l'algorithme</a></li>
 <li><a href="#tester-le-code">Tester le code</a></li>
 <li><a href="#debuguer-le-programme">Débuguer le programme</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-<h2 id="introduction">Introduction</h2>
+
+
+         <h2 id="introduction">Introduction</h2>
 <p>Je ne le répèterai jamais assez, mais <a href="http://www.france-ioi.org/">France-IOI</a> est <strong>la référence francophone en algorithmique</strong>, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu&rsquo;elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s&rsquo;applique pas uniquement pour des concours ou des exercices (même si les conseils donnés ici sont assez orientés concours de programmation), mais de manière générale lorsqu&rsquo;on cherche un algorithme pour résoudre un problème donné.</p>
 <p>Cependant, cette méthode peut paraître longue et fastidieuse au début, et nécessite de l&rsquo;<a href="/algo/general/entrainement.html">entraînement</a> ainsi que de la rigueur pour être utilisée efficacement. La vitesse viendra avec la pratique et non en bâclant les étapes de cette méthode. Il peut être frustrant au début de résoudre lentement un problème, mais cela vous sera très utile dans le futur et vous serez capable de réaliser les différentes étapes de cette méthode bien plus rapidement grâce à votre expérience.</p>
 <p>Il est important de noter que cette méthode n&rsquo;est pas réellement adaptée pour un débutant complet, c&rsquo;est-à-dire que si vous venez à peine de découvrir ce qu&rsquo;est un algorithme, il serait plus judicieux d&rsquo;acquérir davantage de connaissances sur le sujet avant d&rsquo;appréhender et d&rsquo;appliquer cette méthode. Mais il n&rsquo;y a pas énormément de prérequis non de plus, dans le sens où un niveau basique en algorithmique et en <a href="/algo/general/complexite.html">analyse de complexité</a> suffit pour commencer.</p>

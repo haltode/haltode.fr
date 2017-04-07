@@ -3,8 +3,6 @@ Title: Pile
 Published: 08/06/2014  
 Modified: 28/11/2015  
 
-[TOC]
-
 ## Introduction
 
 Prenons l'exemple d'une fonction dans un programme. Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?

@@ -3,8 +3,6 @@ Title: Chiffre de César
 Published: 21/05/2014  
 Modified: 14/12/2015  
 
-[TOC]
-
 ## Introduction
 
 Les premiers algorithmes de chiffrement ne datent pas de Jules César, mais ce dernier va instaurer un système au sein de son empire, afin de communiquer sans que personnes ne puissent intercepter ses messages secrets. Pour cela, il utilisait une méthode très simple qui consistait à décaler chaque lettre de trois rangs vers la droite dans l'alphabet pour que le message paraisse alors incompréhensible, à part pour la personne connaissant l'astuce. L'empereur a ainsi donné le nom à l'un des premiers algorithmes de chiffrement : le chiffre de César.

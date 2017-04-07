@@ -22,33 +22,42 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <title>Articles - napnac</title>
    </head>
 
    <body>
-      <div id="page">
-         <header>
-            <div id="menu">
-	       <ul>
-		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
-		  <li><a href="/">Accueil</a></li>
-		  <li><a href="/articles.html">Articles</a></li>
-		  <li><a href="/projets.html">Projets</a></li>
-		  <li><a href="/a_propos.html">A propos</a></li>
-	       </ul>
-	    </div>
-	 </header>
+      <div id="sidebar">
+         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
 
+         <div id="menu">
+            <ul>
+               <li><a href="/">Accueil</a></li>
+               <li><a href="/articles.html">Articles</a></li>
+               <li><a href="/projets.html">Projets</a></li>
+               <li><a href="/a_propos.html">A propos</a></li>
+            </ul>
+         </div>
+
+         <div id="info">
+            <ul>
+               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+               <li><a href="https://github.com/napnac"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+               <li><i class="fa fa-envelope" aria-hidden="true"></i> napnac [at] domaine</li>
+               <li><i class="fa fa-rss" aria-hidden="true"></i> <a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
+            </ul>
+         </div>
+
+      </div>
+
+      <div id="content">
          <h1>Articles</h1>
 
 
-         <p>La liste des articles publiés :</p>
-<ul>
-<li>
-<p>Algorithme :</p>
-<ul>
-<li>
-<p>Général :</p>
+         <h2 id="algorithme">Algorithme</h2>
+<h3 id="general">Général</h3>
 <ul>
 <li><a href="/algo/general/introduction.html">Introduction aux algorithmes</a></li>
 <li><a href="/algo/general/entrainement.html">Comment et où s&rsquo;entraîner ?</a></li>
@@ -56,9 +65,7 @@
 <li>Analyse de la complexité des algorithmes</li>
 <li>Approche et stratégie : récursivité, <a href="/algo/general/approche/dynamique.html">dynamique</a>, gloutonne</li>
 </ul>
-</li>
-<li>
-<p>Structure de données :</p>
+<h3 id="structure-de-donnees">Structure de données</h3>
 <ul>
 <li><a href="/algo/structure/tableau_cumulatif.html">Tableau cumulatif</a></li>
 <li><a href="/algo/structure/liste_chainee.html">Liste chaînée</a></li>
@@ -71,42 +78,28 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>
-<p>Tri :</p>
+<h3 id="tri">Tri</h3>
 <ul>
 <li>Tri en $O(N^2)$ : <a href="/algo/tri/tri_bulles.html">tri à bulles</a>, <a href="/algo/tri/tri_selection.html">tri par sélection</a>, <a href="/algo/tri/tri_insertion.html">tri par insertion</a></li>
 <li>Tri en $O(N \log _2 N)$ : <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, <a href="/algo/tri/tri_tas.html">tri par tas</a></li>
 <li>Tri en $O(N)$ : <a href="/algo/tri/tri_denombrement.html">tri par dénombrement</a>, <a href="/algo/tri/tri_base.html">tri par base</a></li>
 </ul>
-</li>
-<li>
-<p>Recherche :</p>
+<h3 id="recherche">Recherche</h3>
 <ul>
 <li><a href="/algo/recherche/dichotomie.html">Dichotomie</a></li>
 </ul>
-</li>
-<li>
-<p>Chiffrement :</p>
+<h3 id="chiffrement">Chiffrement</h3>
 <ul>
 <li><a href="/algo/chiffrement/chiffre_cesar.html">Chiffre de César</a></li>
 <li><a href="/algo/chiffrement/chiffre_vigenere.html">Chiffre de Vigenère</a></li>
 <li><a href="/algo/chiffrement/chiffre_vernam.html">Chiffre de Vernam</a></li>
 <li><a href="/algo/chiffrement/rsa.html">RSA</a></li>
 </ul>
-</li>
-<li>
-<p>Intelligence Artificielle :</p>
+<h3 id="intelligence-artificielle">Intelligence Artificielle</h3>
 <ul>
-<li>
-<p>Apprentissage artificiel :</p>
-<ul>
+<li>Apprentissage artificiel :<ul>
 <li><a href="/algo/ia/apprentissage_artificiel/introduction.html">Introduction</a></li>
 <li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">Régression linéaire/polynomiale</a> - <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">Algorithme du gradient</a> / <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html">Equation normale</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>

@@ -3,8 +3,6 @@ Title: Régression linéaire/polynomiale
 Published: 25/04/2016  
 Modified: 25/04/2016  
 
-[TOC]
-
 ## Introduction
 
 Vous souhaitez estimer le prix d'un ordinateur en fonction de différents facteurs (puissance, mémoire, stockage, batterie, etc.), cependant la tâche se complique au fur et à mesure que vous rajoutez des possibilités, et vous décidez alors d'employer un algorithme d'apprentissage artificiel pour faire le travail à votre place. Afin de prendre un exemple simple, on va dire que vous estimez le prix d'un ordinateur uniquement en fonction de sa puissance de calcul. Dans l'[introduction à la matière](/algo/ia/apprentissage_artificiel/introduction.html), on a vu que récolter des données utiles est une étape importante dans un processus d'apprentissage, et vous avez alors noté la puissance et le prix de différents ordinateurs dans un tableau :

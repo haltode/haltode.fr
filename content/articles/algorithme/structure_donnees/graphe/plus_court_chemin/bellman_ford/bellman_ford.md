@@ -3,8 +3,6 @@ Title: Algorithme de Bellman-Ford
 Published: 10/07/2016  
 Modified: 10/07/2016  
 
-[TOC]
-
 ## Introduction
 
 L'approche gloutonne de l'[algorithme de Dijkstra](/algo/structure/graphe/plus_court_chemin/dijkstra.html) est excellente car elle permet d'aborder le problème du plus court chemin de manière intelligente, ce qui lui donne une complexité en temps intéressante, tout en étant optimale. Cependant, elle ne s'applique pas à toutes les configurations de graphes (par exemple ceux avec des pondérations négatives), et il nous faut donc un nouvel algorithme pour gérer ces cas.

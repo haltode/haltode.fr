@@ -22,30 +22,45 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <title>Pile - napnac</title>
    </head>
 
    <body>
-      <div id="page">
-         <header>
-            <div id="menu">
-	       <ul>
-		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
-		  <li><a href="/">Accueil</a></li>
-		  <li><a href="/articles.html">Articles</a></li>
-		  <li><a href="/projets.html">Projets</a></li>
-		  <li><a href="/a_propos.html">A propos</a></li>
-	       </ul>
-	    </div>
-	 </header>
+      <div id="sidebar">
+         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
 
+         <div id="menu">
+            <ul>
+               <li><a href="/">Accueil</a></li>
+               <li><a href="/articles.html">Articles</a></li>
+               <li><a href="/projets.html">Projets</a></li>
+               <li><a href="/a_propos.html">A propos</a></li>
+            </ul>
+         </div>
+
+         <div id="info">
+            <ul>
+               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+               <li><a href="https://github.com/napnac"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+               <li><i class="fa fa-envelope" aria-hidden="true"></i> napnac [at] domaine</li>
+               <li><i class="fa fa-rss" aria-hidden="true"></i> <a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
+            </ul>
+         </div>
+
+   <hr>
+   <div id="article_metadata">
+      <p>Publié le : 08/06/2014<br>Modifié le : 28/11/2015</p>
+   </div>
+      </div>
+
+      <div id="content">
          <h1>Pile</h1>
 
-
-<p>Publié le : 08/06/2014<br><i>Modifié le : 28/11/2015</i></p>
-
-
-         <div class="toc">
+            <h3>Table des matières</h3>
+            <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-pile">Principe de la pile</a></li>
@@ -64,7 +79,9 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-<h2 id="introduction">Introduction</h2>
+
+
+         <h2 id="introduction">Introduction</h2>
 <p>Prenons l&rsquo;exemple d&rsquo;une fonction dans un programme. Cette fonction peut appeler d&rsquo;autres fonctions qui à leurs tours appellent d&rsquo;autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l&rsquo;ordre d&rsquo;appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu&rsquo;une fonction a finie d&rsquo;être exécutée) ?</p>
 <p>Toutes ces questions nous amènent à penser qu&rsquo;il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d&rsquo;imbrication : la pile.</p>
 <h2 id="principe-de-la-pile">Principe de la pile</h2>

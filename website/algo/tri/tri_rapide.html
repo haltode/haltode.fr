@@ -22,30 +22,45 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <title>Tri rapide - napnac</title>
    </head>
 
    <body>
-      <div id="page">
-         <header>
-            <div id="menu">
-	       <ul>
-		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
-		  <li><a href="/">Accueil</a></li>
-		  <li><a href="/articles.html">Articles</a></li>
-		  <li><a href="/projets.html">Projets</a></li>
-		  <li><a href="/a_propos.html">A propos</a></li>
-	       </ul>
-	    </div>
-	 </header>
+      <div id="sidebar">
+         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
 
+         <div id="menu">
+            <ul>
+               <li><a href="/">Accueil</a></li>
+               <li><a href="/articles.html">Articles</a></li>
+               <li><a href="/projets.html">Projets</a></li>
+               <li><a href="/a_propos.html">A propos</a></li>
+            </ul>
+         </div>
+
+         <div id="info">
+            <ul>
+               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+               <li><a href="https://github.com/napnac"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+               <li><i class="fa fa-envelope" aria-hidden="true"></i> napnac [at] domaine</li>
+               <li><i class="fa fa-rss" aria-hidden="true"></i> <a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
+            </ul>
+         </div>
+
+   <hr>
+   <div id="article_metadata">
+      <p>Publié le : 10/05/2014<br>Modifié le : 22/01/2016</p>
+   </div>
+      </div>
+
+      <div id="content">
          <h1>Tri rapide</h1>
 
-
-<p>Publié le : 10/05/2014<br><i>Modifié le : 22/01/2016</i></p>
-
-
-         <div class="toc">
+            <h3>Table des matières</h3>
+            <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l’algorithme</a></li>
@@ -55,14 +70,16 @@
 <li><a href="#implementation">Implémentation</a></li>
 <li><a href="#ameliorations-et-variantes">Améliorations et variantes</a><ul>
 <li><a href="#choix-du-pivot">Choix du pivot</a></li>
-<li><a href="#melange-dalgorithme">Mélange d&rsquo;algorithme</a></li>
+<li><a href="#melange-dalgorithme">Mélange d'algorithme</a></li>
 <li><a href="#introsort">Introsort</a></li>
 </ul>
 </li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-<h2 id="introduction">Introduction</h2>
+
+
+         <h2 id="introduction">Introduction</h2>
 <p>Le tri rapide (<em>quicksort</em> en anglais) est un algorithme de tri par comparaison, son fonctionnement est plutôt simple à comprendre et il est très utilisé sur de grandes entrées. En effet, il a pour complexité moyenne $O(N \log _2 N)$ et $O(N^2)$ dans le pire des cas. Cependant, même si cet algorithme est lent dans le pire des cas, il est plus utilisé en pratique que d’autres tris comme le <a href="/algo/tri/tri_fusion.html">tri par fusion</a> qui a une complexité dans le pire des cas en $O(N \log _2 N)$. C’est un algorithme <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non stable</a> mais <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
 <h2 id="principe-de-lalgorithme">Principe de l’algorithme</h2>
 <p>Le tri rapide utilise le principe de <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>, c’est-à-dire que l’on va choisir un élément du tableau (qu’on appelle <strong>pivot</strong>), puis l’on réorganise le tableau initial en deux sous tableaux :</p>

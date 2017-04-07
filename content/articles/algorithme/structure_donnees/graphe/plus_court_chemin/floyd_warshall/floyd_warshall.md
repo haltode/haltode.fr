@@ -3,8 +3,6 @@ Title: Algorithme de Floyd-Warshall
 Published: 21/05/2016  
 Modified: 21/05/2016  
 
-[TOC]
-
 ## Introduction
 
 ## Principe

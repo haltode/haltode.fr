@@ -3,8 +3,6 @@ Title: Introduction aux algorithmes
 Published: 26/12/2015  
 Modified: 11/07/2016  
 
-[TOC]
-
 ## Introduction
 
 Vous avez sans doute déjà entendu ce mot quelque part, peut être au lycée, ou encore sur des forums de programmation, mais les algorithmes ont un champ d'application bien plus large que vous ne l'imaginez. Ces derniers sont présents partout, dans tous les domaines, et ont traversé toutes les époques. Aujourd'hui, on entend d'autant plus parler d'eux avec Internet, mais savez-vous réellement ce qu'est un algorithme ? Connaissez-vous les enjeux de cette discipline si présente de nos jours ? Cette courte introduction aux algorithmes vous permettra de vous donner une idée de l'importance et de l'envergure de ce domaine dans notre monde.

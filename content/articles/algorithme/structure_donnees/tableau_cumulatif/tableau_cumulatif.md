@@ -3,8 +3,6 @@ Title: Tableau cumulatif
 Published: 21/11/2015  
 Modified: 05/12/2015  
 
-[TOC]
-
 ## Introduction
 
 Je vous donne un tableau possédant des trilliards d'éléments, et je vous pose des milliards de questions de la forme : Quelle est la somme des éléments compris entre l'indice $i$ et $j$ du tableau (avec $i < j$) ? La première idée d'algorithme naïf que l'on peut avoir, est de parcourir pour chaque question les éléments situés entre les indices donnés, et d'augmenter une variable `somme` au fur et à mesure du parcours.

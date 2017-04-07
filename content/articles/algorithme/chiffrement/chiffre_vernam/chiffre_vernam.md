@@ -3,8 +3,6 @@ Title: Chiffre de Vernam
 Published: 29/05/2014  
 Modified: 20/12/2015  
 
-[TOC]
-
 ## Introduction
 
 Le chiffre de Vernam est considéré comme une amélioration significative du [chiffre de Vigenère](/algo/chiffrement/chiffre_vigenere.html) car cet algorithme de chiffrement est théoriquement impossible à casser. Cependant, aucuns systèmes de chiffrement n'est parfait, et même si ce dernier semble sécurisé, il n'est pas toujours facile de remplir les conditions pour avoir un message chiffré totalement sûr.

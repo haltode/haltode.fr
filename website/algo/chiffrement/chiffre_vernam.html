@@ -22,30 +22,45 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <title>Chiffre de Vernam - napnac</title>
    </head>
 
    <body>
-      <div id="page">
-         <header>
-            <div id="menu">
-	       <ul>
-		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
-		  <li><a href="/">Accueil</a></li>
-		  <li><a href="/articles.html">Articles</a></li>
-		  <li><a href="/projets.html">Projets</a></li>
-		  <li><a href="/a_propos.html">A propos</a></li>
-	       </ul>
-	    </div>
-	 </header>
+      <div id="sidebar">
+         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
 
+         <div id="menu">
+            <ul>
+               <li><a href="/">Accueil</a></li>
+               <li><a href="/articles.html">Articles</a></li>
+               <li><a href="/projets.html">Projets</a></li>
+               <li><a href="/a_propos.html">A propos</a></li>
+            </ul>
+         </div>
+
+         <div id="info">
+            <ul>
+               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+               <li><a href="https://github.com/napnac"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+               <li><i class="fa fa-envelope" aria-hidden="true"></i> napnac [at] domaine</li>
+               <li><i class="fa fa-rss" aria-hidden="true"></i> <a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
+            </ul>
+         </div>
+
+   <hr>
+   <div id="article_metadata">
+      <p>Publié le : 29/05/2014<br>Modifié le : 20/12/2015</p>
+   </div>
+      </div>
+
+      <div id="content">
          <h1>Chiffre de Vernam</h1>
 
-
-<p>Publié le : 29/05/2014<br><i>Modifié le : 20/12/2015</i></p>
-
-
-         <div class="toc">
+            <h3>Table des matières</h3>
+            <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l&rsquo;algorithme</a></li>
@@ -57,7 +72,9 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-<h2 id="introduction">Introduction</h2>
+
+
+         <h2 id="introduction">Introduction</h2>
 <p>Le chiffre de Vernam est considéré comme une amélioration significative du <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigenère</a> car cet algorithme de chiffrement est théoriquement impossible à casser. Cependant, aucuns systèmes de chiffrement n&rsquo;est parfait, et même si ce dernier semble sécurisé, il n&rsquo;est pas toujours facile de remplir les conditions pour avoir un message chiffré totalement sûr.</p>
 <h2 id="principe-de-lalgorithme">Principe de l&rsquo;algorithme</h2>
 <p>Le chiffre de Vernam (ou <em>masque jetable</em>) est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement symétrique</a> utilisant, comme le chiffre de Vigenère, une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphabétique</a>. Son efficacité réside dans le choix de la clé de chiffrement, qui doit respecter plusieurs règles fondamentales :</p>

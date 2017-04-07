@@ -22,30 +22,45 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <title>Arbre binaire - napnac</title>
    </head>
 
    <body>
-      <div id="page">
-         <header>
-            <div id="menu">
-	       <ul>
-		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
-		  <li><a href="/">Accueil</a></li>
-		  <li><a href="/articles.html">Articles</a></li>
-		  <li><a href="/projets.html">Projets</a></li>
-		  <li><a href="/a_propos.html">A propos</a></li>
-	       </ul>
-	    </div>
-	 </header>
+      <div id="sidebar">
+         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
 
+         <div id="menu">
+            <ul>
+               <li><a href="/">Accueil</a></li>
+               <li><a href="/articles.html">Articles</a></li>
+               <li><a href="/projets.html">Projets</a></li>
+               <li><a href="/a_propos.html">A propos</a></li>
+            </ul>
+         </div>
+
+         <div id="info">
+            <ul>
+               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+               <li><a href="https://github.com/napnac"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+               <li><i class="fa fa-envelope" aria-hidden="true"></i> napnac [at] domaine</li>
+               <li><i class="fa fa-rss" aria-hidden="true"></i> <a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
+            </ul>
+         </div>
+
+   <hr>
+   <div id="article_metadata">
+      <p>Publié le : 27/12/2015<br>Modifié le : 14/01/2016</p>
+   </div>
+      </div>
+
+      <div id="content">
          <h1>Arbre binaire</h1>
 
-
-<p>Publié le : 27/12/2015<br><i>Modifié le : 14/01/2016</i></p>
-
-
-         <div class="toc">
+            <h3>Table des matières</h3>
+            <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#definition">Définition</a></li>
@@ -61,7 +76,9 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-<h2 id="introduction">Introduction</h2>
+
+
+         <h2 id="introduction">Introduction</h2>
 <p>Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir tous les éléments et les comparer afin de trouver le maximum, cet algorithme naïf a une complexité linéaire en $O(N)$ avec $N$ la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos $N$ éléments pour chercher le maximum, mais peut-on faire mieux ? Une des premières idées qui peut vous venir à l&rsquo;esprit serait d&rsquo;utiliser une variable en plus du tableau qui contient le maximum actuel, on l&rsquo;initialise avec le maximum qu&rsquo;on a trouvé en parcourant le tableau, et ensuite dès qu&rsquo;on effectue une modification on compare cette variable aux valeurs que l&rsquo;on change pour la mettre à jour. Cependant cette méthode, qui peut paraitre bien au premier coup d&rsquo;œil, ne fonctionne pas dans tous les cas. Si la valeur que l&rsquo;on change dans le tableau est l&rsquo;ancien maximum (et donc la valeur de notre variable externe), alors il se peut que le nouveau maximum ne soit plus la valeur qu&rsquo;on a changée mais une autre contenue dans le reste du tableau :</p>
 <figure><img alt="Contre-exemple de l'algorithme proposé" src="/img/algo/structure/arbre/arbre_binaire/contre_exemple_intro.png" /><figcaption>Contre-exemple de l&rsquo;algorithme proposé</figcaption>
 </figure>

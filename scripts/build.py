@@ -3,6 +3,7 @@ import jinja2
 import markdown
 import os
 
+from markdown.extensions.toc import TocExtension
 # Python-Markdown third party extension
 import figureAltCaption
 
@@ -25,9 +26,9 @@ def get_path_files(directory, extension):
     return glob.iglob(directory + '/**/*.' + extension, recursive=True)
 
 
-def final_render(template, html, metadata):
+def final_render(template, html, metadata, **extras):
     template = jinja_env.get_template(template)
-    output = template.render({'html_content': html, 'metadata': metadata})
+    output = template.render({'html_content': html, 'metadata': metadata, **extras})
 
     path = os.path.join(WEBSITE_DIR, metadata['path'])
     with open(path, 'w+') as f:
@@ -43,12 +44,13 @@ def read_markdown(path):
         'markdown.extensions.extra',
         'markdown.extensions.meta',
         'markdown.extensions.smarty',
-        'markdown.extensions.toc',
+        TocExtension(marker=''),
         # Third party extension
         'figureAltCaption'
         })
     html = md.convert(content)
     metadata = md.Meta
+    toc = md.toc
 
     # The metadata values are lists but we want strings
     for key, value in metadata.items():
@@ -58,23 +60,30 @@ def read_markdown(path):
     metadata['path'] = os.path.join(metadata['path'], os.path.basename(path))
     metadata['path'] = metadata['path'].replace('.md', '.html')
 
-    return html, metadata
+    # Test if the toc is empty
+    if 'li' not in toc:
+        toc = ''
+
+    return html, metadata, toc
 
 
-def basic_rendering(template, directory):
+def basic_rendering(template, directory, render_toc):
     file_template = jinja_env.get_template(template)
     files = get_path_files(directory, 'md')
     for f in files:
-        html, metadata = read_markdown(f)
-        final_render(template, html, metadata)
+        html, metadata, toc = read_markdown(f)
+        if render_toc:
+            final_render(template, html, metadata, toc=toc)
+        else:
+            final_render(template, html, metadata)
 
 
 def render_pages():
-    basic_rendering(PAGE_TEMPLATE, PAGE_DIR)
+    basic_rendering(PAGE_TEMPLATE, PAGE_DIR, render_toc=False)
 
 
 def render_articles():
-    basic_rendering(ARTICLE_TEMPLATE, ARTICLE_DIR)
+    basic_rendering(ARTICLE_TEMPLATE, ARTICLE_DIR, render_toc=True)
 
 
 print("Rendering pages...")

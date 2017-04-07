@@ -3,8 +3,6 @@ Title: Dichotomie
 Published: 28/06/2014  
 Modified: 14/01/2016  
 
-[TOC]
-
 ## Introduction
 
 Si je vous donne un annuaire téléphonique contenant plusieurs milliers de coordonnées, et que je vous demande de trouver une personne, normalement en quelques secondes vous y arrivez. Même si je rajoute plusieurs millions de personnes dans l'annuaire, vous devriez toujours être capable de repérer n'importe qui en moins d'une minute. Mais comment faire pour qu'un ordinateur nous remplace pour effectuer cette tâche ? Comment concrétiser l'algorithme que vous utilisez (sans le savoir) pour qu'un ordinateur le comprenne ? Votre cerveau est un outil incroyable qui n'aime pas faire des actions répétitives, et il essaiera naturellement de trouver une façon plus rapide de résoudre un problème. Vous n'auriez pas idée de commencer par regarder toutes les personnes avec un prénom en "A" si vous savez que la personne que vous cherchez est "Jean". Ce que vous faites plutôt, c'est que vous divisez l'intervalle de recherche à partir d'un résultat, vous ouvrez par exemple une page au hasard qui devrait correspondre à peu près à la lettre que vous cherchez, et vous affinez au fur et à mesure en fonction du mot de la page. Votre méthode se base sur une caractéristique très importante de votre annuaire : il est **trié** par ordre alphabétique.

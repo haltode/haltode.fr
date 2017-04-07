@@ -3,8 +3,6 @@ Title: Parcours d'un graphe
 Published: 07/12/2015  
 Modified: 13/12/2015  
 
-[TOC]
-
 ## Introduction
 
 Le parcours d'un [graphe](/algo/structure/graphe.html) est une opération essentielle à connaître à propos de cette structure. Il est fondamental de maitriser les différents algorithmes de parcours de graphe, ainsi que leur application et surtout savoir quand les utiliser en fonction de la situation.

@@ -3,8 +3,6 @@ Title: Tri par base
 Published: 05/03/2016  
 Modified: 05/03/2016  
 
-[TOC]
-
 ## Introduction
 
 Le tri par base (*radix sort* en anglais) est un algorithme de tri ayant une complexité en temps linéaire, qui fut inventé à l'époque des trieuses de [cartes perforées](https://en.wikipedia.org/wiki/Punched_card), mais il est encore utilisé de nos jours dans les ordinateurs modernes. Cet algorithme nécessite un autre algorithme de tri pour fonctionner, et ce dernier doit obligatoirement être [stable](https://en.wikipedia.org/wiki/Punched_card).

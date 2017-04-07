@@ -3,8 +3,6 @@ Title: Liste chaînée
 Published: 08/06/2014  
 Modified: 16/01/2016  
 
-[TOC]
-
 ## Introduction
 
 Imaginons un tableau contenant des milliards d'éléments. Comment supprimer un élément en plein milieu du tableau ? Pourquoi pas créer un deuxième tableau dans lequel on recopie toutes nos valeurs (sauf celles que l'on veut supprimer) ? Cela marche bien, mais cette opération est longue et coûteuse en mémoire. On peut essayer de décaler le tableau en réécrivant sur la valeur que l'on veut supprimer, grâce à ça on fait des économies de mémoire mais cela prend beaucoup de temps. Et comment ajouter un élément dans notre tableau ? De même, on peut recréer un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel élément. On peut aussi faire des économies de mémoire en décalant les éléments vers la droite pour laisser un espace au milieu afin d'insérer notre nouvel élément. Cependant, cette solution prend trop de temps et ceci nous pousse à comprendre que les tableaux ne sont pas adaptés à toutes les situations.

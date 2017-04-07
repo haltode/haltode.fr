@@ -3,8 +3,6 @@ Title: Méthode de résolution
 Published: 08/11/2016  
 Modified: 08/11/2016  
 
-[TOC]
-
 ## Introduction
 
 Je ne le répèterai jamais assez, mais [France-IOI](http://www.france-ioi.org/) est **la référence francophone en algorithmique**, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu'elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices (même si les conseils donnés ici sont assez orientés concours de programmation), mais de manière générale lorsqu'on cherche un algorithme pour résoudre un problème donné.

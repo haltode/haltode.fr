@@ -3,8 +3,6 @@ Title: File
 Published: 08/06/2014  
 Modified: 28/11/2015  
 
-[TOC]
-
 ## Introduction
 
 Comment un centre d'appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si d'autres appellent à leur tour ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d'attente, et cette structure s'appelle justement : la file.

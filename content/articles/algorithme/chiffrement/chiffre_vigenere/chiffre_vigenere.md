@@ -3,8 +3,6 @@ Title: Chiffre de Vigenère
 Published: 28/05/2014  
 Modified: 20/12/2015  
 
-[TOC]
-
 ## Introduction
 
 Avec l'apparition des premiers systèmes de cryptanalyses, le [chiffre de César](/algo/chiffrement/chiffre_cesar.html) n'est plus un algorithme sûr pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : **le chiffre de Vigenère**. Ce dernier est immunisé aux attaques du chiffre de César, car sa clé est une chaîne de caractères et non plus un simple nombre, cependant quelques siècles après les premières utilisations de ce système, des techniques permettant de casser le chiffre de Vigenère sont découvertes le rendant alors vulnérable et inutile.

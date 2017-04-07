@@ -3,8 +3,6 @@ Title: RSA
 Published: 31/05/2014  
 Modified: 02/02/2016  
 
-[TOC]
-
 ## Introduction
 
 Tous les algorithmes de chiffrement **symétriques** ont un problème commun : la transmission de clé. Quel que soit l'algorithme utilisé, si la clé est interceptée par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire et l'expéditeur du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, et même impossible dans certains cas (par exemple avec Internet, c'est compliqué d'aller voir physiquement le responsable de chaque serveur pour qu'il vous transmette une clé), il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements **asymétriques**.

@@ -22,33 +22,48 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
       </script>
 
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <title>RSA - napnac</title>
    </head>
 
    <body>
-      <div id="page">
-         <header>
-            <div id="menu">
-	       <ul>
-		  <li><a href="/"><img src="/img/logo.png" alt="Logo du site" height="80" width="80"></a></li>
-		  <li><a href="/">Accueil</a></li>
-		  <li><a href="/articles.html">Articles</a></li>
-		  <li><a href="/projets.html">Projets</a></li>
-		  <li><a href="/a_propos.html">A propos</a></li>
-	       </ul>
-	    </div>
-	 </header>
+      <div id="sidebar">
+         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
 
+         <div id="menu">
+            <ul>
+               <li><a href="/">Accueil</a></li>
+               <li><a href="/articles.html">Articles</a></li>
+               <li><a href="/projets.html">Projets</a></li>
+               <li><a href="/a_propos.html">A propos</a></li>
+            </ul>
+         </div>
+
+         <div id="info">
+            <ul>
+               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+               <li><a href="https://github.com/napnac"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+               <li><i class="fa fa-envelope" aria-hidden="true"></i> napnac [at] domaine</li>
+               <li><i class="fa fa-rss" aria-hidden="true"></i> <a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
+            </ul>
+         </div>
+
+   <hr>
+   <div id="article_metadata">
+      <p>Publié le : 31/05/2014<br>Modifié le : 02/02/2016</p>
+   </div>
+      </div>
+
+      <div id="content">
          <h1>RSA</h1>
 
-
-<p>Publié le : 31/05/2014<br><i>Modifié le : 02/02/2016</i></p>
-
-
-         <div class="toc">
+            <h3>Table des matières</h3>
+            <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#principe-de-lalgorithme">Principe de l&rsquo;algorithme</a></li>
+<li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
 <li><a href="#exemple">Exemple</a><ul>
 <li><a href="#generation-des-cles">Génération des clés</a></li>
 <li><a href="#chiffrementdechiffrement">Chiffrement/Déchiffrement</a></li>
@@ -64,8 +79,8 @@
 </ul>
 </li>
 <li><a href="#cassage">Cassage</a><ul>
-<li><a href="#lattaque-de-lhomme-du-milieu">L&rsquo;attaque de l&rsquo;homme du milieu</a></li>
-<li><a href="#attaque-dhastad">Attaque d&rsquo;Håstad</a></li>
+<li><a href="#lattaque-de-lhomme-du-milieu">L'attaque de l'homme du milieu</a></li>
+<li><a href="#attaque-dhastad">Attaque d'Håstad</a></li>
 <li><a href="#attaque-de-wiener">Attaque de Wiener</a></li>
 <li><a href="#module-de-chiffrement-commun">Module de chiffrement commun</a></li>
 <li><a href="#attaque-sur-les-implementations">Attaque sur les implémentations</a><ul>
@@ -78,7 +93,9 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
-<h2 id="introduction">Introduction</h2>
+
+
+         <h2 id="introduction">Introduction</h2>
 <p>Tous les algorithmes de chiffrement <strong>symétriques</strong> ont un problème commun : la transmission de clé. Quel que soit l&rsquo;algorithme utilisé, si la clé est interceptée par l&rsquo;ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire et l&rsquo;expéditeur du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, et même impossible dans certains cas (par exemple avec Internet, c&rsquo;est compliqué d&rsquo;aller voir physiquement le responsable de chaque serveur pour qu&rsquo;il vous transmette une clé), il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements <strong>asymétriques</strong>.</p>
 <p>L&rsquo;idée du chiffrement asymétrique est d&rsquo;utiliser deux clés au lieu d&rsquo;une, que l&rsquo;on va attribuer à chaque personne :</p>
 <ul>

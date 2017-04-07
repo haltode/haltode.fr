@@ -3,8 +3,6 @@ Title: Tas
 Published: 11/01/2016  
 Modified: 22/01/2016  
 
-[TOC]
-
 ## Introduction
 
 Vous avez une liste d'éléments qui est vide au départ, et deux types d'opérations sont possibles dessus :

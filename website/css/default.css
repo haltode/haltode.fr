@@ -2,40 +2,55 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
 body {
-   background-color: #fafafa;
+   background-color: #ffffff;
    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
    line-height: 1.5;
-}
-
-#page {
-   background-color: #ffffff;
    margin: 0 auto;
-   max-width: 50em;
-   padding: 2em 5em;
+   max-width: 65%;
+   padding: 3em 5em;
 }
 
-/* ---- Header ---- */
+/* ---- Sidebar ---- */
 
-#menu {
-   text-align: left;
-   list-style: none;
+#sidebar {
+   width: 22%;
+   float: left;
 }
 
-#menu li {
-   display: inline;
+#sidebar hr {
+   margin-top: 1.5em;
+   margin-bottom: 1.5em;
+   width: 50%;
+}
+
+#sidebar ul {
+   padding: 0;
+}
+
+#sidebar li {
    list-style-type: none;
 }
 
-#menu li img {
-   vertical-align: middle;
-}
-
-#menu li a {
-   padding: 0 1.5em;
+#menu {
+   padding-top: 0.5em;
 }
 
 #menu li a:hover, #menu li a:active {
    text-decoration: underline;
+}
+
+#info {
+   padding-top: 0.5em;
+}
+
+/* ---- Content ---- */
+
+#content {
+   margin-left: 22%;
+}
+
+#article_metadata {
+   font-size: 90%;
 }
 
 /* ---- Titles ---- */
@@ -123,6 +138,12 @@ figcaption {
    margin-top: 1.5em;
    margin-bottom: 2em;
    font-style: italic;
+}
+
+/* ---- Font Awesome icons ---- */
+
+.fa {
+   color: #555555;
 }
 
 /* ---- Code ---- */

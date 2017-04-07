@@ -3,8 +3,6 @@ Title: Algorithme du gradient
 Published: 19/04/2016  
 Modified: 19/04/2016  
 
-[TOC]
-
 ## Introduction
 
 Dans le cadre d'une [régression linéaire](/algo/ia/apprentissage_artificiel/regression_lin_poly.html), on cherche à définir une fonction d'hypothèse proche de la réalité et de la forme :
