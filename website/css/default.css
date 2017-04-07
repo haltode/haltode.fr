@@ -13,7 +13,7 @@ body {
 /* ---- Sidebar ---- */
 
 #sidebar {
-   width: 22%;
+   width: 25%;
    float: left;
 }
 
@@ -23,34 +23,30 @@ body {
    width: 50%;
 }
 
-#sidebar ul {
-   padding: 0;
-}
-
-#sidebar li {
-   list-style-type: none;
-}
-
 #menu {
    padding-top: 0.5em;
 }
-
-/* #menu li a:hover, #menu li a:active { */
-/*    text-decoration: underline; */
-/* } */
 
 #info {
    padding-top: 0.5em;
 }
 
+#menu li, #info li {
+   list-style-type: none;
+}
+
+#menu ul, #info ul {
+   padding: 0;
+}
+
+.toc ul {
+   padding-left: 1em;
+}
+
 /* ---- Content ---- */
 
 #content {
-   margin-left: 22%;
-}
-
-#article_metadata {
-   font-size: 90%;
+   margin-left: 25%;
 }
 
 /* ---- Titles ---- */

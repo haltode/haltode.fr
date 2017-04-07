@@ -51,31 +51,25 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 19/04/2016<br>Modifié le : 19/04/2016</p>
-   </div>
-      </div>
+   <p>Publié le : 19/04/2016<br>Modifié le : 19/04/2016</p>
 
-      <div id="content">
-         <h1>Algorithme du gradient</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#coefficient-dapprentissage">Coefficient d'apprentissage</a></li>
 <li><a href="#implementation">Implémentation</a></li>
-<li><a href="#ameliorations">Améliorations</a><ul>
-<li><a href="#vectorization">Vectorization</a></li>
-<li><a href="#feature-scaling">Feature scaling</a></li>
-</ul>
-</li>
+<li><a href="#ameliorations">Améliorations</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Algorithme du gradient</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Dans le cadre d'une <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a>, on cherche à définir une fonction d'hypothèse proche de la réalité et de la forme :</p>
@@ -254,7 +248,7 @@ plt.show()
 </code></pre>
 
 <h2 id="ameliorations">Améliorations</h2>
-<h3 id="vectorization"><em>Vectorization</em></h3>
+<h3><em>Vectorization</em></h3>
 <p>Afin de simplifier le code, il serait utile d'utiliser la même amélioration qu'avec notre fonction d'hypothèse : les opérations sur les matrices. Au lieu d'appliquer des opérations sur les éléments d'une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
 <p>$\theta = \theta - \alpha\frac{1}{m}x^\intercal(h_{\theta}(x) - y)$</p>
 <p>Si on développe notre fonction d'hypothèse on arrive à cette expression :</p>
@@ -270,7 +264,7 @@ plt.show()
 </code></pre>
 
 <p>Le code est beaucoup plus concis de cette manière, ce qui rend sa lecture plus facile et agréable.</p>
-<h3 id="feature-scaling"><em>Feature scaling</em></h3>
+<h3><em>Feature scaling</em></h3>
 <p>Dans le cas de généralisation d'un problème avec plusieurs attributs, il est possible que l'échelle de valeurs possibles soit très différente d'un attribut à un autre. Par exemple, dans l'estimation du prix d'un ordinateur, le nombre d'opérations que l'ordinateur effectue à la seconde représente un nombre bien plus important que le nombre de ventilateurs à l'intérieur de la machine. Si on affiche un <em>contour plot</em> dans cette situation, on verrait ce phénomène :</p>
 <figure><img alt="Echelles différentes au sein des attributs" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_differentes.png" /><figcaption>Echelles différentes au sein des attributs</figcaption>
 </figure>

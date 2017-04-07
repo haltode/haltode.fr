@@ -51,16 +51,10 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 22/05/2016<br>Modifié le : 22/05/2016</p>
-   </div>
-      </div>
+   <p>Publié le : 22/05/2016<br>Modifié le : 22/05/2016</p>
 
-      <div id="content">
-         <h1>Algorithme de Dijkstra</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#exemple">Exemple</a></li>
@@ -72,6 +66,10 @@
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Algorithme de Dijkstra</h1>
 
          <h2 id="principe">Principe</h2>
 <p>L'algorithme de Dijkstra est sans doute l'un des algorithmes de plus court chemin le plus connu. Ce dernier se base sur le <a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">parcours en largeur</a> afin de trouver le plus court chemin dans un graphe pondéré <strong>positivement</strong> (ce point est très important, mais nous y reviendrons plus en détails après). On sait qu'un parcours en largeur permet de trouver le plus court chemin sur un graphe non pondéré (où on associe chaque arc avec une longueur arbitraire de 1 unité) et qu'il utilise une file pour stocker les éléments afin de les parcourir profondeur par profondeur. L'algorithme de Dijkstra s'appuie sur la même idée, sauf qu'il ne va pas utiliser une simple file (car tous les arcs n'ont pas la même pondération) mais une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a>. Cette dernière permet de toujours avoir le nœud avec la distance minimale par rapport au départ en tête de file, et garantie alors qu'on a trouvé le plus court chemin lorsqu'on atteint le nœud de sortie. La file à priorité a aussi l'avantage d'être une structure de données très efficace et rapide, ce qui rend notre algorithme d'autant plus intéressant.</p>

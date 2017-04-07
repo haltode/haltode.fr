@@ -51,16 +51,10 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 08/06/2014<br>Modifié le : 16/01/2016</p>
-   </div>
-      </div>
+   <p>Publié le : 08/06/2014<br>Modifié le : 16/01/2016</p>
 
-      <div id="content">
-         <h1>Liste chaînée</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-liste-chainee">Principe de la liste chaînée</a></li>
@@ -68,17 +62,15 @@
 <li><a href="#quelques-fonctions-pour-manipuler-les-listes-chainees">Quelques fonctions pour manipuler les listes chaînées</a></li>
 <li><a href="#complexite">Complexité</a></li>
 <li><a href="#implementation">Implémentation</a></li>
-<li><a href="#variantes-de-la-liste-chainee">Variantes de la liste chaînée</a><ul>
-<li><a href="#liste-doublement-chainee">Liste doublement chaînée</a></li>
-<li><a href="#liste-chainee-circulaire">Liste chaînée circulaire</a></li>
-<li><a href="#liste-doublement-chainee-circulaire">Liste doublement chaînée circulaire</a></li>
-<li><a href="#dautres-variantes-plus-complexes">D'autres variantes plus complexes</a></li>
-</ul>
-</li>
+<li><a href="#variantes-de-la-liste-chainee">Variantes de la liste chaînée</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Liste chaînée</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Imaginons un tableau contenant des milliards d'éléments. Comment supprimer un élément en plein milieu du tableau ? Pourquoi pas créer un deuxième tableau dans lequel on recopie toutes nos valeurs (sauf celles que l'on veut supprimer) ? Cela marche bien, mais cette opération est longue et coûteuse en mémoire. On peut essayer de décaler le tableau en réécrivant sur la valeur que l'on veut supprimer, grâce à ça on fait des économies de mémoire mais cela prend beaucoup de temps. Et comment ajouter un élément dans notre tableau ? De même, on peut recréer un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel élément. On peut aussi faire des économies de mémoire en décalant les éléments vers la droite pour laisser un espace au milieu afin d'insérer notre nouvel élément. Cependant, cette solution prend trop de temps et ceci nous pousse à comprendre que les tableaux ne sont pas adaptés à toutes les situations.</p>
@@ -309,7 +301,7 @@ int main(void)
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation de liste chaînée ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/">http://www.cplusplus.com/reference/list/list/</a>.</p>
 <h2 id="variantes-de-la-liste-chainee">Variantes de la liste chaînée</h2>
 <p>Il existe plusieurs variantes de la liste chaînée qui sont pratiques dans certains problèmes précis.</p>
-<h3 id="liste-doublement-chainee">Liste doublement chaînée</h3>
+<h3>Liste doublement chaînée</h3>
 <p>La liste double chaînée (<em>doubly linked list</em>) consiste à ce que chaque élément de la liste possède deux pointeurs :</p>
 <ul>
 <li>Un pointeur vers le <strong>prochain</strong> élément.</li>
@@ -331,16 +323,16 @@ typedef Noeud *Liste;
 </code></pre>
 
 <p>La liste doublement chaînée est notamment la base de la <a href="/algo/structure/file.html">file</a> et permet une implémentation efficace de cette structure.</p>
-<h3 id="liste-chainee-circulaire">Liste chaînée circulaire</h3>
+<h3>Liste chaînée circulaire</h3>
 <p>La liste chaînée circulaire (<em>circular linked list</em>) est une liste chaînée ne possédant pas de fin. En effet, le pointeur de fin de liste pointe vers le début de la liste formant ainsi un cycle.</p>
 <figure><img alt="Exemple de représentation d'une liste chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png" /><figcaption>Exemple de représentation d'une liste chaînée circulaire</figcaption>
 </figure>
 <p>On peut utiliser cette variante de la liste chaînée pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jeu de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste chaînée circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.</p>
-<h3 id="liste-doublement-chainee-circulaire">Liste doublement chaînée circulaire</h3>
+<h3>Liste doublement chaînée circulaire</h3>
 <p>Une liste doublement chaînée circulaire (<em>doubly circular linked list</em>) est simplement un regroupement des deux dernières variantes.</p>
 <figure><img alt="Exemple de représentation d'une liste doublement chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png" /><figcaption>Exemple de représentation d'une liste doublement chaînée circulaire</figcaption>
 </figure>
-<h3 id="dautres-variantes-plus-complexes">D'autres variantes plus complexes</h3>
+<h3>D'autres variantes plus complexes</h3>
 <p>En plus de ces variantes assez "courantes", on peut retrouver d'autres variantes plus compliquées mais qui peuvent toujours servir :</p>
 <ul>
 <li><strong>Liste à enjambements</strong> (<em>skip list</em>) : ensemble de listes chaînées stockées "parallèlement" et qui permet de sauter des éléments en fonction de nos besoins, pratique pour trier et rechercher (<a href="https://en.wikipedia.org/wiki/Skip_list">https://en.wikipedia.org/wiki/Skip_list</a>).</li>

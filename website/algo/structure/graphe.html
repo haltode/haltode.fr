@@ -51,32 +51,25 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 20/06/2015<br>Modifié le : 01/12/2015</p>
-   </div>
-      </div>
+   <p>Publié le : 20/06/2015<br>Modifié le : 01/12/2015</p>
 
-      <div id="content">
-         <h1>Graphe</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-dun-graphe">Principe d'un graphe</a></li>
 <li><a href="#caracteristiques">Caractéristiques</a></li>
-<li><a href="#implementation">Implémentation</a><ul>
-<li><a href="#matrice-dadjacence">Matrice d'adjacence</a></li>
-<li><a href="#liste-dadjacence">Liste d'adjacence</a></li>
-<li><a href="#liste-darcs">Liste d'arcs</a></li>
-</ul>
-</li>
+<li><a href="#implementation">Implémentation</a></li>
 <li><a href="#parcourir-un-graphe">Parcourir un graphe</a></li>
 <li><a href="#operations-utiles-sur-un-graphe">Opérations utiles sur un graphe</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Graphe</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Supposons que je souhaite faire le tour de l'Europe en passant par diverses villes de plusieurs pays. Comment représenter mon trajet ? Comment rajouter des contraintes supplémentaires si par exemple je désire faire un trajet défini, mais le plus court possible en termes de km ? Comment insérer ou supprimer une nouvelle destination dans mon voyage et surtout comment visualiser ce dernier ?</p>
@@ -142,7 +135,7 @@
 </table>
 <h2 id="implementation">Implémentation</h2>
 <p>On peut implémenter un graphe de différentes façons, en fonction de nos besoins mais aussi de nos capacités (en temps et en mémoire).</p>
-<h3 id="matrice-dadjacence">Matrice d'adjacence</h3>
+<h3>Matrice d'adjacence</h3>
 <p>Une matrice d'adjacence est comme son nom l'indique un tableau 2D qui permet de représenter des arcs entre deux nœuds. On peut utiliser un tableau 2D de booléen (<code>true</code> = arc, <code>false</code> = pas d'arc), ou bien un tableau 2D d'entier (ou de flottant) qui permet alors de stocker les pondérations des arcs ($x$ = pondération de l'arc, 0 = pas d'arc).</p>
 <p>Voici un exemple de matrice d'adjacence (j'ai utilisé le premier graphe de l'article pour construire la matrice) :</p>
 <figure><img alt="Exemple de matrice d'adjacence" src="/img/algo/structure/graphe/exemple_matrice_adjacence.png" /><figcaption>Exemple de matrice d'adjacence</figcaption>
@@ -160,7 +153,7 @@
 <li>Quel est le poids de l'arc entre le nœud <em>C</em> et <em>D</em> ?</li>
 </ul>
 <p>La complexité en mémoire est en $O(N^2)$ (avec $N$ le nombre de nœuds du graphe), et la complexité pour accéder aux deux informations citées au-dessus est en $O(1)$ (puisqu'il s'agit d'un tableau).</p>
-<h3 id="liste-dadjacence">Liste d'adjacence</h3>
+<h3>Liste d'adjacence</h3>
 <p>On peut utiliser une variante de la matrice d'adjacence afin d'économiser de la mémoire (mais cette représentation requiert un temps en $O(N)$ pour savoir si deux nœuds sont voisins ou pour connaître la pondération d'un arc). Cette solution consiste à utiliser un tableau de <a href="/algo/structure/liste_chainee.html">listes chaînées</a>, chaque nœud du graphe a sa propre liste chaînée contenant tous ses voisins (et éventuellement toutes les pondérations).</p>
 <p>Voici par exemple la liste d'adjacence qui représente de nouveau le premier graphe de l'article :</p>
 <figure><img alt="Exemple de liste d'adjacence" src="/img/algo/structure/graphe/exemple_liste_adjacence.png" /><figcaption>Exemple de liste d'adjacence</figcaption>
@@ -175,7 +168,7 @@
 <li>On n'a pas assez de mémoire pour stocker une matrice d'adjacence : la complexité en mémoire d'une liste d'adjacence est de  $O(N + M)$ (avec $M$ le nombre d'arcs du graphe).</li>
 <li>On ne cherche pas à répondre aux questions du type tel nœud est-il voisin à tel autre nœud ? Ou encore quel est le poids de tel arc entre ces deux nœuds ? Mais plutôt lorsqu'on cherche à parcourir le graphe plus rapidement qu'en utilisant une matrice d'adjacence. En effet, dans une liste d'adjacence il n'y a que les voisins du nœud en question, alors que dans la matrice tous les nœuds sont représentés.</li>
 </ul>
-<h3 id="liste-darcs">Liste d'arcs</h3>
+<h3>Liste d'arcs</h3>
 <p>Enfin on peut utiliser une dernière solution, en représentant tous les arcs du graphe dans une liste chaînée.</p>
 <p>Voici l'exemple d'une liste d'arcs (toujours sur le même graphe) :</p>
 <figure><img alt="Exemple de liste d'arcs" src="/img/algo/structure/graphe/exemple_liste_arcs.png" /><figcaption>Exemple de liste d'arcs</figcaption>

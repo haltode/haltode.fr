@@ -51,32 +51,25 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 28/05/2014<br>Modifié le : 20/12/2015</p>
-   </div>
-      </div>
+   <p>Publié le : 28/05/2014<br>Modifié le : 20/12/2015</p>
 
-      <div id="content">
-         <h1>Chiffre de Vigenère</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#implementation">Implémentation</a></li>
-<li><a href="#cassage">Cassage</a><ul>
-<li><a href="#trouver-la-longueur-de-la-cle-de-chiffrement">Trouver la longueur de la clé de chiffrement</a></li>
-<li><a href="#deduire-la-cle">Déduire la clé</a></li>
-<li><a href="#dechiffrer-le-message">Déchiffrer le message</a></li>
-</ul>
-</li>
+<li><a href="#cassage">Cassage</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Chiffre de Vigenère</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Avec l'apparition des premiers systèmes de cryptanalyses, le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de César</a> n'est plus un algorithme sûr pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : <strong>le chiffre de Vigenère</strong>. Ce dernier est immunisé aux attaques du chiffre de César, car sa clé est une chaîne de caractères et non plus un simple nombre, cependant quelques siècles après les premières utilisations de ce système, des techniques permettant de casser le chiffre de Vigenère sont découvertes le rendant alors vulnérable et inutile.</p>
@@ -211,7 +204,7 @@ Programmation
 </code></pre>
 
 <p>Les seules informations que l'on a sont que toutes les majuscules ont été transformées en minuscules, tous les accents par des lettres non accentuées, et les espaces et signes de ponctuations ont été enlevés.</p>
-<h3 id="trouver-la-longueur-de-la-cle-de-chiffrement">Trouver la longueur de la clé de chiffrement</h3>
+<h3>Trouver la longueur de la clé de chiffrement</h3>
 <p>Pour casser le chiffre de Vigenère, il faut procéder par étape, et la première est de déterminer la longueur de la clé de chiffrement employée pour chiffrer le message. Une fois cette longueur connue, on peut savoir quelles lettres sont chiffrées avec la même portion de clé, rendant alors la cryptanalyse du message bien plus facile.</p>
 <p>Un des moyens de trouver la longueur de clé est d'utiliser le <strong>test de Kasiski</strong>. Le but est de repérer dans le message chiffré des sous chaînes qui se répètent, car ces dernières sont sans doute des mêmes portions du texte clair, codées avec la même partie de clé. Une fois qu'on connait suffisamment de répétitions, on peut grâce à l'espacement de ces dernières en déduire les tailles de clés possibles et en combinant plusieurs analyses on peut voir qu'une taille ressortira plus souvent que les autres. Mais pour cela notre texte doit être suffisamment long afin d'avoir un traitement efficace des sous chaînes (notre méthode étant basée sur des statistiques, si on a peu de données notre résultat ne sera pas forcément correcte et représentatif de la réalité). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se répétant (de différentes tailles allant de trois caractères à quatorze), et en voici une courte partie :</p>
 <table>
@@ -864,7 +857,7 @@ int main(void)
 <pre><code class="nohighlight">5
 </code></pre>
 
-<h3 id="deduire-la-cle">Déduire la clé</h3>
+<h3>Déduire la clé</h3>
 <p>Une fois qu'on a notre longueur de clé, on peut savoir quelles lettres du message ont été chiffrées avec les mêmes lettres de la clé (puisqu'on connait sa longueur, on sait donc où se répète la clé).</p>
 <p>On va alors découper le message chiffré en plusieurs catégories de lettres :</p>
 <ul>
@@ -994,7 +987,7 @@ int main(void)
 linux
 </code></pre>
 
-<h3 id="dechiffrer-le-message">Déchiffrer le message</h3>
+<h3>Déchiffrer le message</h3>
 <p>Désormais, on connait la clé de chiffrement que l'auteur du message a employée pour chiffrer ce texte :</p>
 <pre><code class="nohighlight">wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp
 </code></pre>

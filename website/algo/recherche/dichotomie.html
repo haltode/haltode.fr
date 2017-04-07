@@ -51,32 +51,25 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 28/06/2014<br>Modifié le : 14/01/2016</p>
-   </div>
-      </div>
+   <p>Publié le : 28/06/2014<br>Modifié le : 14/01/2016</p>
 
-      <div id="content">
-         <h1>Dichotomie</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-dichotomie">Principe de la dichotomie</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#complexite">Complexité</a></li>
-<li><a href="#implementation">Implémentation</a><ul>
-<li><a href="#recursif">Récursif</a></li>
-<li><a href="#iteratif">Itératif</a></li>
-<li><a href="#cc">C/C++</a></li>
-</ul>
-</li>
+<li><a href="#implementation">Implémentation</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Dichotomie</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Si je vous donne un annuaire téléphonique contenant plusieurs milliers de coordonnées, et que je vous demande de trouver une personne, normalement en quelques secondes vous y arrivez. Même si je rajoute plusieurs millions de personnes dans l'annuaire, vous devriez toujours être capable de repérer n'importe qui en moins d'une minute. Mais comment faire pour qu'un ordinateur nous remplace pour effectuer cette tâche ? Comment concrétiser l'algorithme que vous utilisez (sans le savoir) pour qu'un ordinateur le comprenne ? Votre cerveau est un outil incroyable qui n'aime pas faire des actions répétitives, et il essaiera naturellement de trouver une façon plus rapide de résoudre un problème. Vous n'auriez pas idée de commencer par regarder toutes les personnes avec un prénom en "A" si vous savez que la personne que vous cherchez est "Jean". Ce que vous faites plutôt, c'est que vous divisez l'intervalle de recherche à partir d'un résultat, vous ouvrez par exemple une page au hasard qui devrait correspondre à peu près à la lettre que vous cherchez, et vous affinez au fur et à mesure en fonction du mot de la page. Votre méthode se base sur une caractéristique très importante de votre annuaire : il est <strong>trié</strong> par ordre alphabétique.</p>
@@ -133,7 +126,7 @@
 <p>Pour vous faire comprendre à quel point cette recherche est efficace, imaginons que vous possédez une bibliothèque numérique de $N$ livres tous triés en fonction du titre par ordre alphabétique. Votre machine sur laquelle vous faites vos recherches de livres est très lente, et peut effectuer uniquement 2000 opérations à la seconde (aujourd'hui les ordinateurs classiques peuvent en effectuer plusieurs milliards...). Si vous implémentez une recherche dichotomique, il vous faudra environ plus de livres qu'il n'y a de particules dans un billion d'univers visible pour que votre machine prenne plus de temps qu'un clignement d'œil.</p>
 <h2 id="implementation">Implémentation</h2>
 <p>Dans ces implémentations, je suppose que l'élément appartient bien au tableau afin de simplifier le code et de se concentrer sur la recherche dichotomique.</p>
-<h3 id="recursif">Récursif</h3>
+<h3>Récursif</h3>
 <p>L'implémentation récursive en C de la recherche :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
@@ -184,7 +177,7 @@ int main(void)
 <pre><code class="nohighlight">8
 </code></pre>
 
-<h3 id="iteratif">Itératif</h3>
+<h3>Itératif</h3>
 <p>La version itérative en C :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
@@ -245,7 +238,7 @@ int main(void)
 <pre><code class="nohighlight">8
 </code></pre>
 
-<h3 id="cc">C/C++</h3>
+<h3>C/C++</h3>
 <p>En C, il existe une fonction <a href="http://www.cplusplus.com/reference/cstdlib/bsearch/"><code>bsearch</code></a> permettant de réaliser une dichotomie.</p>
 <p>De même, en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) implémente des fonctions de recherche dichotomique :</p>
 <ul>

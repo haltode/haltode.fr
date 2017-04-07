@@ -51,35 +51,24 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 08/06/2014<br>Modifié le : 28/11/2015</p>
-   </div>
-      </div>
+   <p>Publié le : 08/06/2014<br>Modifié le : 28/11/2015</p>
 
-      <div id="content">
-         <h1>Pile</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-pile">Principe de la pile</a></li>
-<li><a href="#quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</a><ul>
-<li><a href="#avec-une-liste-chainee">Avec une liste chaînée</a></li>
-<li><a href="#avec-un-tableau">Avec un tableau</a></li>
-</ul>
-</li>
+<li><a href="#quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</a></li>
 <li><a href="#complexite">Complexité</a></li>
-<li><a href="#implementation">Implémentation</a><ul>
-<li><a href="#liste-chainee">Liste chaînée</a></li>
-<li><a href="#tableau">Tableau</a></li>
-<li><a href="#stl">STL</a></li>
-</ul>
-</li>
+<li><a href="#implementation">Implémentation</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Pile</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Prenons l'exemple d'une fonction dans un programme. Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?</p>
@@ -106,7 +95,7 @@
 </ul>
 <h2 id="quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</h2>
 <p>Comme pour une liste chaînée, il existe différentes fonctions de bases permettant de manipuler une pile.</p>
-<h3 id="avec-une-liste-chainee">Avec une liste chaînée</h3>
+<h3>Avec une liste chaînée</h3>
 <pre><code class="nohighlight">créerPile :
    Initialiser la pile à NULL
 supprimerPile :
@@ -128,7 +117,7 @@ estVide :
       Retourner faux
 </code></pre>
 
-<h3 id="avec-un-tableau">Avec un tableau</h3>
+<h3>Avec un tableau</h3>
 <pre><code class="nohighlight">créerPile :
    Créer un tableau d'une taille fixe et suffisamment grand pour la pile
    Initialiser le pointeur de pile (PP) à 0
@@ -159,7 +148,7 @@ estVide :
 <li><code>estVide</code> : $O(1)$</li>
 </ul>
 <h2 id="implementation">Implémentation</h2>
-<h3 id="liste-chainee">Liste chaînée</h3>
+<h3>Liste chaînée</h3>
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
@@ -244,7 +233,7 @@ int main(void)
 </code></pre>
 
 <p>Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les <a href="/algo/structure/liste_chainee.html">listes chaînées</a> pour bien comprendre le code.</p>
-<h3 id="tableau">Tableau</h3>
+<h3>Tableau</h3>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define TAILLE_MAX 256
@@ -295,7 +284,7 @@ int main(void)
 </code></pre>
 
 <p>Cette implémentation est facile à comprendre et à utiliser.</p>
-<h3 id="stl">STL</h3>
+<h3>STL</h3>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation et des fonctions permettant de manipuler une pile : <a href="http://www.cplusplus.com/reference/stack/stack/">http://www.cplusplus.com/reference/stack/stack/</a></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>La pile est donc une structure de données facile à implémenter et peut être pratique dans de nombreux domaines : </p>

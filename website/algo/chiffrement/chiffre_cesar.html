@@ -51,31 +51,25 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 21/05/2014<br>Modifié le : 14/12/2015</p>
-   </div>
-      </div>
+   <p>Publié le : 21/05/2014<br>Modifié le : 14/12/2015</p>
 
-      <div id="content">
-         <h1>Chiffre de César</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l’algorithme</a></li>
 <li><a href="#exemple">Exemple</a></li>
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#implementation">Implémentation</a></li>
-<li><a href="#cassage">Cassage</a><ul>
-<li><a href="#force-brute">Force brute</a></li>
-<li><a href="#analyse-frequentielle">Analyse fréquentielle</a></li>
-</ul>
-</li>
+<li><a href="#cassage">Cassage</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Chiffre de César</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Les premiers algorithmes de chiffrement ne datent pas de Jules César, mais ce dernier va instaurer un système au sein de son empire, afin de communiquer sans que personnes ne puissent intercepter ses messages secrets. Pour cela, il utilisait une méthode très simple qui consistait à décaler chaque lettre de trois rangs vers la droite dans l'alphabet pour que le message paraisse alors incompréhensible, à part pour la personne connaissant l'astuce. L'empereur a ainsi donné le nom à l'un des premiers algorithmes de chiffrement : le chiffre de César.</p>
@@ -174,7 +168,7 @@ Linux
 
 <h2 id="cassage">Cassage</h2>
 <p>Cet algorithme de chiffrement possède cependant des failles, et il est tout à fait possible de le <strong>casser</strong>, c'est-à-dire d'obtenir le message original sans posséder la clé de chiffrement.</p>
-<h3 id="force-brute">Force brute</h3>
+<h3>Force brute</h3>
 <p>L'attaque par force brute (<em>brute force attack</em> en anglais) consiste simplement à tester toutes les possibilités de clé de chiffrement une par une, jusqu'à trouver la bonne.</p>
 <p>Le problème avec le chiffre de César est qu'il n'existe en réalité que 26 uniques possibilités de clé de chiffrement. En effet, si l'on utilise une clé supérieure à 26 cela revient à utiliser une clé de $x \mod 26$, par exemple si je chiffre le mot "Linux" avec une clé de chiffrement de 28 j'obtiens exactement le même résultat qu'avec ma clé de 2 car $28 \mod 26 = 2$. Il est de même pour les clés négatives, si j'utilise une clé de -1 cela revient à utiliser une clé de 25.</p>
 <p>Notre attaque nécessite donc l'analyse d'uniquement 26 clés de chiffrement, ce qui n'est rien pour un ordinateur qui peut faire des milliards d'opérations à la seconde :</p>
@@ -265,7 +259,7 @@ Cle de 25 : Olqxa
 
 <p>Ici vu qu'il n'y a que 26 possibilités, on se contente d'afficher tous les messages déchiffrés pour que l'utilisateur voit directement lequel ressemble à du français (on pourrait aussi implémenter un système qui différencie des phrases en français de phrases sans aucuns sens, mais l'implémentation se focalise uniquement sur l'attaque).</p>
 <p>Cette méthode est assez bourrin, car tester toutes les combinaisons possibles est souvent une mauvaise idée, cependant dans notre cas où on sait qu’il n’y a que 26 possibilités à tester, cette méthode devient tout de suite le choix parfait pour casser le chiffre de César. En plus d’être extrêmement rapide, elle est aussi très simple à mettre en place car une simple boucle suffit.</p>
-<h3 id="analyse-frequentielle">Analyse fréquentielle</h3>
+<h3>Analyse fréquentielle</h3>
 <p>L'analyse fréquentielle (<em>frequency analysis</em> en anglais) examine la fréquence d'apparition des lettres employées dans le message chiffré afin d'en deviner la clé pour le déchiffrer ensuite.</p>
 <p>Cette attaque est possible sur le chiffre de César car c'est un système de chiffrement à <strong>substitution mono-alphabétique</strong> ce qui signifie que si l’on chiffre plusieurs fois la lettre A avec une même clé de chiffrement $x$, alors la lettre chiffrée sera toujours la même. Ce type de système s’oppose donc à la <strong>substitution poly-alphabétique</strong> utilisée par le <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigenère</a> par exemple. De plus, l'analyse fréquentielle repose sur le fait que chaque langue possède des lettres plus utilisées que d'autres (en français par exemple la lettre E est plus utilisée que la lettre D, la lettre H l'est moins que la lettre O, etc.).</p>
 <p>On peut donc analyser la fréquence d'apparition de chaque lettre dans notre message chiffré, et en déduire la lettre correspondante dans le message clair en établissant un lien avec les lettres les plus utilisées en français (on suppose ici que notre message a été écrit en français avant d'être chiffré).</p>

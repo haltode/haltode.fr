@@ -1,8 +1,9 @@
 {% extends "default.html" %}
 
-{% block extra_metadata %}
+{% block extra_info %}
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : {{ metadata['published'] }}<br>Modifié le : {{ metadata['modified'] }}</p>
-   </div>
-{% endblock extra_metadata %}
+   <p>Publié le : {{ metadata['published'] }}<br>Modifié le : {{ metadata['modified'] }}</p>
+
+   <h4>Table des matières</h4>
+   {{ toc }}
+{% endblock extra_info %}

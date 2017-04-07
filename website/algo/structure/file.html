@@ -51,30 +51,25 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 08/06/2014<br>Modifié le : 28/11/2015</p>
-   </div>
-      </div>
+   <p>Publié le : 08/06/2014<br>Modifié le : 28/11/2015</p>
 
-      <div id="content">
-         <h1>File</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-file">Principe de la file</a></li>
 <li><a href="#quelques-fonctions-pour-manipuler-une-file">Quelques fonctions pour manipuler une file</a></li>
 <li><a href="#complexite">Complexité</a></li>
-<li><a href="#implementation">Implémentation</a><ul>
-<li><a href="#stl">STL</a></li>
-</ul>
-</li>
+<li><a href="#implementation">Implémentation</a></li>
 <li><a href="#file-a-priorite">File à priorité</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>File</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Comment un centre d'appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si d'autres appellent à leur tour ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d'attente, et cette structure s'appelle justement : la file.</p>
@@ -232,7 +227,7 @@ int main(void)
 }
 </code></pre>
 
-<h3 id="stl">STL</h3>
+<h3>STL</h3>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation et des fonctions permettant de manipuler une file : <a href="http://www.cplusplus.com/reference/queue/queue/">http://www.cplusplus.com/reference/queue/queue/</a> </p>
 <h2 id="file-a-priorite">File à priorité</h2>
 <p>Une file à priorité (<em>priority queue</em> en anglais), est sans doute la variante de la file la plus utilisée. On la retrouve notamment dans l'<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> pour trouver le plus court chemin entre deux nœuds d'un <a href="/algo/structure/graphe.html">graphe</a> pondéré positivement. Chaque élément se voit attribuer une <strong>clé</strong>, permettant d'organiser la file (d'où le nom de file à <strong>priorité</strong>). On peut ensuite rapidement récupérer l'élément avec la priorité la plus élevée.</p>

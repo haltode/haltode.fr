@@ -50,17 +50,12 @@
             </ul>
          </div>
 
-         {% block extra_metadata %}
-         {% endblock extra_metadata %}
+         {% block extra_info %}
+         {% endblock extra_info %}
       </div>
 
       <div id="content">
          <h1>{{ metadata['title'] }}</h1>
-
-         {% if toc %}
-            <h3>Table des matières</h3>
-            {{ toc }}
-         {% endif %}
 
          {{ html_content }}
 

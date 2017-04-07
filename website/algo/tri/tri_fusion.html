@@ -51,16 +51,10 @@
          </div>
 
    <hr>
-   <div id="article_metadata">
-      <p>Publié le : 10/05/2014<br>Modifié le : 13/12/2015</p>
-   </div>
-      </div>
+   <p>Publié le : 10/05/2014<br>Modifié le : 13/12/2015</p>
 
-      <div id="content">
-         <h1>Tri fusion</h1>
-
-            <h3>Table des matières</h3>
-            <div class="toc">
+   <h4>Table des matières</h4>
+   <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l’algorithme</a></li>
@@ -68,14 +62,15 @@
 <li><a href="#pseudo-code">Pseudo-code</a></li>
 <li><a href="#complexite">Complexité</a></li>
 <li><a href="#implementation">Implémentation</a></li>
-<li><a href="#ameliorations-et-variantes">Améliorations et variantes</a><ul>
-<li><a href="#liste-chainee">Liste chaînée</a></li>
-</ul>
-</li>
+<li><a href="#ameliorations-et-variantes">Améliorations et variantes</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
+      </div>
+
+      <div id="content">
+         <h1>Tri fusion</h1>
 
          <h2 id="introduction">Introduction</h2>
 <p>Le tri fusion (<em>merge sort</em> en anglais) est un algorithme de tri par comparaison efficace qui a pour complexité $O(N \log _2 N)$, il se base sur le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>. Cet algorithme est <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a> mais ne s’exécute pas <a href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>.</p>
@@ -222,7 +217,7 @@ int main(void)
 </code></pre>
 
 <h2 id="ameliorations-et-variantes">Améliorations et variantes</h2>
-<h3 id="liste-chainee">Liste chaînée</h3>
+<h3>Liste chaînée</h3>
 <p>Les <a href="/algo/structure/liste_chainee.html">listes chaînées</a> sont effectivement un bon moyen d'implémenter le tri fusion à cause de cette flexibilité que ce tri impose. En effet, on doit pouvoir séparer des éléments pour les fusionner dans un ordre différent après, et ces opérations ne sont pas pratiques ni optimales avec des tableaux, mais sont adaptées à des listes chaînées.</p>
 <p>La complexité en temps reste la même, mais la complexité en mémoire est améliorée.</p>
 <h2 id="conclusion">Conclusion</h2>
