@@ -5,9 +5,9 @@ function toggle_visibility(id) {
    else
       element.style.display = 'block';
 
-	var icon = document.getElementById('toggle_arrow_' + id)
-	if(!icon.className.localeCompare('fa fa-angle-down'))
-		icon.className = 'fa fa-angle-up'
-	else
-		icon.className = 'fa fa-angle-down'
+   var icon = document.getElementById('toggle_arrow_' + id)
+   if(!icon.className.localeCompare('fa fa-angle-down'))
+      icon.className = 'fa fa-angle-up'
+   else
+      icon.className = 'fa fa-angle-down'
 }
