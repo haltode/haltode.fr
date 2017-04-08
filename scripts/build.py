@@ -23,36 +23,25 @@ jinja_env.trim_blocks   = True
 jinja_env.lstrip_blocks = True
 
 
-def full_render(template, html, metadata, toc):
-    output = template.render({
-            'html_content': html,
-            'metadata': metadata,
-            'toc': toc
-            })
-    path = os.path.join(WEBSITE_DIR, metadata['path'])
-    with open(path, 'w+') as f:
-        f.write(output)
-
-
 def read_markdown(path):
     with open(path, 'r') as f:
         content = f.read()
 
     # Parse the content
-    md = markdown.Markdown(extensions={
-        'markdown.extensions.extra',
+    extensions = {
+        'markdown.extensions.extra', 
         'markdown.extensions.meta',
         TocExtension(marker='', toc_depth=2),
         'figureAltCaption'
-        })
-    html = md.convert(content)
+    }
+    md       = markdown.Markdown(extensions)
+    html     = md.convert(content)
     metadata = md.Meta
-    toc = md.toc
+    toc      = md.toc
 
     # The metadata values are lists but we want strings
     for key, value in metadata.items():
-        key = key.lower()
-        metadata[key] = ''.join(value)
+        metadata[key.lower()] = ''.join(value)
     # Format the metadata
     metadata['path'] = os.path.join(metadata['path'], os.path.basename(path))
     metadata['path'] = metadata['path'].replace('.md', '.html')
@@ -64,10 +53,15 @@ def read_markdown(path):
     return html, metadata, toc
 
 
-def basic_render(path, template_path):
-    template = jinja_env.get_template(template_path)
-    html, metadata, toc = read_markdown(path)
-    full_render(template, html, metadata, toc)
+def render(file_path, template_path):
+    template            = jinja_env.get_template(template_path)
+    html, metadata, toc = read_markdown(file_path)
+
+    output_params = {'html_content': html, 'metadata': metadata, 'toc': toc}
+    output_path   = os.path.join(WEBSITE_DIR, metadata['path'])
+    output        = template.render(output_params)
+    with open(output_path, 'w+') as f:
+        f.write(output)
 
 
 def get_path_files(directory, extension):
@@ -76,12 +70,12 @@ def get_path_files(directory, extension):
 
 def render_pages():
     for page in get_path_files(PAGE_DIR, 'md'):
-        basic_render(page, PAGE_TEMPLATE)
+        render(page, PAGE_TEMPLATE)
 
 
 def render_articles():
     for article in get_path_files(ARTICLE_DIR, 'md'):
-        basic_render(article, ARTICLE_TEMPLATE)
+        render(article, ARTICLE_TEMPLATE)
 
 
 # We can specify the files we only want to render
@@ -89,9 +83,9 @@ if len(sys.argv) > 1:
     for f in sys.argv[1:]:
         print("Rendering: ", os.path.basename(f))
         if PAGE_DIR in f:
-            basic_render(f, PAGE_TEMPLATE)
+            render(f, PAGE_TEMPLATE)
         elif ARTICLE_DIR in f:
-            basic_render(f, ARTICLE_TEMPLATE)
+            render(f, ARTICLE_TEMPLATE)
 # Or, we can render all the files
 else:
     print("Rendering pages...")
