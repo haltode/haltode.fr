@@ -31,7 +31,7 @@ Afin de parfaitement comprendre l'utilisation d'un tableau cumulatif, prenons l'
 
 ### Créer le tableau cumulatif
 
-A partir de la suite de nombres, on va créer un tableau cumulatif qui contiendra tous nos intervalles nécessaires, c'est-à-dire dans la première case l'élément 1, dans la deuxième case l'élément 1 + 2, dans la troisième case l'élément 1 + 2 + 3, etc.
+À partir de la suite de nombres, on va créer un tableau cumulatif qui contiendra tous nos intervalles nécessaires, c'est-à-dire dans la première case l'élément 1, dans la deuxième case l'élément 1 + 2, dans la troisième case l'élément 1 + 2 + 3, etc.
 
 | Tableau cumulatif         |
 | :-----------------        |

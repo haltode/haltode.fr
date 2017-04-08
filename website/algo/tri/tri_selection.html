@@ -40,7 +40,7 @@
                <li><a href="/">Accueil</a></li>
                <li><a href="/articles.html">Articles</a></li>
                <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">A propos</a></li>
+               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
          </div>
 
@@ -98,7 +98,7 @@
 <p>Ce tri se décompose réellement en deux étapes distinctes :</p>
 <figure><img alt="Exemple de tri par sélection" src="/img/algo/tri/tri_selection/exemple_tri.png" /><figcaption>Exemple de tri par sélection</figcaption>
 </figure>
-<p>A chaque tour, on cherche le minimum dans l'espace non trié du tableau (le minimum est représenté en bleu, et la partie non triée en blanc), ensuite on déplace cet élément à sa place définitive (représentée en vert). En faisant cela pour chaque élément du tableau, ce dernier se retrouve trié au bout de $N$ tours maximum ($N$ étant la taille du tableau).</p>
+<p>À chaque tour, on cherche le minimum dans l'espace non trié du tableau (le minimum est représenté en bleu, et la partie non triée en blanc), ensuite on déplace cet élément à sa place définitive (représentée en vert). En faisant cela pour chaque élément du tableau, ce dernier se retrouve trié au bout de $N$ tours maximum ($N$ étant la taille du tableau).</p>
 <h2 id="pseudo-code"><a class="toclink" href="#pseudo-code">Pseudo-code</a></h2>
 <p>Le pseudo-code du tri par sélection est simple :</p>
 <pre><code class="nohighlight">triSelection :
@@ -106,7 +106,7 @@
    Pour chaque élément
       Pour chaque élément de la partie non triée
          Mettre à jour le minimum du tableau rencontré jusqu'ici
-      Echanger l'élément actuel avec le minimum
+      Échanger l'élément actuel avec le minimum
 </code></pre>
 
 <h2 id="complexite"><a class="toclink" href="#complexite">Complexité</a></h2>
@@ -189,8 +189,8 @@ int main(void)
    Pour chaque élément de la partie non triée
       Mettre à jour le minimum et le maximum du tableau rencontré jusqu'ici
 
-   Echanger l'élément i (variant de 0 à N / 2 ) avec le minimum
-   Echanger l'élément j (variant de N à N / 2 ) avec le maximum
+   Échanger l'élément i (variant de 0 à N / 2 ) avec le minimum
+   Échanger l'élément j (variant de N à N / 2 ) avec le maximum
 </code></pre>
 
 <h3>Le cas des doublons</h3>
@@ -200,7 +200,7 @@ int main(void)
       Mettre à jour le minimum du tableau rencontré jusqu'ici
 
    Pour chaque élément de même valeur que le minimum
-      Echanger avec l'élément actuel
+      Échanger avec l'élément actuel
       Augmenter l'indice de l'élément actuel
 </code></pre>
 

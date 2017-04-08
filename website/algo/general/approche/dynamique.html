@@ -40,7 +40,7 @@
                <li><a href="/">Accueil</a></li>
                <li><a href="/articles.html">Articles</a></li>
                <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">A propos</a></li>
+               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
          </div>
 
@@ -222,7 +222,7 @@ int main(void)
 <p>Cependant, il est parfois possible d'optimiser l'espace mémoire utilisé par notre algorithme dynamique, résultant en un algorithme ayant une complexité en temps et en mémoire extrêmement intéressante. Pour cela, il va falloir changer notre manière de programmer notre algorithme dynamique. L'approche <strong>récursive</strong> qu'on avait précédemment utilisée était dite <strong>descendante</strong> dans le sens où on divise notre gros problème en sous-problème jusqu'à arriver à un problème de base à résoudre. Une autre manière de voir le problème est de façon <strong>itérative</strong> en partant d'un problème simple pour le complexifier au fur et à mesure qu'on avance, c'est une méthode dite <strong>ascendante</strong>. Et dans notre cas, cette dernière peut nous offrir des avantages énormes en mémoire car en rendant notre problème de plus en plus compliqué (jusqu'à arriver au problème initial), on peut se débarrasser des problèmes très simples et garder uniquement ceux nécessaire à la construction du plus gros problème. Il est impossible de faire ça avec l'approche descendante, car cette méthode a besoin à tout instant des sous-problèmes pour décomposer le problème initial puis pour le résoudre.</p>
 <figure><img alt="Comparaison des deux méthodes" src="/img/algo/general/approche/dynamique/comparaison_methodes.png" /><figcaption>Comparaison des deux méthodes</figcaption>
 </figure>
-<p>J'ai représenté deux tableaux en 2D fictifs représentant le stockage des calculs pour notre algorithme dynamique. A gauche, la méthode descendante, qui dépend donc de tous les éléments précédents pour former le résultat final. Et à droite, la méthode ascendante, qui elle ne dépend pas toujours de tous les résultats précédents (ici le résultat nécessite uniquement les deux derniers), on peut donc économiser une bonne partie du tableau qui n'est plus utile de garder.</p>
+<p>J'ai représenté deux tableaux en 2D fictifs représentant le stockage des calculs pour notre algorithme dynamique. À gauche, la méthode descendante, qui dépend donc de tous les éléments précédents pour former le résultat final. Et à droite, la méthode ascendante, qui elle ne dépend pas toujours de tous les résultats précédents (ici le résultat nécessite uniquement les deux derniers), on peut donc économiser une bonne partie du tableau qui n'est plus utile de garder.</p>
 <p>Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calculé disons le 5ème terme, il est tout à fait inutile de garder en mémoire les termes 2 et 3 car le 6ème terme nécessitera uniquement le 5ème et le 4ème termes. Ceci signifie qu'à tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 

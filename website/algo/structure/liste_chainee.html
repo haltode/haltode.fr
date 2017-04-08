@@ -40,7 +40,7 @@
                <li><a href="/">Accueil</a></li>
                <li><a href="/articles.html">Articles</a></li>
                <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">A propos</a></li>
+               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
          </div>
 
@@ -79,7 +79,7 @@
 <p>Imaginons un tableau contenant des milliards d'éléments. Comment supprimer un élément en plein milieu du tableau ? Pourquoi pas créer un deuxième tableau dans lequel on recopie toutes nos valeurs (sauf celles que l'on veut supprimer) ? Cela marche bien, mais cette opération est longue et coûteuse en mémoire. On peut essayer de décaler le tableau en réécrivant sur la valeur que l'on veut supprimer, grâce à ça on fait des économies de mémoire mais cela prend beaucoup de temps. Et comment ajouter un élément dans notre tableau ? De même, on peut recréer un tableau en recopiant nos valeurs et en ajoutant au passage le nouvel élément. On peut aussi faire des économies de mémoire en décalant les éléments vers la droite pour laisser un espace au milieu afin d'insérer notre nouvel élément. Cependant, cette solution prend trop de temps et ceci nous pousse à comprendre que les tableaux ne sont pas adaptés à toutes les situations.</p>
 <p>Face à ces problèmes de temps, et de mémoire, on a besoin d'une nouvelle structure de données souple, dynamique, et qui nous permet d'insérer et de supprimer des éléments facilement : la liste chaînée.</p>
 <h2 id="principe-de-la-liste-chainee"><a class="toclink" href="#principe-de-la-liste-chainee">Principe de la liste chaînée</a></h2>
-<p>Une liste chaînée (<em>linked list</em> en anglais) est une structure de données auto référentielle, c'est-à-dire que chacun de ses éléments pointe vers l'élément suivant que l'on appelle des <strong>nœuds</strong> (<em>node</em>). A partir de cette définition on peut déjà établir le contenu d'un élément d'une liste chaînée :</p>
+<p>Une liste chaînée (<em>linked list</em> en anglais) est une structure de données auto référentielle, c'est-à-dire que chacun de ses éléments pointe vers l'élément suivant que l'on appelle des <strong>nœuds</strong> (<em>node</em>). À partir de cette définition on peut déjà établir le contenu d'un élément d'une liste chaînée :</p>
 <ul>
 <li><strong>Des données</strong> : ces données peuvent être de n'importe quels types (entier, flottant, chaîne de caractère, etc.), et il peut en y avoir autant que possible par élément.</li>
 <li><strong>Un pointeur</strong> : ce pointeur pointe vers l'élément suivant de la liste, et permet de lier les nœuds entre eux.</li>
@@ -111,7 +111,7 @@ ajoutFin (élément) :
    Parcourir la liste jusqu'à la fin
    Faire pointer le dernier élément vers l'élément donné en paramètre
    Faire pointer l'élément donné en paramètre sur NULL
-ajoutElément (élément, index) :
+ajoutÉlément (élément, index) :
    Parcourir la liste jusqu'à arriver à l'élément situé avant l'index donné
    Faire pointer l'élément actuel sur le nouvel élément
    Faire pointer le nouvel élément sur le prochain
@@ -122,7 +122,7 @@ supprimerFin :
    Parcourir la liste jusqu'à l'avant-dernier élément
    Supprimer l'élément suivant
    Faire pointer l'élément sur NULL (pour indiquer la fin de la liste)
-supprimerElément (index) :
+supprimerÉlément (index) :
    Parcourir la liste jusqu'à arriver à l'élément situé avant l'index donné
    Faire pointer l'élément actuel sur le pointeur de l'élément à supprimer 
    Supprimer l'élément suivant
@@ -141,10 +141,10 @@ estVide :
 <li><code>supprimerListe</code> : $O(N)$</li>
 <li><code>ajoutTête</code> : $O(1)$</li>
 <li><code>ajoutFin</code> : $O(N)$</li>
-<li><code>ajoutElément</code> : $O(N)$</li>
+<li><code>ajoutÉlément</code> : $O(N)$</li>
 <li><code>supprimerTête</code> : $O(1)$</li>
 <li><code>supprimerFin</code> : $O(N)$</li>
-<li><code>supprimerElément</code> : $O(N)$</li>
+<li><code>supprimerÉlément</code> : $O(N)$</li>
 <li><code>estVide</code> : $O(1)$</li>
 </ul>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>

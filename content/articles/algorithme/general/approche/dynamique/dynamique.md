@@ -132,7 +132,7 @@ Cependant, il est parfois possible d'optimiser l'espace mémoire utilisé par no
 
 ![Comparaison des deux méthodes](/img/algo/general/approche/dynamique/comparaison_methodes.png)
 
-J'ai représenté deux tableaux en 2D fictifs représentant le stockage des calculs pour notre algorithme dynamique. A gauche, la méthode descendante, qui dépend donc de tous les éléments précédents pour former le résultat final. Et à droite, la méthode ascendante, qui elle ne dépend pas toujours de tous les résultats précédents (ici le résultat nécessite uniquement les deux derniers), on peut donc économiser une bonne partie du tableau qui n'est plus utile de garder.
+J'ai représenté deux tableaux en 2D fictifs représentant le stockage des calculs pour notre algorithme dynamique. À gauche, la méthode descendante, qui dépend donc de tous les éléments précédents pour former le résultat final. Et à droite, la méthode ascendante, qui elle ne dépend pas toujours de tous les résultats précédents (ici le résultat nécessite uniquement les deux derniers), on peut donc économiser une bonne partie du tableau qui n'est plus utile de garder.
 
 Si l'on reprend notre exemple de la suite de Fibonacci, quand on a calculé disons le 5ème terme, il est tout à fait inutile de garder en mémoire les termes 2 et 3 car le 6ème terme nécessitera uniquement le 5ème et le 4ème termes. Ceci signifie qu'à tout instant dans notre suite, on a uniquement besoin des deux derniers termes pour construire le suivant.
 

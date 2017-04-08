@@ -1,5 +1,5 @@
 Path: algo/ia/apprentissage_artificiel/regression_lin_poly  
-Title: Equation normale  
+Title: Équation normale  
 Published: 20/04/2016  
 Modified: 20/04/2016  
 

@@ -1,7 +1,7 @@
 Path:  
 Title: Projets  
 
-Liste de mes différents projets personnels que vous pouvez retrouver sur ma [page GitHub](https://github.com/napnac) :
+Liste de mes différents projets personnels que vous pouvez retrouver sur mon [profil Github](https://github.com/napnac) :
 
 | Date/Durée | Projet | Description |
 | :--------- | ------ | :---------- |

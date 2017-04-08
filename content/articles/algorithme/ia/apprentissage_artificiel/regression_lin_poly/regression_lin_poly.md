@@ -189,7 +189,7 @@ $\theta_{j} = \theta_{j} - \alpha\left[\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h
 
 On a obtenu cette formule de la même manière que pour l'ancienne, c'est-à-dire en calculant la dérivée partielle de la fonction d'erreur.
 
-#### Equation normale
+#### Équation normale
 
 Pour l'équation normale, on applique de nouveau notre démonstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat suivant :
 
@@ -199,7 +199,7 @@ On retrouve notre paramètre de régularisation $\lambda$, ainsi qu'une matrice 
 
 #### Paramètre de régularisation
 
-Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement pénalisés qu'on risque d'avoir une fonction d'hypothèse trop simple pour notre problème. A l'inverse, un paramètre $\lambda$ trop petit ne va pas assez pénaliser les coefficients avec des degrés élevés ce qui n'atténuera pas notre problème de surapprentissage et sera donc inutile.
+Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement pénalisés qu'on risque d'avoir une fonction d'hypothèse trop simple pour notre problème. À l'inverse, un paramètre $\lambda$ trop petit ne va pas assez pénaliser les coefficients avec des degrés élevés ce qui n'atténuera pas notre problème de surapprentissage et sera donc inutile.
 
 Il faut alors réussir à choisir un bon paramètre de régularisation $\lambda$, et pour cela on peut s'aider de différents échantillons, ainsi que de la **validation croisée**. Jusqu'à présent, le seul échantillon de nos données qu'on utilisait était **l'échantillon d'apprentissage**. On va désormais rajouter deux nouveaux échantillons :
 

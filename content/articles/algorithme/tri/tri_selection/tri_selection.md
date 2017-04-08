@@ -42,7 +42,7 @@ Ce tri se décompose réellement en deux étapes distinctes :
 
 ![Exemple de tri par sélection](/img/algo/tri/tri_selection/exemple_tri.png)
 
-A chaque tour, on cherche le minimum dans l'espace non trié du tableau (le minimum est représenté en bleu, et la partie non triée en blanc), ensuite on déplace cet élément à sa place définitive (représentée en vert). En faisant cela pour chaque élément du tableau, ce dernier se retrouve trié au bout de $N$ tours maximum ($N$ étant la taille du tableau).
+À chaque tour, on cherche le minimum dans l'espace non trié du tableau (le minimum est représenté en bleu, et la partie non triée en blanc), ensuite on déplace cet élément à sa place définitive (représentée en vert). En faisant cela pour chaque élément du tableau, ce dernier se retrouve trié au bout de $N$ tours maximum ($N$ étant la taille du tableau).
 
 ## Pseudo-code
 
@@ -54,7 +54,7 @@ triSelection :
    Pour chaque élément
       Pour chaque élément de la partie non triée
          Mettre à jour le minimum du tableau rencontré jusqu'ici
-      Echanger l'élément actuel avec le minimum
+      Échanger l'élément actuel avec le minimum
 ```
 
 ## Complexité
@@ -151,8 +151,8 @@ Pour chaque élément restant
    Pour chaque élément de la partie non triée
       Mettre à jour le minimum et le maximum du tableau rencontré jusqu'ici
       
-   Echanger l'élément i (variant de 0 à N / 2 ) avec le minimum
-   Echanger l'élément j (variant de N à N / 2 ) avec le maximum
+   Échanger l'élément i (variant de 0 à N / 2 ) avec le minimum
+   Échanger l'élément j (variant de N à N / 2 ) avec le maximum
 ```
 
 ### Le cas des doublons
@@ -165,7 +165,7 @@ Pour chaque élément
       Mettre à jour le minimum du tableau rencontré jusqu'ici
    
    Pour chaque élément de même valeur que le minimum
-      Echanger avec l'élément actuel
+      Échanger avec l'élément actuel
       Augmenter l'indice de l'élément actuel
 ```
 

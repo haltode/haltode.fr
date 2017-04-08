@@ -117,7 +117,7 @@ Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha
 
 L'algorithme risque alors de ne pas converger, voire de **diverger**. 
 
-A l'inverse, une vitesse d'apprentissage trop faible rendra notre algorithme terriblement lent :
+À l'inverse, une vitesse d'apprentissage trop faible rendra notre algorithme terriblement lent :
 
 ![Exemple de conséquence d'un coefficient d'apprentissage faible](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_faible.png)
 
@@ -273,11 +273,11 @@ Le code est beaucoup plus concis de cette manière, ce qui rend sa lecture plus 
 
 Dans le cas de généralisation d'un problème avec plusieurs attributs, il est possible que l'échelle de valeurs possibles soit très différente d'un attribut à un autre. Par exemple, dans l'estimation du prix d'un ordinateur, le nombre d'opérations que l'ordinateur effectue à la seconde représente un nombre bien plus important que le nombre de ventilateurs à l'intérieur de la machine. Si on affiche un *contour plot* dans cette situation, on verrait ce phénomène :
 
-![Echelles différentes au sein des attributs](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_differentes.png)
+![Échelles différentes au sein des attributs](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_differentes.png)
 
-Le problème ici est que notre algorithme du gradient va mettre beaucoup plus de temps à converger vers un minimum, car on a de longs et fins contours. A l'inverse, si on arrive à rendre les échelles similaires, on aurait plutôt un graphique qui ressemble à cela :
+Le problème ici est que notre algorithme du gradient va mettre beaucoup plus de temps à converger vers un minimum, car on a de longs et fins contours. À l'inverse, si on arrive à rendre les échelles similaires, on aurait plutôt un graphique qui ressemble à cela :
 
-![Echelles similaires](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_similaires.png)
+![Échelles similaires](/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/echelles_similaires.png)
 
 Notre algorithme va alors converger bien plus rapidement.
 

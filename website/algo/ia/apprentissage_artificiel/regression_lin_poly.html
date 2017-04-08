@@ -40,7 +40,7 @@
                <li><a href="/">Accueil</a></li>
                <li><a href="/articles.html">Articles</a></li>
                <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">A propos</a></li>
+               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
          </div>
 
@@ -240,12 +240,12 @@
 <p>Pour chaque coefficient $\theta_j$ avec $j$ allant de 1 à $n$ (puisqu'on ne pénalise pas $\theta_0$, et on utilisera l'ancienne formule pour ce coefficient) :</p>
 <p>$\theta_{j} = \theta_{j} - \alpha\left[\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij} + \frac{\lambda}{m}\theta_j\right]$</p>
 <p>On a obtenu cette formule de la même manière que pour l'ancienne, c'est-à-dire en calculant la dérivée partielle de la fonction d'erreur.</p>
-<h4>Equation normale</h4>
+<h4>Équation normale</h4>
 <p>Pour l'équation normale, on applique de nouveau notre démonstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat suivant :</p>
 <p>$\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\\ &amp;1\\ &amp;&amp;1 \\ &amp;&amp;&amp;\ddots \\ &amp;&amp;&amp;&amp;1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y$</p>
 <p>On retrouve notre paramètre de régularisation $\lambda$, ainsi qu'une matrice de taille $(n + 1)\times(n + 1)$ assez spéciale composée de 1 uniquement dans la diagonale en partant de la deuxième colonne (le reste de la matrice contient des 0). Cette matrice est en réalité une <a href="https://en.wikipedia.org/wiki/Identity_matrix">matrice identité</a> sans le premier terme en haut à gauche (en rapport avec $\theta_0$ qui n'est pas pénalisé).</p>
 <h4>Paramètre de régularisation</h4>
-<p>Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement pénalisés qu'on risque d'avoir une fonction d'hypothèse trop simple pour notre problème. A l'inverse, un paramètre $\lambda$ trop petit ne va pas assez pénaliser les coefficients avec des degrés élevés ce qui n'atténuera pas notre problème de surapprentissage et sera donc inutile.</p>
+<p>Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement pénalisés qu'on risque d'avoir une fonction d'hypothèse trop simple pour notre problème. À l'inverse, un paramètre $\lambda$ trop petit ne va pas assez pénaliser les coefficients avec des degrés élevés ce qui n'atténuera pas notre problème de surapprentissage et sera donc inutile.</p>
 <p>Il faut alors réussir à choisir un bon paramètre de régularisation $\lambda$, et pour cela on peut s'aider de différents échantillons, ainsi que de la <strong>validation croisée</strong>. Jusqu'à présent, le seul échantillon de nos données qu'on utilisait était <strong>l'échantillon d'apprentissage</strong>. On va désormais rajouter deux nouveaux échantillons :</p>
 <ul>
 <li><strong>l'échantillon de test</strong> : on l'utilisera pour mesurer l'efficacité de notre algorithme sur de nouvelles données, car si on mesure cela sur notre échantillon d'apprentissage et que notre algorithme a un problème de surapprentissage, on verra de très bons résultats alors qu'on a un programme médiocre incapable de généraliser.</li>

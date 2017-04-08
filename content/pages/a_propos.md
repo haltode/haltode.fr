@@ -1,13 +1,13 @@
 Path:  
-Title: A propos  
+Title: À propos
 
 ## Présentation
 
-Je suis Thibault (ou napnac), un jeune programmeur de 17 ans, passionné d'informatique et de nouvelles technologies. Je programme en C principalement, et même si j'ai quelques notions dans d'autres langages, je souhaite en apprendre plus dans le futur. J'écris des articles assez régulièrement sur des thèmes très variés mais touchant toujours à l'informatique.
+Je suis Thibault (ou napnac), un jeune programmeur de 17 ans, passionné d'informatique et de nouvelles technologies. Je programme en C principalement, mais j'ai quelques notions dans d'autres languages comme le C++ ou le Python. J'écris des articles assez régulièrement sur des thèmes très variés mais touchant toujours à l'informatique.
 
 ## Comment me contacter ?
 
-Si vous souhaitez me contacter, vous pouvez m'envoyer un mail à `napnac arobase napnac point fr` ou consulter mon compte Twitter : [napnac](https://twitter.com/napnac).
+Si vous souhaitez me contacter, vous pouvez m'envoyer un mail : `napnac [at] domaine` ou consulter mon compte Twitter : [napnac](https://twitter.com/napnac).
 
 ## Flux RSS/Atom
 
@@ -18,7 +18,7 @@ Afin d'être notifié lors de l'ajout d'un nouvel article, vous pouvez suivre l'
 
 ## Site
 
-Les pages de ce site sont écrites en [Markdown](https://en.wikipedia.org/wiki/Markdown), puis converties grâce à un [programme fait maison](https://github.com/napnac/napnac.fr/blob/master/build.py) en Python. Les images et les schémas sont créés grâce à [LaTeX](https://en.wikipedia.org/wiki/LaTeX) et notamment grâce au package [tikz](http://www.texample.net/tikz/examples/). Toutes les expressions mathématiques intégrées dans les articles sont écrites en LaTeX aussi, et transformées grâce à [MathJax](https://www.mathjax.org/).
+Les pages de ce site sont écrites en [Markdown](https://en.wikipedia.org/wiki/Markdown), puis converties grâce à un [programme fait maison](https://github.com/napnac/napnac.fr/blob/master/scripts/build.py) en Python. Les images et les schémas sont créés grâce à [LaTeX](https://en.wikipedia.org/wiki/LaTeX) et notamment grâce au package [tikz](http://www.texample.net/tikz/examples/). Toutes les expressions mathématiques intégrées dans les articles sont écrites en LaTeX aussi, et transformées grâce à [MathJax](https://www.mathjax.org/).
 
 Si vous souhaitez en apprendre plus sur la création et le fonctionnement de ce site, je vous invite à consulter les sources du projet sur la page GitHub : <https://github.com/napnac/napnac.fr>.
 

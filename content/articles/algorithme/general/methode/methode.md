@@ -13,7 +13,7 @@ Il est important de noter que cette méthode n'est pas réellement adaptée pour
 
 En plus de votre ordinateur, vous n'aurez besoin que de feuilles et d'un crayon.
 
-## Enoncé
+## Énoncé
 
 ### Lecture
 
@@ -27,7 +27,7 @@ Il est très courant dans un concours de programmation d'avoir une histoire qui 
 
 Voici un exemple de sujet très simple, ainsi qu'une reformulation de ce dernier :
 
-> Alice et Bob sont de très bons amis, cependant les deux voyagent beaucoup et ils aimeraient se rencontrer afin de discuter de leurs dernières aventures. A force de voyager, Alice et Bob n'ont plus énormément d'argent, et Alice n'a pas de quoi payer pour rencontrer Bob. Ce dernier décide donc de la rejoindre, et se renseigne sur les différents moyens de transports ainsi que leurs coûts. Son but est de voyager à prix minime, pour économiser dans de futurs voyages. Après une recherche sur son navigateur favori, Bob se retrouve avec les informations suivantes :  
+> Alice et Bob sont de très bons amis, cependant les deux voyagent beaucoup et ils aimeraient se rencontrer afin de discuter de leurs dernières aventures. À force de voyager, Alice et Bob n'ont plus énormément d'argent, et Alice n'a pas de quoi payer pour rencontrer Bob. Ce dernier décide donc de la rejoindre, et se renseigne sur les différents moyens de transports ainsi que leurs coûts. Son but est de voyager à prix minime, pour économiser dans de futurs voyages. Après une recherche sur son navigateur favori, Bob se retrouve avec les informations suivantes :  
 > 
 > | Départ   | Arrivée  | Coût | Transport |
 > | ------   | -------  | ---- | --------- |
@@ -152,7 +152,7 @@ L'avantage énorme d'un pseudo-code est qu'il est assez court (une vingtaine de 
 
 De plus, un bon pseudo-code aide à réduire les risques de bugs dans notre futur programme car on aura déjà établi la structure du code ainsi que la manière d'implémenter notre algorithme. On réduit alors encore une fois le temps perdu à débuguer ce qui est toujours avantageux.
 
-### Ecriture
+### Écriture
 
 Il n'y a pas de règles de syntaxe pour le pseudo-code et c'est ce qui le rend très personnel, chacun a sa manière d'en écrire, cependant il y a quelques méthodes qui sont intéressantes de suivre afin de constituer un pseudo-code réellement utile :
 
@@ -163,7 +163,7 @@ Il n'y a pas de règles de syntaxe pour le pseudo-code et c'est ce qui le rend t
 - Les variables sont des détails d'implémentation, il est donc inutile de les déclarer, en revanche préciser le type et la valeur d'initialisation peut être intéressant dans certains cas.
 - Le pseudo-code ne doit pas contenir de commentaire car ce dernier doit être assez clair et écrit en français.
 
-A titre d'exemple, voici mon pseudo-code allant avec notre problème de voyage entre Alice et Bob :
+À titre d'exemple, voici mon pseudo-code allant avec notre problème de voyage entre Alice et Bob :
 
 ```nohighlight
 Lire le graphe orienté pondéré positivement
@@ -213,7 +213,7 @@ Une fois le pseudo-code correctement établit, il faut une dernière étape de v
 
 ## Coder l'algorithme
 
-A partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long si les étapes précédentes ne sont pas correctement suivies. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, rapidement, et si possible avec le moins de bug possible. Il y a tout de même quelques astuces à respecter pour éviter au mieux les potentielles erreurs (ces conseils s'appliquent principalement lors de concours où le temps est limité) :
+À partir de ce moment, vous devez être sûr de votre algorithme car coder, tester et débuguer un programme est un processus qui peut être très long si les étapes précédentes ne sont pas correctement suivies. Normalement, vous avez votre algorithme en tête, un pseudo-code clair et précis, ainsi que plusieurs exemples (en plus de ceux du sujet) pour tester le programme. Tout est réuni pour coder efficacement, rapidement, et si possible avec le moins de bug possible. Il y a tout de même quelques astuces à respecter pour éviter au mieux les potentielles erreurs (ces conseils s'appliquent principalement lors de concours où le temps est limité) :
 
 - **Ne cherchez surtout pas à optimiser votre programme lorsque vous êtes en train de l'écrire !** Comme le dit si bien [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) : *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil"*. Inutile de chercher à optimiser des petites parties de votre code, car l'impact sur la complexité en temps et en mémoire sera sans doute minime et vous risquez d'introduire plus de bugs.
 - Ne vous compliquez pas la tâche quand il y a une alternative plus simple. En concours, le but est de créer **le programme le plus simple possible** (pour réduire le nombre d'erreurs). Par exemple, il est rarement utile de faire une allocation dynamique qui prend du temps et risque d'être mal effectuée, en revanche il est commun et bien plus pratique de déclarer les variables majeures du programme en tant que variable globale pour simplifier le programme et éviter des bugs inutiles liés à l'allocation et à la libération de la mémoire.

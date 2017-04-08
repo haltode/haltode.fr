@@ -56,7 +56,7 @@ Soit $p$ et $q$ deux nombres premiers que je choisis aléatoirement :
 
 $p = 61$ et $q = 137$
 
-A partir de cela, on peut calculer notre module de chiffrement :
+À partir de cela, on peut calculer notre module de chiffrement :
 
 $n = p \times q$  
 $n = 8357$
@@ -601,7 +601,7 @@ Ce qu'il faut retenir de cela, est qu'il est nécessaire pour avoir un système 
 
 ### Identification
 
-A moins que vous ayez de gros problèmes avec la NSA, votre clé devrait normalement être sécurisée si elle est assez longue. Mais il reste encore une faille dans notre système c'est la transmission de la clé publique. En effet, cette communication peut être compromise si quelqu'un se fait passer pour vous, et l'usurpation d'identité est résolue grâce à une **signature numérique** (comme lorsque vous signez un papier administratif dans la vraie vie pour vous identifier).
+À moins que vous ayez de gros problèmes avec la NSA, votre clé devrait normalement être sécurisée si elle est assez longue. Mais il reste encore une faille dans notre système c'est la transmission de la clé publique. En effet, cette communication peut être compromise si quelqu'un se fait passer pour vous, et l'usurpation d'identité est résolue grâce à une **signature numérique** (comme lorsque vous signez un papier administratif dans la vraie vie pour vous identifier).
 
 Le principe est plutôt simple, on a vu que pour un message $x$, on a $f(f'(x)) = f'(f(x)) = x \mod n$. Lorsqu'on veut signer notre message et certifier que c'est nous qui l'avons envoyé, on va dans un premier temps chiffrer notre message avec notre clé privée, puis on le chiffre de nouveau avec la clé publique de la personne à qui on souhaite envoyer le message. Une fois que la personne le reçoit, elle va déchiffrer avec sa clé privée le message puis, elle va le déchiffrer de nouveau avec votre clé publique (car on a chiffré dans un premier temps avec notre propre clé privée). Si le message a un sens, cela confirme que c'est bien vous qui l'avais envoyé car vous êtes le seul à connaître votre clé privée.
 
@@ -619,7 +619,7 @@ Cette attaque peut être extrêmement gênante, et avec Internet c'est encore pl
 
 ### Attaque d'Håstad
 
-A la création du système RSA, les ordinateurs étaient loin d'être aussi rapides qu'aujourd'hui et ce problème d'efficacité était réellement compromettant. Pour permettre un algorithme plus rapide, on utilisait souvent des valeurs de $e$ petites (3, 7, 17, etc.) afin d'améliorer le temps nécessaire à l'algorithme pour générer des paires de clés et de chiffrer le message. Cependant, Johan Håstad démontra en 1985, que si on envoyait un **même message** à au moins $e$ personnes avec le **même exposant**, alors on pouvait déchiffrer le texte facilement. Vu qu'en général on utilisait des exposants comme $e = 3$, il suffisait alors d'intercepter 3 mêmes messages qu'une personne a envoyé à différents destinataires, pour en trouver le contenu déchiffré. Pour effectuer cette attaque, le mathématicien a utilisé le [théorème des restes chinois](https://en.wikipedia.org/wiki/Chinese_remainder_theorem) :
+À la création du système RSA, les ordinateurs étaient loin d'être aussi rapides qu'aujourd'hui et ce problème d'efficacité était réellement compromettant. Pour permettre un algorithme plus rapide, on utilisait souvent des valeurs de $e$ petites (3, 7, 17, etc.) afin d'améliorer le temps nécessaire à l'algorithme pour générer des paires de clés et de chiffrer le message. Cependant, Johan Håstad démontra en 1985, que si on envoyait un **même message** à au moins $e$ personnes avec le **même exposant**, alors on pouvait déchiffrer le texte facilement. Vu qu'en général on utilisait des exposants comme $e = 3$, il suffisait alors d'intercepter 3 mêmes messages qu'une personne a envoyé à différents destinataires, pour en trouver le contenu déchiffré. Pour effectuer cette attaque, le mathématicien a utilisé le [théorème des restes chinois](https://en.wikipedia.org/wiki/Chinese_remainder_theorem) :
 
 Imaginons, qu'Alice envoie à au moins 3 personnes un même message chiffré, avec le même exposant $e = 3$. Soit les trois messages chiffrés $c_1$, $c_2$, $c_3$, leurs modules de chiffrement respectifs  $n_1$, $n_2$, $n_3$, et le message déchiffré $d$. On a démontré que $f'(f(d)) = d \mod n$, ce qui signifie que déchiffrer un message chiffré revient à exprimer $d \mod n$. On a donc $c_i \equiv d^3 \mod n_i$ avec $i$ allant de 1 à 3. Grâce au théorème des restes chinois, on peut trouver un nombre $c$ tel que $c_i \equiv c \mod n$, ce qui nous donne $c \equiv d^3 \mod{n_1 n_2 n_3}$. Or par définition, $d < n_i$, et donc $d^3 < n_1 n_2 n_3$. Alors on peut écrire $c = d^3$, et calculer $d$ facilement $d = \sqrt[3]{c}$. On peut généraliser cette attaque en remplaçant 3 par $e$, mais plus $e$ est grand plus l'attaque est difficile à mettre en place.
 
@@ -651,13 +651,13 @@ Que l'on peut arranger en divisant le tout par $dpq$ :
 
 $\frac{e}{pq} = \frac{k}{dg}(1 - \delta)$ avec $\delta = \frac{p + q - 1 - \frac{g}{k}}{pq}$
 
-A partir de là, si on arrive à déterminer $\frac{k}{dg}$ grâce à l'algorithme des fractions continues, on peut trouver $k$ mais surtout $dg$ qui nous permet de casser le système RSA.
+À partir de là, si on arrive à déterminer $\frac{k}{dg}$ grâce à l'algorithme des fractions continues, on peut trouver $k$ mais surtout $dg$ qui nous permet de casser le système RSA.
 
 Un article spécialement sur l'attaque de Wiener (et en français), montre comment utiliser l'algorithme des fractions continues : [Attaque de clés RSA par la méthode de Wiener](http://www.jannaud.fr/static/download/Travail/rapportwiener.pdf).
 
 ### Module de chiffrement commun
 
-Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). A première vue, il n'y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu'une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.
+Créer un module de chiffrement à chaque génération de paires de clés peut être une opération lourde, et certaines personnes utilisaient un même $n$ pour toutes les paires (avec bien entendu des $e$ et $d$ différents). À première vue, il n'y a pas de raison que ça ne fonctionne pas, cependant il a été démontré qu'une personne possédant une paire de clé de ce genre, peut factoriser assez facilement $n$ avec son propre $e$ et $d$ et ainsi déduire les clés privées des autres personnes du système.
 
 ![Démonstration de cette propriété](/img/algo/chiffrement/rsa/demonstration_facto_n.png)
 

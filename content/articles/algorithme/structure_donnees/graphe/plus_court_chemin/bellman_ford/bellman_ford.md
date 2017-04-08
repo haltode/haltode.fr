@@ -40,47 +40,47 @@ Pour contrer cela, on va imposer une limite de recherche à notre récursion qui
 Voici un premier pseudo-code simplifié de la récursion (on suppose que le graphe en entrée est orienté et ne possède pas de cycles améliorantes pour établir une première idée de l'algorithme général).
 
 ```nohighlight
-Bellman-Ford (nbEtape, nœud) :
+Bellman-Ford (nbÉtape, nœud) :
 
-   Si nbEtape = 0
+   Si nbÉtape = 0
       Si c'est le nœud d'arrivée
          Retourner 0
       Sinon
          Retourner INFINI car le chemin est invalide
 
-   cheminMin = Bellman-Ford(nbEtape - 1, nœud)
+   cheminMin = Bellman-Ford(nbÉtape - 1, nœud)
    Pour chaque voisin du nœud
-      cheminVoisin = pondérationArc + Bellman-Ford(nbEtape - 1, voisin)
+      cheminVoisin = pondérationArc + Bellman-Ford(nbÉtape - 1, voisin)
       cheminMin = min(cheminMin, cheminVoisin)
 
    Retourner cheminMin
 ```
 
-Ce pseudo-code traduit une simple récursion permettant d'explorer tous les chemins en moins de `nbEtape` jusqu'à l'arrivée, tout en sélectionnant le plus court d'entre eux. Pour cela, l'algorithme utilise une simple boucle sur tous les voisins d'un nœud ainsi qu'une variable `cheminMin` qu'on actualise pour toujours avoir le chemin avec la pondération minimale entre tous les choix possibles.
+Ce pseudo-code traduit une simple récursion permettant d'explorer tous les chemins en moins de `nbÉtape` jusqu'à l'arrivée, tout en sélectionnant le plus court d'entre eux. Pour cela, l'algorithme utilise une simple boucle sur tous les voisins d'un nœud ainsi qu'une variable `cheminMin` qu'on actualise pour toujours avoir le chemin avec la pondération minimale entre tous les choix possibles.
 
 ### Version dynamique récursive
 
 Maintenant, on passe à l'étape de dynamisation de cet algorithme puisque ce dernier est terriblement lent et possède une complexité en temps exponentielle car il ne fait que répéter des appels récursifs inutilement. On va donc créer un tableau 2D stockant le plus court chemin pour tous les paramètres possibles de notre fonction, afin de ne jamais avoir à recalculer le résultat d'un même appel.
 
 ```nohighlight
-plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialisé à -1)
+plusCourtChemin[NB_ÉTAPE_MAX][NB_NŒUD_MAX] (initialisé à -1)
 
-Bellman-Ford (nbEtape, nœud) :
+Bellman-Ford (nbÉtape, nœud) :
 
-   Si nbEtape = 0
+   Si nbÉtape = 0
       Si c'est le nœud d'arrivée
          Retourner 0
       Sinon
          Retourner INFINI car le chemin est invalide
-   Si plusCourtChemin[nbEtape][nœud] != -1
-      Retourner plusCourtChemin[nbEtape][nœud]
+   Si plusCourtChemin[nbÉtape][nœud] != -1
+      Retourner plusCourtChemin[nbÉtape][nœud]
 
-   cheminMin = Bellman-Ford(nbEtape - 1, nœud)
+   cheminMin = Bellman-Ford(nbÉtape - 1, nœud)
    Pour chaque voisin du nœud
-      cheminVoisin = pondérationArc + Bellman-Ford(nbEtape - 1, voisin)
+      cheminVoisin = pondérationArc + Bellman-Ford(nbÉtape - 1, voisin)
       cheminMin = min(cheminMin, cheminVoisin)
 
-   plusCourtChemin[nbEtape][nœud] = cheminMin
+   plusCourtChemin[nbÉtape][nœud] = cheminMin
    Retourner cheminMin
 ```
 
@@ -99,7 +99,7 @@ Le passage à la version itérative de l'algorithme dynamique est essentiel à c
 ```nohighlight
 Bellman-Ford :
 
-   plusCourtChemin[NB_ETAPE_MAX][NB_NOEUD_MAX] (initialisé à INFINI)
+   plusCourtChemin[NB_ÉTAPE_MAX][NB_NŒUD_MAX] (initialisé à INFINI)
    plusCourtChemin[0][arrivée] = 0
 
    Pour chaque étape
@@ -110,13 +110,13 @@ Bellman-Ford :
             cheminMin = min(cheminMin, cheminVoisin)
          plusCourtChemin[étape][nœud] = cheminMin
 
-   Retourner plusCourtChemin[nbEtapeMax - 1][départ]
+   Retourner plusCourtChemin[nbÉtapeMax - 1][départ]
 ```
 
 Plusieurs points importants à comprendre dans cette version itérative de l'algorithme :
 
 - Le tableau `plusCourtChemin` est initialisé à `INFINI` car on n'a plus besoin de détecter le cas où l'on retombe sur un appel de fonction déjà rencontré auparavant, puisque désormais on utilise des boucles (passage de la version récursive à itérative). On choisit donc la valeur `INFINI` pour noter qu'on ne connaît pas de plus court chemin pour un nœud donné à une étape précise.
-- On a transformé les appels récursifs en deux boucles imbriquées, une sur les étapes, et l'autre sur les nœuds. En réalité, on parcourt simplement notre tableau `plusCourtChemin`, et c'est exactement ce que réalisait implicitement notre fonction récursive puisqu'on retrouve la première boucle grâce au paramètre de la fonction `nbEtape` (que l'on diminuait à chaque fois de 1, et qui nous permettait d'arrêter la récursion lorsqu'elle atteignait 0), et la boucle sur les nœuds lors des appels récursifs sur les nœuds voisins.
+- On a transformé les appels récursifs en deux boucles imbriquées, une sur les étapes, et l'autre sur les nœuds. En réalité, on parcourt simplement notre tableau `plusCourtChemin`, et c'est exactement ce que réalisait implicitement notre fonction récursive puisqu'on retrouve la première boucle grâce au paramètre de la fonction `nbÉtape` (que l'on diminuait à chaque fois de 1, et qui nous permettait d'arrêter la récursion lorsqu'elle atteignait 0), et la boucle sur les nœuds lors des appels récursifs sur les nœuds voisins.
 - Notre structure au niveau de la boucle des voisins n'a pas changé, et on cherche toujours à garder le minimum dans notre tableau `plusCourtChemin`.
 
 Avant de réaliser l'économie de mémoire, attardons-nous légèrement sur ce dernier pseudo-code afin de bien comprendre comment effectuer cette amélioration. Prenons l'exemple de ce graphe (ne contenant pas de cycle améliorant pour simplifier la chose), et appliquons notre nouveau pseudo-code itératif dessus pour bien l'appréhender :
@@ -125,11 +125,11 @@ Avant de réaliser l'économie de mémoire, attardons-nous légèrement sur ce d
 
 On cherche le plus court chemin entre le nœud 1 (en bleu) et le nœud 5 (en vert), et notre tableau `plusCourtChemin` initial ressemble donc à cela :
 
-![Etat initial du tableau `plusCourtChemin`](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png)
+![État initial du tableau `plusCourtChemin`](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_init_pseudo_code_iteratif.png)
 
 Maintenant qu'on a initialisé notre tableau, on peut commencer à le remplir. Pour rappel, chaque case de ce tableau représente la longueur du plus court chemin reliant un nœud au nœud d'arrivée :
 
-![Etape 0](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_0.png)
+![Étape 0](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_0.png)
 
 La partie du pseudo-code nous concernant ici est la suivante :
 
@@ -157,7 +157,7 @@ Finalement, le premier tour de boucle va uniquement calculer des chemins (on n'e
 
 On recommence notre procédé sur les différents nœuds, mais cette fois on peut réutiliser les anciennes valeurs :
 
-![Etape 1](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_1.png)
+![Étape 1](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/pseudo_code_iteratif_etape_1.png)
 
 Pour le nœud 1, le seul de ses deux voisins à posséder des informations est le nœud 3. On a donc pas d'autres choix de chemin reliant le nœud 1 et 5 que celui-ci pour le moment.
 
@@ -169,7 +169,7 @@ Enfin le nœud 4 n'a pas d'autres voisins que le nœud 5 donc aucuns autres choi
 
 On continue comme ceci jusqu'à avoir rempli tout notre tableau :
 
-![Etat final du tableau](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_final_pseudo_code_iteratif.png)
+![État final du tableau](/img/algo/structure/graphe/plus_court_chemin/bellman_ford/etat_final_pseudo_code_iteratif.png)
 
 Désormais on connait le plus court chemin du graphe reliant le nœud 1 à 5, soit -4, et au passage on a aussi grâce à ce tableau les plus courts chemins de tous les nœuds allant à 5.
 
@@ -180,7 +180,7 @@ Cette explication du pseudo-code nous permet d'introduire notre économie de mé
 ```nohighlight
 Bellman-Ford :
 
-   plusCourtChemin[NB_NOEUD_MAX] (initialisé à -1)
+   plusCourtChemin[NB_NŒUD_MAX] (initialisé à -1)
    plusCourtChemin[arrivée] = 0
 
    Pour chaque étape
@@ -202,7 +202,7 @@ Pour détecter un cycle améliorant, il suffit de détecter si un chemin emprunt
 ```nohighlight
 Bellman-Ford :
 
-   plusCourtChemin[NB_NOEUD_MAX] (initialisé à -1)
+   plusCourtChemin[NB_NŒUD_MAX] (initialisé à -1)
    plusCourtChemin[arrivée] = 0
 
    modification = faux

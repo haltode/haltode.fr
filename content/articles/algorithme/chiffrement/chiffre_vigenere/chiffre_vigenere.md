@@ -21,7 +21,7 @@ Désormais on peut chiffrer chaque lettre de notre message :
 
 ![Exemple de chiffrement](/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png)
 
-Le rang dans l'alphabet commence à 0 (et non 1) car $26 \mod 26 = 0$, il faut donc que la lettre A soit la lettre 0. A chaque tour, on prend le rang de la lettre du message, et on l'additionne à la lettre correspondante de la clé. On n'oublie pas d'appliquer notre [modulo](https://en.wikipedia.org/wiki/Modulo_operation) 26 pour revenir au début de l'alphabet si on dépasse Z.
+Le rang dans l'alphabet commence à 0 (et non 1) car $26 \mod 26 = 0$, il faut donc que la lettre A soit la lettre 0. À chaque tour, on prend le rang de la lettre du message, et on l'additionne à la lettre correspondante de la clé. On n'oublie pas d'appliquer notre [modulo](https://en.wikipedia.org/wiki/Modulo_operation) 26 pour revenir au début de l'alphabet si on dépasse Z.
 
 Pour le déchiffrement, l'idée est la même sauf qu'on soustrait au lieu d'ajouter le rang de la lettre de la clé :
 
@@ -173,7 +173,7 @@ Pour casser le chiffre de Vigenère, il faut procéder par étape, et la premiè
 
 Un des moyens de trouver la longueur de clé est d'utiliser le **test de Kasiski**. Le but est de repérer dans le message chiffré des sous chaînes qui se répètent, car ces dernières sont sans doute des mêmes portions du texte clair, codées avec la même partie de clé. Une fois qu'on connait suffisamment de répétitions, on peut grâce à l'espacement de ces dernières en déduire les tailles de clés possibles et en combinant plusieurs analyses on peut voir qu'une taille ressortira plus souvent que les autres. Mais pour cela notre texte doit être suffisamment long afin d'avoir un traitement efficace des sous chaînes (notre méthode étant basée sur des statistiques, si on a peu de données notre résultat ne sera pas forcément correcte et représentatif de la réalité). Heureusement, notre texte semble assez long et contient environ 1000 sous chaines se répétant (de différentes tailles allant de trois caractères à quatorze), et en voici une courte partie :
 
-| Chaine     | Ecart | 2   | 3   | 4   | 5       | 6   | 7   | 8   | 9   | 10  | ... |
+| Chaîne     | Écart | 2   | 3   | 4   | 5       | 6   | 7   | 8   | 9   | 10  | ... |
 | :-         | -     | :-: | :-: | :-: | :-:     | :-: | :-: | :-: | :-: | :-: | -   |
 | far        | 555   |     | X   |     | X       |     |     |     |     |     | ... |
 | rmx        | 20    | X   |     | X   | X       |     |     |     |     | X   | ... |
@@ -512,7 +512,7 @@ Mais le dernier mot est-il dit ? L'espérance doit-elle disparaître ? La défai
 
 Croyez-moi, moi qui vous parle en connaissance de cause et vous dis que rien n'est perdu pour la France. Les mêmes moyens qui nous ont vaincus peuvent faire venir un jour la victoire.
 
-Car la France n'est pas seule ! Elle n'est pas seule ! Elle n'est pas seule ! Elle a un vaste Empire derrière elle. Elle peut faire bloc avec l'Empire britannique qui tient la mer et continue la lutte. Elle peut, comme l'Angleterre, utiliser sans limites l'immense industrie des Etats-Unis.
+Car la France n'est pas seule ! Elle n'est pas seule ! Elle n'est pas seule ! Elle a un vaste Empire derrière elle. Elle peut faire bloc avec l'Empire britannique qui tient la mer et continue la lutte. Elle peut, comme l'Angleterre, utiliser sans limites l'immense industrie des États-Unis.
 
 Cette guerre n'est pas limitée au territoire malheureux de notre pays. Cette guerre n'est pas tranchée par la bataille de France. Cette guerre est une guerre mondiale. Toutes les fautes, tous les retards, toutes les souffrances, n'empêchent pas qu'il y a, dans l'univers, tous les moyens nécessaires pour écraser un jour nos ennemis. Foudroyés aujourd'hui par la force mécanique, nous pourrons vaincre dans l'avenir par une force mécanique supérieure. Le destin du monde est là.
 

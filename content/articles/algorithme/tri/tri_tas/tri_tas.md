@@ -136,7 +136,7 @@ triTas :
    Contruire le tas max dans le tableau
 
    Pour chaque élément du tableau (en partant de la fin)
-      Echanger l'élément actuel avec la racine
+      Échanger l'élément actuel avec la racine
       Décrémenter la taille du tas
       Entasser l'élément placé à la racine
 ```

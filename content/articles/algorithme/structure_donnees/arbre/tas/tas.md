@@ -28,7 +28,7 @@ Un tas ne peut pas avoir de "trous" dedans, seul le dernier étage de l'arbre pe
 
 ![Exemple d'insertion d'un nouvel élément dans un tas maximal](/img/algo/structure/arbre/tas/exemple_insertion_tas_max.png)
 
-On souhaite insérer la valeur 11 (en vert) dans notre tas maximal, on le place donc sur la première place libre, puis on l'échange avec son père tant que ce dernier est plus petit que 11 (car c'est un tas maximal). A la fin, 11 a été inséré, et notre tas respecte bien les propriétés d'un tas max.
+On souhaite insérer la valeur 11 (en vert) dans notre tas maximal, on le place donc sur la première place libre, puis on l'échange avec son père tant que ce dernier est plus petit que 11 (car c'est un tas maximal). À la fin, 11 a été inséré, et notre tas respecte bien les propriétés d'un tas max.
 
 La deuxième opération principale d'un tas est l'extraction de son minimum/maximum (en fonction du tas). On a vu que cette valeur se trouve forcément à la racine, mais comment reboucher le trou qu'on vient de faire ? Une solution consiste à prendre le dernier élément du tas, et de le déplacer à la racine. Vu que c'est une feuille, on peut très bien le bouger de place sans inconvénient, cependant on ne respecte plus les propriétés du tas. On va donc **entasser** cet élément pour qu'il se retrouve à sa bonne place :
 
@@ -46,7 +46,7 @@ insertion (nœud) :
    Insérer le nœud à la première place disponible dans le tas
 
    Tant que son père est plus petit que lui
-      Echanger les nœuds
+      Échanger les nœuds
 
 extraction :
 
@@ -54,7 +54,7 @@ extraction :
 
    Reboucher avec le dernier élément du tas
    Tant que le nœud n'est pas plus grand que ses deux fils
-      Echanger avec le maximum de ses fils
+      Échanger avec le maximum de ses fils
 
    Retourner l'ancienne racine
 ```
@@ -67,7 +67,7 @@ insertion (nœud) :
    Insérer le nœud à la première place disponible dans le tas
 
    Tant que son père est plus grand que lui
-      Echanger les nœuds
+      Échanger les nœuds
 
 extraction :
 
@@ -75,7 +75,7 @@ extraction :
 
    Reboucher avec le dernier élément du tas
    Tant que le nœud n'est pas plus petit que ses deux fils
-      Echanger avec le minimum de ses fils
+      Échanger avec le minimum de ses fils
 
    Retourner l'ancienne racine
 ```

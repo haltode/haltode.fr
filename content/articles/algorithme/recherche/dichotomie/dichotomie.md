@@ -7,7 +7,7 @@ Modified: 14/01/2016
 
 Si je vous donne un annuaire téléphonique contenant plusieurs milliers de coordonnées, et que je vous demande de trouver une personne, normalement en quelques secondes vous y arrivez. Même si je rajoute plusieurs millions de personnes dans l'annuaire, vous devriez toujours être capable de repérer n'importe qui en moins d'une minute. Mais comment faire pour qu'un ordinateur nous remplace pour effectuer cette tâche ? Comment concrétiser l'algorithme que vous utilisez (sans le savoir) pour qu'un ordinateur le comprenne ? Votre cerveau est un outil incroyable qui n'aime pas faire des actions répétitives, et il essaiera naturellement de trouver une façon plus rapide de résoudre un problème. Vous n'auriez pas idée de commencer par regarder toutes les personnes avec un prénom en "A" si vous savez que la personne que vous cherchez est "Jean". Ce que vous faites plutôt, c'est que vous divisez l'intervalle de recherche à partir d'un résultat, vous ouvrez par exemple une page au hasard qui devrait correspondre à peu près à la lettre que vous cherchez, et vous affinez au fur et à mesure en fonction du mot de la page. Votre méthode se base sur une caractéristique très importante de votre annuaire : il est **trié** par ordre alphabétique.
 
-Jouons à un petit jeu appelé *le plus ou moins*. Je choisis un nombre entre 1 et 100 et vous devez le deviner en moins de coup possible. A chaque fois que vous me dites un nombre, je vous dis si ce dernier est supérieur ou inférieur à celui que j'ai choisi (ou égal si vous avez trouvé).
+Jouons à un petit jeu appelé *le plus ou moins*. Je choisis un nombre entre 1 et 100 et vous devez le deviner en moins de coup possible. À chaque fois que vous me dites un nombre, je vous dis si ce dernier est supérieur ou inférieur à celui que j'ai choisi (ou égal si vous avez trouvé).
 
 Vu comme ça, on pourrait se dire qu'on a 1 chance sur 100 de tomber sur le bon nombre, mais en réfléchissant bien on peut améliorer nos chances en s'aidant de la réponse que je donne à chaque fois (si c'est plus ou moins). Je choisis donc mon nombre, et au premier tour vous dites 50, si je vous dis « plus » vous savez que mon nombre sera forcément dans l'intervalle de 51 à 100, si je vous dis « moins » il sera dans l'intervalle 1 à 49, et si je vous dis égal vous avez trouvé le nombre. On peut continuer d'utiliser ce principe pour diviser par deux à chaque fois notre intervalle de recherche jusqu'à avoir un seul élément dans notre intervalle, qui est forcément celui que j'ai choisi au début du jeu. Cette méthode s'appelle la dichotomie, et vous utilisez un algorithme très similaire lorsque vous recherchez une personne dans un annuaire, mais elle ne s'applique pas qu'à cela, et on la retrouve dans bien d'autres domaines.
 
@@ -21,7 +21,7 @@ On commence toujours la dichotomie dans un intervalle de recherche, puis à chaq
 - Si l'élément est inférieur, on continue de chercher dans la moitié inférieure.
 - Sinon l'élément est égal, on l'a donc trouvé et on peut arrêter de chercher.
 
-A chaque tour, on actualise notre intervalle de recherche et on recommence les opérations tant qu'on n'a pas trouvé notre élément.
+À chaque tour, on actualise notre intervalle de recherche et on recommence les opérations tant qu'on n'a pas trouvé notre élément.
 
 ## Exemple
 

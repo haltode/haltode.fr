@@ -47,7 +47,7 @@ Pour résumer l'idée de l'algorithme :
 
 ![Exemple de tri à bulles](/img/algo/tri/tri_bulles/exemple_tri.png)
 
-Les éléments en bleu sont ceux qu'on compare à chaque itération, la partie verte représente la partie du tableau dont on est sûr qu'elle est triée. A chaque tour, on compare chaque paire dans la partie non triée du tableau, si la paire ne respecte pas l'ordre de tri (dans notre cas croissant), on échange les éléments et on continue.
+Les éléments en bleu sont ceux qu'on compare à chaque itération, la partie verte représente la partie du tableau dont on est sûr qu'elle est triée. À chaque tour, on compare chaque paire dans la partie non triée du tableau, si la paire ne respecte pas l'ordre de tri (dans notre cas croissant), on échange les éléments et on continue.
 
 ## Pseudo-code
 
@@ -58,7 +58,7 @@ triBulles :
 
    Pour chaque élément
       Parcourir le tableau
-         Echanger les paires adjacentes si nécessaire
+         Échanger les paires adjacentes si nécessaire
 ```
 
 ## Complexité
