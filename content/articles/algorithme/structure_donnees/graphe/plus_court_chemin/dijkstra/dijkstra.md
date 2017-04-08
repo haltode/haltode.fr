@@ -84,6 +84,8 @@ Enfin, on peut encore améliorer notre complexité en temps si l'on utilise une 
 
 Une implémentation en C++ (pour avoir [`priority_queue`](http://www.cplusplus.com/reference/queue/priority_queue/)) de cet algorithme (sans les améliorations de complexité proposées dans la dernière partie) :
 
+[[secret="dijkstra.cpp"]]
+
 ```cpp
 #include <cstdio>
 #include <vector>
@@ -170,6 +172,10 @@ int main(void)
 }
 ```
 
+La structure du code est identique à celle du parcours en profondeur, on doit juste utiliser une structure afin de représenter nos nœuds (du graphe, et de notre file) et aussi décrire l'opérateur `<` pour que l'implémentation de la `priority_queue` puisse fonctionner correctement en fonction de la variable `distance` de chacun des nœuds.
+
+[[/secret]]
+
 En entrée, pour décrire notre graphe on va d'abord indiquer le nœud de départ et d'arrivée, puis le nombre d'arcs et enfin la liste de ces derniers du style `nœud1 nœud2 poids` (qu'on appelle aussi [liste d'arcs](/algo/structure/graphe.html#liste-darcs)):
 
 ```nohighlight
@@ -190,8 +196,6 @@ Et le plus court chemin en sortie :
 ```nohighlight
 7
 ```
-
-La structure du code est identique à celle du parcours en profondeur, on doit juste utiliser une structure afin de représenter nos nœuds (du graphe, et de notre file) et aussi décrire l'opérateur `<` pour que l'implémentation de la `priority_queue` puisse fonctionner correctement en fonction de la variable `distance` de chacun des nœuds.
 
 ## Cas d'utilisation
 

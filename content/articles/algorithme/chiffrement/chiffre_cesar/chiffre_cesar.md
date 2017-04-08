@@ -47,6 +47,8 @@ Il faut cependant faire attention à une chose, lorsqu'on dépasse la lettre Z p
 
 Une implémentation en C du chiffre de César :
 
+[[secret="chiffre_cesar.c"]]
+
 ```c
 #include <stdio.h>
 #include <ctype.h>
@@ -104,6 +106,8 @@ int main(void)
 
 Pour décaler notre lettre, on récupère déjà son rang dans l'alphabet pour simplifier les calculs (d'où le `- typo` et le `+ typo`), puis on ajoute (pour le chiffrement) ou on enlève (pour le déchiffrement) la valeur de la clé, et ensuite on applique un [modulo](https://en.wikipedia.org/wiki/Modulo_operation) 26 pour ne pas dépasser le Z et revenir au début dans ce cas. Cependant, en C, le modulo négatif est particulier, par exemple $-3 \mod 2 = -1$, il faut donc rajouter 26 au cas où le résultat est négatif (pour le rendre positif), et ensuite on applique de nouveau notre modulo 26.
 
+[[/secret]]
+
 En entrée de notre programme :
 
 ```nohighlight
@@ -139,6 +143,8 @@ forceBrute :
 ```
 
 Une implémentation en C de cette attaque :
+
+[[secret="force_brute"]]
 
 ```c
 #include <stdio.h>
@@ -185,6 +191,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 Un exemple de message chiffré en entrée :
 
@@ -250,6 +258,8 @@ Sur de petits textes, cette attaque risque de ne pas bien fonctionner car notre 
 
 L'attaque codée en C :
 
+[[secret="analyse_frequentielle.c"]]
+
 ```c
 #include <stdio.h>
 #include <ctype.h>
@@ -313,6 +323,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 Un texte chiffré en entrée :
 

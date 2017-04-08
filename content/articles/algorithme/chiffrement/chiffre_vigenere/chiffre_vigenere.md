@@ -59,6 +59,8 @@ déchiffrer :
 
 Une implémentation en C du chiffre de Vigenère :
 
+[[secret="chiffre_vigenere.c"]]
+
 ```c
 #include <stdio.h>
 #include <ctype.h>
@@ -129,6 +131,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 Notez qu'au lieu de créer une seconde clé de chiffrement de la taille du message, on peut tout simplement utiliser un indice que l'on réinitialise à 0 à chaque fois qu'il a atteint le bout de la clé (grâce à `% tailleCle`).
 
@@ -212,6 +216,8 @@ Un des moyens de trouver la longueur de clé est d'utiliser le **test de Kasiski
 Pour chaque sous chaine, on note l'écart jusqu'à la prochaine occurrence de ladite chaine, puis on peut en déduire que la taille de notre clé est un multiple de cet espace (en effet, il y a une répétition en général quand une même portion du message est chiffrée avec une même portion de la clé). On marque alors pour chaque sous chaine les diviseurs de notre écart, et lorsqu'on additionne tous les résultats on voit que le nombre 5 est celui qui apparait le plus de fois. Ce test nous apprend donc que la clé de chiffrement que l'on cherche a de très fortes chances de posséder 5 caractères.
 
 Une implémentation en C du test de Kasiski :
+
+[[secret="test_kasiski.c"]]
 
 ```c
 #include <stdio.h>
@@ -321,6 +327,8 @@ int main(void)
 
 Tout d'abord, on commence à chercher des sous chaines d'une taille de trois caractères minimum car les sous chaines de deux caractères ne sont pas réellement efficaces et représentatives (ça peut simplement être un coup de chance). Ensuite, la recherche de sous chaine n'est pas optimisée car le but de cette implémentation est de montrer comment appliquer le test de Kasiski. Si vous voulez casser un texte plus important, je vous conseille de revoir la recherche de sous chaine en vous aidant d'algorithmes plus efficaces comme [KMP](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm), [Rabin-Karp](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm), ou encore [Z](http://codeforces.com/blog/entry/3107). Le code s'exécute instantanément dans notre exemple, mais sur des textes aussi grands que des livres, il risque de prendre plus de temps s'il n'est pas optimisé.
 
+[[/secret]]
+
 La sortie de l'implémentation (j'ai commenté l'affichage des sous chaines/écart, et celui du tableau des possibilités car sinon plus de 1000 lignes sont affichées en sortie) :
 
 ```nohighlight
@@ -367,6 +375,8 @@ Si on applique ce principe à chacune de nos lignes on obtient :
 La clé apparait alors à la verticale en lisant simplement la correspondance de la lettre A dans chaque alphabet chiffré. En effet la lettre A représente la lettre 0 de l'alphabet et donc la correspondance représente le décalage utilisé (c'est-à-dire la clé) pour créer l'alphabet chiffré.
 
 L'implémentation en C de l'analyse fréquentielle :
+
+[[secret="analyse_frequentielle.c"]]
 
 ```c
 #include <stdio.h>
@@ -452,6 +462,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 Le programme prend en entrée le message chiffré et la longueur de clé précédemment trouvée, et retourne en sortie la découpe du message, les lettres les plus utilisées pour chaque ligne, et la clé de chiffrement :
 

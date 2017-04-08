@@ -131,6 +131,8 @@
 <p>Dans ces implémentations, je suppose que l'élément appartient bien au tableau afin de simplifier le code et de se concentrer sur la recherche dichotomique.</p>
 <h3>Récursif</h3>
 <p>L'implémentation récursive en C de la recherche :</p>
+<a href="javascript:toggle_visibility('dichotomie_recursif.c');">dichotomie_recursif.c <i id="toggle_arrow_dichotomie_recursif.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="dichotomie_recursif.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define TAILLE_MAX 1000
@@ -170,6 +172,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>Si on donne notre tableau en entrée, ainsi que l'élément qu'on recherche :</p>
 <pre><code class="nohighlight">11
 1 8 15 42 99 160 380 512 678 952 1304
@@ -182,6 +185,8 @@ int main(void)
 
 <h3>Itératif</h3>
 <p>La version itérative en C :</p>
+<a href="javascript:toggle_visibility('dichotomie_iteratif.c');">dichotomie_iteratif.c <i id="toggle_arrow_dichotomie_iteratif.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="dichotomie_iteratif.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define TAILLE_MAX 1000
@@ -231,6 +236,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>Le tableau et l'élément recherché :</p>
 <pre><code class="nohighlight">11
 1 8 15 42 99 160 380 512 678 952 1304

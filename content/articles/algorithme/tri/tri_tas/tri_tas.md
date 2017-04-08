@@ -55,6 +55,8 @@ La complexité de l’algorithme du tri par tas est en $O(N \log _2 N)$. En effe
 
 Une implémentation en C++ (afin d'avoir le type `priority_queue`) du tri par tas :
 
+[[secret="tri_tas.cpp"]]
+
 ```cpp
 #include <cstdio>
 #include <queue>
@@ -106,6 +108,8 @@ int main(void)
 ```
 
 On utilise la [`priority_queue`](http://www.cplusplus.com/reference/queue/priority_queue/) de la STL afin d'avoir un tas max facilement dans notre implémentation.
+
+[[/secret]]
 
 Notre tableau d'entrée :
 

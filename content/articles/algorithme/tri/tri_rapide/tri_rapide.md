@@ -63,6 +63,8 @@ Il faut savoir que le tri rapide peut s'exécuter deux fois plus vite que le [tr
 
 L’implémentation en C du tri rapide :
 
+[[secret="tri_rapide.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -124,6 +126,8 @@ int main(void)
 ```
 
 Pour simplifier le réarrangement du tableau, on place notre pivot au début afin de s'occuper du reste du tableau comme un tout. Ensuite, on ramène tous les éléments inférieurs au pivot en début du tableau grâce à `dernierEmplacement`, afin de s'assurer que ceux plus grands sont en fin de tableau, et que la dernière place tenue par la variable sera celle du pivot.
+
+[[/secret]]
 
 L'entrée :
 

@@ -232,6 +232,8 @@ Cette complexité en temps est légèrement moins efficace que celle de l'algori
 
 L'implémentation en C++ de l'algorithme de Bellman-Ford :
 
+[[secret="bellman_ford.cpp"]]
+
 ```cpp
 #include <cstdio>
 #include <vector>
@@ -301,6 +303,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 En entrée, on donne sur la première ligne le nœud de départ et d'arrivée pour le plus court chemin, puis sur la seconde ligne le nombre de nœuds et d'arcs du graphe, avant de terminer sur la liste d'arcs :
 

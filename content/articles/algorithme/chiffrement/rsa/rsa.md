@@ -92,6 +92,8 @@ On connait $e$, $m$, et on cherche $d$ :
 
 On remarque que cette expression est de la forme de l'[identité de Bézout](https://en.wikipedia.org/wiki/B%C3%A9zout's_identity) $ax + by = pgcd(a, b)$ avec $a = e$, $b = m$, $x = d$, $y = -q$, et $e$ et $m$ sont premiers entre eux donc $pgcd(a, b) = 1$. Or on peut trouver les coefficients $x$ et $y$ (et donc $d$, qui nous intéresse) grâce à l'[algorithme d'Euclide étendu](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm). Une implémentation de cet algorithme pour ceux que ça intéresse :
 
+[[secret="algo_euclide_etendu.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -140,6 +142,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 L'entrée :
 
@@ -262,6 +266,8 @@ Cet algorithme nous permet donc de travailler avec des nombres bien plus petits 
 ## Implémentation
 
 Une implémentation en C de l'algorithme de RSA :
+
+[[secret="rsa.c"]]
 
 ```c
 #include <stdio.h>
@@ -428,6 +434,14 @@ int main(void)
 }
 ```
 
+Quelques remarques sur le code :
+
+- Le type du message est `unsigned long long` qui est le type le plus grand en C (il stocke des nombres allant de $0$ à $2^{64} - 1$), car un `int` ne sera pas toujours suffisant, on prend donc des précautions en utilisant un type de données très grand pour ne pas avoir de problèmes. Sachez qu'en C, il existe la bibliothèque [GMP](https://gmplib.org/) pour manipuler de **très** grands nombres.
+- Dans la fonction `clePublique`, j'utilise un tableau statique contenant tous les nombres premiers de 1 à 100 et je tire au sort pour déterminer $p$ et $q$ (j'ai rentré directement `p = 61` et `q = 137` pour que les résultats concordent avec notre exemple, mais la partie tirage au sort est commentée).
+- Pour lire notre message, on va directement stocker les caractères sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on convertit en `char` après le déchiffrement pour afficher une chaîne de caractères.
+
+[[/secret]]
+
 Le message d'entrée :
 
 ```nohighlight
@@ -443,13 +457,7 @@ Cle privee : 8357 4663
 Bienvenue
 ```
 
-Quelques remarques sur le code :
-
-- Le type du message est `unsigned long long` qui est le type le plus grand en C (il stocke des nombres allant de $0$ à $2^{64} - 1$), car un `int` ne sera pas toujours suffisant, on prend donc des précautions en utilisant un type de données très grand pour ne pas avoir de problèmes.
-- Dans la fonction `clePublique`, j'utilise un tableau statique contenant tous les nombres premiers de 1 à 100 et je tire au sort pour déterminer $p$ et $q$ (j'ai rentré directement `p = 61` et `q = 137` pour que les résultats concordent avec notre exemple, mais la partie tirage au sort est commentée).
-- Pour lire notre message, on va directement stocker les caractères sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on convertit en `char` après le déchiffrement pour afficher une chaîne de caractères.
-
-Sachez qu'en C, il existe la bibliothèque [GMP](https://gmplib.org/) pour manipuler de **très** grands nombres. Cependant, recréer sa propre implémentation de RSA (ou même de n'importe quel algorithme de chiffrement) dans le but de l'utiliser dans une application concrète est une mauvaise idée, et il est conseillé d'utiliser des implémentations déjà existantes, libres, accessibles à tous et qui sont utilisées par des milliers d'autres personnes comme : [OpenSSL](https://www.openssl.org/), [GnuPG](https://gnupg.org/), etc. L'avantage d'utiliser ce genre d'outils est que de nombreuses personnes travaillent dessus chaque jour, et des recherches sont effectuées régulièrement pour découvrir les potentielles failles afin de rendre le système encore plus robuste.
+Il est important de noter que recréer sa propre implémentation de RSA (ou même de n'importe quel algorithme de chiffrement) dans le but de l'utiliser dans une application concrète est une mauvaise idée, et il est conseillé d'utiliser des implémentations déjà existantes, libres, accessibles à tous et qui sont utilisées par des milliers d'autres personnes comme : [OpenSSL](https://www.openssl.org/), [GnuPG](https://gnupg.org/), etc. L'avantage d'utiliser ce genre d'outils est que de nombreuses personnes travaillent dessus chaque jour, et des recherches sont effectuées régulièrement pour découvrir les potentielles failles afin de rendre le système encore plus robuste.
 
 ## Démonstration
 
@@ -522,6 +530,8 @@ J'utilise la notation [hexadécimale](https://en.wikipedia.org/wiki/Hexadecimal)
 
 En C par exemple, il est facile de convertir une chaîne en un nombre hexadécimal et inversement :
 
+[[secret="hexadecimal.c"]]
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -561,6 +571,8 @@ int main(void)
 ```
 
 On peut utiliser le spécificateur `x` dans [`printf`](http://www.cplusplus.com/reference/cstdio/printf/) afin de convertir notre lettre en nombre hexadécimal. De même, on peut utiliser [`stroul`](http://www.cplusplus.com/reference/cstdlib/strtoul/) afin de convertir notre nombre hexadécimal en base 10 et de l'afficher comme un caractère.
+
+[[/secret]]
 
 En entrée par exemple du programme :
 

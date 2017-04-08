@@ -74,6 +74,8 @@ On se retrouve donc avec $N^2$ tours, soit une complexité finale en $O(N^2)$.
 
 L’implémentation est aussi simple que le pseudo-code :
 
+[[secret="tri_bulles.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -119,6 +121,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 En entrée notre tableau :
 

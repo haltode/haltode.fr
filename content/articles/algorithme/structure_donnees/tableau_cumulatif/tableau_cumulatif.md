@@ -86,6 +86,8 @@ Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de 
 
 Une implémentation en C d'un tableau cumulatif et de son utilisation :
 
+[[secret="tableau_cumulatif.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -138,6 +140,14 @@ int main(void)
 }
 ```
 
+Quelques remarques sur le code :
+
+- Il faut faire attention avec les indices des tableaux qui commencent à 0 en C.
+- Pour initialiser le tableau cumulatif, je réutilise les sommes d'éléments précédents que j'ai déjà calculées pour créer les prochaines afin d'avoir une complexité linéaire dans ma fonction `initCumulatif`.
+- Dans la fonction `somme`, j'admets que `debut` est inférieur à `fin` et que les indices ne sont pas en dehors du tableau pour simplifier le code.
+
+[[/secret]]
+
 L'entrée :
 
 ```nohighlight
@@ -153,12 +163,6 @@ La sortie :
 92
 168
 ```
-
-Quelques remarques sur le code :
-
-- Il faut faire attention avec les indices des tableaux qui commencent à 0 en C.
-- Pour initialiser le tableau cumulatif, je réutilise les sommes d'éléments précédents que j'ai déjà calculées pour créer les prochaines afin d'avoir une complexité linéaire dans ma fonction `initCumulatif`.
-- Dans la fonction `somme`, j'admets que `debut` est inférieur à `fin` et que les indices ne sont pas en dehors du tableau pour simplifier le code.
 
 ## Variantes
 
@@ -177,6 +181,8 @@ Le principe est toujours le même, mais il faut adapter nos fonctions qui constr
 ![Initialisation du tableau cumulatif 2D](/img/algo/structure/tableau_cumulatif/init_tableau2D.png)
 
 Une implémentation d'un tableau cumulatif 2D en C :
+
+[[secret="tableau_cumulatif2D.c"]]
 
 ```c
 #include <stdio.h>
@@ -247,6 +253,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 L'entrée : 
 

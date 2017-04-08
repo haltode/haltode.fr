@@ -137,6 +137,8 @@ fusionner (début, milieu, fin) :
 <p>Les deux appels récursifs sont représentés par une séparation du tableau actuel en deux, et ce qu'il faut comprendre c'est que tous les sous tableaux d'une même profondeur formeront toujours un unique tableau contenant $N$ éléments ($N$ étant la taille du tableau de départ), puisqu'on divise par deux la taille, mais on multiplie par deux le nombre de nœuds. C'est très important car on appelle notre fonction <code>fusionner</code> à chaque nœud, or cette fonction s'exécute en temps linéaire de $O(N)$ avec $N$ la taille du sous tableau. On peut donc dire grâce aux deux dernières informations, qu'à chaque profondeur on aura appelé notre fonction <code>fusionner</code> sur $N$ éléments (quelle que soit la profondeur). De plus, on sait que cet arbre possède $\log _2 N$ profondeurs (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikipédia</a>), ce qui nous donne finalement une complexité en $O(N \log _2 N)$.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C du tri fusion :</p>
+<a href="javascript:toggle_visibility('tri_fusion.c');">tri_fusion.c <i id="toggle_arrow_tri_fusion.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="tri_fusion.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt; 
 
 #define TAILLE_MAX 1000
@@ -210,6 +212,7 @@ int main(void)
 </code></pre>
 
 <p>Il faut faire attention dans notre fonction <code>fusion</code> à bien vérifier qu'on a encore des éléments dans les tableaux A et B avant de les copier (si on arrive à la fin d'un des deux tableaux, on remplit le reste avec l'autre).</p>
+</div>
 <p>L'entrée du programme :</p>
 <pre><code class="nohighlight">6
 5 1 3 8 9 6

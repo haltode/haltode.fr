@@ -90,6 +90,8 @@ Les deux appels récursifs sont représentés par une séparation du tableau act
 
 Une implémentation en C du tri fusion :
 
+[[secret="tri_fusion.c"]]
+
 ```c
 #include <stdio.h> 
 
@@ -164,6 +166,8 @@ int main(void)
 ```
 
 Il faut faire attention dans notre fonction `fusion` à bien vérifier qu'on a encore des éléments dans les tableaux A et B avant de les copier (si on arrive à la fin d'un des deux tableaux, on remplit le reste avec l'autre).
+
+[[/secret]]
 
 L'entrée du programme :
 

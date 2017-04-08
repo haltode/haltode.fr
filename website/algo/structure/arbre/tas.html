@@ -141,6 +141,8 @@ extraction :
 <p>Pour ce qui est de la complexité en mémoire, il n'y a aucuns doublons, on occupe donc uniquement l'espace nécessaire pour stocker $N$ éléments.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C d'un tas max :</p>
+<a href="javascript:toggle_visibility('tas.c');">tas.c <i id="toggle_arrow_tas.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="tas.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define NB_NOEUD_MAX 1000
@@ -230,6 +232,7 @@ void afficher(void)
 
 <p><em>Pour représenter mon tas, j'utilise un simple tableau comme vu dans les implémentations d'arbre binaire (<a href="/algo/structure/arbre/arbre_binaire.html#tableau">lien</a>).</em></p>
 <p>J'implémente un tas maximal, mais la version minimale du tas est quasiment la même, il suffit de changer <code>tas[noeud] &gt; tas[pere]</code>, <code>tas[noeud] &lt; tas[gauche] || tas[noeud] &lt; tas[droit]</code> ainsi que la fonction <code>max</code>. Le code est plutôt simple, mais j'utilise une petite astuce pour afficher le tas (la fonction <code>afficher</code> est juste là pour débugger en général, et voir si le tas est bien celui attendu). Pour afficher mon tas, je sais qu'il faut effectuer un retour à la ligne lorsque le nœud est le 1er, le 3ème, le 7ème, 15ème, etc. et tous ces nombres sont des puissances de 2 si l'on rajoute 1. De ce fait, on peut utiliser des <a href="https://en.wikipedia.org/wiki/Bitwise_operation">opérations bit à bit</a> afin de vérifier si <code>noeud + 1</code> est une puissance de 2, et si c'est le cas, on a terminé l'étage actuel du tas. C'est loin d'être indispensable à la compréhension du code, mais c'est toujours intéressant à savoir.</p>
+</div>
 <p>En C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) a une implémentation d'une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a> utilisant un tas max : <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>. Il est possible d'utiliser cette structure afin d'avoir un tas min, en redéfinissant l'opérateur <code>&lt;</code> nous permettant de changer l'ordre de priorité dans le tas :</p>
 <pre><code class="cpp">#include &lt;queue&gt;
 

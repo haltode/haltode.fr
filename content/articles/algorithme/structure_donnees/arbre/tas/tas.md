@@ -90,6 +90,8 @@ Pour ce qui est de la complexité en mémoire, il n'y a aucuns doublons, on occu
 
 Une implémentation en C d'un tas max :
 
+[[secret="tas.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -181,6 +183,8 @@ void afficher(void)
 *Pour représenter mon tas, j'utilise un simple tableau comme vu dans les implémentations d'arbre binaire ([lien](/algo/structure/arbre/arbre_binaire.html#tableau)).*
 
 J'implémente un tas maximal, mais la version minimale du tas est quasiment la même, il suffit de changer `tas[noeud] > tas[pere]`, `tas[noeud] < tas[gauche] || tas[noeud] < tas[droit]` ainsi que la fonction `max`. Le code est plutôt simple, mais j'utilise une petite astuce pour afficher le tas (la fonction `afficher` est juste là pour débugger en général, et voir si le tas est bien celui attendu). Pour afficher mon tas, je sais qu'il faut effectuer un retour à la ligne lorsque le nœud est le 1er, le 3ème, le 7ème, 15ème, etc. et tous ces nombres sont des puissances de 2 si l'on rajoute 1. De ce fait, on peut utiliser des [opérations bit à bit](https://en.wikipedia.org/wiki/Bitwise_operation) afin de vérifier si `noeud + 1` est une puissance de 2, et si c'est le cas, on a terminé l'étage actuel du tas. C'est loin d'être indispensable à la compréhension du code, mais c'est toujours intéressant à savoir.
+
+[[/secret]]
 
 En C++, la [STL](https://en.wikipedia.org/wiki/Standard_Template_Library) (*Standard Template Library*) a une implémentation d'une [file à priorité](/algo/structure/file.html#file-a-priorite) utilisant un tas max : [`priority_queue`](http://www.cplusplus.com/reference/queue/priority_queue/). Il est possible d'utiliser cette structure afin d'avoir un tas min, en redéfinissant l'opérateur `<` nous permettant de changer l'ordre de priorité dans le tas :
 

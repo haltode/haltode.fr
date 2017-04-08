@@ -66,6 +66,8 @@ Dans le pire des cas on parcourt $N^2$ tours, donc le tri par insertion a une co
 
 L’implémentation en C du tri par insertion :
 
+[[secret="tri_insertion.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -112,6 +114,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 L'entrée du tri :
 

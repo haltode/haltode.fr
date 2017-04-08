@@ -114,6 +114,8 @@
 <p>Il faut savoir que le tri rapide peut s'exécuter deux fois plus vite que le <a href="/algo/tri/tri_tas.html">tri par tas</a> pour des raisons de <a href="https://en.wikipedia.org/wiki/Cache_%28computing%29">mémoire cache</a>. Les deux algorithmes ont la même complexité en moyenne, mais le tri par tas compare en général des éléments du tableau qui sont assez éloignés contrairement au tri rapide. Or, quand vous accédez à un tableau, votre ordinateur place une certaine partie de ce tableau (ou la totalité) dans une mémoire cache pour que l'accès à ce dernier se fasse plus rapidement. Dans le cas de très grandes entrées, le tri par tas va obliger la mémoire à charger et décharger successivement des parties du tableau (trop grand pour être entièrement stocké dans la mémoire cache), ce qui ralentira l'exécution du programme.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>L’implémentation en C du tri rapide :</p>
+<a href="javascript:toggle_visibility('tri_rapide.c');">tri_rapide.c <i id="toggle_arrow_tri_rapide.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="tri_rapide.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define TAILLE_MAX 1000
@@ -174,6 +176,7 @@ int main(void)
 </code></pre>
 
 <p>Pour simplifier le réarrangement du tableau, on place notre pivot au début afin de s'occuper du reste du tableau comme un tout. Ensuite, on ramène tous les éléments inférieurs au pivot en début du tableau grâce à <code>dernierEmplacement</code>, afin de s'assurer que ceux plus grands sont en fin de tableau, et que la dernière place tenue par la variable sera celle du pivot.</p>
+</div>
 <p>L'entrée :</p>
 <pre><code class="nohighlight">5
 5 9 7 3 8

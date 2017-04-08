@@ -42,6 +42,8 @@ Pour savoir si on a déjà utilisé une clé, plusieurs solutions s'offrent à n
 
 L'implémentation en C d'un programme générant une clé de chiffrement pour le chiffre de Vernam :
 
+[[secret="chiffre_vernam.c"]]
+
 ```c
 #include <stdio.h>
 #include <ctype.h>
@@ -127,6 +129,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 En entrée :
 

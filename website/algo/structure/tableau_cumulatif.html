@@ -188,6 +188,8 @@
 <p>Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de taille $N$, et $M$ questions du type : Quelle est la somme des éléments de $i$ à $j$ dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en $O(N \times M)$ (lorsqu'on parcourt à chaque fois le tableau en entier, soit quand $i = 0$ et $j = N$ pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en $O(N + M)$ car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d'accéder au tableau cumulatif (donc opération en $O(1)$).</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C d'un tableau cumulatif et de son utilisation :</p>
+<a href="javascript:toggle_visibility('tableau_cumulatif.c');">tableau_cumulatif.c <i id="toggle_arrow_tableau_cumulatif.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="tableau_cumulatif.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define TAILLE_MAX 1000
@@ -239,6 +241,13 @@ int main(void)
 }
 </code></pre>
 
+<p>Quelques remarques sur le code :</p>
+<ul>
+<li>Il faut faire attention avec les indices des tableaux qui commencent à 0 en C.</li>
+<li>Pour initialiser le tableau cumulatif, je réutilise les sommes d'éléments précédents que j'ai déjà calculées pour créer les prochaines afin d'avoir une complexité linéaire dans ma fonction <code>initCumulatif</code>.</li>
+<li>Dans la fonction <code>somme</code>, j'admets que <code>debut</code> est inférieur à <code>fin</code> et que les indices ne sont pas en dehors du tableau pour simplifier le code.</li>
+</ul>
+</div>
 <p>L'entrée :</p>
 <pre><code class="nohighlight">6
 26 42 1 89 3 7
@@ -251,12 +260,6 @@ int main(void)
 168
 </code></pre>
 
-<p>Quelques remarques sur le code :</p>
-<ul>
-<li>Il faut faire attention avec les indices des tableaux qui commencent à 0 en C.</li>
-<li>Pour initialiser le tableau cumulatif, je réutilise les sommes d'éléments précédents que j'ai déjà calculées pour créer les prochaines afin d'avoir une complexité linéaire dans ma fonction <code>initCumulatif</code>.</li>
-<li>Dans la fonction <code>somme</code>, j'admets que <code>debut</code> est inférieur à <code>fin</code> et que les indices ne sont pas en dehors du tableau pour simplifier le code.</li>
-</ul>
 <h2 id="variantes"><a class="toclink" href="#variantes">Variantes</a></h2>
 <h3>Autres opérations que la somme</h3>
 <p>Il est possible de répondre à des questions plus générales que sur la somme d'éléments, pour cela il suffit que notre opération possède une opération "inverse". Par exemple, l'inverse de l'addition est la soustraction (c'est d'ailleurs ce qu'on utilise dans notre tableau cumulatif, l'addition pour le construire, et la soustraction pour répondre aux questions), et l'inverse de la multiplication est la division. Il est donc possible de modifier le comportement de notre tableau cumulatif pour prendre en compte le produit d'une suite de nombre, la soustraction d'éléments contigus, etc. Le principe reste exactement le même, il suffit juste de changer la manière de construire et de répondre aux questions en fonction de l'opération choisie.</p>
@@ -268,6 +271,8 @@ int main(void)
 <figure><img alt="Initialisation du tableau cumulatif 2D" src="/img/algo/structure/tableau_cumulatif/init_tableau2D.png" /><figcaption>Initialisation du tableau cumulatif 2D</figcaption>
 </figure>
 <p>Une implémentation d'un tableau cumulatif 2D en C :</p>
+<a href="javascript:toggle_visibility('tableau_cumulatif2D.c');">tableau_cumulatif2D.c <i id="toggle_arrow_tableau_cumulatif2D.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="tableau_cumulatif2D.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 #define NB_LIG_MAX 1000
@@ -337,6 +342,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>L'entrée : </p>
 <pre><code class="nohighlight">4 4
 4 6 8 9

@@ -70,6 +70,8 @@ Sa complexité est donc légèrement inférieure à $N^2$, cependant cette diff�
 
 Une implémentation en C de l'algorithme du tri par sélection :
 
+[[secret="tri_selection.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -122,6 +124,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 L'entrée du programme :
 

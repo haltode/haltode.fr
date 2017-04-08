@@ -77,6 +77,8 @@ Il est donc peu envisageable d'implémenter la méthode de l'équation normale l
 
 Le code en Python permettant de calculer les paramètres $\theta$ avec l'équation normale :
 
+[[secret="equation_normale.py"]]
+
 ```py
 import numpy as np
 
@@ -117,6 +119,8 @@ for j in range(ia.n):
 ```
 
 Afin d'optimiser légèrement le programme, la matrice transposée de $x$ est stockée dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la même opération, même si ce n'est pas l'une des plus couteuses).
+
+[[/secret]]
 
 En entrée de notre programme, on donne le même fichier que pour l'algorithme du gradient :
 

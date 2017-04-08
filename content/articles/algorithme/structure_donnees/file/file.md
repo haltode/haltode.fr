@@ -71,7 +71,9 @@ Soit $N$ le nombre d'éléments de la file.
 
 ## Implémentation
 
-Le lien vers une implémentation en C d’une file :
+Une implémentation en C d’une file :
+
+[[secret="file.c"]]
 
 ```c
 #include <stdio.h>
@@ -173,6 +175,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 ### STL
 

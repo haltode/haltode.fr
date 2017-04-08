@@ -131,6 +131,8 @@
 <p>Enfin, on peut encore améliorer notre complexité en temps si l'on utilise une variante de la file à priorité : le <a href="https://en.wikipedia.org/wiki/Fibonacci_heap">tas de Fibonacci</a>. Cette structure a un temps constant pour l'insertion et la mise à jour d'éléments, ce qui nous donne une complexité finale de $O(N + N \log _2 N + M)$, et si l'on suppose que de manière générale on a $M \geq N$, on peut écrire cette complexité en temps comme ceci : $O(N \log _2 N + M)$.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C++ (pour avoir <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a>) de cet algorithme (sans les améliorations de complexité proposées dans la dernière partie) :</p>
+<a href="javascript:toggle_visibility('dijkstra.cpp');">dijkstra.cpp <i id="toggle_arrow_dijkstra.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="dijkstra.cpp" style="display: none;">
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
@@ -216,6 +218,8 @@ int main(void)
 }
 </code></pre>
 
+<p>La structure du code est identique à celle du parcours en profondeur, on doit juste utiliser une structure afin de représenter nos nœuds (du graphe, et de notre file) et aussi décrire l'opérateur <code>&lt;</code> pour que l'implémentation de la <code>priority_queue</code> puisse fonctionner correctement en fonction de la variable <code>distance</code> de chacun des nœuds.</p>
+</div>
 <p>En entrée, pour décrire notre graphe on va d'abord indiquer le nœud de départ et d'arrivée, puis le nombre d'arcs et enfin la liste de ces derniers du style <code>nœud1 nœud2 poids</code> (qu'on appelle aussi <a href="/algo/structure/graphe.html#liste-darcs">liste d'arcs</a>):</p>
 <pre><code class="nohighlight">1 6
 8
@@ -233,7 +237,6 @@ int main(void)
 <pre><code class="nohighlight">7
 </code></pre>
 
-<p>La structure du code est identique à celle du parcours en profondeur, on doit juste utiliser une structure afin de représenter nos nœuds (du graphe, et de notre file) et aussi décrire l'opérateur <code>&lt;</code> pour que l'implémentation de la <code>priority_queue</code> puisse fonctionner correctement en fonction de la variable <code>distance</code> de chacun des nœuds.</p>
 <h2 id="cas-dutilisation"><a class="toclink" href="#cas-dutilisation">Cas d'utilisation</a></h2>
 <p>J'ai précisé au début de mes explications que l'algorithme de Dijkstra ne s'appliquait que sur des graphes pondérés positivement (ou nul), mais pourquoi ? Voici tout d'abord un contre-exemple pour prouver cette propriété :</p>
 <figure><img alt="Graphe pondéré négativement" src="/img/algo/structure/graphe/plus_court_chemin/dijkstra/contre_exemple.png" /><figcaption>Graphe pondéré négativement</figcaption>

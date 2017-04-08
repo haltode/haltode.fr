@@ -128,6 +128,8 @@ $m = 8160$</p>
 <p>$de - qm = 1$</p>
 <p>On connait $e$, $m$, et on cherche $d$ :</p>
 <p>On remarque que cette expression est de la forme de l'<a href="https://en.wikipedia.org/wiki/B%C3%A9zout's_identity">identité de Bézout</a> $ax + by = pgcd(a, b)$ avec $a = e$, $b = m$, $x = d$, $y = -q$, et $e$ et $m$ sont premiers entre eux donc $pgcd(a, b) = 1$. Or on peut trouver les coefficients $x$ et $y$ (et donc $d$, qui nous intéresse) grâce à l'<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">algorithme d'Euclide étendu</a>. Une implémentation de cet algorithme pour ceux que ça intéresse :</p>
+<a href="javascript:toggle_visibility('algo_euclide_etendu.c');">algo_euclide_etendu.c <i id="toggle_arrow_algo_euclide_etendu.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="algo_euclide_etendu.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 
 void euclideEtendu(int a, int b)
@@ -176,6 +178,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>L'entrée :</p>
 <pre><code class="nohighlight">7
 8160
@@ -263,6 +266,8 @@ Pour chaque exposant allant de 1 à b inclus
 <p>Cet algorithme nous permet donc de travailler avec des nombres bien plus petits qui ne dépasseront jamais $c$ car à chaque multiplication on effectue un modulo dessus.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C de l'algorithme de RSA :</p>
+<a href="javascript:toggle_visibility('rsa.c');">rsa.c <i id="toggle_arrow_rsa.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="rsa.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 #include &lt;stdlib.h&gt;
@@ -427,6 +432,13 @@ int main(void)
 }
 </code></pre>
 
+<p>Quelques remarques sur le code :</p>
+<ul>
+<li>Le type du message est <code>unsigned long long</code> qui est le type le plus grand en C (il stocke des nombres allant de $0$ à $2^{64} - 1$), car un <code>int</code> ne sera pas toujours suffisant, on prend donc des précautions en utilisant un type de données très grand pour ne pas avoir de problèmes. Sachez qu'en C, il existe la bibliothèque <a href="https://gmplib.org/">GMP</a> pour manipuler de <strong>très</strong> grands nombres.</li>
+<li>Dans la fonction <code>clePublique</code>, j'utilise un tableau statique contenant tous les nombres premiers de 1 à 100 et je tire au sort pour déterminer $p$ et $q$ (j'ai rentré directement <code>p = 61</code> et <code>q = 137</code> pour que les résultats concordent avec notre exemple, mais la partie tirage au sort est commentée).</li>
+<li>Pour lire notre message, on va directement stocker les caractères sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on convertit en <code>char</code> après le déchiffrement pour afficher une chaîne de caractères.</li>
+</ul>
+</div>
 <p>Le message d'entrée :</p>
 <pre><code class="nohighlight">Bienvenue
 </code></pre>
@@ -438,13 +450,7 @@ Cle privee : 8357 4663
 Bienvenue
 </code></pre>
 
-<p>Quelques remarques sur le code :</p>
-<ul>
-<li>Le type du message est <code>unsigned long long</code> qui est le type le plus grand en C (il stocke des nombres allant de $0$ à $2^{64} - 1$), car un <code>int</code> ne sera pas toujours suffisant, on prend donc des précautions en utilisant un type de données très grand pour ne pas avoir de problèmes.</li>
-<li>Dans la fonction <code>clePublique</code>, j'utilise un tableau statique contenant tous les nombres premiers de 1 à 100 et je tire au sort pour déterminer $p$ et $q$ (j'ai rentré directement <code>p = 61</code> et <code>q = 137</code> pour que les résultats concordent avec notre exemple, mais la partie tirage au sort est commentée).</li>
-<li>Pour lire notre message, on va directement stocker les caractères sous forme de nombre pour que le reste du programme soit plus simple, et pour la sortie on convertit en <code>char</code> après le déchiffrement pour afficher une chaîne de caractères.</li>
-</ul>
-<p>Sachez qu'en C, il existe la bibliothèque <a href="https://gmplib.org/">GMP</a> pour manipuler de <strong>très</strong> grands nombres. Cependant, recréer sa propre implémentation de RSA (ou même de n'importe quel algorithme de chiffrement) dans le but de l'utiliser dans une application concrète est une mauvaise idée, et il est conseillé d'utiliser des implémentations déjà existantes, libres, accessibles à tous et qui sont utilisées par des milliers d'autres personnes comme : <a href="https://www.openssl.org/">OpenSSL</a>, <a href="https://gnupg.org/">GnuPG</a>, etc. L'avantage d'utiliser ce genre d'outils est que de nombreuses personnes travaillent dessus chaque jour, et des recherches sont effectuées régulièrement pour découvrir les potentielles failles afin de rendre le système encore plus robuste.</p>
+<p>Il est important de noter que recréer sa propre implémentation de RSA (ou même de n'importe quel algorithme de chiffrement) dans le but de l'utiliser dans une application concrète est une mauvaise idée, et il est conseillé d'utiliser des implémentations déjà existantes, libres, accessibles à tous et qui sont utilisées par des milliers d'autres personnes comme : <a href="https://www.openssl.org/">OpenSSL</a>, <a href="https://gnupg.org/">GnuPG</a>, etc. L'avantage d'utiliser ce genre d'outils est que de nombreuses personnes travaillent dessus chaque jour, et des recherches sont effectuées régulièrement pour découvrir les potentielles failles afin de rendre le système encore plus robuste.</p>
 <h2 id="demonstration"><a class="toclink" href="#demonstration">Démonstration</a></h2>
 <p><em>Cette partie n'est pas essentielle pour comprendre le fonctionnement de l'algorithme, mais permet aux curieux de voir comment démontrer que notre système marche. Plusieurs notions mathématiques sont nécessaires pour la compréhension de la démonstration, mais sachez que j'ai appris au fur et à mesure en rédigeant cette partie sans connaitre à l'avance les outils mathématiques utilisés, donc il est tout à fait possible qu'un lecteur fasse de même s'il est vraiment intéressé par le sujet.</em></p>
 <p>C'est bien beau toutes ces explications, mais mathématiquement comme être sûr que notre algorithme marche à tous les coups ? Comment savoir si notre message original une fois chiffré sera le même quand il est déchiffré ?</p>
@@ -508,6 +514,8 @@ $x^{ed} \equiv x \pmod p$</p>
 </table>
 <p>J'utilise la notation <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadécimale</a> car cette dernière permet de stocker un octet plus simplement qu'en notation décimale. Notre message devient alors la suite d'octet <code>0x436F6465</code> (ce nombre correspond à 1131373669 en décimal) que notre ordinateur peut tout à fait comprendre si on lui indique d'afficher cette suite comme une chaîne. Donc au lieu de chiffrer les nombres <code>0x43</code>, <code>0x6F</code>, <code>0x64</code>, <code>0x65</code> séparément on va plutôt chiffrer <code>0x436F6465</code> uniquement. Puisqu'on sait que notre message utilise la table ASCII et que cette dernière n'a besoin que d'un octet pour représenter toutes les valeurs possibles, on sait qu'une lettre en notation hexadécimale ne prendra pas plus de deux caractères (si on exclut le <code>0x</code> qui est juste là pour indiquer que c'est de l'hexadécimal). On peut donc une fois notre nombre déchiffré, le découper en plusieurs nombres (toujours représentés en notation hexadécimale) que l'on va convertir en caractère grâce à la table ASCII.</p>
 <p>En C par exemple, il est facile de convertir une chaîne en un nombre hexadécimal et inversement :</p>
+<a href="javascript:toggle_visibility('hexadecimal.c');">hexadecimal.c <i id="toggle_arrow_hexadecimal.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="hexadecimal.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 #include &lt;stdlib.h&gt;
@@ -546,6 +554,7 @@ int main(void)
 </code></pre>
 
 <p>On peut utiliser le spécificateur <code>x</code> dans <a href="http://www.cplusplus.com/reference/cstdio/printf/"><code>printf</code></a> afin de convertir notre lettre en nombre hexadécimal. De même, on peut utiliser <a href="http://www.cplusplus.com/reference/cstdlib/strtoul/"><code>stroul</code></a> afin de convertir notre nombre hexadécimal en base 10 et de l'afficher comme un caractère.</p>
+</div>
 <p>En entrée par exemple du programme :</p>
 <pre><code class="nohighlight">Code
 </code></pre>

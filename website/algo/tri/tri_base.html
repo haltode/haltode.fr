@@ -143,6 +143,8 @@
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Pour implémenter le tri par base, il va tout d'abord falloir modifier légèrement notre implémentation du tri par dénombrement car la notion de stabilité pour ce tri n'a pas vraiment de sens puisqu'on utilise des effectifs sans lien réel avec notre tableau.</p>
 <p>Voici une implémentation en C++ du tri par base :</p>
+<a href="javascript:toggle_visibility('tri_base.cpp');">tri_base.cpp <i id="toggle_arrow_tri_base.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="tri_base.cpp" style="display: none;">
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;cmath&gt;
 #include &lt;queue&gt;
@@ -226,6 +228,7 @@ int main(void)
 </ul>
 <figure><img alt="Exemple de tableau de files" src="/img/algo/tri/tri_base/exemple_tableau_files.png" /><figcaption>Exemple de tableau de files</figcaption>
 </figure>
+</div>
 <p>L'entrée de notre exemple :</p>
 <pre><code class="nohighlight">6
 56 87 2 36 74 19

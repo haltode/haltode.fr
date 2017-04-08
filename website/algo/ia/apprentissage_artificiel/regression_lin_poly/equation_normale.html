@@ -110,6 +110,8 @@
 <p>Il est donc peu envisageable d'implémenter la méthode de l'équation normale lorsqu'on a environ $n &gt; 10000$.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Le code en Python permettant de calculer les paramètres $\theta$ avec l'équation normale :</p>
+<a href="javascript:toggle_visibility('equation_normale.py');">equation_normale.py <i id="toggle_arrow_equation_normale.py" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="equation_normale.py" style="display: none;">
 <pre><code class="py">import numpy as np
 
 
@@ -149,6 +151,7 @@ for j in range(ia.n):
 </code></pre>
 
 <p>Afin d'optimiser légèrement le programme, la matrice transposée de $x$ est stockée dans une variable car on doit la calculer deux fois (il est donc parfaitement inutile de refaire la même opération, même si ce n'est pas l'une des plus couteuses).</p>
+</div>
 <p>En entrée de notre programme, on donne le même fichier que pour l'algorithme du gradient :</p>
 <pre><code class="nohighlight">6 1
 1.73 1.94

@@ -89,6 +89,8 @@ Soit $N$ le nombre d'éléments de la liste chaînée.
 
 Une implémentation en C des fonctions présentées au-dessus :
 
+[[secret="liste_chainee.c"]]
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -242,6 +244,8 @@ int main(void)
 ```
 
 Le code est relativement simple à comprendre et à utiliser, une connaissance des pointeurs est cependant nécessaire.
+
+[[/secret]]
 
 Si vous programmez en C++, la [STL](https://en.wikipedia.org/wiki/Standard_Template_Library) (*Standard Template Library*) fournit une implémentation de liste chaînée ainsi que des fonctions de base pour les manipuler : <http://www.cplusplus.com/reference/list/list/>.
 

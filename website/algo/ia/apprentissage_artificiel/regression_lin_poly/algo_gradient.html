@@ -157,6 +157,8 @@ Tant qu'on n'a pas dépassé la limite de tours
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Voici le code en Python pour l'algorithme du gradient :</p>
 <p><em>J'utilise Python afin d'avoir accès à des librairies scientifiques comme <a href="http://www.numpy.org/">numpy</a> pour les matrices et <a href="http://matplotlib.org/">matplotlib</a> pour les graphiques.</em></p>
+<a href="javascript:toggle_visibility('algo_gradient.py');">algo_gradient.py <i id="toggle_arrow_algo_gradient.py" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="algo_gradient.py" style="display: none;">
 <pre><code class="py">import numpy as np
 
 
@@ -210,6 +212,7 @@ for j in range(ia.n):
     print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))
 </code></pre>
 
+</div>
 <p>Notre fichier d'entrée contient sur la première ligne le nombre $m$ d'exemples, puis le nombre $n$ d'attributs. Sur les $m$ prochaines lignes, on retrouve une liste de nombre dont la dernière colonne correspond à $y$ et les autres à $x$. J'ai repris notre exemple de l'introduction pour construire le fichier d'entrée (les unités sont toujours en centaine d'opérations et en centaine d'euros) :</p>
 <pre><code class="nohighlight">6 1
 1.73 1.94
@@ -232,6 +235,8 @@ theta  1  :  0.7219164912370313
 </figure>
 <p>On obtient bien une généralisation efficace sous forme de fonction linéaire qui ressemble fortement à celle qu'un humain peut faire à la main (même si celle que l'ordinateur a calculé est plus précise que celle faite à la main).</p>
 <p>Le code utilisé pour réaliser cette sortie :</p>
+<a href="javascript:toggle_visibility('sortie_graphique.py');">sortie_graphique.py <i id="toggle_arrow_sortie_graphique.py" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="sortie_graphique.py" style="display: none;">
 <pre><code class="py">import matplotlib.pyplot as plt
 
 # Récupère dans des listes les valeurs de x, y, et de notre approximation de y
@@ -250,6 +255,7 @@ plt.plot(x, y_approx, 'r-')
 plt.show()
 </code></pre>
 
+</div>
 <h2 id="ameliorations"><a class="toclink" href="#ameliorations">Améliorations</a></h2>
 <h3><em>Vectorization</em></h3>
 <p>Afin de simplifier le code, il serait utile d'utiliser la même amélioration qu'avec notre fonction d'hypothèse : les opérations sur les matrices. Au lieu d'appliquer des opérations sur les éléments d'une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
@@ -293,6 +299,8 @@ theta  1  :  2.3208884389927897
 <figure><img alt="Sortie graphique après opération de feature scaling" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/sortie_prog_feature_scaling.png" /><figcaption>Sortie graphique après opération de feature scaling</figcaption>
 </figure>
 <p>Le code final avec les deux améliorations :</p>
+<a href="javascript:toggle_visibility('algo_gradient_vect_fs.py');">algo_gradient_vect_fs.py <i id="toggle_arrow_algo_gradient_vect_fs.py" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="algo_gradient_vect_fs.py" style="display: none;">
 <pre><code class="py">import numpy as np
 
 
@@ -338,6 +346,7 @@ for j in range(ia.n):
     print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))
 </code></pre>
 
+</div>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>L'algorithme du gradient est donc un algorithme itératif servant à minimiser notre fonction d'erreur $J$ afin de trouver les paramètres $\theta$ optimaux pour notre fonction d'hypothèse. Cet algorithme est très utile sur des entrées extrêmement importantes car on peut contrôler son nombre d'itérations ainsi que sa vitesse d'apprentissage (qu'il faut bien choisir au risque de réduire considérablement l'efficacité de notre programme).</p>
 <p>Il faut savoir qu'il existe différentes variantes de cet algorithme :</p>

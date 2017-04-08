@@ -61,6 +61,8 @@ On peut implémenter un DFS de deux manières différentes, même si on a plutô
 
 Une implémentation récursive en C++ (j'utilise le C++ afin d'avoir les `vector` pour représenter notre graphe) :
 
+[[secret="dfs_recursif.cpp"]]
+
 ```cpp
 #include <cstdio>
 #include <vector>
@@ -100,6 +102,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 Si en entrée on donne notre graphe (celui de l'exemple et sous forme d'une liste d'arcs) :
 
@@ -146,6 +150,8 @@ En sortie cette fois on a :
 Il est rare d'implémenter de façon itérative un parcours en profondeur, mais cela peut être utile pour ne pas faire exploser la [pile d'appels](https://en.wikipedia.org/wiki/Call_stack) à cause des nombreux appels récursifs imbriqués provoqués par notre dernière implémentation.
 
 Pour passer de la version récursive à la version itérative, on utilise simplement une [pile](/algo/structure/pile.html) afin de "simuler" la pile d'appel. En effet lorsqu'on visite un nœud, on veut visiter tout de suite ses voisins, il faut donc les placer dans l'ordre de visite avant les autres nœuds, on va donc les empiler afin de les parcourir d'abord.
+
+[[secret="dfs_iteratif.cpp"]]
 
 ```cpp
 #include <cstdio>
@@ -197,6 +203,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 En entrée :
 
@@ -290,6 +298,8 @@ Comme pour le parcours en profondeur, si notre sortie est le dernier nœud que l
 
 L'implémentation du parcours en largeur en C++ (afin d'avoir le type `queue` et `vector`) :
 
+[[secret="bfs.cpp"]]
+
 ```cpp
 #include <cstdio>
 #include <vector>
@@ -340,6 +350,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 Notre graphe :
 

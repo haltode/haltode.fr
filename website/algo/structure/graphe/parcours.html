@@ -106,6 +106,8 @@
 <p>On peut implémenter un DFS de deux manières différentes, même si on a plutôt tendance à le coder de manière récursive car le code est plus court et plus intuitif.</p>
 <h4>Récursif</h4>
 <p>Une implémentation récursive en C++ (j'utilise le C++ afin d'avoir les <code>vector</code> pour représenter notre graphe) :</p>
+<a href="javascript:toggle_visibility('dfs_recursif.cpp');">dfs_recursif.cpp <i id="toggle_arrow_dfs_recursif.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="dfs_recursif.cpp" style="display: none;">
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
 using namespace std;
@@ -145,6 +147,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>Si en entrée on donne notre graphe (celui de l'exemple et sous forme d'une liste d'arcs) :</p>
 <pre><code class="nohighlight">8
 1 2
@@ -180,6 +183,8 @@ int main(void)
 <h4>Itératif</h4>
 <p>Il est rare d'implémenter de façon itérative un parcours en profondeur, mais cela peut être utile pour ne pas faire exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appels</a> à cause des nombreux appels récursifs imbriqués provoqués par notre dernière implémentation.</p>
 <p>Pour passer de la version récursive à la version itérative, on utilise simplement une <a href="/algo/structure/pile.html">pile</a> afin de "simuler" la pile d'appel. En effet lorsqu'on visite un nœud, on veut visiter tout de suite ses voisins, il faut donc les placer dans l'ordre de visite avant les autres nœuds, on va donc les empiler afin de les parcourir d'abord.</p>
+<a href="javascript:toggle_visibility('dfs_iteratif.cpp');">dfs_iteratif.cpp <i id="toggle_arrow_dfs_iteratif.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="dfs_iteratif.cpp" style="display: none;">
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
 #include &lt;stack&gt;
@@ -230,6 +235,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>En entrée :</p>
 <pre><code class="nohighlight">8
 1 2
@@ -296,6 +302,8 @@ int main(void)
 <p>Comme pour le parcours en profondeur, si notre sortie est le dernier nœud que l'on visite on aura une complexité en $O(M)$ avec $M$ le nombre d'arcs du graphe.</p>
 <h3>Implémentation</h3>
 <p>L'implémentation du parcours en largeur en C++ (afin d'avoir le type <code>queue</code> et <code>vector</code>) :</p>
+<a href="javascript:toggle_visibility('bfs.cpp');">bfs.cpp <i id="toggle_arrow_bfs.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="bfs.cpp" style="display: none;">
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
@@ -346,6 +354,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>Notre graphe :</p>
 <pre><code class="nohighlight">8
 1 2

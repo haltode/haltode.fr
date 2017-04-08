@@ -101,6 +101,8 @@
 <p>Pour savoir si on a déjà utilisé une clé, plusieurs solutions s'offrent à nous. On peut tout d'abord utiliser un simple tableau qui stockera toutes les clés utilisées, et à chaque fois que l'on en génère une nouvelle, on vérifie qu'elle n'est pas dans notre tableau avant de l'ajouter. Il est aussi possible d'améliorer cette solution en utilisant une <a href="/algo/recherche/dichotomie.html">recherche dichotomique</a>, nous permettant dans notre tableau (trié par ordre alphabétique) de chercher rapidement si une clé a déjà été générée ou non.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>L'implémentation en C d'un programme générant une clé de chiffrement pour le chiffre de Vernam :</p>
+<a href="javascript:toggle_visibility('chiffre_vernam.c');">chiffre_vernam.c <i id="toggle_arrow_chiffre_vernam.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="chiffre_vernam.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;ctype.h&gt;
 #include &lt;time.h&gt;
@@ -186,6 +188,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>En entrée :</p>
 <pre><code class="nohighlight">Algorithme
 </code></pre>

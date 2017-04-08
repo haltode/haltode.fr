@@ -98,6 +98,8 @@ Soit $N$ le nombre d'éléments de la pile.
 
 ### Liste chaînée
 
+[[secret="pile_liste_chainee.c"]]
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -184,7 +186,11 @@ int main(void)
 
 Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les [listes chaînées](/algo/structure/liste_chainee.html) pour bien comprendre le code.
 
+[[/secret]]
+
 ### Tableau
+
+[[secret="pile_tableau.c"]]
 
 ```c
 #include <stdio.h>
@@ -237,6 +243,8 @@ int main(void)
 ```
 
 Cette implémentation est facile à comprendre et à utiliser.
+
+[[/secret]]
 
 ### STL
 

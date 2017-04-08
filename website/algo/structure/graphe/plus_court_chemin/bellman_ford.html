@@ -245,6 +245,8 @@ Bellman-Ford (nbEtape, nœud) :
 <p>Cette complexité en temps est légèrement moins efficace que celle de l'algorithme de Dijkstra, mais reste raisonnable vu la complexité exponentielle de l'algorithme naïf. Surtout que l'algorithme de Dijkstra ne permet pas de réaliser le calcul du plus court chemin sur des graphes pondérés négativement, et que l'algorithme de Bellman-Ford gère le cas des cycles améliorants de manière très simple et élégante.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>L'implémentation en C++ de l'algorithme de Bellman-Ford :</p>
+<a href="javascript:toggle_visibility('bellman_ford.cpp');">bellman_ford.cpp <i id="toggle_arrow_bellman_ford.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="bellman_ford.cpp" style="display: none;">
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
 using namespace std;
@@ -314,6 +316,7 @@ int main(void)
 }
 </code></pre>
 
+</div>
 <p>En entrée, on donne sur la première ligne le nœud de départ et d'arrivée pour le plus court chemin, puis sur la seconde ligne le nombre de nœuds et d'arcs du graphe, avant de terminer sur la liste d'arcs :</p>
 <pre><code class="nohighlight">1 5
 5 7

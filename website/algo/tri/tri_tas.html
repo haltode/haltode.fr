@@ -108,6 +108,8 @@
 <p><em>Si vous n’avez pas lu mon article sur le <a href="/algo/tri/tri_rapide.html">tri rapide</a>, je vous conseille au moins de lire la partie <a href="/algo/tri/tri_rapide.html#complexite">complexité</a> dans laquelle j’explique pourquoi le tri rapide peut être jusqu’à deux fois plus efficace que le tri par tas.</em></p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C++ (afin d'avoir le type <code>priority_queue</code>) du tri par tas :</p>
+<a href="javascript:toggle_visibility('tri_tas.cpp');">tri_tas.cpp <i id="toggle_arrow_tri_tas.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
+<div id="tri_tas.cpp" style="display: none;">
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;queue&gt;
 using namespace std;
@@ -158,6 +160,7 @@ int main(void)
 </code></pre>
 
 <p>On utilise la <a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>priority_queue</code></a> de la STL afin d'avoir un tas max facilement dans notre implémentation.</p>
+</div>
 <p>Notre tableau d'entrée :</p>
 <pre><code class="nohighlight">7
 1 9 3 7 6 1 4

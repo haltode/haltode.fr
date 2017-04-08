@@ -69,6 +69,8 @@ La complexité finale de notre algorithme est donc $O(N + M)$, soit une complexi
 
 L'implémentation en C du tri par dénombrement :
 
+[[secret="tri_denombrement.c"]]
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -125,6 +127,8 @@ int main(void)
 ```
 
 J'utilise la fonction [`calloc`](http://www.cplusplus.com/reference/cstdlib/calloc/) lors de l'allocation afin d'avoir mon tableau directement initialisé à 0.
+
+[[/secret]]
 
 Notre tableau en entrée :
 

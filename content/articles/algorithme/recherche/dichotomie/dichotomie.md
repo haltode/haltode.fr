@@ -88,6 +88,8 @@ Dans ces implémentations, je suppose que l'élément appartient bien au tableau
 
 L'implémentation récursive en C de la recherche :
 
+[[secret="dichotomie_recursif.c"]]
+
 ```c
 #include <stdio.h>
 
@@ -128,6 +130,8 @@ int main(void)
 }
 ```
 
+[[/secret]]
+
 Si on donne notre tableau en entrée, ainsi que l'élément qu'on recherche :
 
 ```nohighlight
@@ -145,6 +149,8 @@ On obtient bien en sortie :
 ### Itératif
 
 La version itérative en C :
+
+[[secret="dichotomie_iteratif.c"]]
 
 ```c
 #include <stdio.h>
@@ -195,6 +201,8 @@ int main(void)
    return 0;
 }
 ```
+
+[[/secret]]
 
 Le tableau et l'élément recherché :
 

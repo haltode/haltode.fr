@@ -133,6 +133,8 @@ Voici le code en Python pour l'algorithme du gradient :
 
 *J'utilise Python afin d'avoir accès à des librairies scientifiques comme [numpy](http://www.numpy.org/) pour les matrices et [matplotlib](http://matplotlib.org/) pour les graphiques.*
 
+[[secret="algo_gradient.py"]]
+
 ```py
 import numpy as np
 
@@ -187,6 +189,8 @@ for j in range(ia.n):
     print("theta ", j, " : ", float(ia.theta[j]))
 ```
 
+[[/secret]]
+
 Notre fichier d'entrée contient sur la première ligne le nombre $m$ d'exemples, puis le nombre $n$ d'attributs. Sur les $m$ prochaines lignes, on retrouve une liste de nombre dont la dernière colonne correspond à $y$ et les autres à $x$. J'ai repris notre exemple de l'introduction pour construire le fichier d'entrée (les unités sont toujours en centaine d'opérations et en centaine d'euros) :
 
 ```nohighlight
@@ -216,6 +220,8 @@ On obtient bien une généralisation efficace sous forme de fonction linéaire q
 
 Le code utilisé pour réaliser cette sortie :
 
+[[secret="sortie_graphique.py"]]
+
 ```py
 import matplotlib.pyplot as plt
 
@@ -234,6 +240,8 @@ plt.plot(x, y, '+')
 plt.plot(x, y_approx, 'r-')
 plt.show()
 ```
+
+[[/secret]]
 
 ## Améliorations
 
@@ -299,6 +307,8 @@ theta  1  :  2.3208884389927897
 
 Le code final avec les deux améliorations :
 
+[[secret="algo_gradient_vect_fs.py"]]
+
 ```py
 import numpy as np
 
@@ -344,6 +354,8 @@ print("Coefficients de la fonction d'hypothese :\n")
 for j in range(ia.n):
     print("theta ", j, " : ", float(ia.theta[j]))
 ```
+
+[[/secret]]
 
 ## Conclusion
 
