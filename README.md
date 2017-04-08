@@ -16,6 +16,9 @@ The script `build.py` uses different Python librairies:
       - [Add toc_depth parameter to toc extension](https://github.com/waylan/Python-Markdown/pull/431)
 - [Jinja](http://jinja.pocoo.org/): to create templates for the future HTML pages
 
+All custom Markdown blocks are handled by the `custom_md_block.sh` script:
+   - `[[secret="title"]]` and `[[/secret]]` will hide the text between them, and enable a toggle button to show/hide the element.
+
 ## Server
 
 The website is hosted on my [Raspberry Pi](https://www.raspberrypi.org/), which is running an [nginx](http://nginx.org/) server. As for the SSL/TLS certificate, I use [Let's Encrypt](https://letsencrypt.org/).

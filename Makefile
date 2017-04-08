@@ -4,10 +4,12 @@ WEBSITE_DIR = $(CURRENT_DIR)/website
 
 run:
 	python $(SCRIPT_DIR)/build.py
+	$(SCRIPT_DIR)/custom_md_block.sh
 	$(SCRIPT_DIR)/test_server.sh
 
 quickrun:
 	python $(SCRIPT_DIR)/build.py `git ls-files --modified | grep md`
+	$(SCRIPT_DIR)/custom_md_block.sh
 	$(SCRIPT_DIR)/test_server.sh
 
 clean:
