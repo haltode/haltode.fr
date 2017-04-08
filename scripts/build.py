@@ -2,34 +2,33 @@ import glob
 import jinja2
 import markdown
 import os
+import sys
 
 from markdown.extensions.toc import TocExtension
 # Python-Markdown third party extension
 import figureAltCaption
 
 
-ARTICLE_DIR = 'content/articles'
-PAGE_DIR = 'content/pages'
-TEMPLATE_DIR = 'content/templates'
-WEBSITE_DIR = 'website'
+ARTICLE_DIR      = 'content/articles'
+PAGE_DIR         = 'content/pages'
+TEMPLATE_DIR     = 'content/templates'
+WEBSITE_DIR      = 'website'
 
 ARTICLE_TEMPLATE = 'article.html'
-PAGE_TEMPLATE = 'default.html'
+PAGE_TEMPLATE    = 'default.html'
 
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))
 # To get rid of useless empty lines in the html output
-jinja_env.trim_blocks = True
+jinja_env.trim_blocks   = True
 jinja_env.lstrip_blocks = True
 
 
-def get_path_files(directory, extension):
-    return glob.iglob(directory + '/**/*.' + extension, recursive=True)
-
-
-def final_render(template, html, metadata, **extras):
-    template = jinja_env.get_template(template)
-    output = template.render({'html_content': html, 'metadata': metadata, **extras})
-
+def full_render(template, html, metadata, toc):
+    output = template.render({
+            'html_content': html,
+            'metadata': metadata,
+            'toc': toc
+            })
     path = os.path.join(WEBSITE_DIR, metadata['path'])
     with open(path, 'w+') as f:
         f.write(output)
@@ -44,7 +43,6 @@ def read_markdown(path):
         'markdown.extensions.extra',
         'markdown.extensions.meta',
         TocExtension(marker='', toc_depth=2),
-        # Third party extension
         'figureAltCaption'
         })
     html = md.convert(content)
@@ -66,27 +64,38 @@ def read_markdown(path):
     return html, metadata, toc
 
 
-def basic_rendering(template, directory, render_toc):
-    file_template = jinja_env.get_template(template)
-    files = get_path_files(directory, 'md')
-    for f in files:
-        html, metadata, toc = read_markdown(f)
-        if render_toc:
-            final_render(template, html, metadata, toc=toc)
-        else:
-            final_render(template, html, metadata)
+def basic_render(path, template_path):
+    template = jinja_env.get_template(template_path)
+    html, metadata, toc = read_markdown(path)
+    full_render(template, html, metadata, toc)
+
+
+def get_path_files(directory, extension):
+    return glob.iglob(directory + '/**/*.' + extension, recursive=True)
 
 
 def render_pages():
-    basic_rendering(PAGE_TEMPLATE, PAGE_DIR, render_toc=False)
+    for page in get_path_files(PAGE_DIR, 'md'):
+        basic_render(page, PAGE_TEMPLATE)
 
 
 def render_articles():
-    basic_rendering(ARTICLE_TEMPLATE, ARTICLE_DIR, render_toc=True)
+    for article in get_path_files(ARTICLE_DIR, 'md'):
+        basic_render(article, ARTICLE_TEMPLATE)
 
 
-print("Rendering pages...")
-render_pages()
-print("Rendering articles...")
-render_articles()
-print("Done!")
+# We can specify the files we only want to render
+if len(sys.argv) > 1:
+    for f in sys.argv[1:]:
+        print("Rendering: ", os.path.basename(f))
+        if PAGE_DIR in f:
+            basic_render(f, PAGE_TEMPLATE)
+        elif ARTICLE_DIR in f:
+            basic_render(f, ARTICLE_TEMPLATE)
+# Or, we can render all the files
+else:
+    print("Rendering pages...")
+    render_pages()
+    print("Rendering articles...")
+    render_articles()
+    print("Done!")
