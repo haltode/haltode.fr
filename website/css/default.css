@@ -23,11 +23,7 @@ body {
    width: 50%;
 }
 
-#menu {
-   padding-top: 0.5em;
-}
-
-#info {
+#menu, #info {
    padding-top: 0.5em;
 }
 
@@ -51,22 +47,23 @@ body {
 
 /* ---- Titles ---- */
 
+h1, h2, h3, h4, h5, h6 {
+   color: #de4834;
+}
+
 h1 {
    text-align: center;
-   color: #de4834;
    margin-top: 0em;
    padding-top: 1em;
    padding-bottom: 0.5em;
 }
 
 h2 {
-   color: #de4834;
    margin-top: 1em;
    padding-top: 1em;
 }
 
 h3, h4, h5, h6 {
-   color: #de4834;
    margin-top: 0.5em;
    padding-top: 0.5em;
 }
@@ -106,8 +103,7 @@ table th {
    font-weight: bold;
 }
 
-table th,
-table td {
+table th, table td {
    padding: 6px 13px;
    border: 1px solid #ddd;
 }
@@ -152,8 +148,7 @@ i {
 
 /* ---- Code ---- */
 
-code,
-pre {
+code, pre {
    background: #f5f7f9;
    color: #323337;
 }
