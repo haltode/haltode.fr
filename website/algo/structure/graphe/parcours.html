@@ -66,11 +66,11 @@
       </div>
 
       <div id="content">
-         <h1>Parcours d'un graphe</h1>
+         <h1><a href="">Parcours d'un graphe</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Le parcours d'un <a href="/algo/structure/graphe.html">graphe</a> est une opération essentielle à connaître à propos de cette structure. Il est fondamental de maitriser les différents algorithmes de parcours de graphe, ainsi que leur application et surtout savoir quand les utiliser en fonction de la situation.</p>
-<h2 id="le-parcours-en-profondeur">Le parcours en profondeur</h2>
+<h2 id="le-parcours-en-profondeur"><a class="toclink" href="#le-parcours-en-profondeur">Le parcours en profondeur</a></h2>
 <p>Vous vous trouvez dans un labyrinthe contenant de nombreux chemins possibles, et vous cherchez la sortie alors que vous ne connaissez aucunes indications sur ce labyrinthe. Tout d'abord, on peut représenter notre labyrinthe comme un graphe dit <em>implicite</em>, qui sera non pondéré (chaque arc aura alors une distance de <em>1</em> unité). En effet, chaque intersection sera représentée par un nœud du graphe, et chaque chemin par un arc. L'entrée et la sortie du labyrinthe sont juste de simples nœuds distincts du graphe, et le fait de trouver la sortie du labyrinthe, revient à trouver un chemin reliant le nœud d'entrée au nœud de sortie : </p>
 <figure><img alt="Exemple de représentation d'un labyrinthe sous forme de graphe" src="/img/algo/structure/graphe/dfs/labyrinthe_graphe.png" /><figcaption>Exemple de représentation d'un labyrinthe sous forme de graphe</figcaption>
 </figure>
@@ -260,7 +260,7 @@ int main(void)
 </code></pre>
 
 <p>Vous constatez donc que la pile "inverse" l'ordre, tout simplement car lorsqu'on parcourt la liste des voisins, on ne visite pas le voisin dès qu'on en a trouvé un non visité (comme le fait la version récursive), mais on les empile tous, et ils vont donc se superposer (ce qui va "inverser" l'ordre car c'est le principe d'une pile : le dernier arrivé, le premier sorti).</p>
-<h2 id="le-parcours-en-largeur">Le parcours en largeur</h2>
+<h2 id="le-parcours-en-largeur"><a class="toclink" href="#le-parcours-en-largeur">Le parcours en largeur</a></h2>
 <p>Vous vous retrouvez face à l'entrée du labyrinthe, mais cette fois ci vous cherchez le nombre de pas minimum que vous devez faire pour atteindre la sortie. Ce problème peut être vu comme un plus court chemin, mais notre graphe implicite est <strong>non pondéré</strong> contrairement aux autres algorithmes "classiques" de <a href="/algo/structure/graphe/plus_court_chemin.html">plus court chemin</a> où le graphe est pondéré (positivement ou négativement). Cela revient donc à trouver un chemin entre l'entrée et la sortie comportant un minimum de nœuds possible (vu que les arcs ont chacun une distance de <em>1</em> unité). Mais de nouveau nous n'avons aucunes informations sur le labyrinthe, et la sortie pourrait se trouver n'importe où.</p>
 <p>Essayons tout d'abord de voir si on peut réutiliser un algorithme de parcours en profondeur pour résoudre notre problème :</p>
 <figure><img alt="Exemple de labyrinthe" src="/img/algo/structure/graphe/bfs/dfs_vs_bfs.png" /><figcaption>Exemple de labyrinthe</figcaption>
@@ -359,7 +359,7 @@ int main(void)
 <pre><code class="nohighlight">1 2 3 4 5 6 7 8 9
 </code></pre>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Savoir parcourir un graphe est fondamental pour utiliser d'autres algorithmes de graphe plus complexes, et il existe deux types de parcours qu'il faut connaître et maitriser pour les utiliser au bon moment :</p>
 <ul>
 <li><strong>Parcours en profondeur</strong> : on l'utilisera pour trouver un chemin quelconque entre deux nœuds du graphe (par exemple entre l'entrée et la sortie d'un labyrinthe), pour détecter des cycles dans un graphe, pour en trouver ses composantes fortement connexes, afin de créer un tri topologique, ou encore un circuit eulérien, mais cette idée de parcourir en profondeur sert aussi pour le backtracking.</li>

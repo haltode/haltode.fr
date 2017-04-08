@@ -69,9 +69,9 @@
       </div>
 
       <div id="content">
-         <h1>Régression linéaire/polynomiale</h1>
+         <h1><a href="">Régression linéaire/polynomiale</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Vous souhaitez estimer le prix d'un ordinateur en fonction de différents facteurs (puissance, mémoire, stockage, batterie, etc.), cependant la tâche se complique au fur et à mesure que vous rajoutez des possibilités, et vous décidez alors d'employer un algorithme d'apprentissage artificiel pour faire le travail à votre place. Afin de prendre un exemple simple, on va dire que vous estimez le prix d'un ordinateur uniquement en fonction de sa puissance de calcul. Dans l'<a href="/algo/ia/apprentissage_artificiel/introduction.html">introduction à la matière</a>, on a vu que récolter des données utiles est une étape importante dans un processus d'apprentissage, et vous avez alors noté la puissance et le prix de différents ordinateurs dans un tableau :</p>
 <p><em>Les données sont totalement inventées et ne servent que d'exemple.</em></p>
 <table>
@@ -118,7 +118,7 @@
 <p>Cependant, du point de vue d'une personne, il est facile de trouver un lien entre les données dans le but de généraliser, mais comment un algorithme peut-il reproduire ce comportement ? Qu'est-ce qui fait qu'une fonction (linéaire, polynomiale, etc.) est une bonne généralisation de notre problème ?</p>
 <p>Avant de se lancer dans la recherche d'un algorithme d'apprentissage artificiel, il faut définir ses caractéristiques. Dans notre problème, on a un ensemble de données sous la forme d'entrées et de sorties correspondantes, nous sommes donc dans un <strong>apprentissage supervisé</strong>. De plus, la sortie qu'on cherche est une valeur numérique, notre problème appartient alors au domaine de la <strong>régression</strong>. Une fois qu'on connaît ces deux informations essentielles, on peut décider de l'algorithme à utiliser en fonction de nos besoins et de nos ressources. Dans notre situation on souhaiterait faire une généralisation sous la forme d'une fonction linéaire, la méthode à employer est donc : la <strong>régression linéaire</strong>.</p>
 <p><em>La régression linéaire n'est qu'un cas particulier de la régression polynomiale, mais il est plus simple de commencer avec une simple fonction linéaire pour ensuite aborder des fonctions plus complexes (même si le principe reste exactement le même).</em></p>
-<h2 id="principe">Principe</h2>
+<h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
 <p>La régression linéaire est un moyen de généraliser et de créer un modèle linéaire à partir d'exemples. Lesdits exemples sont représentés à l'aide de <a href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a> où $x$ est l'entrée, et $y$ est la sortie correspondante. Prenons le cas où on essaie de généraliser le prix d'un appartement en fonction de sa taille et de son nombre de pièces (encore une fois les données sont fictives):</p>
 <table>
 <thead>
@@ -165,7 +165,7 @@
 <p>Si l'on reprend notre énoncé de départ sur le prix d'un ordinateur, on a uniquement un attribut (sa puissance), et on cherche une estimation du prix à l'aide d'une fonction d'hypothèse de la forme :</p>
 <p>$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1$</p>
 <p>Mais pour comprendre comment trouver un bon modèle, il faut tout d'abord comprendre comment décrire l'efficacité d'un modèle quelconque, et surtout qu'est-ce qui rend un modèle meilleur qu'un autre ?</p>
-<h2 id="fonction-derreur">Fonction d'erreur</h2>
+<h2 id="fonction-derreur"><a class="toclink" href="#fonction-derreur">Fonction d'erreur</a></h2>
 <p>Afin de différencier deux modèles en fonction de leurs efficacités, on va utiliser une <strong>fonction d'erreur</strong> qui mesure le taux d'erreur entre notre modèle et la réalité.</p>
 <p>Si on prend un exemple $i$, la différence entre l'estimation de notre fonction d'hypothèse et la sortie fournie en entrée se note :</p>
 <p>$h_{\theta}(x_{i}) - y_{i}$</p>
@@ -186,14 +186,14 @@
 <figure><img alt="Exemple de représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /><figcaption>Exemple de représentation graphique de la fonction d'erreur</figcaption>
 </figure>
 <p>Sur ce graphique représentant $J$ en fonction de $\theta_{0}$ et $\theta_{1}$, on remarque clairement les valeurs de $\theta$ pour lesquelles la fonction d'erreur est minimisée. Cependant, il va falloir trouver un algorithme qui calcule ces valeurs automatiquement, car on ne pourra pas toujours faire de représentation graphique (lorsqu'on a beaucoup d'attributs en entrée par exemple).</p>
-<h2 id="algorithmes">Algorithmes</h2>
+<h2 id="algorithmes"><a class="toclink" href="#algorithmes">Algorithmes</a></h2>
 <p>On a réussi à définir mathématiquement l'objectif de la régression linéaire grâce à notre fonction d'erreur. Désormais il faut donc minimiser cette fonction avec les paramètres $\theta$.</p>
 <p>Deux méthodes répandues s'offrent à nous :</p>
 <ul>
 <li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html"><strong>L'algorithme du gradient</strong></a> (<em>gradient descent</em> en anglais) : un algorithme itératif utile quand $n$ est très large, et personnalisable grâce à un coefficient d'apprentissage (ce dernier peut aussi être un désavantage car dans certains cas il est difficile de le choisir efficacement).</li>
 <li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html"><strong>L'équation normale</strong></a> : une équation donnant le résultat directement sans itérations, cependant cette dernière est très lourde en opérations à cause du <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit matriciel</a> qui a une complexité en temps de $O(n^3)$. On l'utilisera plutôt quand $n$ est suffisamment petit (en général en dessous de 10000).</li>
 </ul>
-<h2 id="regression-polynomiale">Régression polynomiale</h2>
+<h2 id="regression-polynomiale"><a class="toclink" href="#regression-polynomiale">Régression polynomiale</a></h2>
 <p>Maintenant qu'on a vu comment fonctionne la régression linéaire, il est temps d'utiliser des fonctions polynomiales plus complexes afin de généraliser sur des données non linéaires. En réalité, l'unique changement à réaliser est sur notre fonction d'hypothèse puisque la fonction d'erreur et les deux algorithmes restent exactement les mêmes. Il suffit donc d'employer une <strong>fonction d'hypothèse polynomiale</strong> :</p>
 <p>$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2^2 + \ldots + \theta_{n}x_n^d$</p>
 <p>Dans cette expression, $d$ correspond au degré maximum de notre fonction.</p>
@@ -203,7 +203,7 @@
 <p>Si possible, afficher les données sur un graphique est la meilleure chose à faire afin de pouvoir visualiser quels types d'attributs il nous faut pour notre fonction d'hypothèse. Sinon, il est toujours envisageable de tester plusieurs combinaisons et de voir laquelle est la meilleure en fonction du résultat de la fonction d'erreur.</p>
 <figure><img alt="Exemple de régression polynomiale sur des données non-linéaires" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" /><figcaption>Exemple de régression polynomiale sur des données non-linéaires</figcaption>
 </figure>
-<h2 id="problemes">Problèmes</h2>
+<h2 id="problemes"><a class="toclink" href="#problemes">Problèmes</a></h2>
 <p>Dans le domaine de l'apprentissage artificiel, il y a un problème commun à de très nombreux algorithmes : le <strong>surapprentissage</strong>.</p>
 <p>Dans un apprentissage supervisé, le but est de fournir à notre algorithme des exemples à partir desquels il peut généraliser le problème à résoudre. Cependant, il arrive que ce dernier ne généralise pas assez, et en vient à réciter par cœur les données fournies. Le problème est que notre programme va alors trouver la bonne réponse sur quasiment tous nos exemples, mais dès qu'il verra une nouvelle entrée il répondra totalement à côté. Il n'a pas réussi à généraliser, et il est tombé dans le cas par cas. Cette notion de surapprentissage (ou <em>overfitting</em> en anglais) est essentielle à comprendre car c'est un problème extrêmement récurrent dans le domaine de l'apprentissage artificiel, et spécialement dans le cadre d'un apprentissage supervisé.</p>
 <p>Par exemple, prenons des données imaginaires :</p>
@@ -257,7 +257,7 @@
 <li>Choisir $\lambda$ qui obtient le plus faible taux d'erreur sur la dernière étape.</li>
 </ul>
 <p>Notez qu'on peut utiliser cette méthode de validation croisée afin de choisir les degrés à utiliser dans notre fonction d'hypothèse polynomiale de la même façon que pour $\lambda$.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>La régression linéaire/polynomiale est donc un moyen de généraliser un problème à partir d'exemples fournis en construisant un modèle plus ou moins complexe. On a pu voir deux algorithmes très différents, ainsi que le principal problème lié à ce type d'apprentissage avant d'aborder une solution efficace.</p>
 <p>Même si l'action de "généraliser" est une notion assez facile à appréhender en tant qu'humain, c'est bien plus compliqué de le faire comprendre à un ordinateur et les mathématiques nous permettent de nous en rapprocher considérablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilisé à travers d'autres algorithmes d'apprentissage artificiel, il était donc important de le découvrir ici dans un cadre assez accessible.</p>
 <p>Déduire un modèle à partir de données est un problème très commun, et la régression linéaire/polynomiale est une méthode employée dans pleins de domaines comme l'économie, la finance, les statistiques, la géographie, la physique, la biologie, etc.</p>

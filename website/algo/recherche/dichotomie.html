@@ -69,13 +69,13 @@
       </div>
 
       <div id="content">
-         <h1>Dichotomie</h1>
+         <h1><a href="">Dichotomie</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Si je vous donne un annuaire téléphonique contenant plusieurs milliers de coordonnées, et que je vous demande de trouver une personne, normalement en quelques secondes vous y arrivez. Même si je rajoute plusieurs millions de personnes dans l'annuaire, vous devriez toujours être capable de repérer n'importe qui en moins d'une minute. Mais comment faire pour qu'un ordinateur nous remplace pour effectuer cette tâche ? Comment concrétiser l'algorithme que vous utilisez (sans le savoir) pour qu'un ordinateur le comprenne ? Votre cerveau est un outil incroyable qui n'aime pas faire des actions répétitives, et il essaiera naturellement de trouver une façon plus rapide de résoudre un problème. Vous n'auriez pas idée de commencer par regarder toutes les personnes avec un prénom en "A" si vous savez que la personne que vous cherchez est "Jean". Ce que vous faites plutôt, c'est que vous divisez l'intervalle de recherche à partir d'un résultat, vous ouvrez par exemple une page au hasard qui devrait correspondre à peu près à la lettre que vous cherchez, et vous affinez au fur et à mesure en fonction du mot de la page. Votre méthode se base sur une caractéristique très importante de votre annuaire : il est <strong>trié</strong> par ordre alphabétique.</p>
 <p>Jouons à un petit jeu appelé <em>le plus ou moins</em>. Je choisis un nombre entre 1 et 100 et vous devez le deviner en moins de coup possible. A chaque fois que vous me dites un nombre, je vous dis si ce dernier est supérieur ou inférieur à celui que j'ai choisi (ou égal si vous avez trouvé).</p>
 <p>Vu comme ça, on pourrait se dire qu'on a 1 chance sur 100 de tomber sur le bon nombre, mais en réfléchissant bien on peut améliorer nos chances en s'aidant de la réponse que je donne à chaque fois (si c'est plus ou moins). Je choisis donc mon nombre, et au premier tour vous dites 50, si je vous dis « plus » vous savez que mon nombre sera forcément dans l'intervalle de 51 à 100, si je vous dis « moins » il sera dans l'intervalle 1 à 49, et si je vous dis égal vous avez trouvé le nombre. On peut continuer d'utiliser ce principe pour diviser par deux à chaque fois notre intervalle de recherche jusqu'à avoir un seul élément dans notre intervalle, qui est forcément celui que j'ai choisi au début du jeu. Cette méthode s'appelle la dichotomie, et vous utilisez un algorithme très similaire lorsque vous recherchez une personne dans un annuaire, mais elle ne s'applique pas qu'à cela, et on la retrouve dans bien d'autres domaines.</p>
-<h2 id="principe-de-la-dichotomie">Principe de la dichotomie</h2>
+<h2 id="principe-de-la-dichotomie"><a class="toclink" href="#principe-de-la-dichotomie">Principe de la dichotomie</a></h2>
 <p>La dichotomie (<em>binary search</em> en anglais), est un algorithme de recherche efficace pour trouver un nombre dans un ensemble <strong>trié</strong> (ce point est très important puisque l'algorithme repose dessus). La dichotomie utilise le principe du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a> afin de découper notre problème initiale en un sous problème plus petit.</p>
 <p>On commence toujours la dichotomie dans un intervalle de recherche, puis à chaque étape on compare notre élément qu'on cherche à l'élément central de l'intervalle :</p>
 <ul>
@@ -84,7 +84,7 @@
 <li>Sinon l'élément est égal, on l'a donc trouvé et on peut arrêter de chercher.</li>
 </ul>
 <p>A chaque tour, on actualise notre intervalle de recherche et on recommence les opérations tant qu'on n'a pas trouvé notre élément.</p>
-<h2 id="exemple">Exemple</h2>
+<h2 id="exemple"><a class="toclink" href="#exemple">Exemple</a></h2>
 <p>Prenons un tableau trié : 1, 8, 15, 42, 99, 160, 380, 512, 678, 952, 1304. Nous cherchons dans ce tableau l'emplacement de l'élément 512 et nous allons utiliser le principe de la dichotomie pour le trouver :</p>
 <p>1, 8, 15, 42, 99, <strong>160</strong>, 380, 512, 678, 952, 1304 : on compare l'élément du milieu de l'intervalle (c'est le premier tour, on commence donc par un intervalle contenant tout le tableau) avec l'élément qu'on cherche. 512 &gt; 160, donc on peut oublier les éléments avant 160 (compris), pour se concentrer sur la partie supérieure de l'intervalle.</p>
 <p>380, 512, <strong>678</strong>, 952, 1304 : notre intervalle est donc divisé en deux, et on continue nos opérations. 512 &lt; 678 donc on continue notre recherche dans la partie inférieure de l'intervalle.</p>
@@ -94,7 +94,7 @@
 <figure><img alt="Exemple de dichotomie" src="/img/algo/recherche/dichotomie/exemple_dichotomie.png" /><figcaption>Exemple de dichotomie</figcaption>
 </figure>
 <p>L'élément en bleu est celui du milieu que l'on compare, et ensuite on choisit la bonne portion du tableau (en vert) en fonction de cette comparaison pour couper notre intervalle en deux à chaque tour.</p>
-<h2 id="pseudo-code">Pseudo-code</h2>
+<h2 id="pseudo-code"><a class="toclink" href="#pseudo-code">Pseudo-code</a></h2>
 <p>On peut faire le pseudo-code suivant d'un algorithme de la dichotomie :</p>
 <pre><code class="nohighlight">dichotomie :
 
@@ -118,13 +118,13 @@
       Retourner l'élément au milieu
 </code></pre>
 
-<h2 id="complexite">Complexité</h2>
+<h2 id="complexite"><a class="toclink" href="#complexite">Complexité</a></h2>
 <p>Pour calculer la complexité en temps de la recherche dichotomique, on peut visualiser la décomposition des intervalles grâce à un <a href="/algo/structure/arbre.html">arbre</a> :</p>
 <figure><img alt="Calcul de la complexité" src="/img/algo/recherche/dichotomie/calcul_complexite.png" /><figcaption>Calcul de la complexité</figcaption>
 </figure>
 <p>Chaque opération possible est représentée dans notre arbre, c'est-à-dire qu'à chaque tour on coupe notre tableau (qu'on note $n$) en deux. On voit qu'on arrive à une profondeur maximale de l'arbre en $\log _2 N$ avec $N$ la taille de notre tableau (pour en savoir plus sur le logarithme : <a href="https://en.wikipedia.org/wiki/Logarithm">lien de la page Wikipédia</a>), la complexité de la recherche dichotomique est donc dans le pire des cas en $O(\log _2 N)$.</p>
 <p>Pour vous faire comprendre à quel point cette recherche est efficace, imaginons que vous possédez une bibliothèque numérique de $N$ livres tous triés en fonction du titre par ordre alphabétique. Votre machine sur laquelle vous faites vos recherches de livres est très lente, et peut effectuer uniquement 2000 opérations à la seconde (aujourd'hui les ordinateurs classiques peuvent en effectuer plusieurs milliards...). Si vous implémentez une recherche dichotomique, il vous faudra environ plus de livres qu'il n'y a de particules dans un billion d'univers visible pour que votre machine prenne plus de temps qu'un clignement d'œil.</p>
-<h2 id="implementation">Implémentation</h2>
+<h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Dans ces implémentations, je suppose que l'élément appartient bien au tableau afin de simplifier le code et de se concentrer sur la recherche dichotomique.</p>
 <h3>Récursif</h3>
 <p>L'implémentation récursive en C de la recherche :</p>
@@ -247,7 +247,7 @@ int main(void)
 <li><a href="http://www.cplusplus.com/reference/algorithm/equal_range/"><code>equal_range</code></a></li>
 <li><a href="http://www.cplusplus.com/reference/algorithm/binary_search/"><code>binary_search</code></a></li>
 </ul>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Nous avons donc vu que notre dichotomie permet de chercher, de manière générale, un élément dans un ensemble d'élément trié extrêmement rapidement en $O(\log _2 N)$. Cet algorithme s'applique très bien à des tableaux pouvant contenir différents types de données (entiers, flottants, chaînes de caractères, etc.), mais on le retrouve aussi dans plusieurs autres applications :</p>
 <ul>
 <li>L'optimisation : on utilise la dichotomie dans plusieurs optimisations d'algorithmes, comme avec le <a href="/algo/tri/tri_insertion.html">tri par insertion</a> où la recherche dichotomique améliore grandement la complexité en temps.</li>

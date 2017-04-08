@@ -69,9 +69,9 @@
       </div>
 
       <div id="content">
-         <h1>Algorithme du gradient</h1>
+         <h1><a href="">Algorithme du gradient</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Dans le cadre d'une <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a>, on cherche à définir une fonction d'hypothèse proche de la réalité et de la forme :</p>
 <p>$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n$</p>
 <p>Par convention et pour simplifier le code, il n'est pas rare de rajouter un attribut $x_0 = 1$, afin de remplacer notre fonction par :</p>
@@ -84,7 +84,7 @@
 <figure><img alt="Représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /><figcaption>Représentation graphique de la fonction d'erreur</figcaption>
 </figure>
 <p>On va donc appliquer notre algorithme du gradient (<em>gradient descent</em> en anglais) afin de résoudre notre problème de minimisation.</p>
-<h2 id="principe">Principe</h2>
+<h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
 <p>L'idée de l'algorithme est de commencer avec des paramètres initiaux $\theta$ (en général on utilise 0), puis d'adapter ces derniers avec le résultat obtenu par notre fonction d'erreur, afin de minimiser $J$ et arriver à un <strong>minimum local</strong>. Il est possible que ce minimum local, soit le <strong>minimum global</strong> de notre fonction d'erreur, mais l'algorithme ne le garantit pas car le résultat dépendra de l'initialisation des coefficients $\theta$.</p>
 <p>Il est plus difficile de visualiser l'idée de l'algorithme sur notre précédent graphique en 3D, alors on va utiliser un graphique 2D spécial qui trace les contours (on appelle cela un <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm"><em>contour plot</em></a> en anglais) :</p>
 <figure><img alt="Contour plot de notre graphique" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/contour_plot.png" /><figcaption>Contour plot de notre graphique</figcaption>
@@ -106,7 +106,7 @@
 <figure><img alt="Reste de l'algorithme" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_simplifie_reste.png" /><figcaption>Reste de l'algorithme</figcaption>
 </figure>
 <p>Même si on a vu que notre algorithme ne trouvera pas toujours le minimum global de la fonction, un minimum local est toujours intéressant, et sur des problèmes très complexes cela sera beaucoup plus efficace à utiliser qu'une approximation faite à la main.</p>
-<h2 id="pseudo-code">Pseudo-code</h2>
+<h2 id="pseudo-code"><a class="toclink" href="#pseudo-code">Pseudo-code</a></h2>
 <p>Maintenant qu'on a vu le principe, il faut le décrire de manière concrète et mathématique.</p>
 <p>Tant que l'algorithme ne converge pas, on met à jour tous nos coefficients $\theta$ pour $j$ allant de 0 à $n$ :</p>
 <p>$\theta_{j} = \theta_{j} - \alpha\frac{\partial}{\partial\theta_{j}}J(\theta)$</p>
@@ -139,7 +139,7 @@ Tant qu'on n'a pas dépassé la limite de tours
 <li>Lorsqu'on atteint un minimum local (ou global), l'algorithme va automatiquement s'arrêter car il ne met plus à jour les coefficients $\theta$ vu que notre tangente sera horizontale.</li>
 <li>Il est préférable de fixer un nombre de tours maximum à l'algorithme car sinon ce dernier peut prendre énormément de temps à converger et il est plus intéressant de pouvoir contrôler la durée de calcul afin d'étudier la progression de notre algorithme du gradient.</li>
 </ul>
-<h2 id="coefficient-dapprentissage">Coefficient d'apprentissage</h2>
+<h2 id="coefficient-dapprentissage"><a class="toclink" href="#coefficient-dapprentissage">Coefficient d'apprentissage</a></h2>
 <p>Il est primordial de bien choisir le coefficient d'apprentissage, car si $\alpha$ est trop élevé notre algorithme va chercher à faire de très grands pas afin de converger rapidement (en anglais on utilise le terme d'<em>overshoot</em>), et ceci peut l'amener à faire de mauvais choix comme :</p>
 <figure><img alt="Exemple de conséquence d'un coefficient d'apprentissage élevé" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_eleve.png" /><figcaption>Exemple de conséquence d'un coefficient d'apprentissage élevé</figcaption>
 </figure>
@@ -151,7 +151,7 @@ Tant qu'on n'a pas dépassé la limite de tours
 <figure><img alt="Exemple de coefficient adapté" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient/exemple_coeff_apprentissage_bon.png" /><figcaption>Exemple de coefficient adapté</figcaption>
 </figure>
 <p>On remarque bien que notre algorithme minimise bien la fonction d'erreur au fur et à mesure qu'il itère, ce qui signifie que notre vitesse d'apprentissage est adaptée à notre problème.</p>
-<h2 id="implementation">Implémentation</h2>
+<h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Voici le code en Python pour l'algorithme du gradient :</p>
 <p><em>J'utilise Python afin d'avoir accès à des librairies scientifiques comme <a href="http://www.numpy.org/">numpy</a> pour les matrices et <a href="http://matplotlib.org/">matplotlib</a> pour les graphiques.</em></p>
 <pre><code class="py">import numpy as np
@@ -247,7 +247,7 @@ plt.plot(x, y_approx, 'r-')
 plt.show()
 </code></pre>
 
-<h2 id="ameliorations">Améliorations</h2>
+<h2 id="ameliorations"><a class="toclink" href="#ameliorations">Améliorations</a></h2>
 <h3><em>Vectorization</em></h3>
 <p>Afin de simplifier le code, il serait utile d'utiliser la même amélioration qu'avec notre fonction d'hypothèse : les opérations sur les matrices. Au lieu d'appliquer des opérations sur les éléments d'une matrice un par un, on peut utiliser des opérations plus générales sur notre matrice entière. Cela permet de supprimer la plupart des boucles, mais aussi, a le gros avantage de réaliser une mise à jour instantanée des coefficients automatiquement, sans même avoir besoin de stocker nos résultats dans des variables temporaires. On peut donc transformer notre algorithme du gradient en ceci :</p>
 <p>$\theta = \theta - \alpha\frac{1}{m}x^\intercal(h_{\theta}(x) - y)$</p>
@@ -335,7 +335,7 @@ for j in range(ia.n):
     print(&quot;theta &quot;, j, &quot; : &quot;, float(ia.theta[j]))
 </code></pre>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>L'algorithme du gradient est donc un algorithme itératif servant à minimiser notre fonction d'erreur $J$ afin de trouver les paramètres $\theta$ optimaux pour notre fonction d'hypothèse. Cet algorithme est très utile sur des entrées extrêmement importantes car on peut contrôler son nombre d'itérations ainsi que sa vitesse d'apprentissage (qu'il faut bien choisir au risque de réduire considérablement l'efficacité de notre programme).</p>
 <p>Il faut savoir qu'il existe différentes variantes de cet algorithme :</p>
 <ul>

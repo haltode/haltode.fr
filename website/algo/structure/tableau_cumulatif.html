@@ -69,12 +69,12 @@
       </div>
 
       <div id="content">
-         <h1>Tableau cumulatif</h1>
+         <h1><a href="">Tableau cumulatif</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Je vous donne un tableau possédant des trilliards d'éléments, et je vous pose des milliards de questions de la forme : Quelle est la somme des éléments compris entre l'indice $i$ et $j$ du tableau (avec $i &lt; j$) ? La première idée d'algorithme naïf que l'on peut avoir, est de parcourir pour chaque question les éléments situés entre les indices donnés, et d'augmenter une variable <code>somme</code> au fur et à mesure du parcours.</p>
 <p>Cependant notre solution est bien trop longue pour le cas extrême donné en entrée, à cause des nombreux parcours que l'on réalise. Il nous faut donc une solution plus efficace, et une structure adaptée nous permettant de faire moins de parcours inutiles et ainsi raccourcir notre temps d'exécution : le tableau cumulatif.</p>
-<h2 id="principe-du-tableau-cumulatif">Principe du tableau cumulatif</h2>
+<h2 id="principe-du-tableau-cumulatif"><a class="toclink" href="#principe-du-tableau-cumulatif">Principe du tableau cumulatif</a></h2>
 <p>Dans notre algorithme naïf, on utilise lors de nos parcours les informations récoltées uniquement pour répondre à une seule question parmi des milliards. Ceci nous oblige à repasser sur des parties du tableau déjà parcourue (voir le tableau en entier), résultant en un temps d'exécution trop élevé.</p>
 <p>L'idée du tableau cumulatif (<em>summed area table</em> en anglais) est de parcourir une seule fois notre tableau entièrement, et d'utiliser les données récoltées pour ensuite répondre à n'importe quel type de question à propos de somme d'éléments contigus.</p>
 <p>On peut très simplement expliquer son principe grâce à la géométrie et aux intervalles :</p>
@@ -84,7 +84,7 @@
 <p>Le principe du tableau cumulatif est justement de calculer tous les intervalles ayant un début fixe et une fin variable, afin de pouvoir connaitre rapidement n'importe quelle sous partie de notre tableau d'éléments.</p>
 <figure><img alt="Intervalles nécessaires pour répondre à toutes les questions" src="/img/algo/structure/tableau_cumulatif/representation_inter.png" /><figcaption>Intervalles nécessaires pour répondre à toutes les questions</figcaption>
 </figure>
-<h2 id="exemple">Exemple</h2>
+<h2 id="exemple"><a class="toclink" href="#exemple">Exemple</a></h2>
 <p>Afin de parfaitement comprendre l'utilisation d'un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
 <h3>Créer le tableau cumulatif</h3>
 <p>A partir de la suite de nombres, on va créer un tableau cumulatif qui contiendra tous nos intervalles nécessaires, c'est-à-dire dans la première case l'élément 1, dans la deuxième case l'élément 1 + 2, dans la troisième case l'élément 1 + 2 + 3, etc.</p>
@@ -181,9 +181,9 @@
 </tbody>
 </table>
 <p>De même : 168 - 0 = 168 (or 26 + 42 + 1 + 89 + 3 + 7 = 168).</p>
-<h2 id="complexite">Complexité</h2>
+<h2 id="complexite"><a class="toclink" href="#complexite">Complexité</a></h2>
 <p>Si l'on reprend notre énoncé dans l'introduction, on nous donne un tableau de taille $N$, et $M$ questions du type : Quelle est la somme des éléments de $i$ à $j$ dans le tableau ? Notre solution naïve, dans le pire des cas, aura une complexité en $O(N \times M)$ (lorsqu'on parcourt à chaque fois le tableau en entier, soit quand $i = 0$ et $j = N$ pour chaque question). En revanche, notre tableau cumulatif revient à une complexité linéaire dans le pire des cas en $O(N + M)$ car on parcourt une seule fois le tableau donné et pour répondre aux questions on a juste besoin d'accéder au tableau cumulatif (donc opération en $O(1)$).</p>
-<h2 id="implementation">Implémentation</h2>
+<h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C d'un tableau cumulatif et de son utilisation :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 
@@ -254,7 +254,7 @@ int main(void)
 <li>Pour initialiser le tableau cumulatif, je réutilise les sommes d'éléments précédents que j'ai déjà calculées pour créer les prochaines afin d'avoir une complexité linéaire dans ma fonction <code>initCumulatif</code>.</li>
 <li>Dans la fonction <code>somme</code>, j'admets que <code>debut</code> est inférieur à <code>fin</code> et que les indices ne sont pas en dehors du tableau pour simplifier le code.</li>
 </ul>
-<h2 id="variantes">Variantes</h2>
+<h2 id="variantes"><a class="toclink" href="#variantes">Variantes</a></h2>
 <h3>Autres opérations que la somme</h3>
 <p>Il est possible de répondre à des questions plus générales que sur la somme d'éléments, pour cela il suffit que notre opération possède une opération "inverse". Par exemple, l'inverse de l'addition est la soustraction (c'est d'ailleurs ce qu'on utilise dans notre tableau cumulatif, l'addition pour le construire, et la soustraction pour répondre aux questions), et l'inverse de la multiplication est la division. Il est donc possible de modifier le comportement de notre tableau cumulatif pour prendre en compte le produit d'une suite de nombre, la soustraction d'éléments contigus, etc. Le principe reste exactement le même, il suffit juste de changer la manière de construire et de répondre aux questions en fonction de l'opération choisie.</p>
 <h3>Tableau cumulatif 2D</h3>
@@ -359,7 +359,7 @@ int main(void)
 <p>Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en $O(N^2)$ pour l'initialisation et $O(M)$ pour la réponse, contre une complexité pour la réponse de $O(N^2 \times M)$ pour l'algorithme naïf.</p>
 <h3>Tableau cumulatif à N dimensions ?</h3>
 <p>Nous avons vu qu'il était possible de créer un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur $N$ dimensions ? Techniquement, cela est possible, mais la représentation de $N$ dimensions risque d'être très complexe et il sera alors difficile de visualiser le comportement de notre tableau cumulatif (initialisation et accès pour répondre aux questions). De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-delà de 3 dimensions, vu que nous ne percevons pas la 4ème.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour d'autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (ou même $N$) dimensions.</p>
 
          <footer>

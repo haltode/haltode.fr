@@ -69,17 +69,17 @@
       </div>
 
       <div id="content">
-         <h1>Algorithme de Bellman-Ford</h1>
+         <h1><a href="">Algorithme de Bellman-Ford</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>L'approche gloutonne de l'<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> est excellente car elle permet d'aborder le problème du plus court chemin de manière intelligente, ce qui lui donne une complexité en temps intéressante, tout en étant optimale. Cependant, elle ne s'applique pas à toutes les configurations de graphes (par exemple ceux avec des pondérations négatives), et il nous faut donc un nouvel algorithme pour gérer ces cas.</p>
-<h2 id="principe">Principe</h2>
+<h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
 <p>Reprenons depuis le début. On a un graphe pondéré (positivement ou négativement), et on cherche le plus court chemin entre deux nœuds distincts. Une approche <strong>naïve</strong> serait d'explorer toutes les combinaisons possibles de chemin et de choisir celle qui obtient une pondération totale minimale. Le problème ici est évidemment la complexité en temps exponentielle. Dans ce genre de situation, il est fondamental de se poser cette question : qu'est-ce qui rend notre algorithme si lent ? Lorsqu'on explore toutes les possibilités de chemins, on repasse très souvent sur d'anciens nœuds et arcs, ce qui nous fait parcourir notre graphe plusieurs fois inutilement.</p>
 <p>Désormais, on connaît la raison de la lenteur de notre précédent algorithme, et il faut alors chercher à améliorer ce point, si possible, ou bien à changer de concept. L'algorithme de Bellman-Ford va améliorer l'algorithme naïf, en utilisant une approche différente du problème : la <a href="/algo/general/approche/dynamique.html"><strong>programmation dynamique</strong></a>. L'idée est justement de ne pas repasser plusieurs fois sur des parties du graphe, mais plutôt de garder les informations utiles en mémoire à l'aide d'un algorithme dynamique, et de les réutiliser intelligemment.</p>
 <p><em>Il est intéressant de noter que <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a>, l'un des inventeurs de cet algorithme, est le père fondateur de la programmation dynamique.</em></p>
-<h2 id="exemple">Exemple</h2>
+<h2 id="exemple"><a class="toclink" href="#exemple">Exemple</a></h2>
 <p>Un exemple de l'algorithme de Bellman-Ford serait assez peu intéressant car il n'adopte pas de stratégie particulière au niveau du parcours du graphe (contrairement à l'algorithme de Dijkstra). Il se contente uniquement de tester chaque possibilité de chemin avec une <strong>implémentation dynamique</strong> le rendant plus rapide qu'une implémentation naïve. Cependant, nous allons voir un exemple au travers du pseudo-code afin de comprendre son fonctionnement.</p>
-<h2 id="pseudo-code">Pseudo-code</h2>
+<h2 id="pseudo-code"><a class="toclink" href="#pseudo-code">Pseudo-code</a></h2>
 <p><em>Pour appréhender au mieux cette partie, il est nécessaire d'être familier à la programmation dynamique (ou au moins d'en connaître la base). Si ce n'est pas le cas, je vous renvoie vers mon <a href="/algo/general/approche/dynamique.html">article sur le sujet</a>.</em></p>
 <p>Pour mettre en place un algorithme dynamique correctement, il est essentiel de rédiger la version récursive d'abord afin d'établir explicitement la récursion pour bien comprendre ce que cherche à réaliser l'algorithme. Nous allons donc procéder par étape pour ce pseudo-code, en commençant par la version récursive naïve, puis nous l'améliorerons petit à petit grâce à un algorithme dynamique.</p>
 <h3>Cycle améliorant</h3>
@@ -237,10 +237,10 @@ Bellman-Ford (nbEtape, nœud) :
 </code></pre>
 
 <p>On a désormais le pseudo-code définitif de l'algorithme de Bellman-Ford.</p>
-<h2 id="complexite">Complexité</h2>
+<h2 id="complexite"><a class="toclink" href="#complexite">Complexité</a></h2>
 <p>L'avantage de passer de l'approche récursive à l'approche itérative dans un algorithme dynamique, est qu'on peut simplement trouver la complexité en temps de ce dernier. En effet, les deux boucles imbriquées nous permettent de calculer une complexité en temps de $O(NM)$ avec $N$ le nombre de nœuds du graphe, et $M$ le nombre d'arcs (puisqu'on sait que pour éviter un cycle améliorant il suffit que $K = N$).</p>
 <p>Cette complexité en temps est légèrement moins efficace que celle de l'algorithme de Dijkstra, mais reste raisonnable vu la complexité exponentielle de l'algorithme naïf. Surtout que l'algorithme de Dijkstra ne permet pas de réaliser le calcul du plus court chemin sur des graphes pondérés négativement, et que l'algorithme de Bellman-Ford gère le cas des cycles améliorants de manière très simple et élégante.</p>
-<h2 id="implementation">Implémentation</h2>
+<h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>L'implémentation en C++ de l'algorithme de Bellman-Ford :</p>
 <pre><code class="cpp">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
@@ -341,7 +341,7 @@ int main(void)
 <pre><code class="nohighlight">Cycle ameliorant !
 </code></pre>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>L'algorithme de Bellman-Ford offre donc une toute nouvelle approche au problème du plus court chemin grâce à la programmation dynamique. Ceci lui permet d'être applicable sur tous types de graphes pondérés, contrairement à l'algorithme de Dijkstra qui n'est employé que sur des graphes pondérés positivement. De plus, le problème des cycles améliorants est facilement résolu avec cet algorithme, rendant le code simple et concis. En revanche, on notera une complexité en temps de $O(NM)$, plus lente que celle de Dijkstra en $O(M \log _2 M)$. Il est donc nécessaire de bien choisir l'algorithme à employer en fonction du graphe en entrée, afin d'avoir une complexité en temps et en mémoire optimale.</p>
 <p>On a pu remarquer que l'algorithme de Bellman-Ford nous informe non seulement du plus court chemin entre le nœud de départ et le nœud d'arrivée, mais aussi des plus courts chemins de tous les autres nœuds vers celui d'arrivée. Mais que se passe-t-il si on désire connaître les plus courts chemins entre tous les nœuds du graphe ? Est-ce qu'on devrait réaliser $N$ fois l'algorithme de Bellman-Ford ? Ou encore $N$ fois l'algorithme de Dijkstra ? On se doute rapidement que cette méthode n'est pas efficace, et cette question est en réalité un problème à part entière dans la catégorie des plus courts chemins. On a alors su développer des algorithmes bien spécifiques à ce type de problème, comme l'<a href="/algo/structure/graphe/plus_court_chemin/floyd_warshall.html">algorithme de Floyd-Warshall</a>, qui nous permet d'obtenir une complexité en temps plus intéressante. Connaître les plus courts chemins entre tous les nœuds d'un graphe est extrêmement utile dans de nombreux cas. On pourrait par exemple modéliser un problème de la vie de tous les jours sous forme d'un graphe implicite, afin de déterminer des relations ou des liens entre les différents nœuds.</p>
 

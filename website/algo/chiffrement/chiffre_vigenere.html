@@ -69,13 +69,13 @@
       </div>
 
       <div id="content">
-         <h1>Chiffre de Vigenère</h1>
+         <h1><a href="">Chiffre de Vigenère</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Avec l'apparition des premiers systèmes de cryptanalyses, le <a href="/algo/chiffrement/chiffre_cesar.html">chiffre de César</a> n'est plus un algorithme sûr pour chiffrer ses messages, et on voit l'apparition d'un nouvel algorithme de chiffrement : <strong>le chiffre de Vigenère</strong>. Ce dernier est immunisé aux attaques du chiffre de César, car sa clé est une chaîne de caractères et non plus un simple nombre, cependant quelques siècles après les premières utilisations de ce système, des techniques permettant de casser le chiffre de Vigenère sont découvertes le rendant alors vulnérable et inutile.</p>
-<h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
+<h2 id="principe-de-lalgorithme"><a class="toclink" href="#principe-de-lalgorithme">Principe de l'algorithme</a></h2>
 <p>Le chiffre de Vigenère est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement symétrique</a> utilisant une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphabétique</a> pour chiffrer et déchiffrer le message secret. Ceci signifie que la clé de chiffrement est une chaîne de caractères, et c'est là-dessus que repose la sécurité de l'algorithme, car une même lettre ne sera alors pas forcément chiffrée de la même façon (elle dépendra de sa place dans le message, mais aussi de la clé utilisée).</p>
-<h2 id="exemple">Exemple</h2>
+<h2 id="exemple"><a class="toclink" href="#exemple">Exemple</a></h2>
 <p>Prenons comme message secret le mot "Programmation", et comme clé de chiffrement "Linux". La première étape à faire est de rendre notre clé aussi longue que notre message à chiffrer, pour cela, on répète simplement autant de fois la clé que nécessaire :</p>
 <figure><img alt="Visualisation de la clé de chiffrement complète" src="/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png" /><figcaption>Visualisation de la clé de chiffrement complète</figcaption>
 </figure>
@@ -90,7 +90,7 @@
 <figure><img alt="Table de Vigenère" src="/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png" /><figcaption>Table de Vigenère</figcaption>
 </figure>
 <p>La <strong>table de Vigenère</strong> consiste à énumérer toutes les possibilités de décalage lors du chiffrement et du déchiffrement. Les lettres du message clair sont représentées par les colonnes, tandis que celles de la clé sont représentées par les lignes. Pour chiffrer une lettre, on regarde l'intersection de la colonne correspondante à la lettre du message clair, et de la ligne correspondante à lettre de la clé. Pour déchiffrer une lettre, on regarde sur la ligne correspondante de la clé jusqu'à trouver la lettre chiffrée qui se trouvera sur la colonne de la lettre déchiffrée.</p>
-<h2 id="pseudo-code">Pseudo-code</h2>
+<h2 id="pseudo-code"><a class="toclink" href="#pseudo-code">Pseudo-code</a></h2>
 <p>Le pseudo-code du chiffre de Vigenère :</p>
 <pre><code class="nohighlight">Modifier la clé pour qu'elle soit de la même taille que le message
 
@@ -109,7 +109,7 @@ déchiffrer :
          Incrementer iCle
 </code></pre>
 
-<h2 id="implementation">Implémentation</h2>
+<h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Une implémentation en C du chiffre de Vigenère :</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;ctype.h&gt;
@@ -192,7 +192,7 @@ Linux
 Programmation
 </code></pre>
 
-<h2 id="cassage">Cassage</h2>
+<h2 id="cassage"><a class="toclink" href="#cassage">Cassage</a></h2>
 <p>Les <a href="/algo/chiffrement/chiffre_cesar.html#cassage">attaques du chiffre de César</a> ne fonctionnent pas sur le chiffre de Vigenère pour plusieurs raisons :</p>
 <ul>
 <li>La clé est une chaîne de caractères de taille variable, ce qui signifie que le nombre de possibilités de clés de chiffrement est énorme, et une attaque par force brute n'est tout simplement pas envisageable.</li>
@@ -1021,7 +1021,7 @@ Demain, comme aujourd'hui, je parlerai à la Radio de Londres.
 </code></pre>
 
 <p><em>Ce message est le discours du Général de Gaulle prononcé le 18 juin 1940.</em></p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Le chiffre de Vigenère offre donc plus de sécurité que le chiffre de César, grâce à une clé plus complexe. Cependant, ce dernier n'est pas infaillible, et il est assez facile de trouver la clé de chiffrement à partir du simple texte chiffré. Cet algorithme n'est donc plus utilisé depuis qu'il a été cassé, mais il existe une amélioration à ce système qui est techniquement incassable : le <a href="/algo/chiffrement/chiffre_vernam.html">chiffre de Vernam</a>.</p>
 
          <footer>

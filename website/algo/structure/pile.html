@@ -68,12 +68,12 @@
       </div>
 
       <div id="content">
-         <h1>Pile</h1>
+         <h1><a href="">Pile</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Prenons l'exemple d'une fonction dans un programme. Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?</p>
 <p>Toutes ces questions nous amènent à penser qu'il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d'imbrication : la pile.</p>
-<h2 id="principe-de-la-pile">Principe de la pile</h2>
+<h2 id="principe-de-la-pile"><a class="toclink" href="#principe-de-la-pile">Principe de la pile</a></h2>
 <p>Une pile (<em>stack</em> en anglais) est une structure de données de type <strong>LIFO</strong> (<strong>L</strong>ast <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>dernier arrivé premier sorti</em>). Elle fonctionne exactement comme une pile d’assiettes :</p>
 <ul>
 <li>Quand on ajoute une assiette sur la pile on l’ajoute en haut.</li>
@@ -93,7 +93,7 @@
 <li>Avec une <a href="/algo/structure/liste_chainee.html">liste chaînée</a>.</li>
 <li>Avec un tableau ainsi qu’un indice nous indiquant le prochain élément libre dans la pile. Cet indice est appelé pointeur de pile (ou <em>stack pointer</em> en anglais, souvent abrégé <em>SP</em>).</li>
 </ul>
-<h2 id="quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</h2>
+<h2 id="quelques-fonctions-pour-manipuler-une-pile"><a class="toclink" href="#quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</a></h2>
 <p>Comme pour une liste chaînée, il existe différentes fonctions de bases permettant de manipuler une pile.</p>
 <h3>Avec une liste chaînée</h3>
 <pre><code class="nohighlight">créerPile :
@@ -138,7 +138,7 @@ estVide :
       Retourner faux
 </code></pre>
 
-<h2 id="complexite">Complexité</h2>
+<h2 id="complexite"><a class="toclink" href="#complexite">Complexité</a></h2>
 <p>Soit $N$ le nombre d'éléments de la pile.</p>
 <ul>
 <li><code>créerPile</code> : $O(1)$</li>
@@ -147,7 +147,7 @@ estVide :
 <li><code>dépiler</code> : $O(1)$</li>
 <li><code>estVide</code> : $O(1)$</li>
 </ul>
-<h2 id="implementation">Implémentation</h2>
+<h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <h3>Liste chaînée</h3>
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
@@ -286,7 +286,7 @@ int main(void)
 <p>Cette implémentation est facile à comprendre et à utiliser.</p>
 <h3>STL</h3>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation et des fonctions permettant de manipuler une pile : <a href="http://www.cplusplus.com/reference/stack/stack/">http://www.cplusplus.com/reference/stack/stack/</a></p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>La pile est donc une structure de données facile à implémenter et peut être pratique dans de nombreux domaines : </p>
 <ul>
 <li>Dans un éditeur : quand vous écrivez votre prochain article sur votre éditeur préféré, et que vous ne cessez de faire des <kbd>ctrl</kbd>+<kbd>z</kbd> et <kbd>ctrl</kbd>+<kbd>y</kbd> pour revenir en arrière/avant, vous utilisez en réalité une pile. Chaque opération va être empilée pour garder l'ordre dans lequel vous les avez réalisées, et vous pouvez ainsi facilement parcourir la pile des opérations pour vous retrouver à tel moment précis de votre édition.</li>

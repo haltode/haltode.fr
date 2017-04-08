@@ -67,9 +67,9 @@
       </div>
 
       <div id="content">
-         <h1>Arbre binaire</h1>
+         <h1><a href="">Arbre binaire</a></h1>
 
-         <h2 id="introduction">Introduction</h2>
+         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Je vous donne un tableau contenant des nombres entiers, et je vous pose une simple question : Quelle est la valeur maximale de ce tableau ? Naturellement, on peut parcourir tous les éléments et les comparer afin de trouver le maximum, cet algorithme naïf a une complexité linéaire en $O(N)$ avec $N$ la taille du tableau. Mais maintenant, je décide de changer quelques valeurs dans le tableau et je vous repose la question. On peut à nouveau parcourir tout le tableau, et comparer nos $N$ éléments pour chercher le maximum, mais peut-on faire mieux ? Une des premières idées qui peut vous venir à l'esprit serait d'utiliser une variable en plus du tableau qui contient le maximum actuel, on l'initialise avec le maximum qu'on a trouvé en parcourant le tableau, et ensuite dès qu'on effectue une modification on compare cette variable aux valeurs que l'on change pour la mettre à jour. Cependant cette méthode, qui peut paraitre bien au premier coup d'œil, ne fonctionne pas dans tous les cas. Si la valeur que l'on change dans le tableau est l'ancien maximum (et donc la valeur de notre variable externe), alors il se peut que le nouveau maximum ne soit plus la valeur qu'on a changée mais une autre contenue dans le reste du tableau :</p>
 <figure><img alt="Contre-exemple de l'algorithme proposé" src="/img/algo/structure/arbre/arbre_binaire/contre_exemple_intro.png" /><figcaption>Contre-exemple de l'algorithme proposé</figcaption>
 </figure>
@@ -82,7 +82,7 @@
 </figure>
 <p>Pour changer une valeur dans notre tableau (ici le 1 devient un 11), on change aussi les nœuds de l'arbre en remontant tant que le maximum local a changé.</p>
 <p>Cette structure de données porte un nom : un arbre binaire (et plus particulièrement un arbre binaire maximal dans notre cas), et elle est très utile dans le domaine de la recherche, mais nous verrons que son utilisation ne se limite pas à cette catégorie d'algorithme et qu'elle est présente dans de nombreux autres structures de données plus complexes.</p>
-<h2 id="definition">Définition</h2>
+<h2 id="definition"><a class="toclink" href="#definition">Définition</a></h2>
 <p>Un arbre binaire (ou <em>binary tree</em> en anglais) est un type d'<a href="/algo/structure/arbre.html">arbre</a> spécifique avec comme contrainte de ne pas avoir plus de deux fils par nœuds. On appelle alors les deux fils d'un nœud le <em>fils gauche</em> et le <em>fils droit</em>.</p>
 <figure><img alt="Exemple d'arbre binaire" src="/img/algo/structure/arbre/arbre_binaire/exemple_arbre_binaire.png" /><figcaption>Exemple d'arbre binaire</figcaption>
 </figure>
@@ -94,7 +94,7 @@
 <li>Un <strong>arbre binaire de recherche</strong> attribue à chaque nœud une <em>clé</em> qui va organiser l'arbre. Tous les nœuds à gauche d'un nœud père auront tous des clés inférieures à ce dernier, et tous les nœuds à droite auront une clé supérieure.</li>
 <li>Un <strong>arbre rouge et noir</strong> est la même idée qu'un arbre binaire de recherche, excepté que chaque nœud a une <em>couleur</em> qui permet d'organiser l'arbre mais aussi de l'équilibrer pour ne pas avoir un côté bien plus grand que l'autre à cause de l'ordre des clés.</li>
 </ul>
-<h2 id="operations">Opérations</h2>
+<h2 id="operations"><a class="toclink" href="#operations">Opérations</a></h2>
 <p>Dans un arbre binaire, ajouter et supprimer un élément est relativement simple, il suffit uniquement de respecter les propriétés de l'arbre utilisé. Dans notre cas, on utilise un arbre binaire normal :</p>
 <figure><img alt="Exemple d'insertion de nœuds dans un arbre binaire" src="/img/algo/structure/arbre/arbre_binaire/exemple_insertion_noeud.png" /><figcaption>Exemple d'insertion de nœuds dans un arbre binaire</figcaption>
 </figure>
@@ -110,7 +110,7 @@
 <p>Dans le premier cas, <em>C</em> est une feuille, il n'y a donc aucuns soucis pour le supprimer. Dans le deuxième cas, <em>B</em> a un fils <em>D</em>, lorsqu'on supprime <em>B</em> on le remplace donc par <em>D</em>.</p>
 <h3>Arbres binaires spécifiques</h3>
 <p>Dès qu'un arbre binaire possède des propriétés, les opérations d'insertion et de suppression sont différentes. Elles peuvent être plus ou moins complexes en fonction des propriétés ajoutées à l'arbre binaire, mais doivent être bien définies pour avoir une structure opérationnelle. D'autres opérations peuvent être utiles sur certains arbres binaires, par exemple la possibilité de changer une valeur dans un tableau (ce qui implique souvent des changements dans l'arbre en lui-même). Le parcours d'un arbre binaire peut aussi évoluer en fonction de ses caractéristiques, et même s'il reste un arbre, parfois il faut adapter sa méthode de parcours pour utiliser le mieux possible la structure de données.</p>
-<h2 id="implementation">Implémentation</h2>
+<h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Même s'il est très rare de devoir implémenter un simple arbre binaire sans aucunes propriétés, savoir le représenter est important, car c'est en fonction de cette représentation que l'on peut ensuite construire des opérations spécifiques à la structure. Un arbre binaire n'est techniquement qu'une structure dérivée de l'arbre, on peut donc l'implémenter de la même façon que ce dernier, mais vu les contraintes de cette structure de données, il est possible d'utiliser d'autres manières.</p>
 <h3>Recoder à la main</h3>
 <p>Les possibilités d'implémentation d'un arbre ne s'appliquent pas forcément bien pour un arbre binaire, en effet, on sait qu'il n'aura qu'au maximum deux fils, on peut donc simplement utiliser une structure auto référentielle :</p>
@@ -142,7 +142,7 @@ typedef Noeud *ArbreBinaire;
 </code></pre>
 
 <p>On n'oublie pas d'allouer une case de plus dans notre tableau car la racine doit obligatoirement être l'élément d'indice 1 du tableau pour satisfaire les propriétés de placement des nœuds.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Cela peut paraitre étrange de penser qu'un simple arbre avec une contrainte sur le nombre de nœuds de ses fils peut être extrêmement utile. Et pourtant, les arbres binaires sont présents dans énormément d'algorithmes et de structures de données, et en voici une courte liste :</p>
 <ul>
 <li>
