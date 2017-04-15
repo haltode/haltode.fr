@@ -5,7 +5,7 @@ Liste de mes différents projets personnels que vous pouvez retrouver sur mon [p
 
 | Date/Durée | Projet | Description |
 | :--------- | ------ | :---------- |
-| **09/2016** <br> *En cours* | [yaos](https://github.com/napnac/yaos) | Un petit système d'exploitation 32 bits |
+| **09/2016** <br> *3 mois* | [yaos](https://github.com/napnac/yaos) | Un petit système d'exploitation 32 bits |
 | **09/2014** <br> *1 an* | Entraînement IOI | Mon entraînement dans le but de participer aux [IOI](http://ioinformatics.org/index.shtml) |
 | **02/2014** <br> *3 mois* | [NandToTetris](https://github.com/napnac/NandToTetris) | Un ordinateur émulé accompagné d'un compilateur et d'un mini-OS |
 | **10/2013** <br> *4 mois* | [Rhyddid](https://github.com/napnac/Rhyddid) | Rogue-like construit entièrement en console |
