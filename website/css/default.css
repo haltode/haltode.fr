@@ -152,6 +152,8 @@ i {
 code, pre {
    background: #f5f7f9;
    color: #323337;
+   word-wrap: normal;
+   white-space: pre;
 }
 
 code {
@@ -162,11 +164,7 @@ code {
 pre {
    padding: 1em;
    border-left: 2px solid #69c;
-   white-space: pre-wrap;       /* Since CSS 2.1 */
-   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-   white-space: -pre-wrap;      /* Opera 4-6 */
-   white-space: -o-pre-wrap;    /* Opera 7 */
-   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+   overflow-x: auto;
 }
 
 .nohighlight {
@@ -178,5 +176,6 @@ pre {
 blockquote {
    background: #f5f7f9;
    padding: 0.1em 1em;
+   margin-left: 0px;
    border-left: 2px solid #69c;
 }
