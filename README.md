@@ -14,6 +14,7 @@ The script `build.py` uses different Python librairies:
    - These are the fixes I use, until Python Markdown 3 comes out:
       - [Fix regression of single column tables](https://github.com/waylan/Python-Markdown/pull/540)
       - [Add toc_depth parameter to toc extension](https://github.com/waylan/Python-Markdown/pull/431)
+         - Instead of adding the fix after the line `self.set_level(el)` in `toc.py`, I added it before `toc_tokens.append(...)` because I still want the ids to be generated.
 - [Jinja](http://jinja.pocoo.org/): to create templates for the future HTML pages
 
 All custom Markdown blocks are handled by the `custom_md_block.sh` script:

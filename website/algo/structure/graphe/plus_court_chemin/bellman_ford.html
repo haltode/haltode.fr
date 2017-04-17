@@ -85,13 +85,13 @@
 <h2 id="pseudo-code"><a class="toclink" href="#pseudo-code">Pseudo-code</a></h2>
 <p><em>Pour appréhender au mieux cette partie, il est nécessaire d'être familier à la programmation dynamique (ou au moins d'en connaître la base). Si ce n'est pas le cas, je vous renvoie vers mon <a href="/algo/general/approche/dynamique.html">article sur le sujet</a>.</em></p>
 <p>Pour mettre en place un algorithme dynamique correctement, il est essentiel de rédiger la version récursive d'abord afin d'établir explicitement la récursion pour bien comprendre ce que cherche à réaliser l'algorithme. Nous allons donc procéder par étape pour ce pseudo-code, en commençant par la version récursive naïve, puis nous l'améliorerons petit à petit grâce à un algorithme dynamique.</p>
-<h3>Cycle améliorant</h3>
+<h3 id="cycle-ameliorant">Cycle améliorant</h3>
 <p>Avant de se plonger dans le pseudo-code, il faut noter que le problème du plus court chemin sur un graphe pondéré positivement et négativement introduit un nouveau souci : les <strong>cycles améliorants</strong> (ou <em>negative cycle</em> en anglais). En effet, vu qu'une pondération peut désormais être négative, il est possible de tomber dans une boucle infinie (qu'on appelle plus précisément un cycle améliorant) qui va sans cesse diminuer la distance parcourue. Ceci pose un réel problème puisqu'on peut améliorer la distance à chaque fois qu'on passe dans ce cycle, et il existera toujours un meilleur chemin à emprunter. Lorsqu'un graphe contient ce genre de cycle, il n'y a pas de solution à cause de cette boucle infinie, il faut donc pouvoir le détecter.</p>
 <figure><img alt="Exemple de cycle améliorant" src="/img/algo/structure/graphe/plus_court_chemin/bellman_ford/exemple_cycle_ameliorant.png" /><figcaption>Exemple de cycle améliorant</figcaption>
 </figure>
 <p>Sur cet exemple de graphe (avec le nœud de départ en bleu, et celui d'arrivée en vert), on remarque que le chemin surligné en rouge est un cycle améliorant. En effet, dès qu'on parcourt ce cycle, la distance parcourue en sortie sera toujours inférieure à celle en entrée, d'où l'intérêt de le visiter à nouveau afin de diminuer encore la distance, et ainsi de suite, ce qui entraine une boucle infinie. Il est impossible de trouver le plus court chemin entre le nœud 1 et 4 dans ce graphe, car on peut améliorer la distance parcourue à l'infini sans jamais arriver au nœud en vert.</p>
 <p>Pour contrer cela, on va imposer une limite de recherche à notre récursion qui ne pourra pas dépasser l'exploration de $K$ nœuds. Une limite de $N$ nœuds maximum à explorer permet à notre algorithme de ne jamais tomber dans une boucle infinie (avec $N$ le nombre de nœuds du graphe), puisqu'un plus court chemin, qui ne contient pas de cycle améliorant, ne passe jamais plus de deux fois par un même nœud. On peut désormais reformuler clairement notre problème de plus court chemin entre un nœud A et B, en un problème cherchant à minimiser la distance entre A et B en réalisant $K$ étapes au maximum. La reformulation du problème est importante puisqu'elle nous donne une idée plus claire de l'approche naïve que l'on va réaliser dans un premier temps.</p>
-<h3>Version récursive</h3>
+<h3 id="version-recursive">Version récursive</h3>
 <p>Voici un premier pseudo-code simplifié de la récursion (on suppose que le graphe en entrée est orienté et ne possède pas de cycles améliorantes pour établir une première idée de l'algorithme général).</p>
 <pre><code class="nohighlight">Bellman-Ford (nbÉtape, nœud) :
 
@@ -110,7 +110,7 @@
 </code></pre>
 
 <p>Ce pseudo-code traduit une simple récursion permettant d'explorer tous les chemins en moins de <code>nbÉtape</code> jusqu'à l'arrivée, tout en sélectionnant le plus court d'entre eux. Pour cela, l'algorithme utilise une simple boucle sur tous les voisins d'un nœud ainsi qu'une variable <code>cheminMin</code> qu'on actualise pour toujours avoir le chemin avec la pondération minimale entre tous les choix possibles.</p>
-<h3>Version dynamique récursive</h3>
+<h3 id="version-dynamique-recursive">Version dynamique récursive</h3>
 <p>Maintenant, on passe à l'étape de dynamisation de cet algorithme puisque ce dernier est terriblement lent et possède une complexité en temps exponentielle car il ne fait que répéter des appels récursifs inutilement. On va donc créer un tableau 2D stockant le plus court chemin pour tous les paramètres possibles de notre fonction, afin de ne jamais avoir à recalculer le résultat d'un même appel.</p>
 <pre><code class="nohighlight">plusCourtChemin[NB_ÉTAPE_MAX][NB_NŒUD_MAX] (initialisé à -1)
 
@@ -139,7 +139,7 @@ Bellman-Ford (nbÉtape, nœud) :
 <li>Une <strong>condition</strong> au début de notre récursion afin de vérifier si la valeur n'a pas déjà été calculée (et si c'est le cas, on la retourne directement).</li>
 <li>Une <strong>mise à jour</strong> du tableau après avoir trouvé une nouvelle valeur.</li>
 </ul>
-<h3>Version dynamique itérative</h3>
+<h3 id="version-dynamique-iterative">Version dynamique itérative</h3>
 <p>Une fois qu'on a réussi à obtenir une complexité en temps non exponentielle (puisque désormais on ne parcourt pas inutilement des parties du graphe), il est toujours intéressant de tenter de réduire notre complexité en mémoire si possible. Dans notre dernier pseudo-code, on a une complexité mémoire de l'ordre de $O(KN)$, ce qui est équivalent à du $O(N^2)$, car on choisit la limite $K$, tel que $K = N$ pour éviter les cycles améliorants. Cet ordre de grandeur est tout à fait correct en termes d'espace mémoire, surtout vu le gain de temps qu'on acquiert grâce au tableau, mais il peut être encore largement amélioré.</p>
 <p>Le passage à la version itérative de l'algorithme dynamique est essentiel à cette réduction de l'espace mémoire utilisé :</p>
 <pre><code class="nohighlight">Bellman-Ford :
@@ -216,7 +216,7 @@ Bellman-Ford (nbÉtape, nœud) :
 </code></pre>
 
 <p>En plus de réaliser une optimisation de l'espace mémoire, on facilite la lecture du pseudo-code en utilisant plus que deux boucles imbriquées à la place de trois. En effet, au lieu de parcourir les nœuds puis leurs voisins respectifs dans deux boucles imbriquées, on peut se contenter de visiter les arcs du graphe pour effectuer la même opération. Il ne faut pas oublier de lire le graphe en entrée comme une <a href="/algo/structure/graphe.html#liste-darcs">liste d'arcs</a> pour permettre de parcourir tous les arcs en une seule boucle.</p>
-<h3>Détection de cycles améliorants</h3>
+<h3 id="detection-de-cycles-ameliorants">Détection de cycles améliorants</h3>
 <p>Notre pseudo-code n'est pas terminé, il nous reste encore la détection de cycles améliorants dans notre graphe, mais vu qu'on a simplifié et amélioré grandement notre pseudo-code, ce problème de cycles va être simple à gérer.</p>
 <p>Pour détecter un cycle améliorant, il suffit de détecter si un chemin emprunte plus de $N$ nœuds, et on peut très facilement réaliser ce test en regardant si le tableau <code>plusCourtChemin</code> a été modifié une fois la limite atteinte (on va donc réaliser un tour de boucle en plus). Si c'est le cas, on sait que le graphe contient un cycle améliorant :</p>
 <pre><code class="nohighlight">Bellman-Ford :

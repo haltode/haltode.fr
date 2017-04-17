@@ -223,7 +223,7 @@
 </figure>
 <p>Le modèle essaie de coller au mieux à nos données au point de ne plus du tout généraliser le problème, on est tombé dans le surapprentissage. Notre programme s'est trop bien adapté à nos données, et il n'arrivera pas à prédire correctement la sortie de nouveaux exemples.</p>
 <p>L'apprentissage supervisé est donc un domaine difficile car il faut arriver à trouver les attributs vraiment nécessaires à notre algorithme pour être le plus efficace possible, sans pour autant tomber dans le surapprentissage. Mais il existe des méthodes afin d'éviter au plus ce problème si contraignant, comme la <strong>régularisation</strong>.</p>
-<h3>Régularisation</h3>
+<h3 id="regularisation">Régularisation</h3>
 <p>Le principe de la régularisation est de <strong>pénaliser</strong> les attributs avec des coefficients ayant des degrés élevés (puisque c'est à cause d'eux que notre modèle a une forme très particulière qui ne généralise pas assez). Si l'on reprend notre dernier exemple avec une fonction d'hypothèse de la forme :</p>
 <p>$h_{\theta}(x) = \theta_0 + \theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots$</p>
 <p>Pénaliser $\theta_3$ et $\theta_4$ permettrait d'avoir un modèle qui généralise beaucoup mieux, sans passer par des formes extrêmes.</p>
@@ -232,7 +232,7 @@
 <p>Dans le terme ajouté $\lambda \displaystyle\sum_{j=1}^{n} \theta_j^2$, on a $\lambda$ qui correspond au <strong>paramètre de la régularisation</strong> (et donc qui détermine la puissance de la pénalisation). Il faut aussi noter qu'on ne pénalise pas $\theta_0$.</p>
 <p>Grâce à cela, les coefficients avec des degrés élevés augmenteront fortement le résultat de la fonction d'erreur, obligeant naturellement à nos algorithmes de pénaliser ces derniers. On arrive donc à une fonction d'hypothèse simplifiée, et moins sujet au cas de surapprentissage.</p>
 <p>Cependant il faut adapter nos deux algorithmes à cette nouvelle fonction d'erreur, en les modifiant légèrement.</p>
-<h4>Algorithme du gradient</h4>
+<h4 id="algorithme-du-gradient">Algorithme du gradient</h4>
 <p>Avec notre ancienne fonction d'erreur, on devait mettre à jour nos coefficients de manière simultanée de cette façon (si l'on n'utilise pas la version vectorisée) :</p>
 <p>Pour chaque coefficient $\theta_j$ avec $j$ allant de 0 à $n$ :</p>
 <p>$\theta_{j} = \theta_{j} - \alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij}$</p>
@@ -240,11 +240,11 @@
 <p>Pour chaque coefficient $\theta_j$ avec $j$ allant de 1 à $n$ (puisqu'on ne pénalise pas $\theta_0$, et on utilisera l'ancienne formule pour ce coefficient) :</p>
 <p>$\theta_{j} = \theta_{j} - \alpha\left[\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})x_{ij} + \frac{\lambda}{m}\theta_j\right]$</p>
 <p>On a obtenu cette formule de la même manière que pour l'ancienne, c'est-à-dire en calculant la dérivée partielle de la fonction d'erreur.</p>
-<h4>Équation normale</h4>
+<h4 id="equation-normale">Équation normale</h4>
 <p>Pour l'équation normale, on applique de nouveau notre démonstration mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat suivant :</p>
 <p>$\theta = \left(x^\intercal x + \lambda \left[\begin{smallmatrix} 0\\ &amp;1\\ &amp;&amp;1 \\ &amp;&amp;&amp;\ddots \\ &amp;&amp;&amp;&amp;1 \end{smallmatrix}\right]\right)^{-1} x^\intercal y$</p>
 <p>On retrouve notre paramètre de régularisation $\lambda$, ainsi qu'une matrice de taille $(n + 1)\times(n + 1)$ assez spéciale composée de 1 uniquement dans la diagonale en partant de la deuxième colonne (le reste de la matrice contient des 0). Cette matrice est en réalité une <a href="https://en.wikipedia.org/wiki/Identity_matrix">matrice identité</a> sans le premier terme en haut à gauche (en rapport avec $\theta_0$ qui n'est pas pénalisé).</p>
-<h4>Paramètre de régularisation</h4>
+<h4 id="parametre-de-regularisation">Paramètre de régularisation</h4>
 <p>Avec un paramètre $\lambda$ très large, on tombe dans le cas du sous-apprentissage car nos coefficients seront tellement pénalisés qu'on risque d'avoir une fonction d'hypothèse trop simple pour notre problème. À l'inverse, un paramètre $\lambda$ trop petit ne va pas assez pénaliser les coefficients avec des degrés élevés ce qui n'atténuera pas notre problème de surapprentissage et sera donc inutile.</p>
 <p>Il faut alors réussir à choisir un bon paramètre de régularisation $\lambda$, et pour cela on peut s'aider de différents échantillons, ainsi que de la <strong>validation croisée</strong>. Jusqu'à présent, le seul échantillon de nos données qu'on utilisait était <strong>l'échantillon d'apprentissage</strong>. On va désormais rajouter deux nouveaux échantillons :</p>
 <ul>

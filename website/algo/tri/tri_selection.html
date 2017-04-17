@@ -183,7 +183,7 @@ int main(void)
 </code></pre>
 
 <h2 id="ameliorations-et-variantes"><a class="toclink" href="#ameliorations-et-variantes">Améliorations et variantes</a></h2>
-<h3>Tri par sélection bidirectionnel</h3>
+<h3 id="tri-par-selection-bidirectionnel">Tri par sélection bidirectionnel</h3>
 <p>Tout comme pour le tri à bulles, on peut améliorer légèrement le tri par sélection pour qu'il effectue moins d'opérations. Dans notre boucle qui cherche le <em>ième</em> plus petit élément, on peut aussi en profiter pour chercher le <em>jème</em> plus grand. Grâce à cela, on divise par deux le nombre de tours que l'on réalise pour trier notre tableau, cependant, diviser par deux ne change pas la complexité finale car 2 est un facteur assez petit pour ne pas en prendre compte dans de très larges entrées. La complexité du tri reste donc quadratique.</p>
 <pre><code class="nohighlight">Pour chaque élément restant
    Pour chaque élément de la partie non triée
@@ -193,7 +193,7 @@ int main(void)
    Échanger l'élément j (variant de N à N / 2 ) avec le maximum
 </code></pre>
 
-<h3>Le cas des doublons</h3>
+<h3 id="le-cas-des-doublons">Le cas des doublons</h3>
 <p>Dans le cas où notre tableau contient de nombreux doublons, l'algorithme de tri par sélection va effectuer plusieurs recherches de plus petits éléments sur le même élément qui n'est rien d'autre qu'un doublon. Le <em>bingo sort</em> permet de palier ce problème, en proposant de placer tous les éléments ayant la même valeur en même temps, sans faire de nouvelles recherches à chaque tour. Encore une fois, notre algorithme sera plus rapide en général mais pas assez pour que la complexité change, elle restera donc en $O(N^2)$.</p>
 <pre><code class="nohighlight">Pour chaque élément
    Pour chaque élément de la partie non triée
@@ -204,7 +204,7 @@ int main(void)
       Augmenter l'indice de l'élément actuel
 </code></pre>
 
-<h3>Tri par tas</h3>
+<h3 id="tri-par-tas">Tri par tas</h3>
 <p>On peut voir le <a href="/algo/tri/tri_tas.html">tri par tas</a> comme une amélioration directe du tri par sélection. En effet, si l'on utilise un <a href="/algo/structure/arbre/tas.html">tas</a> pour permettre de trouver les plus petits éléments rapidement, on obtient une complexité en $O(N \log _2 N)$ et un tri qu'on appelle tri par tas.</p>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Le tri par sélection est donc un algorithme assez simple, mais peu efficace à cause de sa complexité en $O(N^2)$. Cependant des améliorations et des variantes permettent de le rendre plus rapide, et le tri par sélection sert de base au tri par tas, un autre algorithme de tri bien plus efficace avec une complexité en $O(N \log _2 N)$. Même avec une complexité quadratique, ce tri reste en pratique utilisé sur de petites entrées, mais aussi lorsqu'on a besoin d'un nombre d'échanges faible au sein du tableau (contrairement au <a href="/algo/tri/tri_insertion.html">tri par insertion</a> qui peut être plus rapide, mais réalise plus d'échanges).</p>

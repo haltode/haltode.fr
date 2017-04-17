@@ -129,7 +129,7 @@
 <p>Pour vous faire comprendre à quel point cette recherche est efficace, imaginons que vous possédez une bibliothèque numérique de $N$ livres tous triés en fonction du titre par ordre alphabétique. Votre machine sur laquelle vous faites vos recherches de livres est très lente, et peut effectuer uniquement 2000 opérations à la seconde (aujourd'hui les ordinateurs classiques peuvent en effectuer plusieurs milliards...). Si vous implémentez une recherche dichotomique, il vous faudra environ plus de livres qu'il n'y a de particules dans un billion d'univers visible pour que votre machine prenne plus de temps qu'un clignement d'œil.</p>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
 <p>Dans ces implémentations, je suppose que l'élément appartient bien au tableau afin de simplifier le code et de se concentrer sur la recherche dichotomique.</p>
-<h3>Récursif</h3>
+<h3 id="recursif">Récursif</h3>
 <p>L'implémentation récursive en C de la recherche :</p>
 <a href="javascript:toggle_visibility('dichotomie_recursif.c');">dichotomie_recursif.c <i id="toggle_arrow_dichotomie_recursif.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
 <div id="dichotomie_recursif.c" style="display: none;">
@@ -183,7 +183,7 @@ int main(void)
 <pre><code class="nohighlight">8
 </code></pre>
 
-<h3>Itératif</h3>
+<h3 id="iteratif">Itératif</h3>
 <p>La version itérative en C :</p>
 <a href="javascript:toggle_visibility('dichotomie_iteratif.c');">dichotomie_iteratif.c <i id="toggle_arrow_dichotomie_iteratif.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
 <div id="dichotomie_iteratif.c" style="display: none;">
@@ -247,7 +247,7 @@ int main(void)
 <pre><code class="nohighlight">8
 </code></pre>
 
-<h3>C/C++</h3>
+<h3 id="cc">C/C++</h3>
 <p>En C, il existe une fonction <a href="http://www.cplusplus.com/reference/cstdlib/bsearch/"><code>bsearch</code></a> permettant de réaliser une dichotomie.</p>
 <p>De même, en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) implémente des fonctions de recherche dichotomique :</p>
 <ul>

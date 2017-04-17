@@ -171,7 +171,7 @@ int main(void)
 </code></pre>
 
 <h2 id="ameliorations-et-variantes"><a class="toclink" href="#ameliorations-et-variantes">Améliorations et variantes</a></h2>
-<h3>Optimisation de la mémoire</h3>
+<h3 id="optimisation-de-la-memoire">Optimisation de la mémoire</h3>
 <p>On peut économiser de la mémoire en évitant de créer un tas à part entière du tableau. En effet, on peut tout simplement réorganiser notre tableau afin de le parcourir comme un tas max, et ensuite il suffit de recréer les fonctions du tas à la main (<code>construireTasMax</code>, <code>entasser</code>, etc.) pour faire nos opérations dessus. Le tas aura une taille virtuelle qui occupe initialement toute la place du tableau, mais diminue progressivement au fur et à mesure que les racines du tas sont fixées à leurs places définitives dans le tableau trié.</p>
 <pre><code class="nohighlight">triTas :
 
@@ -184,9 +184,9 @@ int main(void)
 </code></pre>
 
 <p>On parcourt le tableau à l'envers afin d'échanger la racine actuelle avec l'élément occupant sa place définitive.</p>
-<h3>Mélange d'algorithme</h3>
+<h3 id="melange-dalgorithme">Mélange d'algorithme</h3>
 <p>Comme pour le tri rapide, le tri par tas peut être mélangé avec un autre algorithme de tri lorsque le tableau possède peu d’éléments afin de le rendre plus efficace. Pour en savoir plus à ce sujet, je vous invite à lire la partie <a href="/algo/tri/tri_rapide.html#melange-dalgorithme">mélange d'algorithme</a> de mon article sur le tri rapide.</p>
-<h3>Smoothsort</h3>
+<h3 id="smoothsort">Smoothsort</h3>
 <p>Le <em>smoothsort</em> est une variante du tri par tas permettant d'améliorer la complexité en temps dans le meilleur des cas en $O(N)$ (lorsque les nombres en entrée sont déjà triés ou quasi triés par exemple). Ce tri est assez complexe, et même s'il a une meilleure approche d'un point de vue théorique, il sera peu utilisé en pratique, tout comme le tri par tas comparé au tri rapide.</p>
 <p>Le principe du smoothsort est de baser le tri non plus sur un seul tas, mais sur plusieurs de différentes tailles. Cette nouvelle structure de données est un <strong>tas de Léonard</strong>, car elle s'appuie sur la <a href="https://en.wikipedia.org/wiki/Leonardo_number">suite de Léonard</a>.</p>
 <figure><img alt="Exemple de tas de Léonard (en bleu les racines des sous-arbres)" src="/img/algo/tri/tri_tas/exemple_tas_leonard.png" /><figcaption>Exemple de tas de Léonard (en bleu les racines des sous-arbres)</figcaption>

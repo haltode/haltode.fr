@@ -78,17 +78,17 @@
 <figure><img alt="Exemple de représentation d'un labyrinthe sous forme de graphe" src="/img/algo/structure/graphe/dfs/labyrinthe_graphe.png" /><figcaption>Exemple de représentation d'un labyrinthe sous forme de graphe</figcaption>
 </figure>
 <p>Vu qu'on ne connait rien sur ce labyrinthe, il est impossible de deviner le chemin nous permettant d'arriver à la sortie puisque ça pourrait être n'importe lequel du graphe. On peut donc tout simplement essayer chacun des chemins jusqu'à trouver le bon. Ce parcours est alors qualifié de : parcours en profondeur.</p>
-<h3>Principe</h3>
+<h3 id="principe">Principe</h3>
 <p>Le parcours en profondeur (ou plus communément <em>DFS</em> pour <em>Depth First Search</em>) permet de parcourir un graphe en utilisant le principe de la <a href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">récursivité</a>. Ce parcours visite les nœuds du graphe les plus "profonds" en premier (c'est-à-dire les plus éloignés du nœud de départ), avant de "remonter" progressivement dans le graphe.</p>
 <p>Dans notre cas du labyrinthe, on essaie un chemin jusqu'à être bloqué, puis on revient à la dernière intersection, on continue jusqu'à être bloqué, on revient à la dernière intersection, etc. jusqu'à tomber sur la sortie.</p>
-<h3>Exemple</h3>
+<h3 id="exemple">Exemple</h3>
 <p>La meilleure manière de comprendre ce type de parcours est de le visualiser :</p>
 <figure><img alt="Exemple de DFS sur un graphe" src="/img/algo/structure/graphe/dfs/exemple_dfs.png" /><figcaption>Exemple de DFS sur un graphe</figcaption>
 </figure>
 <p>Ce graphe représente notre labyrinthe, et chaque nœud correspond à l'ordre de parcours du DFS (la flèche montre uniquement comment agit un parcours en profondeur en entier sur notre graphe).</p>
 <p>Si par exemple notre entrée de labyrinthe est le nœud 1, et que notre sortie est le nœud 6, on parcourra avant de trouver la sortie, les nœuds 2, 3, 4, et 5.</p>
 <p>Cependant sur un graphe, on peut effectuer un DFS de différentes façons en fonction de l'ordre de visite des voisins. Par exemple, on aurait pu après le nœud 1 visiter le nœud 7, puis le 9, puis le 8, puis le 6, le 2, le 4, le 5, et enfin le 3. Ce parcours est bien un DFS, mais il est juste différent car on a choisi un autre ordre pour parcourir les voisins des nœuds rencontrés.</p>
-<h3>Pseudo-code</h3>
+<h3 id="pseudo-code">Pseudo-code</h3>
 <p>On utilise le principe de la récursivité pour définir notre parcours en profondeur :</p>
 <pre><code class="nohighlight">DFS (nœud) :
 
@@ -100,11 +100,11 @@
 </code></pre>
 
 <p>Si par exemple on cherche un nœud de sortie dans notre graphe, on pourrait rajouter une condition qui arrêtera le DFS lorsqu'on a visité ce nœud. Cependant ici, le DFS parcourt tout le graphe à titre d'exemple.</p>
-<h3>Complexité</h3>
+<h3 id="complexite">Complexité</h3>
 <p>Dans le pire des cas, si notre sortie est le dernier nœud que l'on visite, notre algorithme va devoir parcourir les $M$ arcs du graphe, on a donc une complexité en temps linéaire de $O(M)$.</p>
-<h3>Implémentation</h3>
+<h3 id="implementation">Implémentation</h3>
 <p>On peut implémenter un DFS de deux manières différentes, même si on a plutôt tendance à le coder de manière récursive car le code est plus court et plus intuitif.</p>
-<h4>Récursif</h4>
+<h4 id="recursif">Récursif</h4>
 <p>Une implémentation récursive en C++ (j'utilise le C++ afin d'avoir les <code>vector</code> pour représenter notre graphe) :</p>
 <a href="javascript:toggle_visibility('dfs_recursif.cpp');">dfs_recursif.cpp <i id="toggle_arrow_dfs_recursif.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
 <div id="dfs_recursif.cpp" style="display: none;">
@@ -180,7 +180,7 @@ int main(void)
 <pre><code class="nohighlight">1 7 9 8 6 2 4 5 3
 </code></pre>
 
-<h4>Itératif</h4>
+<h4 id="iteratif">Itératif</h4>
 <p>Il est rare d'implémenter de façon itérative un parcours en profondeur, mais cela peut être utile pour ne pas faire exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile d'appels</a> à cause des nombreux appels récursifs imbriqués provoqués par notre dernière implémentation.</p>
 <p>Pour passer de la version récursive à la version itérative, on utilise simplement une <a href="/algo/structure/pile.html">pile</a> afin de "simuler" la pile d'appel. En effet lorsqu'on visite un nœud, on veut visiter tout de suite ses voisins, il faut donc les placer dans l'ordre de visite avant les autres nœuds, on va donc les empiler afin de les parcourir d'abord.</p>
 <a href="javascript:toggle_visibility('dfs_iteratif.cpp');">dfs_iteratif.cpp <i id="toggle_arrow_dfs_iteratif.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -275,15 +275,15 @@ int main(void)
 <figure><img alt="Exemple de labyrinthe" src="/img/algo/structure/graphe/bfs/dfs_vs_bfs.png" /><figcaption>Exemple de labyrinthe</figcaption>
 </figure>
 <p>Dans cet exemple, on fait un DFS sur notre graphe et à cause de l'ordre de parcours des voisins on arrive à la sortie (le nœud vert) en passant par les nœuds 2, 3 et 4 alors qu'on peut y accéder en passant uniquement par le nœud 6. Bien sûr notre DFS aurait pu passer par le nœud 6 en premier et ainsi atteindre la sortie le plus rapidement possible, mais cet exemple montre l'un des problèmes du DFS pour ce genre d'exercice, c'est que le résultat de l'algorithme dépend de l'ordre de parcours des voisins qui peut totalement changer en fonction de l'implémentation mais aussi en fonction du graphe. Il nous faut donc un algorithme de parcours qui ne dépend d'aucuns de ces facteurs, et qui nous permet de trouver le chemin le plus court sur un graphe non pondéré : le parcours en largeur.</p>
-<h3>Principe</h3>
+<h3 id="principe_1">Principe</h3>
 <p>Le parcours en largeur (ou <em>BFS</em> pour <em>Breadth First Search</em>), visite les nœuds du graphe par ordre de profondeur. C'est-à-dire que l'algorithme va d'abord visiter les nœuds à une profondeur de 1 par rapport au nœud de départ, puis à une profondeur de 2, de 3, etc. On parcourt le graphe "couche par couche" contrairement au parcours en profondeur qui lui va chercher à aller le plus loin possible d'abord pour ensuite remonter.</p>
 <p>Cela permet donc de trouver le plus court chemin sur un graphe <strong>non pondéré</strong>, car l'algorithme va regarder si on peut atteindre la sortie en parcourant un nœud de distance par rapport à l'entrée, puis deux nœuds, puis trois, etc. jusqu'à trouver la sortie. Finalement, on est sûr d'avoir trouvé le plus court chemin car il n'y a pas d'autres chemins comportant moins de nœuds pour accéder à la sortie.</p>
-<h3>Exemple</h3>
+<h3 id="exemple_1">Exemple</h3>
 <p>Avec le même graphe que pour le DFS, mais en appliquant un BFS dessus :</p>
 <figure><img alt="Exemple de BFS sur un graphe" src="/img/algo/structure/graphe/bfs/exemple_bfs.png" /><figcaption>Exemple de BFS sur un graphe</figcaption>
 </figure>
 <p>De même, chaque nœud représente l'ordre de parcours dans le graphe, et on retrouve bien cette idée de parcours par couche.</p>
-<h3>Pseudo-code</h3>
+<h3 id="pseudo-code_1">Pseudo-code</h3>
 <p>Pour implémenter ce système de parcours par niveau, on va utiliser une <a href="/algo/structure/file.html">file</a>. En effet, quand on est sur une couche $N$, on veut que les voisins qu'on va parcourir lors de la couche $N + 1$ soient tous situés après les nœuds de la couche $N$ que l'on visite actuellement, on veut donc qu'ils arrivent à la fin et ce principe respecte l'ordre du premier entré, premier sorti qu'on appelle aussi une file.</p>
 <pre><code class="nohighlight">BFS (depart) :
 
@@ -298,9 +298,9 @@ int main(void)
             Enfiler le voisin
 </code></pre>
 
-<h3>Complexité</h3>
+<h3 id="complexite_1">Complexité</h3>
 <p>Comme pour le parcours en profondeur, si notre sortie est le dernier nœud que l'on visite on aura une complexité en $O(M)$ avec $M$ le nombre d'arcs du graphe.</p>
-<h3>Implémentation</h3>
+<h3 id="implementation_1">Implémentation</h3>
 <p>L'implémentation du parcours en largeur en C++ (afin d'avoir le type <code>queue</code> et <code>vector</code>) :</p>
 <a href="javascript:toggle_visibility('bfs.cpp');">bfs.cpp <i id="toggle_arrow_bfs.cpp" class="fa fa-angle-down" aria-hidden="true"></i></a>
 <div id="bfs.cpp" style="display: none;">

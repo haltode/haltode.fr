@@ -307,7 +307,7 @@ int main(void)
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation de liste chaînée ainsi que des fonctions de base pour les manipuler : <a href="http://www.cplusplus.com/reference/list/list/">http://www.cplusplus.com/reference/list/list/</a>.</p>
 <h2 id="variantes-de-la-liste-chainee"><a class="toclink" href="#variantes-de-la-liste-chainee">Variantes de la liste chaînée</a></h2>
 <p>Il existe plusieurs variantes de la liste chaînée qui sont pratiques dans certains problèmes précis.</p>
-<h3>Liste doublement chaînée</h3>
+<h3 id="liste-doublement-chainee">Liste doublement chaînée</h3>
 <p>La liste double chaînée (<em>doubly linked list</em>) consiste à ce que chaque élément de la liste possède deux pointeurs :</p>
 <ul>
 <li>Un pointeur vers le <strong>prochain</strong> élément.</li>
@@ -329,16 +329,16 @@ typedef Noeud *Liste;
 </code></pre>
 
 <p>La liste doublement chaînée est notamment la base de la <a href="/algo/structure/file.html">file</a> et permet une implémentation efficace de cette structure.</p>
-<h3>Liste chaînée circulaire</h3>
+<h3 id="liste-chainee-circulaire">Liste chaînée circulaire</h3>
 <p>La liste chaînée circulaire (<em>circular linked list</em>) est une liste chaînée ne possédant pas de fin. En effet, le pointeur de fin de liste pointe vers le début de la liste formant ainsi un cycle.</p>
 <figure><img alt="Exemple de représentation d'une liste chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_chainee_circulaire.png" /><figcaption>Exemple de représentation d'une liste chaînée circulaire</figcaption>
 </figure>
 <p>On peut utiliser cette variante de la liste chaînée pour stocker par exemple le tour de chaque joueur dans un jeu, imaginons un jeu de carte qui se joue au tour par tour dans lequel plusieurs joueurs participent, une liste chaînée circulaire permettrait de stocker l'ordre de jeu des joueurs facilement.</p>
-<h3>Liste doublement chaînée circulaire</h3>
+<h3 id="liste-doublement-chainee-circulaire">Liste doublement chaînée circulaire</h3>
 <p>Une liste doublement chaînée circulaire (<em>doubly circular linked list</em>) est simplement un regroupement des deux dernières variantes.</p>
 <figure><img alt="Exemple de représentation d'une liste doublement chaînée circulaire" src="/img/algo/structure/liste_chainee/exemple_liste_doublement_chainee_circulaire.png" /><figcaption>Exemple de représentation d'une liste doublement chaînée circulaire</figcaption>
 </figure>
-<h3>D'autres variantes plus complexes</h3>
+<h3 id="dautres-variantes-plus-complexes">D'autres variantes plus complexes</h3>
 <p>En plus de ces variantes assez "courantes", on peut retrouver d'autres variantes plus compliquées mais qui peuvent toujours servir :</p>
 <ul>
 <li><strong>Liste à enjambements</strong> (<em>skip list</em>) : ensemble de listes chaînées stockées "parallèlement" et qui permet de sauter des éléments en fonction de nos besoins, pratique pour trier et rechercher (<a href="https://en.wikipedia.org/wiki/Skip_list">https://en.wikipedia.org/wiki/Skip_list</a>).</li>

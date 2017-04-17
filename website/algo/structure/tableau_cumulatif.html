@@ -89,7 +89,7 @@
 </figure>
 <h2 id="exemple"><a class="toclink" href="#exemple">Exemple</a></h2>
 <p>Afin de parfaitement comprendre l'utilisation d'un tableau cumulatif, prenons l'exemple de ce tableau : 26, 42, 1, 89, 3, 7.</p>
-<h3>Créer le tableau cumulatif</h3>
+<h3 id="creer-le-tableau-cumulatif">Créer le tableau cumulatif</h3>
 <p>À partir de la suite de nombres, on va créer un tableau cumulatif qui contiendra tous nos intervalles nécessaires, c'est-à-dire dans la première case l'élément 1, dans la deuxième case l'élément 1 + 2, dans la troisième case l'élément 1 + 2 + 3, etc.</p>
 <table>
 <thead>
@@ -118,7 +118,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Répondre aux questions grâce au tableau</h3>
+<h3 id="repondre-aux-questions-grace-au-tableau">Répondre aux questions grâce au tableau</h3>
 <p>On a désormais notre tableau cumulatif 26, 68, 69, 158, 161, 168 que l'on va utiliser pour répondre à des questions du type quelle est la somme des éléments du tableau original entre deux indices $i$ et $j$ donnés. Il faut juste faire attention à une chose, c'est d'utiliser comme indice de début d'intervalle $i - 1$ et non $i$ car sinon notre premier élément ne sera pas inclus.</p>
 <p><em>Question 1</em> : $i = 3$ et $j = 6$</p>
 <table>
@@ -261,9 +261,9 @@ int main(void)
 </code></pre>
 
 <h2 id="variantes"><a class="toclink" href="#variantes">Variantes</a></h2>
-<h3>Autres opérations que la somme</h3>
+<h3 id="autres-operations-que-la-somme">Autres opérations que la somme</h3>
 <p>Il est possible de répondre à des questions plus générales que sur la somme d'éléments, pour cela il suffit que notre opération possède une opération "inverse". Par exemple, l'inverse de l'addition est la soustraction (c'est d'ailleurs ce qu'on utilise dans notre tableau cumulatif, l'addition pour le construire, et la soustraction pour répondre aux questions), et l'inverse de la multiplication est la division. Il est donc possible de modifier le comportement de notre tableau cumulatif pour prendre en compte le produit d'une suite de nombre, la soustraction d'éléments contigus, etc. Le principe reste exactement le même, il suffit juste de changer la manière de construire et de répondre aux questions en fonction de l'opération choisie.</p>
-<h3>Tableau cumulatif 2D</h3>
+<h3 id="tableau-cumulatif-2d">Tableau cumulatif 2D</h3>
 <p>Le tableau cumulatif ne se limite pas à une seule dimension, on peut l'utiliser sur deux dimensions :</p>
 <figure><img alt="Exemple de représentation d'un tableau cumulatif 2D" src="/img/algo/structure/tableau_cumulatif/exemple_tableau2D.png" /><figcaption>Exemple de représentation d'un tableau cumulatif 2D</figcaption>
 </figure>
@@ -366,7 +366,7 @@ int main(void)
 </code></pre>
 
 <p>Le code suit exactement les deux schémas pour l'initialisation et pour l'utilisation du tableau cumulatif 2D. La complexité en temps cette fois est en $O(N^2)$ pour l'initialisation et $O(M)$ pour la réponse, contre une complexité pour la réponse de $O(N^2 \times M)$ pour l'algorithme naïf.</p>
-<h3>Tableau cumulatif à N dimensions ?</h3>
+<h3 id="tableau-cumulatif-a-n-dimensions">Tableau cumulatif à N dimensions ?</h3>
 <p>Nous avons vu qu'il était possible de créer un tableau cumulatif sur une mais aussi deux dimensions, alors pourquoi pas sur $N$ dimensions ? Techniquement, cela est possible, mais la représentation de $N$ dimensions risque d'être très complexe et il sera alors difficile de visualiser le comportement de notre tableau cumulatif (initialisation et accès pour répondre aux questions). De plus, il est assez rare d'avoir besoin d'un tableau cumulatif au-delà de 3 dimensions, vu que nous ne percevons pas la 4ème.</p>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Le tableau cumulatif est donc une structure de données permettant de connaître la somme d'éléments contigus rapidement, mais ce dernier ne se limite pas à la somme on peut aussi l'utiliser pour d'autres opérations comme la soustraction, la multiplication et la division, et on peut recréer cette structure en deux (ou même $N$) dimensions.</p>

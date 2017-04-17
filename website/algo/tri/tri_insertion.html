@@ -176,9 +176,9 @@ int main(void)
 </code></pre>
 
 <h2 id="ameliorations-et-variantes"><a class="toclink" href="#ameliorations-et-variantes">Améliorations et variantes</a></h2>
-<h3>Utiliser des listes chaînées</h3>
+<h3 id="utiliser-des-listes-chainees">Utiliser des listes chaînées</h3>
 <p>Le tri par insertion doit décaler de nombreuses fois le tableau pour insérer un élément, ce qui est une opération lourde et inutile puisqu'on peut utiliser des <a href="/algo/structure/liste_chainee.html">listes chaînées</a> afin de contrer ce problème. Les listes chaînées permettent d'insérer notre élément de façon simple et plus rapide, cependant comme il faut toujours calculer où placer cet élément, la complexité reste quadratique.</p>
-<h3>Tri Shell</h3>
+<h3 id="tri-shell">Tri Shell</h3>
 <p>Le tri par insertion est un algorithme de tri très efficace sur des entrées quasiment triées, et on peut utiliser cette propriété intéressante du tri pour l'améliorer. En effet, le tri Shell (<em>Shell sort</em> en anglais, du nom de son inventeur Donald L. Shell) va échanger certaines valeurs du tableau à un écart bien précis afin de le rendre dans la plupart des cas presque trié. Une fois qu'on a ce tableau ré-arrangé, on lui applique notre tri par insertion classique, mais ce dernier sera bien plus rapide grâce à notre première étape.</p>
 <p>Pour calculer cet écart, on utilise cette formule :</p>
 <p>$Ecart(N) = 3 \times Ecart(N - 1) + 1$<br />
@@ -196,7 +196,7 @@ $Ecart(3) = 3 \times Ecart(2) + 1 = 3 \times 4 + 1 = 13$</p>
 1, 3, 2, 9, 5, 8 -&gt; plus d’échange possible avec un écart de 4.</p>
 <p>On répète cette opération tant qu'il nous reste des écarts, dans notre cas c'est la fin de la première étape du tri. Maintenant notre tableau est réorganisé et quasi trié, on peut donc lui appliquer un tri par insertion.</p>
 <p>Malheureusement, le tri Shell reste avec une complexité quadratique dans le pire des cas, mais est une bonne amélioration de manière général.</p>
-<h3>Dichotomie</h3>
+<h3 id="dichotomie">Dichotomie</h3>
 <p>Le tri par insertion est basé sur le fait que le tableau est coupé en deux parties, l’une triée (celle qui nous intéresse) et l’autre non triée. On peut améliorer la recherche de l'emplacement où insérer notre élément grâce à la <a href="/algo/recherche/dichotomie.html">dichotomie</a> (c’est un algorithme de recherche efficace dans un ensemble d’objet déjà trié, ce qui est parfait pour notre cas).</p>
 <p>Cette recherche consiste à utiliser la méthode du <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser pour régner</a>, on cherche l’emplacement pour notre élément à l’aide d’intervalles. Notre intervalle de départ est : <em>début partie triée</em> -&gt;  <em>fin partie triée</em> :</p>
 <ul>

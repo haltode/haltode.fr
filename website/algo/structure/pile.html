@@ -98,7 +98,7 @@
 </ul>
 <h2 id="quelques-fonctions-pour-manipuler-une-pile"><a class="toclink" href="#quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions pour manipuler une pile</a></h2>
 <p>Comme pour une liste chaînée, il existe différentes fonctions de bases permettant de manipuler une pile.</p>
-<h3>Avec une liste chaînée</h3>
+<h3 id="avec-une-liste-chainee">Avec une liste chaînée</h3>
 <pre><code class="nohighlight">créerPile :
    Initialiser la pile à NULL
 supprimerPile :
@@ -120,7 +120,7 @@ estVide :
       Retourner faux
 </code></pre>
 
-<h3>Avec un tableau</h3>
+<h3 id="avec-un-tableau">Avec un tableau</h3>
 <pre><code class="nohighlight">créerPile :
    Créer un tableau d'une taille fixe et suffisamment grand pour la pile
    Initialiser le pointeur de pile (PP) à 0
@@ -151,7 +151,7 @@ estVide :
 <li><code>estVide</code> : $O(1)$</li>
 </ul>
 <h2 id="implementation"><a class="toclink" href="#implementation">Implémentation</a></h2>
-<h3>Liste chaînée</h3>
+<h3 id="liste-chainee">Liste chaînée</h3>
 <a href="javascript:toggle_visibility('pile_liste_chainee.c');">pile_liste_chainee.c <i id="toggle_arrow_pile_liste_chainee.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
 <div id="pile_liste_chainee.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
@@ -239,7 +239,7 @@ int main(void)
 
 <p>Le code est simple et ne nécessite pas d’explication, si besoin je vous invite à relire l'article sur les <a href="/algo/structure/liste_chainee.html">listes chaînées</a> pour bien comprendre le code.</p>
 </div>
-<h3>Tableau</h3>
+<h3 id="tableau">Tableau</h3>
 <a href="javascript:toggle_visibility('pile_tableau.c');">pile_tableau.c <i id="toggle_arrow_pile_tableau.c" class="fa fa-angle-down" aria-hidden="true"></i></a>
 <div id="pile_tableau.c" style="display: none;">
 <pre><code class="c">#include &lt;stdio.h&gt;
@@ -293,7 +293,7 @@ int main(void)
 
 <p>Cette implémentation est facile à comprendre et à utiliser.</p>
 </div>
-<h3>STL</h3>
+<h3 id="stl">STL</h3>
 <p>Si vous programmez en C++, la <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> (<em>Standard Template Library</em>) fournit une implémentation et des fonctions permettant de manipuler une pile : <a href="http://www.cplusplus.com/reference/stack/stack/">http://www.cplusplus.com/reference/stack/stack/</a></p>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>La pile est donc une structure de données facile à implémenter et peut être pratique dans de nombreux domaines : </p>
