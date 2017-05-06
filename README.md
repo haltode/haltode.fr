@@ -17,8 +17,8 @@ The script `build.py` uses different Python librairies:
          - Instead of adding the fix after the line `self.set_level(el)` in `toc.py`, I added it before `toc_tokens.append(...)` because I still want the ids to be generated.
 - [Jinja](http://jinja.pocoo.org/): to create templates for the future HTML pages
 
-All custom Markdown blocks are handled by the `custom_md_block.sh` script:
-   - `[[secret="title"]]` and `[[/secret]]` will hide the text between them, and enable a toggle button to show/hide the element.
+I also added some custom Markdown blocks, such as:
+   - `[[secret="title"]]` and `[[/secret]]`: hide the text between them, and enable a toggle button to show/hide the element.
 
 ## Server
 
