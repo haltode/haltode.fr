@@ -10,6 +10,7 @@ def parse_markdown(self):
 
     self.convert_markdown(content)
 
+    self.add_custom_blocks()
     self.format_metadata()
     self.delete_empty_toc()
 

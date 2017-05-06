@@ -1,5 +1,5 @@
 class Page(object):
-    from pages.content import format_metadata, delete_empty_toc
+    from pages.content import add_custom_blocks, format_metadata, delete_empty_toc
     from pages.markdown import parse_markdown, convert_markdown
     from pages.render import render
 
