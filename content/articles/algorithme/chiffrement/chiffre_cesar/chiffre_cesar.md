@@ -144,7 +144,7 @@ forceBrute :
 
 Une implémentation en C de cette attaque :
 
-[[secret="force_brute"]]
+[[secret="force_brute.c"]]
 
 ```c
 #include <stdio.h>
