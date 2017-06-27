@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Méthode de résolution - napnac</title>
+      <title>Méthode de résolution</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Méthode de résolution</a></h1>
+         <p class="metadata">Publié : 08/11/2016 · Modifié : 08/11/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 08/11/2016<br>Modifié le : 08/11/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#enonce">Énoncé</a></li>
@@ -71,12 +62,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Méthode de résolution</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Je ne le répèterai jamais assez, mais <a href="http://www.france-ioi.org/">France-IOI</a> est <strong>la référence francophone en algorithmique</strong>, et une des choses qui distingue fortement cette plateforme est la méthode de résolution qu'elle cherche à transmettre au travers de ses exercices. Cet article a pour but de présenter cette méthode qui peut être terriblement efficace si correctement maitrisée. De plus, elle ne s'applique pas uniquement pour des concours ou des exercices (même si les conseils donnés ici sont assez orientés concours de programmation), mais de manière générale lorsqu'on cherche un algorithme pour résoudre un problème donné.</p>
 <p>Cependant, cette méthode peut paraître longue et fastidieuse au début, et nécessite de l'<a href="/algo/general/entrainement.html">entraînement</a> ainsi que de la rigueur pour être utilisée efficacement. La vitesse viendra avec la pratique et non en bâclant les étapes de cette méthode. Il peut être frustrant au début de résoudre lentement un problème, mais cela vous sera très utile dans le futur et vous serez capable de réaliser les différentes étapes de cette méthode bien plus rapidement grâce à votre expérience.</p>
 <p>Il est important de noter que cette méthode n'est pas réellement adaptée pour un débutant complet, c'est-à-dire que si vous venez à peine de découvrir ce qu'est un algorithme, il serait plus judicieux d'acquérir davantage de connaissances sur le sujet avant d'appréhender et d'appliquer cette méthode. Mais il n'y a pas énormément de prérequis non de plus, dans le sens où un niveau basique en algorithmique et en <a href="/algo/general/complexite.html">analyse de complexité</a> suffit pour commencer.</p>
@@ -313,13 +300,5 @@ Dijkstra (départ, arrivée) :
 <p>Il n'y a pas de méthode miraculeuse pour résoudre un sujet, mais ces différentes étapes ont pour but de maximiser vos chances de trouver la solution à votre problème. Même si plusieurs des conseils étaient orientés pour des concours de programmation, cette manière globale de réfléchir est applicable à bien d'autres domaines (on peut notamment penser aux mathématiques).</p>
 <p>Encore une fois, cette approche de résolution n'est pas la mienne, mais c'est l'interprétation que je fais de la méthode de <a href="http://www.france-ioi.org/">France-IOI</a>. Je vous invite fortement à lire leurs propres documents sur le sujet (onglet "Méthode" de la partie "Cours et problèmes") afin d'étudier les différentes étapes d'un point de vue différent (même si dans l'ensemble les idées sont communes).</p>
 <p>J'insiste aussi sur le fait que cette méthode de résolution nécessite <a href="/algo/general/entrainement.html"><strong>beaucoup d'entraînement</strong></a>, et qu'il ne faut surtout pas sauter ou bâcler des étapes, mais au contraire les réaliser le plus sérieusement possible. Avec la pratique, des automatismes se créeront et vous prendrez de moins en moins de temps à effectuer chacune des étapes, mais en attendant il faut être patient et rigoureux.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

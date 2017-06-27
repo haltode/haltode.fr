@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Pile - napnac</title>
+      <title>Pile</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Pile</a></h1>
+         <p class="metadata">Publié : 08/06/2014 · Modifié : 28/11/2015</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 08/06/2014<br>Modifié le : 28/11/2015</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-pile">Principe de la pile</a></li>
@@ -68,12 +59,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Pile</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Prenons l'exemple d'une fonction dans un programme. Cette fonction peut appeler d'autres fonctions qui à leurs tours appellent d'autres fonctions (qui elles même appellent des fonctions, etc.). Comment savoir et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner une fois la fonction appelée terminée ? Une première réponse pourrait être de stocker toutes ces informations dans un simple tableau, mais comment le parcourir ? Où insérer les nouvelles données ? Comment enlever les éléments inutiles (lorsqu'une fonction a finie d'être exécutée) ?</p>
 <p>Toutes ces questions nous amènent à penser qu'il nous faut une structure de données organisée, bien définie et qui puisse gérer cette idée d'imbrication : la pile.</p>
 <h2 id="principe-de-la-pile"><a class="toclink" href="#principe-de-la-pile">Principe de la pile</a></h2>
@@ -303,13 +290,5 @@ int main(void)
 <li>Pour évaluer des expressions : dans certains cas, une pile peut être utilisée pour évaluer des expressions (mathématiques ou syntaxiques). Par exemple, si vous devez évaluer une expression en notation polonaise inverse (<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">NPI</a>), une pile est indispensable pour calculer l'expression au fur et à mesure des opérations (quand vous rencontrez un nombre vous l'empilez, quand vous rencontrez un opérateur vous dépilez les deux derniers éléments, et vous empilez le résultat).</li>
 <li>Plusieurs <a href="https://en.wikipedia.org/wiki/Virtual_machine">machines virtuelles</a> sont implémentées sur le principe d'une pile, par exemple celle de Java. Si vous voulez en savoir plus à ce sujet, cet article explique très bien le principe de machine virtuelle et les différentes implémentations possibles : <a href="https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/">https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/</a></li>
 </ul>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

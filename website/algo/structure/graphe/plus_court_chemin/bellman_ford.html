@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Algorithme de Bellman-Ford - napnac</title>
+      <title>Algorithme de Bellman-Ford</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Algorithme de Bellman-Ford</a></h1>
+         <p class="metadata">Publié : 10/07/2016 · Modifié : 10/07/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 10/07/2016<br>Modifié le : 10/07/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -69,12 +60,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Algorithme de Bellman-Ford</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>L'approche gloutonne de l'<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de Dijkstra</a> est excellente car elle permet d'aborder le problème du plus court chemin de manière intelligente, ce qui lui donne une complexité en temps intéressante, tout en étant optimale. Cependant, elle ne s'applique pas à toutes les configurations de graphes (par exemple ceux avec des pondérations négatives), et il nous faut donc un nouvel algorithme pour gérer ces cas.</p>
 <h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
 <p>Reprenons depuis le début. On a un graphe pondéré (positivement ou négativement), et on cherche le plus court chemin entre deux nœuds distincts. Une approche <strong>naïve</strong> serait d'explorer toutes les combinaisons possibles de chemin et de choisir celle qui obtient une pondération totale minimale. Le problème ici est évidemment la complexité en temps exponentielle. Dans ce genre de situation, il est fondamental de se poser cette question : qu'est-ce qui rend notre algorithme si lent ? Lorsqu'on explore toutes les possibilités de chemins, on repasse très souvent sur d'anciens nœuds et arcs, ce qui nous fait parcourir notre graphe plusieurs fois inutilement.</p>
@@ -350,13 +337,5 @@ int main(void)
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>L'algorithme de Bellman-Ford offre donc une toute nouvelle approche au problème du plus court chemin grâce à la programmation dynamique. Ceci lui permet d'être applicable sur tous types de graphes pondérés, contrairement à l'algorithme de Dijkstra qui n'est employé que sur des graphes pondérés positivement. De plus, le problème des cycles améliorants est facilement résolu avec cet algorithme, rendant le code simple et concis. En revanche, on notera une complexité en temps de $O(NM)$, plus lente que celle de Dijkstra en $O(M \log _2 M)$. Il est donc nécessaire de bien choisir l'algorithme à employer en fonction du graphe en entrée, afin d'avoir une complexité en temps et en mémoire optimale.</p>
 <p>On a pu remarquer que l'algorithme de Bellman-Ford nous informe non seulement du plus court chemin entre le nœud de départ et le nœud d'arrivée, mais aussi des plus courts chemins de tous les autres nœuds vers celui d'arrivée. Mais que se passe-t-il si on désire connaître les plus courts chemins entre tous les nœuds du graphe ? Est-ce qu'on devrait réaliser $N$ fois l'algorithme de Bellman-Ford ? Ou encore $N$ fois l'algorithme de Dijkstra ? On se doute rapidement que cette méthode n'est pas efficace, et cette question est en réalité un problème à part entière dans la catégorie des plus courts chemins. On a alors su développer des algorithmes bien spécifiques à ce type de problème, comme l'<a href="/algo/structure/graphe/plus_court_chemin/floyd_warshall.html">algorithme de Floyd-Warshall</a>, qui nous permet d'obtenir une complexité en temps plus intéressante. Connaître les plus courts chemins entre tous les nœuds d'un graphe est extrêmement utile dans de nombreux cas. On pourrait par exemple modéliser un problème de la vie de tous les jours sous forme d'un graphe implicite, afin de déterminer des relations ou des liens entre les différents nœuds.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

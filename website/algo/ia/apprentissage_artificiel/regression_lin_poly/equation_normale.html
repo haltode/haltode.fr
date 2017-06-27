@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Équation normale - napnac</title>
+      <title>Équation normale</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Équation normale</a></h1>
+         <p class="metadata">Publié : 20/04/2016 · Modifié : 20/04/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 20/04/2016<br>Modifié le : 20/04/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -68,12 +59,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Équation normale</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Contrairement à l'<a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">algorithme du gradient</a> l'équation normale est une expression mathématique et non pas un algorithme itératif, qui permet de résoudre notre problème de <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a> en trouvant les valeurs de $\theta$ pour lesquelles notre fonction $J$ est minimisée.</p>
 <h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
 <p>L'équation normale est définie comme ceci :</p>
@@ -174,13 +161,5 @@ theta  1  :  0.678691601117212
 </figure>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>La méthode de l'équation normale est donc plus précise que celle de l'algorithme du gradient car elle calcule le minimum global de la fonction d'erreur en déterminant $\theta$ directement avec une relation mathématique. Cependant, on ne peut pas employer cette équation tout le temps car elle a une complexité en temps trop élevée, ce qui la rend quasiment inutilisable sur des entrées où $n &gt; 10000$.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

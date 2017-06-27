@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>File - napnac</title>
+      <title>File</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">File</a></h1>
+         <p class="metadata">Publié : 08/06/2014 · Modifié : 28/11/2015</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 08/06/2014<br>Modifié le : 28/11/2015</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-la-file">Principe de la file</a></li>
@@ -69,12 +60,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">File</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Comment un centre d'appel arrive-t-il à gérer un surplus de clients ? Imaginons que tous les opérateurs téléphoniques du centre sont actuellement occupés et que 42 autres clients appellent dans la minute qui suit. Comment savoir quel client prendre en premier une fois un opérateur libre ? Comment faire pour garder un ordre logique si un client raccroche finalement, ou si d'autres appellent à leur tour ? Il nous faut donc une structure de données souple, permettant de résoudre nos problèmes de file d'attente, et cette structure s'appelle justement : la file.</p>
 <h2 id="principe-de-la-file"><a class="toclink" href="#principe-de-la-file">Principe de la file</a></h2>
 <p>Une file (<em>queue</em> en anglais) est une structure de données de type <strong>FIFO</strong> (<strong>F</strong>irst <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut, <em>premier entré premier sorti</em>). Elle fonctionne exactement comme une file d’attente dans un magasin :</p>
@@ -246,13 +233,5 @@ int main(void)
 <li>Si un serveur est débordé par les requêtes, une file sera adaptée pour renvoyer l'information aux personnes dans l'ordre d'arrivée pour ne pas faire attendre trop longtemps le client.</li>
 <li>De même si un centre d'appel est occupé, les clients seront pris en charge (par un opérateur qui vient de se libérer) grâce à une file en fonction de l'ordre d'arrivée (premier arrivé, premier servi).</li>
 </ul>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

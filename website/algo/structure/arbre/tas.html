@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Tas - napnac</title>
+      <title>Tas</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Tas</a></h1>
+         <p class="metadata">Publié : 11/01/2016 · Modifié : 22/01/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 11/01/2016<br>Modifié le : 22/01/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-du-tas">Principe du tas</a></li>
@@ -70,12 +61,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Tas</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Vous avez une liste d'éléments qui est vide au départ, et deux types d'opérations sont possibles dessus :</p>
 <ul>
 <li>Insérer une valeur dans la liste.</li>
@@ -255,13 +242,5 @@ priority_queue &lt;Element&gt; tasMin;
 <p>Le tas possède beaucoup de variantes, certaines sont plus utiles que d'autres, et en général on choisit la plus appropriée en fonction des données que l'on reçoit, mais aussi par rapport aux opérations que l'on souhaite effectuer dessus. On peut déjà citer toutes les différentes versions du tas : <strong>binaire</strong>, <strong>ternaire</strong>, et même de façon plus globale <strong>n-aire</strong>. Il est aussi possible de découper notre tas en plusieurs sous arbres de tailles spécifiques, suivant un ordre précis, et permettant des améliorations théoriques de la complexité des opérations. Je dis bien théorique, car en pratique les implémentations ne sont pas spécialement plus rapides que des tas binaires classiques, ce sont donc des structures peu utilisées en pratique, mais qu'on peut retrouver dans certaines améliorations d'algorithmes. Les plus connus sont le <a href="https://en.wikipedia.org/wiki/Fibonacci_heap"><strong>tas de Fibonacci</strong></a>, le <a href="https://en.wikipedia.org/wiki/Binomial_heap"><strong>tas binomial</strong></a>, ou encore <a href="https://en.wikipedia.org/wiki/Pairing_heap">le tas jumelé</a> mais on peut voir ce principe dans l'amélioration du tri par tas : le <a href="/algo/tri/tri_tas.html#smoothsort">smoothsort</a>. Enfin, il y a différentes variantes qui s'appuient sur l'idée d'un tas, mais la modifie afin de proposer des avantages précis pour des algorithmes ou bien des opérations, comme le <a href="https://en.wikipedia.org/wiki/Weak_heap"><strong>tas faible</strong></a> qui se concentre sur le tri principalement.</p>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Le tas est donc une structure de données adaptée aux opérations de recherche de minimum/maximum, et de tri. On le retrouve à la base du <a href="/algo/tri/tri_tas.html">tri par tas</a>, mais aussi dans la création d'une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a> qui elle sert dans l'<a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">algorithme de plus court chemin de Dijkstra</a> par exemple. Des variantes de tas permettent aussi des améliorations dans plusieurs catégories d'algorithmes, et cette structure de données peut très vite créer d'autres structures complexes et puissantes avec des complexités en temps et en mémoire faibles.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

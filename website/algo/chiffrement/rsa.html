@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>RSA - napnac</title>
+      <title>RSA</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">RSA</a></h1>
+         <p class="metadata">Publié : 31/05/2014 · Modifié : 02/02/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 31/05/2014<br>Modifié le : 02/02/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -71,12 +62,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">RSA</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Tous les algorithmes de chiffrement <strong>symétriques</strong> ont un problème commun : la transmission de clé. Quel que soit l'algorithme utilisé, si la clé est interceptée par l'ennemi, alors il peut lire les communications, mais aussi se faire passer pour le destinataire et l'expéditeur du message. Ce problème est fondamental car transmettre une clé de chiffrement est très délicat, et même impossible dans certains cas (par exemple avec Internet, c'est compliqué d'aller voir physiquement le responsable de chaque serveur pour qu'il vous transmette une clé), il était donc nécessaire de trouver une autre solution face à ce problème : les chiffrements <strong>asymétriques</strong>.</p>
 <p>L'idée du chiffrement asymétrique est d'utiliser deux clés au lieu d'une, que l'on va attribuer à chaque personne :</p>
 <ul>
@@ -639,13 +626,5 @@ Code
 lors de la 32c3 :</p>
 <p><a href="http://www.youtube.com/watch?v=Lh8OGDNJZQk"><img alt="Quantum Cryptography [32c3]" src="http://img.youtube.com/vi/Lh8OGDNJZQk/0.jpg" /></a></p>
 <p>Mais avec cette nouvelle technologie, se développe aussi les <a href="https://en.wikipedia.org/wiki/Quantum_computing"><strong>ordinateurs quantiques</strong></a>, basés sur les lois de la <a href="https://en.wikipedia.org/wiki/Quantum_mechanics">physique quantique</a> et qui pourrait permettre théoriquement de casser n'importe quel système cryptographique moderne en très peu de temps. En effet, nos ordinateurs utilisent des phénomènes physiques dit classiques, possédant un seul <em>état physique</em> à la fois (0 ou 1 dans le cas des bits), mais les ordinateurs quantiques sont capables de prendre plusieurs états différents <strong>en même temps</strong>, grâce aux propriétés de la <a href="https://en.wikipedia.org/wiki/Quantum_superposition">superposition</a> ou encore de l'<a href="https://en.wikipedia.org/wiki/Quantum_entanglement">intrication</a>. Ceci permettrait notamment de faire un nombre d'opérations considérables en une fraction de seconde car au lieu de les faire une par une, on pourrait théoriquement toutes les faire en même temps. Cette idée est loin d'être nouvelle, et en 1994, Peter Shor présenta l'<a href="https://en.wikipedia.org/wiki/Shor's_algorithm">algorithme de Shor</a> qui permet de factoriser un nombre entier en un temps polynomial sur un ordinateur quantique. Pour le moment, nous sommes encore <strong>loin</strong> d'utiliser l'algorithme de Shor sur un ordinateur quantique pour casser des clés de chiffrement modernes, et même encore loin d'avoir un ordinateur quantique fiable et assez stable. Mais il faut savoir que cette technologie se développe rapidement, on entend beaucoup parler du fameux ordinateur quantique de <a href="https://en.wikipedia.org/wiki/D-Wave_Systems">D-Wave</a>, et même si certains tests de rapidité sont assez <a href="http://news.mit.edu/2015/3q-scott-aaronson-google-quantum-computing-paper-1211">controversés</a>, ce domaine reste extrêmement intéressant et plein de potentiel pour de futures applications. Les ordinateurs quantiques nous permettraient de résoudre une quantité énorme de problèmes dont la solution nécessite trop de temps pour de simples ordinateurs non quantiques. Mais dans le domaine de la cryptographie, ce genre de technologie pose problème en termes de sécurité car nos systèmes de chiffrement actuels reposent sur des problèmes mathématiques que l'on ne sait pas résoudre rapidement avec des ordinateurs normaux (factorisation, <a href="https://en.wikipedia.org/wiki/Discrete_logarithm">logarithme discret</a>, <a href="https://en.wikipedia.org/wiki/Elliptic_curve_cryptography">courbes elliptiques</a>), et des chercheurs commencent donc déjà à chercher des algorithmes capables de résister à des attaques faites sur un ordinateur quantique pour se préparer au mieux à l'arrivée de ce genre d'ordinateur et à la cryptographie <strong>post-quantique</strong>.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

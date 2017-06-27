@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Algorithme du gradient - napnac</title>
+      <title>Algorithme du gradient</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Algorithme du gradient</a></h1>
+         <p class="metadata">Publié : 19/04/2016 · Modifié : 19/04/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 19/04/2016<br>Modifié le : 19/04/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -69,12 +60,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Algorithme du gradient</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Dans le cadre d'une <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">régression linéaire</a>, on cherche à définir une fonction d'hypothèse proche de la réalité et de la forme :</p>
 <p>$h_{\theta}(x) = \theta_{0} + \theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n$</p>
 <p>Par convention et pour simplifier le code, il n'est pas rare de rajouter un attribut $x_0 = 1$, afin de remplacer notre fonction par :</p>
@@ -355,13 +342,5 @@ for j in range(ia.n):
 <li><strong>Stochastic gradient descent</strong> : dans cette variante, on utilise uniquement un seul exemple afin de mettre à jour nos coefficients $\theta$. Le but est d'éviter des minimums locaux peu intéressants dans des bases de données énormes, afin d'arriver on l'espère à un minimum local proche du minimum global (voire si possible égal). Un autre avantage est naturellement sa rapidité vu qu'on utilise qu'un seul exemple à chaque itération.</li>
 <li><strong>Mini-batch gradient descent</strong> : un mélange des deux dernières méthodes, qui consiste à utiliser un nombre $b$ d'exemples afin d'essayer de combiner les avantages des deux autres variantes.</li>
 </ul>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

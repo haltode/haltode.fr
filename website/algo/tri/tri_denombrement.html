@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Tri par dénombrement - napnac</title>
+      <title>Tri par dénombrement</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Tri par dénombrement</a></h1>
+         <p class="metadata">Publié : 05/07/2014 · Modifié : 02/02/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 05/07/2014<br>Modifié le : 02/02/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l’algorithme</a></li>
@@ -70,12 +61,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Tri par dénombrement</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Le tri par dénombrement (<em>counting sort</em> en anglais) est l’un des algorithmes de tri le plus rapide, et pourtant il est loin d'être compliqué, même s'il a quelques restrictions et défauts. Le tri s'exécute en un temps linéaire, mais uniquement sur des nombres entiers. La particularité du tri est qu'il est la base d'autres algorithmes de tri en temps linéaires, permettant de s'adapter aux besoins en temps et en mémoire.</p>
 <h2 id="principe-de-lalgorithme"><a class="toclink" href="#principe-de-lalgorithme">Principe de l’algorithme</a></h2>
 <p>Le principe est simple, on parcourt le tableau et on compte le nombre de fois que chaque élément apparaît. Une fois qu’on a le tableau des effectifs <em>E</em> (avec <em>E[i]</em> le nombre de fois où <em>i</em> apparaît dans le tableau), on peut le parcourir dans le sens croissant (pour un tri croissant), ou décroissant (pour un tri décroissant) et placer dans le tableau trié <em>E[i]</em> fois l’élément <em>i</em> (avec <em>i</em> allant de l’élément minimum du tableau jusqu’à l’élément maximum).</p>
@@ -245,13 +232,5 @@ int main(void)
 
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Le tri par dénombrement est donc un algorithme de tri assez restrictif (il ne travaille qu'avec des nombres entiers), et doit obliger des compromis de mémoire pour avoir une complexité en temps linéaire. Cependant, quand on connait l'entrée, on peut utiliser cet algorithme afin d'avoir un temps d'exécution très rapide, mais on peut aussi changer le fonctionnement de ce tri afin d'améliorer la complexité en mémoire, sans trop impacter la complexité en temps, et c'est ce que fait le <a href="/algo/tri/tri_base.html">tri par base</a> qui est un autre algorithme en temps linéaire inspiré du tri par dénombrement. On le retrouve aussi dans le <a href="https://en.wikipedia.org/wiki/Bucket_sort">tri par paquets</a> qui permet de faire des améliorations de manières générales en temps et en mémoire à ce dernier.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

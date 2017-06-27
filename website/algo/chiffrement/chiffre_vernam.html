@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Chiffre de Vernam - napnac</title>
+      <title>Chiffre de Vernam</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Chiffre de Vernam</a></h1>
+         <p class="metadata">Publié : 29/05/2014 · Modifié : 20/12/2015</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 29/05/2014<br>Modifié le : 20/12/2015</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-de-lalgorithme">Principe de l'algorithme</a></li>
@@ -70,12 +61,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Chiffre de Vernam</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Le chiffre de Vernam est considéré comme une amélioration significative du <a href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigenère</a> car cet algorithme de chiffrement est théoriquement impossible à casser. Cependant, aucuns systèmes de chiffrement n'est parfait, et même si ce dernier semble sécurisé, il n'est pas toujours facile de remplir les conditions pour avoir un message chiffré totalement sûr.</p>
 <h2 id="principe-de-lalgorithme"><a class="toclink" href="#principe-de-lalgorithme">Principe de l'algorithme</a></h2>
 <p>Le chiffre de Vernam (ou <em>masque jetable</em>) est un <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement symétrique</a> utilisant, comme le chiffre de Vigenère, une <a href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution poly-alphabétique</a>. Son efficacité réside dans le choix de la clé de chiffrement, qui doit respecter plusieurs règles fondamentales :</p>
@@ -233,13 +220,5 @@ shrtvsgviw
 </ul>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>Le chiffre de Vernam est donc un algorithme de chiffrement symétrique offrant une sécurité optimale si les contraintes de cet algorithme sont respectées. Mais pour que son efficacité soit à son maximum, il faut disposer d'importantes ressources afin de créer un générateur totalement aléatoire, mais aussi un système assurant une utilisation unique des clés de chiffrement générées. Cependant, même avec un algorithme de chiffrement incassable, un problème persiste au niveau de l'échange de clé. En effet, tous les algorithmes de chiffrement symétriques nécessitent un échange de clé entre les deux personnes souhaitant communiquer afin de pouvoir chiffrer et déchiffrer les messages échangés. Mais c'est justement cet échange qui pose problème, car comment être sûr que personne d'autre ne connait la clé ? Comment la transmettre en toute sécurité ? L'intérêt d'un algorithme de chiffrement symétrique est donc limité, car si notre adversaire connait la clé de chiffrement, on aura beau mettre en place un algorithme de chiffrement incassable comme le chiffre de Vernam, il pourra sans aucunes difficultés comprendre les messages secrets. C'est pourquoi des mathématiciens ont travaillé sur de nouveaux algorithmes dit <strong>asymétriques</strong> (comme le <a href="/algo/chiffrement/rsa.html">RSA</a>), ne nécessitant alors aucun échange de clé et rendant les communications secrètes bien plus sûres.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

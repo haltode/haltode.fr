@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Introduction à l'apprentissage artificiel - napnac</title>
+      <title>Introduction à l'apprentissage artificiel</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Introduction à l'apprentissage artificiel</a></h1>
+         <p class="metadata">Publié : 07/04/2016 · Modifié : 25/04/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 07/04/2016<br>Modifié le : 25/04/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe">Principe</a></li>
@@ -68,12 +59,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Introduction à l'apprentissage artificiel</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Si vous suivez régulièrement les nouvelles dans le domaine de l'informatique, vous êtes sans doute déjà tombé sur un article parlant d'un programme utilisant le principe d'apprentissage artificiel (ou <em>machine learning</em> en anglais) afin de résoudre efficacement une tâche qui parait compliquée voire impossible pour un ordinateur. Si ce n'est pas le cas, il suffit de taper "machine learning" dans un moteur de recherche et regarder les résultats dans la section "actualités" pour apercevoir un nombre impressionnant d'articles récents à ce propos et sur des thèmes très variés. Mais qu'est-ce que l'apprentissage artificiel ? Dans quel domaine peut-on l'appliquer ? Et surtout quels sont concrètement les algorithmes mis en place par ce type d'apprentissage ?</p>
 <h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
 <p>En général, lorsqu'on cherche à résoudre un problème avec un ordinateur, on lui demande de réaliser une suite d'opérations bien précise pour avoir une sortie voulue. Cependant, dans certains cas il est très compliqué de définir cette suite d'opérations pour un problème donné, même si nous sommes capables en tant qu'humain de le résoudre sans difficulté. Par exemple, essayez de décrire à votre machine comment reconnaître un visage sur une photo, pour l'ordinateur l'image n'est qu'un amas de pixels, et la notion de visage ne lui évoque rien du tout, cependant vous êtes capable instantanément de le faire et cela depuis tout petit. Le but de l'apprentissage artificiel n'est pas de décrire directement des opérations afin de résoudre un problème, mais plutôt de donner la capacité à l'ordinateur d'apprendre à résoudre ce problème par <strong>lui-même</strong>. Pour apprendre, il va procéder comme vous et moi lorsqu'on essaie de s'améliorer dans une discipline, c'est-à-dire en essayant, en échouant, et en adaptant sa stratégie dans le but d'être meilleur la prochaine fois.</p>
@@ -128,13 +115,5 @@
 <p>Cependant, cette forme d'intelligence ne sait pas tout faire et nécessite toujours l'aide d'un humain afin de l'améliorer, de lui fournir des données pertinentes, et l'idée d'une intelligence artificielle autonome capable d'apprendre, communiquer et prendre des décisions importantes en effraie plus d'un. Ceci a poussé à la création d'une <a href="http://futureoflife.org/">organisation</a> très particulière dans le but d'éviter des risques majeurs dûs à des intelligences artificielles, et cette dernière est supportée par plusieurs personnalités importantes comme <a href="https://en.wikipedia.org/wiki/Stephen_Hawking">Stephen Hawking</a>, ou encore <a href="https://en.wikipedia.org/wiki/Elon_Musk">Elon Musk</a>. Même si l'apprentissage artificiel, voire l'intelligence artificielle de manière générale, peut nous apporter énormément d'améliorations et d'innovations impensables dans la vie de tous les jours, ceci peut tout à fait apporter de grands risques et une <a href="http://futureoflife.org/open-letter-autonomous-weapons/">lettre ouverte</a> de la fondation <em>Futur of Life</em> dénonce l'automatisation d'armes de guerre qui marquent selon eux "une troisième révolution dans l'armement après la poudre à canon et le nucléaire". Les États-Unis notamment utilisent déjà des intelligences artificielles afin de remplacer les humains dans des programmes de drones, car les pilotes étaient souvent <a href="http://www.democracynow.org/2013/10/25/a_drone_warriors_torment_ex_air">affectés mentalement</a> et développaient des traumatismes les forçant à arrêter.</p>
 <p>L'avenir de cette discipline est cependant loin d'être sombre, et beaucoup de projets ambitieux sont lancés avec des objectifs tous plus fous les uns que les autres (imitation artificielle du cerveau humain, le transhumanisme, transfert de conscience humaine dans des ordinateurs, etc.).</p>
 <p>Vu l'omniprésence de ce domaine aujourd'hui, et dans le futur, il est important pour un programmeur d'en comprendre la base ainsi que les principaux algorithmes afin de résoudre des problèmes d'apprentissage artificiel.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

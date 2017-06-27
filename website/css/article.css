@@ -1,0 +1,176 @@
+/* Custom font */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Bitter');
+
+body {
+   background-color: #ffffff;
+
+   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+   line-height: 1.5;
+
+   margin: 0 auto;
+   max-width: 45%;
+   margin-bottom: 4em;
+}
+
+/* ---- Titles ---- */
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: "Bitter";
+}
+
+h1 {
+   margin-bottom: 0em;
+   padding-bottom: 0em;
+
+   text-align: center;
+}
+
+h2 {
+   margin-top: 1.5em;
+}
+
+/* ---- Links ---- */
+
+h2 a, h3 a, h4 a, h5 a, h6 a {
+   color: black;
+}
+
+a {
+   text-decoration: none;
+   color: #ad280b;
+}
+
+a:hover, a:active {
+   text-decoration: underline;
+}
+
+/* ---- Page Info ---- */
+
+nav {
+   text-align: left;
+   font-family: "Bitter";
+   font-size: 0.85em;
+}
+
+nav ul {
+   padding: 0;
+}
+
+nav li {
+   list-style: none;
+   display: inline-block;
+}
+
+nav li a {
+   color: black;
+}
+
+nav li:not(:first-child):before {
+   content: " · ";
+}
+
+.metadata {
+   text-align: center;
+   padding-top: 0em;
+   margin-top: 0em;
+   font-family: "Bitter";
+   font-size: 0.85em;
+}
+
+/* ---- List ---- */
+
+ul {
+   padding-left: 2em;
+}
+
+/* ---- Tables ---- */
+
+table {
+   overflow: auto;
+   word-break: normal;
+   word-break: keep-all;
+   border-collapse: collapse;
+   border-spacing: 0;
+
+   margin-top: 2em;
+   margin-bottom: 2em;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+table th {
+   font-weight: bold;
+}
+
+table th, table td {
+   padding: 6px 13px;
+   border: 1px solid #ddd;
+}
+
+table tr {
+   border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+   background-color: #f6f6f7;
+}
+
+/* ---- Images and captions ---- */
+
+figure {
+   text-align: center;
+   margin-top: 2em;
+}
+
+figure img {
+   max-width: 100%;
+   height: auto;
+}
+
+figcaption {
+   margin-top: 1.5em;
+   margin-bottom: 2em;
+   font-style: italic;
+}
+
+/* ---- Code ---- */
+
+code, pre {
+   background: #f6f6f7;
+   color: #323337;
+   word-wrap: normal;
+   white-space: pre;
+}
+
+code {
+   padding: 2px 4px;
+   vertical-align: text-bottom;
+}
+
+pre {
+   padding: 1em;
+   border-left: 2px solid #ad280b;
+   overflow-x: auto;
+}
+
+.nohighlight {
+   /* Remove auto padding from highlight.js */
+   padding-left: 0;
+}
+
+/* ---- Blockquotes ---- */
+
+blockquote {
+   background: #f6f6f7;
+   padding: 0.1em 1em;
+   margin-left: 0;
+   border-left: 2px solid #ad280b;
+}
+/* ---- Miscellaneous ---- */
+
+hr {
+   width: 20%;
+   margin-top: 2em;
+   margin-bottom: 2em;
+}

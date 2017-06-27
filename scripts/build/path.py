@@ -1,11 +1,6 @@
 import glob
 
-
-ARTICLE_DIR = 'content/articles'
-MAIN_PAGES_DIR = 'content/main_pages'
-
-ARTICLE_TEMPLATE = 'article.html'
-MAIN_PAGES_TEMPLATE = 'base.html'
+import config
 
 
 def get_files(directory, extension):
@@ -14,15 +9,16 @@ def get_files(directory, extension):
 
 
 def get_all_files():
-    files_path = get_files(MAIN_PAGES_DIR, 'md')
-    files_path += get_files(ARTICLE_DIR, 'md')
+    files_path = get_files(config.ARTICLE_DIR, 'md')
     return files_path
 
 
+def get_main_pages():
+    return get_files(config.MAIN_PAGES_DIR, 'html')
+
+
 def get_template(file_path):
-    if MAIN_PAGES_DIR in file_path:
-        return MAIN_PAGES_TEMPLATE
-    elif ARTICLE_DIR in file_path:
-        return ARTICLE_TEMPLATE
+    if config.ARTICLE_DIR in file_path:
+        return config.ARTICLE_TEMPLATE
     else:
         raise ValueError

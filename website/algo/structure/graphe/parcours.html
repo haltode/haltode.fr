@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Parcours d'un graphe - napnac</title>
+      <title>Parcours d'un graphe</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Parcours d'un graphe</a></h1>
+         <p class="metadata">Publié : 07/12/2015 · Modifié : 13/12/2015</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 07/12/2015<br>Modifié le : 13/12/2015</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#le-parcours-en-profondeur">Le parcours en profondeur</a></li>
@@ -66,12 +57,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Parcours d'un graphe</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Le parcours d'un <a href="/algo/structure/graphe.html">graphe</a> est une opération essentielle à connaître à propos de cette structure. Il est fondamental de maitriser les différents algorithmes de parcours de graphe, ainsi que leur application et surtout savoir quand les utiliser en fonction de la situation.</p>
 <h2 id="le-parcours-en-profondeur"><a class="toclink" href="#le-parcours-en-profondeur">Le parcours en profondeur</a></h2>
 <p>Vous vous trouvez dans un labyrinthe contenant de nombreux chemins possibles, et vous cherchez la sortie alors que vous ne connaissez aucunes indications sur ce labyrinthe. Tout d'abord, on peut représenter notre labyrinthe comme un graphe dit <em>implicite</em>, qui sera non pondéré (chaque arc aura alors une distance de <em>1</em> unité). En effet, chaque intersection sera représentée par un nœud du graphe, et chaque chemin par un arc. L'entrée et la sortie du labyrinthe sont juste de simples nœuds distincts du graphe, et le fait de trouver la sortie du labyrinthe, revient à trouver un chemin reliant le nœud d'entrée au nœud de sortie : </p>
@@ -378,13 +365,5 @@ int main(void)
 <li><strong>Parcours en largeur</strong> : comme nous l'avons vu, le BFS sert à trouver le plus court chemin dans un graphe non pondéré, mais on l'utilise aussi pour l'algorithme de flot maximum d'un graphe, et pour tester si un graphe est biparti ou non.</li>
 </ul>
 <p>Toutes ces applications des deux algorithmes ne sont que des exemples, et le parcours choisi dépendra énormément du graphe en entrée. Il faut toujours réfléchir au problème donné avant d'utiliser un parcours (par exemple si on cherche un nœud précis et que ce dernier se situe proche du nœud de départ, un DFS sera un mauvais choix face au BFS). Il n'y a pas de manière de savoir quand utiliser l'un pas rapport à l'autre, à part en pratiquant le plus possible les deux types de parcours pour maitriser les avantages/désavantages et leurs utilisations.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

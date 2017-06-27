@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Plus court chemin - napnac</title>
+      <title>Plus court chemin</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Plus court chemin</a></h1>
+         <p class="metadata">Publié : 22/05/2016 · Modifié : 22/05/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 22/05/2016<br>Modifié le : 22/05/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#algorithmes">Algorithmes</a></li>
@@ -65,12 +56,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Plus court chemin</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Comment votre GPS peut-il connaître le plus court chemin entre Paris et Grenoble aussi facilement ? De manière générale, on peut se demander comment calculer l'itinéraire entre deux points donnés d'une carte de telle sorte que la distance soit minimale ? On pourrait aller encore plus loin dans la généralisation, en représentant notre carte comme un <a href="/algo/structure/graphe.html">graphe</a> et en transformant la question en : quel est le plus court chemin entre un nœud A et B dans un graphe pondéré ?</p>
 <p>Il existe différentes manières de répondre à cette question, et la réponse varie souvent en fonction du graphe donné en entrée de notre algorithme (pondéré positivement, négativement, dense, creux, etc.). Savoir reconnaître un problème de plus court chemin est donc important, et utiliser le bon algorithme l'est encore plus. Ces algorithmes ne se limitent pas à la création d'un simple GPS rudimentaire, mais peuvent aller bien plus loin et servent de base à de nombreuses autres applications.</p>
 <h2 id="algorithmes"><a class="toclink" href="#algorithmes">Algorithmes</a></h2>
@@ -91,13 +78,5 @@
 <li><strong>Génétique</strong> : lorsqu'on a deux chaînes d'ADN sous la forme d'une suite de nucléotides comme "AGGCTATGGC" et "ATGCAATGCC", et que l'on souhaite trouver le nombre minimum de mutations à appliquer à une chaîne pour se retrouver avec l'autre, on peut utiliser un algorithme de plus court chemin. Ce problème n'est pas restreint au domaine de la génétique, et il est assez fréquent de vouloir transformer une chaîne en une autre en un minimum d'opérations. Le graphe représenterait les différents états de la chaîne, et les arcs pourraient être une opération (avec comme pondération le coût de cette transformation). On peut aussi appliquer cette idée de graphe implicite à des nombres, ou tout autre forme de structure pouvant subir des modifications diverses (ajout, suppression, transformation, etc.).</li>
 </ul>
 <p>Les applications des algorithmes de plus court chemin sont très vastes, et il est fondamental d'en comprendre l'utilité. Ce problème de plus court chemin dans un graphe introduit aussi de nouveaux énoncés, comme le fameux problème du <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem"><strong>voyageur de commerce</strong></a> qui consiste à trouver un plus court chemin parcourant tous les nœuds d'un graphe pondéré une seule fois seulement, en finissant le trajet sur le nœud de départ. Cette question, d'apparence assez simpliste, représente en réalité un problème dit <a href="https://en.wikipedia.org/wiki/NP-completeness">NP-complet</a> pour lequel on ne connaît pas de solution en un temps polynomial. Ce n'est pas le <a href="https://en.wikipedia.org/wiki/List_of_NP-complete_problems">seul problème dans cette catégorie</a>, et les utilisations connexes du plus court chemin sont loin d'être toutes aussi triviales qu'on peut l'imaginer.</p>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

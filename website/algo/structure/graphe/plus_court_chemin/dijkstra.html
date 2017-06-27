@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Algorithme de Dijkstra - napnac</title>
+      <title>Algorithme de Dijkstra</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Algorithme de Dijkstra</a></h1>
+         <p class="metadata">Publié : 22/05/2016 · Modifié : 22/05/2016</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 22/05/2016<br>Modifié le : 22/05/2016</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#principe">Principe</a></li>
 <li><a href="#exemple">Exemple</a></li>
@@ -69,12 +60,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Algorithme de Dijkstra</a></h1>
-
-         <h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
+      <h2 id="principe"><a class="toclink" href="#principe">Principe</a></h2>
 <p>L'algorithme de Dijkstra est sans doute l'un des algorithmes de plus court chemin le plus connu. Ce dernier se base sur le <a href="/algo/structure/graphe/parcours.html#le-parcours-en-largeur">parcours en largeur</a> afin de trouver le plus court chemin dans un graphe pondéré <strong>positivement</strong> (ce point est très important, mais nous y reviendrons plus en détails après). On sait qu'un parcours en largeur permet de trouver le plus court chemin sur un graphe non pondéré (où on associe chaque arc avec une longueur arbitraire de 1 unité) et qu'il utilise une file pour stocker les éléments afin de les parcourir profondeur par profondeur. L'algorithme de Dijkstra s'appuie sur la même idée, sauf qu'il ne va pas utiliser une simple file (car tous les arcs n'ont pas la même pondération) mais une <a href="/algo/structure/file.html#file-a-priorite">file à priorité</a>. Cette dernière permet de toujours avoir le nœud avec la distance minimale par rapport au départ en tête de file, et garantie alors qu'on a trouvé le plus court chemin lorsqu'on atteint le nœud de sortie. La file à priorité a aussi l'avantage d'être une structure de données très efficace et rapide, ce qui rend notre algorithme d'autant plus intéressant.</p>
 <h2 id="exemple"><a class="toclink" href="#exemple">Exemple</a></h2>
 <p>Soit le graphe suivant :</p>
@@ -284,13 +271,5 @@ int main(void)
 <li>Il ne peut pas être utilisé sur des graphes pondérés négativement. Dans ce cas, il faut avoir recours à d'autres algorithmes de recherche de plus court chemin, comme celui de <a href="/algo/structure/graphe/plus_court_chemin/bellman_ford.html"><strong>Bellman-Ford</strong></a>.</li>
 <li>Il ne fait aucunes différences entre les multiples chemins qu'il emprunte, c'est-à-dire qu'il ne va jamais en favoriser un par rapport à un autre. En effet ceci peut être un problème, car en fonction du graphe en entrée, si un chemin semble optimal au début il est très probable qu'il soit, ou mène, au plus court chemin. C'est ce qu'essaie d'améliorer la variante de l'algorithme appelée : <strong>A*</strong>. Cette dernière fonctionne exactement comme l'algorithme de Dijkstra, mais utilise une technique dite <a href="https://en.wikipedia.org/wiki/Heuristic"><strong>heuristique</strong></a> lors de la sélection du prochain nœud à visiter. Cette fonction heuristique doit estimer la distance qu'il y a entre le prochain nœud et l'arrivée. Cela peut sembler étrange de devoir estimer cette distance, puisqu'on ne peut pas garantir sa véracité, mais c'est le principe même d'une heuristique. Cette variante est très utilisée en pratique, notamment dans les jeux vidéos, car elle permet d'obtenir de très bons résultats rapidement. Des algorithmes qui se basent sur des heuristiques sont en réalité très fréquents, car même si peu efficace en théorie (il est facile de trouver des exemples où l'algorithme A*  est lent) ils se basent sur le fait qu'en pratique, on ne trouve pas ces cas aussi spécifiques, et ils gagnent ainsi du temps pour obtenir un résultat très proche de la réalité. La question bien sûr est : comment choisir la fonction heuristique ? Cela dépend d'énormément de facteurs, mais voici un article regroupant différentes idées très intéressantes et utiles dans beaucoup de cas : <a href="http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html">A* ’s Use of the Heuristic</a>.</li>
 </ul>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>

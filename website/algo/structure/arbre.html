@@ -2,9 +2,10 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
       <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
 
       <!-- Icon -->
@@ -25,39 +26,29 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Arbre - napnac</title>
+      <title>Arbre</title>
    </head>
 
    <body>
       <!-- Javascript -->
       <script type="text/javascript" src="/js/utils.js"></script>
 
-      <div id="sidebar">
-         <a href="/"><img src="/img/logo.png" alt="Logo du site" height="125" width="125"></a>
-
-         <div id="menu">
+      <header>
+         <nav>
             <ul>
-               <li><a href="/">Accueil</a></li>
+               <li><a href="/">Prénom Nom</a></li>
                <li><a href="/articles.html">Articles</a></li>
-               <li><a href="/projets.html">Projets</a></li>
-               <li><a href="/a_propos.html">À propos</a></li>
             </ul>
-         </div>
+         </nav>
 
-         <div id="info">
-            <ul>
-               <li><a href="https://twitter.com/napnac"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i>Twitter</a></li>
-               <li><a href="https://github.com/napnac"><i class="fa fa-github fa-fw" aria-hidden="true"></i>Github</a></li>
-               <li><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>napnac [at] domaine</li>
-               <li><i class="fa fa-rss fa-fw" aria-hidden="true"></i><a href="https://napnac.fr/feed/rss.xml">RSS</a> / <a href="https://napnac.fr/feed/atom.xml">Atom</a></li>
-            </ul>
-         </div>
+         <h1><a href="">Arbre</a></h1>
+         <p class="metadata">Publié : 29/11/2015 · Modifié : 01/12/2015</p>
+      </header>
 
-   <hr>
-   <p>Publié le : 29/11/2015<br>Modifié le : 01/12/2015</p>
+      <hr>
 
-      <h4>Table des matières</h4>
-      <div class="toc">
+         <h4>Table des matières</h4>
+         <div class="toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#principe-dun-arbre">Principe d'un arbre</a></li>
@@ -68,12 +59,8 @@
 </ul>
 </div>
 
-      </div>
 
-      <div id="content">
-         <h1><a href="">Arbre</a></h1>
-
-         <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+      <h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
 <p>Une famille de lapin, dont le père s'appelle Bob et la mère Alice, ont des enfants, qui a leurs tours auront des enfants, qui se marieront et auront aussi des enfants. Comment organiser cette famille afin de visualiser qui est marié avec qui, qui sont les parents, qui sont les enfants, combien un couple a-t-il d'enfants, etc. ? Vous connaissez sans doute déjà la réponse, dans notre cas on utilisera un <a href="https://en.wikipedia.org/wiki/Family_tree">arbre généalogique</a>, vous en avez forcément déjà vu et/ou construit, et cette structure devrait vous être familière.</p>
 <p>Mais je vais vous présenter une structure de données plus large que l'arbre généalogique, qui permet de répondre à de nombreux autres problèmes et qui possède beaucoup de variantes : l'arbre.</p>
 <h2 id="principe-dun-arbre"><a class="toclink" href="#principe-dun-arbre">Principe d'un arbre</a></h2>
@@ -107,13 +94,5 @@
 <li><a href="https://en.wikipedia.org/wiki/Parsing">Parser</a> une expression peut être compliqué, et un arbre semble parfaitement adapté pour pratiquer une analyse syntaxique sur des expressions (en mathématiques par exemple, pour interpréter une expression non parenthésée et en gérant les cas de priorités d'opérations).</li>
 <li>Dans un routeur, une <a href="https://en.wikipedia.org/wiki/Routing_table">table de routage</a> sera utilisée afin de joindre un autre réseau, et cette dernière utilise un arbre pour stocker les informations sans trop utiliser de mémoire (à la manière du dictionnaire, c'est-à-dire grâce à des préfixes).</li>
 </ul>
-
-         <footer>
-            <br>
-            <hr>
-            <p>Une question ? Une suggestion ? N'hésitez pas à me <a href="/a_propos.html">contacter</a> pour me communiquer vos remarques.</p>
-            <br>
-         </footer>
-      </div>
    </body>
 </html>
