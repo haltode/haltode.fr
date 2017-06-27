@@ -1,6 +1,6 @@
 # napnac.fr
 
-This is my personal website (in French) where I post articles about algorithms, and my projects. All the articles are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), and then converted with a home made script into HTML pages.
+This is my personal website where I post articles about algorithms (in French), and my projects. All the articles are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), and then converted with a home made script into HTML pages.
 
 ## Conversion script
 
