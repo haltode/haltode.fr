@@ -112,3 +112,24 @@ hr {
    margin-bottom: 2em;
    width: 20%;
 }
+
+/* ---- Responsive Design ---- */
+
+/* Smartphones */
+@media (max-width: 750px) {
+   .metadata {
+      font-size: 0.75em;
+   }
+
+   table th, table td {
+      padding: 3px 7px;
+   }
+
+   pre {
+      padding: 0.5em;
+   }
+
+   blockquote {
+      padding: 0.1em 0.7em;
+   }
+}

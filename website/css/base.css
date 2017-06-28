@@ -23,10 +23,6 @@ h1 {
    text-align: center;
 }
 
-h2 {
-   margin-top: 1.5em;
-}
-
 /* ---- Links ---- */
 
 h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -70,4 +66,20 @@ nav li a:hover {
 
 nav li:not(:first-child):before {
    content: " · ";
+}
+
+/* ---- Responsive Design ---- */
+
+/* Smartphones */
+@media (max-width: 750px) {
+   body {
+      max-width: 90%;
+   }
+}
+
+/* Tablets */
+@media (min-width: 751px) and (max-width: 1100px) {
+   body {
+      max-width: 70%;
+   }
 }
