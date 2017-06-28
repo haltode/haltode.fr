@@ -15,11 +15,23 @@ body {
 
 /* ---- Titles ---- */
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
    font-family: "Bitter";
 }
 
+h1 {
+   text-align: center;
+}
+
+h2 {
+   margin-top: 1.5em;
+}
+
 /* ---- Links ---- */
+
+h2 a, h3 a, h4 a, h5 a, h6 a {
+   color: black;
+}
 
 a {
    text-decoration: none;
@@ -49,6 +61,11 @@ nav li {
 
 nav li a {
    color: black;
+}
+
+nav li a:hover {
+   color: #ad280b;
+   text-decoration: underline;
 }
 
 nav li:not(:first-child):before {

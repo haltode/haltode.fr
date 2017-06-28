@@ -1,79 +1,17 @@
-/* Custom font */
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-@import url('https://fonts.googleapis.com/css?family=Bitter');
-
-body {
-   background-color: #ffffff;
-
-   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
-   line-height: 1.5;
-
-   margin: 0 auto;
-   max-width: 45%;
-   margin-bottom: 4em;
-}
-
 /* ---- Titles ---- */
-
-h1, h2, h3, h4, h5, h6 {
-   font-family: "Bitter";
-}
 
 h1 {
    margin-bottom: 0em;
    padding-bottom: 0em;
-
-   text-align: center;
-}
-
-h2 {
-   margin-top: 1.5em;
-}
-
-/* ---- Links ---- */
-
-h2 a, h3 a, h4 a, h5 a, h6 a {
-   color: black;
-}
-
-a {
-   text-decoration: none;
-   color: #ad280b;
-}
-
-a:hover, a:active {
-   text-decoration: underline;
 }
 
 /* ---- Page Info ---- */
 
-nav {
-   text-align: left;
-   font-family: "Bitter";
-   font-size: 0.85em;
-}
-
-nav ul {
-   padding: 0;
-}
-
-nav li {
-   list-style: none;
-   display: inline-block;
-}
-
-nav li a {
-   color: black;
-}
-
-nav li:not(:first-child):before {
-   content: " · ";
-}
-
 .metadata {
-   text-align: center;
-   padding-top: 0em;
    margin-top: 0em;
+   padding-top: 0em;
+   text-align: center;
+
    font-family: "Bitter";
    font-size: 0.85em;
 }
@@ -119,8 +57,8 @@ table tr:nth-child(2n) {
 /* ---- Images and captions ---- */
 
 figure {
-   text-align: center;
    margin-top: 2em;
+   text-align: center;
 }
 
 figure img {
@@ -170,7 +108,7 @@ blockquote {
 /* ---- Miscellaneous ---- */
 
 hr {
-   width: 20%;
    margin-top: 2em;
    margin-bottom: 2em;
+   width: 20%;
 }
