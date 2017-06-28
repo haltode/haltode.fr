@@ -1,15 +1,15 @@
 /* ---- Titles ---- */
 
 h1 {
-   margin-bottom: 0em;
-   padding-bottom: 0em;
+   margin-bottom: 0;
+   padding-bottom: 0;
 }
 
 /* ---- Page Info ---- */
 
 .metadata {
-   margin-top: 0em;
-   padding-top: 0em;
+   margin-top: 0;
+   padding-top: 0;
    text-align: center;
 
    font-family: "Bitter";
