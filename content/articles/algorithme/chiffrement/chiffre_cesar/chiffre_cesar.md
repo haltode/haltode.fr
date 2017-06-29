@@ -1,7 +1,9 @@
-Path: algo/chiffrement  
-Title: Chiffre de César  
-Published: 21/05/2014  
-Modified: 14/12/2015  
+---
+path: algo/chiffrement
+title: Chiffre de César
+published: 21/05/2014
+modified: 14/12/2015
+---
 
 ## Introduction
 

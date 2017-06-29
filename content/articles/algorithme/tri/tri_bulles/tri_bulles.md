@@ -1,7 +1,9 @@
-Path: algo/tri  
-Title: Tri à bulles  
-Published: 29/04/2014  
-Modified: 07/12/2015  
+---
+path: algo/tri
+title: Tri à bulles
+published: 29/04/2014
+modified: 07/12/2015
+---
 
 ## Introduction
 

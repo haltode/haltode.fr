@@ -1,4 +1,6 @@
-Path: algo/general/approche  
-Title: Algorithme récursif  
-Published:  
-Modified:  
+---
+path: algo/general/approche
+title: Algorithme récursif
+published:
+modified:
+---

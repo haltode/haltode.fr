@@ -1,4 +1,6 @@
-Path: algo/structure/arbre  
-Title: Trie  
-Published:  
-Modified:  
+---
+path: algo/structure/arbre
+title: Trie
+published:
+modified:
+---

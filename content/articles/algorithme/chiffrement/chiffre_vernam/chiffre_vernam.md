@@ -1,7 +1,9 @@
-Path: algo/chiffrement  
-Title: Chiffre de Vernam  
-Published: 29/05/2014  
-Modified: 20/12/2015  
+---
+path: algo/chiffrement
+title: Chiffre de Vernam
+published: 29/05/2014
+modified: 20/12/2015
+---
 
 ## Introduction
 

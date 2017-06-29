@@ -1,7 +1,9 @@
-Path: algo/tri  
-Title: Tri par dénombrement  
-Published: 05/07/2014  
-Modified: 02/02/2016  
+---
+path: algo/tri
+title: Tri par dénombrement
+published: 05/07/2014
+modified: 02/02/2016
+---
 
 ## Introduction
 

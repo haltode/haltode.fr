@@ -1,4 +1,6 @@
-Path: algo/general/approche  
-Title: Algorithme glouton  
-Published:  
-Modified:  
+---
+path: algo/general/approche
+title: Algorithme glouton
+published:
+modified:
+---

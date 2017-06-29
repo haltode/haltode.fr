@@ -1,7 +1,9 @@
-Path: algo/structure  
-Title: File  
-Published: 08/06/2014  
-Modified: 28/11/2015  
+---
+path: algo/structure
+title: File
+published: 08/06/2014
+modified: 28/11/2015
+---
 
 ## Introduction
 

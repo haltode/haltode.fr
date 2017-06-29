@@ -1,7 +1,9 @@
-Path: algo/general  
-Title: Méthode de résolution  
-Published: 08/11/2016  
-Modified: 08/11/2016  
+---
+path: algo/general
+title: Méthode de résolution
+published: 08/11/2016
+modified: 08/11/2016
+---
 
 ## Introduction
 

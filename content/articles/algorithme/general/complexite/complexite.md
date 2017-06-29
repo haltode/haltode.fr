@@ -1,4 +1,6 @@
-Path: algo/general  
-Title: Analyse de la complexité des algorithmes  
-Published:  
-Modified:  
+---
+path: algo/general
+title: Analyse de la complexité des algorithmes
+published:
+modified:
+---

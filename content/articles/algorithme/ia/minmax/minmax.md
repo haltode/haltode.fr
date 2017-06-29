@@ -1,4 +1,6 @@
-Path: algo/ia  
-Title: Algorithme min-max  
-Published:  
-Modified:  
+---
+path: algo/ia
+title: Algorithme min-max
+published:
+modified:
+---

@@ -1,7 +1,9 @@
-Path: algo/chiffrement  
-Title: Chiffre de Vigenère  
-Published: 28/05/2014  
-Modified: 20/12/2015  
+---
+path: algo/chiffrement
+title: Chiffre de Vigenère
+published: 28/05/2014
+modified: 20/12/2015
+---
 
 ## Introduction
 

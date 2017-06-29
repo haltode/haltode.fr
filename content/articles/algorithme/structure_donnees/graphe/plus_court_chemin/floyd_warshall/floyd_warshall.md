@@ -1,7 +1,9 @@
-Path: algo/structure/graphe/plus_court_chemin  
-Title: Algorithme de Floyd-Warshall  
-Published: 21/05/2016  
-Modified: 21/05/2016  
+---
+path: algo/structure/graphe/plus_court_chemin
+title: Algorithme de Floyd-Warshall
+published: 21/05/2016
+modified: 21/05/2016
+---
 
 ## Introduction
 

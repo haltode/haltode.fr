@@ -1,7 +1,9 @@
-Path: algo/structure/graphe/plus_court_chemin  
-Title: Algorithme de Bellman-Ford  
-Published: 10/07/2016  
-Modified: 10/07/2016  
+---
+path: algo/structure/graphe/plus_court_chemin
+title: Algorithme de Bellman-Ford
+published: 10/07/2016
+modified: 10/07/2016
+---
 
 ## Introduction
 

@@ -1,7 +1,9 @@
-Path: algo/structure  
-Title: Arbre  
-Published: 29/11/2015  
-Modified: 01/12/2015  
+---
+path: algo/structure
+title: Arbre
+published: 29/11/2015
+modified: 01/12/2015
+---
 
 ## Introduction
 

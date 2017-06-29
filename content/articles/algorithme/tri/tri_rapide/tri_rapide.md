@@ -1,7 +1,9 @@
-Path: algo/tri  
-Title: Tri rapide  
-Published: 10/05/2014  
-Modified: 22/01/2016  
+---
+path: algo/tri
+title: Tri rapide
+published: 10/05/2014
+modified: 22/01/2016
+---
 
 ## Introduction
 

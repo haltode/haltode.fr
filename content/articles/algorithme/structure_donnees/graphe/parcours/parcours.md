@@ -1,7 +1,9 @@
-Path: algo/structure/graphe  
-Title: Parcours d'un graphe  
-Published: 07/12/2015  
-Modified: 13/12/2015  
+---
+path: algo/structure/graphe
+title: Parcours d'un graphe
+published: 07/12/2015
+modified: 13/12/2015
+---
 
 ## Introduction
 

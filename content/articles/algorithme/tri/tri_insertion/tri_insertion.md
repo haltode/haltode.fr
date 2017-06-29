@@ -1,7 +1,9 @@
-Path: algo/tri  
-Title: Tri par insertion  
-Published: 01/05/2014  
-Modified: 08/12/2015  
+---
+path: algo/tri
+title: Tri par insertion
+published: 01/05/2014
+modified: 08/12/2015
+---
 
 ## Introduction
 

@@ -1,4 +1,6 @@
-Path: algo/recherche  
-Title: Union-find  
-Published:  
-Modified:  
+---
+path: algo/recherche
+title: Union-find
+published:
+modified:
+---

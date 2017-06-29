@@ -1,7 +1,9 @@
-Path: algo/ia/apprentissage_artificiel  
-Title: Introduction à l'apprentissage artificiel  
-Published: 07/04/2016  
-Modified: 25/04/2016  
+---
+path: algo/ia/apprentissage_artificiel
+title: Introduction à l'apprentissage artificiel
+published: 07/04/2016
+modified: 25/04/2016
+---
 
 ## Introduction
 

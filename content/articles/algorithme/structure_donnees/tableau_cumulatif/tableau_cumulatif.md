@@ -1,7 +1,9 @@
-Path: algo/structure  
-Title: Tableau cumulatif  
-Published: 21/11/2015  
-Modified: 05/12/2015  
+---
+path: algo/structure
+title: Tableau cumulatif
+published: 21/11/2015
+modified: 05/12/2015
+---
 
 ## Introduction
 

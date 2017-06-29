@@ -1,7 +1,9 @@
-Path: algo/structure/arbre  
-Title: Arbre binaire  
-Published: 27/12/2015  
-Modified: 14/01/2016  
+---
+path: algo/structure/arbre
+title: Arbre binaire
+published: 27/12/2015
+modified: 14/01/2016
+---
 
 ## Introduction
 

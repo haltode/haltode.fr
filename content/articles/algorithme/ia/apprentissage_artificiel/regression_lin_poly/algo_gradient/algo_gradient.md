@@ -1,7 +1,9 @@
-Path: algo/ia/apprentissage_artificiel/regression_lin_poly  
-Title: Algorithme du gradient  
-Published: 19/04/2016  
-Modified: 19/04/2016  
+---
+path: algo/ia/apprentissage_artificiel/regression_lin_poly
+title: Algorithme du gradient
+published: 19/04/2016
+modified: 19/04/2016
+---
 
 ## Introduction
 

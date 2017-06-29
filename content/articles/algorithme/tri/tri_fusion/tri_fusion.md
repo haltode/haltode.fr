@@ -1,7 +1,9 @@
-Path: algo/tri  
-Title: Tri fusion  
-Published: 10/05/2014  
-Modified: 13/12/2015  
+---
+path: algo/tri
+title: Tri fusion
+published: 10/05/2014
+modified: 13/12/2015
+---
 
 ## Introduction
 

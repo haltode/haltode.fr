@@ -1,7 +1,9 @@
-Path: algo/chiffrement  
-Title: RSA  
-Published: 31/05/2014  
-Modified: 02/02/2016  
+---
+path: algo/chiffrement
+title: RSA
+published: 31/05/2014
+modified: 02/02/2016
+---
 
 ## Introduction
 
