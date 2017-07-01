@@ -1,0 +1,60 @@
+.project {
+   margin-top: 3em;
+   margin-bottom: 3em;
+}
+
+/* ---- Images ---- */
+
+.preview {
+   float: left;
+   width: 20%;
+   margin-right: 0.5em;
+   text-align: center;
+}
+
+img {
+   height: 75%;
+   width: 75%;
+   border-radius: 50%;
+}
+
+/* ---- Description ---- */
+
+h3 {
+   margin-bottom: 0;
+   padding-bottom: 0;
+}
+
+p {
+   overflow: hidden;
+}
+
+.metadata {
+   margin-top: 0;
+   padding-top: 0;
+   margin-bottom: 1.5em;
+
+   font-family: "Bitter";
+   font-size: 0.8em;
+}
+
+/* ---- Icons ---- */
+
+i {
+   color: #555555;
+   font-size: 0.1em;
+}
+
+i:hover {
+   color: #ad280b;
+}
+
+/* ---- Responsive Design ---- */
+
+/* Smartphones */
+@media (max-width: 750px) {
+   .project {
+      margin-top: 2em;
+      margin-bottom: 2em;
+   }
+}
