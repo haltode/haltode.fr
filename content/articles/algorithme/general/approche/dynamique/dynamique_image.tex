@@ -1,88 +1,159 @@
 % inspired from http://tex.stackexchange.com/questions/63612/tikz-tree-drawing-with-comments-to-each-level and http://tex.stackexchange.com/questions/45808/tikz-grid-lines
+% https://tex.stackexchange.com/questions/64148/tikz-label-on-tree-edge
+% https://tex.stackexchange.com/questions/329451/tikz-forest-drawing-upon-a-subtree
+% https://tex.stackexchange.com/questions/249694/how-can-i-increase-the-padding-around-nodes-in-a-fitted-box
+% https://tex.stackexchange.com/questions/294245/nice-empty-nodes-broken-by-forest-2-0
+% https://tex.stackexchange.com/questions/274219/drawing-a-multicolored-grid-using-tikz
 \documentclass{article}
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.25in]{geometry}
 
 \usepackage{tikz}
-\usetikzlibrary{trees}
+\usepackage{forest}
+\usepackage{pgfplots}
+
+\usetikzlibrary{positioning, fit, calc}
 
 \begin{document}
 
-% Appels récursifs fibonacci
+% Possibilité d'arrangement des objets
 
-\begin{tikzpicture}[level distance = 1.5cm,
-         level 1/.style = {->, >=stealth, sibling distance = 7.5cm},
-         level 2/.style = {->, >=stealth, sibling distance = 3.5cm},
-         level 3/.style = {->, >=stealth, sibling distance = 2cm},
-         level 4/.style = {->, >=stealth, sibling distance = 2cm}]
-\tikzstyle{every node} = [circle, draw, font = \sffamily\scriptsize]
-\node (Root) {$f(5)$}
-   child {
-      node {$f(4)$}
-      child { 
-         node {$f(3)$}
-         child { 
-            node {$f(2)$}
-            child { node {$f(1)$} }
-            child { node {$f(0)$} }
-         }
-         child { node {$f(1)$} }
-      }
-      child { 
-         node {$f(2)$}
-         child { node {$f(1)$} }
-         child { node {$f(0)$} }
-      }
-   }
-   child {
-      node {$f(3)$}
-      child { 
-         node {$f(2)$}
-         child { node {$f(1)$} }
-         child { node {$f(0)$} }
-      }
-      child { node {$f(1)$} }
-   };
+% \forestset{nice empty nodes/.style={
+% delay={where content={}{shape=coordinate,for parent={for children={child anchor=north}}}{}} }}
 
-\end{tikzpicture}
+\forestset{nice empty nodes/.style={
+   delay={where content={}{shape=coordinate,for siblings={anchor=north}}{}}
+}}
 
-% Appels récursifs fibonacci (version dynamique)
+\begin{forest}
+for tree={circle,draw, l sep=20pt, s sep=20pt}
+[,nice empty nodes
+   [1, fill=red!20
+      [2, fill=red!20
+         [3, fill=red!20]
+         [3, fill=green!20]
+      ]
+      [2, fill=green!20
+         [3, fill=red!20]
+         [3, fill=green!20]
+      ]
+   ]
+   [1, fill=green!20
+      [2, fill=red!20
+         [3, fill=red!20]
+         [3, fill=green!20]
+      ]
+      [2, fill=green!20
+         [3, fill=red!20]
+         [3, fill=green!20]
+      ]
+   ]
+]
+\end{forest}
 
+% Limite de l'algorithme naïf : répétition inutile d'appels récursifs
 \vspace{1cm}
+\begin{forest}
+for tree={scale=0.5}
+[${I(0,150)}$
+   [${I(1,150)}$
+      [${I(2,150)}$
+         [${I(3,150)}$
+            [${I(4,150)}$
+            ]
+            [${I(4,125)}$
+            ]
+         ]
+         [${I(3,140)}$
+            [${I(4,140)}$
+            ]
+            [${I(4,115)}$
+            ]
+         ]
+      ]
+      [${I(2,130)}$, name=top1
+         [${I(3,130)}$
+            [${I(4,130)}$, name=bottom_left1
+            ]
+            [${I(4,105)}$
+            ]
+         ]
+         [${I(3,120)}$
+            [${I(4,120)}$
+            ]
+            [${I(4,95)}$, name=bottom_right1
+            ]
+         ]
+      ]
+   ]
+   [${I(1,130)}$
+      [${I(2,130)}$, name=top2
+         [${I(3,130)}$
+            [${I(4,130)}$, name=bottom_left2
+            ]
+            [${I(4,105)}$
+            ]
+         ]
+         [${I(3,120)}$
+            [${I(4,120)}$
+            ]
+            [${I(4,95)}$, name=bottom_right2
+            ]
+         ]
+      ]
+      [${I(2,110)}$
+         [${I(3,110)}$
+            [${I(4,110)}$
+            ]
+            [${I(4,85)}$
+            ]
+         ]
+         [${I(3,100)}$
+            [${I(4,100)}$
+            ]
+            [${I(4,75)}$
+            ]
+         ]
+      ]
+   ]
+]
+\node[inner sep=0.04cm, draw=blue!20, thick, fit=(top1)(bottom_left1)(bottom_right1)] {};
+\node[inner sep=0.04cm, draw=blue!20, thick, fit=(top2)(bottom_left2)(bottom_right2)] {};
+\end{forest}
 
-\begin{tikzpicture}[level distance = 1.5cm,
-         level 1/.style = {->, >=stealth, sibling distance = 7.5cm},
-         level 2/.style = {->, >=stealth, sibling distance = 3.5cm},
-         level 3/.style = {->, >=stealth, sibling distance = 2cm},
-         level 4/.style = {->, >=stealth, sibling distance = 2cm}]
-\tikzstyle{every node} = [circle, draw, font = \sffamily\scriptsize]
-\node (Root) {$f(5)$}
-   child {
-      node {$f(4)$}
-      child { 
-         node {$f(3)$}
-         child { 
-            node {$f(2)$}
-            child { node {$f(1)$} }
-            child { node {$f(0)$} }
-         }
-         child { node {$f(1)$} }
-      }
-      child { node [fill = blue!20] {$f(2)$} }
-   }
-   child { node [fill = blue!20] {$f(3)$} };
+% 
 
-\end{tikzpicture}
+\vspace{2cm}
 
-% Comparaison méthodes ascendante et descendante
+\begin{tikzpicture}[every node/.style={minimum size=.5cm-\pgflinewidth, outer sep=0pt}]
 
-\newpage
+   \draw[step=.5cm,color=gray!50] (-1,-1) grid (2,2);
+   \draw[thick,->] (-1,2) -- (-1,-1);
+   \draw[thick,->] (-1,2) -- (2,2);
+   \node[] at (-1.2,2.2) {\footnotesize 0};
+   \node[] at (-1.2,-1.3) {\footnotesize nb objets};
+   \node[] at (2.2,2.3) {\footnotesize poids};
 
-\begin{tikzpicture}
-   \foreach \i in {0,...,9} {
-      \draw [very thin,black] (\i,0) -- (\i,9)  node [above] at (\i,9) {$\i$};
-    }
-    \foreach \i in {0,...,9} {
-       \draw [very thin,black] (0,\i) -- (9,\i) node [left] at (0,9-\i) {$\i$};
-    }
+   % Cas de bases
+   \node[circle,fill=green!60,scale=0.3] at (-0.75,+1.75) {};
+   \node[circle,fill=green!60,scale=0.3] at (-0.25,+1.75) {};
+   \node[circle,fill=green!60,scale=0.3] at (+0.25,+1.75) {};
+   \node[circle,fill=green!60,scale=0.3] at (+0.75,+1.75) {};
+   \node[circle,fill=green!60,scale=0.3] at (+1.25,+1.75) {};
+   \node[circle,fill=green!60,scale=0.3] at (+1.75,+1.75) {};
+
+   % Dépendance des calculs
+   \node[circle,fill=blue!60,scale=0.3] at (+1.25,+0.25) {};
+   \draw[thick,->,blue!60] (1.25,0.25) -- (1.25,0.75);
+   \draw[thick,->,blue!60] (1.25,0.25) -- (0.25,0.75);
+   \node[text=blue!80] at (0.15,0.9) {\tiny -objet.poids};
+   \node[text=blue!80] at (0.1,0.25) {\tiny +objet.importance};
+
+   % Problème final
+   \node[circle,fill=red!60,scale=0.3] at (+1.75,-0.75) {};
+
 \end{tikzpicture}
 
 \end{document}
