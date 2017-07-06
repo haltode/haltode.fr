@@ -208,14 +208,14 @@ On obtient bien en sortie :
 
 Réalisons quelques tests du programme sur différentes tailles d'entrée :
 
-| Taille entrée ($N$) | Temps d'exécution du programme |
-| ------------------- | ------------------------------ |
-| 10                  | 0.00s                          |
-| 20                  | 0.02s                          |
-| 25                  | 0.55s                          |
-| 30                  | 14.66s                         |
-| 35                  | 7min48s                        |
-| 40                  | 4h10min                        |
+| Taille entrée ($N$) | Temps d'exécution |
+| ------------------- | ----------------- |
+| 10                  | 0.00s             |
+| 20                  | 0.02s             |
+| 25                  | 0.55s             |
+| 30                  | 14.66s            |
+| 35                  | 7min48s           |
+| 40                  | 4h10min           |
 
 Bien sûr, les résultats varient en fonction de l'ordinateur qui exécute le programme, mais même en utilisant des superordinateurs, une liste de quelques centaines voire milliers d'objets paralyserait totalement le programme qui nécessitera alors une infinité de temps pour résoudre le problème. Ceci est dû à la **croissance exponentielle** de notre algorithme.
 
@@ -247,14 +247,14 @@ On voit rapidement que des appels récursifs sont répétés, et notamment tout 
 
 Pour se donner une idée de l'omniprésence de ces répétitions inutiles, voici quelques statistiques. Chaque résultat représente une moyenne sur 50 entrées aléatoires (avec la possibilité de surpoids) :
 
-| $N$ | Pourcentage de répétition dans les appels |
-| --- | ----------------------------------------- |
-| 10  | 15%                                       |
-| 15  | 32%                                       |
-| 20  | 63%                                       |
-| 25  | 77%                                       |
-| 30  | 87%                                       |
-| 35  | 94%                                       |
+| Taille entrée ($N$) | Pourcentage de répétition |
+| ------------------- | ------------------------- |
+| 10                  | 15%                       |
+| 15                  | 32%                       |
+| 20                  | 63%                       |
+| 25                  | 77%                       |
+| 30                  | 87%                       |
+| 35                  | 94%                       |
 
 *À noter que sans problème de surcharge, on atteint plus de 90% de répétition dans les appels dès $N = 15$.*
 
@@ -379,12 +379,12 @@ int main(void)
 
 Ces quelques légères modifications de notre code ont un impact colossal sur la complexité en temps de notre algorithme :
 
-| Taille entrée ($N$) | Temps d'exécution du programme |
-| ------------------- | ------------------------------ |
-| 10                  | 0,00s                          |
-| 100                 | 0,00s                          |
-| 1000                | 0,09s                          |
-| 10000               | 2,47s                          |
+| Taille entrée ($N$) | Temps d'exécution |
+| ------------------- | ----------------- |
+| 10                  | 0,00s             |
+| 100                 | 0,00s             |
+| 1000                | 0,09s             |
+| 10000               | 2,47s             |
 
 Cependant, comment savoir quelle forme doit prendre notre algorithme récursif pour le dynamiser correctement ? En effet, on aurait pu coder l'algorithme naïf totalement différemment, et il est donc important de comprendre et connaître quelques caractéristiques fondamentales d'un code récursif que l'on cherche à dynamiser à l'aide de la mémoïsation :
 
