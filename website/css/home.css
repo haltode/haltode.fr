@@ -6,7 +6,7 @@ p {
    text-align: center;
 }
 
-.avatar {
+img {
    height: 11em;
    width: 11em;
    border-radius: 50%;
@@ -77,7 +77,7 @@ nav {
       margin-top: 2em;
    }
 
-   .avatar {
+   img {
       height: 8em;
       width: 8em;
    }
@@ -104,7 +104,7 @@ nav {
 
 /* Tablets */
 @media (min-width: 751px) and (max-width: 1100px) {
-   .avatar {
+   img {
       height: 10em;
       width: 10em;
    }
