@@ -16,7 +16,7 @@
 
       <!-- Renders LaTeX expression -->
       <script type="text/x-mathjax-config">
-         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
       </script>
       <script type="text/javascript" async 
               src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
@@ -25,7 +25,7 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Algorithme dynamique</title>
+      <title>Programmation dynamique</title>
    </head>
 
    <body>
@@ -40,7 +40,7 @@
             </ul>
          </nav>
 
-         <h1><a href="">Algorithme dynamique</a></h1>
+         <h1><a href="">Programmation dynamique</a></h1>
          <p class="metadata">Publié : 03/04/2016 · Modifié : 05/07/2017</p>
       </header>
 
@@ -73,11 +73,9 @@
 </ul>
 <p>Il y a de nombreux domaines dans laquelle cette méthode excelle (<a href="/algo/recherche/dichotomie.html">dichotomie</a>, <a href="/algo/tri/tri_fusion.html">tri fusion</a>, <a href="/algo/tri/tri_rapide.html">tri rapide</a>, etc.), mais là où elle atteint ses limites c'est lorsque les sous-problèmes rencontrés ne sont pas uniques. Dans ce cas, on en vient à recalculer beaucoup de sous-problèmes que l'on a déjà résolus, ce qui rend notre programme très lent, voire inutilisable. </p>
 <p>La programmation dynamique est un moyen de pallier ce problème d'efficacité du programme, en stockant et en réutilisant les résultats déjà calculés pour éviter les nombreuses opérations inutiles. Plusieurs approches et techniques d'optimisation existent dans ce domaine, et nous étudierons dans cet article les principales.</p>
-<p>TODO: introduction à la programmation dynamique en titre?</p>
 <p>TODO: mise en page image (résolution, etc.)</p>
 <h2 id="enonce"><a class="toclink" href="#enonce">Énoncé</a></h2>
 <p>Afin d'aborder cette notion le plus simplement possible, nous allons chercher à résoudre un problème concret, nous permettant de découvrir les différentes facettes de la programmation dynamique :</p>
-<p>TODO: \$ (mathjax)</p>
 <blockquote>
 <p>Envoyer des objets dans l'espace est une action très coûteuse. On estime qu'envoyer un kilo peut coûter entre 10.000\$ et 20.000\$ et même si ce prix diminue au fur et à mesure que de nouvelles méthodes de lancement sont mises en place, il est nécessaire de minimiser le coût de chaque opération.<br />
 Vous travaillez pour l'entreprise chargée du prochain ravitaillement de la <a href="https://en.wikipedia.org/wiki/International_Space_Station">Station Spatiale Internationale</a>, votre rôle va être de préparer le contenu du prochain lanceur. Votre équipe a réuni $N$ objets (cela peut être de la nourriture, du carburant, du nouveau matériel, des expériences scientifiques à mener, etc.), et possède à disposition un lanceur pouvant contenir au maximum $M$ kilos. Chaque objet sera décrit selon deux caractéristiques :</p>

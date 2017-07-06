@@ -1,7 +1,9 @@
-Path: algo/general/approche  
-Title: Algorithme dynamique  
-Published: 03/04/2016  
-Modified: 05/07/2017
+---
+path: algo/general/approche
+title: Programmation dynamique
+published: 03/04/2016
+modified: 05/07/2017
+---
 
 ## EN COURS DE RÉDACTION
 
@@ -16,15 +18,11 @@ Il y a de nombreux domaines dans laquelle cette méthode excelle ([dichotomie](/
 
 La programmation dynamique est un moyen de pallier ce problème d'efficacité du programme, en stockant et en réutilisant les résultats déjà calculés pour éviter les nombreuses opérations inutiles. Plusieurs approches et techniques d'optimisation existent dans ce domaine, et nous étudierons dans cet article les principales.
 
-TODO: introduction à la programmation dynamique en titre?
-
 TODO: mise en page image (résolution, etc.)
 
 ## Énoncé
 
 Afin d'aborder cette notion le plus simplement possible, nous allons chercher à résoudre un problème concret, nous permettant de découvrir les différentes facettes de la programmation dynamique :
-
-TODO: \$ (mathjax)
 
 > Envoyer des objets dans l'espace est une action très coûteuse. On estime qu'envoyer un kilo peut coûter entre 10.000\$ et 20.000\$ et même si ce prix diminue au fur et à mesure que de nouvelles méthodes de lancement sont mises en place, il est nécessaire de minimiser le coût de chaque opération.  
 > Vous travaillez pour l'entreprise chargée du prochain ravitaillement de la [Station Spatiale Internationale](https://en.wikipedia.org/wiki/International_Space_Station), votre rôle va être de préparer le contenu du prochain lanceur. Votre équipe a réuni $N$ objets (cela peut être de la nourriture, du carburant, du nouveau matériel, des expériences scientifiques à mener, etc.), et possède à disposition un lanceur pouvant contenir au maximum $M$ kilos. Chaque objet sera décrit selon deux caractéristiques :
