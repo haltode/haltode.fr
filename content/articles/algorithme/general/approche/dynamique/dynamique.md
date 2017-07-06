@@ -18,8 +18,6 @@ Il y a de nombreux domaines dans laquelle cette méthode excelle ([dichotomie](/
 
 La programmation dynamique est un moyen de pallier ce problème d'efficacité du programme, en stockant et en réutilisant les résultats déjà calculés pour éviter les nombreuses opérations inutiles. Plusieurs approches et techniques d'optimisation existent dans ce domaine, et nous étudierons dans cet article les principales.
 
-TODO: mise en page image (résolution, etc.)
-
 ## Énoncé
 
 Afin d'aborder cette notion le plus simplement possible, nous allons chercher à résoudre un problème concret, nous permettant de découvrir les différentes facettes de la programmation dynamique :
