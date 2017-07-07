@@ -12,7 +12,7 @@ quick_build:
 
 run_scripts:
 	$(SCRIPT_DIR)/test_server.sh
-	$(SCRIPT_DIR)/quick_update_server.sh
+	$(SCRIPT_DIR)/update_server.sh
 
 clean:
 	find $(WEBSITE_DIR) -name '*.html' -delete
