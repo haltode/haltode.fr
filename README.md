@@ -22,7 +22,17 @@ I also added some custom Markdown blocks, such as:
 
 ## Server
 
-The website is hosted on my [Raspberry Pi](https://www.raspberrypi.org/), which is running an [nginx](http://nginx.org/) server. As for the SSL/TLS certificate, I use [Let's Encrypt](https://letsencrypt.org/).
+The website is hosted thanks to [Github Pages](https://pages.github.com/), but with some tweaks to suit my needs:
+   - [Set subdirectory as website root on Github Pages](https://stackoverflow.com/questions/36782467/set-subdirectory-as-website-root-on-github-pages)
+      - I wanted my `website` subfolder to be the root of `napnac.fr`, so the branch `gh-pages` contains the subtree (you can set the branch to be the source on which Github Pages will build the website in the repository's settings)
+      - When I commit and push to the `master` branch, I can simply type `git subtree push --prefix website origin gh-pages` to update the website
+   - [Using a custom domain with GitHub Pages](https://help.github.com/articles/using-a-custom-domain-with-github-pages/)
+      - [Setting up an apex domain](https://help.github.com/articles/setting-up-an-apex-domain/)
+      - [Setting up a www subdomain](https://help.github.com/articles/setting-up-a-www-subdomain/)
+      - You will need a `CNAME` file at the root of your website to indicate your custom domain, in my case `napnac.fr`
+   - [Secure and fast GitHub Pages with CloudFlare](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/)
+      - Github Pages doesn't support HTTPS for custom domain, so I had to use [Cloudflare](https://www.cloudflare.com/) to handle this task (and the DNS part as well)
+   - Since I am using my own script, code, theme, etc. to generate the website, I added a `.nojekyll` file at the root of the website to prevent [Jekyll](https://jekyllrb.com/) from interfering in any way
 
 ## License
 
