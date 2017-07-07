@@ -2,10 +2,8 @@
 path: algo/general/approche
 title: Programmation dynamique
 published: 03/04/2016
-modified: 05/07/2017
+modified: 07/07/2017
 ---
-
-## EN COURS DE RÉDACTION
 
 ## Introduction
 
@@ -613,4 +611,4 @@ Il est important de noter que cet article constitue une simple introduction à l
     - [Dynamic Programming Problems List - SPOJ](http://apps.topcoder.com/forums/;jsessionid=C684F032169B7439C8012AAB6BA2018C?module=Thread&threadID=674592)
     - [Dynamic Programming tag - Topcoder](https://community.topcoder.com/tc?module=ProblemArchive&sr=&er=&sc=&sd=&class=&cat=Dynamic+Programming&div1l=&div2l=&mind1s=&mind2s=&maxd1s=&maxd2s=&wr=)
 
-TODO: remerciement: yoch + retours forums + zds
+*Cet article a aussi été publié sur [Zeste de Savoir](https://zestedesavoir.com/), je tiens donc à remercier les membres qui m'ont fait part de leurs retours, en particulier [yoch](https://zestedesavoir.com/membres/voir/yoch/) pour ses différentes remarques et relectures.*
