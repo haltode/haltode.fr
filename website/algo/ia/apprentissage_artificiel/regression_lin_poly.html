@@ -25,7 +25,7 @@
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Régression linéaire/polynomiale</title>
+      <title>Régression linéaire et polynomiale</title>
    </head>
 
    <body>
@@ -40,7 +40,7 @@
             </ul>
          </nav>
 
-         <h1><a href="">Régression linéaire/polynomiale</a></h1>
+         <h1><a href="">Régression linéaire et polynomiale</a></h1>
          <p class="metadata">Publié : 25/04/2016 · Modifié : 25/04/2016</p>
       </header>
 
@@ -169,7 +169,7 @@
 <p>$J(\theta) = \frac{1}{m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$</p>
 <p>Par convention, et pour simplifier nos futurs calculs, on divise le résultat obtenu par 2 :</p>
 <p>$J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$</p>
-<p>Cette fonction d'erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent. Il est d'ailleurs possible de démontrer que cette fonction est un estimateur optimal sous certaines hypothèses grâce au <a href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem">théorème de Gauss-Markov</a>, c'est pour cela qu'elle est utilisée quasiment dans tous les cas de régression linéaire/polynomiale.</p>
+<p>Cette fonction d'erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent. Il est d'ailleurs possible de démontrer que cette fonction est un estimateur optimal sous certaines hypothèses grâce au <a href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem">théorème de Gauss-Markov</a>, c'est pour cela qu'elle est utilisée quasiment dans tous les cas de régression linéaire et polynomiale.</p>
 <p>Grâce à cela, on peut enfin définir concrètement ce que signifie "trouver le meilleur modèle". Cela revient à trouver des paramètres $\theta$ qui <strong>minimisent</strong> la fonction d'erreur utilisée.</p>
 <p>Si l'on affiche graphiquement la fonction d'erreur pour notre problème, on obtient ceci :</p>
 <figure><img alt="Exemple de représentation graphique de la fonction d'erreur" src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" /><figcaption>Exemple de représentation graphique de la fonction d'erreur</figcaption>
@@ -247,8 +247,8 @@
 </ul>
 <p>Notez qu'on peut utiliser cette méthode de validation croisée afin de choisir les degrés à utiliser dans notre fonction d'hypothèse polynomiale de la même façon que pour $\lambda$.</p>
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
-<p>La régression linéaire/polynomiale est donc un moyen de généraliser un problème à partir d'exemples fournis en construisant un modèle plus ou moins complexe. On a pu voir deux algorithmes très différents, ainsi que le principal problème lié à ce type d'apprentissage avant d'aborder une solution efficace.</p>
+<p>La régression linéaire et polynomiale est donc un moyen de généraliser un problème à partir d'exemples fournis en construisant un modèle plus ou moins complexe. On a pu voir deux algorithmes très différents, ainsi que le principal problème lié à ce type d'apprentissage avant d'aborder une solution efficace.</p>
 <p>Même si l'action de "généraliser" est une notion assez facile à appréhender en tant qu'humain, c'est bien plus compliqué de le faire comprendre à un ordinateur et les mathématiques nous permettent de nous en rapprocher considérablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilisé à travers d'autres algorithmes d'apprentissage artificiel, il était donc important de le découvrir ici dans un cadre assez accessible.</p>
-<p>Déduire un modèle à partir de données est un problème très commun, et la régression linéaire/polynomiale est une méthode employée dans pleins de domaines comme l'économie, la finance, les statistiques, la géographie, la physique, la biologie, etc.</p>
+<p>Déduire un modèle à partir de données est un problème très commun, et la régression linéaire et polynomiale est une méthode employée dans pleins de domaines comme l'économie, la finance, les statistiques, la géographie, la physique, la biologie, etc.</p>
    </body>
 </html>

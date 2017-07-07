@@ -1,6 +1,6 @@
 ---
 path: algo/ia/apprentissage_artificiel
-title: Régression linéaire/polynomiale
+title: Régression linéaire et polynomiale
 published: 25/04/2016
 modified: 25/04/2016
 ---
@@ -94,7 +94,7 @@ Par convention, et pour simplifier nos futurs calculs, on divise le résultat ob
 
 $J(\theta) = \frac{1}{2m} \displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2$
 
-Cette fonction d'erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent. Il est d'ailleurs possible de démontrer que cette fonction est un estimateur optimal sous certaines hypothèses grâce au [théorème de Gauss-Markov](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem), c'est pour cela qu'elle est utilisée quasiment dans tous les cas de régression linéaire/polynomiale.
+Cette fonction d'erreur nous permet alors de comparer deux modèles en fonction des paramètres $\theta$ qu'ils utilisent. Il est d'ailleurs possible de démontrer que cette fonction est un estimateur optimal sous certaines hypothèses grâce au [théorème de Gauss-Markov](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem), c'est pour cela qu'elle est utilisée quasiment dans tous les cas de régression linéaire et polynomiale.
 
 Grâce à cela, on peut enfin définir concrètement ce que signifie "trouver le meilleur modèle". Cela revient à trouver des paramètres $\theta$ qui **minimisent** la fonction d'erreur utilisée.
 
@@ -221,8 +221,8 @@ Notez qu'on peut utiliser cette méthode de validation croisée afin de choisir 
 
 ## Conclusion
 
-La régression linéaire/polynomiale est donc un moyen de généraliser un problème à partir d'exemples fournis en construisant un modèle plus ou moins complexe. On a pu voir deux algorithmes très différents, ainsi que le principal problème lié à ce type d'apprentissage avant d'aborder une solution efficace.
+La régression linéaire et polynomiale est donc un moyen de généraliser un problème à partir d'exemples fournis en construisant un modèle plus ou moins complexe. On a pu voir deux algorithmes très différents, ainsi que le principal problème lié à ce type d'apprentissage avant d'aborder une solution efficace.
 
 Même si l'action de "généraliser" est une notion assez facile à appréhender en tant qu'humain, c'est bien plus compliqué de le faire comprendre à un ordinateur et les mathématiques nous permettent de nous en rapprocher considérablement comme on a pu le voir. L'algorithme du gradient sera d'ailleurs utilisé à travers d'autres algorithmes d'apprentissage artificiel, il était donc important de le découvrir ici dans un cadre assez accessible.
 
-Déduire un modèle à partir de données est un problème très commun, et la régression linéaire/polynomiale est une méthode employée dans pleins de domaines comme l'économie, la finance, les statistiques, la géographie, la physique, la biologie, etc.
+Déduire un modèle à partir de données est un problème très commun, et la régression linéaire et polynomiale est une méthode employée dans pleins de domaines comme l'économie, la finance, les statistiques, la géographie, la physique, la biologie, etc.
