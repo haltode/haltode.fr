@@ -1,6 +1,6 @@
-ARTICLE_DIR = 'content/articles'
-MAIN_PAGES_DIR = 'content/main_pages'
-TEMPLATE_DIR = 'content/templates'
-WEBSITE_DIR = 'website'
+ARTICLE_DIR = 'articles'
+MAIN_PAGES_DIR = 'main_pages'
+TEMPLATE_DIR = 'templates'
+WEBSITE_DIR = '../haltode.fr-website'
 
 ARTICLE_TEMPLATE = 'article.html'
