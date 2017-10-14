@@ -58,6 +58,16 @@ class Content(object):
             {
                 "pattern": "<p>\[\[/secret\]\]</p>",
                 "replacement": "</div>"
+            },
+            # [[done]]
+            {
+                "pattern": "\[\[done\]\]",
+                "replacement": "<i class=\"fa fa-check fa-fw\" aria-hidden=\"true\"></i>"
+            },
+            # [[failed]]
+            {
+                "pattern": "\[\[failed\]\]",
+                "replacement": "<i class=\"fa fa-times fa-fw\" aria-hidden=\"true\"></i>"
             }
         ]
 
