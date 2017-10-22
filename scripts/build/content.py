@@ -68,6 +68,11 @@ class Content(object):
             {
                 "pattern": "\[\[failed\]\]",
                 "replacement": "<i class=\"fa fa-times fa-fw\" aria-hidden=\"true\"></i>"
+            },
+            # [[not_yet]]
+            {
+                "pattern": "\[\[not_yet\]\]",
+                "replacement": "<i class=\"fa fa-minus fa-fw\" aria-hidden=\"true\"></i>"
             }
         ]
 

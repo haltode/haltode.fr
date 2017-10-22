@@ -1,7 +1,7 @@
 ---
 path: master_plan/
 title: Goals
-updated: 2017-10-14
+updated: 2017-10-22
 ---
 
 ### November 2017
@@ -12,7 +12,8 @@ updated: 2017-10-14
 
 ### October 2017
 
-- Form an ACM team and attend ACM team training each week
+- Form an ACM team and attend ACM team training each week [[done]]
+	- First team training on 10/21
 - Codeforces rating > 1525
 - CSAcademy rating > 1600
 - Create exercises for Prologin upcoming edition
@@ -21,12 +22,9 @@ updated: 2017-10-14
 
 ### September 2017
 
-- Join/participate in the maximum amount of algorithms contests/training [[done]]
-
+- Get into algorithms again by joining max. amount of algorithms contests/training [[done]]
 	- Joined Prologin
 	- Started goind to ACM training every week
-	- Attended Club Algo ENS whenever I could
-
-- Start seting up the master plan and schedule [[done]]
-
+	- Attended "Club Algo ENS" whenever I could
+- Start setting up the master plan and schedule [[done]]
 	- The routine still needs some tweaks but the overall schedule is good
