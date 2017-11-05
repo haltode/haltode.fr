@@ -1,7 +1,7 @@
 ---
-path: master_plan/
+path: algo_training/
 title: Goals
-updated: 2017-10-22
+updated: 2017-11-05
 ---
 
 ### November 2017
@@ -9,16 +9,17 @@ updated: 2017-10-22
 - SWERC 2017
 - WCPS 2017
 - Focus on DP problems
+- Create exercises for Prologin upcoming regional events
 
 ### October 2017
 
 - Form an ACM team and attend ACM team training each week [[done]]
 	- First team training on 10/21
-- Codeforces rating > 1525
-- CSAcademy rating > 1600
-- Create exercises for Prologin upcoming edition
-- Setup haltode.fr and start the master plan
-- Pratice C++
+- Codeforces rating > 1525 [[failed]]
+	- Focusing on rating is not a good idea on short term + Overestimated rating increase
+- CSAcademy rating > 1600 [[failed]]
+	- Same as above + CSA strengthened rating system by the end of October
+- Create exercises for Prologin upcoming edition [[done]]
 
 ### September 2017
 
@@ -26,5 +27,3 @@ updated: 2017-10-22
 	- Joined Prologin
 	- Started goind to ACM training every week
 	- Attended "Club Algo ENS" whenever I could
-- Start setting up the master plan and schedule [[done]]
-	- The routine still needs some tweaks but the overall schedule is good

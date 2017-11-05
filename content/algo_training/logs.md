@@ -1,12 +1,16 @@
 ---
-path: master_plan/
+path: algo_training/
 title: Logs
-updated: 2017-10-22
+updated: 2017-11-05
 ---
 
-## October 2017
+### November 2017
 
-### Algorithms
+##### Contest
+
+- **11/01** CS Academy Round #55 (div2)
+
+### October 2017
 
 ##### Contest
 
@@ -17,18 +21,18 @@ updated: 2017-10-22
 - **10/12** ACM Training
 - **10/18** CS Academy Round #53 (div2 only)
 - **10/21** ACM Team Training
+- **10/23** Codeforces Round #442 (div2)
+- **10/27** Educational Codeforces Round 31
 
 ##### Practice
 
-- France-IOI · after contest (ACM, CF, CS)
+- France-IOI · upsolving (ACM, CF, CS)
 
 ##### Theory
 
 - LIS · CP3 · Z algorithm
 
-## September 2017
-
-### Algorithms
+### September 2017
 
 ##### Contest
 
@@ -43,8 +47,8 @@ updated: 2017-10-22
 
 ##### Practice
 
-- France-IOI · after contest (ACM, CF, CS)
+- France-IOI · upsolving (ACM, CF, CS)
 
 ##### Theory
 
-- Maxflox (Ford-Fulkerson, Edmonds-Karp, bipartite matching, etc.)
+- Maxflow (Ford-Fulkerson, Edmonds-Karp, bipartite matching, etc.)

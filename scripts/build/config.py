@@ -1,8 +1,8 @@
+ALGO_TRAINING_DIR = 'content/algo_training'
 ARTICLE_DIR = 'content/articles'
 MAIN_PAGES_DIR = 'content/main_pages'
-MASTER_PLAN_DIR = 'content/master_plan'
 TEMPLATE_DIR = 'templates'
 WEBSITE_DIR = '../haltode.fr-website'
 
+ALGO_TRAINING_TEMPLATE = 'algo_training.html'
 ARTICLE_TEMPLATE = 'article.html'
-MASTER_PLAN_TEMPLATE = 'master_plan.html'
