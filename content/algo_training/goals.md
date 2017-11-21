@@ -1,15 +1,15 @@
 ---
 path: algo_training/
 title: Goals
-updated: 2017-11-05
+updated: 2017-11-21
 ---
 
 ### November 2017
 
 - SWERC 2017
-- WCPS 2017
+- WCPS 2017 [[done]]
 - Focus on DP problems
-- Create exercises for Prologin upcoming regional events
+- Create exercises for Prologin upcoming regional events [[done]]
 
 ### October 2017
 

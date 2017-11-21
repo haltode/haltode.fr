@@ -1,14 +1,30 @@
 ---
 path: algo_training/
 title: Logs
-updated: 2017-11-05
+updated: 2017-11-21
 ---
 
 ### November 2017
 
 ##### Contest
 
-- **11/01** CS Academy Round #55 (div2)
+- **11/01** WCPS 2017 + CS Academy Round #55 (div2)
+- **11/02** WCPS 2017
+- **11/03** WCPS 2017
+- **11/09** ACM Training
+- **11/11** ACM Team Training
+- **11/16** ACM Training
+- **11/17** Codeforces Round #446
+- **11/19** Codeforces Round #447 (div2)
+- **11/22** ACM Team Training
+
+##### Pratice
+
+- USACO · SPOJ · upsolving (ACM, CF)
+
+##### Theory
+
+- DP · max flow (dinic, scaling, min cost max flow) · bipartite graph (kuhn)
 
 ### October 2017
 
@@ -23,6 +39,8 @@ updated: 2017-11-05
 - **10/21** ACM Team Training
 - **10/23** Codeforces Round #442 (div2)
 - **10/27** Educational Codeforces Round 31
+- **10/30** WCPS 2017
+- **10/31** WCPS 2017
 
 ##### Practice
 
@@ -30,7 +48,7 @@ updated: 2017-11-05
 
 ##### Theory
 
-- LIS · CP3 · Z algorithm
+- LIS · CP3 · Z algorithm · MST
 
 ### September 2017
 
