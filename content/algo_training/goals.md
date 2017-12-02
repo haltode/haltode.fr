@@ -1,14 +1,23 @@
 ---
 path: algo_training/
 title: Goals
-updated: 2017-11-21
+updated: 2017-12-02
 ---
+
+### December 2017
+
+- Work on DP problems
+- Work on geometry problems
+- Start an association about competitive programming/algorithms inside my school
+- Organize regular team trainings on our own
+- Create more exercises for Prologin upcoming regional events
 
 ### November 2017
 
-- SWERC 2017
+- SWERC 2017 [[done]]
 - WCPS 2017 [[done]]
-- Focus on DP problems
+- Focus on DP problems [[not_yet]]
+	- I did a few exercises but I could have done more
 - Create exercises for Prologin upcoming regional events [[done]]
 
 ### October 2017

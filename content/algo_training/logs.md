@@ -1,8 +1,14 @@
 ---
 path: algo_training/
 title: Logs
-updated: 2017-11-21
+updated: 2017-12-02
 ---
+
+### December 2017
+
+##### Contest
+##### Practice
+##### Theory
 
 ### November 2017
 
@@ -17,10 +23,13 @@ updated: 2017-11-21
 - **11/17** Codeforces Round #446
 - **11/19** Codeforces Round #447 (div2)
 - **11/22** ACM Team Training
+- **11/25** SWERC 2017
+- **11/26** SWERC 2017
+- **11/29** CS Academy Round #59 (div2 only)
 
-##### Pratice
+##### Practice
 
-- USACO · SPOJ · upsolving (ACM, CF)
+- USACO · SPOJ · upsolving (ACM, CF) · HackerRank
 
 ##### Theory
 
