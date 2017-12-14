@@ -1,14 +1,26 @@
 ---
 path: algo_training/
 title: Logs
-updated: 2017-12-02
+updated: 2017-12-14
 ---
 
 ### December 2017
 
 ##### Contest
+
+- **12/02** Codeforces Round #449
+- **12/06** CS Academy Round #60 (div2 only)
+- **12/11** Codeforces Round #450 (div2)
+- **12/12** Educational Codeforces Round #34
+- **12/13** CS Academy Round #61
+
 ##### Practice
+
+- SPOJ · upsolving (CF, CS)
+
 ##### Theory
+
+- advanced DP (bitmask) · meet in the middle
 
 ### November 2017
 
