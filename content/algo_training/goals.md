@@ -1,16 +1,28 @@
 ---
 path: algo_training/
 title: Goals
-updated: 2017-12-02
+updated: 2018-01-05
 ---
+
+### January 2018
+
+- Truly try to work harder in general (I won't have much time this month for algorithmic training)
+- Each week, do one USACO (gold division) contest + upsolving
+- Maintain expert title on Codeforces once reached
+- Maintain dark blue color on CS Academy once reached
+- Create an association about competitive programming inside my school
+- Create the last needed exercises for Prologin upcoming regional events
 
 ### December 2017
 
-- Work on DP problems
+- Work on DP problems [[not_yet]]
+    - Did some, but spend most of my time upsolving rather than focusing exclusively on DP
 - Work on geometry problems
-- Start an association about competitive programming/algorithms inside my school
+    - I realised that geometry problems are not a priority, at my level most of them only require basic geometry knowledge which I already have
+- Start an association about competitive programming/algorithms inside my school [[not_yet]]
+    - We made some progress, but with vacations it was hard to set it up
 - Organize regular team trainings on our own
-- Create more exercises for Prologin upcoming regional events
+- Create more exercises for Prologin upcoming regional events [[done]]
 
 ### November 2017
 

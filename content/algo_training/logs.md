@@ -1,8 +1,16 @@
 ---
 path: algo_training/
 title: Logs
-updated: 2017-12-14
+updated: 2018-01-05
 ---
+
+### January 2018
+
+##### Contest
+
+##### Practice 
+
+##### Theory
 
 ### December 2017
 
@@ -13,14 +21,21 @@ updated: 2017-12-14
 - **12/11** Codeforces Round #450 (div2)
 - **12/12** Educational Codeforces Round #34
 - **12/13** CS Academy Round #61
+- **12/17** USACO December Contest
+- **12/19** Codeforces Round #453
+- **12/20** CS Academy Round #62 (div2 only)
+- **12/23** Codeforces Round #454
+- **12/27** Codeforces Round #455
+- **12/28** Educational Codeforces Round #35
+- **12/29** Codeforces Goodbye 2017
 
 ##### Practice
 
-- SPOJ · upsolving (CF, CS)
+- SPOJ · upsolving (CF, CS) · A2 Online Judge Ladder
 
 ##### Theory
 
-- advanced DP (bitmask) · meet in the middle
+- advanced DP (bitmask) · meet in the middle · rolling hashes
 
 ### November 2017
 
