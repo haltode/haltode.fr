@@ -1,16 +1,39 @@
 ---
 path: algo_training/
 title: Logs
-updated: 2018-01-05
+updated: 2018-02-13
 ---
+
+### February 2018
+
+##### Contest
+
+- **02/02** Educational Codeforces Round #37
+- **02/07** CS Academy Round #68 (div2 only)
+- **02/07** Codeforces Round #461 (div2)
 
 ### January 2018
 
 ##### Contest
 
+- **01/03** CS Academy Round #63 (div2 only)
+- **01/05** Codeforces Round #456 (div2)
+- **01/07** AtCoder Beginner Contest 085
+- **01/08** Codeforces Hello 2018
+- **01/10** CS Academy Round #64
+- **01/13** Educational Codeforces Round #36
+- **01/17** CS Academy Round #65
+- **01/19** Codeforces Round #457 (div2)
+- **01/24** CS Academy Round #66 (div2 only)
+- **01/31** CS Academy Round #67
+
 ##### Practice 
 
+- upsolving (CF, CS) · USACO
+
 ##### Theory
+
+- LCA · RMQ · Segment Tree
 
 ### December 2017
 

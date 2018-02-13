@@ -1,8 +1,19 @@
 ---
 path: algo_training/
 title: Goals
-updated: 2018-01-05
+updated: 2018-02-13
 ---
+
+### February 2018
+
+- Team related
+    - Train for Google Hash Code 2018
+    - Find sponsors for ACM-ICPC Training Bootcamp 2018
+- Try new training approach (mid February)
+- Contribute to Prologin regional events
+- Continue to setup the algorithmic assocation
+
+**January-February**: Not a lot of free time to train, especially with the start of Prologin's regional events and my first year school project. I also want to try another approach to my training, since until now I was basically trying to compete in as much contests as possible but this has a huge drawback: I don't have too much time to upsolve many problems afterwards. Instead, I will now only compete once a week at most, and the rest of the time will be dedicated to upsolving harder problems. I would also like to have at least 2h of training per day.
 
 ### January 2018
 
