@@ -10,7 +10,6 @@ def get_files(directory, extension):
 
 def get_all_files():
     files_path = get_files(config.ARTICLE_DIR, 'md')
-    files_path += get_files(config.ALGO_TRAINING_DIR, 'md')
     return files_path
 
 
@@ -21,7 +20,5 @@ def get_main_pages():
 def get_template(file_path):
     if config.ARTICLE_DIR in file_path:
         return config.ARTICLE_TEMPLATE
-    elif config.ALGO_TRAINING_DIR in file_path:
-        return config.ALGO_TRAINING_TEMPLATE
     else:
         raise ValueError
