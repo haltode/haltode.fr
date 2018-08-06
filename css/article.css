@@ -1,0 +1,141 @@
+/* ---- Titles ---- */
+
+h1 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* ---- Page Info ---- */
+
+.metadata {
+    margin-top: 0;
+    padding-top: 0;
+    text-align: center;
+
+    font-family: "Bitter";
+    font-size: 0.85em;
+}
+
+/* ---- List ---- */
+
+ul {
+    padding-left: 2em;
+}
+
+/* ---- Tables ---- */
+
+table {
+    overflow: auto;
+    word-break: normal;
+    word-break: keep-all;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table th {
+    font-weight: bold;
+}
+
+table th, table td {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+}
+
+table tr {
+    border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+    background-color: #f6f6f7;
+}
+
+/* ---- Images and captions ---- */
+
+figure {
+    margin-top: 2em;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+}
+
+figcaption {
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+    font-style: italic;
+}
+
+/* ---- Code ---- */
+
+code, pre {
+    background: #f6f6f7;
+    color: #323337;
+    word-wrap: normal;
+    white-space: pre;
+}
+
+code {
+    padding: 2px 4px;
+    vertical-align: text-bottom;
+}
+
+pre {
+    padding: 1em;
+    border-left: 2px solid #ad280b;
+    overflow-x: auto;
+}
+
+.nohighlight {
+    /* Remove auto padding from highlight.js */
+    padding-left: 0;
+}
+
+/* ---- Blockquotes ---- */
+
+blockquote {
+    background: #f6f6f7;
+    border-left: 2px solid #cccccc;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+/* ---- Miscellaneous ---- */
+
+hr {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 20%;
+}
+
+/* ---- Responsive Design ---- */
+
+/* Smartphones */
+@media (max-width: 750px) {
+    .metadata {
+        font-size: 0.75em;
+    }
+
+    table th, table td {
+        padding: 3px 7px;
+    }
+
+    pre {
+        padding: 0.5em;
+    }
+
+    blockquote {
+        padding: 0.5em;
+    }
+}
