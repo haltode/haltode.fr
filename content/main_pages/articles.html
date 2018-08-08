@@ -1,92 +1,104 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-      <link rel="stylesheet" type="text/css" href="/css/base.css">
-      <link rel="stylesheet" type="text/css" href="/css/article.css">
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/css/article.css">
 
-      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
-      <!-- Renders LaTeX expression -->
-      <script type="text/x-mathjax-config">
-         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
-      </script>
-      <script type="text/javascript" async 
-              src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
-      </script>
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
 
-      <!-- Font Awesome -->
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>Thibault Allançon - Articles</title>
-   </head>
+        <title>Thibault Allançon - Articles</title>
+    </head>
 
-   <body>
-      <header>
-         <nav>
-            <ul>
-               <li><a href="/">Thibault Allançon</a></li>
-            </ul>
-         </nav>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Thibault Allançon</a></li>
+                </ul>
+            </nav>
 
-         <h1><a href="">Articles</a></h1>
-      </header>
+            <h1><a href="">Articles</a></h1>
+        </header>
 
-      <h2>Algorithme 🇫🇷</h2>
-      <h3>Général</h3>
-      <ul>
-         <li><a href="/algo/general/introduction.html">Introduction aux algorithmes</a></li>
-         <li><a href="/algo/general/entrainement.html">Comment et où s'entraîner ?</a></li>
-         <li><a href="/algo/general/methode.html">Méthode de résolution</a></li>
-         <li>Analyse de la complexité des algorithmes</li>
-         <li>Approche et stratégie : récursivité · <a href="/algo/general/approche/dynamique.html">dynamique</a> · gloutonne</li>
-      </ul>
-      <h3>Structure de données</h3>
-      <ul>
-         <li><a href="/algo/structure/tableau_cumulatif.html">Tableau cumulatif</a></li>
-         <li><a href="/algo/structure/liste_chainee.html">Liste chaînée</a></li>
-         <li><a href="/algo/structure/pile.html">Pile</a></li>
-         <li><a href="/algo/structure/file.html">File</a></li>
-         <li><a href="/algo/structure/arbre.html">Arbre</a> : <a href="/algo/structure/arbre/arbre_binaire.html">Arbre binaire</a> · <a href="/algo/structure/arbre/tas.html">Tas</a></li>
-         <li><a href="/algo/structure/graphe.html">Graphe</a>
-            <ul>
-               <li><a href="/algo/structure/graphe/parcours.html">Parcours</a></li>
-               <li><a href="/algo/structure/graphe/plus_court_chemin.html">Plus court chemin</a> : <a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">Dijkstra</a> · <a href="/algo/structure/graphe/plus_court_chemin/bellman_ford.html">Bellman-Ford</a> · Floyd-Warshall</li>
-            </ul>
-         </li>
-      </ul>
-      <h3>Tri</h3>
-      <ul>
-         <li>Tri en $O(N^2)$ : <a href="/algo/tri/tri_bulles.html">tri à bulles</a> · <a href="/algo/tri/tri_selection.html">tri par sélection</a> · <a href="/algo/tri/tri_insertion.html">tri par insertion</a></li>
-         <li>Tri en $O(N \log _2 N)$ : <a href="/algo/tri/tri_fusion.html">tri fusion</a> · <a href="/algo/tri/tri_rapide.html">tri rapide</a> · <a href="/algo/tri/tri_tas.html">tri par tas</a></li>
-         <li>Tri en $O(N)$ : <a href="/algo/tri/tri_denombrement.html">tri par dénombrement</a> · <a href="/algo/tri/tri_base.html">tri par base</a></li>
-      </ul>
-      <h3>Recherche</h3>
-      <ul>
-         <li><a href="/algo/recherche/dichotomie.html">Dichotomie</a></li>
-      </ul>
-      <h3 id="chiffrement">Chiffrement</h3>
-      <ul>
-         <li><a href="/algo/chiffrement/chiffre_cesar.html">Chiffre de César</a></li>
-         <li><a href="/algo/chiffrement/chiffre_vigenere.html">Chiffre de Vigenère</a></li>
-         <li><a href="/algo/chiffrement/chiffre_vernam.html">Chiffre de Vernam</a></li>
-         <li><a href="/algo/chiffrement/rsa.html">RSA</a></li>
-      </ul>
-      <h3>Intelligence Artificielle</h3>
-      <ul>
-         <li>Apprentissage artificiel
-            <ul>
-               <li><a href="/algo/ia/apprentissage_artificiel/introduction.html">Introduction</a></li>
-               <li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">Régression linéaire et polynomiale</a> : <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">Algorithme du gradient</a> · <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html">Equation normale</a></li>
-            </ul>
-         </li>
-      </ul>
+        <h2>Algorithme 🇫🇷</h2>
+        <h3>Général</h3>
+        <ul>
+            <li><a href="/algo/general/introduction.html">Introduction aux algorithmes</a></li>
+            <li><a href="/algo/general/entrainement.html">Comment et où s'entraîner ?</a></li>
+            <li><a href="/algo/general/methode.html">Méthode de résolution</a></li>
+            <li>Analyse de la complexité des algorithmes</li>
+            <li>Approche et stratégie : récursivité · <a href="/algo/general/approche/dynamique.html">dynamique</a> · gloutonne</li>
+        </ul>
+        <h3>Structure de données</h3>
+        <ul>
+            <li><a href="/algo/structure/tableau_cumulatif.html">Tableau cumulatif</a></li>
+            <li><a href="/algo/structure/liste_chainee.html">Liste chaînée</a></li>
+            <li><a href="/algo/structure/pile.html">Pile</a></li>
+            <li><a href="/algo/structure/file.html">File</a></li>
+            <li><a href="/algo/structure/arbre.html">Arbre</a> : <a href="/algo/structure/arbre/arbre_binaire.html">Arbre binaire</a> · <a href="/algo/structure/arbre/tas.html">Tas</a></li>
+            <li><a href="/algo/structure/graphe.html">Graphe</a>
+                <ul>
+                    <li><a href="/algo/structure/graphe/parcours.html">Parcours</a></li>
+                    <li><a href="/algo/structure/graphe/plus_court_chemin.html">Plus court chemin</a> : <a href="/algo/structure/graphe/plus_court_chemin/dijkstra.html">Dijkstra</a> · <a href="/algo/structure/graphe/plus_court_chemin/bellman_ford.html">Bellman-Ford</a> · Floyd-Warshall</li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Tri</h3>
+        <ul>
+            <li>Tri en $O(N^2)$ : <a href="/algo/tri/tri_bulles.html">tri à bulles</a> · <a href="/algo/tri/tri_selection.html">tri par sélection</a> · <a href="/algo/tri/tri_insertion.html">tri par insertion</a></li>
+            <li>Tri en $O(N \log _2 N)$ : <a href="/algo/tri/tri_fusion.html">tri fusion</a> · <a href="/algo/tri/tri_rapide.html">tri rapide</a> · <a href="/algo/tri/tri_tas.html">tri par tas</a></li>
+            <li>Tri en $O(N)$ : <a href="/algo/tri/tri_denombrement.html">tri par dénombrement</a> · <a href="/algo/tri/tri_base.html">tri par base</a></li>
+        </ul>
+        <h3>Recherche</h3>
+        <ul>
+            <li><a href="/algo/recherche/dichotomie.html">Dichotomie</a></li>
+        </ul>
+        <h3 id="chiffrement">Chiffrement</h3>
+        <ul>
+            <li><a href="/algo/chiffrement/chiffre_cesar.html">Chiffre de César</a></li>
+            <li><a href="/algo/chiffrement/chiffre_vigenere.html">Chiffre de Vigenère</a></li>
+            <li><a href="/algo/chiffrement/chiffre_vernam.html">Chiffre de Vernam</a></li>
+            <li><a href="/algo/chiffrement/rsa.html">RSA</a></li>
+        </ul>
+        <h3>Intelligence Artificielle</h3>
+        <ul>
+            <li>Apprentissage artificiel
+                <ul>
+                    <li><a href="/algo/ia/apprentissage_artificiel/introduction.html">Introduction</a></li>
+                    <li><a href="/algo/ia/apprentissage_artificiel/regression_lin_poly.html">Régression linéaire et polynomiale</a> : <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">Algorithme du gradient</a> · <a href="/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html">Equation normale</a></li>
+                </ul>
+            </li>
+        </ul>
 
-	  <hr>
+        <hr>
 
-	  <p><b>N.B.</b> Ceci est la liste de mes anciens articles que j'ai écrits (en français), et qui ont subit pour la plupart plusieurs réécritures au fil des années. Les sujets abordés sont dans l'ensemble très basique, car je souhaitais poser les bases avant d'entamer des sujets plus complexes. Cependant, quelques articles récents sont assez intéressants à lire, notamment celui sur la programmation dynamique, ou encore mes quelques articles sur l'intelligence artificielle (du moins le début d'une série que je souhaitais écrire). Je ne pense pas me remettre à l'écriture prochainement, ou alors avec un rythme irrégulier et peu soutenu, car les articles ne sont plus une de mes priorités, même si ces derniers m'ont permis d'apprendre énormément tant au niveau technique (programmation, algorithmique) qu'au niveau de la rédaction et de l'écriture.</p>
+        <p><b>N.B.</b> Ceci est la liste de mes anciens articles que j'ai écrits
+        (en français), et qui ont subit pour la plupart plusieurs réécritures au
+        fil des années. Les sujets abordés sont dans l'ensemble très basique,
+        car je souhaitais poser les bases avant d'entamer des sujets plus
+        complexes. Cependant, quelques articles récents sont assez intéressants
+        à lire, notamment celui sur la programmation dynamique, ou encore mes
+        quelques articles sur l'intelligence artificielle (du moins le début
+        d'une série que je souhaitais écrire). Je ne pense pas me remettre à
+        l'écriture prochainement, ou alors avec un rythme irrégulier et peu
+        soutenu, car les articles ne sont plus une de mes priorités, même si ces
+        derniers m'ont permis d'apprendre énormément tant au niveau technique
+        (programmation, algorithmique) qu'au niveau de la rédaction et de
+        l'écriture.</p>
 
-   </body>
+    </body>
 </html>

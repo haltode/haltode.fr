@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-      <link rel="stylesheet" type="text/css" href="/css/base.css">
-      <link rel="stylesheet" type="text/css" href="/css/article.css">
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/css/article.css">
 
-      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
-      <!-- Syntax highlighting -->
-      <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
-      <script src="/js/highlight.pack.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script>
+        <!-- Syntax highlighting -->
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
 
-      <!-- Renders LaTeX expression -->
-      <script type="text/x-mathjax-config">
-         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
-      </script>
-      <script type="text/javascript" async 
-              src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
-      </script>
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
 
-      <!-- Font Awesome -->
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <title>{{ metadata['title'] }}</title>
-   </head>
+        <title>{{ metadata['title'] }}</title>
+    </head>
 
-   <body>
-      <!-- Javascript -->
-      <script type="text/javascript" src="/js/utils.js"></script>
+    <body>
+        <!-- Javascript -->
+        <script type="text/javascript" src="/js/utils.js"></script>
 
-      <header>
-         <nav>
-            <ul>
-               <li><a href="/">Thibault Allançon</a></li>
-               <li><a href="/articles.html">Articles</a></li>
-            </ul>
-         </nav>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Thibault Allançon</a></li>
+                    <li><a href="/articles.html">Articles</a></li>
+                </ul>
+            </nav>
 
-         <h1><a href="">{{ metadata['title'] }}</a></h1>
-         <p class="metadata">Publié : {{ metadata['published'] }} · Modifié : {{ metadata['modified'] }}</p>
-      </header>
+            <h1><a href="">{{ metadata['title'] }}</a></h1>
+            <p class="metadata">Publié : {{ metadata['published'] }} · Modifié : {{ metadata['modified'] }}</p>
+        </header>
 
-      <hr>
+        <hr>
 
-      {% if toc %}
-         <h4>Table des matières</h4>
-         {{ toc }}
-      {% endif %}
+        {% if toc %}
+            <h4>Table des matières</h4>
+            {{ toc }}
+        {% endif %}
 
-      {{ html_content }}
-   </body>
+        {{ html_content }}
+    </body>
 </html>
