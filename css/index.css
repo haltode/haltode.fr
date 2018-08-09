@@ -2,6 +2,8 @@ body {
     margin-top: 4em;
 }
 
+/* ---- Header ---- */
+
 header {
     display: grid;
     grid-template-columns: minmax(80px, 1fr) minmax(auto, 45ch) minmax(80px, 1fr);
@@ -20,18 +22,8 @@ header aside img {
     object-fit: contain;
 }
 
-header h1 h2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 header .contact {
     text-align: center;
-}
-
-p {
-    text-align: justify;
 }
 
 /* ---- Icons ---- */
