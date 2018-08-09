@@ -13,6 +13,7 @@ quick_build:
 update_static:
 	cp -TR css $(WEBSITE_DIR)/css
 	cp -TR js $(WEBSITE_DIR)/js
+	cp -TR img $(WEBSITE_DIR)/img
 
 run_scripts:
 	$(SCRIPT_DIR)/test_server.sh
