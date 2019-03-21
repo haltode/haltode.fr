@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -n 1 -r -p "Testing server? [Y/n] "
+read -n 1 -r -p "Run server? [Y/n] "
 echo
 if [[ $REPLY == "Y" || $REPLY == "y" || $REPLY == "" ]]
 then
