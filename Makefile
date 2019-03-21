@@ -8,7 +8,6 @@ build:
 
 collectstatic:
 	cp -TR css $(WEBSITE_DIR)/css
-	cp -TR js $(WEBSITE_DIR)/js
 	cp -TR img $(WEBSITE_DIR)/img
 
 runserver:

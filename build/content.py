@@ -20,7 +20,7 @@ class Content:
             self.metadata = yaml.load(f, Loader=yaml.FullLoader)
 
         self.fix_pandoc_code_blocks()
-        self.add_custom_blocks()
+        self.add_custom_directives()
 
     def fix_pandoc_code_blocks(self):
         # https://github.com/jgm/pandoc/issues/3858
@@ -30,24 +30,19 @@ class Content:
             self.html
         )
 
-    def add_custom_blocks(self):
-        custom_blocks = [
+    def add_custom_directives(self):
+        directives = [
             # [[secret="title"]]
             {
                 "old": "<p>\[\[secret=&quot;([0-9a-zA-Z_.]+)&quot;\]\]</p>",
-                "new": (
-                    "<a href=\"javascript:toggle_visibility('\\1');\">\\1 "
-                    "<i id=\"toggle_arrow_\\1\" class=\"fa fa-angle-down\" "
-                    "aria-hidden=\"true\"></i></a>"
-                    "\n<div id=\"\\1\" style=\"display: none;\">"
-                )
+                "new": "<details>\n<summary>\\1</summary>"
             },
             # [[/secret]]
             {
                 "old": "<p>\[\[/secret\]\]</p>",
-                "new": "</div>"
+                "new": "</details>"
             }
         ]
 
-        for b in custom_blocks:
-            self.html = re.sub(b["old"], b["new"], self.html)
+        for d in directives:
+            self.html = re.sub(d["old"], d["new"], self.html)
