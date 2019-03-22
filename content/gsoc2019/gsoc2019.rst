@@ -1,0 +1,8 @@
+TODO: add link to subject, proposal
+
+Recaps
+------
+
+- `Example 1 </gsoc/example.html>`_
+- `Example 2 </gsoc/example.html>`_
+- `Example 3 </gsoc/example.html>`_
