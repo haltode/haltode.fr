@@ -15,7 +15,7 @@ class Content:
             extra_args=['--mathjax', '--no-highlight', '--base-header-level=2']
         )
 
-        meta_path = os.path.join(os.path.dirname(file_path), 'metadata.yaml')
+        meta_path = file_path.replace('.rst', '.meta')
         with open(meta_path, 'r') as f:
             self.metadata = yaml.load(f, Loader=yaml.FullLoader)
 
