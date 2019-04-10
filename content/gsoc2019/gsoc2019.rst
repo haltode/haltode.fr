@@ -1,4 +1,7 @@
-TODO: add link to subject, proposal
+Subject:
+https://wiki.softwareheritage.org/wiki/Graph_compression_on_the_development_history_of_software_(internship)
+
+Proposal: https://haltode.fr/upload/proposal.pdf
 
 Recaps
 ------

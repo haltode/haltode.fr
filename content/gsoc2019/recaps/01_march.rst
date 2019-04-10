@@ -127,7 +127,7 @@ I also took the time to dive more into research papers and SWH infrastructure:
 
 A few days before the official application period, I begin writing mine to get
 early feedbacks once the deadline hits. Here is the final pdf: `proposal.pdf
-<>`_.
+<https://haltode.fr/upload/proposal.pdf>`_.
 
 Application period (part 1)
 ---------------------------
