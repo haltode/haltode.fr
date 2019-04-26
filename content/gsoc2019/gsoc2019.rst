@@ -6,4 +6,5 @@ Proposal: https://haltode.fr/upload/proposal.pdf
 Recaps
 ------
 
-- `March </gsoc/march.html>`_
+- `March </gsoc2019/march.html>`_
+- `April </gsoc2019/april.html>`_

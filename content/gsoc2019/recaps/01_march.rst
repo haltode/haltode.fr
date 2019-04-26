@@ -135,7 +135,7 @@ Application period (part 1)
 My mentor gave me access to a first VM with 140GB of RAM and 72vCPUs so I could
 do some early experiments. But I quickly got limited by the disk space (first
 time I have more RAM than disk space :D), so they gave me access to another VM.
-A **beefy** one: 2T RAM and 128vCPUs with 1T of disk storage (for 2 weeks)!
+A **beefy** one: 2TB RAM and 128vCPUs with 1TB of disk storage (for 2 weeks)!
 
 In the same time, they heard about a new reference paper on the graph
 compression problem: `Compressing Graphs and Indexes with Recursive Graph
