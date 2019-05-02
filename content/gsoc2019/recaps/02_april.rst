@@ -210,17 +210,19 @@ Some interesting blog posts about how to read a scientific paper:
 
 Reading the graph compression literature helped to have a better overall
 understanding of the multiple approaches and use cases. Most studies I found
-used too small datasets or were very specific to the graph properties, so no new
-alternative method was considered.
+used too small datasets or were very specific to the graph properties, but two
+papers got my attention:
 
-However, I eventually stumbled upon a reproducibility study of the Facebook
-paper with a full `C++17 open-source implementation
-<https://github.com/pisa-engine/ecir19-bisection/>`_. The study came out this
-month, quite lucky!
-
-*Compressing Inverted Indexes with Recursive Graph Bisection: a reproducibility
-study*, Joel Mackenzie, Antonio Mallia, Matthias Petri, J. Shane Culpepper, and
-Torsten Suel (2019)
+- A new compression algorithm with an open-source C++ implementation: *Smaller
+  and Faster: Parallel Processing of Compressed Graphs with Ligra+*, Julian
+  Shun, Laxman Dhulipala, Guy E. Blelloch (2015). The framework is here:
+  https://github.com/jshun/ligra.
+- A reproducibility study of the Facebook paper with a full `C++17 open-source
+  implementation <https://github.com/pisa-engine/ecir19-bisection/>`_:
+  *Compressing Inverted Indexes with Recursive Graph Bisection: a
+  reproducibility study*, Joel Mackenzie, Antonio Mallia, Matthias Petri, J.
+  Shane Culpepper, and Torsten Suel (2019). The study came out this month, quite
+  lucky!
 
 SWH infrastructure
 ~~~~~~~~~~~~~~~~~~
@@ -273,10 +275,12 @@ Now the goal is to run the WebGraph framework on the terabytes datasets
 (dir_to_dir and dir_to_file). Unfortunately, no VM was available at the time
 with enough disk space and cores to run experiments on these datasets.
 
-IN PROGRESS: dir_to_dir .nodes file
-
 Graph bisection
 ~~~~~~~~~~~~~~~
+
+I decided to start experimenting with the graph bisection implementation first
+since we already got some positive feedbacks on its results from the WebGraph
+authors. Experiments on Ligra+ framework will have to wait a bit.
 
 I emailed the author of the reproducibility study to learn more about the input
 format needed and how to transfer our data representation to theirs. Joel was
@@ -522,13 +526,13 @@ script to automate the compression process and compute statistics:
 [[/secret]]
 
 The process ran fine with release_to_obj dataset, but got SIGKILL when running
-on larger datasets (dir_to_rev and origin_to_snapshot).
-
-IN PROGRESS: find reason + solution for the SIGKILL
-
-IN PROGRESS: does graph bisection work well on very sparse graph?
+on larger datasets (dir_to_rev and origin_to_snapshot). After talking with the
+author directly, it seems like there is indeed a big memory overhead.
+Furthermore the reproducibility study focused entirely on inverted indexes and
+not graphs, and compression ratios on sparse graphs were not great compared to
+WebGraph.
 
 In the end, the WebGraph framework seems to be the way to go: very mature and
 complete implementation with great compression ratio and timings. I will still
-run experiments with the graph bisection algorithm in the background, until any
-final decision on the implementation is taken.
+run experiments with other algorithms in the background (Ligra+, graph
+bisection), until any final decision on the implementation is taken.
