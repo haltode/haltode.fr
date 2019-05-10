@@ -1,7 +1,35 @@
-Subject:
-https://wiki.softwareheritage.org/wiki/Graph_compression_on_the_development_history_of_software_(internship)
+During the Google Summer of Code 2019, I will work with `Software Heritage
+<https://www.softwareheritage.org/>`_: an ambitious research project whose goal
+is to collect, preserve, and share the whole publicly accessible Free/Open
+Source Software (FOSS) source code.
 
-Proposal: https://haltode.fr/upload/proposal.pdf
+My mentors are: `Stefano Zacchiroli <https://upsilon.cc/~zack/>`_ and `Antoine
+Pietri <https://koin.fr/>`_.
+
+Subject
+-------
+
+The **`Software Heritage data model
+<https://docs.softwareheritage.org/devel/swh-model/data-model.html>`_** is a big
+`Merkle DAG <https://en.wikipedia.org/wiki/Merkle_tree>`_  made of nodes like
+revisions, releases, directories, etc. It is a very big graph, with ~10 B nodes
+and ~100 B edges, which makes it hard to fit in memory using naive approaches.
+
+Graph compression techniques have been successfully used to compress the Web
+graph (which is slightly larger than the Software Heritage one) and make it fit
+in memory. The goal of this GSoC is review existing graph compression techniques
+and apply the most appropriate one to the Software Heritage case, enabling
+in-memory processing of its Merkle DAG.
+
+.. figure:: /img/gsoc2019/swh_data_model.svg
+   :alt: Software Heritage Merkle DAG
+
+    Software Heritage Merkle DAG
+
+Proposal
+--------
+
+Link to my proposal: https://haltode.fr/upload/gsoc2019/proposal.pdf
 
 Recaps
 ------
