@@ -22,16 +22,17 @@ Final setup
     RUN curl -O http://webgraph.di.unimi.it/webgraph-deps.tar.gz
     RUN tar xvfz webgraph-deps.tar.gz
 
-    # Download missing LAW dependency
-    RUN curl -O http://law.di.unimi.it/software/download/law-2.5-bin.tar.gz
-    RUN tar xvfz law-2.5-bin.tar.gz
-    RUN cp law-2.5/law-2.5.jar .
+    # Download LAW (for LLP ordering)
+    RUN curl -O http://law.di.unimi.it/software/download/law-2.5.1-bin.tar.gz
+    RUN tar xvfz law-2.5.1-bin.tar.gz
+    RUN cp law-2.5.1/law-2.5.1.jar .
+
+    # Monitoring
+    RUN apt-get update
+    RUN apt-get install -y time
 
     WORKDIR /graph
     COPY compress_graph .
-
-    RUN apt-get update
-    RUN apt-get install -y time
 
 [[/secret]]
 
@@ -57,27 +58,22 @@ Final setup
         /usr/bin/time -v java -Xmx256G -cp /app/'*' $*
     }
 
-    mkdir bv bv_llp bv_sym
+    mkdir -p bv bv_llp bv_sym
 
     # Build a function (MPH) that maps node names to node numbers in lexicographic order (output: $DATASET.mph)
     java_cmd it.unimi.dsi.sux4j.mph.GOVMinimalPerfectHashFunction $DATASET.mph /data/graph/$DATASET.nodes
 
     # Build the graph in BVGraph format (output: $DATASET.{graph,offsets,properties})
     java_cmd it.unimi.dsi.webgraph.ScatteredArcsASCIIGraph -f $DATASET.mph bv/$DATASET < /data/graph/$DATASET.edges
-    # Build the offset big-list file (output: $DATASET.obl) to load the graph faster
-    java_cmd it.unimi.dsi.webgraph.BVGraph -L bv/$DATASET
 
     # Create a symmetrized version of the graph (output: $DATASET.{graph,offsets,properties})
     java_cmd it.unimi.dsi.webgraph.Transform symmetrizeOffline bv/$DATASET bv_sym/$DATASET
-    java_cmd it.unimi.dsi.webgraph.BVGraph -L bv_sym/$DATASET
 
     # Find a better permutation through Layered LPA (output: $DATASET.llpa)
     java_cmd it.unimi.dsi.law.graph.LayeredLabelPropagation bv_sym/$DATASET $DATASET.llpa
-    #java_cmd it.unimi.dsi.law.graph.DFS bv_sym/$DATASET $DATASET.dfs
 
     # Permute the graph accordingly (output: $DATASET.{graph,offsets,properties})
     java_cmd it.unimi.dsi.webgraph.Transform mapOffline bv/$DATASET bv_llp/$DATASET $DATASET.llpa
-    java_cmd it.unimi.dsi.webgraph.BVGraph -L bv_llp/$DATASET
 
     # Compute graph statistics (output: $DATASET.{in*,out*,stats})
     java_cmd it.unimi.dsi.webgraph.Stats -s bv/$DATASET
