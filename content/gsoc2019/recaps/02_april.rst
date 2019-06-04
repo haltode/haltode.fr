@@ -177,8 +177,8 @@ huge datasets (terabytes files).
 In the end, the results are still very interesting and give us first feedbacks
 on using the WebGraph framework!
 
-Students selection period
--------------------------
+Students selection period (part 1)
+----------------------------------
 
 After the two weeks, we needed to downscale the VM to 256GB of RAM and 64 vCPUs,
 and free up some disk space. We uploaded all the results at Software Heritage
