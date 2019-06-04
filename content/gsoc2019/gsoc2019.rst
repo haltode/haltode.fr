@@ -12,8 +12,8 @@ Subject
 The **`Software Heritage data model
 <https://docs.softwareheritage.org/devel/swh-model/data-model.html>`_** is a big
 `Merkle DAG <https://en.wikipedia.org/wiki/Merkle_tree>`_  made of nodes like
-revisions, releases, directories, etc. It is a very big graph, with ~10 B nodes
-and ~100 B edges, which makes it hard to fit in memory using naive approaches.
+revisions, releases, directories, etc. It is a very big graph, with ~17 B nodes
+and ~160 B edges, which makes it hard to fit in memory using naive approaches.
 
 Graph compression techniques have been successfully used to compress the Web
 graph (which is slightly larger than the Software Heritage one) and make it fit
@@ -36,3 +36,20 @@ Recaps
 
 - `March </gsoc2019/march.html>`_
 - `April </gsoc2019/april.html>`_
+- `May </gsoc2019/may.html>`_
+
+Timeline
+--------
+
+- **Program announced**: November 13, 2018
+- **Organization Application Period**: January 15, 2019 - February 6, 2019
+- **Organization Announced**: February 26, 2019
+- **Student Application Period**: March 25, 2019 - April 9, 2019
+- **Application Review Period**: April 9, 2019 - May 6, 2019
+- **Student Projects Announced**: May 6, 2019
+- **Community Bonding**: May 6 - 27, 2019
+- **Coding**: May 27, 2019 - August 19, 2019
+- **Evaluations**: June 24 - 28, 2019 and July 22 - 26, 2019
+- **Students Submit Code and Final Evaluations**: August 19 - 26, 2019
+- **Mentors Submit Final Evaluations**: August 26, 2019 - September 2, 2019
+- **Results Announced**: September 3, 2019
