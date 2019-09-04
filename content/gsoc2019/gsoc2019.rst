@@ -38,6 +38,7 @@ Recaps
 - `April </gsoc2019/april.html>`_
 - `May </gsoc2019/may.html>`_
 - `June </gsoc2019/june.html>`_
+- `July </gsoc2019/july.html>`_
 
 Timeline
 --------
