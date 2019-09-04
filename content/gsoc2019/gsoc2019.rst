@@ -1,9 +1,9 @@
-During the Google Summer of Code 2019, I will work with `Software Heritage
+During the Google Summer of Code 2019, I worked with `Software Heritage
 <https://www.softwareheritage.org/>`_: an ambitious research project whose goal
 is to collect, preserve, and share the whole publicly accessible Free/Open
 Source Software (FOSS) source code.
 
-My mentors are: `Stefano Zacchiroli <https://upsilon.cc/~zack/>`_ and `Antoine
+My mentors were: `Stefano Zacchiroli <https://upsilon.cc/~zack/>`_ and `Antoine
 Pietri <https://koin.fr/>`_.
 
 Subject
@@ -25,6 +25,11 @@ in-memory processing of its Merkle DAG.
    :alt: Software Heritage Merkle DAG
 
     Software Heritage Merkle DAG
+
+Code submission
+---------------
+
+https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression
 
 Proposal
 --------

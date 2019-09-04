@@ -1,7 +1,7 @@
 I am Thibault Allançon, a second year French student at
 `EPITA <http://www.epita.fr/>`__ (a computer science school near Paris).
 I am deeply interested in **programming** and **algorithms**. I mainly
-code in C++, C, Python, and most recently in Rust and Caml.
+code in C, C++, Python, Java, Rust and Caml.
 
 Projects
 ~~~~~~~~
@@ -29,6 +29,14 @@ I do have some oldest/silliest projects hosted on my GitHub page:
 `lispy <https://github.com/haltode/lispy>`__,
 `pornote <https://github.com/haltode/pornote>`__,
 `nandtotetris <https://github.com/haltode/NandToTetris>`__, ...
+
+Google Summer of Code
+~~~~~~~~~~~~~~~~~~~~~
+
+In 2019, I worked with `Software Heritage <https://www.softwareheritage.org/>`_
+on a Google Summer of Code project: `Graph compression on the development
+history of software </gsoc2019.html>`_. It was an incredible summer: super
+interesting project, and awesome mentors!
 
 Associations
 ~~~~~~~~~~~~
