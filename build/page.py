@@ -25,5 +25,7 @@ def render(file_path):
     output = template.render(context)
 
     output_path = os.path.join(config.WEBSITE_DIR, page.metadata['path'])
+    # Make sure the subdirectories exist before writing to the file
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w+') as f:
         f.write(output)
