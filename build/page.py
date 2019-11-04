@@ -13,7 +13,7 @@ jinja_env.trim_blocks = True
 jinja_env.lstrip_blocks = True
 
 
-def render(file_path):
+def render(file_path, website_dir):
     page = content.Content()
     page.parse(file_path)
 
@@ -24,7 +24,7 @@ def render(file_path):
     }
     output = template.render(context)
 
-    output_path = os.path.join(config.WEBSITE_DIR, page.metadata['path'])
+    output_path = os.path.join(website_dir, page.metadata['path'])
     # Make sure the subdirectories exist before writing to the file
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w+') as f:

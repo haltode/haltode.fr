@@ -1,10 +1,12 @@
-BUILD_DIR   = build
-WEBSITE_DIR = ../haltode.fr-website
+WEBSITE_DIR = html
+
+.PHONY: all build collectstatic runserver clean
 
 all: build collectstatic runserver
 
 build:
-	python3 $(BUILD_DIR)/build.py
+	mkdir -p $(WEBSITE_DIR)
+	python3 build/build.py $(WEBSITE_DIR)
 
 collectstatic:
 	cp -TR css $(WEBSITE_DIR)/css
@@ -15,6 +17,4 @@ runserver:
 	cd $(WEBSITE_DIR) && python3 -m http.server 8000
 
 clean:
-	find $(WEBSITE_DIR) -name '*.html' -delete
-
-.PHONY: clean build
+	$(RM) $(WEBSITE_DIR)
