@@ -26,25 +26,43 @@ in-memory processing of its Merkle DAG.
 
     Software Heritage Merkle DAG
 
-Code submission
----------------
+What was done
+-------------
 
-https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression
+- Git repo: `swh-graph <https://forge.softwareheritage.org/source/swh-graph/>`_
+  (list of `my commits
+  <https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression/Commit_list>`_)
+- Research on graph compression: evaluate/experiment feasibility and compression
+  rate of multiple techniques
+- Docker environment and scripts to automate the entire compression pipeline
+- REST API to query the graph
+    - Java server side: load the compressed graph, run API endpoints traversal
+      algorithms, unit tests, javadoc
+    - Python client side: integration with SWH infrastructure, integration tests
+- Automated benchmarking tools with statistical analysis
+- General documentation on docker environment, compression steps, graph query
+  use-cases, etc.
 
-Proposal
---------
+Highlights:
 
-Link to my proposal: https://haltode.fr/upload/gsoc2019/proposal.pdf
+- Compression rates: 4.48 bits/edge (transposed graph) and 4.91 bits/edge
+  (direct graph)
+- Memory requirements for loading both graphs: 200GB of RAM
+- Total compression time: 1 week
+- Node successors lookup times: below 2μs
 
-Recaps
-------
+Links
+-----
 
-- `March </gsoc2019/march.html>`_
-- `April </gsoc2019/april.html>`_
-- `May </gsoc2019/may.html>`_
-- `June </gsoc2019/june.html>`_
-- `July </gsoc2019/july.html>`_
-- `August </gsoc2019/august.html>`_
+- Code submission: https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression
+- My proposal:  https://haltode.fr/upload/gsoc2019/proposal.pdf
+- Recaps
+    - `March </gsoc2019/march.html>`_
+    - `April </gsoc2019/april.html>`_
+    - `May </gsoc2019/may.html>`_
+    - `June </gsoc2019/june.html>`_
+    - `July </gsoc2019/july.html>`_
+    - `August </gsoc2019/august.html>`_
 
 Timeline
 --------
