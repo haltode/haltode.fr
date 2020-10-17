@@ -1,7 +1,7 @@
-I am Thibault Allançon, a third year French student at `EPITA
+I am Thibault Allançon, a fourth year French student at `EPITA
 <http://www.epita.fr/>`__ (a computer science school near Paris).  I am deeply
 interested in **programming** and **algorithms**. I mainly code in C, C++,
-Python, Java, Rust and Caml.
+Python, Java, Rust and OCaml.
 
 Projects
 ~~~~~~~~
