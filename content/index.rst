@@ -25,11 +25,6 @@ School projects:
 -  `Pacification <https://github.com/haltode/Pacification>`__:
    civilization-like 3D multiplayer game made with C#/Unity.
 
-I do have some oldest/silliest projects hosted on my GitHub page:
-`lispy <https://github.com/haltode/lispy>`__,
-`pornote <https://github.com/haltode/pornote>`__,
-`nandtotetris <https://github.com/haltode/NandToTetris>`__, ...
-
 Google Summer of Code
 ~~~~~~~~~~~~~~~~~~~~~
 
