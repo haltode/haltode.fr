@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/css/movies.css">
+{% endblock %}
+
+{% block header %}
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            {% if not metadata['toplevel'] %}
+            <li><a href="/misc.html">Miscellaneous</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <h1><a href="">{{ metadata['title'] }}</a></h1>
+{% endblock %}
+
+{% block after_content %}
+    <ul class="movie-listing">
+        {% for movie in metadata['seen'] %}
+        <li>
+            <a href="{{ movie['tmdb_url'] }}">
+                <img class="poster" src="{{ movie['poster_url'] }}"
+                     alt="{{ movie['title'] }} movie poster">
+            </a>
+            <a href="{{ movie['tmdb_url'] }}">
+                <h3 class="title">{{ movie['title'] }}</h3>
+            </a>
+            <p class="year">{{ movie['year'] }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>{{ metadata['seen'] | length }} movies.</p>
+{% endblock %}
+
+{% block footer %}
+    <p>All images and descriptions are coming from <a href="https://www.themoviedb.org/">The Movie Database</a>.</p>
+{% endblock %}

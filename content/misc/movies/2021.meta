@@ -1,0 +1,20 @@
+title: Movies watched in 2021
+path: movies/2021.html
+template: movies
+seen:
+    - title: Tenet
+      year: 2020
+      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
+      tmdb_url: https://www.themoviedb.org/movie/577922
+    - title: Tenet
+      year: 2020
+      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
+      tmdb_url: https://www.themoviedb.org/movie/577922
+    - title: Tenet
+      year: 2020
+      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
+      tmdb_url: https://www.themoviedb.org/movie/577922
+    - title: Tenet
+      year: 2020
+      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
+      tmdb_url: https://www.themoviedb.org/movie/577922

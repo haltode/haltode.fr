@@ -1,0 +1,33 @@
+.movie-listing
+{
+    list-style: none;
+    margin: 2em;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.movie-listing li
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.movie-listing .poster
+{
+    border-radius: 3px;
+}
+
+.movie-listing .title
+{
+    margin-top: auto;
+    margin-bottom: 0;
+    font-size: medium;
+}
+
+.movie-listing .year
+{
+    margin-top: 0;
+    font-size: small;
+}
