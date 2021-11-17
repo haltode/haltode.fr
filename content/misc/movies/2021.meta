@@ -2,19 +2,335 @@ title: Movies watched in 2021
 path: movies/2021.html
 template: movies
 seen:
-    - title: Tenet
+    - title: The Great Beauty
+      year: 2013
+      poster_url: https://image.tmdb.org/t/p/w154/1cmOc3ZPkuCTOTqHEsRr3Pk81Um.jpg
+      tmdb_url: https://www.themoviedb.org/movie/179144
+    - title: Green Room
+      year: 2016
+      poster_url: https://image.tmdb.org/t/p/w154/1DZkTrukHOk0Y2Q1Oeqj3HBxpVD.jpg
+      tmdb_url: https://www.themoviedb.org/movie/313922
+    - title: Audition
+      year: 1999
+      poster_url: https://image.tmdb.org/t/p/w154/381efRw5TlwSD598QdiKUTQYr5p.jpg
+      tmdb_url: https://www.themoviedb.org/movie/11075
+    - title: The Visit
+      year: 2015
+      poster_url: https://image.tmdb.org/t/p/w154/mtMfKRCa2V5b7d9k4piogB72mcY.jpg
+      tmdb_url: https://www.themoviedb.org/movie/298312
+    - title: The Devil's Rejects
+      year: 2005
+      poster_url: https://image.tmdb.org/t/p/w154/jh7DntVbhrNS4JkeEQW6QxcPWim.jpg
+      tmdb_url: https://www.themoviedb.org/movie/1696
+    - title: House of 1000 Corpses
+      year: 2003
+      poster_url: https://image.tmdb.org/t/p/w154/zEAVm1zpjkk4XFL2i5EZehkEgkH.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2662
+    - title: Fantastic Planet
+      year: 1973
+      poster_url: https://image.tmdb.org/t/p/w154/prq0j1S0K07UjwLZLF6oMGflRUI.jpg
+      tmdb_url: https://www.themoviedb.org/movie/16306
+    - title: The Ordeal
+      year: 2005
+      poster_url: https://image.tmdb.org/t/p/w154/opcj7nv96MwCjC25VJMgAxrYDOk.jpg
+      tmdb_url: https://www.themoviedb.org/movie/12517
+    - title: Ringu
+      year: 1998
+      poster_url: https://image.tmdb.org/t/p/w154/1YINof6kN5yRdePEbcU5360ejoq.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2671
+    - title: The Thing
+      year: 1982
+      poster_url: https://image.tmdb.org/t/p/w154/tzGY49kseSE9QAKk47uuDGwnSCu.jpg
+      tmdb_url: https://www.themoviedb.org/movie/1091
+    - title: Coherence
+      year: 2013
+      poster_url: https://image.tmdb.org/t/p/w154/ezUtb9m5DeLwL2gxi4gktzNCvQv.jpg
+      tmdb_url: https://www.themoviedb.org/movie/220289
+    - title: The Hills Have Eyes
+      year: 1977
+      poster_url: https://image.tmdb.org/t/p/w154/vPsFU9p1BYZXVZbSYqM2KtE5U0E.jpg
+      tmdb_url: https://www.themoviedb.org/movie/12262
+    - title: The Collector
+      year: 2009
+      poster_url: https://image.tmdb.org/t/p/w154/e33HSokiAxhj8ptpAr2xAU4jnd8.jpg
+      tmdb_url: https://www.themoviedb.org/movie/21407
+    - title: The Orphanage
+      year: 2007
+      poster_url: https://image.tmdb.org/t/p/w154/w74w0e8W06MVC6p6wx9h9Z2zg5j.jpg
+      tmdb_url: https://www.themoviedb.org/movie/6537
+    - title: Martyrs
+      year: 2008
+      poster_url: https://image.tmdb.org/t/p/w154/do92C3aiADF8SHC7gkRI65z6o9S.jpg
+      tmdb_url: https://www.themoviedb.org/movie/9539
+    - title: Carrie
+      year: 1976
+      poster_url: https://image.tmdb.org/t/p/w154/uc3OvgmbnYaS5Y0BOjSmC1EmSz1.jpg
+      tmdb_url: https://www.themoviedb.org/movie/7340
+    - title: The Babadook
+      year: 2014
+      poster_url: https://image.tmdb.org/t/p/w154/lszpCmmPCKHvzn2OBx7bAgXlfhC.jpg
+      tmdb_url: https://www.themoviedb.org/movie/242224
+    - title: Jacob's Ladder
+      year: 1990
+      poster_url: https://image.tmdb.org/t/p/w154/4GY4FsM0ZOtbSTeMpY0g4WkEuBW.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2291
+    - title: Dune
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/d5NXSklXo0qyIYkgV94XAgMIckC.jpg
+      tmdb_url: https://www.themoviedb.org/movie/438631
+    - title: A Quiet Place
+      year: 2018
+      poster_url: https://image.tmdb.org/t/p/w154/nAU74GmpUk7t5iklEp3bufwDq4n.jpg
+      tmdb_url: https://www.themoviedb.org/movie/447332
+    - title: 'Dave Chappelle: The Closer'
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/1ekF8pmofWykP68pA5Vc9j1EQRB.jpg
+      tmdb_url: https://www.themoviedb.org/movie/879540
+    - title: The Guilty
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/m8aR1k35oZMOzZ1kYWUyt401mwq.jpg
+      tmdb_url: https://www.themoviedb.org/movie/567748
+    - title: American Factory
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/7jH3dQOJ3CHMrp9tWsI3rRCDiaD.jpg
+      tmdb_url: https://www.themoviedb.org/movie/565716
+    - title: Schumacher
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/ucNYfsbX1Z4tjMSr3waxsHMVjve.jpg
+      tmdb_url: https://www.themoviedb.org/movie/855823
+    - title: Ready Player One
+      year: 2018
+      poster_url: https://image.tmdb.org/t/p/w154/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg
+      tmdb_url: https://www.themoviedb.org/movie/333339
+    - title: Malcolm & Marie
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/bdidDnAZwchN5vTenoNuhGPJTri.jpg
+      tmdb_url: https://www.themoviedb.org/movie/722913
+    - title: Sicario
+      year: 2015
+      poster_url: https://image.tmdb.org/t/p/w154/tw0lXhbNkklvseuJ4aYldkVyXV7.jpg
+      tmdb_url: https://www.themoviedb.org/movie/273481
+    - title: Life of Pi
+      year: 2012
+      poster_url: https://image.tmdb.org/t/p/w154/leKQao68zra3SY2cPHZLzEbdLKT.jpg
+      tmdb_url: https://www.themoviedb.org/movie/87827
+    - title: No Country for Old Men
+      year: 2007
+      poster_url: https://image.tmdb.org/t/p/w154/6d5XOczc226jECq0LIX0siKtgHR.jpg
+      tmdb_url: https://www.themoviedb.org/movie/6977
+    - title: The Talented Mr. Ripley
+      year: 1999
+      poster_url: https://image.tmdb.org/t/p/w154/e0ihDfGgcXUsIIv032aYebrPhbP.jpg
+      tmdb_url: https://www.themoviedb.org/movie/1213
+    - title: Clerks
+      year: 1994
+      poster_url: https://image.tmdb.org/t/p/w154/zeFhNF0SXlYIvWXpaOLuXVQ3jB4.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2292
+    - title: My Octopus Teacher
       year: 2020
-      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
-      tmdb_url: https://www.themoviedb.org/movie/577922
-    - title: Tenet
+      poster_url: https://image.tmdb.org/t/p/w154/hvTVZb7hBC8tZAGoEhH5eiMJu2B.jpg
+      tmdb_url: https://www.themoviedb.org/movie/682110
+    - title: Beats per Minute
+      year: 2017
+      poster_url: https://image.tmdb.org/t/p/w154/azLtGx5ZhdTSP2b4oNLWtiE51OW.jpg
+      tmdb_url: https://www.themoviedb.org/movie/451945
+    - title: The Father
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/pr3bEQ517uMb5loLvjFQi8uLAsp.jpg
+      tmdb_url: https://www.themoviedb.org/movie/600354
+    - title: Dirty Harry
+      year: 1971
+      poster_url: https://image.tmdb.org/t/p/w154/UHxxkYe9tRdiPu0JFgcEL5hmQ4.jpg
+      tmdb_url: https://www.themoviedb.org/movie/984
+    - title: Hamilton
       year: 2020
-      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
-      tmdb_url: https://www.themoviedb.org/movie/577922
-    - title: Tenet
+      poster_url: https://image.tmdb.org/t/p/w154/h1B7tW0t399VDjAcWJh8m87469b.jpg
+      tmdb_url: https://www.themoviedb.org/movie/556574
+    - title: Do the Right Thing
+      year: 1989
+      poster_url: https://image.tmdb.org/t/p/w154/63rmSDPahrH7C1gEFYzRuIBAN9W.jpg
+      tmdb_url: https://www.themoviedb.org/movie/925
+    - title: In the Heights
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/RO4KoJyoQMQzh9z76d4v4FJMmJ.jpg
+      tmdb_url: https://www.themoviedb.org/movie/467909
+    - title: 'Bo Burnham: Inside'
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/ku1UvTWYvhFQbSesOD6zteY7bXT.jpg
+      tmdb_url: https://www.themoviedb.org/movie/823754
+    - title: It's Only the End of the World
+      year: 2016
+      poster_url: https://image.tmdb.org/t/p/w154/zD9TQOqZrgTjI7XfHPNjNSki7C0.jpg
+      tmdb_url: https://www.themoviedb.org/movie/338189
+    - title: Nomadland
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/8Vc5EOUEIF1EUXuX9eLFf7BvN3P.jpg
+      tmdb_url: https://www.themoviedb.org/movie/581734
+    - title: Nobody
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/oBgWY00bEFeZ9N25wWVyuQddbAo.jpg
+      tmdb_url: https://www.themoviedb.org/movie/615457
+    - title: The Mauritanian
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/lIADEa6oH74uUapjsPbNRzxus8M.jpg
+      tmdb_url: https://www.themoviedb.org/movie/644583
+    - title: Sound of Metal
       year: 2020
-      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
-      tmdb_url: https://www.themoviedb.org/movie/577922
-    - title: Tenet
+      poster_url: https://image.tmdb.org/t/p/w154/y89kFMNYXNKMdlZjR2yg7nQtcQH.jpg
+      tmdb_url: https://www.themoviedb.org/movie/502033
+    - title: 'Fireball: Visitors From Darker Worlds'
       year: 2020
-      poster_url: https://image.tmdb.org/t/p/w154//oh8XmxWlySHgGLlx8QOBmq9k72j.jpg
-      tmdb_url: https://www.themoviedb.org/movie/577922
+      poster_url: https://image.tmdb.org/t/p/w154/x9VHW8gHJGLXuEtOLrocH89dzeo.jpg
+      tmdb_url: https://www.themoviedb.org/movie/574082
+    - title: Run
+      year: 2020
+      poster_url: https://image.tmdb.org/t/p/w154/ilHG4EayOVoYeKqslspY3pR4wzC.jpg
+      tmdb_url: https://www.themoviedb.org/movie/546121
+    - title: Searching
+      year: 2018
+      poster_url: https://image.tmdb.org/t/p/w154/pk9R56ZFlofbBzfwBnHlDyg5DMs.jpg
+      tmdb_url: https://www.themoviedb.org/movie/489999
+    - title: Holy Motors
+      year: 2012
+      poster_url: https://image.tmdb.org/t/p/w154/htqJeUz86S2sowWpnQX4LK0Nlcm.jpg
+      tmdb_url: https://www.themoviedb.org/movie/103328
+    - title: Tom at the Farm
+      year: 2014
+      poster_url: https://image.tmdb.org/t/p/w154/df7pp0jSs4wRxfWHtdgCaDPelmm.jpg
+      tmdb_url: https://www.themoviedb.org/movie/184352
+    - title: Mommy
+      year: 2014
+      poster_url: https://image.tmdb.org/t/p/w154/iUN8FpWSjrHx0b8lPnBuIoLnd67.jpg
+      tmdb_url: https://www.themoviedb.org/movie/265177
+    - title: A Perfect Getaway
+      year: 2009
+      poster_url: https://image.tmdb.org/t/p/w154/7Rf1vYvUsZlTG3xlDwsktIrKi7K.jpg
+      tmdb_url: https://www.themoviedb.org/movie/12403
+    - title: Panic Room
+      year: 2002
+      poster_url: https://image.tmdb.org/t/p/w154/cqyplJudphLfN7haFPF8cLL4uod.jpg
+      tmdb_url: https://www.themoviedb.org/movie/4547
+    - title: Amy
+      year: 2015
+      poster_url: https://image.tmdb.org/t/p/w154/qL0RepWSNUuZoeDXfyhqowVYhrn.jpg
+      tmdb_url: https://www.themoviedb.org/movie/331781
+    - title: Richard Jewell
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/5Lgkm8jt4roAFPZQ52fKMhVmDaZ.jpg
+      tmdb_url: https://www.themoviedb.org/movie/292011
+    - title: I'm Still Here
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/qJsvyPrmZro8pA7v9ozpuoNmsTQ.jpg
+      tmdb_url: https://www.themoviedb.org/movie/43939
+    - title: Darkest Hour
+      year: 2017
+      poster_url: https://image.tmdb.org/t/p/w154/z0K8uoNbrYKkbaP7wIeadJ4BmSL.jpg
+      tmdb_url: https://www.themoviedb.org/movie/399404
+    - title: The Fighter
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/uMm61aNgcifxaYOkSsHa8cCw8HI.jpg
+      tmdb_url: https://www.themoviedb.org/movie/45317
+    - title: Donnie Darko
+      year: 2001
+      poster_url: https://image.tmdb.org/t/p/w154/fhQoQfejY1hUcwyuLgpBrYs6uFt.jpg
+      tmdb_url: https://www.themoviedb.org/movie/141
+    - title: Blood Simple
+      year: 1984
+      poster_url: https://image.tmdb.org/t/p/w154/n8D1gVXUgmW4kkDzUzzoezAmUUa.jpg
+      tmdb_url: https://www.themoviedb.org/movie/11368
+    - title: Aguirre, the Wrath of God
+      year: 1972
+      poster_url: https://image.tmdb.org/t/p/w154/6MNqmGe0JjEuGX1PMjRBAEI6aXg.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2000
+    - title: A Man Escaped
+      year: 1956
+      poster_url: https://image.tmdb.org/t/p/w154/yPVp405f3FzLyLJW73rcn9FhWyH.jpg
+      tmdb_url: https://www.themoviedb.org/movie/15244
+    - title: Groundhog Day
+      year: 1993
+      poster_url: https://image.tmdb.org/t/p/w154/gCgt1WARPZaXnq523ySQEUKinCs.jpg
+      tmdb_url: https://www.themoviedb.org/movie/137
+    - title: Toy Story 4
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/w9kR8qbmQ01HwnvK4alvnQ2ca0L.jpg
+      tmdb_url: https://www.themoviedb.org/movie/301528
+    - title: Toy Story 3
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/4cpGytCB0eqvRks4FAlJoUJiFPG.jpg
+      tmdb_url: https://www.themoviedb.org/movie/10193
+    - title: Toy Story 2
+      year: 1999
+      poster_url: https://image.tmdb.org/t/p/w154/eVGu0zsezaSCuN67zgNhzjeNI9Z.jpg
+      tmdb_url: https://www.themoviedb.org/movie/863
+    - title: Toy Story
+      year: 1995
+      poster_url: https://image.tmdb.org/t/p/w154/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg
+      tmdb_url: https://www.themoviedb.org/movie/862
+    - title: Easy Street
+      year: 1917
+      poster_url: https://image.tmdb.org/t/p/w154/uwtsC2t7vQdQa0fknuk6vbMlaac.jpg
+      tmdb_url: https://www.themoviedb.org/movie/47650
+    - title: The Women Next Door
+      year: 1981
+      poster_url: https://image.tmdb.org/t/p/w154/nxBf3Y7Q9XVuKvUl0df8MW2IsQ7.jpg
+      tmdb_url: https://www.themoviedb.org/movie/12579
+    - title: 'Ali: Fear Eats the Soul'
+      year: 1974
+      poster_url: https://image.tmdb.org/t/p/w154/raYnFIAXuxl3GwVPg1GkODi9dVq.jpg
+      tmdb_url: https://www.themoviedb.org/movie/216
+    - title: Sisters
+      year: 1973
+      poster_url: https://image.tmdb.org/t/p/w154/hqxzpgJse54AcX1Mt1c6raXS290.jpg
+      tmdb_url: https://www.themoviedb.org/movie/22307
+    - title: Un flic
+      year: 1972
+      poster_url: https://image.tmdb.org/t/p/w154/gICgcF0VuxW13XeHeeUEKlAkyOE.jpg
+      tmdb_url: https://www.themoviedb.org/movie/42741
+    - title: Serpico
+      year: 1973
+      poster_url: https://image.tmdb.org/t/p/w154/76rLcn53Fjdh4Dji9EIeJ98aYj1.jpg
+      tmdb_url: https://www.themoviedb.org/movie/9040
+    - title: Bad Lieutenant
+      year: 1992
+      poster_url: https://image.tmdb.org/t/p/w154/mVJ2mXykqq3t2v1nuouf1P10g0d.jpg
+      tmdb_url: https://www.themoviedb.org/movie/12143
+    - title: 'John Wick: Chapter 3 - Parabellum'
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg
+      tmdb_url: https://www.themoviedb.org/movie/458156
+    - title: 'John Wick: Chapter 2'
+      year: 2017
+      poster_url: https://image.tmdb.org/t/p/w154/hXWBc0ioZP3cN4zCu6SN3YHXZVO.jpg
+      tmdb_url: https://www.themoviedb.org/movie/324552
+    - title: John Wick
+      year: 2014
+      poster_url: https://image.tmdb.org/t/p/w154/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg
+      tmdb_url: https://www.themoviedb.org/movie/245891
+    - title: The Game
+      year: 1997
+      poster_url: https://image.tmdb.org/t/p/w154/4UOa079915QjiTA2u5hT2yKVgUu.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2649
+    - title: Blow Out
+      year: 1981
+      poster_url: https://image.tmdb.org/t/p/w154/weMW1wLzeagP3tw6BfmYf1iL7dz.jpg
+      tmdb_url: https://www.themoviedb.org/movie/11644
+    - title: Independence Day
+      year: 1996
+      poster_url: https://image.tmdb.org/t/p/w154/p0BPQGSPoSa8Ml0DAf2mB2kCU0R.jpg
+      tmdb_url: https://www.themoviedb.org/movie/602
+    - title: Braveheart
+      year: 1995
+      poster_url: https://image.tmdb.org/t/p/w154/uE2Q9RaNBdJbAV1N67LhwCYluK0.jpg
+      tmdb_url: https://www.themoviedb.org/movie/197
+    - title: Avalon
+      year: 2001
+      poster_url: https://image.tmdb.org/t/p/w154/xm8byLTLqscSae3vFJDDggNeH1j.jpg
+      tmdb_url: https://www.themoviedb.org/movie/10881
+    - title: Primal Fear
+      year: 1996
+      poster_url: https://image.tmdb.org/t/p/w154/qJf2TzE8nRTFbFMPJNW6c8mI0KU.jpg
+      tmdb_url: https://www.themoviedb.org/movie/1592
+    - title: Death to 2020
+      year: 2020
+      poster_url: https://image.tmdb.org/t/p/w154/xpvq9Ds8XuDvrfmmYbyP9zthKln.jpg
+      tmdb_url: https://www.themoviedb.org/movie/773655
