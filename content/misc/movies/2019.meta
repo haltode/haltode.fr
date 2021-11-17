@@ -1,0 +1,276 @@
+title: Movies watched in 2019
+path: movies/2019.html
+template: movies
+seen:
+    - title: A Clockwork Orange
+      year: 1971
+      poster_url: https://image.tmdb.org/t/p/w154/4sHeTAp65WrSSuc05nRBKddhBxO.jpg
+      tmdb_url: https://www.themoviedb.org/movie/185
+    - title: A Ghost Story
+      year: 2017
+      poster_url: https://image.tmdb.org/t/p/w154/rp5JPIyZi9sMob15l46zNQLe5cO.jpg
+      tmdb_url: https://www.themoviedb.org/movie/428449
+    - title: A Tale of Two Sisters
+      year: 2003
+      poster_url: https://image.tmdb.org/t/p/w154/l3exwhwyGE0NnHJ3lFQ7eXoBSkH.jpg
+      tmdb_url: https://www.themoviedb.org/movie/4552
+    - title: Adaptation.
+      year: 2002
+      poster_url: https://image.tmdb.org/t/p/w154/ffEmHQAiD0m5dEQ6rlsuA9vlllW.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2757
+    - title: American Gangster
+      year: 2007
+      poster_url: https://image.tmdb.org/t/p/w154/8sV6nWuKczuXRt0C6EWoXqJAj6G.jpg
+      tmdb_url: https://www.themoviedb.org/movie/4982
+    - title: American Psycho
+      year: 2000
+      poster_url: https://image.tmdb.org/t/p/w154/3ddHhfMlZHZCefHDeaP8FzSoH4Y.jpg
+      tmdb_url: https://www.themoviedb.org/movie/1359
+    - title: Annihilation
+      year: 2018
+      poster_url: https://image.tmdb.org/t/p/w154/4YRplSk6BhH6PRuE9gfyw9byUJ6.jpg
+      tmdb_url: https://www.themoviedb.org/movie/300668
+    - title: As Good as It Gets
+      year: 1997
+      poster_url: https://image.tmdb.org/t/p/w154/e4DQl8UobpJ0DqTEmQInbWH174A.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2898
+    - title: Birdman or (The Unexpected Virtue of Ignorance)
+      year: 2014
+      poster_url: https://image.tmdb.org/t/p/w154/umy673Pxug9rJRMoJM1TPHs62rZ.jpg
+      tmdb_url: https://www.themoviedb.org/movie/194662
+    - title: BlacKkKlansman
+      year: 2018
+      poster_url: https://image.tmdb.org/t/p/w154/8jxqAvSDoneSKRczaK8v9X5gqBp.jpg
+      tmdb_url: https://www.themoviedb.org/movie/487558
+    - title: 'Bo Burnham: Make Happy'
+      year: 2016
+      poster_url: https://image.tmdb.org/t/p/w154/1RqDE7X2rGjxKOklweUFd2U7Vn0.jpg
+      tmdb_url: https://www.themoviedb.org/movie/400608
+    - title: 'Bo Burnham: What.'
+      year: 2013
+      poster_url: https://image.tmdb.org/t/p/w154/3D5yTXXegF9F8cqdyFLrJWTorkn.jpg
+      tmdb_url: https://www.themoviedb.org/movie/244001
+    - title: Bowling for Columbine
+      year: 2002
+      poster_url: https://image.tmdb.org/t/p/w154/nSoLDNbNraDszBT0gT2U0Azqof8.jpg
+      tmdb_url: https://www.themoviedb.org/movie/1430
+    - title: Casino
+      year: 1995
+      poster_url: https://image.tmdb.org/t/p/w154/4TS5O1IP42bY2BvgMxL156EENy.jpg
+      tmdb_url: https://www.themoviedb.org/movie/524
+    - title: Citizen Kane
+      year: 1941
+      poster_url: https://image.tmdb.org/t/p/w154/n3qYQgO4sv8yrAJ9B3HFwdcuiuB.jpg
+      tmdb_url: https://www.themoviedb.org/movie/15
+    - title: Cloud Atlas
+      year: 2012
+      poster_url: https://image.tmdb.org/t/p/w154/amNMifaMEd0FBOR289OcnRAJjTI.jpg
+      tmdb_url: https://www.themoviedb.org/movie/83542
+    - title: 'Dave Chappelle: Sticks & Stones'
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/hsyPTPoFDhUw5aGcj7dxAx3i1Qp.jpg
+      tmdb_url: https://www.themoviedb.org/movie/624932
+    - title: Enemy
+      year: 2013
+      poster_url: https://image.tmdb.org/t/p/w154/coJzyPTkSp4RMRGdgE7pXmJbCiG.jpg
+      tmdb_url: https://www.themoviedb.org/movie/181886
+    - title: Escape From Alcatraz
+      year: 1979
+      poster_url: https://image.tmdb.org/t/p/w154/uORr2GXQnyqgBOg6tVsRCJD2qxc.jpg
+      tmdb_url: https://www.themoviedb.org/movie/10734
+    - title: F for Fake
+      year: 1973
+      poster_url: https://image.tmdb.org/t/p/w154/fVeIDxS73CrosoeVOaefQuCUGZg.jpg
+      tmdb_url: https://www.themoviedb.org/movie/43003
+    - title: Fyre
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/yFsP0BAJhAH3RTXCAnGvI1CtaUb.jpg
+      tmdb_url: https://www.themoviedb.org/movie/567860
+    - title: Gladiator
+      year: 2000
+      poster_url: https://image.tmdb.org/t/p/w154/rotQFyaeNQivUJOm3J3M7YqPNMx.jpg
+      tmdb_url: https://www.themoviedb.org/movie/98
+    - title: Glass
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/svIDTNUoajS8dLEo7EosxvyAsgJ.jpg
+      tmdb_url: https://www.themoviedb.org/movie/450465
+    - title: Inside Job
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/zO0tjRnh9x2KuQWd7KhzdxbYaDN.jpg
+      tmdb_url: https://www.themoviedb.org/movie/44639
+    - title: Insidious
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/tmlDFIUpGRKiuWm9Ixc6CYDk4y0.jpg
+      tmdb_url: https://www.themoviedb.org/movie/49018
+    - title: It Follows
+      year: 2015
+      poster_url: https://image.tmdb.org/t/p/w154/qnz4VSl35D4Y9LQVnakMONUEOpj.jpg
+      tmdb_url: https://www.themoviedb.org/movie/270303
+    - title: Jackie Brown
+      year: 1997
+      poster_url: https://image.tmdb.org/t/p/w154/ewbLUXvm4riZL0aepy90o0vMesn.jpg
+      tmdb_url: https://www.themoviedb.org/movie/184
+    - title: Jaws
+      year: 1975
+      poster_url: https://image.tmdb.org/t/p/w154/s2xcqSFfT6F7ZXHxowjxfG0yisT.jpg
+      tmdb_url: https://www.themoviedb.org/movie/578
+    - title: Joker
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg
+      tmdb_url: https://www.themoviedb.org/movie/475557
+    - title: Knives Out
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/pThyQovXQrw2m0s9x82twj48Jq4.jpg
+      tmdb_url: https://www.themoviedb.org/movie/546554
+    - title: Lady Bird
+      year: 2017
+      poster_url: https://image.tmdb.org/t/p/w154/iySFtKLrWvVzXzlFj7x1zalxi5G.jpg
+      tmdb_url: https://www.themoviedb.org/movie/391713
+    - title: 'Louis C.K.: Hilarious'
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/8mJMrrT4tkfZLMFvKQ0Hq6jlXbp.jpg
+      tmdb_url: https://www.themoviedb.org/movie/45523
+    - title: "L\xE9on: The Professional"
+      year: 1994
+      poster_url: https://image.tmdb.org/t/p/w154/wHqGb8J6tXBVwjqWooGMtNEjs2A.jpg
+      tmdb_url: https://www.themoviedb.org/movie/101
+    - title: Melancholia
+      year: 2011
+      poster_url: https://image.tmdb.org/t/p/w154/fMneszMiQuTKY8JUXrGGB5vwqJf.jpg
+      tmdb_url: https://www.themoviedb.org/movie/62215
+    - title: Midnight in Paris
+      year: 2011
+      poster_url: https://image.tmdb.org/t/p/w154/4wBG5kbfagTQclETblPRRGihk0I.jpg
+      tmdb_url: https://www.themoviedb.org/movie/59436
+    - title: Okja
+      year: 2017
+      poster_url: https://image.tmdb.org/t/p/w154/pHlRr2MfjK77VIIAO7p0R4jhsJI.jpg
+      tmdb_url: https://www.themoviedb.org/movie/387426
+    - title: Oldboy
+      year: 2003
+      poster_url: https://image.tmdb.org/t/p/w154/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg
+      tmdb_url: https://www.themoviedb.org/movie/670
+    - title: One Flew Over the Cuckoo's Nest
+      year: 1975
+      poster_url: https://image.tmdb.org/t/p/w154/3jcbDmRFiQ83drXNOvRDeKHxS0C.jpg
+      tmdb_url: https://www.themoviedb.org/movie/510
+    - title: 'Our Planet: Behind The Scenes'
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/mCIUF0GOkySPjg3FRGlYbTJL3Jw.jpg
+      tmdb_url: https://www.themoviedb.org/movie/621561
+    - title: Parasite
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg
+      tmdb_url: https://www.themoviedb.org/movie/496243
+    - title: Patch Adams
+      year: 1998
+      poster_url: https://image.tmdb.org/t/p/w154/xN1aKur5ddWQSXTqvzDPJD2TCxe.jpg
+      tmdb_url: https://www.themoviedb.org/movie/10312
+    - title: Rocketman
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/f4FF18ia7yTvHf2izNrHqBmgH8U.jpg
+      tmdb_url: https://www.themoviedb.org/movie/504608
+    - title: Seven Years in Tibet
+      year: 1997
+      poster_url: https://image.tmdb.org/t/p/w154/AwAlbBjAf6K0aX8PPyhTUB1S3X7.jpg
+      tmdb_url: https://www.themoviedb.org/movie/978
+    - title: Snowpiercer
+      year: 2013
+      poster_url: https://image.tmdb.org/t/p/w154/nzccOvhrLGI0nvAknCEAk8bchD9.jpg
+      tmdb_url: https://www.themoviedb.org/movie/110415
+    - title: Spotlight
+      year: 2015
+      poster_url: https://image.tmdb.org/t/p/w154/rBkptJyAMqCfoMwUGQfCpubroec.jpg
+      tmdb_url: https://www.themoviedb.org/movie/314365
+    - title: Swiss Army Man
+      year: 2016
+      poster_url: https://image.tmdb.org/t/p/w154/8pxn8CQ6SD6tly75lrKw08wfZKv.jpg
+      tmdb_url: https://www.themoviedb.org/movie/347031
+    - title: Sympathy for Lady Vengeance
+      year: 2005
+      poster_url: https://image.tmdb.org/t/p/w154/pxgjBSwsa2IBSJoVrsLT6qxOO6N.jpg
+      tmdb_url: https://www.themoviedb.org/movie/4550
+    - title: Sympathy for Mr. Vengeance
+      year: 2002
+      poster_url: https://image.tmdb.org/t/p/w154/8ICeU0RLHQErvoKsPTLYh6Nluw.jpg
+      tmdb_url: https://www.themoviedb.org/movie/4689
+    - title: 'The Admiral: Roaring Currents'
+      year: 2014
+      poster_url: https://image.tmdb.org/t/p/w154/uucS3l4VCulOCsI9wDQit8sImdQ.jpg
+      tmdb_url: https://www.themoviedb.org/movie/282631
+    - title: The Blair Witch Project
+      year: 1999
+      poster_url: https://image.tmdb.org/t/p/w154/9050VGrYjYrEjpOvDZVAngLbg1f.jpg
+      tmdb_url: https://www.themoviedb.org/movie/2667
+    - title: The Bucket List
+      year: 2007
+      poster_url: https://image.tmdb.org/t/p/w154/idbNSe8zsYKQL97dJApfOrDSdya.jpg
+      tmdb_url: https://www.themoviedb.org/movie/7350
+    - title: The Grand Budapest Hotel
+      year: 2014
+      poster_url: https://image.tmdb.org/t/p/w154/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg
+      tmdb_url: https://www.themoviedb.org/movie/120467
+    - title: The Highwaymen
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/4bRYg4l12yDuJvAfqvUOPnBrxno.jpg
+      tmdb_url: https://www.themoviedb.org/movie/500682
+    - title: The Irishman
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/mbm8k3GFhXS0ROd9AD1gqYbIFbM.jpg
+      tmdb_url: https://www.themoviedb.org/movie/398978
+    - title: The Last Samurai
+      year: 2003
+      poster_url: https://image.tmdb.org/t/p/w154/lsasOSgYI85EHygtT5SvcxtZVYT.jpg
+      tmdb_url: https://www.themoviedb.org/movie/616
+    - title: The Lighthouse
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/3nk9UoepYmv1G9oP18q6JJCeYwN.jpg
+      tmdb_url: https://www.themoviedb.org/movie/503919
+    - title: The Gentlemen
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/jtrhTYB7xSrJxR1vusu99nvnZ1g.jpg
+      tmdb_url: https://www.themoviedb.org/movie/522627
+    - title: The Girl with the Dragon Tattoo
+      year: 2011
+      poster_url: https://image.tmdb.org/t/p/w154/vbLedKc1BUF4FOH1GyHW62FulCc.jpg
+      tmdb_url: https://www.themoviedb.org/movie/65754
+    - title: The Man from Nowhere
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/9QJ3cPpYgoPfhRnRPxpQUfx790r.jpg
+      tmdb_url: https://www.themoviedb.org/movie/51608
+    - title: The Wailing
+      year: 2016
+      poster_url: https://image.tmdb.org/t/p/w154/tAyQODgkQHsxgKFF3yhGQ2WsABA.jpg
+      tmdb_url: https://www.themoviedb.org/movie/293670
+    - title: Too Big to Fail
+      year: 2011
+      poster_url: https://image.tmdb.org/t/p/w154/pcrCKELIeNFfFrAoVFpMTpzTqVx.jpg
+      tmdb_url: https://www.themoviedb.org/movie/65034
+    - title: Train to Busan
+      year: 2016
+      poster_url: https://image.tmdb.org/t/p/w154/3H1WFCuxyNRP35oiL2qqwhAXxc0.jpg
+      tmdb_url: https://www.themoviedb.org/movie/396535
+    - title: 'Travis Scott: Look Mom I Can Fly'
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/oNOXntnRY7dFrgu1x6bQQmWBVdu.jpg
+      tmdb_url: https://www.themoviedb.org/movie/625561
+    - title: Uncut Gems
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg
+      tmdb_url: https://www.themoviedb.org/movie/473033
+    - title: Vice
+      year: 2018
+      poster_url: https://image.tmdb.org/t/p/w154/1gCab6rNv1r6V64cwsU4oEr649Y.jpg
+      tmdb_url: https://www.themoviedb.org/movie/429197
+    - title: Vivarium
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/myf3qzpeN0JbuFRPwSpJcz7rmAT.jpg
+      tmdb_url: https://www.themoviedb.org/movie/458305
+    - title: 12 Angry Men
+      year: 1957
+      poster_url: https://image.tmdb.org/t/p/w154/e02s4wmTAExkKg0yF4dEG98ZRpK.jpg
+      tmdb_url: https://www.themoviedb.org/movie/389
+    - title: '1917'
+      year: 2019
+      poster_url: https://image.tmdb.org/t/p/w154/iZf0KyrE25z1sage4SYFLCCrMi9.jpg
+      tmdb_url: https://www.themoviedb.org/movie/530915
