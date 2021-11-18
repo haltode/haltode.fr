@@ -21,11 +21,6 @@ to template to use, etc.
 Note: despite the Python virtual env, you still need to install a recent version
 of pandoc because pypandoc is only a wrapper around it.
 
-Server
-------
-
-The website is hosted on my OVH VPS.
-
 License
 -------
 
