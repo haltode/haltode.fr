@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "builder"
+version = "1.0.0"
+description = "Custom static website builder for haltode.fr"
+authors = ["Thibault Allançon"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Jinja2 = "^3.0.3"
+pypandoc = "^1.6.4"
+PyYAML = "^6.0"
+
+[tool.poetry.dev-dependencies]
+# Dependencies used for content/movies/tmdb2yml.py script
+toml = "^0.10.2"
+python-dateutil = "^2.8.2"
+requests = "^2.26.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
