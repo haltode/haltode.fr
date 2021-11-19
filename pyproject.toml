@@ -5,7 +5,7 @@ description = "Custom static website builder for haltode.fr"
 authors = ["Thibault Allançon"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 Jinja2 = "^3.0.3"
 pypandoc = "^1.6.4"
 PyYAML = "^6.0"
