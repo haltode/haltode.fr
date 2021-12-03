@@ -59,6 +59,7 @@ Talks
 
 -  `Re-implementing git </upload/reimplementing_git.pdf>`__
 -  `AI match maker for Prologin finals </upload/stechec2.pdf>`__
+-  `Raytracing with a twist </upload/raytracing_twist.pdf>`__
 
 Articles
 ~~~~~~~~
