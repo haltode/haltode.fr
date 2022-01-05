@@ -8,14 +8,15 @@ You will need a .secrets.toml file with the following content:
     api_key = "FIXME"
     api_url = "https://api.themoviedb.org/3"
 
-Then, provide a list of movies (one per line, each line containing either a TMDB
-id or the name of the movie). For example:
+Then, provide a list of movies or playlists (one per line, each line containing
+either a TMDB movie/playlist id or the name of the movie). For example:
 
     $ cat my_movies.txt
-    49797
-    22538
-    memento
-    the general
+    movie 49797
+    movie 22538
+    search 'memento'
+    search 'the general'
+    playlist '1234'
     $ cat my_movies.txt | ./tmdb2yml.py
     - title: I Saw the Devil
       year: 2010
@@ -39,12 +40,13 @@ result of TMDB website.
 
 """
 
+import datetime
 import json
 import logging
 import re
 import sys
 import urllib
-from typing import Any, Dict
+from typing import Any, Dict, Iterator
 
 import dateutil.parser
 import requests
@@ -53,19 +55,51 @@ import yaml
 
 JSONType = Dict[str, Any]
 
+# Default (and sane) values for global TMDB configuration
+TMDB_URL = "https://www.themoviedb.org"
+TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/"
+TMDB_POSTER_SIZE = "w154"
+
+
+class TMDBMovie:
+    title: str
+    year: datetime.datetime
+    poster_url: str
+    tmdb_url: str
+
+    def __init__(self, meta: JSONType) -> None:
+        self.title = meta["title"]
+        self.year = dateutil.parser.parse(meta["release_date"]).year
+        self.poster_url = f"{TMDB_POSTER_BASE_URL}{TMDB_POSTER_SIZE}{meta['poster_path']}"
+        self.tmdb_url = f"{TMDB_URL}/movie/{meta['id']}"
+
+    def to_json(self) -> JSONType:
+        return {
+            "title": self.title,
+            "year": self.year,
+            "poster_url": self.poster_url,
+            "tmdb_url": self.tmdb_url
+        }
 
 class TMDBService:
     api_key: str
     api_url: str
     session: requests.Session
-    config: JSONType
 
     def __init__(self, config_path: str) -> None:
         config = toml.load(config_path)
         self.api_key = config["tmdb"]["api_key"]
         self.api_url = config["tmdb"]["api_url"]
         self.session = requests.Session()
-        self.config = self.request("/configuration")
+
+        # Overwrite default configuration if not the most recent
+        tmdb_config = self.request("/configuration")
+        poster_base_url = tmdb_config["images"]["secure_base_url"]
+        poster_size = tmdb_config["images"]["poster_sizes"][1]
+        if poster_base_url != TMDB_POSTER_BASE_URL:
+            logging.warning(f"overwriting poster_base_url (old: {TMDB_POSTER_BASE_URL}, new: {poster_base_url})")
+        if poster_size != TMDB_POSTER_SIZE:
+            logging.warning(f"overwriting poster_size (old: {TMDB_POSTER_SIZE}, new: {poster_size})")
 
     def request(self, endpoint: str, query: str=None) -> JSONType:
         if not endpoint.startswith("/"):
@@ -75,8 +109,10 @@ class TMDBService:
             url = f"{url}&{query}"
 
         try:
-            r = self.session.get(url)
-            return r.json()
+            r = self.session.get(url).json()
+            if "success" in r and not r["success"]:
+                raise ValueError(f"TMDB API call failed: {r} (url: {url})")
+            return r
         except requests.HTTPError as err:
             logging.error(f"could not connect to TMDB: {err} (url: {url})")
             raise
@@ -84,37 +120,34 @@ class TMDBService:
             logging.error(f"could not parse JSON: {err} (url: {url})")
             raise
 
-    def get_poster_url(self, poster_path: str) -> str:
-        base_url = self.config["images"]["secure_base_url"]
-        poster_size = self.config["images"]["poster_sizes"][1]
-        return f"{base_url}{poster_size}{poster_path}"
+    def get_user_movies(self, query: str) -> Iterator[TMDBMovie]:
+        if match := re.search(r"movie ([0-9]+)", query):
+            movie_id = match.group(1)
+            movie = self.request(f"/movie/{movie_id}")
+            yield TMDBMovie(movie)
+        elif match := re.search(r"playlist ([0-9]+)", query):
+            playlist_id = match.group(1)
+            playlist = self.request(f"/list/{playlist_id}")
+            for item in playlist["items"]:
+                yield TMDBMovie(item)
+        elif match := re.search(r"search '(.*)'", query):
+            movie_title = match.group(1)
+            escaped_query = f"query={urllib.parse.quote(movie_title)}"
+            search = self.request("/search/movie", escaped_query)
+            if search["results"]:
+                yield TMDBMovie(search["results"][0])
+            else:
+                raise ValueError(f"cannot find search result for {query}")
+        else:
+            raise ValueError(f"cannot parse input query: {query}")
 
 
 tmdb_service = TMDBService(".secrets.toml")
-metadatas = []
 for query in sys.stdin:
     # Remove unwanted '\n' introduced by sys.stdin
     query = query.rstrip()
-    if re.match(r"[0-9]+", query):
-        tmdb_id = query
-    else:
-        escaped_query = f"query={urllib.parse.quote(query)}"
-        search = tmdb_service.request(f"/search/movie", escaped_query)
-        if search["results"]:
-            tmdb_id = search["results"][0]["id"]
-        else:
-            tmdb_id = None
-
     try:
-        movie = tmdb_service.request(f"/movie/{tmdb_id}")
-        metadatas.append(
-            {
-                "title": movie["title"],
-                "year": dateutil.parser.parse(movie["release_date"]).year,
-                "poster_url": tmdb_service.get_poster_url(movie["poster_path"]),
-                "tmdb_url": f"https://www.themoviedb.org/movie/{tmdb_id}",
-            }
-        )
+        movies = [m.to_json() for m in tmdb_service.get_user_movies(query)]
+        print(yaml.dump(movies, sort_keys=False))
     except Exception as err:
-        logging.error(f"error while processing {query}: err={err}, metadata={movie}")
-print(yaml.dump(metadatas, sort_keys=False))
+        logging.error(f"error while processing {query}: err={err}\n")
