@@ -2,10 +2,86 @@ title: Movies watched in 2021
 path: movies/2021.html
 template: movies
 seen:
+    - title: Death to 2021
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/qGt48Z1j4TuzPti8ZNWqqypa6w.jpg
+      tmdb_url: https://www.themoviedb.org/movie/911068
+    - title: No Time to Die
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/iUgygt3fscRoKWCV1d0C7FbM9TP.jpg
+      tmdb_url: https://www.themoviedb.org/movie/370172
+    - title: 'Bob Ross: Happy Accidents, Betrayal & Greed'
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/jov3rCzNT8u5b7A56c0XKCkP5Dc.jpg
+      tmdb_url: https://www.themoviedb.org/movie/853354
+    - title: Brazil
+      year: 1985
+      poster_url: https://image.tmdb.org/t/p/w154/8Pf3pbzu9pyONdpmdMtMrASr0am.jpg
+      tmdb_url: https://www.themoviedb.org/movie/68
+    - title: Who Framed Roger Rabbit
+      year: 1988
+      poster_url: https://image.tmdb.org/t/p/w154/lYfRc57Kx9VgLZ48iulu0HKnM15.jpg
+      tmdb_url: https://www.themoviedb.org/movie/856
+    - title: The Seventh Seal
+      year: 1957
+      poster_url: https://image.tmdb.org/t/p/w154/wcZ21zrOsy0b52AfAF50XpTiv75.jpg
+      tmdb_url: https://www.themoviedb.org/movie/490
+    - title: '14 Peaks: Nothing Is Impossible'
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/saGMNCD6ayFqmOb9mX2MkkMmW7w.jpg
+      tmdb_url: https://www.themoviedb.org/movie/890825
+    - title: At Eternity's Gate
+      year: 2018
+      poster_url: https://image.tmdb.org/t/p/w154/y4LvHQoX5YunHJ2EMBSjQvOkvD9.jpg
+      tmdb_url: https://www.themoviedb.org/movie/491472
+    - title: True Grit
+      year: 2010
+      poster_url: https://image.tmdb.org/t/p/w154/rxeRwN7dxHSLE0asOEIc1Q5Mcxy.jpg
+      tmdb_url: https://www.themoviedb.org/movie/44264
+    - title: mother!
+      year: 2017
+      poster_url: https://image.tmdb.org/t/p/w154/2yOKarmL8B4oXaLXUdHu882SUbu.jpg
+      tmdb_url: https://www.themoviedb.org/movie/381283
+    - title: Barking Dogs Never Bite
+      year: 2000
+      poster_url: https://image.tmdb.org/t/p/w154/msLr6T2RhqZNZtdCZScAA8nOWbU.jpg
+      tmdb_url: https://www.themoviedb.org/movie/21531
+    - title: Mother
+      year: 2009
+      poster_url: https://image.tmdb.org/t/p/w154/reAEOWk7UA14V1LMKWlK5pzsJui.jpg
+      tmdb_url: https://www.themoviedb.org/movie/30018
+    - title: Memories of Murder
+      year: 2003
+      poster_url: https://image.tmdb.org/t/p/w154/jcgUjx1QcupGzjntTVlnQ15lHqy.jpg
+      tmdb_url: https://www.themoviedb.org/movie/11423
+    - title: Heat
+      year: 1995
+      poster_url: https://image.tmdb.org/t/p/w154/obpPQskaVpSiC9RcJRB6iWDTCXS.jpg
+      tmdb_url: https://www.themoviedb.org/movie/949
+    - title: The Hand of God
+      year: 2021
+      poster_url: https://image.tmdb.org/t/p/w154/kreVxr5moB7K52IGGV1BGAn6nq1.jpg
+      tmdb_url: https://www.themoviedb.org/movie/722778
+    - title: Youth
+      year: 2015
+      poster_url: https://image.tmdb.org/t/p/w154/uz4TSOwxLb8VKWAhATgi200Wxzz.jpg
+      tmdb_url: https://www.themoviedb.org/movie/310593
     - title: The Great Beauty
       year: 2013
       poster_url: https://image.tmdb.org/t/p/w154/1cmOc3ZPkuCTOTqHEsRr3Pk81Um.jpg
       tmdb_url: https://www.themoviedb.org/movie/179144
+    - title: The Exorcism of Emily Rose
+      year: 2005
+      poster_url: https://image.tmdb.org/t/p/w154/qMN0HIP34f736kkQcfvTfmL9TP3.jpg
+      tmdb_url: https://www.themoviedb.org/movie/8643
+    - title: Deathgasm
+      year: 2015
+      poster_url: https://image.tmdb.org/t/p/w154/cwy9sGEOAuzpZXzXBVln1PZ4vxn.jpg
+      tmdb_url: https://www.themoviedb.org/movie/323373
+    - title: Street Trash
+      year: 1987
+      poster_url: https://image.tmdb.org/t/p/w154/kgkx9ZlbHKySE6YXtTtHt3mGdxw.jpg
+      tmdb_url: https://www.themoviedb.org/movie/22172
     - title: Green Room
       year: 2016
       poster_url: https://image.tmdb.org/t/p/w154/1DZkTrukHOk0Y2Q1Oeqj3HBxpVD.jpg
