@@ -41,11 +41,13 @@ class Page:
     """A single input page to render."""
 
     source_file: Path
+    metadata_file: Path
     metadata: Dict[str, Any]
 
     def __init__(self, page_path: Path) -> None:
         self.source_file = page_path
-        with open(page_path.with_suffix(".meta"), "r") as f:
+        self.metadata_file = page_path.with_suffix(".meta")
+        with open(self.metadata_file, "r") as f:
             self.metadata = yaml.safe_load(f)
 
     def to_html(self) -> str:

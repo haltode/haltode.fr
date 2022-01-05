@@ -51,13 +51,18 @@ class Builder:
     def render(self, path: Path) -> RenderStatus:
         page = Page(path)
         output_path = Path(self.build_dir, page.metadata["path"])
-        if (output_path.exists() and
-            os.path.getmtime(output_path) > os.path.getmtime(page.source_file)):
-            # Skip the page if the source file has not changed since last
-            # rendering. We cannot really encode this information in the
-            # Makefile dependencies because the output path is not the same as
-            # input path and must be parsed in the metadata.
-            return RenderStatus.SKIPPED
+
+        # Skip the page if the source/metadata file has not changed since last
+        # rendering. We cannot really encode this information in the Makefile
+        # dependencies because the output path is not the same as input path and
+        # must be parsed in the metadata.
+        try:
+            output_mtime = os.path.getmtime(output_path)
+            if (output_mtime > os.path.getmtime(page.source_file) and
+                output_mtime > os.path.getmtime(page.metadata_file)):
+                return RenderStatus.SKIPPED
+        except OSError:
+            pass
 
         template = jinja_env.get_template(page.metadata["template"] + ".html")
         context = {
