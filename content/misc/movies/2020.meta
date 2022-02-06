@@ -10,10 +10,10 @@ seen:
       year: 2017
       poster_url: https://image.tmdb.org/t/p/w154/d4fXuJS3zZcAZfz2HYDtnwqtnwn.jpg
       tmdb_url: https://www.themoviedb.org/movie/340837
-    - title: Aliens
-      year: 1986
-      poster_url: https://image.tmdb.org/t/p/w154/r1x5JGpyqZU8PYhbs4UcrO1Xb6x.jpg
-      tmdb_url: https://www.themoviedb.org/movie/679
+    - title: Alien
+      year: 1979
+      poster_url: https://image.tmdb.org/t/p/w154/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg
+      tmdb_url: https://www.themoviedb.org/movie/348
     - title: American History X
       year: 1998
       poster_url: https://image.tmdb.org/t/p/w154/c2gsmSQ2Cqv8zosqKOCwRS0GFBS.jpg
