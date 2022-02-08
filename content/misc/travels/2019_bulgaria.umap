@@ -1,0 +1,214 @@
+{
+  "type": "umap",
+  "uri": "http://umap.openstreetmap.fr/en/map/bulgaria-trip-2019_705199",
+  "properties": {
+    "easing": true,
+    "embedControl": true,
+    "fullscreenControl": true,
+    "searchControl": true,
+    "datalayersControl": true,
+    "zoomControl": true,
+    "slideshow": {
+      "active": false
+    },
+    "captionBar": false,
+    "zoomTo": 16,
+    "limitBounds": {
+      "east": null,
+      "west": null,
+      "north": null,
+      "south": null
+    },
+    "tilelayer": {
+      "tms": false,
+      "name": "OSM-Fr",
+      "maxZoom": 20,
+      "minZoom": 0,
+      "attribution": "map data © [[http://osm.org/copyright|OpenStreetMap contributors]] under ODbL ",
+      "url_template": "//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+    },
+    "licence": "",
+    "description": "",
+    "name": "Bulgaria trip 2019",
+    "displayPopupFooter": false,
+    "miniMap": false,
+    "moreControl": true,
+    "scaleControl": true,
+    "scrollWheelZoom": true,
+    "zoom": 8
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      24.900512695312504,
+      42.64810165693527
+    ]
+  },
+  "layers": [
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "1. Sofia",
+            "description": "18/07/2019 - 20/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              23.3137,
+              42.7034
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "2. Rila Monastery",
+            "description": "20/07/2019 - 21/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              23.34012,
+              42.13331
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "3. Plovdiv",
+            "description": "21/07/2019 - 23/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              24.7499,
+              42.1421
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "4. Bourgas",
+            "description": "23/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              27.4721,
+              42.4939
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "5. Sozopol",
+            "description": "23/07/2019 - 24/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              27.6943,
+              42.4182
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "6. Nessebar",
+            "description": "24/07/2019 - 25/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              27.7167,
+              42.6608
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "7. Varna",
+            "description": "25/07/2019 - 26/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              27.9167,
+              43.2076
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "8. Ruse",
+            "description": "26/07/2019 - 27/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              25.973,
+              43.822
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null
+            },
+            "name": "9. Veliko Tarnovo",
+            "description": "27/07/2019 - 28/07/2019"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              25.6321,
+              43.0823
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "browsable": true,
+        "name": "Layer 1",
+        "id": 2047733
+      }
+    }
+  ]
+}
