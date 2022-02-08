@@ -15,6 +15,8 @@ PyYAML = "^6.0"
 toml = "^0.10.2"
 python-dateutil = "^2.8.2"
 requests = "^2.26.0"
+# Dependencies used for content/travels/yml2geojson.py script
+geopy = "^2.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
