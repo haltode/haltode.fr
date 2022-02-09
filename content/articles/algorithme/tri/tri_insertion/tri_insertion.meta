@@ -1,5 +1,9 @@
 title: Tri par insertion
 path: algo/tri/tri_insertion.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 01/05/2014
 modified: 08/12/2015
+language: fr

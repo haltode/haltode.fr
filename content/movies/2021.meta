@@ -1,6 +1,9 @@
 title: Movies watched in 2021
 path: movies/2021.html
 template: movies
+navbar:
+  - page: Movies
+    url: /movies.html
 seen:
     - title: Death to 2021
       year: 2021

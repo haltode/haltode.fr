@@ -1,6 +1,9 @@
 title: Movies watched in 2019
 path: movies/2019.html
 template: movies
+navbar:
+  - page: Movies
+    url: /movies.html
 seen:
     - title: A Clockwork Orange
       year: 1971

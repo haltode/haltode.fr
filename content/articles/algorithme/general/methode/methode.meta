@@ -1,5 +1,9 @@
 title: Méthode de résolution
 path: algo/general/methode.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 08/11/2016
 modified: 08/11/2016
+language: fr

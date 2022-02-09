@@ -1,5 +1,9 @@
 title: Tri par dénombrement
 path: algo/tri/tri_denombrement.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 05/07/2014
 modified: 02/02/2016
+language: fr

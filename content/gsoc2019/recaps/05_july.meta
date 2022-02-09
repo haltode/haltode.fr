@@ -1,3 +1,6 @@
 title: July
 path: gsoc2019/july.html
-template: gsoc
+template: default
+navbar:
+  - page: GSoC 2019
+    url: /gsoc2019.html

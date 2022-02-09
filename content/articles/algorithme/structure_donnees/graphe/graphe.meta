@@ -1,5 +1,9 @@
 title: Graphe
 path: algo/structure/graphe.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 20/06/2015
 modified: 01/12/2015
+language: fr

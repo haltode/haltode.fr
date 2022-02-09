@@ -1,5 +1,9 @@
 title: Dichotomie
 path: algo/recherche/dichotomie.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 28/06/2014
 modified: 14/01/2016
+language: fr

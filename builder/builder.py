@@ -64,7 +64,7 @@ class Builder:
         except OSError:
             pass
 
-        template = jinja_env.get_template(page.metadata["template"] + ".html")
+        template = jinja_env.get_template(page.metadata["template"] + ".html.jinja")
         context = {
             "html_content": page.to_html(),
             "metadata": page.metadata,

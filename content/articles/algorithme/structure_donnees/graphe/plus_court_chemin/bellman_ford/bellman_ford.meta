@@ -1,5 +1,9 @@
 title: Algorithme de Bellman-Ford
 path: algo/structure/graphe/plus_court_chemin/bellman_ford.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 10/07/2016
 modified: 10/07/2016
+language: fr

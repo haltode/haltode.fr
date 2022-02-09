@@ -1,6 +1,9 @@
 title: Movies watched in 2020
 path: movies/2020.html
 template: movies
+navbar:
+  - page: Movies
+    url: /movies.html
 seen:
     - title: A Trip to the Moon
       year: 1902

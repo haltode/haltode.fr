@@ -1,5 +1,9 @@
 title: File
 path: algo/structure/file.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 08/06/2014
 modified: 28/11/2015
+language: fr

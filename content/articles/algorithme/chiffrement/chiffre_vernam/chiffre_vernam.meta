@@ -1,5 +1,9 @@
 title: Chiffre de Vernam
 path: algo/chiffrement/chiffre_vernam.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 29/05/2014
 modified: 20/12/2015
+language: fr

@@ -1,5 +1,9 @@
 title: Tri par tas
 path: algo/tri/tri_tas.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 14/05/2014
 modified: 29/04/2016
+language: fr

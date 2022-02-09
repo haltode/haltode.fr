@@ -1,5 +1,9 @@
 title: Introduction à l'apprentissage artificiel
 path: algo/ia/apprentissage_artificiel/introduction.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 07/04/2016
 modified: 25/04/2016
+language: fr

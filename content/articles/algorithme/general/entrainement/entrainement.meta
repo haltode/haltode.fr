@@ -1,5 +1,9 @@
 title: Comment et où s'entraîner ?
 path: algo/general/entrainement.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 26/12/2015
 modified: 29/03/2016
+language: fr

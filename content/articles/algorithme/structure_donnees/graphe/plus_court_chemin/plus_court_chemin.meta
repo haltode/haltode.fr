@@ -1,5 +1,9 @@
 title: Plus court chemin
 path: algo/structure/graphe/plus_court_chemin.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 22/05/2016
 modified: 22/05/2016
+language: fr

@@ -1,18 +1,7 @@
-{% extends "base.html" %}
+{% extends "default.html.jinja" %}
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="/css/movies.css">
-{% endblock %}
-
-{% block header %}
-    <nav>
-        <ul>
-            <li><a href="/">Thibault Allançon</a></li>
-            <li><a href="/movies.html">Movies</a></li>
-        </ul>
-    </nav>
-
-    <h1><a href="">{{ metadata['title'] }}</a></h1>
 {% endblock %}
 
 {% block after_content %}

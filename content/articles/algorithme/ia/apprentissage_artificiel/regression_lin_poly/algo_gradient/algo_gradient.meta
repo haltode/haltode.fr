@@ -1,5 +1,9 @@
 title: Algorithme du gradient
 path: algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 19/04/2016
 modified: 19/04/2016
+language: fr

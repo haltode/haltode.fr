@@ -1,5 +1,9 @@
 title: Tri à bulles
 path: algo/tri/tri_bulles.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 29/04/2014
 modified: 07/12/2015
+language: fr

@@ -1,5 +1,9 @@
 title: Tri par sélection
 path: algo/tri/tri_selection.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 30/04/2014
 modified: 08/12/2015
+language: fr

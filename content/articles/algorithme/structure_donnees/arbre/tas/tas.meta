@@ -1,5 +1,9 @@
 title: Tas
 path: algo/structure/arbre/tas.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 11/01/2016
 modified: 22/01/2016
+language: fr

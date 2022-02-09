@@ -1,0 +1,34 @@
+{% extends "base.html.jinja" %}
+
+{% block header %}
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            {% for navitem in metadata['navbar'] %}
+            <li><a href="{{ navitem['url'] }}">{{ navitem['page'] }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <h1><a href="">{{ metadata['title'] }}</a></h1>
+
+    {% if metadata['published'] and metadata['modified'] %}
+        {% if metadata['language'] == 'fr' %}
+            <p class="metadata">Publié : {{ metadata['published'] }} · Modifié : {{ metadata['modified'] }}</p>
+        {% else %}
+            <p class="metadata">Published: {{ metadata['published'] }} · Modified: {{ metadata['modified'] }}</p>
+        {% endif %}
+        <hr>
+    {% endif %}
+{% endblock %}
+
+{% block before_content %}
+    {% if toc %}
+        {% if metadata['language'] == 'fr' %}
+            <h4>Table des matières</h4>
+        {% else %}
+            <h4>Table of contents</h4>
+        {% endif %}
+        {{ toc }}
+    {% endif %}
+{% endblock %}

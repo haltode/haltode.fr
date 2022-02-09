@@ -1,5 +1,9 @@
 title: Liste chaînée
 path: algo/structure/liste_chainee.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 08/06/2014
 modified: 16/01/2016
+language: fr

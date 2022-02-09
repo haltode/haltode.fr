@@ -1,5 +1,9 @@
 title: Arbre
 path: algo/structure/arbre.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 29/11/2015
 modified: 01/12/2015
+language: fr

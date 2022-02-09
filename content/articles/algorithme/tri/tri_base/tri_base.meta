@@ -1,5 +1,9 @@
 title: Tri par base
 path: algo/tri/tri_base.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 05/03/2016
 modified: 05/03/2016
+language: fr

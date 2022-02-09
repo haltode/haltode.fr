@@ -1,5 +1,9 @@
 title: Arbre binaire
 path: algo/structure/arbre/arbre_binaire.html
-template: article
+template: default
+navbar:
+  - page: Articles
+    url: /articles.html
 published: 27/12/2015
 modified: 14/01/2016
+language: fr
