@@ -1,6 +1,3 @@
-Movies
-------
-
 I always had a deep attachment to cinematography, thus I spend quite some time
 watching various movies, reading critics and reviews, listening to cinema
 related podcast, ... Most of what I watch comes from:
