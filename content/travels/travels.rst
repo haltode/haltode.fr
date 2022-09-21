@@ -51,7 +51,7 @@ travel at all, but mostly due to Covid-19:
 - I planned at the beginning of the year to go to Finland to visit a friend for
   a few days during one of my only break in April 2020, but it got cancelled due
   to the sanitary crisis.
-- During the summer, I was supposed to work in the United-Kingdom and travel to
+- During the summer, I was supposed to work in the United Kingdom and travel to
   New-York for an internship. I ended up working from home.
 
 Staying home was clearly the safest and most reasonable option.
@@ -78,3 +78,28 @@ move a bit around France with friends:
 This should be the last year where it is really hard for me to find
 opportunities to travel (either because of studies or Covid-19 of course). I
 hope to visit various places next year!
+
+2022
+====
+
+TODO: recap (London, Paris, Amsterdam, New-York)
+
+United Kingdom
+--------------
+
+In February, I moved to London for my 6 months end of studies internship. I had
+some time during weekends and summer to explore the country:
+
+.. raw:: html
+
+    <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/united-kingdom-trip-2022_810049?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
+
+Iceland
+-------
+
+TODO
+
+Finland
+-------
+
+TODO

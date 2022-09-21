@@ -1,0 +1,248 @@
+{
+  "type": "umap",
+  "uri": "http://umap.openstreetmap.fr/en/map/united-kingdom-trip-2022_810049",
+  "properties": {
+    "easing": true,
+    "embedControl": true,
+    "fullscreenControl": true,
+    "searchControl": true,
+    "datalayersControl": true,
+    "zoomControl": true,
+    "slideshow": {},
+    "captionBar": false,
+    "limitBounds": {},
+    "tilelayer": {},
+    "licence": "",
+    "description": "I moved to London for work and took some time to explore a bit parts of the UK",
+    "name": "United Kingdom trip 2022",
+    "displayPopupFooter": false,
+    "miniMap": false,
+    "moreControl": true,
+    "scaleControl": true,
+    "scrollWheelZoom": true,
+    "zoom": 6
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -4.877929687500001,
+      53.76819584019795
+    ]
+  },
+  "layers": [
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrchid"
+            },
+            "name": "1. London",
+            "description": "02/2022 - 08/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -0.127647,
+              51.507322
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "10. Belfast",
+            "description": "26/07/2022 - 28/07/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -5.930183,
+              54.596391
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "11. Galway",
+            "description": "29/07/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -9.04906,
+              53.274412
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "2. Cambridge",
+            "description": "13/03/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              0.139154,
+              52.197585
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "3. Brighton",
+            "description": "26/03/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -0.140056,
+              50.821463
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "4. Oxford",
+            "description": "02/04/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -1.25785,
+              51.752013
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "5. Bath",
+            "description": "23/04/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -2.359696,
+              51.381386
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "6. Norwich",
+            "description": "30/04/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              1.292305,
+              52.628569
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "7. Liverpool",
+            "description": "07/05/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -2.99168,
+              53.407199
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "ForestGreen"
+            },
+            "name": "8. Edinburgh",
+            "description": "15/07/2022 - 17/07/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.188375,
+              55.953346
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "9. Dublin",
+            "description": "23/07/2022 - 31/07/2022\n\nVisiting friends who were doing their internships in Dublin."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -6.260296,
+              53.349801
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "browsable": true,
+        "name": "Layer 1",
+        "id": 2413532
+      }
+    }
+  ]
+}
