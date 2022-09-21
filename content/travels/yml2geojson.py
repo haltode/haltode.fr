@@ -64,6 +64,8 @@ from geopy.geocoders import Nominatim
 JSONType = Dict[str, Any]
 YAMLType = Dict[str, Any]
 
+logging.getLogger().setLevel(logging.INFO)
+
 
 class OSMService:
     """OpenStreetMap (OSM) related services, such as Nominatim geolocator for
@@ -76,6 +78,7 @@ class OSMService:
         self.geolocator = Nominatim(user_agent=config["nominatim"]["user_agent"])
 
     def place2feature(self, place: YAMLType) -> str:
+        logging.info(f"Searching for: {place['search']}")
         location = self.geolocator.geocode(**place["search"])
         return {
             "type": "Feature",
