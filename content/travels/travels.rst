@@ -102,4 +102,10 @@ TODO
 Finland
 -------
 
-TODO
+After Iceland, I landed in Finland for a 10 days trip driving up north with
+friends. We ended up taking a train overnight to get back to Helsinki and later
+a flight to Paris.
+
+.. raw:: html
+
+    <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/finland-trip-2022_810314?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>

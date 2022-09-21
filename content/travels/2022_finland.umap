@@ -1,0 +1,135 @@
+{
+  "type": "umap",
+  "uri": "http://umap.openstreetmap.fr/en/map/finland-trip-2022_810314",
+  "properties": {
+    "easing": true,
+    "embedControl": true,
+    "fullscreenControl": true,
+    "searchControl": true,
+    "datalayersControl": true,
+    "zoomControl": true,
+    "slideshow": {},
+    "captionBar": false,
+    "limitBounds": {},
+    "tilelayer": {},
+    "licence": "",
+    "description": "10 days trip in Finland, driving up north with friends.",
+    "name": "Finland trip 2022",
+    "displayPopupFooter": false,
+    "miniMap": false,
+    "moreControl": true,
+    "scaleControl": true,
+    "scrollWheelZoom": true,
+    "zoom": 5
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      25.576171875,
+      64.00486735371554
+    ]
+  },
+  "layers": [
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "1. Helsinki",
+            "description": "09/09/2022 - 11/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              24.942747,
+              60.167488
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "2. Savonlinna",
+            "description": "11/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              28.879718,
+              61.868993
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "3. Koli national park",
+            "description": "12/09/2022 - 13/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              29.827665,
+              63.087762
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "4. Hyrynsalmi",
+            "description": "14/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              28.492254,
+              64.674722
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "5. Rovaniemi",
+            "description": "15/09/2022 - 17/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              25.71921,
+              66.497621
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "browsable": true,
+        "name": "Layer 1",
+        "id": 2414592
+      }
+    }
+  ]
+}
