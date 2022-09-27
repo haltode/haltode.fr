@@ -1,0 +1,1579 @@
+{
+  "type": "umap",
+  "uri": "http://umap.openstreetmap.fr/en/map/iceland-trip-2022_810991#6/65.065/-18.424",
+  "properties": {
+    "easing": true,
+    "embedControl": true,
+    "fullscreenControl": true,
+    "searchControl": true,
+    "datalayersControl": true,
+    "zoomControl": true,
+    "slideshow": {},
+    "captionBar": false,
+    "limitBounds": {},
+    "tilelayer": {},
+    "licence": "",
+    "description": "",
+    "name": "Iceland trip 2022",
+    "displayPopupFooter": false,
+    "miniMap": false,
+    "moreControl": true,
+    "scaleControl": true,
+    "scrollWheelZoom": true,
+    "zoom": 6
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -18.424072265625004,
+      65.06518345330508
+    ]
+  },
+  "layers": [
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "1. Reykjavik",
+            "description": "20/08/2022, 26/08/2022 - 28/08/2022\n\nThe itinerary for the trip was quite unique since everyone had different schedules to work with:\n\n- Valérian and Anthony would only stay for the first week.\n- Alexandre and Thomas would only come for the last two weeks.\n- Nicolas would stay for a week and a half.\n- I would be there for the full 3 weeks.\n\nSo we decided to do a small circle the first week (mainly the golden circle), get back to the capital city to pick up Alexandre and Thomas and then go on the full tour of the island. Dropping Nicolas later down the trip to take a bus back to Reykjavík."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.942237,
+              64.145981
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "2. Laugarvatn",
+            "description": "20/08/2022 - 22/08/2022\n\nThis was our first night in Iceland, and of course we tried to see some northern lights. We spend a few hours outside around midnight trying to find a spot dark enough. After getting lost on some f-road with no light around us, we just stared at the sky for a bit. None of us knew what northern lights looked like in real life, we were expecting the big green lines in the sky as in most photos we all know. At some point, I noticed some weird grey patterns in the sky that did not seem like clouds. Everyone thought I was half hallucinating and half joking, but Valérian tried to take pictures with his phone of two portions of the sky in night mode. The portion of the sky I was looking at was clearly green compared to the rest! Throughout the night it became a bit more intense, and we noticed it moved a lot. There was definitely a moment when we could see the green shade with our own eyes (not only through the lens of our phones).\n\nLater in the trip, we witnessed some insane northern lights, but this first introduction to the phenomenon was still awesome."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.733423,
+              64.217171
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "3. Hella",
+            "description": "22/08/2022 - 24/08/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.398701,
+              63.835504
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "4. Þorlákshöfn",
+            "description": "24/08/2022 - 26/08/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.386628,
+              63.856159
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Eldborg",
+            "description": "Eldborg"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.321483,
+              64.796362
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Fagradalsfjall",
+            "description": "Fagradalsfjall\n\nA week before we arrived in Iceland, this volcano erupted. When landing the first day, we could still see smoke coming out of the volcano from the plane. We hiked for a few hours on the dried up lava, all the way until the crater. It was still one of the most incredible hike we did. Seeing the lava up close, and the sheer amount, was astonishing."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.272594,
+              63.9051
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Fjaðrárgljúfur",
+            "description": "Fjaðrárgljúfur"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -18.173721,
+              63.7726
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Geysir",
+            "description": "Geysir"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.29951,
+              64.313838
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Gígjagjá",
+            "description": "Gígjagjá"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -18.760853,
+              63.417277
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Gluggafoss",
+            "description": "Gluggafoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.492152,
+              63.558073
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Glymur",
+            "description": "Glymur"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.251465,
+              64.390806
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Gullfoss",
+            "description": "Gullfoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.121682,
+              64.32661
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Háifoss",
+            "description": "Háifoss\n\nStunning waterfall and mountains, definitely worth the road to get there. We almost lost our drone while filming down in the waterfall, but Valérian crossed by foot the river to get it back."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.686991,
+              64.207921
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hnausapollur",
+            "description": "Hnausapollur"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.03195,
+              64.051799
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Kerið",
+            "description": "Kerið"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.88511,
+              64.03981
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Landmannalaugar",
+            "description": "Landmannalaugar\n\nIncredible mountains. There is also a 5 days long trail to follow, we only spend an afternoon hiking, but this seemed like a great adventure."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.060491,
+              63.990511
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Loa's Nest",
+            "description": "Loa's Nest\n\nThe best guest house we stayed at. We got so many good tips for the rest of our trip!"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.328638,
+              63.872796
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Nauthúsagil",
+            "description": "Nauthúsagil\n\nAs the recommendations from Loa's Nest, we got lost/hiked around in these mountains and visited the secret canyon (or waterfall). Funny enough, there was close to no one in this part of the mountains, while it is less than a km away from Seljalandsfoss where tourists queue to walk to the waterfall. "
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.858163,
+              63.671993
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Plane wreck",
+            "description": "DC-3 plane wreck\n\nWorth the walk, beautiful scenery."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.364784,
+              63.45911
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Raufarhólshellir",
+            "description": "Raufarhólshellir\n\nWe did a lava tunnel tour there. The tour itself was not that interesting (and we should have booked a real spelunking adventure), but experiencing being in the complete darkness in the cave for a few minutes was quite worth the entire tour. You can't scream for help since the surrounding rock is volcanic and sparse, meaning there is no echo."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.397182,
+              63.940241
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Reynisfjara",
+            "description": "Reynisfjara"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.058636,
+              63.404426
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Secret Lagoon",
+            "description": "Secret Lagoon"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.309096,
+              64.137327
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Selfoss",
+            "description": "Selfoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.003532,
+              63.936809
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Seljalandsfoss",
+            "description": "Seljalandsfoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.988169,
+              63.615457
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Seljavallalaug",
+            "description": "Seljavallalaug\n\nAwesome public pool in the middle of the mountains with hot spring water."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.607715,
+              63.5661
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Sigöldugljúfur",
+            "description": "Sigöldugljúfur"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.11663,
+              64.160094
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Skogafoss",
+            "description": "Skogafoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.511292,
+              63.532104
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Stútur",
+            "description": "Stútur"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.040676,
+              64.013136
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Svínafellsjökull",
+            "description": "Svínafellsjökull\n\nDuring the first week the sun was setting quite late, around 10pm, so we tried to make the most of our days. We drove all the way to here after dinner, just to get a glimpse of the glacier. We got back home at 1am driving in the dark and rain. Still worth it, the late light on the glacier was beautiful. "
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.805934,
+              64.021514
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Vik",
+            "description": "Vik"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.005474,
+              63.418817
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Þingvallavatn",
+            "description": "Þingvallavatn"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.156222,
+              64.187746
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "browsable": true,
+        "name": "Week 1",
+        "id": 2416432,
+        "remoteData": {}
+      }
+    },
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "5. Grundarfjörður campsite",
+            "description": "29/08/2022\n\nThis was our first camping night, since during the first week we had booked hostels/guest houses. Unfortunately for us, this was also a very rainy and windy night (60-70 km/h wind) and it stayed like this for a few days in the north-west. Without a doubt, this was the worst night in the full trip, but at least we learned how to set up the tent in all conditions!"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.259298,
+              64.925028
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "6. Reykhólar",
+            "description": "30/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.201478,
+              65.448593
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "7. Borðeyri",
+            "description": "31/08/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.098768,
+              65.207484
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "8. Dalvík campsite",
+            "description": "01/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -18.530439,
+              65.971094
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "9. Raufarhöfn campsite",
+            "description": "02/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -15.950943,
+              66.452996
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Akraneskaupstaður",
+            "description": "Akraneskaupstaður\n\nNicolas officially became an engineer in this city. We had our end of studies defense, which is the last step to get our engineer diploma. Cheap shirt, mediocre 4G and a Team's fake background is all you need to get your diploma in a car in Iceland."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.083351,
+              64.317081
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Akureyri",
+            "description": "Akureyri\n\nWe dropped Nicolas here, so he could get a bus back to Reykjavík because he was leaving a bit earlier than the rest of us."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -18.112176,
+              65.683904
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Aldeyjarfoss",
+            "description": "Aldeyjarfoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -17.337002,
+              65.366405
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Arnarstapi",
+            "description": "Arnarstapi\n\nIt is now my turn to become an engineer after Nicolas's defense performance on the previous day in Akraneskaupstaður. The conditions were even worse, the 4G was unstable, the weather was horrible, and we could hear the wind/rain pouring down on the car. But in the end, everything worked fine!"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.628085,
+              64.766727
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Borgarvirki",
+            "description": "Borgarvirki"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.597177,
+              65.474778
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Dettifoss",
+            "description": "Dettifoss\n\nOne of the most powerful waterfall in Europe. Impressive to look at."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.384431,
+              65.814339
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Dynjandi",
+            "description": "Dynjandi"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.198595,
+              65.732519
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Garðar BA 64",
+            "description": "Garðar BA 64"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.836684,
+              65.516814
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Gerðuberg",
+            "description": "Gerðuberg"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.363771,
+              64.860471
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Grafarkirkja",
+            "description": "Grafarkirkja\n\nThe oldest church in Iceland."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.368261,
+              65.869759
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hofsós",
+            "description": "Hofsós"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.411015,
+              65.897459
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hrafnabjargafoss",
+            "description": "Hrafnabjargafoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -17.339476,
+              65.339686
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hvítserkur",
+            "description": "Hvítserkur"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.635234,
+              65.606417
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Kleifaheiði - Kleifakarl",
+            "description": "Kleifaheiði - Kleifakarl"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.737584,
+              65.525826
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Kolgrafarfjörður",
+            "description": "Kolgrafarfjörður"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.124356,
+              64.966028
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Kolugljúfur canyon",
+            "description": "Kolugljúfur canyon"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.570097,
+              65.332775
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Lava Rocks Formations",
+            "description": "Lava Rocks Formations"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.920102,
+              64.972086
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Lighthouse",
+            "description": "Lighthouse with a friendly dog and a great view."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -18.951104,
+              66.187053
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Námafjall",
+            "description": "Námafjall"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.821119,
+              65.640148
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Sea Monster Museum",
+            "description": "Sea Monster Museum"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.597077,
+              65.686457
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Selvallafoss",
+            "description": "Selvallafoss"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.832933,
+              64.891577
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Skarðsvík",
+            "description": "Skarðsvík"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -23.98588,
+              64.881622
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Skútustaðagígar",
+            "description": "Skútustaðagígar"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -17.033733,
+              65.571376
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Svörtuloft",
+            "description": "Svörtuloft"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -24.03902,
+              64.86371
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Ytri-Rauðarmelskúla",
+            "description": "Ytri-Rauðarmelskúla"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.34572,
+              64.87976
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "browsable": true,
+        "name": "Week 2",
+        "remoteData": {},
+        "id": 2419495
+      }
+    },
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "10. Eskifjörður",
+            "description": "03/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -14.012371,
+              65.071309
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "11. Myllulækur campsite",
+            "description": "04/09/2022\n\nThis is without a doubt where we saw the best northern lights in our whole trip. Very little external light, a great sky without clouds and good conditions overall. We even saw Starlink satellites train, which was surreal, especially with the northern lights on the videos/photos we took."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -15.258671,
+              64.348133
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "12. Skaftafell campground",
+            "description": "05/09/2022\n\nThe best camping location, great camp site with so many hikes around/on glaciers. Beautiful northern lights here as well during our stay, with the glacier in the background."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.971274,
+              64.01596
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "13. Hvolsvöllur",
+            "description": "06/09/2022"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -20.223842,
+              63.750811
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "14. Stokkseyri campsite",
+            "description": "07/09/2022\n\nSince Alexandre and Thomas were not in Iceland for the first week of the trip, we got to see some places again when coming back to Reykjavík."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.061152,
+              63.836967
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "15. Hotel Keilir",
+            "description": "08/09/2022\n\nAgain, we spend a bit of time going back to places from week 1 but with Alexandre and Thomas. We also spent the day in Reykjavík, before going to the airport and giving back the car. I stayed an additional night near the airport since my flight was the next morning."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.553061,
+              64.002393
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Borgarfjarðarhöfn",
+            "description": "Borgarfjarðarhöfn"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -13.754882,
+              65.542263
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Bridge Between Continents",
+            "description": "Bridge between continents"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -22.675724,
+              63.868391
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Diamond Beach",
+            "description": "Diamond beach"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.176337,
+              64.043791
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Dyrhólaey",
+            "description": "Dyrhólaey"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -19.126631,
+              63.398833
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Falljökull",
+            "description": "Falljökull\n\nWe got on a small group 4.5h hike on the glacier with Melrakki adventures. Absolutely incredible experience to walk on the ice, see crevasses, tunnels and caves."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.730393,
+              63.986721
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Fjallsjökull",
+            "description": "Fjallsjökull"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.481156,
+              64.031635
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Fláajökull",
+            "description": "Fláajökull"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -15.652171,
+              64.366406
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Höfn",
+            "description": "During the last few days, we stopped at Höfn to get some groceries and noticed when driving back a weird noise in the back of the car. The left rear tire was completely flat, it probably busted earlier this day, but the stop for groceries let all the air out. Luckily for us, we were in a big city and a few minutes after we got the spare wheel out, an elderly couple offered to help us change the tire (they have been travelling for many years). The next morning we bought a new tire from a garage, a bit pricey for an experience but still useful to know how to properly change a tire!\n\nWe still do not know how we got the puncture, the tire pressure was fine on all the other tires, and we were driving on the Route 1 all day. Maybe just bad luck on previous f-road."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -15.210571,
+              64.254141
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hvalnes nature reserve",
+            "description": "Hvalnes nature reserve"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -14.551872,
+              64.405863
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Jökulsárlón",
+            "description": "Jökulsárlón"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -16.229827,
+              64.076696
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Red chair",
+            "description": "Red chair artwork"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -14.927125,
+              64.341717
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Reykjadalur",
+            "description": "Reykjadalur\n\nAwesome hot spring thermal river, even better than a swimming pool. Lots of space and the more you swim to the beginning of the river, the hotter the water is. The hike to get to the river is nice as well!"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -21.22228,
+              64.04795
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Stuðlagil canyon",
+            "description": "Stuðlagil canyon"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -15.308125,
+              65.162327
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "The Arctic Henge",
+            "description": "The Artic Henge"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -15.962327,
+              66.462204
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Vattarnestangi",
+            "description": "Vattarnestangi"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -13.685409,
+              64.936127
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Þórshöfn Plane Wreck",
+            "description": "Þórshöfn Plane Wreck"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -15.275997,
+              66.250815
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "browsable": true,
+        "name": "Week 3",
+        "remoteData": {},
+        "id": 2422122
+      }
+    }
+  ]
+}

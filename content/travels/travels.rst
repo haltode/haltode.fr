@@ -82,7 +82,10 @@ hope to visit various places next year!
 2022
 ====
 
-TODO: recap (London, Paris, Amsterdam, New-York)
+This year turned out to be quite heavy on traveling! For my internship, I worked
+in London and New-York. Living in London most of the year, I went back to Paris
+a few times, visited Amsterdam over long weekend, hopped on trains around UK,
+and at the end of my internship planned bigger travels in Nordic countries.
 
 United Kingdom
 --------------
@@ -97,14 +100,31 @@ some time during weekends and summer to explore the country:
 Iceland
 -------
 
-TODO
+At the end of my internship, I had to leave the UK and go back to France to get
+my diploma before re-applying to get a long-term visa to work in London again.
+This meant I had a couple of free months in between, and as always I took this
+opportunity to travel. The first trip was 3 weeks in Iceland around the entire
+island:
+
+.. raw:: html
+
+    <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/iceland-trip-2022_810991?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
+
+Iceland is a unique and incredible country. So much nature and places to
+discover: volcanoes, glaciers, waterfalls, mountains, ... Even after 3 weeks I
+felt there was so much more to visit. I wish we could have stayed a few more
+days in the north-west part of the country (but the weather was horrible at the
+time so we mostly drove by). The itinerary is quite unique because of everyone
+schedule for this trip. I added lots of places we visited on the map, with a
+different layer for each week, many anecdotes, and where we slept (in gold).
 
 Finland
 -------
 
 After Iceland, I landed in Finland for a 10 days trip driving up north with
 friends. We ended up taking a train overnight to get back to Helsinki and later
-a flight to Paris.
+a flight to Paris. Beautiful forests and lakes, especially at this time of the
+year (early September), great food and plenty of good memories.
 
 .. raw:: html
 
