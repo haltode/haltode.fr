@@ -1,7 +1,6 @@
-I am Thibault Allançon, a fifth year French student at `EPITA
-<http://www.epita.fr/>`__ (a computer science school near Paris).  I am deeply
-interested in **programming** and **algorithms**. I mainly code in C, C++,
-Python, Java, Rust and OCaml.
+I am Thibault Allançon, a French software engineer living in London.  I am
+deeply interested in **programming** and **algorithms**. I mainly code in C,
+C++, Python, Java, OCaml and Rust.
 
 Projects
 ~~~~~~~~
@@ -20,11 +19,14 @@ Some of my favorite personal projects:
 -  `raytracer <https://github.com/haltode/raytracer>`__: an experimental
    LaTeX-only raytracer made for fun.
 
-School projects:
+University projects:
 
--  Chess engine and AI in C++ (3rd year project).
+-  Low-level and embedded system projects: handwritten kernel, various games and
+   tools on micro-controllers, docker-like sandboxing software, Linux driver for
+   an RFID card reader, image processing algorithms on an NVIDIA GPU, ...
+   (4th and 5th year projects)
 -  Re-implementation of UNIX utility tools in C: ``find``, ``make``, ``malloc``
-   and a POSIX shell (3rd year projects).
+   and a POSIX shell. Chess engine and AI in C++. (3rd year projects)
 -  `OCR <https://github.com/haltode/OCR>`__: Optical character
    recognition software written in C (2nd year project).
 -  `Pacification <https://github.com/haltode/Pacification>`__:
