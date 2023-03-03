@@ -9,11 +9,10 @@ related podcast, ... Most of what I watch comes from:
 
 I try to keep track of every movie I have watched:
 
+- `2022 </movies/2022.html>`_
 - `2021 </movies/2021.html>`_
 - `2020 </movies/2020.html>`_
 - `2019 </movies/2019.html>`_
 
 I started doing this at the end of 2021, so before that date you can expect many
 movies to be missing.
-
-TODO: add movies seen before 2019
