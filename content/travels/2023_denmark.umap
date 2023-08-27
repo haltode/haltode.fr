@@ -1,0 +1,1263 @@
+{
+  "type": "umap",
+  "uri": "http://umap.openstreetmap.fr/en/map/denmark-trip-2023_953658",
+  "properties": {
+    "easing": false,
+    "embedControl": true,
+    "fullscreenControl": true,
+    "searchControl": true,
+    "datalayersControl": true,
+    "zoomControl": true,
+    "permanentCreditBackground": true,
+    "slideshow": {},
+    "captionMenus": true,
+    "captionBar": false,
+    "limitBounds": {},
+    "overlay": {},
+    "tilelayer": {},
+    "licence": "",
+    "description": "",
+    "name": "Denmark trip 2023",
+    "displayPopupFooter": false,
+    "miniMap": false,
+    "moreControl": true,
+    "scaleControl": true,
+    "scrollWheelZoom": true,
+    "zoom": 8
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      11.189575195312502,
+      56.32719809668835
+    ]
+  },
+  "layers": [
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Aalborg",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.921526,
+              57.046263
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Aarhus",
+            "description": "12/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.213405,
+              56.149628
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Ales stenar",
+            "description": "incredible megalithic monument"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              14.054412,
+              55.382654
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Blåvandshuk Fyr",
+            "description": "and WW2 bunkers"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.083255,
+              55.557828
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Brösarp",
+            "description": "riding along the coastline to slowly go back to Denmark"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              14.104916,
+              55.726039
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Copenhagen",
+            "description": "07/07/2023 - 09/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.570072,
+              55.686724
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Det Nationale Testcenter for Store Vindmøller",
+            "description": "very random place to visit"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.887403,
+              57.048736
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Frederiksborg Palace",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.301743,
+              55.935105
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hanstholm",
+            "description": "11/07/2023 (great guesthouse \"La Ola\") and *many* bunkers to explore"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.614495,
+              57.115017
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Helsingborg",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.703706,
+              56.04421
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Helsingborg - Helsingør (ferry)",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.613007,
+              56.034874
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Himmelbjerget",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.685083,
+              56.105206
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hirtshals",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.964974,
+              57.590803
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Malmö",
+            "description": "15/07/2023, our last night of the trip. We went back to Copenhagen the next morning to fly back."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              13.000157,
+              55.605293
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Møns Klint",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.551317,
+              54.964092
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Odense",
+            "description": "09/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.38521,
+              55.399723
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Odense",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.38521,
+              55.399723
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Øresund bridge",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.827019,
+              55.575175
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Råå",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.740826,
+              55.992731
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Ribe",
+            "description": "10/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.764784,
+              55.328404
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Ringkøbing",
+            "description": "sand festival"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.254064,
+              56.090571
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Rømø",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.513829,
+              55.135133
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Roskilde",
+            "description": "the viking museum is really nice"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.081925,
+              55.643348
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Ry",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.771875,
+              56.088356
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Simrishamn",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              14.3,
+              55.566667
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Skagen",
+            "description": "great swim in the most northern part (Grenen) where the north and baltic seas meet"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.58446,
+              57.72597
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Sösdala",
+            "description": "14/07/2023, we spent the night at a viking cottage and tried the forge the next morning"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              13.681493,
+              56.04063
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Stege",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.286134,
+              54.986379
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Stevns Klint",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.447986,
+              55.322816
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Tårs - Spodsbjerg (ferry)",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              11.02846,
+              54.875447
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Thyborøn - Agger (ferry)",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.214588,
+              56.701128
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Vallåkra",
+            "description": "13/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.894094,
+              55.957624
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Ystad",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              13.820117,
+              55.42952
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Aalborg",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.921526,
+              57.046263
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Aarhus",
+            "description": "12/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.213405,
+              56.149628
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Crimson"
+            },
+            "name": "Ales stenar",
+            "description": "incredible megalithic monument"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              14.054412,
+              55.382654
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "Blåvandshuk Fyr",
+            "description": "and WW2 bunkers"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.083255,
+              55.557828
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Crimson"
+            },
+            "name": "Brösarp",
+            "description": "riding along the coastline to slowly go back to Denmark"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              14.104916,
+              55.726039
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "Copenhagen",
+            "description": "07/07/2023 - 09/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.570072,
+              55.686724
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Det Nationale Testcenter for Store Vindmøller",
+            "description": "very random place to visit"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.887403,
+              57.048736
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Chocolate"
+            },
+            "name": "Frederiksborg Palace",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.301743,
+              55.935105
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "Hanstholm",
+            "description": "11/07/2023 (great guesthouse \"La Ola\") and *many* bunkers to explore"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.614495,
+              57.115017
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Chocolate"
+            },
+            "name": "Helsingborg",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.703706,
+              56.04421
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Chocolate"
+            },
+            "name": "Helsingborg - Helsingør (ferry)",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.613007,
+              56.034874
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "LightSkyBlue"
+            },
+            "name": "Himmelbjerget",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.685083,
+              56.105206
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Hirtshals",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.964974,
+              57.590803
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Crimson"
+            },
+            "name": "Malmö",
+            "description": "15/07/2023, our last night of the trip. We went back to Copenhagen the next morning to fly back."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              13.000157,
+              55.605293
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrchid"
+            },
+            "name": "Møns Klint",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.551317,
+              54.964092
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Odense",
+            "description": "09/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.38521,
+              55.399723
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "LightSkyBlue"
+            },
+            "name": "Odense",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.38521,
+              55.399723
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "LightSkyBlue"
+            },
+            "name": "Øresund bridge",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.827019,
+              55.575175
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "LightSkyBlue"
+            },
+            "name": "Råå",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.740826,
+              55.992731
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "ForestGreen"
+            },
+            "name": "Ribe",
+            "description": "10/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.764784,
+              55.328404
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "Ringkøbing",
+            "description": "sand festival"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.254064,
+              56.090571
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "ForestGreen"
+            },
+            "name": "Rømø",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.513829,
+              55.135133
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Chocolate"
+            },
+            "name": "Roskilde",
+            "description": "the viking museum is really nice"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.081925,
+              55.643348
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "LightSkyBlue"
+            },
+            "name": "Ry",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              9.771875,
+              56.088356
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Crimson"
+            },
+            "name": "Simrishamn",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              14.3,
+              55.566667
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Skagen",
+            "description": "great swim in the most northern part (Grenen) where the north and baltic seas meet"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.58446,
+              57.72597
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Chocolate"
+            },
+            "name": "Sösdala",
+            "description": "14/07/2023, we spent the night at a viking cottage and tried the forge the next morning"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              13.681493,
+              56.04063
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrchid"
+            },
+            "name": "Stege",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.286134,
+              54.986379
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrchid"
+            },
+            "name": "Stevns Klint",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.447986,
+              55.322816
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrchid"
+            },
+            "name": "Tårs - Spodsbjerg (ferry)",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              11.02846,
+              54.875447
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "Thyborøn - Agger (ferry)",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              8.214588,
+              56.701128
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "LightSkyBlue"
+            },
+            "name": "Vallåkra",
+            "description": "13/07/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              12.894094,
+              55.957624
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Crimson"
+            },
+            "name": "Ystad",
+            "description": null
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              13.820117,
+              55.42952
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "browsable": true,
+        "name": "Layer 1",
+        "id": 2929471
+      }
+    }
+  ]
+}

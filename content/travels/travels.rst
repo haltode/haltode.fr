@@ -129,3 +129,16 @@ year (early September), great food and plenty of good memories.
 .. raw:: html
 
     <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/finland-trip-2022_810314?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
+
+2023
+====
+
+TODO: HKG, NYC, california
+
+Denmark
+-------
+
+.. raw:: html
+
+    <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/denmark-trip-2023_953658?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
+
