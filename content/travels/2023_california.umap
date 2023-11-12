@@ -1,0 +1,233 @@
+{
+  "type": "umap",
+  "uri": "http://umap.openstreetmap.fr/en/map/california-2023_984386#8/38.421/-120.916",
+  "properties": {
+    "easing": false,
+    "embedControl": true,
+    "fullscreenControl": true,
+    "searchControl": true,
+    "datalayersControl": true,
+    "zoomControl": true,
+    "permanentCreditBackground": true,
+    "slideshow": {},
+    "captionMenus": true,
+    "captionBar": false,
+    "limitBounds": {},
+    "overlay": {},
+    "tilelayer": {},
+    "licence": "",
+    "description": "",
+    "name": "California 2023",
+    "displayPopupFooter": false,
+    "miniMap": false,
+    "moreControl": true,
+    "scaleControl": true,
+    "scrollWheelZoom": true,
+    "zoom": 8
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -120.91552734375001,
+      38.42131826945341
+    ]
+  },
+  "layers": [
+    {
+      "type": "FeatureCollection",
+      "features": [],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "inCaption": true,
+        "browsable": true,
+        "editMode": "advanced",
+        "name": "Layer 1"
+      }
+    },
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "Cupertino",
+            "description": "27/10/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -122.032289,
+              37.322893
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkViolet"
+            },
+            "name": "Lake Tahoe",
+            "description": "24/10/2023 - 25/10/2023\n\nDrove around the whole lake during afternoon/evening and the next morning. It's really stunning."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -120.050353,
+              39.08854
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "Mountain View",
+            "description": "27/10/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -122.08321,
+              37.389389
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "DarkOrange"
+            },
+            "name": "Palo Alto",
+            "description": "27/10/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -122.159846,
+              37.444329
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Green"
+            },
+            "name": "Point Reyes National Seashore",
+            "description": "26/10/2023\n\nBeautiful seashore, it's great to drive along the 1 Highway."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -122.917612,
+              38.070532
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Green"
+            },
+            "name": "Sacramento",
+            "description": "25/10/2023\n\nVisited the gold country in between Tahoe lake and Sacramento, didn't stay much inside the city and mostly drove by."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -121.493895,
+              38.581061
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "showLabel": null,
+              "color": "Gold"
+            },
+            "name": "San Francisco",
+            "description": "21/10/2023\n\nWe didn't stay long in SF, maybe a full day in total."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -122.419906,
+              37.779026
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null,
+              "color": "Green"
+            },
+            "name": "Santa Cruz",
+            "description": "26/10/2023"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -121.99059,
+              37.050096
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "_umap_options": {
+              "iconClass": "Default",
+              "showLabel": null
+            },
+            "name": "Yosemite National Park",
+            "description": "22/10/2023 - 24/10/2023\n\nDefinitely the highlight of the trip, we stayed in Curry Village inside the valley for 2 nights.\n\nDay 1: valley loop, Columbia Rock, lower and upper Yosemite falls\nDay 2: valley tunnel view, glacier point, Wawona, Mariposa Grove (giant sequoias)"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -119.516463,
+              37.8393
+            ]
+          }
+        }
+      ],
+      "_umap_options": {
+        "displayOnLoad": true,
+        "inCaption": true,
+        "browsable": true,
+        "editMode": "advanced",
+        "remoteData": {},
+        "id": 3029834,
+        "permissions": {
+          "edit_status": 0
+        }
+      }
+    }
+  ]
+}

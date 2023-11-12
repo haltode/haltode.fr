@@ -138,7 +138,23 @@ TODO: HKG, NYC, california
 Denmark
 -------
 
+TODO
+
 .. raw:: html
 
     <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/denmark-trip-2023_953658?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
 
+
+California
+----------
+
+After a two weeks work trip to New-York, I spent a week in northern California
+with a work friend. The time of the year was perfect for the weather (late
+October), and Yosemite National Park was absolutely stunning to visit. Half Dome
+hikes were closed unfortunately, so we will have to come back another time for
+it. There's so much to see in California alone that it's hard to choose what to
+do in only a week.
+
+.. raw:: html
+
+    <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/california-2023_984386?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe>
