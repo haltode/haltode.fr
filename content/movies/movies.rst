@@ -9,6 +9,7 @@ related podcast, ... Most of what I watch comes from:
 
 I try to keep track of every movie I have watched:
 
+- `2023 </movies/2023.html>`_
 - `2022 </movies/2022.html>`_
 - `2021 </movies/2021.html>`_
 - `2020 </movies/2020.html>`_

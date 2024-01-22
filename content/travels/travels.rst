@@ -133,12 +133,16 @@ year (early September), great food and plenty of good memories.
 2023
 ====
 
-TODO: HKG, NYC, california
+I started the year with a work trip to Hong-Kong for 3 weeks, hiked a lot around
+the islands. A Denmark trip over the summer to keep exploring Nordic countries,
+and finally a combined New-York work trip with a travel week in California
+during autumn.
 
 Denmark
 -------
 
-TODO
+We did end up exploring a bit of Sweden in the South, but we will have to come
+back for a longer vacation there.
 
 .. raw:: html
 

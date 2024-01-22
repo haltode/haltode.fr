@@ -1,0 +1,199 @@
+title: Movies watched in 2023
+path: movies/2023.html
+template: movies
+navbar:
+  - page: Movies
+    url: /movies.html
+seen:
+- title: All Quiet on the Western Front
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/2IRjbi9cADuDMKmHdLK7LaqQDKA.jpg
+  tmdb_url: https://www.themoviedb.org/movie/49046
+- title: All the President's Men
+  year: 1976
+  poster_url: https://image.tmdb.org/t/p/w154/cPtSHR7D2WGsDBfnC5DxV927hKn.jpg
+  tmdb_url: https://www.themoviedb.org/movie/891
+- title: Navalny
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/49TwWrtOnJjVrMAUvkgrX6WWf11.jpg
+  tmdb_url: https://www.themoviedb.org/movie/926676
+- title: The Worst Person in the World
+  year: 2021
+  poster_url: https://image.tmdb.org/t/p/w154/p5nLFV9aa76zhFK91Qi0xRlXvQ1.jpg
+  tmdb_url: https://www.themoviedb.org/movie/660120
+- title: Athena
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/s8B0GsFEebd0DW2spykLMxnc1Kn.jpg
+  tmdb_url: https://www.themoviedb.org/movie/852046
+- title: Val
+  year: 2021
+  poster_url: https://image.tmdb.org/t/p/w154/vWJKmfmjpkFeTbUGep6t7w5TexA.jpg
+  tmdb_url: https://www.themoviedb.org/movie/834027
+- title: The Menu
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/v31MsWhF9WFh7Qooq6xSBbmJxoG.jpg
+  tmdb_url: https://www.themoviedb.org/movie/593643
+- title: X
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/woTQx9Q4b8aO13jR9dsj8C9JESy.jpg
+  tmdb_url: https://www.themoviedb.org/movie/760104
+- title: Pearl
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/ulBLIBqvdnf4H6JBt0OpMCU1ECn.jpg
+  tmdb_url: https://www.themoviedb.org/movie/949423
+- title: "T\xC1R"
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/dRVAlaU0vbG6hMf2K45NSiIyoUe.jpg
+  tmdb_url: https://www.themoviedb.org/movie/817758
+- title: 'Score: A Film Music Documentary'
+  year: 2017
+  poster_url: https://image.tmdb.org/t/p/w154/hlass0Pq1j6WD6JAucH3mXBoWo4.jpg
+  tmdb_url: https://www.themoviedb.org/movie/426410
+- title: Knock at the Cabin
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/dm06L9pxDOL9jNSK4Cb6y139rrG.jpg
+  tmdb_url: https://www.themoviedb.org/movie/631842
+- title: The Black Phone
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/lr11mCT85T1JanlgjMuhs9nMht4.jpg
+  tmdb_url: https://www.themoviedb.org/movie/756999
+- title: Licorice Pizza
+  year: 2021
+  poster_url: https://image.tmdb.org/t/p/w154/7F8v5IzhgZSfyTSXpIxXE8d1u8v.jpg
+  tmdb_url: https://www.themoviedb.org/movie/718032
+- title: Old
+  year: 2021
+  poster_url: https://image.tmdb.org/t/p/w154/vclShucpUmPhdAOmKgf3B3Z4POD.jpg
+  tmdb_url: https://www.themoviedb.org/movie/631843
+- title: Notre-Dame on Fire
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/kXj3FqzQABWsElUuT9y3WhfGPdT.jpg
+  tmdb_url: https://www.themoviedb.org/movie/811596
+- title: The Devil's Advocate
+  year: 1997
+  poster_url: https://image.tmdb.org/t/p/w154/5ZzBGpxy55OQzHxKVY11IpY6a0o.jpg
+  tmdb_url: https://www.themoviedb.org/movie/1813
+- title: 'John Wick: Chapter 4'
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg
+  tmdb_url: https://www.themoviedb.org/movie/603692
+- title: The Breakfast Club
+  year: 1985
+  poster_url: https://image.tmdb.org/t/p/w154/vSqk5BeQ1HvP9wq0rWZyWqiwXeF.jpg
+  tmdb_url: https://www.themoviedb.org/movie/2108
+- title: Reality
+  year: 2014
+  poster_url: https://image.tmdb.org/t/p/w154/l6aty0lfqsTefZ5xduwT7D44N1q.jpg
+  tmdb_url: https://www.themoviedb.org/movie/179150
+- title: Beau Is Afraid
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/wgVkkjigF31r1nZV80uV0xNIoun.jpg
+  tmdb_url: https://www.themoviedb.org/movie/798286
+- title: Pan's Labyrinth
+  year: 2006
+  poster_url: https://image.tmdb.org/t/p/w154/7PurMm0gUOJZ8Uk0oyuZlt1CKfJ.jpg
+  tmdb_url: https://www.themoviedb.org/movie/1417
+- title: The Railrodder
+  year: 1965
+  poster_url: https://image.tmdb.org/t/p/w154/zvO3xRHgRdqtjGmNOVxo0egmViw.jpg
+  tmdb_url: https://www.themoviedb.org/movie/32323
+- title: Oppenheimer
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg
+  tmdb_url: https://www.themoviedb.org/movie/872585
+- title: Barbie
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg
+  tmdb_url: https://www.themoviedb.org/movie/346698
+- title: 'Top Gun: Maverick'
+  year: 2022
+  poster_url: https://image.tmdb.org/t/p/w154/62HCnUTziyWcpDaBO2i1DX17ljH.jpg
+  tmdb_url: https://www.themoviedb.org/movie/361743
+- title: 'OSS 117: From Africa with Love'
+  year: 2021
+  poster_url: https://image.tmdb.org/t/p/w154/8KZun0DjBSVJtAEb7ytNKIKO0SL.jpg
+  tmdb_url: https://www.themoviedb.org/movie/604563
+- title: Killer Joe
+  year: 2011
+  poster_url: https://image.tmdb.org/t/p/w154/6Tt1TQeOI4TpXu1cBUgNGNGeznW.jpg
+  tmdb_url: https://www.themoviedb.org/movie/73567
+- title: Keep an Eye Out
+  year: 2018
+  poster_url: https://image.tmdb.org/t/p/w154/zfq8FfMbaYL3fHVgrIsFBaDhRPC.jpg
+  tmdb_url: https://www.themoviedb.org/movie/474331
+- title: The French Connection
+  year: 1971
+  poster_url: https://image.tmdb.org/t/p/w154/pH4saPwMjhnVGwmSH6RkMaHrt3s.jpg
+  tmdb_url: https://www.themoviedb.org/movie/1051
+- title: Another Round
+  year: 2020
+  poster_url: https://image.tmdb.org/t/p/w154/aDcIt4NHURLKnAEu7gow51Yd00Q.jpg
+  tmdb_url: https://www.themoviedb.org/movie/580175
+- title: The Hunt
+  year: 2012
+  poster_url: https://image.tmdb.org/t/p/w154/jkixsXzRh28q3PCqFoWcf7unghT.jpg
+  tmdb_url: https://www.themoviedb.org/movie/103663
+- title: Sorcerer
+  year: 1977
+  poster_url: https://image.tmdb.org/t/p/w154/2b7oexm173SF1FSEq0DdgxZZNRH.jpg
+  tmdb_url: https://www.themoviedb.org/movie/38985
+- title: Gangs of New York
+  year: 2002
+  poster_url: https://image.tmdb.org/t/p/w154/lemqKtcCuAano5aqrzxYiKC8kkn.jpg
+  tmdb_url: https://www.themoviedb.org/movie/3131
+- title: Killers of the Flower Moon
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/dB6Krk806zeqd0YNp2ngQ9zXteH.jpg
+  tmdb_url: https://www.themoviedb.org/movie/466420
+- title: Race to the Summit
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/tI9ybrWLiVLljLsNoqEjQF36oG4.jpg
+  tmdb_url: https://www.themoviedb.org/movie/1174725
+- title: The Killer
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/ipkcgvN7h3yZnbYowthloHLKsf4.jpg
+  tmdb_url: https://www.themoviedb.org/movie/800158
+- title: Asteroid City
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/qdq40gRS8xKnpFt5V75t6lUHgpx.jpg
+  tmdb_url: https://www.themoviedb.org/movie/747188
+- title: BlackBerry
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/nQSvHZDuMlrZdm7ooMo8gb4CXhW.jpg
+  tmdb_url: https://www.themoviedb.org/movie/1016084
+- title: Renfield
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/jG83l0tDwoQj3hBAioIsJ5rTPHw.jpg
+  tmdb_url: https://www.themoviedb.org/movie/649609
+- title: Anatomy of a Fall
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/kQs6keheMwCxJxrzV83VUwFtHkB.jpg
+  tmdb_url: https://www.themoviedb.org/movie/915935
+- title: Phantom Thread
+  year: 2017
+  poster_url: https://image.tmdb.org/t/p/w154/hgoWjp9Sh0MI97eAMZCnIoVfgvq.jpg
+  tmdb_url: https://www.themoviedb.org/movie/400617
+- title: Napoleon
+  year: 2023
+  poster_url: https://image.tmdb.org/t/p/w154/jE5o7y9K6pZtWNNMEw3IdpHuncR.jpg
+  tmdb_url: https://www.themoviedb.org/movie/753342
+- title: A Taxi Driver
+  year: 2017
+  poster_url: https://image.tmdb.org/t/p/w154/iXVaWbxmyPk4KZGZk5GGDGFieMX.jpg
+  tmdb_url: https://www.themoviedb.org/movie/437068
+- title: Royal Family
+  year: 1969
+  poster_url: https://image.tmdb.org/t/p/w154/aPJmXksrcBFHkVQkkd5NH1wKzAl.jpg
+  tmdb_url: https://www.themoviedb.org/movie/766503
+- title: An Officer and a Spy
+  year: 2019
+  poster_url: https://image.tmdb.org/t/p/w154/kqlzmKVBpGz7OMWfOXlK4y1m9Uz.jpg
+  tmdb_url: https://www.themoviedb.org/movie/399121
+- title: The Stronghold
+  year: 2021
+  poster_url: https://image.tmdb.org/t/p/w154/nLanxl7Xhfbd5s8FxPy8jWZw4rv.jpg
+  tmdb_url: https://www.themoviedb.org/movie/637534
+- title: The Connection
+  year: 2014
+  poster_url: https://image.tmdb.org/t/p/w154/4IAmHRGH8JRFuL4RYLvzOKNSBuz.jpg
+  tmdb_url: https://www.themoviedb.org/movie/197950
