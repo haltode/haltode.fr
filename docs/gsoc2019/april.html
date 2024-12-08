@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>April</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/gsoc2019.html">GSoC 2019</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">April</a></h1>
+
+        </header>
+
+
+        <h2 id="application-period-part-2">Application period (part 2)</h2>
+<p>Now that everything is running, we can gather some data!</p>
+<h3 id="final-setup">Final setup</h3>
+<details>
+<summary>Dockerfile</summary>
+<pre><code class="docker">FROM maven:3.6.0-jdk-11
+WORKDIR /app
+
+# Download webgraph binary
+RUN curl -O http://webgraph.di.unimi.it/webgraph-3.6.1-bin.tar.gz
+RUN tar xvfz webgraph-3.6.1-bin.tar.gz
+RUN cp webgraph-3.6.1/webgraph-3.6.1.jar .
+
+# Download webgraph dependencies
+RUN curl -O http://webgraph.di.unimi.it/webgraph-deps.tar.gz
+RUN tar xvfz webgraph-deps.tar.gz
+
+# Download LAW (for LLP ordering)
+RUN curl -O http://law.di.unimi.it/software/download/law-2.5.1-bin.tar.gz
+RUN tar xvfz law-2.5.1-bin.tar.gz
+RUN cp law-2.5.1/law-2.5.1.jar .
+
+# Monitoring
+RUN apt-get update
+RUN apt-get install -y time
+
+WORKDIR /graph
+COPY compress_graph .</code></pre>
+</details>
+<details>
+<summary>compress_graph</summary>
+<pre><code class="bash">#!/bin/bash
+
+DATASET=release_to_obj
+
+setup_dataset() {
+    # Download the edge list
+    curl -O https://annex.softwareheritage.org/public/dataset/swh-graph-2019-01-28/edges/$DATASET.csv.gz
+    # Uncompress the edge list
+    gunzip $DATASET.csv.gz
+    mv $DATASET.csv $DATASET.edges
+    # Compute the node list
+    tr &#39; &#39; &#39;\n&#39; &lt; $DATASET.edges | sort -u &gt; $DATASET.nodes
+}
+
+java_cmd () {
+    /usr/bin/time -v java -Xmx256G -cp /app/&#39;*&#39; $*
+}
+
+mkdir -p bv bv_llp bv_sym
+
+# Build a function (MPH) that maps node names to node numbers in lexicographic order (output: $DATASET.mph)
+java_cmd it.unimi.dsi.sux4j.mph.GOVMinimalPerfectHashFunction $DATASET.mph /data/graph/$DATASET.nodes
+
+# Build the graph in BVGraph format (output: $DATASET.{graph,offsets,properties})
+java_cmd it.unimi.dsi.webgraph.ScatteredArcsASCIIGraph -f $DATASET.mph bv/$DATASET &lt; /data/graph/$DATASET.edges
+
+# Create a symmetrized version of the graph (output: $DATASET.{graph,offsets,properties})
+java_cmd it.unimi.dsi.webgraph.Transform symmetrizeOffline bv/$DATASET bv_sym/$DATASET
+
+# Find a better permutation through Layered LPA (output: $DATASET.llpa)
+java_cmd it.unimi.dsi.law.graph.LayeredLabelPropagation bv_sym/$DATASET $DATASET.llpa
+
+# Permute the graph accordingly (output: $DATASET.{graph,offsets,properties})
+java_cmd it.unimi.dsi.webgraph.Transform mapOffline bv/$DATASET bv_llp/$DATASET $DATASET.llpa
+
+# Compute graph statistics (output: $DATASET.{in*,out*,stats})
+java_cmd it.unimi.dsi.webgraph.Stats -s bv/$DATASET
+java_cmd it.unimi.dsi.webgraph.Stats -s bv_llp/$DATASET
+java_cmd it.unimi.dsi.webgraph.Stats -s bv_sym/$DATASET</code></pre>
+</details>
+<p>To build and run the docker container:</p>
+<pre><code class="bash">$ docker build -t dataset .
+$ docker run --name dataset --volume /path/to/graph/:/data -ti dataset:latest bash</code></pre>
+<p>Where the <code>/path/to/graph/</code> directory contains the edges
+and nodes lists. The Docker volume enables you to easily access the
+graph stored outside of the container itself.</p>
+<h3 id="results">Results</h3>
+<p>As a reminder, the VM used had 2TB of RAM and 128 vCPUs. Also note
+that these results may vary because the LLP step uses random
+permutations.</p>
+<p>Datasets are taken from here: <a
+href="https://annex.softwareheritage.org/public/dataset/graph-compression/swh-graph-2019-01-28/edges/">https://annex.softwareheritage.org/public/dataset/graph-compression/swh-graph-2019-01-28/edges/</a></p>
+<figure>
+<img src="/img/gsoc2019/table1_compression_results.png"
+alt="/img/gsoc2019/table1_compression_results.png" />
+<figcaption>Table 1: Graph compression results</figcaption>
+</figure>
+<figure>
+<img src="/img/gsoc2019/table2_datasets_analysis.png"
+alt="/img/gsoc2019/table2_datasets_analysis.png" />
+<figcaption>Table 2: Datasets analysis</figcaption>
+</figure>
+<p>To count the nodes and edges, I used <a
+href="https://www.gnu.org/software/parallel/">GNU Parallel</a> tool:</p>
+<pre><code class="bash">$ parallel --pipepart -a dataset wc -l | awk &#39;{s+=$1} END {print s}&#39;</code></pre>
+<figure>
+<img src="/img/gsoc2019/table3_compression_timings.png"
+alt="/img/gsoc2019/table3_compression_timings.png" />
+<figcaption>Table 3: Graph compression timings</figcaption>
+</figure>
+<p>I also tried to get monitoring running for memory and CPU
+consumption. To monitor the Docker container, I chose <a
+href="https://github.com/google/cadvisor">cAdvisor</a>, <a
+href="https://grafana.com/">Grafana</a> and <a
+href="https://prometheus.io/">Prometheus</a>.</p>
+<p>The <a
+href="https://github.com/google/cadvisor/blob/master/docs/storage/prometheus.md">cadvisor
+documentation</a> suggests to run this <a
+href="https://github.com/vegasbrianc/prometheus">Prometheus
+monitoring</a>. One problem I could not fix was cadvisor metrics not
+reading correctly the CPU stats (even with
+<code>--enable_load_reader=true</code>). Even though the CPU consumption
+is not the most interesting/relevant metric here, I tried and search for
+solutions but ended up running out of time since the VM was only
+available for two weeks, so I started the experiments anyway. To access
+the Grafana dashboard you can setup SSH port forwarding:</p>
+<pre><code class="bash">$ ssh -L localhost:3000:localhost:3000 your_server</code></pre>
+<figure>
+<img src="/img/gsoc2019/table4_compression_mem.png"
+alt="/img/gsoc2019/table4_compression_mem.png" />
+<figcaption>Table 4: Graph compression memory usage</figcaption>
+</figure>
+<p>This table shows max memory usage (obtained with
+<code>time --verbose</code>). The Docker monitoring memory graphs look
+like this:</p>
+<figure>
+<img src="/img/gsoc2019/docker_monitoring_mem.png"
+alt="/img/gsoc2019/docker_monitoring_mem.png" />
+<figcaption>Docker monitoring memory usage
+(snapshot_to_obj)</figcaption>
+</figure>
+<p>After all the <code>time -v</code> command seems to be more practical
+since you can measure individual steps, and it is not affected by any
+Docker container memory overhead.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>These experiments took many tries before obtaining the final results.
+I was entirely new to WebGraph, Docker, Grafana/Prometheus monitoring (+
+the cadvisor problem about reading CPU stats). I had to re-start from
+scratch multiple times the compression script because of the above
+reasons, but also the Java heap running out of space or even disk space
+being full!</p>
+<p>Additionally, the overhead needed to download/uncompress the edge
+list and to create the node list prevented me to run any sort of
+experiments on the really huge datasets (terabytes files).</p>
+<p>In the end, the results are still very interesting and give us first
+feedbacks on using the WebGraph framework!</p>
+<h2 id="students-selection-period-part-1">Students selection period
+(part 1)</h2>
+<p>After the two weeks, we needed to downscale the VM to 256GB of RAM
+and 64 vCPUs, and free up some disk space. We uploaded all the results
+at Software Heritage annex: <a
+href="https://annex.softwareheritage.org/public/dataset/graph-compression/output/">https://annex.softwareheritage.org/public/dataset/graph-compression/output/</a>.
+Moving all this data around took quite some time, and meant doing some
+cleaning up too.</p>
+<p>During waiting time (experiments, transferring data, etc.) I kept
+digging into research papers, the Software Heritage infrastructure and
+the WebGraph framework.</p>
+<h3 id="research-papers">Research papers</h3>
+<p>I read through many research papers, but also looked into their
+citations and references. Reading scientific papers is quite new to me,
+so this is was rather slow process. I took hand written notes, and
+transcripted them for the most <a
+href="/gsoc2019/notes/papers.html">important papers</a>.</p>
+<p>Some interesting blog posts about how to read a scientific paper:</p>
+<ul>
+<li><a
+href="https://violentmetaphors.com/2013/08/25/how-to-read-and-understand-a-scientific-paper-2/">https://violentmetaphors.com/2013/08/25/how-to-read-and-understand-a-scientific-paper-2/</a></li>
+<li><a
+href="https://www.cc.gatech.edu/~akmassey/posts/2012-02-15-advice-on-reading-academic-papers.html">https://www.cc.gatech.edu/~akmassey/posts/2012-02-15-advice-on-reading-academic-papers.html</a></li>
+</ul>
+<p>Reading the graph compression literature helped to have a better
+overall understanding of the multiple approaches and use cases. Most
+studies I found used too small datasets or were very specific to the
+graph properties, but two papers got my attention:</p>
+<ul>
+<li>A new compression algorithm with an open-source C++ implementation:
+<em>Smaller and Faster: Parallel Processing of Compressed Graphs with
+Ligra+</em>, Julian Shun, Laxman Dhulipala, Guy E. Blelloch (2015). The
+framework is here: <a
+href="https://github.com/jshun/ligra">https://github.com/jshun/ligra</a>.</li>
+<li>A reproducibility study of the Facebook paper with a full <a
+href="https://github.com/pisa-engine/ecir19-bisection/">C++17
+open-source implementation</a>: <em>Compressing Inverted Indexes with
+Recursive Graph Bisection: a reproducibility study</em>, Joel Mackenzie,
+Antonio Mallia, Matthias Petri, J. Shane Culpepper, and Torsten Suel
+(2019). The study came out this month, quite lucky!</li>
+</ul>
+<h3 id="swh-infrastructure">SWH infrastructure</h3>
+<p>Getting to know the Software Heritage meant digging into their
+documentation, wiki, source code and published papers:</p>
+<ul>
+<li><a
+href="https://docs.softwareheritage.org/devel/">https://docs.softwareheritage.org/devel/</a></li>
+<li><a
+href="https://wiki.softwareheritage.org/wiki/Special:AllPages">https://wiki.softwareheritage.org/wiki/Special:AllPages</a></li>
+<li><a
+href="https://forge.softwareheritage.org/source/swh-environment/">https://forge.softwareheritage.org/source/swh-environment/</a></li>
+<li><a
+href="https://hal.archives-ouvertes.fr/hal-01590958/document">Software
+Heritage: Why and How to Preserve Software Source Code</a></li>
+<li><a
+href="https://hal.archives-ouvertes.fr/hal-01865790v4/">Identifiers for
+Digital Objects: the Case of Software Source Code Preservation</a></li>
+<li>The Software Heritage Graph Dataset: Public software development
+under one roof</li>
+</ul>
+<p>I took notes on the <a
+href="/gsoc2019/notes/infra.html">infrastructure</a> itself and the new
+programming concepts I discovered along the way <a
+href="/gsoc2019/notes/misc.html">here</a>.</p>
+<h3 id="webgraph-framework">WebGraph framework</h3>
+<p>From the timings of the experiments, the LLP step seemed to take too
+much time to scale up to the larger datasets. At first I thought this
+was because the process was single-threaded, but only the DFS
+initialization step at the start is, the rest is multi-threaded. One
+solution is to simply reduce the number of $\gamma$ values. Another
+possibility suggested by Sebastiano when dealing with very sparse graph,
+is to simply not use LLP. The DFS ordering will yield very similar
+compression ratio, in <strong>much</strong> less time (on the rev_to_rev
+dataset, the DFS takes 30min compared to 32 hours for the full LLP).</p>
+<p>After all these experiments, and data transferred to the SWH annex,
+some cleaning up was necessary to correctly share the results with
+Sebastiano and Paolo (I also added graph statistics).</p>
+<p>Each datasets directory contains:</p>
+<ul>
+<li><code>bv/</code>: graph compression with BVGraph</li>
+<li><code>bv_llp/</code>: graph compression with BVGraph + LLP</li>
+<li><code>bv_sym/</code>: graph compression with BVGraph
+(symmetrized)</li>
+</ul>
+<p>A graph is stored as a <code>.graph</code>, <code>.offsets</code>,
+and <code>.properties</code> files (with a <code>.obl</code> file to
+load the graph faster). Statistics about the graph are stored in
+<code>.properties</code>, <code>.indegree</code>,
+<code>.indegrees</code>, <code>.outdegree</code>,
+<code>.outdegrees</code>, and <code>.stats</code> files.</p>
+<p>Now the goal is to run the WebGraph framework on the terabytes
+datasets (dir_to_dir and dir_to_file). Unfortunately, no VM was
+available at the time with enough disk space and cores to run
+experiments on these datasets.</p>
+<h3 id="graph-bisection">Graph bisection</h3>
+<p>I decided to start experimenting with the graph bisection
+implementation first since we already got some positive feedbacks on its
+results from the WebGraph authors. Experiments on Ligra+ framework will
+have to wait a bit.</p>
+<p>I emailed the author of the reproducibility study to learn more about
+the input format needed and how to transfer our data representation to
+theirs. Joel was very helpful and enthusiastic with our work! Here is
+the C++ program I wrote to convert SWH datasets to <a
+href="https://pisa.readthedocs.io/en/latest/index_format.html">ds2i
+format</a>:</p>
+<details>
+<summary>swh_to_ds2i.cpp</summary>
+<pre><code class="cpp">#include &lt;algorithm&gt;
+#include &lt;cassert&gt;
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;unordered_map&gt;
+#include &lt;vector&gt;
+
+struct Dataset
+{
+    std::string name;
+    size_t nb_nodes;
+    size_t nb_edges;
+};
+
+std::vector&lt;Dataset&gt; datasets = {
+    {&quot;release_to_obj&quot;, 16222788, 9907464},
+    {&quot;origin_to_snapshot&quot;, 112564374, 194970670},
+    {&quot;dir_to_rev&quot;, 35399184, 481829426},
+    {&quot;snapshot_to_obj&quot;, 170999796, 831089515},
+    {&quot;rev_to_rev&quot;, 1117498391, 1165813689},
+    {&quot;rev_to_dir&quot;, 2047888941, 1125083793}
+};
+
+void write_int_to_bin_file(std::ofstream &amp;bin_file, uint32_t n)
+{
+    bin_file.write(reinterpret_cast&lt;const char *&gt;(&amp;n), sizeof(n));
+}
+
+void convert_dataset(
+    std::string dataset_name, std::string graph_dir, std::string output_dir)
+{
+    auto dataset =
+        std::find_if(datasets.begin(), datasets.end(),
+            [&amp;dataset_name]
+            (const Dataset &amp;d) -&gt; bool { return d.name == dataset_name; });
+    if (dataset == datasets.end())
+    {
+        std::cout &lt;&lt; &quot;Could not find dataset: &quot; &lt;&lt; dataset_name &lt;&lt; &quot;\n&quot;;
+        return;
+    }
+
+    std::unordered_map&lt;std::string, uint32_t&gt; node_ids;
+    std::unordered_map&lt;uint32_t, uint32_t&gt; degrees;
+    node_ids.reserve(dataset-&gt;nb_nodes);
+    degrees.reserve(dataset-&gt;nb_nodes);
+
+    // Read graph nodes
+    {
+        std::ifstream graph (graph_dir + dataset-&gt;name + &quot;.nodes&quot;);
+        std::string node;
+        size_t node_cnt = 0;
+        while (std::getline(graph, node))
+        {
+            node_ids[node] = node_cnt;
+            node_cnt++;
+        }
+
+        std::cout &lt;&lt; &quot;Read &quot; &lt;&lt; node_cnt &lt;&lt; &quot; nodes.\n&quot;;
+        assert(node_cnt == dataset-&gt;nb_nodes);
+    }
+
+    // A binary sequence is a sequence of integers prefixed by its length, where
+    // both the sequence integers and the length are written as 32-bit
+    // little-endian unsigned integers.
+
+    // .docs output
+    {
+        std::string file_path = output_dir + dataset-&gt;name + &quot;.docs&quot;;
+        std::ofstream docs (file_path, std::ios::out | std::ios::binary);
+
+        uint32_t seq_length = 1;
+        uint32_t seq_nb_nodes = 2 * dataset-&gt;nb_nodes;
+        write_int_to_bin_file(docs, seq_length);
+        write_int_to_bin_file(docs, seq_nb_nodes);
+
+        std::ifstream graph (graph_dir + dataset-&gt;name + &quot;.edges&quot;);
+        std::string node1, node2;
+        size_t edge_cnt = 0;
+        while ( std::getline(graph, node1, &#39; &#39;) &amp;&amp;
+                std::getline(graph, node2))
+        {
+            edge_cnt++;
+
+            // Transform graph into a bipartite one
+            uint32_t seq_node1_id = node_ids[node1];
+            uint32_t seq_node2_id = node_ids[node2];
+            uint32_t seq_node1bis_id = seq_node1_id + dataset-&gt;nb_nodes;
+            uint32_t seq_node2bis_id = seq_node2_id + dataset-&gt;nb_nodes;
+
+            degrees[seq_node1_id]++;
+            degrees[seq_node2_id]++;
+
+            uint32_t seq_length = 2;
+            write_int_to_bin_file(docs, seq_length);
+            write_int_to_bin_file(docs, seq_node1_id);
+            write_int_to_bin_file(docs, seq_node2bis_id);
+
+            write_int_to_bin_file(docs, seq_length);
+            write_int_to_bin_file(docs, seq_node2_id);
+            write_int_to_bin_file(docs, seq_node1bis_id);
+        }
+
+        std::cout &lt;&lt; &quot;Read &quot; &lt;&lt; edge_cnt &lt;&lt; &quot; edges.\n&quot;;
+        assert(edge_cnt == dataset-&gt;nb_edges);
+    }
+
+    // .freq output
+    {
+        std::string file_path = output_dir + dataset-&gt;name + &quot;.freqs&quot;;
+        std::ofstream freqs (file_path, std::ios::out | std::ios::binary);
+
+        for (size_t i = 0; i &lt; 2 * dataset-&gt;nb_edges; i++)
+        {
+            uint32_t seq_length = 2;
+            uint32_t seq_freq_node1 = 1;
+            uint32_t seq_freq_node2 = 1;
+
+            write_int_to_bin_file(freqs, seq_length);
+            write_int_to_bin_file(freqs, seq_freq_node1);
+            write_int_to_bin_file(freqs, seq_freq_node2);
+        }
+    }
+
+    // .sizes output
+    {
+        std::string file_path = output_dir + dataset-&gt;name + &quot;.sizes&quot;;
+        std::ofstream sizes (file_path, std::ios::out | std::ios::binary);
+
+        uint32_t seq_length = 2 * dataset-&gt;nb_nodes;
+        write_int_to_bin_file(sizes, seq_length);
+        for (size_t i = 0; i &lt; dataset-&gt;nb_nodes; i++)
+            write_int_to_bin_file(sizes, degrees[i]);
+        for (size_t i = 0; i &lt; dataset-&gt;nb_nodes; i++)
+            write_int_to_bin_file(sizes, degrees[i]);
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc != 4)
+    {
+        std::cout &lt;&lt; &quot;Usage: swh_to_ds2i dataset_name graph_dir output_dir\n&quot;;
+        return 0;
+    }
+
+    std::string dataset_name = argv[1];
+    std::string graph_dir = argv[2];
+    if (graph_dir.back() != &#39;/&#39;)
+        graph_dir += &#39;/&#39;;
+    std::string output_dir = argv[3];
+    if (output_dir.back() != &#39;/&#39;)
+        output_dir += &#39;/&#39;;
+
+    convert_dataset(dataset_name, graph_dir, output_dir);
+
+    return 0;
+}</code></pre>
+</details>
+<p>Once all the small datasets were converted to the ds2i format, I
+wrote a Bash script to automate the compression process and compute
+statistics:</p>
+<details>
+<summary>run_compression.sh</summary>
+<pre><code class="bash">#!/bin/bash
+
+DATASET=$1
+
+OUTPUT_DIR=output/$DATASET
+DATASET_DIR=~/haltode/data/results/graph
+PISA_PREFIX=ecir19-bisection/external/pisa/build/bin/
+
+DS2I_IDX_DIR=$OUTPUT_DIR/original_ds2i
+
+mkdir -p $OUTPUT_DIR
+
+convert_to_ds2i() {
+    echo &quot;[Convert to ds2i]&quot;
+    mkdir -p $DS2I_IDX_DIR
+    ./swh_to_ds2i $DATASET $DATASET_DIR $DS2I_IDX_DIR
+    echo &quot;&quot;
+}
+
+compute_random_index() {
+    echo &quot;[Random index]&quot;
+    RANDOM_IDX_DIR=$OUTPUT_DIR/random_ds2i
+    mkdir -p $RANDOM_IDX_DIR
+    ./$PISA_PREFIX/shuffle_docids $DS2I_IDX_DIR/$DATASET $RANDOM_IDX_DIR/swh
+    echo &quot;&quot;
+}
+
+compute_minhash_index() {
+    echo &quot;[Minhash index]&quot;
+    MINHASH_IDX_DIR=$OUTPUT_DIR/minhash_ds2i
+    mkdir -p $MINHASH_IDX_DIR
+    ./ecir19-bisection/tools/minhash/minhash $DS2I_IDX_DIR/$DATASET &gt; $MINHASH_IDX_DIR/minhash.ordering
+    ./$PISA_PREFIX/shuffle_docids $DS2I_IDX_DIR/$DATASET $MINHASH_IDX_DIR/swh $MINHASH_IDX_DIR/minhash.ordering
+    echo &quot;&quot;
+}
+
+compute_bisec_index() {
+    echo &quot;[Graph bisection index]&quot;
+    BISEC_IDX_DIR=$OUTPUT_DIR/bisec_ds2i
+    mkdir -p $BISEC_IDX_DIR
+    ./$PISA_PREFIX/recursive_graph_bisection -c $DS2I_IDX_DIR/$DATASET -o $BISEC_IDX_DIR/swh --store-fwdidx $BISEC_IDX_DIR/swh.forward-index -m 4096 
+    echo &quot;&quot;
+}
+
+compute_stats() {
+    echo &quot;[Stats]&quot;
+    STATS_DIR=$OUTPUT_DIR/stats
+    mkdir -p $STATS_DIR
+    for idx in random minhash bisec; do
+        for codec in opt block_interpolative block_streamvbyte; do
+            ./$PISA_PREFIX/create_freq_index -o /dev/null -t $codec -c $OUTPUT_DIR/&quot;$idx&quot;_ds2i/swh &amp;&gt; $STATS_DIR/$idx.$codec.log
+        done
+        ./$PISA_PREFIX/evaluate_collection_ordering $OUTPUT_DIR/&quot;$idx&quot;_ds2i/swh &amp;&gt; $STATS_DIR/$idx.log_gap
+    done
+    echo &quot;&quot;
+}
+
+convert_to_ds2i
+compute_random_index
+compute_minhash_index
+compute_bisec_index
+compute_stats</code></pre>
+</details>
+<p>The process ran fine with release_to_obj dataset, but got SIGKILL
+when running on larger datasets (dir_to_rev and origin_to_snapshot).
+After talking with the author directly, it seems like there is indeed a
+big memory overhead. Furthermore the reproducibility study focused
+entirely on inverted indexes and not graphs, and compression ratios on
+sparse graphs were not great compared to WebGraph.</p>
+<p>In the end, the WebGraph framework seems to be the way to go: very
+mature and complete implementation with great compression ratio and
+timings. I will still run experiments with other algorithms in the
+background (Ligra+, graph bisection), until any final decision on the
+implementation is taken.</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

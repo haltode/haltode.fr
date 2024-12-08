@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>May</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/gsoc2019.html">GSoC 2019</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">May</a></h1>
+
+        </header>
+
+
+        <h2 id="students-selection-period-part-2">Students selection period
+(part 2)</h2>
+<h3 id="ligra">Ligra+</h3>
+<p>As for the graph bisection algorithm, I had to write a conversion
+script (which is very similar to the one I already wrote):</p>
+<details>
+<summary>swh_to_ligra.cpp</summary>
+<pre><code class="cpp">#include &lt;algorithm&gt;
+#include &lt;cassert&gt;
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;unordered_map&gt;
+#include &lt;vector&gt;
+
+struct Dataset
+{
+    std::string name;
+    size_t nb_nodes;
+    size_t nb_edges;
+};
+
+const std::vector&lt;Dataset&gt; datasets = {
+    {&quot;release_to_obj&quot;, 16222788, 9907464},
+    {&quot;origin_to_snapshot&quot;, 112564374, 194970670},
+    {&quot;dir_to_rev&quot;, 35399184, 481829426},
+    {&quot;snapshot_to_obj&quot;, 170999796, 831089515},
+    {&quot;rev_to_rev&quot;, 1117498391, 1165813689},
+    {&quot;rev_to_dir&quot;, 2047888941, 1125083793}
+};
+
+void convert_dataset(
+    std::string dataset_name, std::string graph_dir, std::string output_dir)
+{
+    auto dataset =
+        std::find_if(datasets.begin(), datasets.end(),
+            [&amp;dataset_name]
+            (const Dataset &amp;d) -&gt; bool { return d.name == dataset_name; });
+    if (dataset == datasets.end())
+    {
+        std::cout &lt;&lt; &quot;Could not find dataset: &quot; &lt;&lt; dataset_name &lt;&lt; &quot;\n&quot;;
+        return;
+    }
+
+    std::unordered_map&lt;std::string, uint32_t&gt; node_ids;
+    node_ids.reserve(dataset-&gt;nb_nodes);
+
+    // Read graph nodes
+    {
+        std::ifstream graph (graph_dir + dataset-&gt;name + &quot;.nodes&quot;);
+        std::string node;
+        size_t node_cnt = 0;
+        while (std::getline(graph, node))
+        {
+            node_ids[node] = node_cnt;
+            node_cnt++;
+        }
+
+        std::cout &lt;&lt; &quot;Read &quot; &lt;&lt; node_cnt &lt;&lt; &quot; nodes.\n&quot;;
+        assert(node_cnt == dataset-&gt;nb_nodes);
+    }
+
+    std::vector&lt;std::vector&lt;int&gt;&gt; edges(dataset-&gt;nb_nodes);
+
+    {
+        std::ifstream graph (graph_dir + dataset-&gt;name + &quot;.edges&quot;);
+        std::string node1, node2;
+        size_t edge_cnt = 0;
+        while ( std::getline(graph, node1, &#39; &#39;) &amp;&amp;
+                std::getline(graph, node2))
+        {
+            edge_cnt++;
+            uint32_t node1_id = node_ids[node1];
+            uint32_t node2_id = node_ids[node2];
+            edges[node1_id].emplace_back(node2_id);
+        }
+
+        std::cout &lt;&lt; &quot;Read &quot; &lt;&lt; edge_cnt &lt;&lt; &quot; edges.\n&quot;;
+        assert(edge_cnt == dataset-&gt;nb_edges);
+    }
+
+    std::string file_path = output_dir + dataset-&gt;name + &quot;.adj_graph&quot;;
+    std::ofstream ligra_fmt (file_path, std::ios::out | std::ios::binary);
+
+    ligra_fmt &lt;&lt; &quot;AdjacencyGraph\n&quot;;
+    ligra_fmt &lt;&lt; dataset-&gt;nb_nodes &lt;&lt; &#39;\n&#39;;
+    ligra_fmt &lt;&lt; dataset-&gt;nb_edges &lt;&lt; &#39;\n&#39;;
+
+    long long sum_degree = 0;
+    for (uint32_t node_id = 0; node_id &lt; dataset-&gt;nb_nodes; node_id++)
+    {
+        ligra_fmt &lt;&lt; sum_degree &lt;&lt; &#39;\n&#39;;
+        sum_degree += edges[node_id].size();
+    }
+
+    for (uint32_t node_id = 0; node_id &lt; dataset-&gt;nb_nodes; node_id++)
+        for (auto edge : edges[node_id])
+            ligra_fmt &lt;&lt; edge &lt;&lt; &#39;\n&#39;;
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc != 4)
+    {
+        std::cout &lt;&lt; &quot;Usage: swh_to_ligra dataset_name graph_dir output_dir\n&quot;;
+        return 0;
+    }
+
+    std::string dataset_name = argv[1];
+    std::string graph_dir = argv[2];
+    if (graph_dir.back() != &#39;/&#39;)
+        graph_dir += &#39;/&#39;;
+    std::string output_dir = argv[3];
+    if (output_dir.back() != &#39;/&#39;)
+        output_dir += &#39;/&#39;;
+
+    convert_dataset(dataset_name, graph_dir, output_dir);
+
+    return 0;
+}</code></pre>
+</details>
+<p>I correctly compressed our smallest datasets
+(<code>release_to_obj</code>, <code>origin_to_snapshot</code> and
+<code>dir_to_rev</code>), however when trying to apply the same method
+to a bigger dataset (eg: <code>snapshot_to_obj</code>) I got a
+SIGSEGV.</p>
+<p>I wrote the authors of the paper an email for two reasons:</p>
+<ul>
+<li>Better understand why this SIGSEGV happens (maybe similar problem as
+the graph bisection memory consumption).</li>
+<li>Have some insights on how this Ligra+ compression algorithm would
+behave on very sparse graphs.</li>
+</ul>
+<p>I didn't get any reply so I moved on, and we decided to stick with
+WebGraph anyway.</p>
+<h3 id="webgraph">WebGraph</h3>
+<p>Here is the git repo my mentor created for the compression project:
+<a
+href="https://forge.softwareheritage.org/source/graph-compression/">https://forge.softwareheritage.org/source/graph-compression/</a></p>
+<p>LLP does not scale on our graph, the <code>rev_to_dir</code> with 2B
+nodes and 1B edges was already quite a lot for the LLP, so we decided to
+use the BFS re-ordering as this should land quite similar result because
+of our graph topology, while taking way less time (on
+<code>rev_to_dir</code> LLP took 53h compared to 30min for BFS).</p>
+<p>We needed to port some functions of WebGraph to support 64-bit
+version (since our graph have more than $2^{31}$ nodes and edges). I
+sent multiple patches to Sebastiano and Paolo:</p>
+<ul>
+<li>A 64-bit version of the BFS traversal on a compressed graph.</li>
+<li>A <code>--zipped</code> flag enabling to read gzip files as
+input.</li>
+</ul>
+<h3 id="rest-api">REST API</h3>
+<p>On the server side, I decided to go with Java to easily work with the
+WebGraph framework. I was totally new to the language and ecosystem so
+learning the language and how to work with it was my first priority. On
+the client side, I chose Python since almost all of the Software
+Heritage infrastructure is written in Python, and they already
+implemented a class to deal with such API.</p>
+<p>The first step was to enable REST API communication between the Java
+server and the Python client. I initially tried <a
+href="http://sparkjava.com/">Spark</a> as the web framework for Java but
+moved to <a href="https://javalin.io/">Javalin</a> because of a problem
+with HTTP 1.1 chunked transfer encoding (on the Python side). The client
+used the already implemented <code>swh.core.SWHRemoteAPI</code>, not
+much to do more.</p>
+<p>Loading the compressed graph and working with WebGraph was the next
+logical step, before implementing actual graph operations.</p>
+<h2 id="community-bonding">Community Bonding</h2>
+<p>On May 6th, I got officially accepted to work with Software Heritage
+as my first Google Summer of Code! \o/</p>
+<p>I had a call with my mentors (a co-mentor joined in) to discuss
+about:</p>
+<ul>
+<li>GSoC details: schedule for a weekly call with mentors, weekly recap
+on the SWH mailing list every Friday</li>
+<li>Recap of what has been done so far (for the new co-mentor)</li>
+<li><dl>
+<dt>Future goals</dt>
+<dd>
+<ul>
+<li>Define graph operations and graph structure (compressed as a whole
+or individual datasets, dynamic or static, etc.)</li>
+<li>Lay out REST API routes</li>
+<li>Compress the <strong>very</strong> large datasets
+(<code>dir_to_{dir,file}</code>)</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<h3 id="webgraph-1">WebGraph</h3>
+<p>Both my mentors got to meet Sebastiano IRL in Paris in a conference
+about his work! He also gave us access to a VM they use for experiments
+with 1TB of RAM and 40 CPUs. This enabled us to start compression on
+bigger datasets, but first we needed to create the .nodes files (which
+took some time):</p>
+<pre><code class="bash">zcat $dataset.edges.gz | tr &#39; &#39; &#39;\n&#39; |
+sort -u --parallel $nb_threads -S100g -T tmp |
+pigz -p $nb_threads -c &gt; $dataset.nodes.gz</code></pre>
+<h3 id="weekly-reports">Weekly reports</h3>
+<p>From this point, I started to write weekly reports, here are the ones
+for May:</p>
+<ul>
+<li><a
+href="https://sympa.inria.fr/sympa/arc/swh-devel/2019-05/msg00000.html">Week
+2019/19</a></li>
+<li><a
+href="https://sympa.inria.fr/sympa/arc/swh-devel/2019-05/msg00002.html">Week
+2019/20</a></li>
+<li><a
+href="https://sympa.inria.fr/sympa/arc/swh-devel/2019-05/msg00005.html">Week
+2019/21</a></li>
+<li><a
+href="https://sympa.inria.fr/sympa/arc/swh-devel/2019-05/msg00015.html">Week
+2019/22</a></li>
+</ul>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

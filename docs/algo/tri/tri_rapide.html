@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Tri rapide</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Tri rapide</a></h1>
+
+            <p class="metadata">Publié : 10/05/2014 · Modifié : 22/01/2016</p>
+        <hr>
+        </header>
+
+
+        <h2 id="introduction">Introduction</h2>
+<p>Le tri rapide (<em>quicksort</em> en anglais) est un algorithme de
+tri par comparaison, son fonctionnement est plutôt simple à comprendre
+et il est très utilisé sur de grandes entrées. En effet, il a pour
+complexité moyenne <span class="math inline">\(O(N \log _2 N)\)</span>
+et <span class="math inline">\(O(N^2)\)</span> dans le pire des cas.
+Cependant, même si cet algorithme est lent dans le pire des cas, il est
+plus utilisé en pratique que d’autres tris comme le <a
+href="/algo/tri/tri_fusion.html">tri par fusion</a> qui a une complexité
+dans le pire des cas en <span class="math inline">\(O(N \log _2
+N)\)</span>. C’est un algorithme <a
+href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">non
+stable</a> mais <a
+href="https://en.wikipedia.org/wiki/In-place_algorithm">en
+place</a>.</p>
+<h2 id="principe-de-lalgorithme">Principe de l’algorithme</h2>
+<p>Le tri rapide utilise le principe de <a
+href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithms">diviser
+pour régner</a>, c’est-à-dire que l’on va choisir un élément du tableau
+(qu’on appelle <strong>pivot</strong>), puis l’on réorganise le tableau
+initial en deux sous tableaux :</p>
+<ul>
+<li>L’un contenant les éléments inférieurs au pivot.</li>
+<li>L’autre contenant les éléments supérieurs au pivot.</li>
+</ul>
+<p>On continue ce procédé (qu'on appelle
+<strong>partitionnement</strong>, c'est-à-dire choisir un pivot et
+réorganiser le tableau) jusqu’à se retrouver avec un tableau découpé en
+<span class="math inline">\(N\)</span> sous tableaux (<span
+class="math inline">\(N\)</span> étant la taille du tableau), qui est
+donc trié.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons 5, 9, 7, 3, 8 comme suite de nombres, et trions la dans
+l'ordre croissant avec l'algorithme du tri rapide :</p>
+<p>5, 9, <strong>7</strong>, 3, 8 -&gt; on choisit le pivot, dans notre
+cas je choisis l'élément du milieu, 7.</p>
+<p>5, 3 | <strong>7</strong> | 9, 8 -&gt; on découpe le tableau en trois
+parties, une partie avec des éléments inférieurs au pivot (5 et 3), la
+partie contenant le pivot (7), et une partie avec les éléments
+supérieurs au pivot (9 et 8). On peut déjà dire qu'on a placé le pivot à
+sa place définitive dans le tableau, puisque les autres éléments sont
+soit supérieurs soit inférieurs à lui.</p>
+<p><strong>5</strong>, 3 | 7 | <strong>9</strong>, 8 -&gt; on recommence
+en choisissant de nouveau un pivot pour chaque sous tableaux créés.</p>
+<p>3 | <strong>5</strong> | 7 | 8 | <strong>9</strong> -&gt; dernière
+étape du partitionnement, désormais aucuns sous tableaux ne contient
+plus d'un élément, le tri est donc terminé.</p>
+<p>3, 5, 7, 8, 9</p>
+<figure>
+<img src="/img/algo/tri/tri_rapide/exemple_tri.png"
+alt="/img/algo/tri/tri_rapide/exemple_tri.png" />
+<figcaption>Exemple de tri rapide</figcaption>
+</figure>
+<p>Sur cette image, à chaque tour on choisit notre pivot (en bleu), on
+sépare notre tableau en trois parties en réorganisant les éléments selon
+le pivot (qui est désormais bien placé et en vert), puis on recommence
+l'opération. À la fin du deuxième tour, nos sous tableaux qui ne sont
+pas des pivots (en blanc) ne contiennent plus qu'un seul élément, ils
+sont donc triés, comme le reste du tableau.</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Voici le pseudo-code du tri rapide :</p>
+<pre><code class="nohighlight">triRapide (début, fin) :
+
+   Si le tableau a un seul élément
+      Arrêter
+   Sinon
+      Choisir le pivot
+      Réorganiser le tableau selon notre pivot
+
+      triRapide(début, pivot - 1)
+      triRapide(pivot + 1, fin)</code></pre>
+<p>On utilise le principe de <a
+href="https://en.wikipedia.org/wiki/Recursion_%28computer_science%29">récursivité</a>
+pour implémenter notre tri rapide (comme pour le <a
+href="/algo/tri/tri_fusion.html">tri fusion</a>). Les appels récursifs
+s'arrêtent quand le sous tableau actuel n'a plus qu'un seul élément,
+sinon on partitionne notre tableau (choix du pivot et réorganisation),
+puis on recommence l'opération sur les deux parties du tableau ne
+contenant pas le pivot (la partie où les éléments lui sont inférieurs,
+et la partie où ils sont supérieurs).</p>
+<h2 id="complexité">Complexité</h2>
+<p>Le calcul de la complexité du tri rapide est très semblable à celui
+du <a href="/algo/tri/tri_fusion.html#complexite">tri par fusion</a>,
+sauf qu'au lieu de fusionner nos sous tableaux, on les réorganise (mais
+cette opération est de nouveau en temps linéaire, comme pour la fusion
+de deux sous tableaux), on retrouve aussi les deux appels récursifs qui
+divisent par deux notre tableau actuel. La complexité est donc calculée
+de la même façon, et on se retrouve bien avec un résultat en <span
+class="math inline">\(O(N \log _2 N)\)</span>.</p>
+<p>Il faut savoir que le tri rapide peut s'exécuter deux fois plus vite
+que le <a href="/algo/tri/tri_tas.html">tri par tas</a> pour des raisons
+de <a href="https://en.wikipedia.org/wiki/Cache_%28computing%29">mémoire
+cache</a>. Les deux algorithmes ont la même complexité en moyenne, mais
+le tri par tas compare en général des éléments du tableau qui sont assez
+éloignés contrairement au tri rapide. Or, quand vous accédez à un
+tableau, votre ordinateur place une certaine partie de ce tableau (ou la
+totalité) dans une mémoire cache pour que l'accès à ce dernier se fasse
+plus rapidement. Dans le cas de très grandes entrées, le tri par tas va
+obliger la mémoire à charger et décharger successivement des parties du
+tableau (trop grand pour être entièrement stocké dans la mémoire cache),
+ce qui ralentira l'exécution du programme.</p>
+<h2 id="implémentation">Implémentation</h2>
+<p>L’implémentation en C du tri rapide :</p>
+<details>
+<summary>tri_rapide.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+
+void echanger(int index1, int index2)
+{
+   int temp;
+
+   temp = tableau[index1];
+   tableau[index1] = tableau[index2];
+   tableau[index2] = temp;
+}
+
+void triRapide(int debut, int fin)
+{
+   int iTab;
+   int dernierEmplacement;
+
+   if(debut &gt;= fin)
+      return;
+
+   echanger(debut, (debut + fin) / 2);
+   dernierEmplacement = debut;
+
+   for(iTab = debut + 1; iTab &lt;= fin; ++iTab) {
+      if(tableau[iTab] &lt; tableau[debut]) {
+         ++dernierEmplacement;
+         echanger(dernierEmplacement, iTab);
+      }
+   }
+
+   echanger(debut, dernierEmplacement);
+
+   triRapide(debut, dernierEmplacement - 1);
+   triRapide(dernierEmplacement + 1, fin);
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf(&quot;%d\n&quot;, &amp;taille);
+
+   for(iTab = 0; iTab &lt; taille; ++iTab)
+      scanf(&quot;%d &quot;, &amp;tableau[iTab]);
+
+   triRapide(0, taille - 1);
+
+   for(iTab = 0; iTab &lt; taille; ++iTab)
+      printf(&quot;%d &quot;, tableau[iTab]);
+   printf(&quot;\n&quot;);
+
+   return 0;
+}</code></pre>
+<p>Pour simplifier le réarrangement du tableau, on place notre pivot au
+début afin de s'occuper du reste du tableau comme un tout. Ensuite, on
+ramène tous les éléments inférieurs au pivot en début du tableau grâce à
+<code>dernierEmplacement</code>, afin de s'assurer que ceux plus grands
+sont en fin de tableau, et que la dernière place tenue par la variable
+sera celle du pivot.</p>
+</details>
+<p>L'entrée :</p>
+<pre><code class="nohighlight">5
+5 9 7 3 8</code></pre>
+<p>Notre tableau trié en sortie :</p>
+<pre><code class="nohighlight">3 5 7 8 9</code></pre>
+<p>En C, <a
+href="http://www.cplusplus.com/reference/cstdlib/qsort/">qsort</a> est
+une implémentation du tri rapide définie dans <code>stdlib.h</code>. En
+C++, il vous suffit d'inclure <code>cstdlib</code> pour pouvoir
+l'utiliser.</p>
+<h2 id="améliorations-et-variantes">Améliorations et variantes</h2>
+<h3 id="choix-du-pivot">Choix du pivot</h3>
+<p>Le pivot est l'élément central du tri rapide, et le choix de ce
+dernier peut faire la différence entre une bonne et une mauvaise
+implémentation. Le choix optimal de pivot serait la <a
+href="https://en.wikipedia.org/wiki/Median">médiane</a> du tableau car
+cette dernière permettrait de couper de manière égale le tableau,
+surtout qu'il est possible de trouver cette médiane en temps linéaire
+grâce à l'algorithme <a
+href="https://en.wikipedia.org/wiki/Median_of_medians">médiane des
+médianes</a>.</p>
+<p>Par exemple avec ce tableau : 3, 9, 7, 5, 1 si l’on prend comme dans
+les exemples notre pivot au milieu (soit 7), on se retrouve avec les
+deux sous tableaux suivants : 1, 3, 5 et 9 qui ne sont pas de la même
+taille. En revanche, si l’on prend 5 comme pivot (la médiane du
+tableau), on se retrouve avec les deux sous tableaux : 1, 3 et 7, 9 qui
+contiennent deux éléments chacun.</p>
+<p>Le fait que nos sous tableaux soient de la même taille (ou environ de
+la même taille), permettrait de diminuer le nombre d'appels récursifs de
+la fonction et améliorer ainsi notre complexité en temps. Cette économie
+d'appels récursifs peut paraitre mineure sur de petites entrées, mais
+peut vraiment faire une grosse différence sur d'importants tableaux.
+Techniquement, avec cette amélioration, notre implémentation du tri
+rapide a une complexité dans le pire des cas en <span
+class="math inline">\(O(N \log _2 N)\)</span>.</p>
+<h3 id="mélange-dalgorithme">Mélange d'algorithme</h3>
+<p>Il faut savoir que le tri rapide peut s'exécuter plus lentement sur
+de petites entrées que des algorithmes en temps quadratique comme le <a
+href="/algo/tri/tri_selection.html">tri par sélection</a>, ou le <a
+href="/algo/tri/tri_insertion.html">tri par insertion</a> (qui eux sont
+moins efficaces sur des entrées de grande taille).</p>
+<p>On peut donc combiner les deux tris, et faire en sorte d’utiliser le
+tri par insertion (ou par sélection) lorsque la taille du tableau est
+inférieure à une certaine limite. Cette taille limite varie en général
+entre 15 et 30 éléments, mais peut changer selon l’ordinateur utilisé et
+l'implémentation des deux tris.</p>
+<h3 id="introsort">Introsort</h3>
+<p>Dans le même genre que d'utiliser un algorithme quadratique sur de
+petites entrées, l'introsort utilise un mix de tri rapide et de <a
+href="/algo/tri/tri_tas.html">tri par tas</a> afin de contrer un
+problème de lenteur dû au nombre d'appels récursifs importants du tri
+rapide. Une fois que ce nombre a dépassé une certaine limite, le travail
+est assuré par le tri par tas pour améliorer le temps d'exécution et ne
+pas exploser la <a href="https://en.wikipedia.org/wiki/Call_stack">pile
+d'appel</a>. Grâce à cela, notre temps d'exécution dans le pire des cas
+est de <span class="math inline">\(O(N \log _2 N)\)</span>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tri rapide est donc un algorithme de tri efficace, qui a une
+complexité en <span class="math inline">\(O(N \log _2 N)\)</span> et
+<span class="math inline">\(O(N^2)\)</span> dans le pire des cas (ce qui
+est assez rare en pratique, et peut être amélioré). Cependant, cet
+algorithme est très utilisé de nos jours grâce à sa rapidité (jusqu'à
+deux fois plus rapide que le tri par tas pour des raisons de cache, et
+dans la plupart du temps plus efficace que le tri fusion grâce à ses
+améliorations). Cet algorithme est aussi utilisé comme fonction de tri
+de base dans les librairies standards (comme en C ou en C++).</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

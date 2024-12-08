@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Chiffre de Vigenère</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Chiffre de Vigenère</a></h1>
+
+            <p class="metadata">Publié : 28/05/2014 · Modifié : 20/12/2015</p>
+        <hr>
+        </header>
+
+
+        <h2 id="introduction">Introduction</h2>
+<p>Avec l'apparition des premiers systèmes de cryptanalyses, le <a
+href="/algo/chiffrement/chiffre_cesar.html">chiffre de César</a> n'est
+plus un algorithme sûr pour chiffrer ses messages, et on voit
+l'apparition d'un nouvel algorithme de chiffrement : <strong>le chiffre
+de Vigenère</strong>. Ce dernier est immunisé aux attaques du chiffre de
+César, car sa clé est une chaîne de caractères et non plus un simple
+nombre, cependant quelques siècles après les premières utilisations de
+ce système, des techniques permettant de casser le chiffre de Vigenère
+sont découvertes le rendant alors vulnérable et inutile.</p>
+<h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
+<p>Le chiffre de Vigenère est un <a
+href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement
+symétrique</a> utilisant une <a
+href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution
+poly-alphabétique</a> pour chiffrer et déchiffrer le message secret.
+Ceci signifie que la clé de chiffrement est une chaîne de caractères, et
+c'est là-dessus que repose la sécurité de l'algorithme, car une même
+lettre ne sera alors pas forcément chiffrée de la même façon (elle
+dépendra de sa place dans le message, mais aussi de la clé
+utilisée).</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons comme message secret le mot "Programmation", et comme clé de
+chiffrement "Linux". La première étape à faire est de rendre notre clé
+aussi longue que notre message à chiffrer, pour cela, on répète
+simplement autant de fois la clé que nécessaire :</p>
+<figure>
+<img
+src="/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png"
+alt="/img/algo/chiffrement/chiffre_vigenere/exemple_cle_chiffrement.png" />
+<figcaption>Visualisation de la clé de chiffrement complète</figcaption>
+</figure>
+<p>Désormais on peut chiffrer chaque lettre de notre message :</p>
+<figure>
+<img
+src="/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png"
+alt="/img/algo/chiffrement/chiffre_vigenere/exemple_chiffrement.png" />
+<figcaption>Exemple de chiffrement</figcaption>
+</figure>
+<p>Le rang dans l'alphabet commence à 0 (et non 1) car <span
+class="math inline">\(26 \mod 26 = 0\)</span>, il faut donc que la
+lettre A soit la lettre 0. À chaque tour, on prend le rang de la lettre
+du message, et on l'additionne à la lettre correspondante de la clé. On
+n'oublie pas d'appliquer notre <a
+href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> 26 pour
+revenir au début de l'alphabet si on dépasse Z.</p>
+<p>Pour le déchiffrement, l'idée est la même sauf qu'on soustrait au
+lieu d'ajouter le rang de la lettre de la clé :</p>
+<figure>
+<img
+src="/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png"
+alt="/img/algo/chiffrement/chiffre_vigenere/exemple_dechiffrement.png" />
+<figcaption>Exemple de déchiffrement</figcaption>
+</figure>
+<p>On peut utiliser cette méthode mais de manière plus visuelle afin de
+chiffrer et déchiffrer nos messages :</p>
+<figure>
+<img src="/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png"
+alt="/img/algo/chiffrement/chiffre_vigenere/table_vigenere.png" />
+<figcaption>Table de Vigenère</figcaption>
+</figure>
+<p>La <strong>table de Vigenère</strong> consiste à énumérer toutes les
+possibilités de décalage lors du chiffrement et du déchiffrement. Les
+lettres du message clair sont représentées par les colonnes, tandis que
+celles de la clé sont représentées par les lignes. Pour chiffrer une
+lettre, on regarde l'intersection de la colonne correspondante à la
+lettre du message clair, et de la ligne correspondante à lettre de la
+clé. Pour déchiffrer une lettre, on regarde sur la ligne correspondante
+de la clé jusqu'à trouver la lettre chiffrée qui se trouvera sur la
+colonne de la lettre déchiffrée.</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du chiffre de Vigenère :</p>
+<pre><code class="nohighlight">Modifier la clé pour qu&#39;elle soit de la même taille que le message
+
+chiffrer : 
+
+   Pour chaque caractère du message
+      Si c&#39;est une lettre
+         Décaler cette lettre de cle[iCle] rangs vers la droite
+         Incrementer iCle
+
+déchiffrer :
+
+   Pour chaque caractère du message
+      Si c&#39;est une lettre
+         Décaler cette lettre de cle[iCle] rangs vers la gauche 
+         Incrementer iCle</code></pre>
+<h2 id="implémentation">Implémentation</h2>
+<p>Une implémentation en C du chiffre de Vigenère :</p>
+<details>
+<summary>chiffre_vigenere.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;string.h&gt;
+
+#define TAILLE_MAX 10000
+
+char message[TAILLE_MAX];
+char cle[TAILLE_MAX];
+int tailleCle;
+
+void chiffrement(void)
+{
+   int iTab, iCle;
+
+   for(iTab = 0, iCle = 0; message[iTab] != &#39;\0&#39;; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo, lettreCle;
+         typo = (isupper(message[iTab])) ? &#39;A&#39; : &#39;a&#39;;
+         lettreCle = tolower(cle[iCle]) - &#39;a&#39;;
+         iCle = (iCle + 1) % tailleCle;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] + lettreCle) % 26 + 26) % 26;
+         message[iTab] += typo;
+      }
+   }
+}
+
+void dechiffrement(void)
+{
+   int iTab, iCle;
+
+   for(iTab = 0, iCle = 0; message[iTab] != &#39;\0&#39;; ++iTab) {
+      if(isalpha(message[iTab])) {
+         char typo, lettreCle;
+         typo = (isupper(message[iTab])) ? &#39;A&#39; : &#39;a&#39;;
+         lettreCle = tolower(cle[iCle]) - &#39;a&#39;;
+         iCle = (iCle + 1) % tailleCle;
+
+         message[iTab] -= typo;
+         message[iTab] = ((message[iTab] - lettreCle) % 26 + 26) % 26;
+         message[iTab] += typo;
+      }
+   }
+}
+
+void viderBuffer(void)
+{
+   int c;
+   c = 0;
+   while(c != &#39;\n&#39; &amp;&amp; c != EOF)
+      c = getchar();
+}
+
+int main(void)
+{
+   scanf(&quot;%[^\n]s\n&quot;, message);
+   viderBuffer();
+   scanf(&quot;%[^\n]s\n&quot;, cle);
+   tailleCle = strlen(cle);
+
+   chiffrement();
+   printf(&quot;%s\n&quot;, message);
+   dechiffrement();
+   printf(&quot;%s\n&quot;, message);
+
+   return 0;
+}</code></pre>
+</details>
+<p>Notez qu'au lieu de créer une seconde clé de chiffrement de la taille
+du message, on peut tout simplement utiliser un indice que l'on
+réinitialise à 0 à chaque fois qu'il a atteint le bout de la clé (grâce
+à <code>% tailleCle</code>).</p>
+<p>Notre message et notre clé :</p>
+<pre><code class="nohighlight">Programmation
+Linux</code></pre>
+<p>Le chiffrement et le déchiffrement :</p>
+<pre><code class="nohighlight">Azbaoluzuqtwa
+Programmation</code></pre>
+<h2 id="cassage">Cassage</h2>
+<p>Les <a href="/algo/chiffrement/chiffre_cesar.html#cassage">attaques
+du chiffre de César</a> ne fonctionnent pas sur le chiffre de Vigenère
+pour plusieurs raisons :</p>
+<ul>
+<li>La clé est une chaîne de caractères de taille variable, ce qui
+signifie que le nombre de possibilités de clés de chiffrement est
+énorme, et une attaque par force brute n'est tout simplement pas
+envisageable.</li>
+<li>L'algorithme utilise une substitution poly-alphabétique, rendant
+ainsi une analyse fréquentielle impossible car une lettre ne sera pas
+forcément chiffrée de la même manière dans un texte.</li>
+</ul>
+<p>Il nous faut donc de nouvelles méthodes, afin de casser cet
+algorithme réputé incassable jusqu'à la fin du XIXe siècle où une
+méthode fut officiellement découverte.</p>
+<p>Notre objectif est de casser le message ci-dessus qui a été chiffré
+en utilisant le chiffre de Vigenère :</p>
+<pre><code class="nohighlight">wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp</code></pre>
+<p>Les seules informations que l'on a sont que toutes les majuscules ont
+été transformées en minuscules, tous les accents par des lettres non
+accentuées, et les espaces et signes de ponctuations ont été
+enlevés.</p>
+<h3 id="trouver-la-longueur-de-la-clé-de-chiffrement">Trouver la
+longueur de la clé de chiffrement</h3>
+<p>Pour casser le chiffre de Vigenère, il faut procéder par étape, et la
+première est de déterminer la longueur de la clé de chiffrement employée
+pour chiffrer le message. Une fois cette longueur connue, on peut savoir
+quelles lettres sont chiffrées avec la même portion de clé, rendant
+alors la cryptanalyse du message bien plus facile.</p>
+<p>Un des moyens de trouver la longueur de clé est d'utiliser le
+<strong>test de Kasiski</strong>. Le but est de repérer dans le message
+chiffré des sous chaînes qui se répètent, car ces dernières sont sans
+doute des mêmes portions du texte clair, codées avec la même partie de
+clé. Une fois qu'on connait suffisamment de répétitions, on peut grâce à
+l'espacement de ces dernières en déduire les tailles de clés possibles
+et en combinant plusieurs analyses on peut voir qu'une taille ressortira
+plus souvent que les autres. Mais pour cela notre texte doit être
+suffisamment long afin d'avoir un traitement efficace des sous chaînes
+(notre méthode étant basée sur des statistiques, si on a peu de données
+notre résultat ne sera pas forcément correcte et représentatif de la
+réalité). Heureusement, notre texte semble assez long et contient
+environ 1000 sous chaines se répétant (de différentes tailles allant de
+trois caractères à quatorze), et en voici une courte partie :</p>
+<table style="width:89%;">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr>
+<th>Chaîne</th>
+<th>Écart</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>far</td>
+<td>555</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>rmx</td>
+<td>20</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>ryp</td>
+<td>20</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>ypd</td>
+<td>95</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>dwa</td>
+<td>605</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>wan</td>
+<td>605</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>anx</td>
+<td>1385</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>yqp</td>
+<td>1630</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>plr</td>
+<td>530</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>mxc</td>
+<td>75</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>xcu</td>
+<td>75</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>cur</td>
+<td>20</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>ury</td>
+<td>75</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>ryp</td>
+<td>75</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>ypq</td>
+<td>1000</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>yzwm</td>
+<td>640</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>mahb</td>
+<td>95</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>krmp</td>
+<td>980</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>mnfq</td>
+<td>240</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>byme</td>
+<td>870</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>eiiyz</td>
+<td>1465</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>iiyzw</td>
+<td>640</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>iyzwm</td>
+<td>640</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>acuow</td>
+<td>345</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>ihdlf</td>
+<td>740</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>gifcm</td>
+<td>450</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>yccia</td>
+<td>645</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>cciaw</td>
+<td>355</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>dbbop</td>
+<td>65</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>mxcuryp</td>
+<td>75</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>rholxci</td>
+<td>1465</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>purwxyqdo</td>
+<td>50</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>rholxcioei</td>
+<td>1465</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+</tr>
+<tr>
+<td>ihdlfzqbrt</td>
+<td>740</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>fcmolfeiah</td>
+<td>600</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>537</td>
+<td>371</td>
+<td>268</td>
+<td><strong>916</strong></td>
+<td>215</td>
+<td>101</td>
+<td>174</td>
+<td>71</td>
+<td>528</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Pour chaque sous chaine, on note l'écart jusqu'à la prochaine
+occurrence de ladite chaine, puis on peut en déduire que la taille de
+notre clé est un multiple de cet espace (en effet, il y a une répétition
+en général quand une même portion du message est chiffrée avec une même
+portion de la clé). On marque alors pour chaque sous chaine les
+diviseurs de notre écart, et lorsqu'on additionne tous les résultats on
+voit que le nombre 5 est celui qui apparait le plus de fois. Ce test
+nous apprend donc que la clé de chiffrement que l'on cherche a de très
+fortes chances de posséder 5 caractères.</p>
+<p>Une implémentation en C du test de Kasiski :</p>
+<details>
+<summary>test_kasiski.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;string.h&gt;
+
+#define TAILLE_MAX 10000
+#define NB_POSSIBILITE_MAX 10000
+
+char message[TAILLE_MAX];
+int tailleMessage;
+
+int nbPossibilite[NB_POSSIBILITE_MAX];
+int possibiliteMax;
+
+int chercherOccurrence(char chaine[], int taille, int debut)
+{
+   int iDebut;
+
+   for(iDebut = debut; iDebut &lt; tailleMessage - taille + 1; ++iDebut) {
+      int iTab, iChaine;
+
+      iTab = iDebut;
+      iChaine = 0;
+      while(iTab &lt; tailleMessage - taille + 1 &amp;&amp;
+            chaine[iChaine] == message[iTab]) {
+         ++iTab;
+         ++iChaine;
+      }
+
+      if(iChaine == taille)
+         return iDebut;
+   }
+
+   return -1;
+}
+
+void ajouterTaillePossible(int ecart)
+{
+   int iDiv;
+
+   for(iDiv = 2; iDiv &lt;= ecart; ++iDiv) {
+      if(ecart % iDiv == 0) {
+         ++nbPossibilite[iDiv];
+         if(nbPossibilite[iDiv] &gt; nbPossibilite[possibiliteMax])
+            possibiliteMax = iDiv;
+      }
+   }
+}
+
+void testKasiski(void)
+{
+   int iTaille, iDebut;
+   bool trouve;
+
+   iTaille = 3;
+   trouve = true;
+
+   while(trouve) {
+      trouve = false;
+
+      for(iDebut = 0; iDebut &lt; tailleMessage - iTaille + 1; ++iDebut) {
+         char chaine[iTaille + 1];
+         int iTab;
+         int occurrence;
+
+         for(iTab = 0; iTab &lt; iTaille; ++iTab)
+            chaine[iTab] = message[iDebut + iTab];
+         chaine[iTab] = &#39;\0&#39;;
+
+         occurrence = chercherOccurrence(chaine, iTaille, iDebut + iTaille);
+         if(occurrence != -1) {
+            int ecart;
+
+            ecart =  occurrence - iDebut;
+            trouve = true;
+
+            //printf(&quot;%s %d\n&quot;, chaine, ecart);
+
+            ajouterTaillePossible(ecart);
+         }
+      }
+
+      ++iTaille;
+   }
+}
+
+int main(void)
+{
+   scanf(&quot;%s\n&quot;, message);
+   tailleMessage = strlen(message);
+
+   possibiliteMax = 0;
+   testKasiski();
+
+   /*int iDiv;
+   for(iDiv = 0; iDiv &lt; NB_POSSIBILITE_MAX; ++iDiv)
+      if(nbPossibilite[iDiv] != 0)
+         printf(&quot;%d : %d\n&quot;, iDiv, nbPossibilite[iDiv]);*/
+
+   printf(&quot;%d\n&quot;, possibiliteMax);
+
+   return 0;
+}</code></pre>
+<p>Tout d'abord, on commence à chercher des sous chaines d'une taille de
+trois caractères minimum car les sous chaines de deux caractères ne sont
+pas réellement efficaces et représentatives (ça peut simplement être un
+coup de chance). Ensuite, la recherche de sous chaine n'est pas
+optimisée car le but de cette implémentation est de montrer comment
+appliquer le test de Kasiski. Si vous voulez casser un texte plus
+important, je vous conseille de revoir la recherche de sous chaine en
+vous aidant d'algorithmes plus efficaces comme <a
+href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">KMP</a>,
+<a
+href="https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm">Rabin-Karp</a>,
+ou encore <a href="http://codeforces.com/blog/entry/3107">Z</a>. Le code
+s'exécute instantanément dans notre exemple, mais sur des textes aussi
+grands que des livres, il risque de prendre plus de temps s'il n'est pas
+optimisé.</p>
+</details>
+<p>La sortie de l'implémentation (j'ai commenté l'affichage des sous
+chaines/écart, et celui du tableau des possibilités car sinon plus de
+1000 lignes sont affichées en sortie) :</p>
+<pre><code class="nohighlight">5</code></pre>
+<h3 id="déduire-la-clé">Déduire la clé</h3>
+<p>Une fois qu'on a notre longueur de clé, on peut savoir quelles
+lettres du message ont été chiffrées avec les mêmes lettres de la clé
+(puisqu'on connait sa longueur, on sait donc où se répète la clé).</p>
+<p>On va alors découper le message chiffré en plusieurs catégories de
+lettres :</p>
+<ul>
+<li>Celles chiffrées avec la 1ère lettre de la clé (soit la 1ère, la
+6ème, la 11ème, etc.)</li>
+<li>Celles chiffrées avec la 2ème lettre de la clé (soit la 2ème, la
+7ème, la 12ème, etc.)</li>
+<li>...</li>
+<li>Celles chiffrées avec la 5ème lettre de la clé (soit la 5ème, la
+10ème, la 15ème, etc.)</li>
+</ul>
+<p>Notre message découpé en 5 lignes :</p>
+<pre><code class="nohighlight">1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy
+2 : mnlauavwiluzqvuwvbcmiciqvumaximqkzumvdbamuaimvbabmmmnmctwkbpmwbyauycbtamziakmtvqcapcbamcvizumqbtmiwtxblbmmbwgqcamvalawaqalzimmmqwqxvzqwdqzimamvitmxctdmmqttbmimmicbtmbtbmktmmqiutvlqmcmcviqcqmmfbgbzabpzbmimcmmzlbaibmiwtcvmpitvqbmmkqwzczvazizxnuqwcakvminuqcmmqwawmmtcutmdmqaaiiamdvqmiccvmgdmzmicuvtoctdaqbaaamybmbbjvmqlvbmumxiwqimimaviawaqmmlaquwciizll
+3 : ffrqorragrrnfgrhrpizynqgbrfrciacryoebbrffrcszvrgnayzvafrzrynfanhnnhferbffiygqyqbearcqnevfhqnqrrqfavrnerrysvarzvcranrrhdrghyaffaaaargrehveyaffrrfranyrnzqryrsoizoarvngvnrcbnghfavvfhrgagrrfgggzhqefregerynqagrftrvbyhbfehrspzrflfibfarehnaaasbhqnbrdheiefaebrdchqaagvetrrrbfvfprfgadgrggoarvqagrpffaerirrerefnrvgqzhearbeabiegeerrcivdeyzyvparvfaggeqarhvevnre
+4 : wkjylmynymyhyzopgyyyfhyymynhiyhimyunohhimluiykllyhychnkovmylumwyfhczylhwfcucyymhjiziygffidbcylmcjwnxlyzyfcpwtipuhuhwymohjjuwggminwozpolwyuwnyfmmyymyumjylyjufyjlhkygwhfyyghynymngymxucnlmfyyiulyywayjuyucywnlnoguoynolxnmzyjhkufyogmmylmdiyisdbllwomluyfcolwoylyxxfauuufhhdnicnimwolhyilhiplnllfuimmmcmhmmcjfmhluycinlcccocuuiunhiykolugumywhnyxhyuywuldfuxfy
+5 : errkbxpxqxpzplkbbdokbqcaxpjoozbrpzqbppljrdoozrobobkffmroolppsiqaiaklzzqeblqnpjnqoppfibxpklrpojqqbbbfxixpbkbojflozfzxqabkblcbblnrsrsxbkiqzcbmriqbippbrqfobbbflzfffrkblrrirjdofoibjfqbqpboqfbofibkmbrkxkmyicbborbliqpbpbpbpopbqraroplkppbblpjrblrizxbmlfaxokzxbobprbxbirziqafbcbiicxflqofffrfxxlxborixgqffblbbfaafokprbooqnnbfprpqoozrffcboqcxbmqobfmjlrabbiflp</code></pre>
+<p>Finalement, on peut dire que chaque ligne a été chiffrée à l'aide
+d'un simple chiffre de César, puisque toutes les lettres d'une même
+ligne sont chiffrées avec la même lettre de la clé, et cette lettre peut
+être vue comme un simple nombre. Une fois que l'on sait cela, on peut
+effectuer une analyse fréquentielle pour trouver la clé de chiffrement,
+comme pour le chiffre de César, sur chacune des lignes découpées.</p>
+<p>On cherche pour chaque ligne, la lettre apparaissant le plus, puis
+l'on déduit que cette lettre représente la lettre E dans l'alphabet
+normal, on peut donc facilement retrouver l'alphabet chiffré utilisé
+avec cette lettre. Prenons l'exemple de la première ligne :</p>
+<pre><code class="nohighlight">1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy</code></pre>
+<p>La lettre la plus utilisée ici est le P, on peut donc faire une
+correspondance entre l'alphabet normal et l'alphabet chiffré, nous
+permettant de trouver la première lettre de la clé de chiffrement, le L
+:</p>
+<figure>
+<img src="/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png"
+alt="/img/algo/chiffrement/chiffre_vigenere/exemple_ligne.png" />
+<figcaption>Exemple de correspondance</figcaption>
+</figure>
+<p>Si on applique ce principe à chacune de nos lignes on obtient :</p>
+<figure>
+<img
+src="/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png"
+alt="/img/algo/chiffrement/chiffre_vigenere/exemple_trouver_cle.png" />
+<figcaption>Recherche de clé de chiffrement</figcaption>
+</figure>
+<p>La clé apparait alors à la verticale en lisant simplement la
+correspondance de la lettre A dans chaque alphabet chiffré. En effet la
+lettre A représente la lettre 0 de l'alphabet et donc la correspondance
+représente le décalage utilisé (c'est-à-dire la clé) pour créer
+l'alphabet chiffré.</p>
+<p>L'implémentation en C de l'analyse fréquentielle :</p>
+<details>
+<summary>analyse_frequentielle.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+
+#define TAILLE_MAX 10000
+#define LONG_CLE_MAX 100
+
+char message[TAILLE_MAX];
+int longueurCle;
+
+char decoupe[LONG_CLE_MAX][TAILLE_MAX];
+int iDecoupe[LONG_CLE_MAX];
+
+int frequence[LONG_CLE_MAX][26];
+int frequenceMax[LONG_CLE_MAX];
+
+char cle[LONG_CLE_MAX];
+
+void decouperMessage(void)
+{
+   int iTab, iLettre, iCle;
+
+   for(iTab = 0; message[iTab] != &#39;\0&#39;; ++iTab) {
+      iLettre = iTab % longueurCle;
+      decoupe[iLettre][iDecoupe[iLettre]] = message[iTab];
+      ++iDecoupe[iLettre];
+   }
+
+   for(iCle = 0; iCle &lt; longueurCle; ++iCle) {
+      printf(&quot;%d : &quot;, iCle + 1);
+      for(iTab = 0; iTab &lt; iDecoupe[iCle]; ++iTab)
+         printf(&quot;%c&quot;, decoupe[iCle][iTab]);
+      printf(&quot;\n&quot;);
+   }
+
+   printf(&quot;\n&quot;);
+}
+
+void analyseFreq(void)
+{
+   int iCle, iTab, iLettre;
+
+   for(iCle = 0; iCle &lt; longueurCle; ++iCle) {
+      for(iTab = 0; iTab &lt; iDecoupe[iCle]; ++iTab) {
+         iLettre = decoupe[iCle][iTab] - &#39;a&#39;;
+
+         ++frequence[iCle][iLettre];
+         if(frequence[iCle][iLettre] &gt; frequence[iCle][frequenceMax[iCle]])
+            frequenceMax[iCle] = iLettre;
+      }
+   }
+
+   for(iCle = 0; iCle &lt; longueurCle; ++iCle)
+      printf(&quot;%d : %c\n&quot;, iCle + 1, frequenceMax[iCle] + &#39;a&#39;);
+
+   printf(&quot;\n&quot;);
+}
+
+void deduireCle(void)
+{
+   int iCle;
+
+   for(iCle = 0; iCle &lt; longueurCle; ++iCle) {
+      cle[iCle] = (frequenceMax[iCle] + &#39;a&#39;) - (&#39;e&#39; - &#39;a&#39;);
+      if(cle[iCle] &lt; &#39;a&#39;)
+         cle[iCle] += 26;
+   }
+
+   cle[iCle] = &#39;\0&#39;;
+}
+
+int main(void)
+{
+   scanf(&quot;%s\n&quot;, message);
+   scanf(&quot;%d\n&quot;, &amp;longueurCle);
+
+   decouperMessage();
+   analyseFreq();
+   deduireCle();
+
+   printf(&quot;%s\n&quot;, cle);
+
+   return 0;
+}</code></pre>
+</details>
+<p>Le programme prend en entrée le message chiffré et la longueur de clé
+précédemment trouvée, et retourne en sortie la découpe du message, les
+lettres les plus utilisées pour chaque ligne, et la clé de chiffrement
+:</p>
+<pre><code class="nohighlight">1 : wpttzfydwpcqlzcrcyzyerwlpcdtlewxcpzndlpfxmpwnlppptoyyxwpypynwtltppdzyfpwldylfllfdtnlypyzpeftwyztwcowddlteotyzzbfwzdpfgtcpcfcwxjfdldptyulzlcylwpafwepwypccpwfcnwcebtecypewepwcwdtdpycddnrpaxlccsfzleppdnllwcnrpycyppqdweedzlynatlydwjplancfptodftlpyyzyylgappydtwexpxyoweplcywqcpoctdfpccebbptdfgfxdpctpypefcndpfpxepgytplffypjgpclexzwgwoplctolppdyllxusaclzy
+2 : mnlauavwiluzqvuwvbcmiciqvumaximqkzumvdbamuaimvbabmmmnmctwkbpmwbyauycbtamziakmtvqcapcbamcvizumqbtmiwtxblbmmbwgqcamvalawaqalzimmmqwqxvzqwdqzimamvitmxctdmmqttbmimmicbtmbtbmktmmqiutvlqmcmcviqcqmmfbgbzabpzbmimcmmzlbaibmiwtcvmpitvqbmmkqwzczvazizxnuqwcakvminuqcmmqwawmmtcutmdmqaaiiamdvqmiccvmgdmzmicuvtoctdaqbaaamybmbbjvmqlvbmumxiwqimimaviawaqmmlaquwciizll
+3 : ffrqorragrrnfgrhrpizynqgbrfrciacryoebbrffrcszvrgnayzvafrzrynfanhnnhferbffiygqyqbearcqnevfhqnqrrqfavrnerrysvarzvcranrrhdrghyaffaaaargrehveyaffrrfranyrnzqryrsoizoarvngvnrcbnghfavvfhrgagrrfgggzhqefregerynqagrftrvbyhbfehrspzrflfibfarehnaaasbhqnbrdheiefaebrdchqaagvetrrrbfvfprfgadgrggoarvqagrpffaerirrerefnrvgqzhearbeabiegeerrcivdeyzyvparvfaggeqarhvevnre
+4 : wkjylmynymyhyzopgyyyfhyymynhiyhimyunohhimluiykllyhychnkovmylumwyfhczylhwfcucyymhjiziygffidbcylmcjwnxlyzyfcpwtipuhuhwymohjjuwggminwozpolwyuwnyfmmyymyumjylyjufyjlhkygwhfyyghynymngymxucnlmfyyiulyywayjuyucywnlnoguoynolxnmzyjhkufyogmmylmdiyisdbllwomluyfcolwoylyxxfauuufhhdnicnimwolhyilhiplnllfuimmmcmhmmcjfmhluycinlcccocuuiunhiykolugumywhnyxhyuywuldfuxfy
+5 : errkbxpxqxpzplkbbdokbqcaxpjoozbrpzqbppljrdoozrobobkffmroolppsiqaiaklzzqeblqnpjnqoppfibxpklrpojqqbbbfxixpbkbojflozfzxqabkblcbblnrsrsxbkiqzcbmriqbippbrqfobbbflzfffrkblrrirjdofoibjfqbqpboqfbofibkmbrkxkmyicbborbliqpbpbpbpopbqraroplkppbblpjrblrizxbmlfaxokzxbobprbxbirziqafbcbiicxflqofffrfxxlxborixgqffblbbfaafokprbooqnnbfprpqoozrffcboqcxbmqobfmjlrabbiflp
+
+1 : p
+2 : m
+3 : r
+4 : y
+5 : b
+
+linux</code></pre>
+<h3 id="déchiffrer-le-message">Déchiffrer le message</h3>
+<p>Désormais, on connait la clé de chiffrement que l'auteur du message a
+employée pour chiffrer ce texte :</p>
+<pre><code class="nohighlight">wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp</code></pre>
+<p>On déchiffre le message :</p>
+<pre><code class="nohighlight">leschefsquidepuisdenombreusesanneessontalatetedesarmeesfrancaisesontformeungouvernementcegouvernementalleguantladefaitedenosarmeessestmisenrapportaveclennemipourcesserlecombatafficheayantsuivilappeldujuinafficheplacardeeaulendemaindelappeldujuinlafficheatouslesfrancaisplacardeesurlesmursdelondrescertesnousavonsetenoussommessubmergesparlaforcemecaniqueterrestreetaeriennedelennemiinfinimentplusqueleurnombrecesontlescharslesavionslatactiquedesallemandsquinousfontreculercesontlescharslesavionslatactiquedesallemandsquiontsurprisnoschefsaupointdelesamenerlaouilsensontaujourdhuimaislederniermotestilditlesperancedoitelledisparastreladefaiteestelledefinitivenoncroyezmoimoiquivousparleenconnaissancedecauseetvousdisqueriennestperdupourlafrancelesmemesmoyensquinousontvaincuspeuventfairevenirunjourlavictoirecarlafrancenestpasseuleellenestpasseuleellenestpasseuleelleaunvasteempirederriereelleellepeutfaireblocaveclempirebritanniquequitientlameretcontinuelalutteellepeutcommelangleterreutilisersanslimiteslimmenseindustriedesetatsuniscetteguerrenestpaslimiteeauterritoiremalheureuxdenotrepayscetteguerrenestpastrancheeparlabatailledefrancecetteguerreestuneguerremondialetouteslesfautestouslesretardstouteslessouffrancesnempechentpasquilyadansluniverstouslesmoyensnecessairespourecraserunjournosennemisfoudroyesaujourdhuiparlaforcemecaniquenouspourronsvaincredanslavenirparuneforcemecaniquesuperieureledestindumondeestlamoigeneraldegaulleactuellementalondresjinvitelesofficiersetlessoldatsfrancaisquisetrouvententerritoirebritanniqueouquiviendraientasytrouveravecleursarmesousansleursarmesjinvitelesingenieursetlesouvriersspecialistesdesindustriesdarmementquisetrouvententerritoirebritanniqueouquiviendraientasytrouverasemettreenrapportavecmoiquoiquilarrivelaflammedelaresistancefrancaisenedoitpasseteindreetneseteindrapasdemaincommeaujourdhuijeparleraialaradiodelondres</code></pre>
+<p>On rajoute les majuscules, les accents, puis la ponctuation et notre
+texte apparait :</p>
+<blockquote>
+<p>Les chefs qui, depuis de nombreuses années, sont à la tête des armées
+françaises, ont formé un gouvernement.</p>
+<p>Ce gouvernement, alléguant la défaite de nos armées, s'est mis en
+rapport avec l'ennemi pour cesser le combat.</p>
+<p>Certes, nous avons été, nous sommes, submergés par la force
+mécanique, terrestre et aérienne, de l'ennemi.</p>
+<p>Infiniment plus que leur nombre, ce sont les chars, les avions, la
+tactique des Allemands qui nous font reculer. Ce sont les chars, les
+avions, la tactique des Allemands qui ont surpris nos chefs au point de
+les amener là où ils en sont aujourd'hui.</p>
+<p>Mais le dernier mot est-il dit ? L'espérance doit-elle disparaître ?
+La défaite est-elle définitive ? Non !</p>
+<p>Croyez-moi, moi qui vous parle en connaissance de cause et vous dis
+que rien n'est perdu pour la France. Les mêmes moyens qui nous ont
+vaincus peuvent faire venir un jour la victoire.</p>
+<p>Car la France n'est pas seule ! Elle n'est pas seule ! Elle n'est pas
+seule ! Elle a un vaste Empire derrière elle. Elle peut faire bloc avec
+l'Empire britannique qui tient la mer et continue la lutte. Elle peut,
+comme l'Angleterre, utiliser sans limites l'immense industrie des
+États-Unis.</p>
+<p>Cette guerre n'est pas limitée au territoire malheureux de notre
+pays. Cette guerre n'est pas tranchée par la bataille de France. Cette
+guerre est une guerre mondiale. Toutes les fautes, tous les retards,
+toutes les souffrances, n'empêchent pas qu'il y a, dans l'univers, tous
+les moyens nécessaires pour écraser un jour nos ennemis. Foudroyés
+aujourd'hui par la force mécanique, nous pourrons vaincre dans l'avenir
+par une force mécanique supérieure. Le destin du monde est là.</p>
+<p>Moi, Général de Gaulle, actuellement à Londres, j'invite les
+officiers et les soldats français qui se trouvent en territoire
+britannique ou qui viendraient à s'y trouver, avec leurs armes ou sans
+leurs armes, j'invite les ingénieurs et les ouvriers spécialistes des
+industries d'armement qui se trouvent en territoire britannique ou qui
+viendraient à s'y trouver, à se mettre en rapport avec moi.</p>
+<p>Quoi qu'il arrive, la flamme de la résistance française ne doit pas
+s'éteindre et ne s'éteindra pas.</p>
+<p>Demain, comme aujourd'hui, je parlerai à la Radio de Londres.</p>
+</blockquote>
+<p><em>Ce message est le discours du Général de Gaulle prononcé le 18
+juin 1940.</em></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le chiffre de Vigenère offre donc plus de sécurité que le chiffre de
+César, grâce à une clé plus complexe. Cependant, ce dernier n'est pas
+infaillible, et il est assez facile de trouver la clé de chiffrement à
+partir du simple texte chiffré. Cet algorithme n'est donc plus utilisé
+depuis qu'il a été cassé, mais il existe une amélioration à ce système
+qui est techniquement incassable : le <a
+href="/algo/chiffrement/chiffre_vernam.html">chiffre de Vernam</a>.</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

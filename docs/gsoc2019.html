@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Google Summer of Code 2019</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Google Summer of Code 2019</a></h1>
+
+        </header>
+
+
+        <p>During the Google Summer of Code 2019, I worked with <a
+href="https://www.softwareheritage.org/">Software Heritage</a>: an
+ambitious research project whose goal is to collect, preserve, and share
+the whole publicly accessible Free/Open Source Software (FOSS) source
+code.</p>
+<p>My mentors were: <a href="https://upsilon.cc/~zack/">Stefano
+Zacchiroli</a> and <a href="https://koin.fr/">Antoine Pietri</a>.</p>
+<h2 id="subject">Subject</h2>
+<p>The <a
+href="https://docs.softwareheritage.org/devel/swh-model/data-model.html">Software
+Heritage data model</a> is a big <a
+href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle DAG</a> made of
+nodes like revisions, releases, directories, etc. It is a very big
+graph, with ~12 B nodes and ~160 B edges, which makes it hard to fit in
+memory using naive approaches.</p>
+<p>Graph compression techniques have been successfully used to compress
+the Web graph (which is slightly larger than the Software Heritage one)
+and make it fit in memory. The goal of this GSoC is review existing
+graph compression techniques and apply the most appropriate one to the
+Software Heritage case, enabling in-memory processing of its Merkle
+DAG.</p>
+<figure>
+<img src="/img/gsoc2019/swh_data_model.svg"
+alt="/img/gsoc2019/swh_data_model.svg" />
+<figcaption>Software Heritage Merkle DAG</figcaption>
+</figure>
+<h2 id="what-was-done">What was done</h2>
+<ul>
+<li>Git repo: <a
+href="https://forge.softwareheritage.org/source/swh-graph/">swh-graph</a>
+(list of <a
+href="https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression/Commit_list">my
+commits</a>)</li>
+<li>Research on graph compression: evaluate/experiment feasibility and
+compression rate of multiple techniques</li>
+<li>Docker environment and scripts to automate the entire compression
+pipeline</li>
+<li><dl>
+<dt>REST API to query the graph</dt>
+<dd>
+<ul>
+<li>Java server side: load the compressed graph, run API endpoints
+traversal algorithms, unit tests, javadoc</li>
+<li>Python client side: integration with SWH infrastructure, integration
+tests</li>
+</ul>
+</dd>
+</dl></li>
+<li>Automated benchmarking tools with statistical analysis</li>
+<li>General documentation on docker environment, compression steps,
+graph query use-cases, etc.</li>
+</ul>
+<p>Highlights:</p>
+<ul>
+<li>Compression rates: 4.48 bits/edge (transposed graph) and 4.91
+bits/edge (direct graph)</li>
+<li>Memory requirements for loading both graphs: 200GB of RAM</li>
+<li>Total compression time: 1 week</li>
+<li>Node successors lookup times: below 2μs</li>
+</ul>
+<h2 id="links">Links</h2>
+<ul>
+<li>Code submission: <a
+href="https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression">https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression</a></li>
+<li>My proposal: <a
+href="https://haltode.fr/static/gsoc2019/proposal.pdf">https://haltode.fr/static/gsoc2019/proposal.pdf</a></li>
+<li><dl>
+<dt>Recaps</dt>
+<dd>
+<ul>
+<li><a href="/gsoc2019/march.html">March</a></li>
+<li><a href="/gsoc2019/april.html">April</a></li>
+<li><a href="/gsoc2019/may.html">May</a></li>
+<li><a href="/gsoc2019/june.html">June</a></li>
+<li><a href="/gsoc2019/july.html">July</a></li>
+<li><a href="/gsoc2019/august.html">August</a></li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<h2 id="timeline">Timeline</h2>
+<ul>
+<li><strong>Program announced</strong>: November 13, 2018</li>
+<li><strong>Organization Application Period</strong>: January 15, 2019 -
+February 6, 2019</li>
+<li><strong>Organization Announced</strong>: February 26, 2019</li>
+<li><strong>Student Application Period</strong>: March 25, 2019 - April
+9, 2019</li>
+<li><strong>Application Review Period</strong>: April 9, 2019 - May 6,
+2019</li>
+<li><strong>Student Projects Announced</strong>: May 6, 2019</li>
+<li><strong>Community Bonding</strong>: May 6 - 27, 2019</li>
+<li><strong>Coding</strong>: May 27, 2019 - August 19, 2019</li>
+<li><strong>Evaluations</strong>: June 24 - 28, 2019 and July 22 - 26,
+2019</li>
+<li><strong>Students Submit Code and Final Evaluations</strong>: August
+19 - 26, 2019</li>
+<li><strong>Mentors Submit Final Evaluations</strong>: August 26, 2019 -
+September 2, 2019</li>
+<li><strong>Results Announced</strong>: September 3, 2019</li>
+</ul>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

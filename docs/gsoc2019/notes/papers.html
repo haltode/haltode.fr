@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Papers</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/gsoc2019.html">GSoC 2019</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Papers</a></h1>
+
+        </header>
+
+
+        <h2 id="the-webgraph-framework-i-compression-techniques">The WebGraph
+Framework I: Compression Techniques</h2>
+<p>Paolo Boldi, Sebastiano Vigna (2004): <a
+href="http://www.web.ethz.ch/CDstore/www2004/docs/1p595.pdf">http://www.web.ethz.ch/CDstore/www2004/docs/1p595.pdf</a></p>
+<p>WebGraph Framework: <a
+href="http://webgraph.di.unimi.it/">http://webgraph.di.unimi.it/</a></p>
+<p>Features of the links of a web graph:</p>
+<ul>
+<li>locality: most links contained in a page have a navigational nature
+(ie: they lead the user to some other pages within the same host)</li>
+<li>similarity: when sorted, URL tend to have many common successors
+(because of the many navigational links)</li>
+</ul>
+<h3 id="the-compression-format">The compression format</h3>
+<ul>
+<li><strong>gaps</strong>: store the offset from previous node instead
+of the nods ID</li>
+<li><strong>reference</strong>: instead of representing the adjacency
+list $S(x)$ directly, we can code it as a "modified" version of $S(y)$
+(called the reference list) - copy list: elements from $S(y)$ that is in
+$S(x)$ - extra nodes list</li>
+<li><strong>differential</strong>: differences with $S(y)$ are recorded
+as copy blocks instead of copy list</li>
+<li><strong>intervals</strong>: instead of $x, x+1, \ldots, x+n$, store
+only $[x;x+n]$ (exploit consecutivity)</li>
+</ul>
+<p>The final WebGraph compression format uses a mix of methods
+above.</p>
+<h3 id="random-access">Random access</h3>
+<p>Reference chains: to access random contents of the graph, we need to
+decompress all the information from the compression format and follow
+reference links. This might slow down the access process (worst-case:
+decompress all the info) so we need to put a limit on the lengths of the
+reference chains.</p>
+<p>We also need to store an offset array of size $N$ if we want to
+access the graph in random order instead of sequentially.</p>
+<h3 id="implementation-details">Implementation details</h3>
+<p>Lazy iterator: the data is filtered as you request it (it doesn't go
+through all the list immediately).</p>
+<h3 id="related-work">Related work</h3>
+<ul>
+<li>Connectivity Server (URL sorting)</li>
+<li>LINK Database (reference compression)</li>
+</ul>
+<h2 id="layered-label-propagation">Layered Label Propagation</h2>
+<p>Paolo Boldi, Marco Rosa, Massimo Santini (2011): <a
+href="https://arxiv.org/abs/1011.5425">https://arxiv.org/abs/1011.5425</a></p>
+<p>Most compression algorithms exploit properties such as similarity,
+locality, etc. hence the way nodes are ordered influence a lot the
+result.</p>
+<ul>
+<li>extrinsic: uses external data besides the graph itself (eg:
+URL)</li>
+<li>intrinsic: only uses the graph itself -&gt; question: is there any
+intrinsic order of the nodes with good compression ratio?</li>
+</ul>
+<h3 id="problem-definition">Problem definition</h3>
+<ul>
+<li>$A$ graph compression algorithm</li>
+<li>$G$ input graph</li>
+<li>$P_A(G, \pi)$ numbers of bits/link needed by $A$ to store $G$ under
+$\pi$ node numbering</li>
+</ul>
+<p>Goal: find a node numbering $\pi$ minimising $P_A(G, \pi)$.</p>
+<p>Such optimization problem is NP-Hard, meaning we can only expect
+heuristics.</p>
+<p>Empirical insight: it is important for high compression ratio to use
+an ordering of vertex IDs such that the vertices from the same host are
+close to one another.</p>
+<ul>
+<li>Define a measure of how well a node numbering $\pi$ respects the
+partitioning $H$ due to hosts =&gt; $HT$</li>
+<li>Define a measure to compare two partitions $H1$ and $H2$ =&gt;
+$VI$</li>
+</ul>
+<p>Note: <strong>coordinate-free</strong> algorithm means it achieves
+almost the same compression performance starting from any initial
+ordering.</p>
+<h3 id="label-propagation-algorithms-lpa">Label Propagation Algorithms
+(LPA)</h3>
+<p>The algorithm executes in rounds, every node has a label
+corresponding to the cluster it belongs to (at the beginning every node
+has a different label).</p>
+<p>At each round, each node updates its label according to some rule.
+The algorithm terminates as soon as no more updates.</p>
+<h3 id="layered-label-propagation-llp">Layered Label Propagation
+(LLP)</h3>
+<p>LLP is built on APM (Absolute Potts Model) which is built on LPA
+=&gt; LLP iteratively executes APM with various $\gamma$ values.</p>
+<p>Implementation detail: the node order during rounds is random, hence
+there is no obstacle in updating several nodes in parallel.</p>
+<p>Note: most of the time is spent on sampling values of $\gamma$ to
+produce base clusterings =&gt; you can reduce the numbers of $\gamma$
+values to speed up the process.</p>
+<h3 id="results">Results</h3>
+<ul>
+<li>LLP + BV is the best compressed data structure available at the
+time</li>
+<li>LLP is extremely robust with respect to the initial ordering of the
+nodes (ie: coordinate-free)</li>
+</ul>
+<h2
+id="compressing-graphs-and-indexes-with-recursive-graph-bisection">Compressing
+Graphs and Indexes with Recursive Graph Bisection</h2>
+<p>Laxman Dhulipala, Igor Kabiljo, Brian Karrer, Giuseppe Ottaviano,
+Sergey Pupyrev, Alon Shalita (2016): <a
+href="https://arxiv.org/abs/1602.08820">https://arxiv.org/abs/1602.08820</a></p>
+<p>Previous work on compression techniques:</p>
+<ul>
+<li><strong>structural approches</strong>: find and merge repeating
+graph patterns (eg: clique)</li>
+<li><strong>graph reordering</strong>: find suitable order of graph
+vertices, encode adjacency data with some integer code/reordering</li>
+</ul>
+<p>Inverted index (also known as postings file): database index storing
+a mapping from content (eg: word, content) to its location (eg: table,
+document). Allows fast full-text searches (use case: search engine
+indexing algorithm).</p>
+<h3 id="problem-definition-1">Problem definition</h3>
+<p>Graph reordering is a combinational optimization problem with a goal
+to find a layout (= order = numbering = arrangement) of the input graph
+to optimize a cost function: <span
+class="math inline">\(\pi\colon\mathbb V\to\mathbb {1 \ldots
+n}\)</span></p>
+<p>Empiric insight: it is desirable that similar vertices are close in
+$\pi$.</p>
+<p><strong>Minimum linear arrangement</strong> (MLA): minimize <span
+class="math inline">\(\displaystyle\sum_{(u,v)\in E} |\pi(u) -
+\pi(v)|\)</span></p>
+<p><strong>Minimum logarithmic arrangement</strong> (MLogA): minimize
+<span class="math inline">\(\displaystyle\sum_{(u,v)\in E} \log |\pi(u)
+- \pi(v)|\)</span></p>
+<p>In practice, adjacency list is stored using an encoding, so the gaps
+induced by consecutive neighbors are important for compression hence the
+MLogGapA problem.</p>
+<p><strong>Minimum logarithmic gap arrangement</strong> (MLogGapA):
+minimize <span class="math inline">\(\displaystyle\sum_{u\in V}
+f_{\pi}(u, out(u))\)</span> where <span class="math inline">\(f_{\pi}(u,
+out(u)) = \displaystyle\sum_{i=1}^{k} \log | \pi(u_{i+1}) - \pi(u_{i})
+|\)</span></p>
+<p>MLA and MLogA were known to be NP-Hard, this paper proves that
+MLogGapA is also NP-Hard.</p>
+<h3 id="model-for-graphindex-compression">Model for graph/index
+compression</h3>
+<ul>
+<li><strong>Query vertex</strong>: word in inverted index</li>
+<li><strong>Data vertex</strong>: document containing the word</li>
+</ul>
+<p><strong>Bipartite minimum logarithmic arrangement</strong> (BiMLogA):
+generalize MLogA and MLogGapA, minimize <span
+class="math inline">\(\displaystyle\sum_{q \in Q}\sum_{i=1}^{k} \log
+(\pi(u_{i+1}) - \pi(u_{i}))\)</span> where $k$ is the degree, $Q$ query
+vertices, $D$ data vertices and the graph <span class="math inline">\(G
+= (Q \cup D, E)\)</span>.</p>
+<p>Note: BiMLogA and MLogGapA differs since the latter does not
+distinguish between query and data vertices.</p>
+<figure>
+<img src="/img/gsoc2019/graph_bisection_input_model.png"
+alt="/img/gsoc2019/graph_bisection_input_model.png" />
+<figcaption>Graph input model</figcaption>
+</figure>
+<h3 id="algorithm">Algorithm</h3>
+<p>Graph bisection: initially split $D$ into two sets of same size $V_1$
+and $V_2$, and compute a cost of how "compression-friendly" the
+partition is. Next, swap vertices in $V_1$ and $V_2$ to improve the cost
+(=&gt; compute the "move gain").</p>
+<p>Notes:</p>
+<ul>
+<li>Here the cost function estimates the number of bits needed to
+represent $G$ using delta-encoding.</li>
+<li>The initialization of sets $V_1$ and $V_2$ can influence the results
+(multiple techniques used: Random, Natural, BFS, Minhash)</li>
+</ul>
+<p>Main algorithm steps:</p>
+<ol type="1">
+<li>Find graph bisection $G_1$ and $G_2$ of $G$</li>
+<li>Recursively find linear arrangements for $G_1$ and $G_2$</li>
+<li>Concatenate the resulting order</li>
+</ol>
+<p>Time complexity: <span class="math inline">\(O(m\log n + n\log^2
+n)\)</span></p>
+<p>In the implementation, the algorithm can be
+parallelized/distributed:</p>
+<ul>
+<li>The two recursive calls are independent</li>
+<li>Graph bisection steps compute independent values for every
+vertex</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<ul>
+<li>Best algorithm so far (compression ratios and timings)</li>
+<li>Highly scalable (tested on graph with billions of nodes/edges)</li>
+</ul>
+<h2
+id="compressing-inverted-indexes-with-recursive-graph-bisection-a-reproducibility-study">Compressing
+Inverted Indexes with Recursive Graph Bisection: a reproducibility
+study</h2>
+<p>Joel Mackenzie, Antonio Mallia, Matthias Petri, J. Shane Culpepper,
+and Torsten Suel (2019)</p>
+<p>Note: focuses on inverted indexes more than graph</p>
+<p>Goals:</p>
+<ul>
+<li>Validate and check experimental results of the algorithm developed
+in the original paper</li>
+<li><dl>
+<dt>C++17 open-source implementation</dt>
+<dd>
+<ul>
+<li><a
+href="https://github.com/pisa-engine/ecir19-bisection/">https://github.com/pisa-engine/ecir19-bisection/</a></li>
+<li><a
+href="https://github.com/pisa-engine/pisa">https://github.com/pisa-engine/pisa</a></li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<p>Multiple ordering techniques:</p>
+<ul>
+<li><strong>Random</strong></li>
+<li><strong>Natural</strong>: natural ordering such as URLs for
+webgraphs</li>
+<li><strong>Minhash</strong> (or <strong>shingle</strong>): heuristic
+that approximates the <a
+href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard Index</a>
+(measures similarity between two sets) in order to cluster similar
+documents together.</li>
+</ul>
+<p>BP ordering runs in <span class="math inline">\(O(m\log n + n\log^2
+n)\)</span> and yield excellent arrangements in practice by
+approximating the solution to the BiMLogA problem.</p>
+<p><em>implementation/pseudo-code details</em></p>
+<p><em>optimization details</em></p>
+<p>Reproducibility notes:</p>
+<ul>
+<li>Valid algorithm and results from original paper</li>
+<li>From empirical results, recommended to use Natural or Minhash
+initial ordering with $MaxIter = 20$ (lower $MaxIter$ if run time is
+more critical than compression ratio)</li>
+<li>The initial ordering of $V_1$ and $V_2$ has a very moderate impact
+on the efficacy of the bisection algorithm</li>
+<li><span class="math inline">\(MaxDepth = \log n - 5\)</span></li>
+</ul>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

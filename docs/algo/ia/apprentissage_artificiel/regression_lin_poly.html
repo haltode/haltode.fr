@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Régression linéaire et polynomiale</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Régression linéaire et polynomiale</a></h1>
+
+            <p class="metadata">Publié : 25/04/2016 · Modifié : 25/04/2016</p>
+        <hr>
+        </header>
+
+
+        <h2 id="introduction">Introduction</h2>
+<p>Vous souhaitez estimer le prix d'un ordinateur en fonction de
+différents facteurs (puissance, mémoire, stockage, batterie, etc.),
+cependant la tâche se complique au fur et à mesure que vous rajoutez des
+possibilités, et vous décidez alors d'employer un algorithme
+d'apprentissage artificiel pour faire le travail à votre place. Afin de
+prendre un exemple simple, on va dire que vous estimez le prix d'un
+ordinateur uniquement en fonction de sa puissance de calcul. Dans l'<a
+href="/algo/ia/apprentissage_artificiel/introduction.html">introduction
+à la matière</a>, on a vu que récolter des données utiles est une étape
+importante dans un processus d'apprentissage, et vous avez alors noté la
+puissance et le prix de différents ordinateurs dans un tableau :</p>
+<p><em>Les données sont totalement inventées et ne servent que
+d'exemple.</em></p>
+<table style="width:65%;">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>Puissance (nombre d'opérations/s)</th>
+<th>Prix (€)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>173</td>
+<td>194</td>
+</tr>
+<tr>
+<td>407</td>
+<td>287</td>
+</tr>
+<tr>
+<td>534</td>
+<td>501</td>
+</tr>
+<tr>
+<td>714</td>
+<td>674</td>
+</tr>
+<tr>
+<td>956</td>
+<td>771</td>
+</tr>
+<tr>
+<td>1226</td>
+<td>860</td>
+</tr>
+</tbody>
+</table>
+<p>On peut représenter ce tableau grâce à un graphique en deux
+dimensions très simple :</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees.png" />
+<figcaption>Exemple de données récoltées</figcaption>
+</figure>
+<p>Ce qu'on cherche à faire dans notre problème c'est d'**extrapoler**,
+c'est-à-dire généraliser grâce aux données obtenues afin de prédire un
+résultat. En tant qu'humain, on pourrait facilement faire une bonne
+généralisation comme ceci :</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_generalisation.png" />
+<figcaption>Exemple de généralisation</figcaption>
+</figure>
+<p>On a une fonction linéaire basique, qu'on peut ensuite utiliser
+graphiquement pour trouver à partir de la puissance d'un ordinateur, une
+bonne estimation de son prix.</p>
+<p>Cependant, du point de vue d'une personne, il est facile de trouver
+un lien entre les données dans le but de généraliser, mais comment un
+algorithme peut-il reproduire ce comportement ? Qu'est-ce qui fait
+qu'une fonction (linéaire, polynomiale, etc.) est une bonne
+généralisation de notre problème ?</p>
+<p>Avant de se lancer dans la recherche d'un algorithme d'apprentissage
+artificiel, il faut définir ses caractéristiques. Dans notre problème,
+on a un ensemble de données sous la forme d'entrées et de sorties
+correspondantes, nous sommes donc dans un <strong>apprentissage
+supervisé</strong>. De plus, la sortie qu'on cherche est une valeur
+numérique, notre problème appartient alors au domaine de la
+<strong>régression</strong>. Une fois qu'on connaît ces deux
+informations essentielles, on peut décider de l'algorithme à utiliser en
+fonction de nos besoins et de nos ressources. Dans notre situation on
+souhaiterait faire une généralisation sous la forme d'une fonction
+linéaire, la méthode à employer est donc : la <strong>régression
+linéaire</strong>.</p>
+<p><em>La régression linéaire n'est qu'un cas particulier de la
+régression polynomiale, mais il est plus simple de commencer avec une
+simple fonction linéaire pour ensuite aborder des fonctions plus
+complexes (même si le principe reste exactement le même).</em></p>
+<h2 id="principe">Principe</h2>
+<p>La régression linéaire est un moyen de généraliser et de créer un
+modèle linéaire à partir d'exemples. Lesdits exemples sont représentés à
+l'aide de <a
+href="https://en.wikipedia.org/wiki/Matrix_%28mathematics%29">matrices</a>
+où <span class="math inline">\(x\)</span> est l'entrée, et <span
+class="math inline">\(y\)</span> est la sortie correspondante. Prenons
+le cas où on essaie de généraliser le prix d'un appartement en fonction
+de sa taille et de son nombre de pièces (encore une fois les données
+sont fictives):</p>
+<table style="width:72%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>Taille (m²)</th>
+<th>Nombre de pièces</th>
+<th>Prix (millier €)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>112</td>
+<td>4</td>
+<td>253</td>
+</tr>
+<tr>
+<td>203</td>
+<td>6</td>
+<td>760</td>
+</tr>
+<tr>
+<td>158</td>
+<td>5</td>
+<td>558</td>
+</tr>
+<tr>
+<td>98</td>
+<td>3</td>
+<td>243</td>
+</tr>
+<tr>
+<td>143</td>
+<td>4</td>
+<td>302</td>
+</tr>
+</tbody>
+</table>
+<p>Nos matrices ressembleront à ceci :</p>
+<p><span class="math display">\[\begin{aligned}
+x = \begin{bmatrix} 112 &amp; 4 \\ 203 &amp; 6 \\ 158 &amp; 5 \\ 98
+&amp; 3 \\ 143 &amp; 4 \end{bmatrix}
+y = \begin{bmatrix} 253 \\ 760 \\ 558 \\ 243 \\ 302 \end{bmatrix}
+\end{aligned}\]</span></p>
+<p>Le <strong>modèle</strong> qu'on cherche à construire est une
+fonction linéaire, qu'on notera :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} +
+\theta_{1}x_1 + \theta_{2}x_2 + \ldots + \theta_{n}x_n\)</span></p>
+<p><span class="math inline">\(\theta\)</span> correspond aux
+coefficients de notre fonction qui prend <span
+class="math inline">\(n\)</span> <strong>attributs</strong> (ou
+<em>feature</em> en anglais). Les attributs sont les différentes
+colonnes de <span class="math inline">\(x\)</span> (la puissance d'un
+ordinateur, la taille d'un appartement, le nombre de pièces, etc.) et
+c'est sur quoi se base l'algorithme pour généraliser le problème qu'on
+lui donne. Il est très important de bien choisir les attributs, et de
+renseigner uniquement ceux qui ont une réelle influence sur le résultat,
+mais sans pour autant en donner trop peu à l'algorithme.</p>
+<p>On souhaite donc trouver une fonction <span
+class="math inline">\(h_{\theta}\)</span>, aussi appelée
+<strong>fonction d'hypothèse</strong>, tel que <span
+class="math inline">\(h(x) \simeq y\)</span>. Le problème que cherche à
+résoudre la régression linéaire est de trouver les paramètres <span
+class="math inline">\(\theta\)</span> qui rendent notre modèle proche de
+la réalité (représentée par <span class="math inline">\(y\)</span>) afin
+qu'il soit efficace.</p>
+<p>Si l'on reprend notre énoncé de départ sur le prix d'un ordinateur,
+on a uniquement un attribut (sa puissance), et on cherche une estimation
+du prix à l'aide d'une fonction d'hypothèse de la forme :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} +
+\theta_{1}x_1\)</span></p>
+<p>Mais pour comprendre comment trouver un bon modèle, il faut tout
+d'abord comprendre comment décrire l'efficacité d'un modèle quelconque,
+et surtout qu'est-ce qui rend un modèle meilleur qu'un autre ?</p>
+<h2 id="fonction-derreur">Fonction d'erreur</h2>
+<p>Afin de différencier deux modèles en fonction de leurs efficacités,
+on va utiliser une <strong>fonction d'erreur</strong> qui mesure le taux
+d'erreur entre notre modèle et la réalité.</p>
+<p>Si on prend un exemple <span class="math inline">\(i\)</span>, la
+différence entre l'estimation de notre fonction d'hypothèse et la sortie
+fournie en entrée se note :</p>
+<p><span class="math inline">\(h_{\theta}(x_{i}) - y_{i}\)</span></p>
+<p>Où <span class="math inline">\(x_{i}\)</span> et <span
+class="math inline">\(y_{i}\)</span> désignent le <span
+class="math inline">\(i\)</span>ème exemple sous la forme d'un couple
+(entrée, sortie). Cependant, cette valeur peut être négative, on va donc
+la monter au carré car cela nous permet aussi d'amplifier le résultat
+(s'il y a une grosse différence, alors le carré produira un résultat
+très élevé et inversement). Si on avait utilisé une autre fonction pour
+rendre l'expression positive, comme la <a
+href="https://en.wikipedia.org/wiki/Absolute_value">valeur absolue</a>,
+on n'aurait pas eu cette deuxième propriété intéressante qui permet de
+mieux distinguer deux modèles en fonction de leurs efficacités.</p>
+<p><span class="math inline">\((h_{\theta}(x_{i}) -
+y_{i})^2\)</span></p>
+<p>Vu qu'il y a <span class="math inline">\(m\)</span> exemples en
+entrée, on va faire la moyenne de toutes les différences au carré pour
+prendre chaque exemple en compte dans notre fonction d'erreur :</p>
+<p><span class="math inline">\(\frac{1}{m} \displaystyle\sum_{i=1}^{m}
+(h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Si on reprend la généralisation qu'on a faite à la main, la
+différence que l'on calcule dans notre expression correspond aux parties
+vertes sur ce schéma :</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_calcul_erreur.png" />
+<figcaption>Exemple de calcul de différence entre estimation et
+réalité</figcaption>
+</figure>
+<p>On notera cette fonction <span class="math inline">\(J\)</span>,
+qu'on appelle aussi l'**estimateur des moindres carrés** :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{m}
+\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Par convention, et pour simplifier nos futurs calculs, on divise le
+résultat obtenu par 2 :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m}
+\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2\)</span></p>
+<p>Cette fonction d'erreur nous permet alors de comparer deux modèles en
+fonction des paramètres <span class="math inline">\(\theta\)</span>
+qu'ils utilisent. Il est d'ailleurs possible de démontrer que cette
+fonction est un estimateur optimal sous certaines hypothèses grâce au <a
+href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem">théorème
+de Gauss-Markov</a>, c'est pour cela qu'elle est utilisée quasiment dans
+tous les cas de régression linéaire et polynomiale.</p>
+<p>Grâce à cela, on peut enfin définir concrètement ce que signifie
+"trouver le meilleur modèle". Cela revient à trouver des paramètres
+<span class="math inline">\(\theta\)</span> qui
+<strong>minimisent</strong> la fonction d'erreur utilisée.</p>
+<p>Si l'on affiche graphiquement la fonction d'erreur pour notre
+problème, on obtient ceci :</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_fonction_erreur.png" />
+<figcaption>Exemple de représentation graphique de la fonction
+d'erreur</figcaption>
+</figure>
+<p>Sur ce graphique représentant <span class="math inline">\(J\)</span>
+en fonction de <span class="math inline">\(\theta_{0}\)</span> et <span
+class="math inline">\(\theta_{1}\)</span>, on remarque clairement les
+valeurs de <span class="math inline">\(\theta\)</span> pour lesquelles
+la fonction d'erreur est minimisée. Cependant, il va falloir trouver un
+algorithme qui calcule ces valeurs automatiquement, car on ne pourra pas
+toujours faire de représentation graphique (lorsqu'on a beaucoup
+d'attributs en entrée par exemple).</p>
+<h2 id="algorithmes">Algorithmes</h2>
+<p>On a réussi à définir mathématiquement l'objectif de la régression
+linéaire grâce à notre fonction d'erreur. Désormais il faut donc
+minimiser cette fonction avec les paramètres <span
+class="math inline">\(\theta\)</span>.</p>
+<p>Deux méthodes répandues s'offrent à nous :</p>
+<ul>
+<li><a
+href="/algo/ia/apprentissage_artificiel/regression_lin_poly/algo_gradient.html">L'algorithme
+du gradient</a> (<em>gradient descent</em> en anglais) : un algorithme
+itératif utile quand <span class="math inline">\(n\)</span> est très
+large, et personnalisable grâce à un coefficient d'apprentissage (ce
+dernier peut aussi être un désavantage car dans certains cas il est
+difficile de le choisir efficacement).</li>
+<li><a
+href="/algo/ia/apprentissage_artificiel/regression_lin_poly/equation_normale.html">L'équation
+normale</a> : une équation donnant le résultat directement sans
+itérations, cependant cette dernière est très lourde en opérations à
+cause du <a
+href="https://en.wikipedia.org/wiki/Matrix_multiplication">produit
+matriciel</a> qui a une complexité en temps de <span
+class="math inline">\(O(n^3)\)</span>. On l'utilisera plutôt quand <span
+class="math inline">\(n\)</span> est suffisamment petit (en général en
+dessous de 10000).</li>
+</ul>
+<h2 id="régression-polynomiale">Régression polynomiale</h2>
+<p>Maintenant qu'on a vu comment fonctionne la régression linéaire, il
+est temps d'utiliser des fonctions polynomiales plus complexes afin de
+généraliser sur des données non linéaires. En réalité, l'unique
+changement à réaliser est sur notre fonction d'hypothèse puisque la
+fonction d'erreur et les deux algorithmes restent exactement les mêmes.
+Il suffit donc d'employer une <strong>fonction d'hypothèse
+polynomiale</strong> :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} +
+\theta_{1}x_1 + \theta_{2}x_2^2 + \ldots + \theta_{n}x_n^d\)</span></p>
+<p>Dans cette expression, <span class="math inline">\(d\)</span>
+correspond au degré maximum de notre fonction.</p>
+<p>Dans le cas où on a peu d'attributs, et qu'on veut une fonction très
+complexe, il est tout à fait possible d'utiliser plusieurs fois les
+mêmes attributs mais avec différents degrés, par exemple :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_{0} +
+\theta_{1}x_1 + \theta_{2}x_1^2 + \theta_{3}x_1^3\)</span></p>
+<p>Il est aussi courant d'ajouter d'autres termes que de simples
+puissances, comme des exponentiations, des logarithmes, des racines
+carrées, des fonctions trigonométriques, etc. dans le but de modéliser
+des fonctions avec un aspect particulier pour bien coller à nos
+données.</p>
+<p>Si possible, afficher les données sur un graphique est la meilleure
+chose à faire afin de pouvoir visualiser quels types d'attributs il nous
+faut pour notre fonction d'hypothèse. Sinon, il est toujours
+envisageable de tester plusieurs combinaisons et de voir laquelle est la
+meilleure en fonction du résultat de la fonction d'erreur.</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" />
+<figcaption>Exemple de régression polynomiale sur des données
+non-linéaires</figcaption>
+</figure>
+<h2 id="problèmes">Problèmes</h2>
+<p>Dans le domaine de l'apprentissage artificiel, il y a un problème
+commun à de très nombreux algorithmes : le
+<strong>surapprentissage</strong>.</p>
+<p>Dans un apprentissage supervisé, le but est de fournir à notre
+algorithme des exemples à partir desquels il peut généraliser le
+problème à résoudre. Cependant, il arrive que ce dernier ne généralise
+pas assez, et en vient à réciter par cœur les données fournies. Le
+problème est que notre programme va alors trouver la bonne réponse sur
+quasiment tous nos exemples, mais dès qu'il verra une nouvelle entrée il
+répondra totalement à côté. Il n'a pas réussi à généraliser, et il est
+tombé dans le cas par cas. Cette notion de surapprentissage (ou
+<em>overfitting</em> en anglais) est essentielle à comprendre car c'est
+un problème extrêmement récurrent dans le domaine de l'apprentissage
+artificiel, et spécialement dans le cadre d'un apprentissage supervisé.
+` Par exemple, prenons des données imaginaires :</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_donnees_vide.png" />
+<figcaption>Exemple de données</figcaption>
+</figure>
+<p>On pourrait tenter d'utiliser une régression linéaire avec une
+fonction d'hypothèse de la forme <span
+class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1\)</span>
+:</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_sousapprentissage.png" />
+<figcaption>Tentative de régression linéaire</figcaption>
+</figure>
+<p>On voit bien qu'on arrive à une très mauvaise généralisation car il
+nous manque des attributs. Dans ce cas, on parle de
+<strong>sous-apprentissage</strong> (ou <em>underfitting</em> en
+anglais), c'est une situation plus rare que le surapprentissage, et il
+suffit de rajouter des attributs pour contrer le problème. Essayons,
+avec une simple fonction polynomiale comme <span
+class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1 +
+\theta_2x_1^2\)</span> :</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_regression_polynomiale.png" />
+<figcaption>Une simple fonction polynomiale</figcaption>
+</figure>
+<p>Notre modèle polynomial correspond bien à nos données et semble assez
+bien généraliser le problème. Cependant, que se passe-t-il si on avait
+rajouté plus d'attributs ? Essayons avec une fonction polynomiale plus
+complexe comme <span class="math inline">\(h_{\theta}(x) = \theta_0 +
+\theta_1x_1 + \theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4
+\ldots\)</span> :</p>
+<figure>
+<img
+src="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png"
+alt="/img/algo/ia/apprentissage_artificiel/regression_lin_poly/exemple_surapprentissage.png" />
+<figcaption>Fonction polynomiale très complexe</figcaption>
+</figure>
+<p>Le modèle essaie de coller au mieux à nos données au point de ne plus
+du tout généraliser le problème, on est tombé dans le surapprentissage.
+Notre programme s'est trop bien adapté à nos données, et il n'arrivera
+pas à prédire correctement la sortie de nouveaux exemples.</p>
+<p>L'apprentissage supervisé est donc un domaine difficile car il faut
+arriver à trouver les attributs vraiment nécessaires à notre algorithme
+pour être le plus efficace possible, sans pour autant tomber dans le
+surapprentissage. Mais il existe des méthodes afin d'éviter au plus ce
+problème si contraignant, comme la <strong>régularisation</strong>.</p>
+<h3 id="régularisation">Régularisation</h3>
+<p>Le principe de la régularisation est de <strong>pénaliser</strong>
+les attributs avec des coefficients ayant des degrés élevés (puisque
+c'est à cause d'eux que notre modèle a une forme très particulière qui
+ne généralise pas assez). Si l'on reprend notre dernier exemple avec une
+fonction d'hypothèse de la forme :</p>
+<p><span class="math inline">\(h_{\theta}(x) = \theta_0 + \theta_1x_1 +
+\theta_2x_1^2 + \theta_3x_1^3 + \theta_4x_1^4 \ldots\)</span></p>
+<p>Pénaliser <span class="math inline">\(\theta_3\)</span> et <span
+class="math inline">\(\theta_4\)</span> permettrait d'avoir un modèle
+qui généralise beaucoup mieux, sans passer par des formes extrêmes.</p>
+<p>Pour réaliser cela, il faut ajouter à notre fonction d'erreur un
+terme de régularisation :</p>
+<p><span class="math inline">\(J(\theta) = \frac{1}{2m}
+\left[\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) - y_{i})^2 +
+\lambda \displaystyle\sum_{j=1}^{n} \theta_j^2\right]\)</span></p>
+<p>Dans le terme ajouté <span class="math inline">\(\lambda
+\displaystyle\sum_{j=1}^{n} \theta_j^2\)</span>, on a <span
+class="math inline">\(\lambda\)</span> qui correspond au
+<strong>paramètre de la régularisation</strong> (et donc qui détermine
+la puissance de la pénalisation). Il faut aussi noter qu'on ne pénalise
+pas <span class="math inline">\(\theta_0\)</span>.</p>
+<p>Grâce à cela, les coefficients avec des degrés élevés augmenteront
+fortement le résultat de la fonction d'erreur, obligeant naturellement à
+nos algorithmes de pénaliser ces derniers. On arrive donc à une fonction
+d'hypothèse simplifiée, et moins sujet au cas de surapprentissage.</p>
+<p>Cependant il faut adapter nos deux algorithmes à cette nouvelle
+fonction d'erreur, en les modifiant légèrement.</p>
+<h4 id="algorithme-du-gradient">Algorithme du gradient</h4>
+<p>Avec notre ancienne fonction d'erreur, on devait mettre à jour nos
+coefficients de manière simultanée de cette façon (si l'on n'utilise pas
+la version vectorisée) :</p>
+<p>Pour chaque coefficient <span class="math inline">\(\theta_j\)</span>
+avec <span class="math inline">\(j\)</span> allant de 0 à <span
+class="math inline">\(n\)</span> :</p>
+<p><span class="math inline">\(\theta_{j} = \theta_{j} -
+\alpha\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) -
+y_{i})x_{ij}\)</span></p>
+<p>Désormais, on va avoir :</p>
+<p>Pour chaque coefficient <span class="math inline">\(\theta_j\)</span>
+avec <span class="math inline">\(j\)</span> allant de 1 à <span
+class="math inline">\(n\)</span> (puisqu'on ne pénalise pas <span
+class="math inline">\(\theta_0\)</span>, et on utilisera l'ancienne
+formule pour ce coefficient) :</p>
+<p><span class="math inline">\(\theta_{j} = \theta_{j} -
+\alpha\left[\frac{1}{m}\displaystyle\sum_{i=1}^{m} (h_{\theta}(x_{i}) -
+y_{i})x_{ij} + \frac{\lambda}{m}\theta_j\right]\)</span></p>
+<p>On a obtenu cette formule de la même manière que pour l'ancienne,
+c'est-à-dire en calculant la dérivée partielle de la fonction
+d'erreur.</p>
+<h4 id="équation-normale">Équation normale</h4>
+<p>Pour l'équation normale, on applique de nouveau notre démonstration
+mais sur notre nouvelle fonction d'erreur, ce qui nous donne le résultat
+suivant :</p>
+<p><span class="math inline">\(\theta = \left(x^\intercal x + \lambda
+\left[\begin{smallmatrix} 0\\ &amp;1\\ &amp;&amp;1 \\
+&amp;&amp;&amp;\ddots \\ &amp;&amp;&amp;&amp;1
+\end{smallmatrix}\right]\right)^{-1} x^\intercal y\)</span></p>
+<p>On retrouve notre paramètre de régularisation <span
+class="math inline">\(\lambda\)</span>, ainsi qu'une matrice de taille
+<span class="math inline">\((n + 1)\times(n + 1)\)</span> assez spéciale
+composée de 1 uniquement dans la diagonale en partant de la deuxième
+colonne (le reste de la matrice contient des 0). Cette matrice est en
+réalité une <a
+href="https://en.wikipedia.org/wiki/Identity_matrix">matrice
+identité</a> sans le premier terme en haut à gauche (en rapport avec
+<span class="math inline">\(\theta_0\)</span> qui n'est pas
+pénalisé).</p>
+<h4 id="paramètre-de-régularisation">Paramètre de régularisation</h4>
+<p>Avec un paramètre <span class="math inline">\(\lambda\)</span> très
+large, on tombe dans le cas du sous-apprentissage car nos coefficients
+seront tellement pénalisés qu'on risque d'avoir une fonction d'hypothèse
+trop simple pour notre problème. À l'inverse, un paramètre <span
+class="math inline">\(\lambda\)</span> trop petit ne va pas assez
+pénaliser les coefficients avec des degrés élevés ce qui n'atténuera pas
+notre problème de surapprentissage et sera donc inutile.</p>
+<p>Il faut alors réussir à choisir un bon paramètre de régularisation
+<span class="math inline">\(\lambda\)</span>, et pour cela on peut
+s'aider de différents échantillons, ainsi que de la <strong>validation
+croisée</strong>. Jusqu'à présent, le seul échantillon de nos données
+qu'on utilisait était <strong>l'échantillon d'apprentissage</strong>. On
+va désormais rajouter deux nouveaux échantillons :</p>
+<ul>
+<li><strong>l'échantillon de test</strong> : on l'utilisera pour mesurer
+l'efficacité de notre algorithme sur de nouvelles données, car si on
+mesure cela sur notre échantillon d'apprentissage et que notre
+algorithme a un problème de surapprentissage, on verra de très bons
+résultats alors qu'on a un programme médiocre incapable de
+généraliser.</li>
+<li><strong>l'échantillon de validation</strong> : on va employer cet
+échantillon afin de tester différentes valeurs de <span
+class="math inline">\(\lambda\)</span> et sélectionner la
+meilleure.</li>
+</ul>
+<p>On n'utilisera pas l'échantillon de test dans le choix du paramètre
+<span class="math inline">\(\lambda\)</span>, mais il est important d'en
+parler car en général sur nos données on les divise entre nos différents
+échantillons de tel sorte à avoir environ 60% des données dans
+l'échantillon d'apprentissage, 20% dans celui de test, et 20% dans celui
+de validation.</p>
+<p>Le principe de la validation croisée est de tester différentes
+valeurs de <span class="math inline">\(\lambda\)</span> et sélectionner
+la meilleure grâce à notre fonction d'erreur et à nos échantillons :</p>
+<ul>
+<li>Générer différents paramètres de régularisation (0, 0.01, 0.02,
+0.04, ..., 1, ... 10, ...).</li>
+<li>Pour chaque paramètre <span class="math inline">\(\lambda\)</span> à
+tester, calculer les coefficients <span
+class="math inline">\(\theta\)</span> en minimisant <span
+class="math inline">\(J\)</span> (version régularisée).</li>
+<li>Pour chaque coefficient obtenu, calculer le taux d'erreur par
+rapport à notre échantillon de validation (encore inconnue du programme)
+en utilisant la fonction d'erreur non régularisée sur cet échantillon :
+<span class="math inline">\(J_{validation}\)</span> (on n'utilise pas
+l'échantillon de test car il ne faut pas que notre algorithme voit les
+données de cet échantillon avant d'être totalement entrainé).</li>
+<li>Choisir <span class="math inline">\(\lambda\)</span> qui obtient le
+plus faible taux d'erreur sur la dernière étape.</li>
+</ul>
+<p>Notez qu'on peut utiliser cette méthode de validation croisée afin de
+choisir les degrés à utiliser dans notre fonction d'hypothèse
+polynomiale de la même façon que pour <span
+class="math inline">\(\lambda\)</span>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>La régression linéaire et polynomiale est donc un moyen de
+généraliser un problème à partir d'exemples fournis en construisant un
+modèle plus ou moins complexe. On a pu voir deux algorithmes très
+différents, ainsi que le principal problème lié à ce type
+d'apprentissage avant d'aborder une solution efficace.</p>
+<p>Même si l'action de "généraliser" est une notion assez facile à
+appréhender en tant qu'humain, c'est bien plus compliqué de le faire
+comprendre à un ordinateur et les mathématiques nous permettent de nous
+en rapprocher considérablement comme on a pu le voir. L'algorithme du
+gradient sera d'ailleurs utilisé à travers d'autres algorithmes
+d'apprentissage artificiel, il était donc important de le découvrir ici
+dans un cadre assez accessible.</p>
+<p>Déduire un modèle à partir de données est un problème très commun, et
+la régression linéaire et polynomiale est une méthode employée dans
+pleins de domaines comme l'économie, la finance, les statistiques, la
+géographie, la physique, la biologie, etc.</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

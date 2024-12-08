@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Tri par sélection</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Tri par sélection</a></h1>
+
+            <p class="metadata">Publié : 30/04/2014 · Modifié : 08/12/2015</p>
+        <hr>
+        </header>
+
+
+        <h2 id="introduction">Introduction</h2>
+<p>Le tri par sélection (<em>selection sort</em> en anglais) est un
+algorithme de tri par comparaison simple, mais assez inefficace sur une
+entrée trop importante, c’est un algorithme non <a
+href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">stable</a>
+mais qui trie <a
+href="https://en.wikipedia.org/wiki/In-place_algorithm">en place</a>. Il
+a pour complexité algorithmique <span
+class="math inline">\(O(N^2)\)</span> comme le <a
+href="/algo/tri/tri_bulles.html">tri à bulles</a>.</p>
+<h2 id="principe-de-lalgorithme">Principe de l’algorithme</h2>
+<p>Le tri par sélection se décompose en deux étapes :</p>
+<ul>
+<li>Sélectionner un élément (d'où son nom).</li>
+<li>Le placer à sa bonne place.</li>
+</ul>
+<p>Le facteur qui détermine si un élément est bien placé est son rang
+(par exemple : le <em>ième</em> plus petit élément sera forcément placé
+en <em>ième</em> position du tableau). Le tri par sélection va donc à
+chaque tour trouver le <em>ième</em> plus petit élément du tableau, pour
+ensuite l'insérer à sa place, en commençant par le premier plus petit,
+et en augmentant à chaque fois (deuxième plus petit, troisième,
+etc.).</p>
+<h2 id="exemple">Exemple</h2>
+<p>Prenons désormais comme exemple la suite de nombres suivante : 6, 1,
+9, 3. Trions cette suite avec l’algorithme du tri par sélection dans
+l’ordre croissant :</p>
+<p><em>1er tour</em> :</p>
+<p>6, <strong>1</strong>, 9, 3 -&gt; le plus petit élément du tableau
+est 1, on le place donc sur la première case (en l'échangeant avec le
+6).</p>
+<p><em>2ème tour</em> :</p>
+<p>1, 6, 9, <strong>3</strong> -&gt; le deuxième plus petit élément est
+3, on le place sur la deuxième case et on l’échange avec le 6.</p>
+<p><em>3ème tour</em> :</p>
+<p>1, 3, 9, <strong>6</strong> -&gt; le troisième plus petit élément est
+6, on l’échange avec 9 pour le placer sur la troisième case.</p>
+<p><em>4ème tour</em> :</p>
+<p>1, 3, 6, <strong>9</strong> -&gt; le quatrième plus petit élément du
+tableau est 9, il est déjà en quatrième position on ne fait rien.</p>
+<p>1, 3, 6, 9</p>
+<p>Ce tri se décompose réellement en deux étapes distinctes :</p>
+<figure>
+<img src="/img/algo/tri/tri_selection/exemple_tri.png"
+alt="/img/algo/tri/tri_selection/exemple_tri.png" />
+<figcaption>Exemple de tri par sélection</figcaption>
+</figure>
+<p>À chaque tour, on cherche le minimum dans l'espace non trié du
+tableau (le minimum est représenté en bleu, et la partie non triée en
+blanc), ensuite on déplace cet élément à sa place définitive
+(représentée en vert). En faisant cela pour chaque élément du tableau,
+ce dernier se retrouve trié au bout de <span
+class="math inline">\(N\)</span> tours maximum (<span
+class="math inline">\(N\)</span> étant la taille du tableau).</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>Le pseudo-code du tri par sélection est simple :</p>
+<pre><code class="nohighlight">triSelection :
+
+   Pour chaque élément
+      Pour chaque élément de la partie non triée
+         Mettre à jour le minimum du tableau rencontré jusqu&#39;ici
+      Échanger l&#39;élément actuel avec le minimum</code></pre>
+<h2 id="complexité">Complexité</h2>
+<p>Comme pour le tri à bulles, le tri par sélection a une complexité en
+<span class="math inline">\(O(N^2)\)</span> :</p>
+<ul>
+<li>La première boucle parcourt <span class="math inline">\(N\)</span>
+tours.</li>
+<li>La deuxième boucle parcourt <span class="math inline">\(N –
+i\)</span> tours (<span class="math inline">\(i\)</span> variant de 0 à
+<span class="math inline">\(N\)</span>).</li>
+</ul>
+<p>Sa complexité est donc légèrement inférieure à <span
+class="math inline">\(N^2\)</span>, cependant cette différence est
+mineure et sa complexité est considérée comme étant en <span
+class="math inline">\(O(N^2)\)</span>.</p>
+<h2 id="implémentation">Implémentation</h2>
+<p>Une implémentation en C de l'algorithme du tri par sélection :</p>
+<details>
+<summary>tri_selection.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+
+#define TAILLE_MAX 1000
+
+int tableau[TAILLE_MAX];
+int taille;
+
+void echanger(int index1, int index2)
+{
+   int temp;
+
+   temp = tableau[index1];
+   tableau[index1] = tableau[index2];
+   tableau[index2] = temp;
+}
+
+void triSelection(void)
+{
+   int iElement, iTab;
+   int min;
+
+   for(iElement = 0; iElement &lt; taille; ++iElement) {
+      min = iElement;
+
+      for(iTab = iElement + 1; iTab &lt; taille; ++iTab)
+         if(tableau[iTab] &lt; tableau[min])
+            min = iTab;
+
+      if(min != iElement)
+         echanger(iElement, min);
+   }
+}
+
+int main(void)
+{
+   int iTab;
+
+   scanf(&quot;%d\n&quot;, &amp;taille);
+
+   for(iTab = 0; iTab &lt; taille; ++iTab)
+      scanf(&quot;%d &quot;, &amp;tableau[iTab]);
+
+   triSelection();
+
+   for(iTab = 0; iTab &lt; taille; ++iTab)
+      printf(&quot;%d &quot;, tableau[iTab]);
+   printf(&quot;\n&quot;);
+
+   return 0;
+}</code></pre>
+</details>
+<p>L'entrée du programme :</p>
+<pre><code class="nohighlight">4
+6 1 9 3</code></pre>
+<p>Et la sortie attendue :</p>
+<pre><code class="nohighlight">1 3 6 9</code></pre>
+<h2 id="améliorations-et-variantes">Améliorations et variantes</h2>
+<h3 id="tri-par-sélection-bidirectionnel">Tri par sélection
+bidirectionnel</h3>
+<p>Tout comme pour le tri à bulles, on peut améliorer légèrement le tri
+par sélection pour qu'il effectue moins d'opérations. Dans notre boucle
+qui cherche le <em>ième</em> plus petit élément, on peut aussi en
+profiter pour chercher le <em>jème</em> plus grand. Grâce à cela, on
+divise par deux le nombre de tours que l'on réalise pour trier notre
+tableau, cependant, diviser par deux ne change pas la complexité finale
+car 2 est un facteur assez petit pour ne pas en prendre compte dans de
+très larges entrées. La complexité du tri reste donc quadratique.</p>
+<pre><code class="nohighlight">Pour chaque élément restant
+   Pour chaque élément de la partie non triée
+      Mettre à jour le minimum et le maximum du tableau rencontré jusqu&#39;ici
+
+   Échanger l&#39;élément i (variant de 0 à N / 2 ) avec le minimum
+   Échanger l&#39;élément j (variant de N à N / 2 ) avec le maximum</code></pre>
+<h3 id="le-cas-des-doublons">Le cas des doublons</h3>
+<p>Dans le cas où notre tableau contient de nombreux doublons,
+l'algorithme de tri par sélection va effectuer plusieurs recherches de
+plus petits éléments sur le même élément qui n'est rien d'autre qu'un
+doublon. Le <em>bingo sort</em> permet de palier ce problème, en
+proposant de placer tous les éléments ayant la même valeur en même
+temps, sans faire de nouvelles recherches à chaque tour. Encore une
+fois, notre algorithme sera plus rapide en général mais pas assez pour
+que la complexité change, elle restera donc en <span
+class="math inline">\(O(N^2)\)</span>.</p>
+<pre><code class="nohighlight">Pour chaque élément
+   Pour chaque élément de la partie non triée
+      Mettre à jour le minimum du tableau rencontré jusqu&#39;ici
+
+   Pour chaque élément de même valeur que le minimum
+      Échanger avec l&#39;élément actuel
+      Augmenter l&#39;indice de l&#39;élément actuel</code></pre>
+<h3 id="tri-par-tas">Tri par tas</h3>
+<p>On peut voir le <a href="/algo/tri/tri_tas.html">tri par tas</a>
+comme une amélioration directe du tri par sélection. En effet, si l'on
+utilise un <a href="/algo/structure/arbre/tas.html">tas</a> pour
+permettre de trouver les plus petits éléments rapidement, on obtient une
+complexité en <span class="math inline">\(O(N \log _2 N)\)</span> et un
+tri qu'on appelle tri par tas.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le tri par sélection est donc un algorithme assez simple, mais peu
+efficace à cause de sa complexité en <span
+class="math inline">\(O(N^2)\)</span>. Cependant des améliorations et
+des variantes permettent de le rendre plus rapide, et le tri par
+sélection sert de base au tri par tas, un autre algorithme de tri bien
+plus efficace avec une complexité en <span class="math inline">\(O(N
+\log _2 N)\)</span>. Même avec une complexité quadratique, ce tri reste
+en pratique utilisé sur de petites entrées, mais aussi lorsqu'on a
+besoin d'un nombre d'échanges faible au sein du tableau (contrairement
+au <a href="/algo/tri/tri_insertion.html">tri par insertion</a> qui peut
+être plus rapide, mais réalise plus d'échanges).</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

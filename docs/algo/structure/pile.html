@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Pile</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Pile</a></h1>
+
+            <p class="metadata">Publié : 08/06/2014 · Modifié : 28/11/2015</p>
+        <hr>
+        </header>
+
+
+        <h2 id="introduction">Introduction</h2>
+<p>Prenons l'exemple d'une fonction dans un programme. Cette fonction
+peut appeler d'autres fonctions qui à leurs tours appellent d'autres
+fonctions (qui elles même appellent des fonctions, etc.). Comment savoir
+et se souvenir de l'ordre d'appels, de qui appelle qui, et où retourner
+une fois la fonction appelée terminée ? Une première réponse pourrait
+être de stocker toutes ces informations dans un simple tableau, mais
+comment le parcourir ? Où insérer les nouvelles données ? Comment
+enlever les éléments inutiles (lorsqu'une fonction a finie d'être
+exécutée) ?</p>
+<p>Toutes ces questions nous amènent à penser qu'il nous faut une
+structure de données organisée, bien définie et qui puisse gérer cette
+idée d'imbrication : la pile.</p>
+<h2 id="principe-de-la-pile">Principe de la pile</h2>
+<p>Une pile (<em>stack</em> en anglais) est une structure de données de
+type <strong>LIFO</strong> (<strong>L</strong>ast <strong>I</strong>n
+<strong>F</strong>irst <strong>O</strong>ut, <em>dernier arrivé premier
+sorti</em>). Elle fonctionne exactement comme une pile d’assiettes :</p>
+<ul>
+<li>Quand on ajoute une assiette sur la pile on l’ajoute en haut.</li>
+<li>Quand on enlève une assiette on enlève celle du haut pour ne pas
+faire tomber le reste.</li>
+</ul>
+<p>C’est le principe LIFO, lorsqu’on ajoute un élément sur une pile il
+est en haut, et lorsqu’on retire un élément on prend le dernier ajouté
+(celui tout en haut).</p>
+<figure>
+<img src="/img/algo/structure/pile/exemple_pile.png"
+alt="/img/algo/structure/pile/exemple_pile.png" />
+<figcaption>Exemple de représentation d'une pile</figcaption>
+</figure>
+<p>L’action d’ajouter un élément dans la pile est appelée :
+<strong>empiler</strong> (ou <em>push</em> en anglais) :</p>
+<figure>
+<img src="/img/algo/structure/pile/exemple_ajout.png"
+alt="/img/algo/structure/pile/exemple_ajout.png" />
+<figcaption>Un nouvel élément est empilé</figcaption>
+</figure>
+<p>L’action d’enlever un élément de la pile est appelée :
+<strong>dépiler</strong> (ou <em>pop</em> en anglais) :</p>
+<figure>
+<img src="/img/algo/structure/pile/exemple_suppression.png"
+alt="/img/algo/structure/pile/exemple_suppression.png" />
+<figcaption>Un élément est dépilé</figcaption>
+</figure>
+<p>Pour représenter une pile, je vais vous présenter deux moyens :</p>
+<ul>
+<li>Avec une <a href="/algo/structure/liste_chainee.html">liste
+chaînée</a>.</li>
+<li>Avec un tableau ainsi qu’un indice nous indiquant le prochain
+élément libre dans la pile. Cet indice est appelé pointeur de pile (ou
+<em>stack pointer</em> en anglais, souvent abrégé <em>SP</em>).</li>
+</ul>
+<h2 id="quelques-fonctions-pour-manipuler-une-pile">Quelques fonctions
+pour manipuler une pile</h2>
+<p>Comme pour une liste chaînée, il existe différentes fonctions de
+bases permettant de manipuler une pile.</p>
+<h3 id="avec-une-liste-chaînée">Avec une liste chaînée</h3>
+<pre><code class="nohighlight">créerPile :
+   Initialiser la pile à NULL
+supprimerPile :
+   Pour chaque élément de la pile
+      Supprimer l&#39;élément actuel
+
+empiler (élément) :
+   Faire pointer le haut de la pile vers le nouvel élément
+dépiler :
+   Sauvegarder les données de l&#39;élément en haut de la pile
+   Supprimer l&#39;élément en haut
+   Faire pointer le haut de la pile vers NULL
+   Retourner les données sauvegardées
+
+estVide :
+   Si le premier élément de la pile est NULL
+      Retourner vrai
+   Sinon
+      Retourner faux</code></pre>
+<h3 id="avec-un-tableau">Avec un tableau</h3>
+<pre><code class="nohighlight">créerPile :
+   Créer un tableau d&#39;une taille fixe et suffisamment grand pour la pile
+   Initialiser le pointeur de pile (PP) à 0
+supprimerPile :
+   Supprimer le tableau
+
+empiler (élément) :
+   Affecter les données du nouvel élément à la case d&#39;index PP du tableau
+   Incrémenter le PP
+dépiler :
+   Décrémenter le PP
+   Retourner les données de l&#39;élément d&#39;index PP du tableau
+
+estVide :
+   Si PP = 0
+      Retourner vrai
+   Sinon 
+      Retourner faux</code></pre>
+<h2 id="complexité">Complexité</h2>
+<p>Soit <span class="math inline">\(N\)</span> le nombre d'éléments de
+la pile.</p>
+<ul>
+<li><code>créerPile</code> : <span
+class="math inline">\(O(1)\)</span></li>
+<li><code>supprimerPile</code> : <span
+class="math inline">\(O(N)\)</span></li>
+<li><code>empiler</code> : <span
+class="math inline">\(O(1)\)</span></li>
+<li><code>dépiler</code> : <span
+class="math inline">\(O(1)\)</span></li>
+<li><code>estVide</code> : <span
+class="math inline">\(O(1)\)</span></li>
+</ul>
+<h2 id="implémentation">Implémentation</h2>
+<h3 id="liste-chaînée">Liste chaînée</h3>
+<details>
+<summary>pile_liste_chainee.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct Noeud Noeud;
+struct Noeud
+{
+   Noeud *suivant;
+   int donnee;
+};
+
+typedef Noeud *Pile;
+
+void creerPile(Pile *pile)
+{
+   *pile = NULL;
+}
+
+void supprimerPile(Pile *pile)
+{
+   Noeud *iPile;
+
+   for(iPile = *pile; iPile != NULL; ) {
+      Noeud *temp;
+
+      temp = iPile-&gt;suivant;
+      free(iPile);
+      iPile = temp;
+   }
+}
+
+void empiler(Pile *pile, int donnee)
+{
+   Noeud *nouveau;
+
+   nouveau = malloc(sizeof(Noeud));
+   nouveau-&gt;suivant = *pile;
+   nouveau-&gt;donnee = donnee;
+
+   *pile = nouveau;
+}
+
+int depiler(Pile *pile)
+{
+   Noeud *temp;
+   int donnee;
+
+   temp = (*pile)-&gt;suivant;
+   donnee = (*pile)-&gt;donnee;
+   free(*pile);
+   *pile = temp;
+
+   return donnee;
+}
+
+int estVide(Pile *pile)
+{
+   if(*pile == NULL)
+      return 1;
+   else
+      return 0;
+}
+
+int main(void)
+{
+   Pile pile;
+
+   creerPile(&amp;pile);
+
+   empiler(&amp;pile, 42);
+   // 42
+   empiler(&amp;pile, 9);
+   // 9
+   // 42
+
+   int retour = depiler(&amp;pile);
+   // retour = 9
+
+   supprimerPile(&amp;pile);
+
+   return 0;
+}</code></pre>
+<p>Le code est simple et ne nécessite pas d’explication, si besoin je
+vous invite à relire l'article sur les <a
+href="/algo/structure/liste_chainee.html">listes chaînées</a> pour bien
+comprendre le code.</p>
+</details>
+<h3 id="tableau">Tableau</h3>
+<details>
+<summary>pile_tableau.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+
+#define TAILLE_MAX 256
+
+int pile[TAILLE_MAX];
+int PP;
+
+void creerPile(void)
+{
+   PP = 0;
+}
+
+void empiler(int donnee)
+{
+   pile[PP] = donnee;
+   ++PP;
+}
+
+int depiler(void)
+{
+   --PP;
+   return pile[PP];
+}
+
+int estVidePile(void)
+{
+   if(PP == 0)
+      return 1;
+   else
+      return 0;
+}
+
+int main(void)
+{
+   creerPile();
+
+   empiler(42);
+   // 42
+   empiler(9);
+   // 9
+   // 42
+
+   int retour = depiler();
+   // retour = 9
+
+   return 0;
+}</code></pre>
+<p>Cette implémentation est facile à comprendre et à utiliser.</p>
+</details>
+<h3 id="stl">STL</h3>
+<p>Si vous programmez en C++, la <a
+href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a>
+(<em>Standard Template Library</em>) fournit une implémentation et des
+fonctions permettant de manipuler une pile : <a
+href="http://www.cplusplus.com/reference/stack/stack/">http://www.cplusplus.com/reference/stack/stack/</a></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>La pile est donc une structure de données facile à implémenter et
+peut être pratique dans de nombreux domaines :</p>
+<ul>
+<li>Dans un éditeur : quand vous écrivez votre prochain article sur
+votre éditeur préféré, et que vous ne cessez de faire des ctrl+z et
+ctrl+y pour revenir en arrière/avant, vous utilisez en réalité une pile.
+Chaque opération va être empilée pour garder l'ordre dans lequel vous
+les avez réalisées, et vous pouvez ainsi facilement parcourir la pile
+des opérations pour vous retrouver à tel moment précis de votre
+édition.</li>
+<li>Lors d'un appel de fonction : à chaque fois que vous appelez une
+fonction dans votre programme, la pile d'exécution (ou <a
+href="https://en.wikipedia.org/wiki/Call_stack">pile d'appel</a>) empile
+les informations à propos de l'endroit où vous réalisez l'appel pour se
+souvenir où revenir à la fin de la fonction appelée.</li>
+<li>Pour évaluer des expressions : dans certains cas, une pile peut être
+utilisée pour évaluer des expressions (mathématiques ou syntaxiques).
+Par exemple, si vous devez évaluer une expression en notation polonaise
+inverse (<a
+href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">NPI</a>),
+une pile est indispensable pour calculer l'expression au fur et à mesure
+des opérations (quand vous rencontrez un nombre vous l'empilez, quand
+vous rencontrez un opérateur vous dépilez les deux derniers éléments, et
+vous empilez le résultat).</li>
+<li>Plusieurs <a
+href="https://en.wikipedia.org/wiki/Virtual_machine">machines
+virtuelles</a> sont implémentées sur le principe d'une pile, par exemple
+celle de Java. Si vous voulez en savoir plus à ce sujet, cet article
+explique très bien le principe de machine virtuelle et les différentes
+implémentations possibles : <a
+href="https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/">https://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/</a></li>
+</ul>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

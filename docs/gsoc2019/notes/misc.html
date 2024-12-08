@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Miscellaneous</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/gsoc2019.html">GSoC 2019</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Miscellaneous</a></h1>
+
+        </header>
+
+
+        <h2 id="publish-subscribe">Publish-subscribe</h2>
+<p><a
+href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern</a></p>
+<p>Messaging pattern where senders (= publishers) categorize published
+messages instead of sending them directly to receivers (= subscribers),
+and where subscribers express interest in some categories and receive
+messages without knowledge of publishers.</p>
+<p>Pros:</p>
+<ul>
+<li>network scalability</li>
+<li>loose coupling: publishers/subscribers do not need to know the
+existence of one another (in the server/client paradigm a client cannot
+post messages to the server while it is not running) =&gt; dynamic
+network topology</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>message delivery issues (side effect of loose coupling): need to
+design the pub/sub system carefully to provide stronger system
+properties that a particular application might require</li>
+</ul>
+<p>Many pub/sub systems use a <strong>message broker</strong> as an
+intermediate.</p>
+<p>Examples of pub/sub systems: news, atom, rss.</p>
+<h2 id="message-broker">Message broker</h2>
+<p><a
+href="https://en.wikipedia.org/wiki/Message_broker">https://en.wikipedia.org/wiki/Message_broker</a></p>
+<p>Intermediate program that translates a message from the sender's
+protocol to the messaging protocol of the receiver. The purpose is to
+minimize the mutual awareness that applications should have of each
+other to exchange messages.</p>
+<p>Multiple uses of message broker: route messages to one or more
+destinations, transform messages into alternatives representation,
+perform message aggregation/decomposition, respond to events/errors,
+etc.</p>
+<p>Examples of message brokers: apache kafka, rabbitmq, redis.</p>
+<h2 id="message-queue">Message queue</h2>
+<p><a
+href="https://en.wikipedia.org/wiki/Message_queue">https://en.wikipedia.org/wiki/Message_queue</a></p>
+<p>Paradigm used for inter-process communication (IPC) or inter-thread
+communication within the same process. Sibling of the pub/sub
+pattern.</p>
+<p>Provide an asynchronous communication protocol (ie: the sender and
+receiver do not need to interact with the message queue at the same
+time). Messages placed on the queue are stored until the recipient
+retrieves them.</p>
+<p>Usage: a sysadmin setup the message queueing software and defines a
+named message queue. An application listens for messages in the queue,
+while other applications may transfer messages to this queue. Many
+options to consider:</p>
+<ul>
+<li>durability: messages can be kept in memory, on disk, or committed to
+a database</li>
+<li>security: which applications can read/write to the queue?</li>
+<li>message purging: do you need a lifetime limit?</li>
+<li>message filtering: a subscriber may only need to see some specific
+messages</li>
+<li>delivery policy: do you need to guarantee delivery?</li>
+<li>etc.</li>
+</ul>
+<p>Examples of message queue: celery, rabbitmq, redis, zeromq.</p>
+<h2 id="acid-atomicity-consistency-isolation-durability">ACID
+(atomicity, consistency, isolation, durability)</h2>
+<p><a
+href="https://en.wikipedia.org/wiki/ACID_(computer_science)">https://en.wikipedia.org/wiki/ACID_(computer_science)</a></p>
+<p>Set of properties of database transactions (often composed of
+multiple statements) intended to guarantee validity even in the event of
+errors, power failures, etc.</p>
+<h3 id="atomicity">Atomicity</h3>
+<p>Guarantees that each transaction is treated as a single unit (which
+either succeeds completely or fails completely). If any statements
+constituting a transaction fails to complete, the entire transaction
+fails and the database is left unchanged (even in case of power failure,
+errors, crashes, etc.).</p>
+<p>Implementation: read-copy update (keep a copy of the data before any
+changes occurred), journaling (keeps track of changes not yet committed
+by recording the intentions into a journal), etc.</p>
+<h3 id="concistency">Concistency</h3>
+<p>Ensures that a transaction can only bring the database from one valid
+state to another (maintaining database invariants).</p>
+<h3 id="isolation">Isolation</h3>
+<p>Ensures that concurrent execution of transactions leaves the database
+in the same state as if the transactions were executed sequentially.</p>
+<p>Implementation: locks</p>
+<h3 id="durability">Durability</h3>
+<p>Guarantees that once a transaction is committed it will remain so
+even in case of system failure (eg: power outage, crash, etc.).</p>
+<p>Implementation: store in non-volatile memory.</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

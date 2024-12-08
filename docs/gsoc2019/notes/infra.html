@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Infrastructure</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/gsoc2019.html">GSoC 2019</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Infrastructure</a></h1>
+
+        </header>
+
+
+        <ul>
+<li><a
+href="https://docs.softwareheritage.org/devel/">https://docs.softwareheritage.org/devel/</a></li>
+<li><a
+href="https://docs.softwareheritage.org/devel/glossary.html">https://docs.softwareheritage.org/devel/glossary.html</a></li>
+</ul>
+<p>Graph archive:</p>
+<ul>
+<li><dl>
+<dt><strong>file content node</strong> (≈ 200 TB, individually
+compressed files)</dt>
+<dd>
+<ul>
+<li>stored as a key-value object storage that uses as keys the intrinsic
+node identifiers of the Merkle DAG</li>
+<li>allows easy horizontal scaling</li>
+</ul>
+</dd>
+</dl></li>
+<li><dl>
+<dt><strong>rest of the graph</strong> (≈ 5 TB, .gz files)</dt>
+<dd>
+<ul>
+<li>stored in a relational database management system (RDBMS): one table
+per type of node (directories, revisions, snapshots, etc.)</li>
+<li>each table uses as primary key the intrinsic node identifier</li>
+<li>no particular reason to store this graph in a RDBMS but graph db
+tech are not ready for a graph with this size and kind</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<p>RDBMS specific:</p>
+<ul>
+<li><dl>
+<dt>master/slave replication</dt>
+<dd>
+<ul>
+<li>enables data from one master server to be copied to slaves
+servers</li>
+<li><dl>
+<dt>used to improve recovery guarantees and performance</dt>
+<dd>
+<ul>
+<li>load balancing: all writes updates happen on master server, but read
+operations can take place in any slave server</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+</dd>
+</dl></li>
+<li>point-in-time recovery</li>
+<li>prevent hash collisions by using multiple checksums algorithms
+(<code>sha1</code>, <code>sha256</code>, <code>sha1_git</code>,
+<code>blake2s256</code>)</li>
+</ul>
+<h2 id="archiver">Archiver</h2>
+<p><a
+href="https://docs.softwareheritage.org/devel/swh-archiver/archiver-blueprint.html">https://docs.softwareheritage.org/devel/swh-archiver/archiver-blueprint.html</a></p>
+<p>Goal: keeps track of how many copies of a given file content exist
+and where each of them is.</p>
+<ul>
+<li><dl>
+<dt>enforce retention policies</dt>
+<dd>
+<ul>
+<li>"each file content must exist in at least 3 copies"</li>
+<li>periodically swipe all objects to check adherence, and makes copies
+if necessary</li>
+</ul>
+</dd>
+</dl></li>
+<li><dl>
+<dt>heal object corruption (due to storage media decay)</dt>
+<dd>
+<ul>
+<li>periodically swipe all copies of objects and verify checksums (and
+use copies to heal objects if data corruption is found)</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<h3 id="characteristics">Characteristics</h3>
+<ul>
+<li>append-only archival</li>
+<li>peer-to-peer topology: every storage can be used as a source or a
+destination</li>
+<li>asynchronous archival: if new objects are added during archival run
+(making copies of existing objects), these new objects will only be
+copied in future archival run</li>
+<li>integrity at archival time: before adding new objects, verify if
+possible to decompress and compute checksums</li>
+<li><dl>
+<dt>persistent archival status:</dt>
+<dd>
+<ul>
+<li><dl>
+<dt>locations={master, slave_1, ..., slave_n}, each pair of &lt;obj,
+dst&gt; has:</dt>
+<dd>
+<ul>
+<li>status: missing, ongoing, present, corrupted</li>
+<li>mtime: timestamp of last status change</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<ul>
+<li><dl>
+<dt>archiver director</dt>
+<dd>
+<ul>
+<li>periodically runs via cron</li>
+<li>group objects in need of archival into batches and spawn archive
+worker for each batch</li>
+</ul>
+</dd>
+</dl></li>
+<li><dl>
+<dt>archiver worker</dt>
+<dd>
+<ul>
+<li>executed on demand (celery worker) to archive a set of objects</li>
+<li>compute map: (source, destination) -&gt; contents</li>
+<li>launch copier for each transfer in the batch</li>
+</ul>
+</dd>
+</dl></li>
+<li><dl>
+<dt>archiver copier</dt>
+<dd>
+<ul>
+<li>executed on demand by archiver workers to transfer file batches from
+a given source to a given destination</li>
+<li>the copying process ensures that concurrent transfer of the same
+file by multiple copier do not result in corrupted files (atomic
+operation + file granularity)</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<h2 id="indexer">Indexer</h2>
+<p><a
+href="https://docs.softwareheritage.org/devel/swh-indexer/metadata-workflow.html">https://docs.softwareheritage.org/devel/swh-indexer/metadata-workflow.html</a></p>
+<dl>
+<dt>Goal: extract information from multiple SWH objects:</dt>
+<dd>
+<ul>
+<li>content: mimetype, ctags, language, fossology-license, metadata</li>
+<li>revision: metadata</li>
+</ul>
+</dd>
+</dl>
+<p>The indexer stores these info into a db (expected to be called
+swh-indexer-dev)</p>
+<h3 id="intrinsic-metadata">Intrinsic metadata</h3>
+<p>Examples of supported intrinsic metadata: codemeta.json, pom.xml,
+package.json, PGK-INFO, .gemspec</p>
+<p>These metadata are translated using <a
+href="https://codemeta.github.io/">CodeMeta</a>'s <a
+href="https://codemeta.github.io/crosswalk/">crosswalk table</a></p>
+<h2 id="journal">Journal</h2>
+<p>Goal: logs changes to the archive</p>
+<p>Publish-subscribe support using Apache Kafka.</p>
+<h2 id="listers">Listers</h2>
+<p><a
+href="https://docs.softwareheritage.org/devel/swh-lister/tutorial.html">https://docs.softwareheritage.org/devel/swh-lister/tutorial.html</a></p>
+<p>Goal: enumerate the software origins available at a source code
+distribution place.</p>
+<p>Current supported listers: bitbucket, debian, github, gitlab, npm,
+pypi</p>
+<p>A lister follow these steps:</p>
+<ul>
+<li>Network request to a service endpoint</li>
+<li>Convert the response to a canonical format</li>
+<li>Setup work queue to fetch/ingest the repositories</li>
+</ul>
+<h2 id="loaders">Loaders</h2>
+<p>Goal: read and import/update a source code origin in the SWH
+archive</p>
+<p>Current supported loaders: debian, dir, git, mercurial, pypi, svn,
+tar</p>
+<h2 id="model">Model</h2>
+<p>Goal: implementation of Merkle DAG to store artifacts. Defines
+persistent identifier (PID).</p>
+<ul>
+<li><code>hashutil.py</code>: defines a <code>MultiHash</code> class in
+charge to compute all swh hashes (supports <code>sha1</code>,
+<code>sha256</code>, <code>sha1_git</code>,
+<code>blake2s256</code>)</li>
+<li>intrinsic identifier: the <code>sha1</code>, <code>sha1_git</code>
+and <code>sha256</code> checksums of its data.</li>
+</ul>
+<h3 id="data-model">Data model</h3>
+<ul>
+<li><a
+href="https://docs.softwareheritage.org/devel/swh-model/data-model.html">https://docs.softwareheritage.org/devel/swh-model/data-model.html</a></li>
+<li>contents (aka blobs)</li>
+<li>directories</li>
+<li>revisions (aka commits)</li>
+<li>releases (aka tags)</li>
+</ul>
+<p>Crawling-related information:</p>
+<ul>
+<li>origins: (type, url) where type is git, svn, ...</li>
+<li>snapshots (aka branches, stable/dev packages, ...)</li>
+<li>visits: link origins with snapshots (every time an origin is
+consulted, new visit object is created with corresponding snapshot and
+timestamp)</li>
+</ul>
+<p>SWH archive is a single Merkle Direct Acyclic Graph. Inherited
+properties from this:</p>
+<ul>
+<li>data deduplication</li>
+<li>SWH data unified as a whole</li>
+</ul>
+<h3 id="persistent-identifier-pid">Persistent identifier (PID)</h3>
+<ul>
+<li><a
+href="https://docs.softwareheritage.org/devel/swh-model/persistent-identifiers.html">https://docs.softwareheritage.org/devel/swh-model/persistent-identifiers.html</a></li>
+<li><a
+href="https://hal.archives-ouvertes.fr/hal-01865790v4">https://hal.archives-ouvertes.fr/hal-01865790v4</a></li>
+</ul>
+<p>Every SWH object can be uniquely identified by an intrinsic
+identifier that is guaranteed to remain stable over time.</p>
+<p>Syntax:
+<code>swh:&lt;scheme_version&gt;:&lt;object_type&gt;:&lt;object_id&gt;</code></p>
+<p>Examples:</p>
+<ul>
+<li><code>swh:1:cnt:94a9ed024d3859793618152ea559a168bbcbb5e2</code></li>
+<li><code>swh:1:dir:d198bc9d7a6bcf6db04f476d29314f157507d505</code></li>
+<li><code>swh:1:rev:309cf2674ee7a0749978cf8265ab91a60aea0f7d</code></li>
+</ul>
+<p><code>object_id</code>: sha1 of object's content and metadata</p>
+<p>SWH web app can be used to resolve a PID: <a
+href="https://archive.softwareheritage.org/">https://archive.softwareheritage.org/</a>&lt;identifier&gt;</p>
+<h2 id="objstorage">Objstorage</h2>
+<p>Goal: API to manipulate SWH object storage (add, restore, get, check,
+delete, etc.)</p>
+<h2 id="scheduler">Scheduler</h2>
+<p>Goal: keep track of scheduled tasks (eg: next listing/loading)</p>
+<p>Implementation is based on Celery.</p>
+<h2 id="storage">Storage</h2>
+<p><a
+href="https://docs.softwareheritage.org/devel/swh-storage/sql-storage.html">https://docs.softwareheritage.org/devel/swh-storage/sql-storage.html</a>
+<a
+href="https://docs.softwareheritage.org/devel/swh-storage/archive-copies.html">https://docs.softwareheritage.org/devel/swh-storage/archive-copies.html</a></p>
+<p>Goal: abstraction layer over the archive to access artifacts and
+their metadata</p>
+<h2 id="vault">Vault</h2>
+<p>Goal: allows to retrieve parts of the archive as self-contained
+bundles (e.g., individual releases, entire repository snapshots,
+etc.)</p>
+<h2 id="web">Web</h2>
+<p>Goal: web apps to browse the archive</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

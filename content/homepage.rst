@@ -59,9 +59,9 @@ organizing projects in order to teach students C, UNIX, C++, Java, Caml and C#.
 Talks
 ~~~~~
 
--  `Re-implementing git </upload/reimplementing_git.pdf>`__
--  `AI match maker for Prologin finals </upload/stechec2.pdf>`__
--  `Raytracing with a twist </upload/raytracing_twist.pdf>`__
+-  `Re-implementing git </static/reimplementing_git.pdf>`__
+-  `AI match maker for Prologin finals </static/stechec2.pdf>`__
+-  `Raytracing with a twist </static/raytracing_twist.pdf>`__
 
 Articles
 ~~~~~~~~

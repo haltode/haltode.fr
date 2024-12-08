@@ -55,7 +55,7 @@ Links
 -----
 
 - Code submission: https://wiki.softwareheritage.org/wiki/Google_Summer_of_Code_2019/Graph_compression
-- My proposal:  https://haltode.fr/upload/gsoc2019/proposal.pdf
+- My proposal:  https://haltode.fr/static/gsoc2019/proposal.pdf
 - Recaps
     - `March </gsoc2019/march.html>`_
     - `April </gsoc2019/april.html>`_

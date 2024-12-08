@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Syntax highlighting -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/highlight_theme.css">
+        <script>hljs.highlightAll();</script>
+
+        <!-- Renders LaTeX expression -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+        </script>
+        <script type="text/javascript" async 
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+        <title>Chiffre de Vernam</title>
+
+    </head>
+
+    <body>
+        <header>
+    <nav>
+        <ul>
+            <li><a href="/">Thibault Allançon</a></li>
+            <li><a href="/articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <h1><a href="">Chiffre de Vernam</a></h1>
+
+            <p class="metadata">Publié : 29/05/2014 · Modifié : 20/12/2015</p>
+        <hr>
+        </header>
+
+
+        <h2 id="introduction">Introduction</h2>
+<p>Le chiffre de Vernam est considéré comme une amélioration
+significative du <a
+href="/algo/chiffrement/chiffre_vigenere.html">chiffre de Vigenère</a>
+car cet algorithme de chiffrement est théoriquement impossible à casser.
+Cependant, aucuns systèmes de chiffrement n'est parfait, et même si ce
+dernier semble sécurisé, il n'est pas toujours facile de remplir les
+conditions pour avoir un message chiffré totalement sûr.</p>
+<h2 id="principe-de-lalgorithme">Principe de l'algorithme</h2>
+<p>Le chiffre de Vernam (ou <em>masque jetable</em>) est un <a
+href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">chiffrement
+symétrique</a> utilisant, comme le chiffre de Vigenère, une <a
+href="https://en.wikipedia.org/wiki/Substitution_cipher#Polyalphabetic_substitution">substitution
+poly-alphabétique</a>. Son efficacité réside dans le choix de la clé de
+chiffrement, qui doit respecter plusieurs règles fondamentales :</p>
+<ul>
+<li>Chaque clé est <strong>unique</strong>, et cette dernière ne doit
+pas être réutilisée (d'où le nom de masque jetable).</li>
+<li>La clé doit avoir au moins autant de caractères que le message que
+l'on veut chiffrer.</li>
+<li>Chacun des caractères de la clé doit être choisi totalement
+aléatoirement.</li>
+</ul>
+<h2 id="exemple">Exemple</h2>
+<p>Le mot que l'on va chiffrer est "Algorithme", et la première étape du
+chiffre de Vernam est de créer notre clé en respectant les trois
+contraintes. J'ai donc généré de mon côté une clé de chiffrement (que je
+n'ai jamais utilisé avant, qui fait la même taille que le message et que
+j'ai choisi aléatoirement) : "shrtvsgviw".</p>
+<p>Le mode de fonctionnement du chiffrement et du déchiffrement est
+exactement le même que pour le chiffre de Vigenère, je vous invite donc
+à la lire la partie <a
+href="/algo/chiffrement/chiffre_vigenere.html#exemple">exemple</a> à ce
+propos.</p>
+<p>Finalement, j'obtiens comme texte chiffré "Ssxhmazcua".</p>
+<h2 id="pseudo-code">Pseudo-code</h2>
+<p>On peut tout à fait reprendre le même pseudo-code que le chiffre de
+Vigenère pour la partie chiffrement/déchiffrement, en revanche, il nous
+faut une nouvelle fonction permettant de générer notre clé :</p>
+<pre><code class="nohighlight">creerCle :
+
+   Tant que la clé générée a déjà été utilisée
+
+      Pour chaque lettre du message 
+         Generer une lettre aléatoire pour notre clé</code></pre>
+<p>Pour savoir si on a déjà utilisé une clé, plusieurs solutions
+s'offrent à nous. On peut tout d'abord utiliser un simple tableau qui
+stockera toutes les clés utilisées, et à chaque fois que l'on en génère
+une nouvelle, on vérifie qu'elle n'est pas dans notre tableau avant de
+l'ajouter. Il est aussi possible d'améliorer cette solution en utilisant
+une <a href="/algo/recherche/dichotomie.html">recherche
+dichotomique</a>, nous permettant dans notre tableau (trié par ordre
+alphabétique) de chercher rapidement si une clé a déjà été générée ou
+non.</p>
+<h2 id="implémentation">Implémentation</h2>
+<p>L'implémentation en C d'un programme générant une clé de chiffrement
+pour le chiffre de Vernam :</p>
+<details>
+<summary>chiffre_vernam.c</summary>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;time.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdbool.h&gt;
+
+#define TAILLE_MAX 1000
+#define NB_CLE_MAX 1000
+
+char message[TAILLE_MAX];
+char cle[TAILLE_MAX];
+
+char utilisee[NB_CLE_MAX][TAILLE_MAX];
+int nbCle;
+
+void initCleUtilisee(void)
+{
+   FILE *fichierCle;
+
+   fichierCle = fopen(&quot;cle_utilisee.txt&quot;, &quot;r&quot;);
+
+   nbCle = 0;
+   while(fscanf(fichierCle, &quot;%s\n&quot;, utilisee[nbCle]) != EOF)
+      ++nbCle;
+
+   fclose(fichierCle);
+}
+
+bool estDejaUtilisee(void)
+{
+   int iCle;
+
+   for(iCle = 0; iCle &lt; nbCle; ++iCle)
+      if(strcmp(cle, utilisee[iCle]) == 0)
+         return true;
+
+   return false;
+}
+
+void creerCle(void)
+{
+   int iCle, iLettre;
+
+   do
+   {
+      iCle = 0;
+
+      for(iLettre = 0; message[iLettre] != &#39;\0&#39;; ++iLettre) {
+         if(isalpha(message[iLettre])) {
+            cle[iCle] = (rand() % 26) + &#39;a&#39;;
+            ++iCle;
+         }
+      } 
+
+      cle[iCle] = &#39;\0&#39;;
+
+   } while(estDejaUtilisee());
+}
+
+void ajouterCle(void)
+{
+   FILE *fichierCle;
+
+   fichierCle = fopen(&quot;cle_utilisee.txt&quot;, &quot;a&quot;);
+   fprintf(fichierCle, &quot;%s\n&quot;, cle);
+   fclose(fichierCle);
+}
+
+int main(void)
+{
+   scanf(&quot;%[^\n]s\n&quot;, message);
+
+   srand(time(NULL));
+
+   initCleUtilisee();
+   creerCle();
+
+   printf(&quot;%s\n&quot;, cle);
+   ajouterCle();
+
+   return 0;
+}</code></pre>
+</details>
+<p>En entrée :</p>
+<pre><code class="nohighlight">Algorithme</code></pre>
+<p>La sortie que j'ai obtenue (elle change à chaque fois) :</p>
+<pre><code class="nohighlight">shrtvsgviw</code></pre>
+<p>Le fichier de clés qui ont déjà été générées (et donc inutilisable
+maintenant) :</p>
+<pre><code class="nohighlight">dovcexdoba
+ckdexeiezr
+zmagzxogpx
+unrhlaiurn
+imizbftejl
+ewqeuyhcro
+concvckybe
+oplngklamk
+mwesglgezw
+ervpcfgzqj
+jyivvrlokb
+duunlvvlkt
+amyopgkotw
+wfwwnvpjvn
+qssplvtpkj
+shrtvsgviw</code></pre>
+<p>J'utilise une simple recherche (et non une recherche dichotomique)
+car le nombre de clés que je vais manipuler est assez faible (j'ai fixé
+une limite virtuelle à 1000 clés).</p>
+<h2 id="cassage">Cassage</h2>
+<p>Les attaques du chiffre de Vigenère (ou du chiffre de César) ne sont
+plus possibles sur le chiffre de Vernam, et c'est ce qui le rend
+incassable :</p>
+<ul>
+<li>Le test de Kasiski ne fonctionne plus car notre clé doit être au
+moins aussi longue que notre message, donc il n'y aura pas de répétition
+de ladite clé.</li>
+<li>Il est impossible de deviner la clé de chiffrement, car elle est
+totalement aléatoire et n'importe quelle lettre du message peut être
+chiffrée avec n'importe quelle autre lettre de l'alphabet.</li>
+<li>Une analyse fréquentielle ne peut pas marcher car le texte ne nous
+donne aucunes indications à cause de la clé aléatoire employée.</li>
+<li>Une attaque par force brute ne serait pas envisageable non plus, vu
+le nombre de possibilités.</li>
+</ul>
+<h2 id="défauts">Défauts</h2>
+<p>Notre algorithme de chiffrement est donc techniquement impossible à
+casser si les règles permettant de choisir une clé de chiffrement sont
+respectées. Cependant, suivre les contraintes peut parfois être
+difficile :</p>
+<ul>
+<li>La création de clés uniques demande une grande organisation et
+beaucoup de coordination pour mettre à jour une base de données (secrète
+de préférence) qui contient les clés déjà utilisées, et qui est
+accessible et commune aux personnes autorisées.</li>
+<li>Créer une clé parfaitement aléatoire est <strong>difficile</strong>,
+en effet nos ordinateurs ne font que simuler l'aléatoire grâce à des
+calculs mathématiques et génèrent donc des clés
+<em>pseudo-aléatoires</em>. Il est possible de savoir à l'avance la clé
+générée par l'ordinateur si l'on connait suffisamment d'informations
+dessus (algorithme utilisé, graine d'initialisation, etc.). Par exemple
+en C, la fonction <code>rand</code> utilise un <a
+href="https://en.wikipedia.org/wiki/Linear_congruential_generator">algorithme
+de génération de nombre pseudo-aléatoire</a> basé sur des congruences et
+une fonction linéaire, et il est possible de deviner le résultat si l'on
+connait la graine initialisée avec <code>srand</code>. Une solution
+permettant de générer une clé totalement aléatoire serait d'utiliser des
+phénomènes physiques dont le résultat ne peut être déterminé à l'avance
+comme des <a
+href="https://en.wikipedia.org/wiki/Thermal_fluctuations">bruits
+thermiques</a>, des <a
+href="https://en.wikipedia.org/wiki/Atmospheric_noise">bruits
+atmosphériques</a> ou encore une <a
+href="https://en.wikipedia.org/wiki/Radioactive_decay">réaction
+radioactive</a>.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le chiffre de Vernam est donc un algorithme de chiffrement symétrique
+offrant une sécurité optimale si les contraintes de cet algorithme sont
+respectées. Mais pour que son efficacité soit à son maximum, il faut
+disposer d'importantes ressources afin de créer un générateur totalement
+aléatoire, mais aussi un système assurant une utilisation unique des
+clés de chiffrement générées. Cependant, même avec un algorithme de
+chiffrement incassable, un problème persiste au niveau de l'échange de
+clé. En effet, tous les algorithmes de chiffrement symétriques
+nécessitent un échange de clé entre les deux personnes souhaitant
+communiquer afin de pouvoir chiffrer et déchiffrer les messages
+échangés. Mais c'est justement cet échange qui pose problème, car
+comment être sûr que personne d'autre ne connait la clé ? Comment la
+transmettre en toute sécurité ? L'intérêt d'un algorithme de chiffrement
+symétrique est donc limité, car si notre adversaire connait la clé de
+chiffrement, on aura beau mettre en place un algorithme de chiffrement
+incassable comme le chiffre de Vernam, il pourra sans aucunes
+difficultés comprendre les messages secrets. C'est pourquoi des
+mathématiciens ont travaillé sur de nouveaux algorithmes dit
+<strong>asymétriques</strong> (comme le <a
+href="/algo/chiffrement/rsa.html">RSA</a>), ne nécessitant alors aucun
+échange de clé et rendant les communications secrètes bien plus
+sûres.</p>
+
+
+
+        <footer>
+        </footer>
+    </body>
+</html>

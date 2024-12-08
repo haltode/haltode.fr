@@ -15,7 +15,7 @@ to template to use, etc.
 
     $ poetry shell
     $ poetry install
-    $ make build collectstatic runserver
+    $ make build runserver
 
 Note: despite the Python virtual env, you still need to install a recent version
 of pandoc because pypandoc is only a wrapper around it.
