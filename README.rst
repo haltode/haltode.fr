@@ -20,6 +20,11 @@ to template to use, etc.
 Note: despite the Python virtual env, you still need to install a recent version
 of pandoc because pypandoc is only a wrapper around it.
 
+Deploy
+------
+
+The sources are committed under ``docs/`` to be deployed through GitHub pages.
+
 License
 -------
 
