@@ -6,7 +6,7 @@ authors = ["Thibault Allançon"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-Jinja2 = "^3.1.4"
+Jinja2 = "^3.1.5"
 pypandoc = "^1.6.4"
 PyYAML = "^6.0"
 
